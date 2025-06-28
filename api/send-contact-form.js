@@ -19,7 +19,7 @@ export default async function handler(request, response) {
     const phoneInfo = phone ? `<p><strong>Teléfono:</strong> ${phone}</p>` : '<p><strong>Teléfono:</strong> No proporcionado</p>';
 
     await resend.emails.send({
-      from: 'Formulario Web <onboarding@resend.dev>',
+      from: 'Formulario Web <onboarding@resend.dev>', 
       to: recipientList,
       subject: `Nuevo Mensaje del Formulario de ${name}`,
       html: `
