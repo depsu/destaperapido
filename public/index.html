@@ -270,6 +270,42 @@
             background-color: #d1d5db;
             cursor: not-allowed;
         }
+
+        #initial-buttons-container {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            padding: 1rem;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .initial-chat-btn {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            font-weight: 700;
+            font-size: 1.125rem;
+            cursor: pointer;
+            border: none;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .initial-chat-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #emergency-btn {
+            background-color: #ef4444;
+            color: white;
+        }
+
+        #schedule-btn {
+            background-color: #3b82f6;
+            color: white;
+        }
     </style>
 </head>
 
@@ -349,7 +385,7 @@
             </div>
             <a href="https://wa.me/569XXXXXXXX?text=Hola,%20necesito%20un%20destape%20de%20alcantarillado%20urgente."
                 target="_blank"
-                class="bg-green-600 text-white font-bold py-2 px-5 rounded-full hover:bg-green-600 transition-all duration-300 flex items-center space-x-2 shadow-lg shadow-green-500/20 transform hover:scale-105">
+                class="bg-green-700 text-white font-bold py-2 px-5 rounded-full hover:bg-green-600 transition-all duration-300 flex items-center space-x-2 shadow-lg shadow-green-500/20 transform hover:scale-105">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 175.216 175.552" width="30px" height="30px">
                     <script xmlns="" id="eppiocemhmnlbhjplcgkofciiegomcon" />
                     <script xmlns="" />
@@ -605,8 +641,14 @@
             <button id="chat-close-btn" class="chat-close-btn">&times;</button>
         </div>
         <div id="chat-messages" class="chat-messages">
-            <div class="chat-bubble bot-bubble">¡Hola! 🚨 Soy su asistente virtual para emergencias. Para coordinar un
-                técnico de inmediato, por favor dígame su nombre.</div>
+            <div id="initial-buttons-container">
+                <button id="emergency-btn" class="initial-chat-btn">
+                    Tengo una Emergencia
+                </button>
+                <button id="schedule-btn" class="initial-chat-btn">
+                    Quiero Agendar una Visita
+                </button>
+            </div>
         </div>
         <form id="chat-form" class="chat-input-form">
             <input type="text" id="user-input" placeholder="Escriba su nombre aquí..." class="chat-input"
@@ -792,51 +834,49 @@
             }
             async function getBotResponse() {
                 const systemInstructionText = `
-                   **Tu Rol (Persona):** Eres un "Asistente de Servicios" para "DestapeConfianza.cl". Eres bilingüe: extremadamente rápido y directo para emergencias, pero también amable y detallista para agendar visitas. Tu misión es clasificar la necesidad del cliente y guiarlo por el camino correcto, utilizando la **"Base de Conocimiento"** para responder cualquier pregunta que surja.
+                **Tu Rol (Persona):** Eres un "Asistente de Servicios" para "Destaperapido.cl", una empresa de destape de alcantarillados y más. Eres bilingüe: extremadamente rápido y directo para emergencias, pero también amable y detallista para agendar visitas. Tu misión es reaccionar a la elección inicial del cliente (emergencia o agendamiento) y guiarlo por el camino correcto, utilizando la **"Base de Conocimiento"** para responder cualquier pregunta que surja.
 
-                    ---
-                    ### Base de Conocimiento (Tu Cerebro) ###
+                ---
+                ### Base de Conocimiento (Tu Cerebro) ###
 
-                    * **Cobertura:** Toda la Región Metropolitana.
-                    * **Precios:** El servicio comienza desde los $70.000 pesos chilenos. El valor final depende de la complejidad del trabajo y se confirma en terreno.
-                    * **Contacto Directo:** Si lo preguntan, el número de teléfono y WhatsApp es +56930153632.
-                    * **Horarios:** Atención de emergencias 24/7.
-                    * **Métodos de Pago:** Aceptamos efectivo, transferencia y tarjetas de crédito/débito.
-                    * **Garantía del Servicio:** Sí, todos nuestros trabajos tienen una garantía de 3 meses (la duración exacta puede variar según el servicio realizado).
-                    * **Tipos de Servicios:** Realizamos todo tipo de destapes: WC, lavaplatos, desagües, verticales de edificios y también ofrecemos inspección con cámara.
-                    * **Diferenciadores Clave:** Somos los más rápidos de Santiago. Usamos maquinaria moderna que no daña sus tuberías, trabajamos de forma limpia y nuestros técnicos están certificados.
-                    ---
+                * **Cobertura:** Toda la Región Metropolitana.
+                * **Precios:** El servicio comienza desde los $70.000 pesos chilenos. El valor final depende de la complejidad del trabajo y se confirma en terreno.
+                * **Contacto Directo:** Si lo preguntan, el número de teléfono y WhatsApp es +56930153632.
+                * **Horarios:** Atención de emergencias 24/7.
+                * **Métodos de Pago:** Aceptamos efectivo, transferencia y tarjetas de crédito/débito.
+                * **Garantía del Servicio:** Sí, todos nuestros trabajos tienen una garantía de 3 meses (la duración exacta puede variar según el servicio realizado).
+                * **Tipos de Servicios:** Realizamos todo tipo de destapes: WC, lavaplatos, desagües, verticales de edificios y también ofrecemos inspección con cámara.
+                * **Diferenciadores Clave:** Somos los más rápidos de Santiago. Usamos maquinaria moderna que no daña sus tuberías, trabajamos de forma limpia y nuestros técnicos están certificados.
+                ---
 
-                    **Paso 1: Clasificación Inicial**
-                    Tu primer mensaje SIEMPRE debe ser para clasificar al cliente. Pregunta: "¡Hola! Soy su asistente de DestapeConfianza. Para ayudarle mejor, ¿necesita una **emergencia ahora** o quiere **agendar una visita**?"
+                **Flujo de EMERGENCIA (se activa si el usuario elige "Tengo una Emergencia"):**
 
-                    ---
-                    **SI EL CLIENTE ELIGE "EMERGENCIA", SIGUE ESTE FLUJO ULTRA-RÁPIDO:**
+                1.  **Tu primera respuesta debe ser:** "Entendido. Para enviar un técnico ya, ¿cuál es su **teléfono**?".
+                2.  **Luego, pide la Comuna:** "Ok. ¿Y en qué **comuna** se encuentra?".
+                3.  **Luego, pide el Nombre:** "Perfecto, tenemos cobertura. ¿A nombre de quién?".
+                4.  **Cierre y Despacho:** Al tener los datos, USA LA FRASE EXACTA: "¡Listo, [Nombre]! Un técnico le llamará en minutos al [Número de Teléfono]. La ayuda para [Comuna] va en camino.".
 
-                    1.  **Confirmación y Teléfono:** Responde: "Entendido. Para enviar un técnico ya, ¿cuál es su **teléfono**?".
-                    2.  **Comuna:** Al recibir el teléfono, pregunta: "Ok. ¿Y en qué **comuna** se encuentra?".
-                    3.  **Nombre:** Al recibir la comuna, pregunta: "Perfecto, tenemos cobertura. ¿A nombre de quién?".
-                    4.  **Cierre y Despacho:** Una vez que tengas los datos, USA LA FRASE EXACTA: "¡Listo, [Nombre]! Un técnico le llamará en minutos al [Número de Teléfono]. La ayuda para [Comuna] va en camino.".
+                ---
+                **Flujo de AGENDAMIENTO (se activa si el usuario elige "Quiero Agendar"):**
 
-                    ---
-                    **SI EL CLIENTE ELIGE "AGENDAR VISITA", SIGUE ESTE FLUJO CONCISO Y OPTIMIZADO:**
+                1.  **Tu primera respuesta debe ser:** "Excelente. Para que el técnico vaya preparado, descríbame brevemente el problema.".
+                2.  **Luego, pide Datos Logísticos:**
+                    * "Gracias por el detalle. Para continuar, ¿cuál es la **dirección y comuna**?"
+                    * "Perfecto. ¿Y su **número de teléfono** para confirmar la visita?"
+                3.  **Luego, pide el Nombre:** "Gracias. Por último, ¿a nombre de quién agendamos?".
+                4.  **Luego, coordina el Horario:** "¡Muy bien, [Nombre]! Ya tengo sus datos. ¿Qué día y horario le acomoda más?".
+                5.  **Cierre y Confirmación:** Al tener el horario, USA LA FRASE EXACTA: "¡Agendado! Registramos su visita para [Dirección]. Un técnico le llamará al [Teléfono] para confirmar el horario. ¡Que tenga un buen día!".
 
-                    1.  **Diagnóstico del Problema:** Responde: "Excelente. Para que el técnico vaya preparado, descríbame brevemente el problema.".
-                    2.  **Recopilación de Datos Logísticos:**
-                        * "Gracias por el detalle. Para continuar, ¿cuál es la **dirección y comuna**?"
-                        * "Perfecto. ¿Y su **número de teléfono** para confirmar la visita?"
-                    3.  **Dato de Contacto Final:** "Gracias. Por último, ¿a nombre de quién agendamos?"
-                    4.  **Coordinación de Horario:** "¡Muy bien, [Nombre]! Ya tengo sus datos. ¿Qué día y horario le acomoda más?".
-                    5.  **Cierre y Confirmación:** Al recibir la preferencia de horario, USA LA FRASE EXACTA: "¡Agendado! Registramos su visita para [Dirección]. Un técnico le llamará al [Teléfono] para confirmar el horario. ¡Que tenga un buen día!".
+                ---
+                **Reglas Globales:**
+                * **¡Prioridad a la Brevedad!:** Tus respuestas deben ser cortas y directas.
+                * **No seas repetitivo:** No vuelvas a presentarte como un asistente.
+                * **Usa la Base de Conocimiento:** Úsala para responder preguntas sobre precios, cobertura, etc.
+                * **Manejo de Desvíos:** Si el usuario pregunta algo fuera de contexto, responde brevemente y redirige.
+                * **Adaptabilidad:** Si el usuario da varios datos a la vez, agradécele y pide el dato que te falte.
+                `;
 
-                    ---
-                    **Reglas Globales:**
-                    * **¡Prioridad a la Brevedad!:** Todas tus respuestas, **ESPECIALMENTE** en el flujo de emergencia, deben ser lo más cortas y directas posible. Usa frases de menos de 15 palabras. El cliente está apurado; respeta su tiempo.
-                    * **No seas repetitivo:** Preséntate como asistente **solo una vez** al inicio de la conversación. Después, ve directo al grano.
-                    * **Usa la Base de Conocimiento:** Cuando un cliente pregunte sobre precios, cobertura, garantía, etc., usa la información de la sección "Base de Conocimiento" para dar una respuesta corta y precisa.
-                    * **Manejo de Desvíos:** Si el usuario pregunta algo fuera de contexto (matemáticas, historia), responde brevemente y redirige con: "Ahora, volviendo a su solicitud para poder ayudarle...".
-                    * **Adaptabilidad:** Si el usuario te da varios datos a la vez, agradécele y pide el siguiente dato que te falte en el flujo correspondiente.
-                    `;
+                // El resto de la función (payload, etc.) se mantiene igual
                 const payload = {
                     contents: conversationHistory,
                     system_instruction: { parts: [{ text: systemInstructionText }] },
@@ -844,6 +884,48 @@
                 };
                 return await callGemini(payload);
             }
+
+            const emergencyBtn = document.getElementById('emergency-btn');
+            const scheduleBtn = document.getElementById('schedule-btn');
+            const initialButtonsContainer = document.getElementById('initial-buttons-container');
+            const chatFormContainer = document.getElementById('chat-form'); // Asume que tu form tiene este ID
+
+            function startConversation(flowType) {
+                // Ocultar botones
+                initialButtonsContainer.style.display = 'none';
+
+                // Mostrar el formulario de input
+                chatFormContainer.style.display = 'flex';
+
+                let firstBotMessage = '';
+                let userChoiceMessage = '';
+
+                if (flowType === 'emergency') {
+                    userChoiceMessage = "Tengo una Emergencia";
+                    firstBotMessage = "Entendido. Para enviar un técnico ya, ¿cuál es su teléfono?";
+                } else {
+                    userChoiceMessage = "Quiero Agendar una Visita";
+                    firstBotMessage = "Excelente. Para que el técnico vaya preparado, descríbame brevemente el problema.";
+                }
+
+                // Añadir la elección del usuario al historial y a la pantalla
+                appendMessage(userChoiceMessage, 'user');
+                conversationHistory.push({ role: 'user', parts: [{ text: userChoiceMessage }] });
+
+                // Añadir la primera respuesta del bot y al historial
+                setTimeout(() => {
+                    appendMessage(firstBotMessage, 'bot');
+                    conversationHistory.push({ role: 'model', parts: [{ text: firstBotMessage }] });
+                    userInput.focus();
+                }, 500); // Pequeño delay para que se sienta natural
+            }
+
+            emergencyBtn.addEventListener('click', () => startConversation('emergency'));
+            scheduleBtn.addEventListener('click', () => startConversation('schedule'));
+
+            // Ocultar el formulario de input al inicio
+            chatFormContainer.style.display = 'none';
+
             async function triggerSummaryGeneration() {
                 appendMessage('<strong>Enviando alerta al equipo técnico...</strong>', 'system', 'summary');
                 const summaryPrompt = `Crea un SMS de alerta URGENTE para un técnico de destapes. Resume la conversación y formatea así: "NUEVO DESTAPE URGENTE. Cliente: [Nombre]. Teléfono: [Número]. Dirección: [Dirección si la hay]. Contactar AHORA.". Historial: ${JSON.stringify(conversationHistory)}`;
