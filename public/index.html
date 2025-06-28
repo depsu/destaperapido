@@ -765,8 +765,6 @@
 
             let conversationHistory = [];
             let conversationEnded = false;
-            const initialBotMessage = document.querySelector('.bot-bubble').textContent;
-            conversationHistory.push({ role: 'model', parts: [{ text: initialBotMessage }] });
 
             chatForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
