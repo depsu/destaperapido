@@ -925,28 +925,44 @@
             // Ocultar el formulario de input al inicio
             chatFormContainer.style.display = 'none';
 
-            async function triggerSummaryGeneration() {
+           async function triggerSummaryGeneration() {
                 appendMessage('<strong>Enviando alerta al equipo técnico...</strong>', 'system', 'summary');
                 const summaryPrompt = `Crea un SMS de alerta URGENTE para un técnico de destapes. Resume la conversación y formatea así: "NUEVO DESTAPE URGENTE. Cliente: [Nombre]. Teléfono: [Número]. Dirección: [Dirección si la hay]. Contactar AHORA.". Historial: ${JSON.stringify(conversationHistory)}`;
                 const payload = { contents: [{ role: 'user', parts: [{ text: summaryPrompt }] }] };
+                
                 try {
+                    console.log('FRONTEND: Generando resumen para enviar...');
                     const summaryResponse = await fetch('/api/chat', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(payload)
                     });
-                    if (!summaryResponse.ok) throw new Error('Error al generar resumen');
+
+                    if (!summaryResponse.ok) throw new Error('Error al generar resumen desde la API de chat');
+                    
                     const result = await summaryResponse.json();
                     const summaryText = result.candidates[0].content.parts[0].text;
                     const phoneMatch = summaryText.match(/Teléfono:\s*([\d\s\+]+)/);
                     const leadPhone = phoneMatch ? phoneMatch[1].trim() : 'Teléfono no capturado';
-                    // This assumes you have an API endpoint at '/api/send-summary'
-                    await fetch('/api/send-summary', {
+                    
+                    const dataToSend = { summaryText: summaryText, leadEmail: leadPhone };
+
+                    // --- LOGS CLAVE ---
+                    console.log('FRONTEND: Resumen generado:', summaryText);
+                    console.log('FRONTEND: Teléfono extraído:', leadPhone);
+                    console.log('FRONTEND: Enviando este objeto a /api/send-summary:', JSON.stringify(dataToSend, null, 2));
+
+                    const sendEmailResponse = await fetch('/api/send-summary', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ summaryText: summaryText, leadEmail: leadPhone }),
+                        body: JSON.stringify(dataToSend),
                     });
+
+                    if (!sendEmailResponse.ok) throw new Error('El backend /api/send-summary devolvió un error.');
+
+                    console.log('FRONTEND: Petición a /api/send-summary completada exitosamente.');
                     appendMessage("<strong>✓ Alerta enviada.</strong><p>El técnico está en camino.</p>", 'system', 'summary');
+
                 } catch (error) {
                     console.error("Error en el proceso de resumen y envío:", error);
                     appendMessage("Error al despachar. Por favor, llama a nuestro número de emergencia.", 'system', 'summary');
