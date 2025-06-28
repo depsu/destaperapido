@@ -781,7 +781,7 @@
                     const botResponse = await getBotResponse();
                     appendMessage(botResponse, 'bot');
                     conversationHistory.push({ role: 'model', parts: [{ text: botResponse }] });
-                    if (botResponse.includes("¡Perfecto! Un técnico le llamará en los próximos minutos.")) {
+                    if (botResponse.includes("Un técnico le llamará en minutos")) {
                         conversationEnded = true;
                         userInput.disabled = true;
                         userInput.placeholder = "Emergencia en curso...";
@@ -853,7 +853,7 @@
                 2.  **Valida en numero de telefono si es correcto (debe ser Chileno) con +569XXXXXXXX O 569XXXXXXXX O 9XXXXXXXX O XXXXXXXX **".
                 2.  **Luego, pide la Comuna:** "Ok. ¿Y en qué **comuna** se encuentra?".
                 3.  **Luego, pide el Nombre:** "Perfecto, tenemos cobertura. ¿A nombre de quién?".
-                4.  **Cierre y Despacho:** Al tener los datos, USA LA FRASE EXACTA: "¡Listo, [Nombre]! Un técnico le llamará en minutos al [Número de Teléfono]. La ayuda para [Comuna] va en camino.".
+                4.  **Cierre y Despacho:** Al tener los datos, USA LA FRASE EXACTA: "¡Listo, [Nombre]! Un técnico le llamará en minutos al [Número de Teléfono]. La ayuda para [Comuna] va en camino. ¿Tiene alguna otra duda?".
  
                 ---
                 **Flujo de AGENDAMIENTO (se activa si el usuario elige "Quiero Agendar"):**
