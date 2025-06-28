@@ -11,8 +11,8 @@ export default async function handler(request, response) {
   try {
     const { name, email, phone } = request.body;
 
-    if (!name || !email) {
-      return response.status(400).json({ message: 'El nombre y el email son requeridos.' });
+    if (!name || !phone) { // Cambiamos !email por !phone
+      return response.status(400).json({ message: 'El nombre y el teléfono son requeridos.' });
     }
 
     const recipientList = ownerEmailsString.split(',').map(e => e.trim());
