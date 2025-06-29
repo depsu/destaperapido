@@ -1,7 +1,7 @@
 import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
-const ownerEmailsString = process.env.OWNER_EMAILS; // Usamos la misma lista de correos
+const ownerEmailsString = process.env.OWNER_EMAILS; 
 
 export default async function handler(request, response) {
   if (request.method !== 'POST') {
