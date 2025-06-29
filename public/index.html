@@ -18,15 +18,18 @@
         <link rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
     </noscript>
-    <style>
+     <style>
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f9fafb;
-            /* Fondo blanco/gris claro */
             color: #111827;
-            /* Texto oscuro */
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* NUEVO: Clase para bloquear el scroll del fondo */
+        .body-no-scroll {
+            overflow: hidden;
         }
 
         .gradient-text {
@@ -61,7 +64,6 @@
             }
         }
 
-        /* --- NUEVO BOTÓN FLOTANTE DE WHATSAPP --- */
         .floating-whatsapp-btn {
             position: fixed;
             bottom: 2rem;
@@ -69,7 +71,6 @@
             width: 60px;
             height: 60px;
             background-color: #25d366;
-            /* Verde WhatsApp */
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -83,7 +84,6 @@
         .floating-whatsapp-btn:hover {
             transform: scale(1.1);
             animation: none;
-            /* Detiene la animación al pasar el mouse */
         }
 
         @keyframes pulse-whatsapp {
@@ -111,7 +111,6 @@
             width: 60px;
             height: 60px;
             background: #2563eb;
-            /* Azul de confianza */
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -142,15 +141,16 @@
             display: flex;
             flex-direction: column;
             box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
-            transform: translateY(20px) scale(0.95);
+            transform: translateY(100%) translateY(2rem); /* MEJORA: Animación desde abajo */
             opacity: 0;
-            transition: transform 0.3s ease, opacity 0.3s ease;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
             z-index: 999;
             pointer-events: none;
         }
-
+        
+        /* MEJORA: Transición más suave */
         .chat-window.open {
-            transform: translateY(0) scale(1);
+            transform: translateY(0);
             opacity: 1;
             pointer-events: auto;
         }
@@ -167,6 +167,7 @@
             align-items: center;
             justify-content: space-between;
             border-bottom: 1px solid #e5e7eb;
+            flex-shrink: 0; /* Evita que el header se encoja */
         }
 
         .chat-header-title {
@@ -223,12 +224,16 @@
             text-align: left;
         }
 
+        .chat-input-container {
+            border-top: 1px solid #e5e7eb;
+            background-color: #f9fafb;
+            flex-shrink: 0; /* Evita que se encoja */
+        }
+
         .chat-input-form {
             display: flex;
             gap: 0.5rem;
             padding: 0.75rem;
-            border-top: 1px solid #e5e7eb;
-            background-color: #f9fafb;
         }
 
         .chat-input {
@@ -305,6 +310,33 @@
         #schedule-btn {
             background-color: #3b82f6;
             color: white;
+        }
+
+        /* --- MEJORAS PARA MÓVILES --- */
+        @media (max-width: 768px) {
+            .chat-window {
+                /* Se pega abajo y ocupa toda la pantalla */
+                bottom: 0;
+                right: 0;
+                width: 100%;
+                height: 100%;
+                max-height: 100%;
+                border-radius: 0; /* Sin bordes redondeados en móvil */
+                border: none;
+            }
+
+            .chat-opener {
+                /* Hacemos el botón un poco más pequeño en móvil */
+                width: 55px;
+                height: 55px;
+                bottom: 1.5rem;
+                right: 1.5rem;
+            }
+
+            .floating-whatsapp-btn {
+                bottom: 1.5rem;
+                left: 1.5rem;
+            }
         }
     </style>
 </head>
@@ -664,8 +696,7 @@
         </form>
     </div>
 
-    <script>
-
+  <script>
         document.addEventListener('DOMContentLoaded', function () {
             // --- Lógica de Animación de Scroll ---
             const faders = document.querySelectorAll('.fade-in-section');
@@ -682,306 +713,251 @@
 
             // --- LÓGICA DEL FORMULARIO DE CONTACTO PRINCIPAL ---
             const contactForm = document.getElementById('contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const nameInput = document.getElementById('name');
+                    const phoneInput = document.getElementById('phone');
+                    const emailInput = document.getElementById('email');
+                    nameInput.classList.remove('border-red-500');
+                    phoneInput.classList.remove('border-red-500');
 
-            contactForm.addEventListener('submit', async (e) => {
-                e.preventDefault(); // Prevenimos el envío para manejarlo con JS
-
-                const nameInput = document.getElementById('name');
-                const phoneInput = document.getElementById('phone');
-                const emailInput = document.getElementById('email');
-
-                // --- VALIDACIÓN ---
-                // Reseteamos estilos de error por si acaso
-                nameInput.classList.remove('border-red-500');
-                phoneInput.classList.remove('border-red-500');
-
-                // Verificamos si los campos requeridos están vacíos
-                if (!nameInput.value.trim() || !phoneInput.value.trim()) {
-                    alert('Por favor, complete su nombre y teléfono. Son campos obligatorios.');
-                    // Opcional: Marcar los campos vacíos con un borde rojo
-                    if (!nameInput.value.trim()) {
-                        nameInput.classList.add('border-red-500');
+                    if (!nameInput.value.trim() || !phoneInput.value.trim()) {
+                        alert('Por favor, complete su nombre y teléfono.');
+                        if (!nameInput.value.trim()) nameInput.classList.add('border-red-500');
+                        if (!phoneInput.value.trim()) phoneInput.classList.add('border-red-500');
+                        return;
                     }
-                    if (!phoneInput.value.trim()) {
-                        phoneInput.classList.add('border-red-500');
+
+                    const submitButton = contactForm.querySelector('button[type="submit"]');
+                    const originalButtonText = submitButton.innerHTML;
+                    submitButton.disabled = true;
+                    submitButton.innerHTML = '<div class="loader mx-auto"></div>';
+
+                    try {
+                        const response = await fetch('/api/send-contact-form', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                name: nameInput.value,
+                                email: emailInput.value,
+                                phone: phoneInput.value
+                            }),
+                        });
+                        if (!response.ok) throw new Error('Falló el envío del formulario');
+                        alert(`¡Gracias ${nameInput.value}! Hemos recibido su solicitud y le contactaremos a la brevedad.`);
+                        contactForm.reset();
+                    } catch (error) {
+                        console.error('Error en el formulario:', error);
+                        alert('Lo sentimos, ocurrió un error. Por favor, contáctenos directamente.');
+                    } finally {
+                        submitButton.disabled = false;
+                        submitButton.innerHTML = originalButtonText;
                     }
-                    return; // Detenemos la ejecución si la validación falla
-                }
-
-                // Si la validación pasa, continuamos con el envío
-                const submitButton = contactForm.querySelector('button[type="submit"]');
-                const originalButtonText = submitButton.innerHTML;
-                submitButton.disabled = true;
-                submitButton.innerHTML = '<div class="loader mx-auto"></div>';
-
-                try {
-                    const response = await fetch('/api/send-contact-form', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({
-                            name: nameInput.value,
-                            email: emailInput.value,
-                            phone: phoneInput.value
-                        }),
-                    });
-
-                    if (!response.ok) throw new Error('Falló el envío del formulario');
-
-                    alert(`¡Gracias ${nameInput.value}! Hemos recibido su solicitud y le contactaremos a la brevedad posible.`);
-                    contactForm.reset();
-
-                } catch (error) {
-                    console.error('Error en el formulario de contacto:', error);
-                    alert('Lo sentimos, ocurrió un error. Por favor, llámenos o escríbanos por WhatsApp.');
-                } finally {
-                    submitButton.disabled = false;
-                    submitButton.innerHTML = originalButtonText;
-                }
-            });
+                });
+            }
 
             // --- LÓGICA DEL CHATBOT ---
             const chatOpener = document.getElementById('chat-opener');
             const chatWindow = document.getElementById('chat-window');
             const closeChatBtn = document.getElementById('chat-close-btn');
-
-            const openChat = () => {
-                chatWindow.classList.add('open');
-                chatOpener.classList.add('hidden');
-            };
-            const closeChat = () => {
-                chatWindow.classList.remove('open');
-                chatOpener.classList.remove('hidden');
-            };
-            chatOpener.addEventListener('click', openChat);
-            closeChatBtn.addEventListener('click', closeChat);
-
-            // --- LÓGICA CONVERSACIONAL DEL CHATBOT ---
             const chatForm = document.getElementById('chat-form');
             const userInput = document.getElementById('user-input');
             const chatMessages = document.getElementById('chat-messages');
             const sendButton = document.getElementById('send-button');
-
+            const charCounter = document.getElementById('char-counter');
+            const charLimit = 100;
             let conversationHistory = [];
             let conversationEnded = false;
 
-            chatForm.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                if (conversationEnded) return;
-                const userMessage = userInput.value.trim();
-                if (!userMessage) return;
+            // MEJORA: Lógica de bloqueo de scroll
+            const bodyEl = document.body;
 
-                appendMessage(userMessage, 'user');
-                conversationHistory.push({ role: 'user', parts: [{ text: userMessage }] });
-                userInput.value = '';
-                userInput.focus();
-                toggleLoading(true);
+            const openChat = () => {
+                chatWindow.classList.add('open');
+                chatOpener.classList.add('hidden');
+                bodyEl.classList.add('body-no-scroll'); // Bloquea scroll del fondo
+            };
 
-                try {
-                    const botResponse = await getBotResponse();
-                    appendMessage(botResponse, 'bot');
-                    conversationHistory.push({ role: 'model', parts: [{ text: botResponse }] });
-                    
-                    let flowType = null;
+            const closeChat = () => {
+                chatWindow.classList.remove('open');
+                chatOpener.classList.remove('hidden');
+                bodyEl.classList.remove('body-no-scroll'); // Desbloquea scroll
+            };
 
-            
-                    if (botResponse.includes("Un técnico le llamará en minutos")) {
-                        flowType = 'emergency';
-                    } else if (botResponse.includes("¡Agendado! Registramos su visita")) {
-                        flowType = 'schedule';
+            chatOpener.addEventListener('click', openChat);
+            closeChatBtn.addEventListener('click', closeChat);
+
+            // Contador de caracteres
+            if (userInput && charCounter) {
+                userInput.addEventListener('input', () => {
+                    const remaining = charLimit - userInput.value.length;
+                    charCounter.textContent = remaining;
+                    charCounter.style.color = remaining < 20 ? '#ef4444' : '#6b7280';
+                });
+            }
+
+            // Lógica de conversación
+            if (chatForm) {
+                chatForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    if (conversationEnded) return;
+                    const userMessage = userInput.value.trim();
+                    if (!userMessage) return;
+
+                    appendMessage(userMessage, 'user');
+                    conversationHistory.push({ role: 'user', parts: [{ text: userMessage }] });
+                    userInput.value = '';
+                    charCounter.textContent = charLimit; // Resetea el contador
+                    userInput.focus();
+                    toggleLoading(true);
+
+                    try {
+                        const botResponse = await callGemini({
+                            contents: conversationHistory,
+                            system_instruction: { parts: [{ text: getSystemPrompt() }] }
+                        });
+                        appendMessage(botResponse, 'bot');
+                        conversationHistory.push({ role: 'model', parts: [{ text: botResponse }] });
+                        
+                        let flowType = null;
+                        if (botResponse.includes("Un técnico le llamará en minutos")) {
+                            flowType = 'emergency';
+                        } else if (botResponse.includes("¡Agendado! Registramos su visita")) {
+                            flowType = 'schedule';
+                        }
+
+                        if (flowType) {
+                            conversationEnded = true;
+                            userInput.disabled = true;
+                            userInput.placeholder = "Conversación finalizada.";
+                            await triggerSummaryGeneration(flowType);
+                        }
+                    } catch (error) {
+                        console.error("Error en el chat:", error);
+                        appendMessage("Lo siento, algo salió mal. Por favor, contáctenos directamente.", 'bot');
+                    } finally {
+                        toggleLoading(false);
                     }
+                });
+            }
 
-                    if (flowType) {
-                        console.log(`FRONTEND: Condición de cierre detectada para '${flowType}'.`);
-                        conversationEnded = true;
-                        userInput.disabled = true;
-                        userInput.placeholder = "Conversación finalizada.";
-                        await triggerSummaryGeneration(flowType); // Se pasa el tipo de flujo
-                    }
-
-                } catch (error) {
-                    console.error("Error obteniendo respuesta del bot:", error);
-                    appendMessage("Lo siento, algo salió mal. Por favor, llámenos directamente.", 'bot');
-                } finally {
-                    toggleLoading(false);
-                }
-            });
             function appendMessage(message, sender, type = 'bubble') {
                 const messageDiv = document.createElement('div');
                 if (type === 'bubble') {
                     messageDiv.classList.add('chat-bubble', sender === 'user' ? 'user-bubble' : 'bot-bubble');
                     messageDiv.textContent = message;
-                } else if (type === 'summary') {
+                } else {
                     messageDiv.classList.add('summary-notification');
                     messageDiv.innerHTML = message;
                 }
                 chatMessages.appendChild(messageDiv);
                 chatMessages.scrollTop = chatMessages.scrollHeight;
             }
+
             function toggleLoading(isLoading) {
                 const sendIcon = `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>`;
                 sendButton.disabled = isLoading;
                 sendButton.innerHTML = isLoading ? `<div class="loader"></div>` : sendIcon;
             }
+
             async function callGemini(payload) {
-                // This assumes you have an API endpoint at '/api/chat'
-                const apiUrl = '/api/chat';
-                const response = await fetch(apiUrl, {
+                const response = await fetch('/api/chat', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
                 });
                 if (!response.ok) {
-                    const errorDetails = await response.text();
-                    throw new Error(`Error en la API: ${response.status}. Detalles: ${errorDetails}`);
+                    const errorData = await response.json();
+                    throw new Error(errorData.message || 'Error en la API de chat');
                 }
                 const result = await response.json();
-                if (result.candidates && result.candidates[0]?.content?.parts?.[0]?.text) {
-                    return result.candidates[0].content.parts[0].text.trim();
-                } else {
-                    return "No he podido procesar eso. ¿Podemos intentarlo de nuevo?";
-                }
-            }
-            async function getBotResponse() {
-                const systemInstructionText = `
-                **Tu Rol (Persona):** Eres un "Asistente de Servicios" para "Destaperapido.cl", una empresa de destape de alcantarillados y más. Eres bilingüe: extremadamente rápido y directo para emergencias, pero también amable y detallista para agendar visitas. Tu misión es reaccionar a la elección inicial del cliente (emergencia o agendamiento) y guiarlo por el camino correcto, utilizando la **"Base de Conocimiento"** para responder cualquier pregunta que surja.
-
-                ---
-                ### Base de Conocimiento (Tu Cerebro) ###
-
-                * **Cobertura:** Toda la Región Metropolitana.
-                * **Precios:** El servicio comienza desde los $70.000 pesos chilenos. El valor final depende de la complejidad del trabajo y se confirma en terreno.
-                * **Contacto Directo:** Si lo preguntan, el número de teléfono y WhatsApp es +56930153632.
-                * **Horarios:** Atención de emergencias 24/7.
-                * **Métodos de Pago:** Aceptamos efectivo, transferencia y tarjetas de crédito/débito.
-                * **Garantía del Servicio:** Sí, todos nuestros trabajos tienen una garantía de 3 meses (la duración exacta puede variar según el servicio realizado).
-                * **Tipos de Servicios:** Realizamos todo tipo de destapes: WC, lavaplatos, desagües, verticales de edificios y también ofrecemos inspección con cámara.
-                * **Diferenciadores Clave:** Somos los más rápidos de Santiago. Usamos maquinaria moderna que no daña sus tuberías, trabajamos de forma limpia y nuestros técnicos están certificados.
-                ---
-
-                **Flujo de EMERGENCIA (se activa si el usuario elige "Tengo una Emergencia"):**
-
-                1.  **Tu primera respuesta debe ser:** "Entendido. Para enviar un técnico ya, ¿cuál es su **teléfono**?"
-                2.  **Valida en numero de telefono si es correcto (debe ser Chileno) con +569XXXXXXXX O 569XXXXXXXX O 9XXXXXXXX O XXXXXXXX **".
-                2.  **Luego, pide la Comuna:** "Ok. ¿Y en qué **comuna** se encuentra?".
-                3.  **Luego, pide el Nombre:** "Perfecto, tenemos cobertura. ¿A nombre de quién?".
-                4.  **Cierre y Despacho:** Al tener los datos, USA LA FRASE EXACTA: "¡Listo, [Nombre]! Un técnico le llamará en minutos al [Número de Teléfono]. La ayuda para [Comuna] va en camino. ¿Tiene alguna otra duda?".
- 
-                ---
-                **Flujo de AGENDAMIENTO (se activa si el usuario elige "Quiero Agendar"):**
-
-                1.  **Tu primera respuesta debe ser:** "Excelente. Para que el técnico vaya preparado, descríbame brevemente el problema.".
-                2.  **Luego, pide Datos Logísticos:**
-                    * Si es posible, decír alguna pequeña broma para subir el animo por el problema dado, y pedí dirección y comuna, en caso de que no "Gracias por el detalle. Para continuar, ¿cuál es la **dirección y comuna**?"
-                    * "Perfecto. ¿Y su **número de teléfono** para confirmar la visita?"
-                3.  **Luego, pide el Nombre:** "Gracias. Por último, ¿a nombre de quién agendamos?".
-                4.  **Luego, coordina el Horario:** "¡Muy bien, [Nombre]! Ya tengo sus datos. ¿Qué día y horario le acomoda más?".
-                5.  **Cierre y Confirmación:** Al tener el horario, USA LA FRASE EXACTA: "¡Agendado! Registramos su visita para [Dirección]. Un técnico le llamará al [Teléfono] para confirmar el horario. ¡Que tenga un buen día!".
-
-                ---
-                **Reglas Globales:**
-                * **¡Prioridad a la Brevedad!:** Tus respuestas deben ser cortas y directas.
-                * **No seas repetitivo:** No vuelvas a presentarte como un asistente.
-                * **Usa la Base de Conocimiento:** Úsala para responder preguntas sobre precios, cobertura, etc.
-                * **Manejo de Desvíos:** Si el usuario pregunta algo fuera de contexto, responde brevemente y redirige.
-                * **Adaptabilidad:** Si el usuario da varios datos a la vez, agradécele y pide el dato que te falte.
-                `;
-
-                // El resto de la función (payload, etc.) se mantiene igual
-                const payload = {
-                    contents: conversationHistory,
-                    system_instruction: { parts: [{ text: systemInstructionText }] },
-                    generationConfig: { temperature: 0.5, topP: 1, maxOutputTokens: 150 }
-                };
-                return await callGemini(payload);
+                return result.candidates[0]?.content?.parts[0]?.text.trim() || "No pude procesar eso, intenta de nuevo.";
             }
 
             const emergencyBtn = document.getElementById('emergency-btn');
             const scheduleBtn = document.getElementById('schedule-btn');
             const initialButtonsContainer = document.getElementById('initial-buttons-container');
-            const chatFormContainer = document.getElementById('chat-form'); // Asume que tu form tiene este ID
 
             function startConversation(flowType) {
-                // Ocultar botones
                 initialButtonsContainer.style.display = 'none';
-
-                // Mostrar el formulario de input
-                chatFormContainer.style.display = 'flex';
-
-                let firstBotMessage = '';
-                let userChoiceMessage = '';
-
-                if (flowType === 'emergency') {
-                    userChoiceMessage = "Tengo una Emergencia";
-                    firstBotMessage = "Entendido. Para enviar un técnico ya, ¿cuál es su teléfono?";
-                } else {
-                    userChoiceMessage = "Quiero Agendar una Visita";
-                    firstBotMessage = "Excelente. Para que el técnico vaya preparado, descríbame brevemente el problema.";
-                }
-
-                // Añadir la elección del usuario al historial y a la pantalla
+                document.querySelector('.chat-input-container').style.display = 'block'; // Muestra el contenedor del input
+                const userChoiceMessage = flowType === 'emergency' ? "Tengo una Emergencia" : "Quiero Agendar una Visita";
+                const firstBotMessage = flowType === 'emergency' ? "Entendido. Para enviar un técnico ya, ¿cuál es su teléfono?" : "Excelente. Para que el técnico vaya preparado, descríbame brevemente el problema.";
+                
                 appendMessage(userChoiceMessage, 'user');
                 conversationHistory.push({ role: 'user', parts: [{ text: userChoiceMessage }] });
-
-                // Añadir la primera respuesta del bot y al historial
+                
                 setTimeout(() => {
                     appendMessage(firstBotMessage, 'bot');
                     conversationHistory.push({ role: 'model', parts: [{ text: firstBotMessage }] });
                     userInput.focus();
-                }, 500); // Pequeño delay para que se sienta natural
+                }, 500);
             }
 
-            emergencyBtn.addEventListener('click', () => startConversation('emergency'));
-            scheduleBtn.addEventListener('click', () => startConversation('schedule'));
-
+            if (emergencyBtn) emergencyBtn.addEventListener('click', () => startConversation('emergency'));
+            if (scheduleBtn) scheduleBtn.addEventListener('click', () => startConversation('schedule'));
+            
             // Ocultar el formulario de input al inicio
-            chatFormContainer.style.display = 'none';
+            document.querySelector('.chat-input-container').style.display = 'none';
 
-            async function triggerSummaryGeneration(flowType) { // 1. Acepta el tipo de flujo
-                appendMessage('<strong>Enviando alerta al equipo técnico...</strong>', 'system', 'summary');
-
-                let summaryPrompt = '';
-                // 2. Elige el prompt correcto según el flujo
-                if (flowType === 'emergency') {
-                    summaryPrompt = `Crea un SMS de alerta URGENTE para un técnico de destapes. Resume la conversación y formatea así: "NUEVO DESTAPE URGENTE. Cliente: [Nombre]. Teléfono: [Número]. Dirección: [Dirección si la hay]. Contactar AHORA.". Historial: ${JSON.stringify(conversationHistory)}`;
-                } else { // 'schedule'
-                    summaryPrompt = `Crea un SMS informativo para agendamiento. Resume la conversación y formatea así: "NUEVA VISITA AGENDADA. Cliente: [Nombre]. Teléfono: [Número]. Dirección: [Dirección]. Problema: [Descripción]. Horario: [Día y Hora]. Confirmar con cliente.". Historial: ${JSON.stringify(conversationHistory)}`;
-                }
-
-                const payload = { contents: [{ role: 'user', parts: [{ text: summaryPrompt }] }] };
-
+            async function triggerSummaryGeneration(flowType) {
+                appendMessage('<strong>Enviando alerta al equipo...</strong>', 'system', 'summary');
+                const summaryPrompt = flowType === 'emergency'
+                    ? `Crea un SMS de alerta URGENTE para un técnico. Resume la conversación y formatea así: "NUEVO DESTAPE URGENTE. Cliente: [Nombre]. Teléfono: [Número]. Contactar AHORA.". Historial: ${JSON.stringify(conversationHistory)}`
+                    : `Crea un SMS informativo. Resume la conversación y formatea así: "NUEVA VISITA AGENDADA. Cliente: [Nombre]. Teléfono: [Número]. Dirección: [Dirección]. Problema: [Descripción]. Horario: [Día y Hora].". Historial: ${JSON.stringify(conversationHistory)}`;
+                
                 try {
-                    console.log(`FRONTEND: Generando resumen para ${flowType}...`);
-                    const summaryResponse = await fetch('/api/chat', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-                    if (!summaryResponse.ok) throw new Error('Error al generar resumen');
-                    
-                    const result = await summaryResponse.json();
-                    const summaryText = result.candidates[0].content.parts[0].text;
+                    const summaryText = await callGemini({ contents: [{ role: 'user', parts: [{ text: summaryPrompt }] }] });
                     const phoneMatch = summaryText.match(/Teléfono:\s*([\d\s\+]+)/);
                     const leadPhone = phoneMatch ? phoneMatch[1].trim() : 'Teléfono no capturado';
                     
-                    const dataToSend = { 
-                        summaryText: summaryText, 
-                        leadEmail: leadPhone,
-                        flowType: flowType // 3. Envía el tipo de flujo al backend
-                    };
-                    
-                    console.log('FRONTEND: Enviando este objeto a /api/send-summary:', JSON.stringify(dataToSend, null, 2));
-
                     await fetch('/api/send-summary', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(dataToSend),
+                        body: JSON.stringify({ summaryText, leadEmail: leadPhone, flowType }),
                     });
                     
                     appendMessage("<strong>✓ Alerta enviada.</strong><p>Gracias por contactarnos.</p>", 'system', 'summary');
                 } catch (error) {
-                    console.error("Error en el proceso de resumen y envío:", error);
-                    appendMessage("Error al procesar la solicitud. Por favor, contacte a soporte.", 'system', 'summary');
+                    console.error("Error en triggerSummaryGeneration:", error);
+                    appendMessage("Hubo un error al despachar. Por favor, contacte a soporte.", 'system', 'summary');
                 }
+            }
+
+            function getSystemPrompt() {
+                return `**Tu Rol (Persona):** Eres un "Asistente de Servicios" para "Destaperapido.cl". Eres rápido y directo para emergencias, pero amable para agendar. Tu misión es guiar al cliente por el camino correcto usando tu "Base de Conocimiento".
+---
+### Base de Conocimiento ###
+* **Cobertura:** Toda la Región Metropolitana.
+* **Precios:** Desde $70.000 CLP. El valor final se confirma en terreno.
+* **Contacto Directo:** Teléfono y WhatsApp es +56930153632.
+* **Horarios:** Emergencias 24/7.
+* **Métodos de Pago:** Efectivo, transferencia, tarjetas.
+* **Garantía:** Sí, 3 meses en nuestros trabajos.
+* **Servicios:** Destapes de WC, lavaplatos, desagües, verticales. Inspección con cámara.
+* **Diferenciadores:** Somos los más rápidos, usamos maquinaria moderna, trabajamos limpio y somos certificados.
+---
+**Flujo de EMERGENCIA:**
+1.  **Tu primera respuesta:** "Entendido. Para enviar un técnico ya, ¿cuál es su **teléfono**?"
+2.  **Valida el número de teléfono chileno**.
+3.  **Pide la Comuna:** "Ok. ¿Y en qué **comuna** se encuentra?".
+4.  **Pide el Nombre:** "Perfecto, tenemos cobertura. ¿A nombre de quién?".
+5.  **Cierre y Despacho (FRASE EXACTA):** "¡Listo, [Nombre]! Un técnico le llamará en minutos al [Número de Teléfono]. La ayuda para [Comuna] va en camino.".
+---
+**Flujo de AGENDAMIENTO:**
+1.  **Tu primera respuesta:** "Excelente. Para que el técnico vaya preparado, descríbame brevemente el problema.".
+2.  **Pide Datos Logísticos:**
+    * "Gracias. Para continuar, ¿cuál es la **dirección y comuna**?"
+    * "Perfecto. ¿Y su **número de teléfono** para confirmar?"
+3.  **Pide el Nombre:** "Gracias. ¿A nombre de quién agendamos?".
+4.  **Coordina el Horario:** "¡Muy bien, [Nombre]! ¿Qué día y horario le acomoda más?".
+5.  **Cierre y Confirmación (FRASE EXACTA):** "¡Agendado! Registramos su visita para [Dirección]. Un técnico le llamará al [Teléfono] para confirmar el horario. ¡Que tenga un buen día!".
+---
+**Reglas Globales:**
+* **Brevedad:** Respuestas cortas y directas.
+* **No te repitas:** No te presentes de nuevo.
+* **Adapta:** Si te dan varios datos a la vez, agradécelo y pide el que falta.`;
             }
         });
     </script>
