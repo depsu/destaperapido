@@ -652,7 +652,7 @@
         </div>
         <form id="chat-form" class="chat-input-form">
             <input type="text" id="user-input" placeholder="Escriba su nombre aquí..." class="chat-input"
-                autocomplete="off">
+                autocomplete="off" maxlength="100">
             <button type="submit" id="send-button" class="chat-send-btn" aria-label="Enviar mensaje" width="50px"
                 height="50px">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
@@ -662,6 +662,7 @@
                 </svg>
             </button>
         </form>
+        <div id="char-counter" class="text-xs text-gray-500 text-right px-4 pb-2">100</div>
     </div>
 
     <script>
@@ -763,6 +764,19 @@
             const chatMessages = document.getElementById('chat-messages');
             const sendButton = document.getElementById('send-button');
 
+            const charCounter = document.getElementById('char-counter');
+            const charLimit = 100;
+
+            userInput.addEventListener('input', () => {
+                const remaining = charLimit - userInput.value.length;
+                charCounter.textContent = remaining;
+                if (remaining < 20) {
+                    charCounter.style.color = '#ef4444'; // Rojo cuando queden pocos caracteres
+                } else {
+                    charCounter.style.color = '#6b7280'; // Gris normal
+                }
+            });
+
             let conversationHistory = [];
             let conversationEnded = false;
 
@@ -777,16 +791,29 @@
                 userInput.value = '';
                 userInput.focus();
                 toggleLoading(true);
+
                 try {
                     const botResponse = await getBotResponse();
                     appendMessage(botResponse, 'bot');
                     conversationHistory.push({ role: 'model', parts: [{ text: botResponse }] });
+
+                    let flowType = null;
+
+
                     if (botResponse.includes("Un técnico le llamará en minutos")) {
+                        flowType = 'emergency';
+                    } else if (botResponse.includes("¡Agendado! Registramos su visita")) {
+                        flowType = 'schedule';
+                    }
+
+                    if (flowType) {
+                        console.log(`FRONTEND: Condición de cierre detectada para '${flowType}'.`);
                         conversationEnded = true;
                         userInput.disabled = true;
-                        userInput.placeholder = "Emergencia en curso...";
-                        await triggerSummaryGeneration();
+                        userInput.placeholder = "Conversación finalizada.";
+                        await triggerSummaryGeneration(flowType); // Se pasa el tipo de flujo
                     }
+
                 } catch (error) {
                     console.error("Error obteniendo respuesta del bot:", error);
                     appendMessage("Lo siento, algo salió mal. Por favor, llámenos directamente.", 'bot');
@@ -925,51 +952,55 @@
             // Ocultar el formulario de input al inicio
             chatFormContainer.style.display = 'none';
 
-           async function triggerSummaryGeneration() {
+            async function triggerSummaryGeneration(flowType) { // 1. Acepta el tipo de flujo
                 appendMessage('<strong>Enviando alerta al equipo técnico...</strong>', 'system', 'summary');
-                const summaryPrompt = `Crea un SMS de alerta URGENTE para un técnico de destapes. Resume la conversación y formatea así: "NUEVO DESTAPE URGENTE. Cliente: [Nombre]. Teléfono: [Número]. Dirección: [Dirección si la hay]. Contactar AHORA.". Historial: ${JSON.stringify(conversationHistory)}`;
+
+                let summaryPrompt = '';
+                // 2. Elige el prompt correcto según el flujo
+                if (flowType === 'emergency') {
+                    summaryPrompt = `Crea un SMS de alerta URGENTE para un técnico de destapes. Resume la conversación y formatea así: "NUEVO DESTAPE URGENTE. Cliente: [Nombre]. Teléfono: [Número]. Dirección: [Dirección si la hay]. Contactar AHORA.". Historial: ${JSON.stringify(conversationHistory)}`;
+                } else { // 'schedule'
+                    summaryPrompt = `Crea un SMS informativo para agendamiento. Resume la conversación y formatea así: "NUEVA VISITA AGENDADA. Cliente: [Nombre]. Teléfono: [Número]. Dirección: [Dirección]. Problema: [Descripción]. Horario: [Día y Hora]. Confirmar con cliente.". Historial: ${JSON.stringify(conversationHistory)}`;
+                }
+
                 const payload = { contents: [{ role: 'user', parts: [{ text: summaryPrompt }] }] };
-                
+
                 try {
-                    console.log('FRONTEND: Generando resumen para enviar...');
+                    console.log(`FRONTEND: Generando resumen para ${flowType}...`);
                     const summaryResponse = await fetch('/api/chat', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(payload)
                     });
+                    if (!summaryResponse.ok) throw new Error('Error al generar resumen');
 
-                    if (!summaryResponse.ok) throw new Error('Error al generar resumen desde la API de chat');
-                    
                     const result = await summaryResponse.json();
                     const summaryText = result.candidates[0].content.parts[0].text;
                     const phoneMatch = summaryText.match(/Teléfono:\s*([\d\s\+]+)/);
                     const leadPhone = phoneMatch ? phoneMatch[1].trim() : 'Teléfono no capturado';
-                    
-                    const dataToSend = { summaryText: summaryText, leadEmail: leadPhone };
 
-                    // --- LOGS CLAVE ---
-                    console.log('FRONTEND: Resumen generado:', summaryText);
-                    console.log('FRONTEND: Teléfono extraído:', leadPhone);
+                    const dataToSend = {
+                        summaryText: summaryText,
+                        leadEmail: leadPhone,
+                        flowType: flowType // 3. Envía el tipo de flujo al backend
+                    };
+
                     console.log('FRONTEND: Enviando este objeto a /api/send-summary:', JSON.stringify(dataToSend, null, 2));
 
-                    const sendEmailResponse = await fetch('/api/send-summary', {
+                    await fetch('/api/send-summary', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(dataToSend),
                     });
 
-                    if (!sendEmailResponse.ok) throw new Error('El backend /api/send-summary devolvió un error.');
-
-                    console.log('FRONTEND: Petición a /api/send-summary completada exitosamente.');
-                    appendMessage("<strong>✓ Alerta enviada.</strong><p>El técnico está en camino.</p>", 'system', 'summary');
-
+                    appendMessage("<strong>✓ Alerta enviada.</strong><p>Gracias por contactarnos.</p>", 'system', 'summary');
                 } catch (error) {
                     console.error("Error en el proceso de resumen y envío:", error);
-                    appendMessage("Error al despachar. Por favor, llama a nuestro número de emergencia.", 'system', 'summary');
+                    appendMessage("Error al procesar la solicitud. Por favor, contacte a soporte.", 'system', 'summary');
                 }
             }
         });
     </script>
 </body>
 
-</html> 
+</html>
