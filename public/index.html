@@ -223,13 +223,6 @@
             font-size: 0.9em;
             text-align: left;
         }
-
-        .chat-input-container {
-            border-top: 1px solid #e5e7eb;
-            background-color: #f9fafb;
-            flex-shrink: 0; /* Evita que se encoja */
-        }
-
         .chat-input-form {
             display: flex;
             gap: 0.5rem;
@@ -874,7 +867,6 @@
 
             function startConversation(flowType) {
                 initialButtonsContainer.style.display = 'none';
-                document.querySelector('.chat-input-container').style.display = 'block'; // Muestra el contenedor del input
                 const userChoiceMessage = flowType === 'emergency' ? "Tengo una Emergencia" : "Quiero Agendar una Visita";
                 const firstBotMessage = flowType === 'emergency' ? "Entendido. Para enviar un técnico ya, ¿cuál es su teléfono?" : "Excelente. Para que el técnico vaya preparado, descríbame brevemente el problema.";
                 
@@ -891,8 +883,7 @@
             if (emergencyBtn) emergencyBtn.addEventListener('click', () => startConversation('emergency'));
             if (scheduleBtn) scheduleBtn.addEventListener('click', () => startConversation('schedule'));
             
-            // Ocultar el formulario de input al inicio
-            document.querySelector('.chat-input-container').style.display = 'none';
+
 
             async function triggerSummaryGeneration(flowType) {
                 appendMessage('<strong>Enviando alerta al equipo...</strong>', 'system', 'summary');
