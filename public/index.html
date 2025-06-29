@@ -784,9 +784,11 @@
                     let flowType = null;
 
             
-                    if (botResponse.includes("Un técnico le llamará en minutos")) {
+                    const lowerCaseResponse = botResponse.toLowerCase();
+
+                    if (lowerCaseResponse.includes("le llamará en minutos") || lowerCaseResponse.includes("ayuda va en camino")) {
                         flowType = 'emergency';
-                    } else if (botResponse.includes("¡Agendado! Registramos su visita")) {
+                    } else if (lowerCaseResponse.includes("agendado") && lowerCaseResponse.includes("registramos su visita")) {
                         flowType = 'schedule';
                     }
 
