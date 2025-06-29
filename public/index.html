@@ -784,13 +784,15 @@
                     let flowType = null;
 
             
-                    const lowerCaseResponse = botResponse.toLowerCase();
+                  // +++ Bloque Corregido +++
+const lowerCaseResponse = botResponse.toLowerCase();
 
-                    if (lowerCaseResponse.includes("un técnico le llamará en minutos")) {
-                        flowType = 'emergency';
-                    } else if (lowerCaseResponse.includes("agendado") && lowerCaseResponse.includes("registramos su visita")) {
-                        flowType = 'schedule';
-                    }
+// Hacemos la condición más flexible, buscando cualquiera de las dos frases clave.
+if (lowerCaseResponse.includes("le llamará en minutos") || lowerCaseResponse.includes("ayuda va en camino")) {
+    flowType = 'emergency';
+} else if (lowerCaseResponse.includes("agendado") && lowerCaseResponse.includes("registramos su visita")) {
+    flowType = 'schedule';
+}
 
                     if (flowType) {
                         console.log(`FRONTEND: Condición de cierre detectada para '${flowType}'.`);
