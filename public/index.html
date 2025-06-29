@@ -766,7 +766,7 @@
             const chatMessages = document.getElementById('chat-messages');
             const sendButton = document.getElementById('send-button');
             const charCounter = document.getElementById('char-counter');
-            const charLimit = 100;
+       
             let conversationHistory = [];
             let conversationEnded = false;
 
@@ -788,14 +788,7 @@
             chatOpener.addEventListener('click', openChat);
             closeChatBtn.addEventListener('click', closeChat);
 
-            // Contador de caracteres
-            if (userInput && charCounter) {
-                userInput.addEventListener('input', () => {
-                    const remaining = charLimit - userInput.value.length;
-                    charCounter.textContent = remaining;
-                    charCounter.style.color = remaining < 20 ? '#ef4444' : '#6b7280';
-                });
-            }
+      
 
             // Lógica de conversación
             if (chatForm) {
@@ -808,7 +801,7 @@
                     appendMessage(userMessage, 'user');
                     conversationHistory.push({ role: 'user', parts: [{ text: userMessage }] });
                     userInput.value = '';
-                    charCounter.textContent = charLimit; // Resetea el contador
+         
                     userInput.focus();
                     toggleLoading(true);
 
