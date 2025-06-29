@@ -786,7 +786,7 @@
             
                     const lowerCaseResponse = botResponse.toLowerCase();
 
-                    if (lowerCaseResponse.includes("le llamará en minutos") || lowerCaseResponse.includes("ayuda va en camino")) {
+                    if (lowerCaseResponse.includes("Un técnico le llamará en minutos") || lowerCaseResponse.includes("La ayuda para")) {
                         flowType = 'emergency';
                     } else if (lowerCaseResponse.includes("agendado") && lowerCaseResponse.includes("registramos su visita")) {
                         flowType = 'schedule';
