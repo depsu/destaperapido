@@ -766,16 +766,19 @@
             // MEJORA: Lógica de bloqueo de scroll
             const bodyEl = document.body;
 
-            const openChat = () => {
+           const openChat = () => {
                 chatWindow.classList.add('open');
                 chatOpener.classList.add('hidden');
-                bodyEl.classList.add('body-no-scroll'); // Bloquea scroll del fondo
+                if (window.innerWidth <= 768) {
+                    bodyEl.classList.add('body-no-scroll');
+                }
             };
 
+           
             const closeChat = () => {
                 chatWindow.classList.remove('open');
                 chatOpener.classList.remove('hidden');
-                bodyEl.classList.remove('body-no-scroll'); // Desbloquea scroll
+                bodyEl.classList.remove('body-no-scroll');
             };
 
             chatOpener.addEventListener('click', openChat);
