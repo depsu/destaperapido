@@ -652,8 +652,8 @@
         </div>
         <form id="chat-form" class="chat-input-form">
             <input type="text" id="user-input" placeholder="Escriba su nombre aquí..." class="chat-input"
-                autocomplete="off" maxlength="100">
-            <button type="submit" id="send-button" class="chat-send-btn" aria-label="Enviar mensaje" width="50px"
+                autocomplete="off">
+            <button maxlength="100" type="submit" id="send-button" class="chat-send-btn" aria-label="Enviar mensaje" width="50px"
                 height="50px">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor">
@@ -662,7 +662,6 @@
                 </svg>
             </button>
         </form>
-        <div id="char-counter" class="text-xs text-gray-500 text-right px-4 pb-2">100</div>
     </div>
 
     <script>
@@ -764,19 +763,6 @@
             const chatMessages = document.getElementById('chat-messages');
             const sendButton = document.getElementById('send-button');
 
-            const charCounter = document.getElementById('char-counter');
-            const charLimit = 100;
-
-            userInput.addEventListener('input', () => {
-                const remaining = charLimit - userInput.value.length;
-                charCounter.textContent = remaining;
-                if (remaining < 20) {
-                    charCounter.style.color = '#ef4444'; // Rojo cuando queden pocos caracteres
-                } else {
-                    charCounter.style.color = '#6b7280'; // Gris normal
-                }
-            });
-
             let conversationHistory = [];
             let conversationEnded = false;
 
@@ -796,10 +782,10 @@
                     const botResponse = await getBotResponse();
                     appendMessage(botResponse, 'bot');
                     conversationHistory.push({ role: 'model', parts: [{ text: botResponse }] });
-
+                    
                     let flowType = null;
 
-
+            
                     if (botResponse.includes("Un técnico le llamará en minutos")) {
                         flowType = 'emergency';
                     } else if (botResponse.includes("¡Agendado! Registramos su visita")) {
@@ -973,18 +959,18 @@
                         body: JSON.stringify(payload)
                     });
                     if (!summaryResponse.ok) throw new Error('Error al generar resumen');
-
+                    
                     const result = await summaryResponse.json();
                     const summaryText = result.candidates[0].content.parts[0].text;
                     const phoneMatch = summaryText.match(/Teléfono:\s*([\d\s\+]+)/);
                     const leadPhone = phoneMatch ? phoneMatch[1].trim() : 'Teléfono no capturado';
-
-                    const dataToSend = {
-                        summaryText: summaryText,
+                    
+                    const dataToSend = { 
+                        summaryText: summaryText, 
                         leadEmail: leadPhone,
                         flowType: flowType // 3. Envía el tipo de flujo al backend
                     };
-
+                    
                     console.log('FRONTEND: Enviando este objeto a /api/send-summary:', JSON.stringify(dataToSend, null, 2));
 
                     await fetch('/api/send-summary', {
@@ -992,7 +978,7 @@
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(dataToSend),
                     });
-
+                    
                     appendMessage("<strong>✓ Alerta enviada.</strong><p>Gracias por contactarnos.</p>", 'system', 'summary');
                 } catch (error) {
                     console.error("Error en el proceso de resumen y envío:", error);
@@ -1003,4 +989,4 @@
     </script>
 </body>
 
-</html>
+</html> 
