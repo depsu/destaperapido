@@ -17,8 +17,8 @@ export default async function handler(request, response) {
 
     // 2. Definimos el asunto del correo dinámicamente
     const subject = flowType === 'emergency' 
-      ? `🚨 NUEVO DESTAPE URGENTE: ${leadEmail || 'Teléfono no capturado'}`
-      : `🗓️ NUEVA VISITA AGENDADA: ${leadEmail || 'Teléfono no capturado'}`;
+      ? `🚀 Destape prioritario: ${leadEmail || 'Teléfono no capturado'}`
+      : `🗓️ Nueva visita agendada: ${leadEmail || 'Teléfono no capturado'}`;
 
     const recipientList = ownerEmailsString.split(',').map(email => email.trim());
 

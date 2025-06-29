@@ -653,8 +653,8 @@
         <form id="chat-form" class="chat-input-form">
             <input type="text" id="user-input" placeholder="Escriba su nombre aquí..." class="chat-input"
                 autocomplete="off">
-            <button maxlength="100" type="submit" id="send-button" class="chat-send-btn" aria-label="Enviar mensaje" width="50px"
-                height="50px">
+            <button maxlength="100" type="submit" id="send-button" class="chat-send-btn" aria-label="Enviar mensaje"
+                width="50px" height="50px">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -780,19 +780,19 @@
                     const botResponse = await getBotResponse();
                     appendMessage(botResponse, 'bot');
                     conversationHistory.push({ role: 'model', parts: [{ text: botResponse }] });
-                    
+
                     let flowType = null;
 
-            
-                  // +++ Bloque Corregido +++
-const lowerCaseResponse = botResponse.toLowerCase();
 
-// Hacemos la condición más flexible, buscando cualquiera de las dos frases clave.
-if (lowerCaseResponse.includes("le llamará en minutos") || lowerCaseResponse.includes("ayuda va en camino")) {
-    flowType = 'emergency';
-} else if (lowerCaseResponse.includes("agendado") && lowerCaseResponse.includes("registramos su visita")) {
-    flowType = 'schedule';
-}
+
+                    const lowerCaseResponse = botResponse.toLowerCase();
+
+
+                    if (lowerCaseResponse.includes("le llamará en minutos") || lowerCaseResponse.includes("ayuda va en camino")) {
+                        flowType = 'emergency';
+                    } else if (lowerCaseResponse.includes("agendado") && lowerCaseResponse.includes("registramos su visita")) {
+                        flowType = 'schedule';
+                    }
 
                     if (flowType) {
                         console.log(`FRONTEND: Condición de cierre detectada para '${flowType}'.`);
@@ -961,18 +961,18 @@ if (lowerCaseResponse.includes("le llamará en minutos") || lowerCaseResponse.in
                         body: JSON.stringify(payload)
                     });
                     if (!summaryResponse.ok) throw new Error('Error al generar resumen');
-                    
+
                     const result = await summaryResponse.json();
                     const summaryText = result.candidates[0].content.parts[0].text;
                     const phoneMatch = summaryText.match(/Teléfono:\s*([\d\s\+]+)/);
                     const leadPhone = phoneMatch ? phoneMatch[1].trim() : 'Teléfono no capturado';
-                    
-                    const dataToSend = { 
-                        summaryText: summaryText, 
+
+                    const dataToSend = {
+                        summaryText: summaryText,
                         leadEmail: leadPhone,
                         flowType: flowType // 3. Envía el tipo de flujo al backend
                     };
-                    
+
                     console.log('FRONTEND: Enviando este objeto a /api/send-summary:', JSON.stringify(dataToSend, null, 2));
 
                     await fetch('/api/send-summary', {
@@ -980,7 +980,7 @@ if (lowerCaseResponse.includes("le llamará en minutos") || lowerCaseResponse.in
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(dataToSend),
                     });
-                    
+
                     appendMessage("<strong>✓ Alerta enviada.</strong><p>Gracias por contactarnos.</p>", 'system', 'summary');
                 } catch (error) {
                     console.error("Error en el proceso de resumen y envío:", error);
@@ -991,4 +991,4 @@ if (lowerCaseResponse.includes("le llamará en minutos") || lowerCaseResponse.in
     </script>
 </body>
 
-</html> 
+</html>
