@@ -747,7 +747,14 @@
     </div>
 
 
-    <header class="hero-bg min-h-screen flex items-center justify-center px-4 relative pt-20 pb-32">
+    <header class="min-h-screen flex items-center justify-center px-4 relative pt-20 pb-32 overflow-hidden">
+        <!-- Optimized Hero Image -->
+        <img src="/images/hero_home.webp" alt="Destape de alcantarillado en Santiago"
+            class="absolute inset-0 w-full h-full object-cover -z-20" fetchpriority="high" width="1920" height="1080">
+
+        <!-- Gradient Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-r from-slate-900/95 to-slate-900/70 -z-10"></div>
+
         <div class="max-w-6xl mx-auto w-full grid lg:grid-cols-2 gap-12 items-center relative z-10">
 
             <div class="text-left text-white fade-up pt-4">

@@ -787,7 +787,7 @@
 
 </head>
 
-<body class="bg-slate-50 text-slate-700 antialiased pb-24 md:pb-0">
+<body class="bg-slate-50 text-slate-700 antialiased pb-24 md:pb-0 pb-30 md:pb-0">
 
     <nav
         class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm transition-all duration-300">
@@ -796,7 +796,7 @@
 
                 <a href="/" class="flex items-center gap-3" aria-label="Destape Rápido - Destapes Las Condes 24/7">
                     <div class="w-[72px] h-[72px] flex items-center justify-center">
-                        <img src="/favicon.png" alt="Logo Destape Rápido, servicio de destapes en Las Condes" width="72"
+                        <img src="/favicon.png" alt="Logo Destape Rápido - Expertos en Alcantarillado" width="72"
                             height="72" class="w-full h-full object-contain">
                     </div>
                     <div>
@@ -808,32 +808,139 @@
                     </div>
                 </a>
 
-                <div class="flex items-center gap-4">
-                    <div class="hidden md:flex availability-badge items-center gap-2 px-3 py-1 bg-green-50 text-green-700 rounded-full text-[10px] font-bold border border-green-100 opacity-0 transition-all duration-500"
-                        role="status">
-                        <span class="relative flex h-2 w-2">
-                            <span
-                                class="ping-dot animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                            <span class="static-dot relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-                        </span>
-                        <span><span class="unit-count">...</span> buscando...</span>
-                    </div>
-                    <!-- Mobile Toggle -->
-                    <div class="flex items-center gap-4 lg:hidden">
-                        <a href="tel:+56936470112"
-                            class="flex items-center justify-center w-10 h-10 rounded-full bg-slate-100 text-slate-900 active:scale-95 transition">
-                            <i class="fa-solid fa-phone"></i>
-                        </a>
-                        <button onclick="openMenu()" aria-label="Abrir menú de navegación"
-                            class="p-2.5 rounded-lg text-slate-900 hover:bg-slate-100 focus:outline-none transition active:scale-95">
-                            <i class="fa-solid fa-bars text-2xl"></i>
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center gap-8 font-semibold text-slate-600 text-sm">
+                    <a href="/" class="hover:text-brand-600 transition-colors">Inicio</a>
+
+                    <!-- Servicios Dropdown -->
+                    <div class="relative group h-20 flex items-center">
+                        <button
+                            class="flex items-center gap-1 hover:text-brand-600 transition-colors focus:outline-none cursor-default">
+                            Servicios <i
+                                class="fa-solid fa-chevron-down text-xs opacity-50 group-hover:rotate-180 transition-transform duration-300"></i>
                         </button>
+                        <div
+                            class="absolute top-full left-0 w-72 bg-white rounded-xl shadow-xl border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 overflow-hidden">
+                            <div class="p-2 space-y-1">
+                                <a href="/servicios/destape-alcantarillado.html"
+                                    class="block px-4 py-2.5 rounded-lg hover:bg-brand-50 hover:text-brand-600 transition-colors">
+                                    <i class="fa-solid fa-toilet w-5 text-brand-400"></i> Destape Alcantarillado
+                                </a>
+                                <a href="/servicios/limpieza-fosas-septicas.html"
+                                    class="block px-4 py-2.5 rounded-lg hover:bg-brand-50 hover:text-brand-600 transition-colors">
+                                    <i class="fa-solid fa-truck-droplet w-5 text-brand-400"></i> Limpieza de Fosas
+                                </a>
+                                <a href="/servicios/destape-edificios-condominios.html"
+                                    class="block px-4 py-2.5 rounded-lg hover:bg-brand-50 hover:text-brand-600 transition-colors">
+                                    <i class="fa-solid fa-building w-5 text-brand-400"></i> Edificios y Condominios
+                                </a>
+                                <a href="/servicios/inspeccion-camara-alcantarillado.html"
+                                    class="block px-4 py-2.5 rounded-lg hover:bg-brand-50 hover:text-brand-600 transition-colors">
+                                    <i class="fa-solid fa-video w-5 text-brand-400"></i> Inspección con Cámara
+                                </a>
+                                <a href="/servicios/mantencion-preventiva.html"
+                                    class="block px-4 py-2.5 rounded-lg hover:bg-brand-50 hover:text-brand-600 transition-colors">
+                                    <i class="fa-solid fa-clipboard-check w-5 text-brand-400"></i> Mantención Preventiva
+                                </a>
+                            </div>
+                            <div class="bg-slate-50 border-t border-slate-100 p-2">
+                                <a href="/servicios/index.html"
+                                    class="block w-full text-center px-4 py-2 text-xs font-bold text-brand-600 hover:underline uppercase tracking-wide">
+                                    Ver todos los servicios &rarr;
+                                </a>
+                            </div>
+                        </div>
                     </div>
 
+                    <!-- Zonas Dropdown -->
+                    <div class="relative group h-20 flex items-center">
+                        <button
+                            class="flex items-center gap-1 hover:text-brand-600 transition-colors focus:outline-none cursor-default">
+                            Zonas <i
+                                class="fa-solid fa-chevron-down text-xs opacity-50 group-hover:rotate-180 transition-transform duration-300"></i>
+                        </button>
+                        <!-- Mega Menu for Zones -->
+                        <div
+                            class="absolute top-full left-1/2 -translate-x-1/2 w-[500px] bg-white rounded-xl shadow-xl border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 overflow-hidden">
+                            <div class="grid grid-cols-2 p-4 gap-4">
+                                <div>
+                                    <div
+                                        class="px-2 py-1 text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2 border-b border-slate-100">
+                                        Urbano</div>
+                                    <div class="space-y-1">
+                                        <a href="/zonas/urbano/las-condes.html"
+                                            class="block px-3 py-1.5 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors text-sm">Las
+                                            Condes</a>
+                                        <a href="/zonas/urbano/vitacura.html"
+                                            class="block px-3 py-1.5 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors text-sm">Vitacura</a>
+                                        <a href="/zonas/urbano/lo-barnechea.html"
+                                            class="block px-3 py-1.5 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors text-sm">Lo
+                                            Barnechea</a>
+                                        <a href="/zonas/urbano/providencia.html"
+                                            class="block px-3 py-1.5 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors text-sm">Providencia</a>
+                                        <a href="/zonas/urbano/la-reina.html"
+                                            class="block px-3 py-1.5 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors text-sm">La
+                                            Reina</a>
+                                        <a href="/zonas/urbano/ñuñoa.html"
+                                            class="block px-3 py-1.5 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors text-sm">Ñuñoa</a>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div
+                                        class="px-2 py-1 text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2 border-b border-slate-100">
+                                        Rural</div>
+                                    <div class="space-y-1">
+                                        <a href="/zonas/rural/chicureo.html"
+                                            class="block px-3 py-1.5 rounded-lg hover:bg-green-50 hover:text-green-600 transition-colors text-sm">Chicureo</a>
+                                        <a href="/zonas/rural/colina.html"
+                                            class="block px-3 py-1.5 rounded-lg hover:bg-green-50 hover:text-green-600 transition-colors text-sm">Colina</a>
+                                        <a href="/zonas/rural/lampa.html"
+                                            class="block px-3 py-1.5 rounded-lg hover:bg-green-50 hover:text-green-600 transition-colors text-sm">Lampa</a>
+                                        <a href="/zonas/rural/pirque.html"
+                                            class="block px-3 py-1.5 rounded-lg hover:bg-green-50 hover:text-green-600 transition-colors text-sm">Pirque</a>
+                                        <a href="/zonas/rural/buin-paine.html"
+                                            class="block px-3 py-1.5 rounded-lg hover:bg-green-50 hover:text-green-600 transition-colors text-sm">Buin
+                                            / Paine</a>
+                                        <a href="/zonas/rural/index.html"
+                                            class="block px-3 py-1.5 text-xs font-bold text-green-600 hover:underline mt-2">Ver
+                                            todas &rarr;</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bg-slate-50 border-t border-slate-100 p-2 text-center">
+                                <a href="/zonas/urbano/index.html"
+                                    class="text-xs font-bold text-brand-600 hover:underline uppercase tracking-wide">
+                                    Ver mapa de cobertura completo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="/casos-reales/index.html" class="hover:text-brand-600 transition-colors">Casos Reales</a>
+                    <a href="/contacto.html" class="hover:text-brand-600 transition-colors">Contacto</a>
+
+                    <div class="flex items-center gap-4 ml-4">
+                        <a href="tel:+56936470112"
+                            class="text-slate-900 font-bold hover:text-brand-600 transition hidden xl:block">
+                            <i class="fa-solid fa-phone mr-1"></i> +56 9 1234 5678
+                        </a>
+                        <a href="https://wa.me/56936470112"
+                            class="bg-brand-600 hover:bg-brand-700 text-white px-5 py-2.5 rounded-full font-bold shadow-lg shadow-brand-500/20 transition hover:-translate-y-0.5 flex items-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-lg"></i> Urgencia
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Mobile Toggle -->
+                <div class="flex items-center gap-4 lg:hidden">
                     <a href="tel:+56936470112"
-                        class="bg-brand-600 hover:bg-brand-700 text-white px-6 py-3 rounded-xl font-bold shadow-lg shadow-brand-500/20 transition hover:-translate-y-0.5 flex items-center gap-2">
-                        <i class="fa-solid fa-phone-volume mr-1"></i> +56 9 1234 5678
+                        class="flex items-center justify-center w-10 h-10 rounded-full bg-slate-100 text-slate-900 active:scale-95 transition">
+                        <i class="fa-solid fa-phone"></i>
                     </a>
+                    <button onclick="openMenu()" aria-label="Abrir menú de navegación"
+                        class="p-2.5 rounded-lg text-slate-900 hover:bg-slate-100 focus:outline-none transition active:scale-95">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
                 </div>
             </div>
         </div>
