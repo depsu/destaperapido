@@ -2,7 +2,8 @@
 <html lang="es" class="scroll-smooth">
 
 <head>
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' https: data:;">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self' https:; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' https: data:;">
     <link rel="preconnect" href="https://www.transparenttextures.com">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -897,50 +898,82 @@
 
             <div class="space-y-4">
                 <details
-                    class="group bg-slate-50 rounded-xl p-4 [&_summary::-webkit-details-marker]:hidden cursor-pointer">
+                    class="group bg-slate-50 rounded-xl overflow-hidden [&_summary::-webkit-details-marker]:hidden cursor-pointer transition-all duration-300 open:bg-white open:shadow-md open:ring-1 open:ring-slate-200">
                     <summary
-                        class="flex items-center justify-between font-bold text-slate-800 group-hover:text-brand-600">
-                        ¿Cuánto cuesta un servicio de destape?
-                        <span class="ml-2 transition group-open:rotate-180"><i
+                        class="flex items-center justify-between font-bold text-slate-800 group-hover:text-brand-600 p-4 w-full select-none">
+                        <span>¿Cuánto cuesta un servicio de destape?</span>
+                        <span
+                            class="ml-2 transition-transform duration-300 group-open:rotate-180 text-slate-400 group-hover:text-brand-500"><i
                                 class="fa-solid fa-chevron-down"></i></span>
                     </summary>
-                    <p class="mt-4 text-slate-600 text-sm leading-relaxed">
+                    <div class="px-4 pb-4 text-slate-600 text-sm leading-relaxed">
                         El precio depende de la complejidad y la ubicación. Ofrecemos valores competitivos para el
                         sector. Contáctanos por WhatsApp describiendo tu problema para un presupuesto aproximado.
-                    </p>
+                    </div>
                 </details>
 
                 <details
-                    class="group bg-slate-50 rounded-xl p-4 [&_summary::-webkit-details-marker]:hidden cursor-pointer">
+                    class="group bg-slate-50 rounded-xl overflow-hidden [&_summary::-webkit-details-marker]:hidden cursor-pointer transition-all duration-300 open:bg-white open:shadow-md open:ring-1 open:ring-slate-200">
                     <summary
-                        class="flex items-center justify-between font-bold text-slate-800 group-hover:text-brand-600">
-                        ¿Rompen el piso o las paredes?
-                        <span class="ml-2 transition group-open:rotate-180"><i
+                        class="flex items-center justify-between font-bold text-slate-800 group-hover:text-brand-600 p-4 w-full select-none">
+                        <span>¿Rompen el piso o las paredes?</span>
+                        <span
+                            class="ml-2 transition-transform duration-300 group-open:rotate-180 text-slate-400 group-hover:text-brand-500"><i
                                 class="fa-solid fa-chevron-down"></i></span>
                     </summary>
-                    <p class="mt-4 text-slate-600 text-sm leading-relaxed">
+                    <div class="px-4 pb-4 text-slate-600 text-sm leading-relaxed">
                         En el 95% de los casos NO es necesario romper. Utilizamos maquinaria eléctrica (sondas) que
                         ingresan por los ductos existentes. Solo en casos de colapso estructural (tubería rota) podría
                         ser necesario picar, lo cual diagnosticamos previamente.
-                    </p>
+                    </div>
                 </details>
 
                 <details
-                    class="group bg-slate-50 rounded-xl p-4 [&_summary::-webkit-details-marker]:hidden cursor-pointer">
+                    class="group bg-slate-50 rounded-xl overflow-hidden [&_summary::-webkit-details-marker]:hidden cursor-pointer transition-all duration-300 open:bg-white open:shadow-md open:ring-1 open:ring-slate-200">
                     <summary
-                        class="flex items-center justify-between font-bold text-slate-800 group-hover:text-brand-600">
-                        ¿Atienden emergencias de noche o fin de semana?
-                        <span class="ml-2 transition group-open:rotate-180"><i
+                        class="flex items-center justify-between font-bold text-slate-800 group-hover:text-brand-600 p-4 w-full select-none">
+                        <span>¿Atienden emergencias de noche o fin de semana?</span>
+                        <span
+                            class="ml-2 transition-transform duration-300 group-open:rotate-180 text-slate-400 group-hover:text-brand-500"><i
                                 class="fa-solid fa-chevron-down"></i></span>
                     </summary>
-                    <p class="mt-4 text-slate-600 text-sm leading-relaxed">
+                    <div class="px-4 pb-4 text-slate-600 text-sm leading-relaxed">
                         Sí, contamos con turnos de emergencia 24/7 para destapes críticos en Santiago Oriente y
                         alrededores.
-                    </p>
+                    </div>
                 </details>
             </div>
         </div>
     </section>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "¿Cuánto cuesta un servicio de destape?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "El precio depende de la complejidad y la ubicación. Ofrecemos valores competitivos para el sector. Contáctanos por WhatsApp describiendo tu problema para un presupuesto aproximado."
+        }
+      }, {
+        "@type": "Question",
+        "name": "¿Rompen el piso o las paredes?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "En el 95% de los casos NO es necesario romper. Utilizamos maquinaria eléctrica (sondas) que ingresan por los ductos existentes. Solo en casos de colapso estructural (tubería rota) podría ser necesario picar, lo cual diagnosticamos previamente."
+        }
+      }, {
+        "@type": "Question",
+        "name": "¿Atienden emergencias de noche o fin de semana?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí, contamos con turnos de emergencia 24/7 para destapes críticos en Santiago Oriente y alrededores."
+        }
+      }]
+    }
+    </script>
 
     <section id="contacto" class="py-16 bg-brand-600">
         <div class="container mx-auto px-4 text-center text-white">
@@ -1046,7 +1079,7 @@
             <div
                 class="border-t border-slate-200 pt-8 text-center flex flex-col md:flex-row justify-between items-center pb-24 md:pb-0">
                 <div class="flex flex-col items-center md:items-start gap-2">
-                    <p>&copy; <span id="year"></span> AlcantarilladosPro. Todos los derechos reservados.</p>
+                    <p>&copy; <span id="year"></span> destaperapido. Todos los derechos reservados.</p>
                     <p class="text-xs text-slate-500">Diseñado por <a href="https://www.paginasfast.cl/" target="_blank"
                             rel="noopener" class="hover:text-brand-600 transition">PaginasFast.cl</a></p>
                 </div>
