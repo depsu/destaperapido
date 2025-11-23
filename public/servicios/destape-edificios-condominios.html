@@ -17,7 +17,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    
+
 
 
 
@@ -475,11 +475,11 @@
                     <a href="/contacto.html" class="hover:text-brand-600 transition-colors">Contacto</a>
 
                     <div class="flex items-center gap-4 ml-4">
-                        <a href="tel:+56912345678"
+                        <a href="tel:+56936470112"
                             class="text-slate-900 font-bold hover:text-brand-600 transition hidden xl:block">
                             <i class="fa-solid fa-phone mr-1"></i> +56 9 1234 5678
                         </a>
-                        <a href="https://wa.me/56912345678"
+                        <a href="https://wa.me/56936470112"
                             class="bg-brand-600 hover:bg-brand-700 text-white px-5 py-2.5 rounded-full font-bold shadow-lg shadow-brand-500/20 transition hover:-translate-y-0.5 flex items-center gap-2">
                             <i class="fa-brands fa-whatsapp text-lg"></i> Urgencia
                         </a>
@@ -488,7 +488,7 @@
 
                 <!-- Mobile Toggle -->
                 <div class="flex items-center gap-4 lg:hidden">
-                    <a href="tel:+56912345678"
+                    <a href="tel:+56936470112"
                         class="flex items-center justify-center w-10 h-10 rounded-full bg-slate-100 text-slate-900 active:scale-95 transition">
                         <i class="fa-solid fa-phone"></i>
                     </a>
@@ -508,7 +508,7 @@
 
             <div class="px-6 h-20 flex items-center justify-between border-b border-slate-100">
                 <span class="font-extrabold text-slate-900 text-lg tracking-tight">MENÚ</span>
-                <button onclick="closeMenu()"
+                <button onclick="closeMenu()" aria-label="Cerrar menú"
                     class="w-10 h-10 rounded-full bg-slate-50 text-slate-500 hover:bg-red-50 hover:text-red-500 transition flex items-center justify-center">
                     <i class="fa-solid fa-xmark text-xl"></i>
                 </button>
@@ -539,6 +539,10 @@
                             Inspección</a>
                         <a href="/servicios/mantencion-preventiva.html" onclick="closeMenu()"
                             class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Mantención</a>
+                        <a href="/servicios/index.html" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-bold text-brand-600 hover:underline mt-1 border-t border-slate-200/50 pt-2">
+                            Ver todos los servicios &rarr;
+                        </a>
                     </div>
                 </div>
 
@@ -576,7 +580,7 @@
             </div>
 
             <div class="p-6 bg-slate-50 border-t border-slate-100">
-                <a href="https://wa.me/56912345678"
+                <a href="https://wa.me/56936470112"
                     class="flex items-center justify-center gap-2 w-full bg-green-500 text-white font-bold py-3 rounded-xl shadow-lg shadow-green-500/20 active:scale-95 transition">
                     <i class="fa-brands fa-whatsapp text-xl"></i> WhatsApp 24/7
                 </a>
@@ -623,7 +627,7 @@
                             class="bg-corp-600 hover:bg-corp-500 text-white text-lg font-bold py-4 px-8 rounded-xl shadow-xl shadow-purple-900/50 transition transform hover:-translate-y-1 text-center flex items-center justify-center gap-2">
                             <i class="fa-solid fa-file-signature"></i> Solicitar Convenio
                         </a>
-                        <a href="tel:+56912345678"
+                        <a href="tel:+56936470112"
                             class="bg-white text-corp-900 text-lg font-bold py-4 px-8 rounded-xl hover:bg-slate-100 transition transform hover:-translate-y-1 text-center flex items-center justify-center gap-2">
                             <i class="fa-solid fa-phone"></i> Urgencia Ahora
                         </a>
@@ -669,7 +673,7 @@
                         </div>
 
                         <div class="mt-6 text-center">
-                            <a href="tel:+56912345678" class="text-corp-600 font-bold hover:underline text-sm">Llamar a
+                            <a href="tel:+56936470112" class="text-corp-600 font-bold hover:underline text-sm">Llamar a
                                 soporte técnico 24/7 &rarr;</a>
                         </div>
                     </div>
@@ -874,7 +878,7 @@
                     class="bg-white text-corp-900 font-bold py-4 px-10 rounded-full shadow-lg hover:bg-slate-100 transition">
                     <i class="fa-solid fa-envelope mr-2"></i> Enviar Correo
                 </a>
-                <a href="https://wa.me/56912345678"
+                <a href="https://wa.me/56936470112"
                     class="bg-green-500 text-white font-bold py-4 px-10 rounded-full shadow-lg hover:bg-green-600 transition">
                     <i class="fa-brands fa-whatsapp mr-2"></i> WhatsApp Directo
                 </a>
@@ -882,38 +886,103 @@
         </div>
     </section>
 
-    <footer class="bg-slate-900 text-slate-400 py-12 text-sm border-t border-slate-800">
+    <footer class="bg-slate-50 text-slate-500 py-12 text-sm border-t border-slate-200">
         <div class="container mx-auto px-4">
-            <div class="grid md:grid-cols-4 gap-8 mb-8">
-                <div class="col-span-2">
-                    <div class="text-xl font-bold text-white mb-4 flex items-center gap-2">
-                        <div class="w-8 h-8 bg-brand-600 rounded flex items-center justify-center text-white text-sm">
-                            <i class="fa-solid fa-building"></i>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
+
+                <div class="lg:col-span-2">
+                    <a href="/" class="flex items-center gap-3 mb-6" aria-label="Destape Rápido - Página de Inicio">
+                        <div class="w-[72px] h-[72px] flex items-center justify-center">
+                            <img src="/favicon.png" alt="Logo Destape Rápido, servicio de destapes en la RM" width="72"
+                                height="72" class="w-full h-full object-contain">
                         </div>
-                        <span>DESTAPE<span class="text-brand-600">RÁPIDO</span></span>
+                        <div>
+                            <span
+                                class="block font-extrabold text-slate-900 text-xl leading-none tracking-tight">DESTAPE<span
+                                    class="text-brand-600">RÁPIDO</span></span>
+                            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Región
+                                Metropolitana</span>
+                        </div>
+                    </a>
+                    <p class="mb-6 text-slate-500 max-w-xs leading-relaxed">Soluciones sanitarias profesionales para
+                        hogares y empresas. Atendemos urgencias reales con equipos certificados.</p>
+                    <div class="flex gap-4">
+                        <a href="/" class="text-slate-400 hover:text-brand-600 transition" aria-label="Facebook">
+                            <i class="fa-brands fa-facebook text-xl"></i>
+                        </a>
+                        <a href="/" class="text-slate-400 hover:text-brand-600 transition" aria-label="Instagram">
+                            <i class="fa-brands fa-instagram text-xl"></i>
+                        </a>
+                        <a href="/" class="text-slate-400 hover:text-brand-600 transition" aria-label="LinkedIn">
+                            <i class="fa-brands fa-linkedin text-xl"></i>
+                        </a>
                     </div>
-                    <p class="max-w-xs text-slate-500">Aliados estratégicos de administradores y comunidades. Soluciones
-                        sanitarias definitivas y documentadas.</p>
                 </div>
+
                 <div>
-                    <h4 class="font-bold text-white mb-4 uppercase text-xs">Accesos Rápidos</h4>
+                    <h4 class="text-slate-900 font-bold mb-4 uppercase tracking-wider text-xs">Servicios</h4>
                     <ul class="space-y-2">
-                        <li><a href="../../index.html" class="hover:text-brand-500">Inicio</a></li>
-                        <li><a href="../destape-alcantarillado.html" class="hover:text-brand-500">Destapes
-                                Domiciliarios</a></li>
-                        <li><a href="#preventiva" class="hover:text-brand-500">Planes Preventivos</a></li>
+                        <li><a href="/servicios/destape-alcantarillado.html"
+                                class="hover:text-brand-600 transition">Destape Alcantarillado</a></li>
+                        <li><a href="/servicios/limpieza-fosas-septicas.html"
+                                class="hover:text-brand-600 transition">Limpieza Fosas Sépticas</a></li>
+                        <li><a href="/servicios/destape-alcantarillado.html#mantencion"
+                                class="hover:text-brand-600 transition">Mantención Edificios</a></li>
+                        <li><a href="/servicios/destape-alcantarillado.html"
+                                class="font-medium text-brand-600 hover:underline text-xs mt-2 block">Ver todos los
+                                servicios &rarr;</a></li>
                     </ul>
                 </div>
+
                 <div>
-                    <h4 class="font-bold text-white mb-4 uppercase text-xs">Contacto Administración</h4>
+                    <h4 class="text-slate-900 font-bold mb-4 uppercase tracking-wider text-xs">Cobertura</h4>
                     <ul class="space-y-2">
-                        <li><i class="fa-solid fa-phone mr-2"></i> +56 9 1234 5678</li>
-                        <li><i class="fa-solid fa-envelope mr-2"></i> contacto@alcantarilladospro.cl</li>
+                        <li><a href="/zonas/urbano/index.html" class="hover:text-brand-600 transition">Las Condes /
+                                Vitacura</a></li>
+                        <li><a href="/zonas/rural/chicureo.html" class="hover:text-brand-600 transition">Chicureo /
+                                Colina</a></li>
+                        <li><a href="/zonas/rural/pirque.html" class="hover:text-brand-600 transition">Pirque / Cajón
+                                del Maipo</a></li>
+                        <li><a href="/zonas/urbano/index.html"
+                                class="font-medium text-brand-600 hover:underline text-xs mt-2 block">Ver
+                                todas las zonas &rarr;</a></li>
                     </ul>
                 </div>
+
+                <div>
+                    <h4 class="text-slate-900 font-bold mb-4 uppercase tracking-wider text-xs">Blog & Ayuda</h4>
+                    <ul class="space-y-2">
+                        <li><a href="/servicios/destape-alcantarillado.html#consejos"
+                                class="hover:text-brand-600 transition">Consejos de Mantención</a></li>
+                        <li><a href="/servicios/destape-alcantarillado.html#faq"
+                                class="hover:text-brand-600 transition">Preguntas Frecuentes</a></li>
+                        <li><a href="/servicios/destape-alcantarillado.html#trabaja"
+                                class="hover:text-brand-600 transition">Trabaja con Nosotros</a></li>
+                        <li><a href="/servicios/destape-alcantarillado.html#contacto"
+                                class="hover:text-brand-600 transition">Contacto Administrativo</a></li>
+                        <li><a href="/blog/index.html"
+                                class="hover:text-brand-600 transition font-bold text-brand-600 mt-2 block">Blog de
+                                Consejos &rarr;</a></li>
+                    </ul>
+                </div>
+
             </div>
-            <div class="text-center pt-8 border-t border-slate-800">
-                <p>&copy; <span id="year"></span> Destape Rápido. Todos los derechos reservados.</p>
+
+            <div
+                class="border-t border-slate-200 pt-8 text-center flex flex-col md:flex-row justify-between items-center pb-24 md:pb-0">
+                <div class="flex flex-col items-center md:items-start gap-2">
+                    <p>&copy; <span id="year"></span> AlcantarilladosPro. Todos los derechos reservados.</p>
+                    <p class="text-xs text-slate-400">Diseñado por <a href="https://www.paginasfast.cl/" target="_blank"
+                            rel="noopener" class="hover:text-brand-600 transition">PaginasFast.cl</a></p>
+                </div>
+                <div class="flex gap-4 mt-4 md:mt-0">
+                    <a href="/" class="hover:text-slate-800 transition"><i
+                            class="fa-brands fa-facebook text-lg"></i></a>
+                    <a href="/" class="hover:text-slate-800 transition"><i
+                            class="fa-brands fa-instagram text-lg"></i></a>
+                    <a href="/" class="hover:text-slate-800 transition"><i
+                            class="fa-brands fa-linkedin text-lg"></i></a>
+                </div>
             </div>
         </div>
     </footer>
@@ -967,13 +1036,13 @@
         </div>
 
         <div class="bg-white p-3 flex gap-3 border-t border-slate-100">
-            <a href="tel:+56912345678"
+            <a href="tel:+56936470112"
                 class="flex-1 bg-brand-600 text-white font-bold rounded-xl py-3 flex items-center justify-center gap-2 active:scale-95 transition shadow-lg shadow-brand-600/20"
                 aria-label="Llamar ahora">
                 <i class="fa-solid fa-phone animate-pulse"></i> Llamar
             </a>
 
-            <a href="https://wa.me/56912345678"
+            <a href="https://wa.me/56936470112"
                 class="flex-1 bg-green-600 text-white font-bold rounded-xl py-3 flex items-center justify-center gap-2 active:scale-95 transition shadow-lg shadow-green-500/20"
                 aria-label="Enviar mensaje por WhatsApp a Destape Rápido">
                 <div class="relative flex items-center justify-center">
@@ -1015,7 +1084,7 @@
             </div>
         </div>
         <div class="wa-footer">
-            <a href="https://wa.me/56912345678?text=Hola,%20necesito%20ayuda" target="_blank" class="wa-start-chat-btn">
+            <a href="https://wa.me/56936470112?text=Hola,%20necesito%20ayuda" target="_blank" class="wa-start-chat-btn">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                     stroke-linecap="round" stroke-linejoin="round">
                     <line x1="22" y1="2" x2="11" y2="13"></line>

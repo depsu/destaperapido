@@ -21,11 +21,10 @@ solo es para gente más intrusa y para el SEO por eso dejarlo en el footer...
 
 6. en la página de /servicios/mantencion-preventiva.html @@@ hay un problema de accesibilidad... en el botón: 
 
-<a href="tel:+56912345678" class="bg-white text-prev-700 font-bold py-4 px-10 rounded-full shadow-lg hover:bg-slate-100 transition">
+<a href="tel:+56936470112" class="bg-white text-prev-700 font-bold py-4 px-10 rounded-full shadow-lg hover:bg-slate-100 transition">
                     <i class="fa-solid fa-phone mr-2"></i> Llamar Ahora
                 </a>
 
                 ya que el background es blanco y e texto del botón es blanco, haciendo que no se vea el texto. 
 
 
-7. 
