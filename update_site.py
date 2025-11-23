@@ -121,12 +121,14 @@ def update_files():
                         flags=re.IGNORECASE
                     )
 
-                # 5.3 Navbar Logo Optimization
-                # Replace the large logo with the smaller optimized one in the navbar
-                # Look for the specific img tag in the nav
-                logo_search = '<img src="/favicon.png" alt="Logo Destape Rápido - Expertos en Alcantarillado" width="72"'
-                logo_replace = '<img src="/logo-nav.png" alt="Logo Destape Rápido - Expertos en Alcantarillado" width="72"'
-                content = content.replace(logo_search, logo_replace)
+                # 5.3 Navbar Logo Optimization (Global replacement for safety)
+                # Replace any remaining favicon.png used as image source with logo-nav.png
+                content = content.replace('src="/favicon.png"', 'src="/logo-nav.png"')
+
+                # 5.4 CSP Meta Tag
+                csp_meta = '<meta http-equiv="Content-Security-Policy" content="default-src \'self\' https:; script-src \'self\' \'unsafe-inline\' https:; style-src \'self\' \'unsafe-inline\' https:; img-src \'self\' data: https:; font-src \'self\' https: data:;">'
+                if 'Content-Security-Policy' not in content:
+                    content = content.replace('<head>', f'<head>\n    {csp_meta}')
                 
                 with open(file_path, 'w', encoding='utf-8') as f:
                     f.write(content)

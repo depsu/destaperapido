@@ -7,6 +7,8 @@
     <title>Alcantarillados Pro | Expertos en Destapes y Fosas RM</title>
     <meta name="description"
         content="Servicio premium de destape de alcantarillado y limpieza de fosas sépticas. Atendemos sector oriente y zonas rurales (Chicureo, Pirque). Emergencias 24/7.">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self' https:; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' https: data:;">
 
     <link rel="stylesheet" href="/output.css">
 
@@ -381,7 +383,7 @@
 
         /* ===== AVAILABILITY BADGE (MÓVIL) ===== */
         .availability-badge {
-            transition: all 0.5s ease;
+            transition: opacity 0.5s ease, transform 0.5s ease;
             /* Estado inicial controlado por JS */
         }
 
@@ -476,7 +478,7 @@
 
                 <a href="/" class="flex items-center gap-3" aria-label="Destape Rápido - Destapes Las Condes 24/7">
                     <div class="w-[72px] h-[72px] flex items-center justify-center">
-                        <img src="/logo-nav.png" alt="Logo Destape Rápido - Expertos en Alcantarillado" width="72"
+                        <img src="/logo-nav.webp" alt="Logo Destape Rápido - Expertos en Alcantarillado" width="72"
                             height="72" class="w-full h-full object-contain">
                     </div>
                     <div>
@@ -1016,24 +1018,24 @@
                 <div
                     class="relative bg-white p-2 rounded-3xl shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-500 group">
 
-                    <div class="aspect-video bg-slate-100 rounded-2xl overflow-hidden relative">
+                    <div class="aspect-video bg-slate-100 rounded-2xl overflow-hidden relative" id="map-wrapper">
 
-                        <div onclick="this.style.pointerEvents='none'; this.querySelector('span').style.opacity='0';"
-                            class="absolute inset-0 z-10 flex items-center justify-center bg-black/5 hover:bg-black/10 transition-colors cursor-pointer"
-                            title="Haz clic para mover el mapa">
+                        <!-- Facade / Placeholder -->
+                        <div onclick="loadMap()"
+                            class="absolute inset-0 z-10 flex flex-col items-center justify-center bg-slate-100 hover:bg-slate-50 transition-colors cursor-pointer group-hover:scale-105 transition-transform duration-700"
+                            id="map-placeholder">
+
+                            <div
+                                class="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-4 shadow-sm">
+                                <i class="fa-solid fa-map-location-dot text-2xl text-brand-500"></i>
+                            </div>
 
                             <span
-                                class="bg-white/90 text-slate-700 font-bold text-xs px-4 py-2 rounded-full shadow-lg border border-slate-200 pointer-events-none select-none transition-opacity duration-300">
-                                🖐 Haz clic para interactuar
+                                class="bg-white text-slate-700 font-bold text-xs px-6 py-3 rounded-full shadow-lg border border-slate-200 select-none transition-transform duration-300 group-hover:scale-110">
+                                🖐 Ver Mapa de Cobertura
                             </span>
+                            <p class="mt-4 text-xs text-slate-400">Haz clic para cargar el mapa interactivo</p>
                         </div>
-
-                        <iframe
-                            src="https://www.google.com/maps/d/u/0/embed?mid=1GWu__WSjUdqhH3ITLyqwyGQAHQBi9Qc&ehbc=2E312F&z=9"
-                            class="absolute -top-[65px] left-0 w-full h-[calc(100%+60px)]" style="border:0;"
-                            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-                            title="Mapa de Cobertura">
-                        </iframe>
 
                     </div>
                 </div>
@@ -1145,7 +1147,7 @@
                 <div class="lg:col-span-2">
                     <a href="/" class="flex items-center gap-3 mb-6" aria-label="Destape Rápido - Página de Inicio">
                         <div class="w-[72px] h-[72px] flex items-center justify-center">
-                            <img src="/favicon.png" alt="Logo Destape Rápido, servicio de destapes en la RM" width="72"
+                            <img src="/logo-nav.webp" alt="Logo Destape Rápido, servicio de destapes en la RM" width="72"
                                 height="72" class="w-full h-full object-contain">
                         </div>
                         <div>
@@ -1302,7 +1304,7 @@
     <div class="wa-chat-box" id="whatsapp-chat">
         <div class="wa-header">
             <button class="wa-close-btn" onclick="toggleChat()">×</button>
-            <img src="/favicon.png" alt="Perfil" class="wa-profile-pic">
+            <img src="/logo-nav.webp" alt="Perfil" class="wa-profile-pic">
             <div class="wa-info">
                 <h4>Destape Rápido</h4>
                 <p>En línea</p>
@@ -1388,7 +1390,6 @@
                 document.body.style.overflow = '';
             }
         }
-
         function toggleSubmenu(id, btn) {
             const submenu = document.getElementById(id);
             const icon = btn.querySelector('.fa-chevron-down');
@@ -1400,6 +1401,27 @@
                     submenu.classList.add('hidden');
                     if (icon) icon.style.transform = 'rotate(0deg)';
                 }
+            }
+        }
+
+        function loadMap() {
+            const wrapper = document.getElementById('map-wrapper');
+            const placeholder = document.getElementById('map-placeholder');
+
+            if (wrapper && placeholder) {
+                placeholder.style.opacity = '0';
+                setTimeout(() => {
+                    placeholder.remove();
+                    const iframe = document.createElement('iframe');
+                    iframe.src = "https://www.google.com/maps/d/u/0/embed?mid=1GWu__WSjUdqhH3ITLyqwyGQAHQBi9Qc&ehbc=2E312F&z=9";
+                    iframe.className = "absolute -top-[65px] left-0 w-full h-[calc(100%+60px)] fade-up";
+                    iframe.style.border = "0";
+                    iframe.allowFullscreen = true;
+                    iframe.loading = "lazy";
+                    iframe.referrerPolicy = "no-referrer-when-downgrade";
+                    iframe.title = "Mapa de Cobertura";
+                    wrapper.appendChild(iframe);
+                }, 300);
             }
         }
     </script>
