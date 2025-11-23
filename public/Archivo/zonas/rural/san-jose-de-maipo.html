@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Limpieza de Fosas en Cajón del Maipo | San José de Maipo | 24/7</title>
+
+    <meta name="description"
+        content="Servicio de limpiafosas y destapes en San José de Maipo, El Manzano, San Alfonso y San Gabriel. Camiones para caminos de montaña y atención a cabañas y comercio.">
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://images.unsplash.com">
+
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_CL">
+    <meta property="og:site_name" content="Destape Rápido Rural">
+
+    <meta property="og:title" content="Limpieza de Fosas en San José de Maipo | Destape Rápido">
+    <meta property="og:description"
+        content="Expertos en saneamiento para el Cajón del Maipo. Llegamos donde otros no suben. Atención a residentes y turismo.">
+
+    <meta property="og:url" content="https://destaperapido.cl/zonas/rural/san-jose-de-maipo.html">
+    <meta property="og:image" content="https://destaperapido.cl/images/og-cajon-maipo.jpg">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    </noscript>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            500: '#2563eb',
+                            600: '#1d4ed8',
+                            900: '#0f172a',
+                            accent: '#0ea5e9',
+                        }
+                    },
+                    boxShadow: {
+                        'glow': '0 0 20px rgba(37, 99, 235, 0.3)',
+                        'card': '0 10px 30px -5px rgba(0, 0, 0, 0.08)',
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Estilos base reutilizados */
+        .bg-grid-pattern { background-image: radial-gradient(rgba(37, 99, 235, 0.1) 1px, transparent 1px); background-size: 30px 30px; }
+        .hero-gradient { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+        .text-gradient { background: linear-gradient(to right, #60a5fa, #22d3ee); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Botón WhatsApp Flotante */
+        :root { --wa-green: #25D366; --wa-dark: #075E54; --wa-red: #ff3b30; }
+        .wa-notification-dot { position: absolute; top: -5px; right: -5px; background-color: var(--wa-red); color: white; font-size: 12px; font-weight: bold; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid white; z-index: 1002; opacity: 0; transform: scale(0); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .wa-notification-dot.show { opacity: 1; transform: scale(1); animation: wa-dot-bounce 1s infinite; }
+        @keyframes wa-dot-bounce { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-4px) scale(1); } }
+        .wa-floating-btn { position: fixed; bottom: 20px; left: 20px; width: 60px; height: 60px; background-color: var(--wa-green); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); cursor: pointer; z-index: 1000; transition: all 0.3s ease; animation: pulse-green 2s infinite; }
+        .wa-floating-btn:not(.active):hover { transform: scale(1.1); }
+        .wa-floating-btn.active { background-color: #333; animation: none; transform: rotate(90deg); }
+        .wa-icon { position: absolute; width: 35px; height: 35px; fill: white; transition: all 0.3s ease; }
+        .wa-icon-logo { opacity: 1; transform: scale(1); }
+        .wa-icon-close { opacity: 0; transform: scale(0) rotate(-90deg); }
+        .active .wa-icon-logo { opacity: 0; transform: scale(0) rotate(90deg); }
+        .active .wa-icon-close { opacity: 1; transform: scale(1) rotate(0); }
+        @keyframes pulse-green { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
+        .wa-chat-box { display: none; position: fixed; bottom: 95px; left: 20px; width: 350px; max-width: 85%; background: white; border-radius: 10px; box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2); overflow: visible; z-index: 1001; flex-direction: column; font-family: 'Segoe UI', sans-serif; animation: slideIn 0.3s ease-out forwards; }
+        .wa-chat-box::after { content: ''; position: absolute; bottom: -10px; left: 20px; width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-top: 10px solid white; }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .wa-header { background-color: var(--wa-green); padding: 20px; color: white; display: flex; align-items: center; border-radius: 10px 10px 0 0; position: relative; }
+        .wa-close-btn { position: absolute; top: 10px; right: 10px; background: none; border: none; color: white; font-size: 20px; cursor: pointer; opacity: 0.8; }
+        .wa-close-btn:hover { opacity: 1; }
+        .wa-profile-pic { width: 50px; height: 50px; border-radius: 50%; margin-right: 15px; border: 2px solid white; background-color: #ddd; object-fit: cover; }
+        .wa-info h4 { margin: 0; font-size: 18px; font-weight: 600; }
+        .wa-info p { margin: 2px 0 0; font-size: 12px; opacity: 0.9; }
+        .wa-body { background-color: #f0f0f0; background-image: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png'); padding: 20px; height: 200px; overflow-y: auto; }
+        .wa-message { background: white; padding: 10px 15px; border-radius: 0 10px 10px 10px; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); width: fit-content; max-width: 80%; position: relative; margin-bottom: 5px; }
+        .wa-message::before { content: ''; position: absolute; top: 0; left: -8px; width: 0; height: 0; border-top: 10px solid white; border-left: 10px solid transparent; }
+        .wa-msg-text { color: #333; font-size: 14px; line-height: 1.4; }
+        .wa-time { font-size: 10px; color: #999; display: block; text-align: right; margin-top: 4px; }
+        .wa-footer { background: white; padding: 15px; text-align: center; border-radius: 0 0 10px 10px; }
+        .wa-start-chat-btn { background-color: var(--wa-green); color: white; text-decoration: none; padding: 12px 24px; border-radius: 25px; font-weight: bold; display: flex; justify-content: center; align-items: center; width: 100%; box-sizing: border-box; gap: 8px; transition: background 0.3s; border: none; font-size: 16px; cursor: pointer; }
+        .wa-start-chat-btn:hover { background-color: #1da851; }
+        .wa-start-chat-btn img { width: 20px; height: 20px; filter: brightness(0) invert(1); }
+    </style>
+
+    <style>
+        /*Botón de whatsapp escritorio*/
+        /* --- VARIABLES Y ESTILOS BASE --- */
+        :root {
+            --wa-green: #25D366;
+            --wa-dark: #075E54;
+            --wa-red: #ff3b30;
+        }
+
+        /* 1. NOTIFICACIÓN ROJA (Nuevo) */
+        .wa-notification-dot {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: var(--wa-red);
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid white;
+            z-index: 1002;
+            opacity: 0;
+            transform: scale(0);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .wa-notification-dot.show {
+            opacity: 1;
+            transform: scale(1);
+            animation: wa-dot-bounce 1s infinite;
+        }
+
+        @keyframes wa-dot-bounce {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-4px) scale(1); }
+        }
+
+        /* 2. BOTÓN FLOTANTE */
+        .wa-floating-btn {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: var(--wa-green);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            animation: pulse-green 2s infinite;
+        }
+
+        .wa-floating-btn:not(.active):hover { transform: scale(1.1); }
+        .wa-floating-btn.active { background-color: #333; animation: none; transform: rotate(90deg); }
+
+        .wa-icon {
+            position: absolute;
+            width: 35px;
+            height: 35px;
+            fill: white;
+            transition: all 0.3s ease;
+        }
+
+        .wa-icon-logo { opacity: 1; transform: scale(1); }
+        .wa-icon-close { opacity: 0; transform: scale(0) rotate(-90deg); }
+        .active .wa-icon-logo { opacity: 0; transform: scale(0) rotate(90deg); }
+        .active .wa-icon-close { opacity: 1; transform: scale(1) rotate(0); }
+
+        @keyframes pulse-green {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* 3. VENTANA DE CHAT */
+        .wa-chat-box {
+            display: none;
+            position: fixed;
+            bottom: 95px;
+            left: 20px;
+            width: 350px;
+            max-width: 85%;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+            overflow: visible;
+            z-index: 1001;
+            flex-direction: column;
+            font-family: 'Segoe UI', sans-serif;
+            animation: slideIn 0.3s ease-out forwards;
+        }
+
+        .wa-chat-box::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 20px;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid white;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .wa-header {
+            background-color: var(--wa-green);
+            padding: 20px;
+            color: white;
+            display: flex;
+            align-items: center;
+            border-radius: 10px 10px 0 0;
+            position: relative;
+        }
+
+        .wa-close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0.8;
+        }
+        .wa-close-btn:hover { opacity: 1; }
+
+        .wa-profile-pic {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+            border: 2px solid white;
+            background-color: #ddd;
+            object-fit: cover;
+        }
+
+        .wa-info h4 { margin: 0; font-size: 18px; font-weight: 600; }
+        .wa-info p { margin: 2px 0 0; font-size: 12px; opacity: 0.9; }
+
+        .wa-body {
+            background-color: #f0f0f0;
+            background-image: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png');
+            padding: 20px;
+            height: 200px;
+            overflow-y: auto;
+        }
+
+        .wa-message {
+            background: white;
+            padding: 10px 15px;
+            border-radius: 0 10px 10px 10px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            width: fit-content;
+            max-width: 80%;
+            position: relative;
+            margin-bottom: 5px;
+        }
+
+        .wa-message::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -8px;
+            width: 0;
+            height: 0;
+            border-top: 10px solid white;
+            border-left: 10px solid transparent;
+        }
+
+        .wa-msg-text { color: #333; font-size: 14px; line-height: 1.4; }
+        .wa-time { font-size: 10px; color: #999; display: block; text-align: right; margin-top: 4px; }
+
+        .wa-footer {
+            background: white;
+            padding: 15px;
+            text-align: center;
+            border-radius: 0 0 10px 10px;
+        }
+
+        .wa-start-chat-btn {
+            background-color: var(--wa-green);
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            box-sizing: border-box;
+            gap: 8px;
+            transition: background 0.3s;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .wa-start-chat-btn:hover { background-color: #1da851; }
+        .wa-start-chat-btn img { width: 20px; height: 20px; filter: brightness(0) invert(1); }
+
+        /* ===== AVAILABILITY BADGE (MÓVIL) ===== */
+        .availability-badge { transition: all 0.5s ease; }
+        .ping-dot { animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite; }
+        @keyframes ping { 75%, 100% { transform: scale(2); opacity: 0; } }
+
+        /* Posición específica para Camión (Botón Rectangular) */
+        .wa-notification-dot.on-icon {
+            top: -5px;
+            right: -5px;
+            width: 18px;
+            height: 18px;
+            font-size: 10px;
+        }
+    </style>
+
+</head>
+
+<body class="bg-slate-50 text-slate-700 antialiased pb-24 md:pb-0">
+
+    <nav
+        class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+
+                <a href="/" class="flex items-center gap-3" aria-label="Destape Rápido - Destapes Las Condes 24/7">
+                    <div class="w-[72px] h-[72px] flex items-center justify-center">
+                        <img src="/favicon.png" alt="Logo Destape Rápido, servicio de destapes en Las Condes" width="72"
+                            height="72" class="w-full h-full object-contain">
+                    </div>
+                    <div>
+                        <span
+                            class="block font-extrabold text-slate-900 text-lg leading-none tracking-tight">DESTAPE<span
+                                class="text-brand-600">RÁPIDO</span></span>
+                        <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Región
+                            Metropolitana</span>
+                    </div>
+                </a>
+
+                <div class="flex items-center gap-4">
+                    <div class="hidden md:flex availability-badge items-center gap-2 px-3 py-1 bg-green-50 text-green-700 rounded-full text-[10px] font-bold border border-green-100 opacity-0 transition-all duration-500" role="status">
+                        <span class="relative flex h-2 w-2">
+                            <span class="ping-dot animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                            <span class="static-dot relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                        </span>
+                        <span><span class="unit-count">...</span> buscando...</span>
+                    </div>
+
+                    <a href="tel:+56912345678"
+                        class="bg-brand-600 hover:bg-brand-700 text-white px-6 py-3 rounded-xl font-bold shadow-lg shadow-brand-500/20 transition hover:-translate-y-0.5 flex items-center gap-2">
+                        <i class="fa-solid fa-phone-volume mr-1"></i> +56 9 1234 5678
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden bg-slate-900">
+        <div class="absolute inset-0 w-full h-full overflow-hidden z-0">
+            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop" 
+                 alt="Montañas del Cajón del Maipo" 
+                 class="absolute top-0 left-0 w-full h-full object-cover opacity-40">
+            <div class="absolute inset-0 bg-slate-900/60 z-10"></div>
+            <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-600/30 rounded-full blur-[120px] z-10"></div>
+        </div>
+
+        <div class="container mx-auto px-4 relative z-20">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 border border-slate-600/50 bg-slate-800/50 backdrop-blur-sm rounded-full px-4 py-1.5 text-xs font-bold text-slate-300 mb-6 uppercase tracking-wider">
+                        <i class="fa-solid fa-mountain-sun text-yellow-400"></i> Servicio de Montaña
+                    </div>
+
+                    <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6 leading-[1.1] tracking-tight drop-shadow-lg">
+                        Limpieza de Fosas en San José de Maipo <br>
+                        <span class="text-gradient">Llegamos donde otros no suben.</span>
+                    </h1>
+
+                    <p class="text-lg text-slate-200 mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed font-medium">
+                        Cobertura desde <strong>Las Vertientes hasta San Gabriel</strong>. 
+                        Camiones equipados para caminos de tierra y pendientes. Servicio experto para cabañas, camping y residentes.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="tel:+56912345678"
+                            class="bg-white text-brand-900 font-bold py-4 px-8 rounded-xl shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:shadow-[0_0_40px_rgba(255,255,255,0.4)] transition transform hover:-translate-y-1 flex items-center justify-center gap-3">
+                            <i class="fa-solid fa-phone text-brand-600"></i> Llamar Ahora
+                        </a>
+                        <a href="https://wa.me/56912345678"
+                            class="bg-green-600 hover:bg-green-500 text-white font-bold py-4 px-8 rounded-xl shadow-lg transition transform hover:-translate-y-1 flex items-center justify-center gap-3">
+                            <i class="fa-brands fa-whatsapp text-xl"></i> WhatsApp
+                        </a>
+                    </div>
+
+                    <div class="mt-8 flex items-center justify-center lg:justify-start gap-6 text-sm font-medium text-slate-300">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-truck-monster text-brand-500"></i> Vehículos 4x4</span>
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-clock text-yellow-400"></i> Respuesta Rápida</span>
+                    </div>
+                </div>
+
+                <div class="group bg-slate-800/90 backdrop-blur-xl border border-slate-600 p-6 rounded-3xl shadow-2xl relative transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_60px_-15px_rgba(37,99,235,0.3)] hover:border-brand-500/50">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-white font-bold group-hover:text-brand-400 transition-colors">Flota de Montaña</h3>
+                        <span class="bg-green-500/20 text-green-300 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-2 border border-green-500/30">
+                            <span class="relative flex h-2 w-2">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                            </span> En Ruta
+                        </span>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4 p-3 bg-slate-700/50 rounded-xl border border-slate-600/30 group-hover:bg-slate-700/80 transition-colors">
+                            <div class="w-10 h-10 bg-blue-500/20 text-blue-400 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <p class="text-slate-200 text-sm font-bold">El Manzano / San José</p>
+                                <p class="text-slate-400 text-xs">Llegada 30-40 min</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4 p-3 bg-slate-700/50 rounded-xl border border-slate-600/30 group-hover:bg-slate-700/80 transition-colors">
+                            <div class="w-10 h-10 bg-purple-500/20 text-purple-400 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                <i class="fa-solid fa-campground"></i>
+                            </div>
+                            <div>
+                                <p class="text-slate-200 text-sm font-bold">Atención Camping/Turismo</p>
+                                <p class="text-slate-400 text-xs">Mantención de Temporada</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="py-10 bg-white border-b border-slate-100">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-8">Sectores que atendemos en la comuna:</p>
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+                <div class="flex items-center gap-2 font-bold text-slate-700 text-lg"><i class="fa-solid fa-water text-2xl"></i> Las Vertientes</div>
+                <div class="flex items-center gap-2 font-bold text-slate-700 text-lg"><i class="fa-solid fa-tree text-2xl"></i> El Canelo</div>
+                <div class="flex items-center gap-2 font-bold text-slate-700 text-lg"><i class="fa-solid fa-mountain text-2xl"></i> El Melocotón</div>
+                <div class="flex items-center gap-2 font-bold text-slate-700 text-lg"><i class="fa-solid fa-snowflake text-2xl"></i> San Alfonso</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-brand-900 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20">
+            <img src="https://www.transparenttextures.com/patterns/carbon-fibre.png" alt="" loading="lazy" class="w-full h-full object-cover">
+        </div>
+        <div class="container mx-auto px-4 relative z-10 text-center">
+            <div class="inline-block p-4 rounded-full bg-brand-800/50 mb-6 border border-brand-700">
+                <i class="fa-solid fa-triangle-exclamation text-4xl text-yellow-400 animate-pulse-slow"></i>
+            </div>
+            <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-6">
+                ¿Fosa Colapsada en el Cajón?
+            </h2>
+            <p class="text-xl text-slate-300 max-w-2xl mx-auto mb-10">
+                Sabemos que en la montaña las urgencias son complicadas. Nuestro equipo conoce los caminos y atajos para llegar lo antes posible a tu sector.
+            </p>
+            <div class="flex justify-center gap-8 text-white/90 font-medium text-sm uppercase tracking-widest">
+                <div class="flex flex-col items-center gap-2">
+                    <i class="fa-solid fa-check-circle text-green-500 text-xl"></i> Fines de Semana
+                </div>
+                <div class="flex flex-col items-center gap-2">
+                    <i class="fa-solid fa-check-circle text-green-500 text-xl"></i> Emergencias
+                </div>
+                <div class="flex flex-col items-center gap-2">
+                    <i class="fa-solid fa-check-circle text-green-500 text-xl"></i> Turismo
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-slate-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <span class="text-brand-600 font-bold uppercase tracking-widest text-xs">Saneamiento en Precordillera</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mt-2">Soluciones para Terrenos Difíciles</h2>
+                <p class="text-slate-600 mt-4 max-w-xl mx-auto">
+                    Operar en el Cajón del Maipo requiere experiencia. Pendientes, rocas y accesos estrechos no son problema para nosotros.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+
+                <article class="bg-white rounded-2xl shadow-card border border-slate-100 overflow-hidden group hover:shadow-xl transition-all duration-300">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1632833239869-a37e3a5806d2?q=80&w=800&auto=format&fit=crop"
+                            alt="Limpieza de fosas en San José de Maipo" width="400" height="224" loading="lazy"
+                            class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute bottom-[-20px] right-6 w-14 h-14 bg-brand-600 rounded-xl flex items-center justify-center text-white text-2xl shadow-lg z-10 group-hover:bg-brand-900 transition-colors">
+                            <i class="fa-solid fa-truck-droplet"></i>
+                        </div>
+                    </div>
+                    <div class="p-8 pt-10">
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">Limpieza de Fosas Sépticas</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                            Vaciado integral para viviendas y cabañas. Retiramos lodos acumulados, esenciales en zonas sin alcantarillado público como El Melocotón o San Gabriel.
+                        </p>
+                        <ul class="text-xs text-slate-500 space-y-1">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> Mangueras de largo alcance</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> Cuidado del entorno natural</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="bg-white rounded-2xl shadow-card border border-slate-100 overflow-hidden group hover:shadow-xl transition-all duration-300">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1552858725-2758b5fb1286?q=80&w=800&auto=format&fit=crop"
+                            alt="Destape de alcantarillado en cabañas" width="400" height="224" loading="lazy"
+                            class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute bottom-[-20px] right-6 w-14 h-14 bg-brand-600 rounded-xl flex items-center justify-center text-white text-2xl shadow-lg z-10 group-hover:bg-brand-900 transition-colors">
+                            <i class="fa-solid fa-toilet"></i>
+                        </div>
+                    </div>
+                    <div class="p-8 pt-10">
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">Destape de Cabañas</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                            ¿Baño tapado en tu cabaña de arriendo? Llegamos rápido para solucionar el problema y que tus huéspedes sigan disfrutando sin molestias.
+                        </p>
+                        <ul class="text-xs text-slate-500 space-y-1">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> Maquinaria eléctrica silenciosa</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> Sin romper pisos</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="bg-white rounded-2xl shadow-card border border-slate-100 overflow-hidden group hover:shadow-xl transition-all duration-300">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=800&auto=format&fit=crop"
+                            alt="Servicios para restaurantes en Cajón del Maipo" width="400" height="224" loading="lazy"
+                            class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute bottom-[-20px] right-6 w-14 h-14 bg-brand-600 rounded-xl flex items-center justify-center text-white text-2xl shadow-lg z-10 group-hover:bg-brand-900 transition-colors">
+                            <i class="fa-solid fa-utensils"></i>
+                        </div>
+                    </div>
+                    <div class="p-8 pt-10">
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">Restaurantes y Camping</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                            Servicio para el sector turístico. Limpieza de cámaras desgrasadoras y mantención de baños públicos en zonas de camping y picnic.
+                        </p>
+                        <ul class="text-xs text-slate-500 space-y-1">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> Certificado de disposición</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> Atención prioritaria fines de semana</li>
+                        </ul>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonios" class="pt-24 pb-15 bg-white border-y border-slate-100 scroll-mt-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-extrabold text-slate-900 mb-4">Vecinos del Cajón opinan</h2>
+                <div class="inline-flex items-center gap-3 bg-slate-50 px-6 py-3 rounded-full border border-slate-200 shadow-sm">
+                    <div class="flex flex-col items-start">
+                        <div class="flex text-yellow-400 text-sm space-x-1">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                        <span class="text-xs text-slate-500 font-bold mt-1">4.8/5 Promedio Local</span>
+                    </div>
+                    <div id="action-container" class="flex items-center">
+                        <div class="h-8 w-px bg-slate-300 mx-2"></div>
+                        <button onclick="toggleReviewForm()" class="text-sm font-bold text-brand-600 hover:text-brand-800 underline decoration-2 underline-offset-2 transition">
+                            <i class="fa-regular fa-pen-to-square mr-1"></i> Escribir
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="review-form-container" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4 transition-opacity">
+                <div class="bg-white rounded-2xl shadow-2xl p-6 max-w-md w-full relative animate-fade-in-up">
+                    <button onclick="toggleReviewForm()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-xl"></i></button>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4">Tu experiencia</h3>
+                    <form id="userReviewForm" class="space-y-4">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-[10px] font-bold text-slate-500 uppercase mb-1">Nombre</label>
+                                <input type="text" id="inputName" required class="w-full px-3 py-2 border border-slate-200 rounded-lg focus:border-brand-500 outline-none text-sm" placeholder="Ej: Claudia">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-bold text-slate-500 uppercase mb-1">Sector</label>
+                                <input type="text" id="inputSector" required class="w-full px-3 py-2 border border-slate-200 rounded-lg focus:border-brand-500 outline-none text-sm" placeholder="Ej: El Manzano">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-bold text-slate-500 uppercase mb-1">Calificación</label>
+                            <select id="inputStars" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-yellow-500 font-bold text-sm bg-white">
+                                <option value="5">★★★★★ Excelente</option>
+                                <option value="4">★★★★☆ Bueno</option>
+                                <option value="3">★★★☆☆ Regular</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-bold text-slate-500 uppercase mb-1">Comentario</label>
+                            <textarea id="inputComment" required rows="3" class="w-full px-3 py-2 border border-slate-200 rounded-lg focus:border-brand-500 outline-none text-sm" placeholder="¿Cómo fue el servicio?"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-3 rounded-xl transition shadow-lg text-sm">Publicar Opinión</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="relative group px-4 md:px-12">
+                <button onclick="scrollCarousel(-1)" class="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 bg-white border border-slate-200 rounded-full items-center justify-center text-slate-600 shadow-md hover:bg-slate-50 z-10 transition"><i class="fa-solid fa-chevron-left"></i></button>
+                <button onclick="scrollCarousel(1)" class="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 bg-white border border-slate-200 rounded-full items-center justify-center text-slate-600 shadow-md hover:bg-slate-50 z-10 transition"><i class="fa-solid fa-chevron-right"></i></button>
+                <div id="carousel-track" class="flex gap-6 overflow-x-auto snap-x snap-mandatory pt-5 pb-12 px-4 scrollbar-hide scroll-smooth items-stretch">
+                    </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-brand-600 text-xs font-bold uppercase mb-6">
+                        <i class="fa-solid fa-map-location-dot"></i> Expertos en Altura
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-6">
+                        Llegamos a tu Cabaña o Refugio
+                    </h2>
+                    <p class="text-lg text-slate-600 mb-6 leading-relaxed">
+                        Conocemos la dificultad de los caminos en sectores como El Ingenio o El Volcán. Nuestros choferes tienen experiencia en conducción de montaña.
+                    </p>
+
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 flex-shrink-0">
+                                <i class="fa-solid fa-road-spikes"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-slate-900">Acceso Difícil</h3>
+                                <p class="text-sm text-slate-500 mt-1">
+                                    Si tu propiedad tiene una entrada estrecha o pendiente pronunciada, avísanos. Tenemos camiones más compactos y potentes para estas situaciones.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 flex-shrink-0">
+                                <i class="fa-solid fa-snowflake"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-slate-900">Operación Todo Clima</h3>
+                                <p class="text-sm text-slate-500 mt-1">
+                                    Trabajamos en invierno y verano. Entendemos que una emergencia sanitaria no puede esperar a que mejore el clima.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-brand-600 to-transparent opacity-10 rounded-3xl"></div>
+                    <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=600&auto=format&fit=crop"
+                        alt="Cabaña en la montaña" loading="lazy" width="600" height="400"
+                        class="rounded-3xl shadow-2xl border border-slate-100 grayscale hover:grayscale-0 transition duration-700 w-full h-auto">
+                    <div class="absolute bottom-8 left-8 bg-white/90 backdrop-blur p-4 rounded-xl shadow-lg max-w-xs border-l-4 border-brand-500">
+                        <p class="text-xs font-bold text-slate-500 uppercase">Dato Técnico</p>
+                        <p class="text-slate-900 font-bold text-sm">"Las fosas en zonas frías pueden solidificarse más rápido sin la mantención adecuada."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="relative order-2 lg:order-1">
+                    <div class="absolute inset-0 bg-gradient-to-tl from-blue-600 to-transparent opacity-10 rounded-3xl"></div>
+                    <img src="https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?q=80&w=600&auto=format&fit=crop"
+                        alt="Camping en el Cajón del Maipo" loading="lazy" width="600" height="400"
+                        class="rounded-3xl shadow-2xl border border-slate-100 grayscale hover:grayscale-0 transition duration-700 w-full h-auto">
+                    <div class="absolute bottom-8 right-8 bg-white/95 backdrop-blur p-5 rounded-xl shadow-lg max-w-xs border-r-4 border-blue-500 text-right">
+                        <p class="text-xs font-bold text-slate-400 uppercase">Turismo Seguro</p>
+                        <p class="text-slate-800 font-bold text-sm">"Sanidad garantizada para tus visitantes."</p>
+                    </div>
+                </div>
+
+                <div class="order-1 lg:order-2">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-50 text-green-700 text-xs font-bold uppercase mb-6">
+                        <i class="fa-solid fa-tree"></i> Protección Ambiental
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-6">
+                        Cuidamos el Río Maipo
+                    </h2>
+                    <p class="text-lg text-slate-600 mb-8 leading-relaxed">
+                        Sabemos lo importante que es el entorno natural para el Cajón. Nuestro compromiso es evitar cualquier contaminación de napas o cursos de agua.
+                    </p>
+
+                    <div class="space-y-8">
+                        <div class="flex gap-5">
+                            <div class="w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center text-brand-600 flex-shrink-0 shadow-sm">
+                                <i class="fa-solid fa-file-circle-check text-2xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-slate-900">Disposición Certificada</h3>
+                                <p class="text-sm text-slate-500 mt-2 leading-relaxed">
+                                    Todos los residuos son transportados a plantas de tratamiento autorizadas fuera de la zona. Te entregamos el certificado que lo comprueba.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-5">
+                            <div class="w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center text-brand-600 flex-shrink-0 shadow-sm">
+                                <i class="fa-solid fa-pump-soap text-2xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-slate-900">Limpieza sin Químicos Agresivos</h3>
+                                <p class="text-sm text-slate-500 mt-2 leading-relaxed">
+                                    Priorizamos el uso de agua a alta presión y bacterias naturales para no dañar la flora bacteriana de tu fosa ni el suelo circundante.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="bg-slate-900 rounded-3xl p-8 md:p-16 text-white shadow-2xl max-w-5xl mx-auto relative overflow-hidden text-center">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-brand-500 rounded-full blur-[100px] opacity-20"></div>
+                <div class="absolute bottom-0 left-0 w-64 h-64 bg-green-500 rounded-full blur-[100px] opacity-20"></div>
+                <div class="relative z-10">
+                    <h2 class="text-3xl md:text-5xl font-extrabold mb-6 tracking-tight">¿Emergencia Sanitaria?</h2>
+                    <p class="text-xl text-slate-300 mb-10 max-w-2xl mx-auto">
+                        Estamos en la ruta G-25. Llámanos para una respuesta rápida antes de que llegue el fin de semana o tus visitas.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-5 justify-center">
+                        <a href="tel:+56912345678" class="bg-white text-slate-900 text-lg font-bold py-4 px-10 rounded-xl hover:bg-slate-100 transition shadow-lg transform hover:-translate-y-1">
+                            <i class="fa-solid fa-phone mr-2"></i> Llamar Ahora
+                        </a>
+                        <a href="https://wa.me/56912345678" class="bg-green-600 text-white text-lg font-bold py-4 px-10 rounded-xl hover:bg-green-500 transition shadow-lg shadow-green-500/25 transform hover:-translate-y-1 flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-2xl"></i> WhatsApp
+                        </a>
+                    </div>
+                    <p class="mt-6 text-sm text-slate-400">Atendemos todo San José de Maipo, de lunes a domingo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-slate-50 border-t border-slate-200" id="faq">
+        <div class="container mx-auto px-4 max-w-3xl">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-extrabold text-slate-900">Preguntas Frecuentes</h2>
+                <p class="text-slate-500 mt-2">Dudas comunes en el Cajón del Maipo.</p>
+            </div>
+
+            <script type="application/ld+json">
+            {
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [{
+                "@type": "Question",
+                "name": "¿Suben hasta San Gabriel o El Volcán?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Sí, cubrimos todo el camino al Volcán hasta San Gabriel, El Ingenio y alrededores. Consulte por factibilidad técnica para sectores más altos según el clima."
+                }
+              }, {
+                "@type": "Question",
+                "name": "¿Atienden fines de semana y festivos?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Sí, sabemos que el flujo de gente aumenta los fines de semana. Tenemos turnos de emergencia para sábados, domingos y festivos."
+                }
+              }, {
+                "@type": "Question",
+                "name": "¿El camión puede entrar en caminos de tierra?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Nuestros equipos están adaptados para caminos rurales y de ripio. Si el acceso es muy complejo, contamos con mangueras largas para operar desde distancia."
+                }
+              }, {
+                "@type": "Question",
+                "name": "¿Hacen precio a cabañas o campings?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Sí, ofrecemos convenios de mantención periódica para recintos turísticos, con precios preferenciales por frecuencia de servicio."
+                }
+              }]
+            }
+            </script>
+
+            <div class="space-y-4">
+                <details class="group bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                    <summary class="flex justify-between items-center font-bold text-slate-900 list-none p-6 cursor-pointer hover:bg-slate-50 transition select-none">
+                        <span>¿Suben hasta San Gabriel o El Volcán?</span>
+                        <span class="transition duration-300 group-open:rotate-180"><i class="fa-solid fa-chevron-down text-brand-500"></i></span>
+                    </summary>
+                    <div class="text-slate-600 px-6 pb-6 text-sm leading-relaxed border-t border-slate-100 pt-4">
+                        <p>Sí, cubrimos todo el camino al Volcán hasta sectores como <strong>San Gabriel, El Ingenio, El Melocotón y San Alfonso</strong>. Para sectores más altos (Baños Morales, etc.) recomendamos consultar factibilidad técnica según las condiciones del camino y clima.</p>
+                    </div>
+                </details>
+
+                <details class="group bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                    <summary class="flex justify-between items-center font-bold text-slate-900 list-none p-6 cursor-pointer hover:bg-slate-50 transition select-none">
+                        <span>¿Atienden fines de semana y festivos?</span>
+                        <span class="transition duration-300 group-open:rotate-180"><i class="fa-solid fa-chevron-down text-brand-500"></i></span>
+                    </summary>
+                    <div class="text-slate-600 px-6 pb-6 text-sm leading-relaxed border-t border-slate-100 pt-4">
+                        <p>Sí, sabemos que el flujo de visitantes aumenta los fines de semana y es cuando más fallas ocurren. Tenemos turnos de emergencia operativos sábados, domingos y festivos.</p>
+                    </div>
+                </details>
+
+                <details class="group bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                    <summary class="flex justify-between items-center font-bold text-slate-900 list-none p-6 cursor-pointer hover:bg-slate-50 transition select-none">
+                        <span>¿El camión puede entrar en caminos de tierra?</span>
+                        <span class="transition duration-300 group-open:rotate-180"><i class="fa-solid fa-chevron-down text-brand-500"></i></span>
+                    </summary>
+                    <div class="text-slate-600 px-6 pb-6 text-sm leading-relaxed border-t border-slate-100 pt-4">
+                        <p>Nuestros equipos están adaptados para transitar por caminos rurales y de ripio. Si el acceso directo a la fosa es muy complejo o empinado, contamos con <strong>mangueras extra largas</strong> para operar desde una zona segura.</p>
+                    </div>
+                </details>
+
+                <details class="group bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                    <summary class="flex justify-between items-center font-bold text-slate-900 list-none p-6 cursor-pointer hover:bg-slate-50 transition select-none">
+                        <span>¿Hacen precio a cabañas o campings?</span>
+                        <span class="transition duration-300 group-open:rotate-180"><i class="fa-solid fa-chevron-down text-brand-500"></i></span>
+                    </summary>
+                    <div class="text-slate-600 px-6 pb-6 text-sm leading-relaxed border-t border-slate-100 pt-4">
+                        <p>Sí, ofrecemos convenios de mantención periódica para recintos turísticos (cabañas, campings, restaurantes), con precios preferenciales por frecuencia de servicio y volumen.</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 bg-white border-t border-slate-100">
+        <div class="container mx-auto px-4">
+            <p class="text-xs font-bold text-slate-600 uppercase tracking-widest mb-6">Cobertura detallada en San José de Maipo</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-xs text-slate-500">
+                <div>
+                    <h3 class="font-bold text-slate-800 mb-3 border-b border-slate-100 pb-2 text-sm">Localidades</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/zonas/rural/san-jose-de-maipo.html" class="hover:text-brand-600 hover:underline">Las Vertientes</a></li>
+                        <li><a href="/zonas/rural/san-jose-de-maipo.html" class="hover:text-brand-600 hover:underline">El Canelo</a></li>
+                        <li><a href="/zonas/rural/san-jose-de-maipo.html" class="hover:text-brand-600 hover:underline">El Manzano</a></li>
+                        <li><a href="/zonas/rural/san-jose-de-maipo.html" class="hover:text-brand-600 hover:underline">San José de Maipo</a></li>
+                        <li><a href="/zonas/rural/san-jose-de-maipo.html" class="hover:text-brand-600 hover:underline">El Melocotón</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold text-slate-800 mb-3 border-b border-slate-100 pb-2">Sectores Altos</h3>
+                    <ul class="space-y-2">
+                        <li>San Alfonso</li>
+                        <li>El Ingenio</li>
+                        <li>San Gabriel</li>
+                        <li>El Toyo</li>
+                        <li>Guayacán</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold text-slate-800 mb-3 border-b border-slate-100 pb-2">Servicios Frecuentes</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/servicios/limpieza-fosas-septicas.html" class="hover:text-brand-600 hover:underline">Limpieza fosa cabañas</a></li>
+                        <li><a href="/servicios/destape-alcantarillado.html" class="hover:text-brand-600 hover:underline">Destape WC camping</a></li>
+                        <li><a href="/servicios/limpieza-fosas-septicas.html" class="hover:text-brand-600 hover:underline">Vaciado pozo negro</a></li>
+                        <li><a href="/servicios/limpieza-fosas-septicas.html" class="hover:text-brand-600 hover:underline">Limpieza desgrasadora</a></li>
+                        <li><a href="/servicios/destape-alcantarillado.html" class="hover:text-brand-600 hover:underline">Urgencia sanitaria</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold text-slate-800 mb-3 border-b border-slate-100 pb-2">Tipos de Cliente</h3>
+                    <ul class="space-y-2">
+                        <li><span class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500"></i> Residentes</span></li>
+                        <li><span class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500"></i> Complejos Turísticos</span></li>
+                        <li><span class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500"></i> Restaurantes</span></li>
+                        <li><span class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500"></i> Segunda Vivienda</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-900 text-slate-400 py-16 text-sm">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 border-b border-slate-800 pb-12 mb-12">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center gap-2 mb-6">
+                        <div class="w-[72px] h-[72px] flex items-center justify-center">
+                            <img src="/favicon.png" alt="Logo Destape Rápido" width="72" height="72" class="w-full h-full object-contain">
+                        </div>
+                        <span class="text-white font-bold text-lg">DESTAPE<span class="text-blue-400">RÁPIDO</span></span>
+                    </div>
+                    <p class="max-w-sm mb-6 leading-relaxed">
+                        Servicio especializado para la zona cordillerana de Santiago. Entendemos las necesidades del Cajón del Maipo y trabajamos para mantener su entorno limpio.
+                    </p>
+                    <div class="flex gap-4">
+                        <i class="fa-brands fa-instagram text-xl hover:text-white cursor-pointer transition"></i>
+                        <i class="fa-brands fa-facebook text-xl hover:text-white cursor-pointer transition"></i>
+                        <i class="fa-brands fa-linkedin text-xl hover:text-white cursor-pointer transition"></i>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-6 uppercase tracking-wider text-xs">Servicios Montaña</h4>
+                    <ul class="space-y-3">
+                        <li><a href="/servicios/limpieza-fosas-septicas.html" class="hover:text-brand-500 transition">Limpieza Fosas</a></li>
+                        <li><a href="/servicios/destape-alcantarillado.html" class="hover:text-brand-500 transition">Destape Alcantarillado</a></li>
+                        <li><a href="/servicios/destape-alcantarillado.html" class="hover:text-brand-500 transition">Mantención Cabañas</a></li>
+                        <li><a href="/servicios/destape-alcantarillado.html" class="hover:text-brand-500 transition">Certificados</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-6 uppercase tracking-wider text-xs">Contacto</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-phone mt-1 text-brand-500"></i>
+                            <span class="font-bold text-white">+56 9 1234 5678</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-envelope mt-1 text-brand-500"></i>
+                            <span>contacto@destaperapido.cl</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot mt-1 text-brand-500"></i>
+                            <span>Camino al Volcán, San José de Maipo</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center flex flex-col md:flex-row justify-between items-center gap-4">
+                <p>&copy; 2025 Destape Rápido. Todos los derechos reservados.</p>
+                <div class="flex gap-6">
+                    <a href="/privacidad.html" class="hover:text-white">Políticas de Privacidad</a>
+                    <a href="/terminos.html" class="hover:text-white">Términos de Servicio</a>
+                    <a href="https://paginasfast.cl" target="_blank" rel="noopener" class="group flex items-center gap-2 text-slate-500 hover:text-white transition-all duration-300 text-xs font-bold uppercase tracking-wider">
+                        <i class="fa-solid fa-bolt text-slate-600 group-hover:text-yellow-400 transition-colors" aria-hidden="true"></i>
+                        <span>Sitio web desarrollado por <span class="group-hover:underline decoration-yellow-400 decoration-2 underline-offset-4">PaginasFast.cl</span></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="fixed bottom-0 left-0 right-0 z-50 md:hidden flex flex-col shadow-[0_-4px_20px_rgba(0,0,0,0.15)]">
+        <div class="availability-badge w-full bg-green-50 border-t border-green-200 py-1.5 flex items-center justify-center gap-2 text-[11px] font-bold text-green-800 transition-all duration-700 opacity-0" role="status">
+            <span class="relative flex h-2 w-2">
+                <span class="ping-dot animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span class="static-dot relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+            </span>
+            <span>
+                <span class="unit-count">...</span>
+                <span class="unit-text">buscando...</span>
+            </span>
+        </div>
+        <div class="bg-white p-3 flex gap-3 border-t border-slate-100">
+            <a href="tel:+56912345678" class="flex-1 bg-brand-600 text-white font-bold rounded-xl py-3 flex items-center justify-center gap-2 active:scale-95 transition shadow-lg shadow-brand-600/20" aria-label="Llamar ahora">
+                <i class="fa-solid fa-phone animate-pulse"></i> Llamar
+            </a>
+           <a href="https://wa.me/56912345678" class="flex-1 bg-green-600 text-white font-bold rounded-xl py-3 flex items-center justify-center gap-2 active:scale-95 transition shadow-lg shadow-green-500/20" aria-label="WhatsApp">
+                <i class="fa-brands fa-whatsapp text-xl"></i> WhatsApp
+            </a>
+        </div>
+    </div>
+
+    
+    <div class="wa-floating-btn hidden md:flex" id="wa-btn" onclick="toggleChat()">
+        <svg class="wa-icon wa-icon-logo" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.008-.57-.008-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+        </svg>
+        <svg class="wa-icon wa-icon-close" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+        <span class="wa-notification-dot" id="wa-dot">1</span>
+    </div>
+    
+
+    <div class="wa-chat-box" id="whatsapp-chat">
+        <div class="wa-header">
+            <button class="wa-close-btn" onclick="toggleChat()">×</button>
+            <img src="/favicon.png" alt="Perfil" class="wa-profile-pic">
+            <div class="wa-info">
+                <h4>Destape Rápido</h4>
+                <p>En línea</p>
+            </div>
+        </div>
+        <div class="wa-body">
+            <div class="wa-message">
+                <div class="wa-msg-text">Hola, ¿necesitas ayuda en San José de Maipo?</div>
+                <span class="wa-time">Justo ahora</span>
+            </div>
+        </div>
+        <div class="wa-footer">
+            <a href="https://wa.me/56912345678?text=Hola,%20necesito%20servicio%20de%20fosa%20en%20Cajón%20del%20Maipo" target="_blank" class="wa-start-chat-btn">
+                COMENZAR CHAT
+            </a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Configuración Lógica
+            const CONFIG = { DROP_TO_2_MIN: 30000, DROP_TO_2_MAX: 60000, DROP_TO_1_MIN: 300000, DROP_TO_1_MAX: 600000, RESET_HOURS: 24, STORAGE_KEY: 'alc_pro_units_state_cajon_v1' };
+            const getRandomTime = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
+            
+            // Lógica de disponibilidad (Badge)
+            const calculateState = () => {
+                const now = Date.now();
+                const savedState = localStorage.getItem(CONFIG.STORAGE_KEY);
+                if (!savedState) return createNewState(now);
+                let data = JSON.parse(savedState);
+                if (!data.timestamp || (now - data.timestamp > CONFIG.RESET_HOURS * 3600000)) return createNewState(now);
+                
+                if (data.count > 1 && now > data.nextChange) {
+                    data.count--;
+                    data.nextChange = data.count === 2 ? now + getRandomTime(CONFIG.DROP_TO_1_MIN, CONFIG.DROP_TO_1_MAX) : null;
+                    localStorage.setItem(CONFIG.STORAGE_KEY, JSON.stringify(data));
+                }
+                return data;
+            };
+            const createNewState = (now) => {
+                const s = { count: 3, nextChange: now + getRandomTime(CONFIG.DROP_TO_2_MIN, CONFIG.DROP_TO_2_MAX), timestamp: now };
+                localStorage.setItem(CONFIG.STORAGE_KEY, JSON.stringify(s));
+                return s;
+            };
+            
+            const renderUI = (count) => {
+                document.querySelectorAll('.availability-badge').forEach(b => {
+                    const c = b.querySelector('.unit-count'), t = b.querySelector('.unit-text');
+                    if(c) c.innerText = count;
+                    if(t) t.innerText = count <= 1 ? "Camión disponible" : "Camiones disponibles";
+                    b.classList.remove('opacity-0');
+                    if(count<=1) {
+                        b.className = b.className.replace('bg-green-50 text-green-700 border-green-100', 'bg-orange-50 text-orange-800 border-orange-200');
+                        b.querySelector('.ping-dot').className = b.querySelector('.ping-dot').className.replace('bg-green-400', 'bg-orange-400');
+                        b.querySelector('.static-dot').className = b.querySelector('.static-dot').className.replace('bg-green-500', 'bg-orange-500');
+                    }
+                });
+            };
+
+            let state = calculateState();
+            renderUI(state.count);
+            setInterval(() => { state = calculateState(); renderUI(state.count); }, 5000);
+
+            loadReviews();
+        });
+
+        // Lógica de Reseñas (Adaptada a Cajón del Maipo)
+        const carouselTrack = document.getElementById('carousel-track');
+        const actionContainer = document.getElementById('action-container');
+        const formContainer = document.getElementById('review-form-container');
+        
+        const realReviews = [
+            { name: "Camping El Nogal", sector: "El Manzano", stars: 5, text: "Excelente servicio. Vaciaron las fosas de los baños antes de las fiestas patrias. Muy profesionales.", initial: "C", color: "bg-green-100 text-green-600" },
+            { name: "Sra. Elena", sector: "San José de Maipo", stars: 5, text: "Vivo en una subida complicada y el camión subió sin problemas. El chofer muy hábil.", initial: "E", color: "bg-purple-100 text-purple-600" },
+            { name: "Restaurante La Montaña", sector: "San Alfonso", stars: 5, text: "Nos destaparon las cámaras de grasa de la cocina en plena hora de almuerzo, muy discretos y rápidos.", initial: "R", color: "bg-orange-100 text-orange-600" },
+            { name: "Juan C.", sector: "Las Vertientes", stars: 4, text: "Buen trabajo, llegaron a la hora. Recomendable para quienes vivimos acá todo el año.", initial: "J", color: "bg-blue-100 text-blue-600" },
+            { name: "Cabañas del Río", sector: "El Melocotón", stars: 5, text: "Nos salvaron el fin de semana. Teníamos una cabaña con el baño tapado y llegaron en 40 minutos.", initial: "C", color: "bg-red-100 text-red-600" }
+        ];
+
+        function loadReviews() {
+            if (!carouselTrack) return;
+            carouselTrack.innerHTML = '';
+            const userReview = JSON.parse(localStorage.getItem('alc_user_review'));
+            const all = userReview ? [userReview, ...realReviews] : realReviews;
+            
+            if(actionContainer) actionContainer.style.display = userReview ? 'none' : 'flex';
+
+            all.forEach(r => {
+                const isUser = r.isUser === true;
+                const card = document.createElement('div');
+                const border = isUser ? 'border-brand-200 ring-1 ring-brand-50 shadow-lg' : 'border-slate-100';
+                card.className = `min-w-[85%] md:min-w-[350px] min-h-[281px] bg-white p-8 rounded-2xl relative border ${border} shadow-sm snap-center flex flex-col h-full`;
+                
+                let stars = '';
+                for(let i=0; i<5; i++) stars += i < r.stars ? '<i class="fa-solid fa-star"></i>' : '<i class="fa-regular fa-star text-slate-300"></i>';
+                
+                const badge = isUser ? `<div class="absolute -top-5 left-6 bg-brand-600 text-white text-[11px] font-bold px-4 py-1.5 rounded-full shadow-lg z-20 flex items-center gap-2"><i class="fa-solid fa-user-pen"></i> Tu Opinión</div>` : '';
+                const del = isUser ? `<button onclick="deleteReview()" class="absolute top-4 right-4 text-slate-300 hover:text-red-500 transition p-2 z-20 bg-white rounded-full"><i class="fa-regular fa-trash-can"></i></button>` : `<i class="fa-solid fa-quote-right absolute top-8 right-8 text-slate-100 text-5xl -z-0"></i>`;
+
+                card.innerHTML = `${badge}${del}
+                    <div class="relative z-10 flex-1">
+                        <div class="flex text-yellow-400 mb-4 text-xs gap-1">${stars}</div>
+                        <p class="text-slate-600 italic mb-6 text-sm leading-relaxed">"${r.text}"</p>
+                    </div>
+                    <div class="flex items-center gap-3 mt-4 relative z-10 pt-4 border-t border-slate-50">
+                        <div class="w-10 h-10 rounded-full ${r.color || 'bg-slate-100 text-slate-500'} flex items-center justify-center font-bold shadow-sm text-xs shrink-0">${r.initial}</div>
+                        <div>
+                            <p class="font-bold text-slate-900 text-sm leading-tight">${r.name}</p>
+                            <p class="text-[11px] text-slate-400 uppercase tracking-wide font-bold mt-0.5">${r.sector}</p>
+                        </div>
+                    </div>`;
+                carouselTrack.appendChild(card);
+            });
+        }
+
+        const form = document.getElementById('userReviewForm');
+        if (form) {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const newReview = {
+                    isUser: true,
+                    name: document.getElementById('inputName').value,
+                    sector: document.getElementById('inputSector').value,
+                    stars: document.getElementById('inputStars').value,
+                    text: document.getElementById('inputComment').value,
+                    initial: document.getElementById('inputName').value.charAt(0).toUpperCase(),
+                    color: "bg-slate-800 text-white"
+                };
+                localStorage.setItem('alc_user_review', JSON.stringify(newReview));
+                toggleReviewForm();
+                loadReviews();
+                carouselTrack.scrollTo({ left: 0, behavior: 'smooth' });
+            });
+        }
+
+        function deleteReview() { localStorage.removeItem('alc_user_review'); loadReviews(); }
+        function toggleReviewForm() { formContainer.classList.toggle('hidden'); }
+        function scrollCarousel(d) { carouselTrack.scrollBy({ left: d * 374, behavior: 'smooth' }); }
+
+        // Chat
+        window.addEventListener('load', () => setTimeout(() => {
+            const chat = document.getElementById("whatsapp-chat");
+            if(chat.style.display !== "flex") document.getElementById("wa-dot").classList.add("show");
+        }, 5000));
+
+        function toggleChat() {
+            const chat = document.getElementById("whatsapp-chat");
+            const btn = document.getElementById("wa-btn");
+            const dot = document.getElementById("wa-dot");
+            if (chat.style.display === "none" || !chat.style.display) {
+                chat.style.display = "flex";
+                btn.classList.add("active");
+                dot.classList.remove("show");
+                dot.style.display = "none";
+            } else {
+                chat.style.display = "none";
+                btn.classList.remove("active");
+            }
+        }
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 2. LÓGICA DEL BADGE DE DISPONIBILIDAD (CON CACHÉ Y PERSISTENCIA)
+            const CONFIG = {
+                DROP_TO_2_MIN: 30000,
+                DROP_TO_2_MAX: 60000,
+                DROP_TO_1_MIN: 300000,
+                DROP_TO_1_MAX: 600000,
+                RESET_HOURS: 2,
+                STORAGE_KEY: 'alc_pro_units_state_v3'
+            };
+
+            const getRandomTime = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
+
+            const calculateState = () => {
+                const now = Date.now();
+                const savedState = localStorage.getItem(CONFIG.STORAGE_KEY);
+                const resetTimeMs = CONFIG.RESET_HOURS * 60 * 60 * 1000;
+
+                if (!savedState) return createNewState(now);
+                let data = JSON.parse(savedState);
+                if (!data.timestamp || (now - data.timestamp > resetTimeMs)) return createNewState(now);
+                data.timestamp = now;
+                if (data.count <= 1) {
+                    localStorage.setItem(CONFIG.STORAGE_KEY, JSON.stringify(data));
+                    return data;
+                }
+                if (now > data.nextChange) {
+                    data.count--;
+                    if (data.count === 2) {
+                        data.nextChange = now + getRandomTime(CONFIG.DROP_TO_1_MIN, CONFIG.DROP_TO_1_MAX);
+                    } else {
+                        data.nextChange = null;
+                    }
+                    localStorage.setItem(CONFIG.STORAGE_KEY, JSON.stringify(data));
+                    triggerFlashEffect();
+                } else {
+                    localStorage.setItem(CONFIG.STORAGE_KEY, JSON.stringify(data));
+                }
+                return data;
+            };
+
+            const createNewState = (now) => {
+                const newState = {
+                    count: 3,
+                    nextChange: now + getRandomTime(CONFIG.DROP_TO_2_MIN, CONFIG.DROP_TO_2_MAX),
+                    timestamp: now
+                };
+                localStorage.setItem(CONFIG.STORAGE_KEY, JSON.stringify(newState));
+                return newState;
+            };
+
+            const renderUI = (count) => {
+                const badges = document.querySelectorAll('.availability-badge');
+                badges.forEach(badge => {
+                    const countSpan = badge.querySelector('.unit-count');
+                    const textSpan = badge.querySelector('.unit-text');
+                    const pingDot = badge.querySelector('.ping-dot');
+                    const staticDot = badge.querySelector('.static-dot');
+
+                    if (count <= 1) {
+                        if (countSpan) countSpan.innerText = "Queda 1 camión";
+                        if (textSpan) textSpan.innerText = "disponible Región Metropolitana";
+                        badge.classList.remove('bg-green-50', 'text-green-800', 'border-green-200');
+                        badge.classList.add('bg-orange-50', 'text-orange-800', 'border-orange-200');
+                        if (pingDot) { pingDot.classList.remove('bg-green-400'); pingDot.classList.add('bg-orange-400'); }
+                        if (staticDot) { staticDot.classList.remove('bg-green-500'); staticDot.classList.add('bg-orange-500'); }
+                    } else {
+                        if (countSpan) countSpan.innerText = count + " Camiones";
+                        if (textSpan) textSpan.innerText = "disponibles RM";
+                        badge.classList.add('bg-green-50', 'text-green-800', 'border-green-200');
+                        badge.classList.remove('bg-orange-50', 'text-orange-800', 'border-orange-200');
+                        if (pingDot) { pingDot.classList.add('bg-green-400'); pingDot.classList.remove('bg-orange-400'); }
+                        if (staticDot) { staticDot.classList.add('bg-green-500'); staticDot.classList.remove('bg-orange-500'); }
+                    }
+                    setTimeout(() => { badge.classList.remove('opacity-0'); }, 500);
+                });
+            };
+
+            const triggerFlashEffect = () => {
+                const badges = document.querySelectorAll('.availability-badge');
+                badges.forEach(b => {
+                    b.style.transform = 'scale(1.05)';
+                    setTimeout(() => { b.style.transform = 'scale(1)'; }, 300);
+                });
+            }
+
+            let currentState = calculateState();
+            renderUI(currentState.count);
+            setInterval(() => {
+                const now = Date.now();
+                if (currentState.count > 1 && currentState.nextChange && now >= currentState.nextChange) {
+                    currentState = calculateState();
+                    renderUI(currentState.count);
+                }
+            }, 1000);
+        });
+
+        // 3. WHATSAPP Y NOTIFICACIONES
+        window.addEventListener('load', function () {
+            setTimeout(function () {
+                var dot = document.getElementById("wa-dot");
+                var dotMobile = document.getElementById("wa-dot-mobile");
+                var chatBox = document.getElementById("whatsapp-chat");
+                if (chatBox && chatBox.style.display !== "flex") {
+                    if (dot) dot.classList.add("show");
+                    if (dotMobile) dotMobile.classList.add("show");
+                }
+            }, 5000);
+        });
+
+        function toggleChat() {
+            var chatBox = document.getElementById("whatsapp-chat");
+            var btn = document.getElementById("wa-btn");
+            var dot = document.getElementById("wa-dot");
+            if (chatBox.style.display === "none" || chatBox.style.display === "") {
+                chatBox.style.display = "flex";
+                if (btn) btn.classList.add("active");
+                if (dot) { dot.classList.remove("show"); dot.style.display = "none"; }
+            } else {
+                chatBox.style.display = "none";
+                if (btn) btn.classList.remove("active");
+            }
+        }
+    </script>
+
+</body>
+</html>
