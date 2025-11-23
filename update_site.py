@@ -102,6 +102,31 @@ def update_files():
                     content = content.replace('text-prev-900', 'text-brand-600')
                     # Also check for text-prev-700 just in case
                     content = content.replace('text-prev-700', 'text-brand-600')
+
+                # Fix 5: Performance Optimizations (New)
+                # 5.1 Preconnects
+                if '<link rel="preconnect" href="https://www.transparenttextures.com">' not in content:
+                    content = content.replace('<head>', '<head>\n    <link rel="preconnect" href="https://www.transparenttextures.com">')
+                
+                # 5.2 Google Fonts Display Swap
+                # Check if 'display=swap' is not present and 'fonts.googleapis.com' is in the content
+                if 'display=swap' not in content and 'fonts.googleapis.com' in content:
+                    # Replace the font link to ensure 'display=swap' is included
+                    # This specific replacement targets the Plus Jakarta Sans font link
+                    # It's safer to use regex for this to avoid issues with multiple font links or slight variations
+                    content = re.sub(
+                        r'(<link[^>]*?href="https://fonts\.googleapis\.com/css2\?family=Plus\+Jakarta\+Sans:wght@400;500;600;700;800)(&[^"]*)?"([^>]*?)>',
+                        r'<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"\3>',
+                        content,
+                        flags=re.IGNORECASE
+                    )
+
+                # 5.3 Navbar Logo Optimization
+                # Replace the large logo with the smaller optimized one in the navbar
+                # Look for the specific img tag in the nav
+                logo_search = '<img src="/favicon.png" alt="Logo Destape Rápido - Expertos en Alcantarillado" width="72"'
+                logo_replace = '<img src="/logo-nav.png" alt="Logo Destape Rápido - Expertos en Alcantarillado" width="72"'
+                content = content.replace(logo_search, logo_replace)
                 
                 with open(file_path, 'w', encoding='utf-8') as f:
                     f.write(content)

@@ -57,89 +57,73 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const renderUI = (count) => {
-        const badges = document.querySelectorAll('.availability-badge');
-        badges.forEach(badge => {
-            const countSpan = badge.querySelector('.unit-count');
-            const textSpan = badge.querySelector('.unit-text');
-            const pingDot = badge.querySelector('.ping-dot');
-            const staticDot = badge.querySelector('.static-dot');
+        requestAnimationFrame(() => {
+            const badges = document.querySelectorAll('.availability-badge');
+            badges.forEach(badge => {
+                const countSpan = badge.querySelector('.unit-count');
+                const textSpan = badge.querySelector('.unit-text');
+                const pingDot = badge.querySelector('.ping-dot');
+                const staticDot = badge.querySelector('.static-dot');
+                const isDark = badge.getAttribute('data-theme') === 'dark';
 
-            // --- TEXT & COLOR LOGIC ---
+                if (count <= 1) {
+                    if (countSpan) countSpan.textContent = "Queda 1 camión";
+                    if (textSpan) textSpan.textContent = "disponible Región Metropolitana";
 
-            const isDark = badge.getAttribute('data-theme') === 'dark';
+                    if (isDark) {
+                        badge.classList.remove('bg-white/10', 'border-white/20', 'text-slate-300', 'text-white');
+                        badge.classList.add('bg-orange-900/40', 'border-orange-500/50', 'text-orange-100');
+                    } else {
+                        badge.classList.remove('bg-green-50', 'text-green-800', 'border-green-200', 'text-green-700', 'border-green-100');
+                        badge.classList.add('bg-orange-50', 'text-orange-800', 'border-orange-200');
+                    }
 
-            if (count <= 1) {
-                // CASE 1: URGENCY (Orange)
-                if (countSpan) countSpan.innerText = "Queda 1 camión";
-                // Note: The structure in HTML might be <span><span class="unit-count">3</span> <span class="unit-text">Camiones...</span></span>
-                // If we replace innerText of countSpan, we might lose the space if not careful, but usually it's fine.
-                // Let's stick to the user's request: "Queda 1 camión disponible Región Metropolitana"
-
-                // However, the HTML structure is often:
-                // <span>
-                //    <span class="unit-count">3</span>
-                //    <span class="unit-text">Camiones disponibles</span>
-                // </span>
-
-                // If we set countSpan to "Queda 1 camión", and textSpan to "disponible Región Metropolitana", it reads correctly.
-
-                if (textSpan) textSpan.innerText = "disponible Región Metropolitana";
-
-                if (isDark) {
-                    // Dark Mode Urgency
-                    badge.classList.remove('bg-white/10', 'border-white/20', 'text-slate-300', 'text-white');
-                    badge.classList.add('bg-orange-900/40', 'border-orange-500/50', 'text-orange-100');
+                    if (pingDot) {
+                        pingDot.classList.remove('bg-green-400');
+                        pingDot.classList.add('bg-orange-400');
+                    }
+                    if (staticDot) {
+                        staticDot.classList.remove('bg-green-500');
+                        staticDot.classList.add('bg-orange-500');
+                    }
                 } else {
-                    // Light Mode Urgency
-                    badge.classList.remove('bg-green-50', 'text-green-800', 'border-green-200', 'text-green-700', 'border-green-100'); // Remove all green variations
-                    badge.classList.add('bg-orange-50', 'text-orange-800', 'border-orange-200');
+                    if (countSpan) countSpan.textContent = count;
+                    if (textSpan) textSpan.textContent = "Camiones disponibles RM";
+
+                    if (isDark) {
+                        badge.classList.add('bg-white/10', 'border-white/20', 'text-slate-300');
+                        badge.classList.remove('bg-orange-900/40', 'border-orange-500/50', 'text-orange-100');
+                    } else {
+                        badge.classList.add('bg-green-50', 'text-green-800', 'border-green-200');
+                        badge.classList.remove('bg-orange-50', 'text-orange-800', 'border-orange-200');
+                    }
+
+                    if (pingDot) {
+                        pingDot.classList.add('bg-green-400');
+                        pingDot.classList.remove('bg-orange-400');
+                    }
+                    if (staticDot) {
+                        staticDot.classList.add('bg-green-500');
+                        staticDot.classList.remove('bg-orange-500');
+                    }
                 }
 
-                if (pingDot) {
-                    pingDot.classList.remove('bg-green-400');
-                    pingDot.classList.add('bg-orange-400');
-                }
-                if (staticDot) {
-                    staticDot.classList.remove('bg-green-500');
-                    staticDot.classList.add('bg-orange-500');
-                }
-            } else {
-                // CASE 2: NORMAL (Green)
-                if (countSpan) countSpan.innerText = count;
-                if (textSpan) textSpan.innerText = "Camiones disponibles RM";
-
-                if (isDark) {
-                    // Dark Mode Normal
-                    badge.classList.add('bg-white/10', 'border-white/20', 'text-slate-300');
-                    badge.classList.remove('bg-orange-900/40', 'border-orange-500/50', 'text-orange-100');
-                } else {
-                    // Ensure Green colors
-                    badge.classList.add('bg-green-50', 'text-green-800', 'border-green-200');
-                    badge.classList.remove('bg-orange-50', 'text-orange-800', 'border-orange-200');
-                }
-
-                if (pingDot) {
-                    pingDot.classList.add('bg-green-400');
-                    pingDot.classList.remove('bg-orange-400');
-                }
-                if (staticDot) {
-                    staticDot.classList.add('bg-green-500');
-                    staticDot.classList.remove('bg-orange-500');
-                }
-            }
-
-            // Show badge smoothly
-            setTimeout(() => {
                 badge.classList.remove('opacity-0');
-            }, 500);
+            });
         });
     };
 
     const triggerFlashEffect = () => {
-        const badges = document.querySelectorAll('.availability-badge');
-        badges.forEach(b => {
-            b.style.transform = 'scale(1.05)';
-            setTimeout(() => { b.style.transform = 'scale(1)'; }, 300);
+        requestAnimationFrame(() => {
+            const badges = document.querySelectorAll('.availability-badge');
+            badges.forEach(b => {
+                b.style.transform = 'scale(1.05)';
+                setTimeout(() => {
+                    requestAnimationFrame(() => {
+                        b.style.transform = 'scale(1)';
+                    });
+                }, 300);
+            });
         });
     }
 
