@@ -1096,6 +1096,46 @@
         </div>
     </footer>
 
+<!-- Mobile Sticky Footer -->
+    <div
+        class="fixed bottom-0 left-0 right-0 z-50 md:hidden flex flex-col shadow-[0_-4px_20px_rgba(0,0,0,0.15)] bg-white">
+
+        <div class="availability-badge w-full bg-green-50 border-t border-green-200 py-1.5 flex items-center justify-center gap-2 text-[11px] font-bold text-green-800 transition-all duration-500 opacity-0"
+            role="status">
+            <span class="relative flex h-2 w-2">
+                <span class="ping-dot absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span class="static-dot relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+            </span>
+            <span>
+                <span class="unit-count">...</span>
+                <span class="unit-text">buscando...</span>
+            </span>
+        </div>
+
+        <div class="bg-white p-3 flex gap-3 border-t border-slate-100">
+            <a href="tel:+56936470112"
+                class="flex-1 bg-brand-600 text-white font-bold rounded-xl py-3 flex items-center justify-center gap-2 active:scale-95 transition shadow-lg shadow-brand-600/20"
+                aria-label="Llamar ahora">
+                <i class="fa-solid fa-phone animate-pulse"></i> Llamar
+            </a>
+
+            <a href="https://wa.me/56936470112"
+                class="flex-1 bg-green-600 text-white font-bold rounded-xl py-3 flex items-center justify-center gap-2 active:scale-95 transition shadow-lg shadow-green-500/20"
+                aria-label="Enviar mensaje por WhatsApp a Destape Rápido">
+
+                <div class="relative flex items-center justify-center">
+
+                    <span class="wa-notification-dot on-icon" id="wa-dot-mobile">1</span>
+
+                    <i class="fa-brands fa-whatsapp text-xl"></i>
+                </div>
+
+                WhatsApp
+            </a>
+        </div>
+    </div>
+    <!-- End Mobile Sticky Footer -->
+
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
 

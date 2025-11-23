@@ -42,10 +42,23 @@ def get_golden_blocks():
         raise Exception("Could not find <footer> in index.html")
     footer_block = footer_match.group(1)
 
-    return nav_block, mobile_menu_block, footer_block
+    # Extract Mobile Sticky Footer
+    mobile_footer_match = re.search(r'(<!-- Mobile Sticky Footer -->.*?<!-- End Mobile Sticky Footer -->)', content, re.DOTALL)
+    if not mobile_footer_match:
+        # Fallback if comments are missing (shouldn't happen as I just added them)
+        # Try to match by class if comments fail?
+        # For now, let's assume comments are there.
+        # If not, we might need to rely on the previous regex approach or skip.
+        # But since I edited index.html, it should be there.
+        print("Warning: Could not find Mobile Sticky Footer comments in index.html")
+        mobile_footer_block = ""
+    else:
+        mobile_footer_block = mobile_footer_match.group(1)
+
+    return nav_block, mobile_menu_block, footer_block, mobile_footer_block
 
 def update_files():
-    nav_block, mobile_menu_block, footer_block = get_golden_blocks()
+    nav_block, mobile_menu_block, footer_block, mobile_footer_block = get_golden_blocks()
     
     # Walk through all files
     for root, dirs, files in os.walk(ROOT_DIR):
@@ -53,8 +66,7 @@ def update_files():
             if file.endswith('.html'):
                 file_path = os.path.join(root, file)
                 
-                # Skip index.html (source of truth) but we might want to update it if we modify the blocks in code?
-                # No, we use index.html as source.
+                # Skip index.html (source of truth)
                 if file == 'index.html' and root == ROOT_DIR:
                     continue
                 
@@ -64,7 +76,6 @@ def update_files():
                     content = f.read()
                 
                 # 1. Update Body Class
-                # Add pb-30 md:pb-0 if not present
                 if 'pb-30' not in content:
                     content = re.sub(r'<body\s+class="([^"]*)"', r'<body class="\1 pb-30 md:pb-0"', content)
                 
@@ -73,39 +84,41 @@ def update_files():
 
                 if not is_landing_page:
                     # 2. Replace Nav
-                    # Find existing nav
                     content = re.sub(r'<nav\s+class="fixed w-full z-50.*?<\/nav>', nav_block, content, flags=re.DOTALL)
                     
                     # 3. Replace Mobile Menu Overlay
                     if 'id="mobile-menu-overlay"' in content:
                          content = re.sub(r'<div id="mobile-menu-overlay".*?<\/div>\s*<\/div>', mobile_menu_block, content, flags=re.DOTALL)
                     else:
-                        # If not found, insert it after nav?
-                        # Usually it's after nav.
                         content = content.replace('</nav>', '</nav>\n\n' + mobile_menu_block)
 
                     # 4. Replace Footer
                     content = re.sub(r'<footer class="bg-slate-50.*?<\/footer>', footer_block, content, flags=re.DOTALL)
-                
-                # 5. Accessibility Fix for mantencion-preventiva.html
+
+                    # 5. Replace/Insert Mobile Sticky Footer
+                    if '<!-- Mobile Sticky Footer -->' in content:
+                        content = re.sub(r'<!-- Mobile Sticky Footer -->.*?<!-- End Mobile Sticky Footer -->', mobile_footer_block, content, flags=re.DOTALL)
+                    else:
+                        # If not found, check if there is an old version without comments
+                        # The old version starts with <div class="fixed bottom-0... and ends with </div>...
+                        # It's risky to regex replace without markers.
+                        # Safe bet: Insert it after </footer> if </footer> exists.
+                        if '</footer>' in content:
+                            content = content.replace('</footer>', '</footer>\n\n' + mobile_footer_block)
+                        else:
+                            # If no footer, insert before body end
+                            content = content.replace('</body>', mobile_footer_block + '\n</body>')
+
+                # 6. Accessibility Fix for mantencion-preventiva.html
                 if 'mantencion-preventiva.html' in file_path:
-                    # Fix the invisible button text
-                    # Look for text-prev-900 and replace with text-brand-600
                     content = content.replace('text-prev-900', 'text-brand-600')
-                    # Also check for text-prev-700 just in case
                     content = content.replace('text-prev-700', 'text-brand-600')
 
-                # Fix 5: Performance Optimizations (New)
-                # 5.1 Preconnects
+                # 7. Performance Optimizations
                 if '<link rel="preconnect" href="https://www.transparenttextures.com">' not in content:
                     content = content.replace('<head>', '<head>\n    <link rel="preconnect" href="https://www.transparenttextures.com">')
                 
-                # 5.2 Google Fonts Display Swap
-                # Check if 'display=swap' is not present and 'fonts.googleapis.com' is in the content
                 if 'display=swap' not in content and 'fonts.googleapis.com' in content:
-                    # Replace the font link to ensure 'display=swap' is included
-                    # This specific replacement targets the Plus Jakarta Sans font link
-                    # It's safer to use regex for this to avoid issues with multiple font links or slight variations
                     content = re.sub(
                         r'(<link[^>]*?href="https://fonts\.googleapis\.com/css2\?family=Plus\+Jakarta\+Sans:wght@400;500;600;700;800)(&[^"]*)?"([^>]*?)>',
                         r'<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"\3>',
@@ -113,11 +126,8 @@ def update_files():
                         flags=re.IGNORECASE
                     )
 
-                # 5.3 Navbar Logo Optimization (Global replacement for safety)
-                # Replace any remaining favicon.png used as image source with logo-nav.png
                 content = content.replace('src="/favicon.png"', 'src="/logo-nav.png"')
 
-                # 5.4 CSP Meta Tag
                 csp_meta = '<meta http-equiv="Content-Security-Policy" content="default-src \'self\' https:; script-src \'self\' \'unsafe-inline\' https:; style-src \'self\' \'unsafe-inline\' https:; img-src \'self\' data: https:; font-src \'self\' https: data:;">'
                 if 'Content-Security-Policy' not in content:
                     content = content.replace('<head>', f'<head>\n    {csp_meta}')

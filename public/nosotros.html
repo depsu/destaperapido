@@ -346,7 +346,8 @@
 
 
     <meta property="og:title" content="Quiénes Somos | Destape Rápido">
-    <meta property="og:description" content="Conoce a Destape Rápido. Más de 10 años de experiencia en destapes y limpieza de fosas en la Región Metropolitana. Equipos certificados y atención 24/7.">
+    <meta property="og:description"
+        content="Conoce a Destape Rápido. Más de 10 años de experiencia en destapes y limpieza de fosas en la Región Metropolitana. Equipos certificados y atención 24/7.">
     <meta property="og:url" content="https://www.destaperapido.cl/nosotros">
     <meta property="og:image" content="https://www.destaperapido.cl/images/hero_home.webp">
     <meta name="twitter:card" content="summary_large_image">
@@ -633,19 +634,30 @@
                     <div class="absolute -bottom-4 -right-4 w-32 h-32 bg-slate-100 rounded-full -z-10"></div>
                     <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=2070&auto=format&fit=crop"
                         alt="Técnico trabajando" class="rounded-3xl shadow-2xl w-full object-cover h-[500px]">
+
+                    <!-- Stats Cards -->
                     <div
                         class="absolute bottom-10 left-10 bg-white p-6 rounded-2xl shadow-xl max-w-xs border-l-4 border-brand-500">
                         <p class="text-4xl font-extrabold text-brand-600 mb-1">10+</p>
-                        <p class="text-sm font-bold text-slate-500 uppercase tracking-wide">Años de Experiencia en
-                            Terreno</p>
+                        <p class="text-sm font-bold text-slate-500 uppercase tracking-wide">Años de Experiencia</p>
+                    </div>
+                    <div
+                        class="absolute top-10 right-10 bg-white p-6 rounded-2xl shadow-xl max-w-xs border-l-4 border-green-500 hidden md:block">
+                        <p class="text-4xl font-extrabold text-green-600 mb-1">+5k</p>
+                        <p class="text-sm font-bold text-slate-500 uppercase tracking-wide">Emergencias Resueltas</p>
                     </div>
                 </div>
 
                 <div>
-                    <h2 class="text-3xl font-extrabold text-slate-900 mb-6">Dos Mundos, Un Estándar de Calidad</h2>
+                    <h2 class="text-3xl font-extrabold text-slate-900 mb-6">Somos tus vecinos expertos</h2>
                     <p class="text-slate-600 mb-6 leading-relaxed">
-                        Entendemos que no es lo mismo trabajar en un departamento en Vitacura que en una parcela en
-                        Colina. Por eso, hemos estructurado nuestra empresa en dos divisiones especializadas:
+                        Detrás de cada camión y cada herramienta, hay un equipo humano comprometido con tu tranquilidad.
+                        Sabemos que llamar a un servicio de destape suele ser en un momento de estrés. Por eso,
+                        nuestro trato es cercano, respetuoso y, sobre todo, honesto.
+                    </p>
+                    <p class="text-slate-600 mb-6 leading-relaxed">
+                        No somos una franquicia impersonal. Somos una empresa local que entiende las diferencias entre
+                        trabajar en un edificio antiguo de Providencia o en una parcela moderna en Chicureo.
                     </p>
 
                     <div class="space-y-8 mt-8">
@@ -655,10 +667,9 @@
                                 <i class="fa-solid fa-city"></i>
                             </div>
                             <div>
-                                <h3 class="font-bold text-slate-900 text-lg">División Urbana (Limpieza)</h3>
+                                <h3 class="font-bold text-slate-900 text-lg">Cuidado en tu Hogar</h3>
                                 <p class="text-slate-500 text-sm mt-2">
-                                    Equipos portátiles, eléctricos y silenciosos. Nuestro objetivo es entrar a tu hogar,
-                                    solucionar el problema y salir sin dejar rastro. Cuidamos tus pisos y cerámicas.
+                                    Usamos cubrezapatos y protegemos tu piso. Entendemos que tu casa es tu santuario.
                                 </p>
                             </div>
                         </div>
@@ -669,10 +680,10 @@
                                 <i class="fa-solid fa-tractor"></i>
                             </div>
                             <div>
-                                <h3 class="font-bold text-slate-900 text-lg">División Rural (Potencia)</h3>
+                                <h3 class="font-bold text-slate-900 text-lg">Potencia Industrial</h3>
                                 <p class="text-slate-500 text-sm mt-2">
-                                    Camiones de alto tonelaje y mangueras de largo alcance. Sabemos lidiar con barro,
-                                    raíces y accesos difíciles en parcelas. Certificación sanitaria garantizada.
+                                    Para desafíos mayores, desplegamos maquinaria pesada con la misma precisión y
+                                    cuidado.
                                 </p>
                             </div>
                         </div>
@@ -879,6 +890,46 @@
             </div>
         </div>
     </footer>
+
+<!-- Mobile Sticky Footer -->
+    <div
+        class="fixed bottom-0 left-0 right-0 z-50 md:hidden flex flex-col shadow-[0_-4px_20px_rgba(0,0,0,0.15)] bg-white">
+
+        <div class="availability-badge w-full bg-green-50 border-t border-green-200 py-1.5 flex items-center justify-center gap-2 text-[11px] font-bold text-green-800 transition-all duration-500 opacity-0"
+            role="status">
+            <span class="relative flex h-2 w-2">
+                <span class="ping-dot absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span class="static-dot relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+            </span>
+            <span>
+                <span class="unit-count">...</span>
+                <span class="unit-text">buscando...</span>
+            </span>
+        </div>
+
+        <div class="bg-white p-3 flex gap-3 border-t border-slate-100">
+            <a href="tel:+56936470112"
+                class="flex-1 bg-brand-600 text-white font-bold rounded-xl py-3 flex items-center justify-center gap-2 active:scale-95 transition shadow-lg shadow-brand-600/20"
+                aria-label="Llamar ahora">
+                <i class="fa-solid fa-phone animate-pulse"></i> Llamar
+            </a>
+
+            <a href="https://wa.me/56936470112"
+                class="flex-1 bg-green-600 text-white font-bold rounded-xl py-3 flex items-center justify-center gap-2 active:scale-95 transition shadow-lg shadow-green-500/20"
+                aria-label="Enviar mensaje por WhatsApp a Destape Rápido">
+
+                <div class="relative flex items-center justify-center">
+
+                    <span class="wa-notification-dot on-icon" id="wa-dot-mobile">1</span>
+
+                    <i class="fa-brands fa-whatsapp text-xl"></i>
+                </div>
+
+                WhatsApp
+            </a>
+        </div>
+    </div>
+    <!-- End Mobile Sticky Footer -->
 
 
 
