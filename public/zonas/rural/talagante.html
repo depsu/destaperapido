@@ -931,7 +931,7 @@
             <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-8">Sectores con cobertura diaria:
             </p>
             <div
-                class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+                class="flex flex-wrap justify-center items-center gap-8 md:gap-16 grayscale hover:grayscale-0 transition-all duration-500">
                 <div class="flex items-center gap-2 font-bold text-slate-700 text-lg"><i
                         class="fa-solid fa-road text-2xl"></i> Camino Lonquén</div>
                 <div class="flex items-center gap-2 font-bold text-slate-700 text-lg"><i
@@ -1140,10 +1140,10 @@
             </div>
 
             <div class="relative group px-4 md:px-12">
-                <button onclick="scrollCarousel(-1)"
+                <button onclick="scrollCarousel(-1)" aria-label="Anterior testimonio"
                     class="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 bg-white border border-slate-200 rounded-full items-center justify-center text-slate-600 shadow-md hover:bg-slate-50 z-10 transition"><i
                         class="fa-solid fa-chevron-left"></i></button>
-                <button onclick="scrollCarousel(1)"
+                <button onclick="scrollCarousel(1)" aria-label="Siguiente testimonio"
                     class="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 bg-white border border-slate-200 rounded-full items-center justify-center text-slate-600 shadow-md hover:bg-slate-50 z-10 transition"><i
                         class="fa-solid fa-chevron-right"></i></button>
                 <div id="carousel-track"
@@ -1488,20 +1488,20 @@
                             <span
                                 class="block font-extrabold text-slate-900 text-xl leading-none tracking-tight">DESTAPE<span
                                     class="text-brand-600">RÁPIDO</span></span>
-                            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Región
+                            <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Región
                                 Metropolitana</span>
                         </div>
                     </a>
                     <p class="mb-6 text-slate-500 max-w-xs leading-relaxed">Soluciones sanitarias profesionales para
                         hogares y empresas. Atendemos urgencias reales con equipos certificados.</p>
                     <div class="flex gap-4">
-                        <a href="/" class="text-slate-400 hover:text-brand-600 transition" aria-label="Facebook">
+                        <a href="/" class="text-slate-500 hover:text-brand-600 transition" aria-label="Facebook">
                             <i class="fa-brands fa-facebook text-xl"></i>
                         </a>
-                        <a href="/" class="text-slate-400 hover:text-brand-600 transition" aria-label="Instagram">
+                        <a href="/" class="text-slate-500 hover:text-brand-600 transition" aria-label="Instagram">
                             <i class="fa-brands fa-instagram text-xl"></i>
                         </a>
-                        <a href="/" class="text-slate-400 hover:text-brand-600 transition" aria-label="LinkedIn">
+                        <a href="/" class="text-slate-500 hover:text-brand-600 transition" aria-label="LinkedIn">
                             <i class="fa-brands fa-linkedin text-xl"></i>
                         </a>
                     </div>
@@ -1560,15 +1560,15 @@
                 class="border-t border-slate-200 pt-8 text-center flex flex-col md:flex-row justify-between items-center pb-24 md:pb-0">
                 <div class="flex flex-col items-center md:items-start gap-2">
                     <p>&copy; <span id="year"></span> AlcantarilladosPro. Todos los derechos reservados.</p>
-                    <p class="text-xs text-slate-400">Diseñado por <a href="https://www.paginasfast.cl/" target="_blank"
+                    <p class="text-xs text-slate-500">Diseñado por <a href="https://www.paginasfast.cl/" target="_blank"
                             rel="noopener" class="hover:text-brand-600 transition">PaginasFast.cl</a></p>
                 </div>
                 <div class="flex gap-4 mt-4 md:mt-0">
-                    <a href="/" class="hover:text-slate-800 transition"><i
+                    <a href="/" class="hover:text-slate-800 transition" aria-label="Facebook"><i
                             class="fa-brands fa-facebook text-lg"></i></a>
-                    <a href="/" class="hover:text-slate-800 transition"><i
+                    <a href="/" class="hover:text-slate-800 transition" aria-label="Instagram"><i
                             class="fa-brands fa-instagram text-lg"></i></a>
-                    <a href="/" class="hover:text-slate-800 transition"><i
+                    <a href="/" class="hover:text-slate-800 transition" aria-label="LinkedIn"><i
                             class="fa-brands fa-linkedin text-lg"></i></a>
                 </div>
             </div>
