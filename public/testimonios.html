@@ -7,9 +7,13 @@
     <link rel="preconnect" href="https://www.transparenttextures.com">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiénes Somos | Destape Rápido</title>
+    <title>Testimonios y Opiniones | Destape Rápido</title>
     <meta name="description"
-        content="Conoce a Destape Rápido. Más de 10 años de experiencia en destapes y limpieza de fosas en la Región Metropolitana. Equipos certificados y atención 24/7.">
+        content="Lee las opiniones de nuestros clientes en Las Condes, Vitacura, Lo Barnechea y más. Servicio 5 estrellas garantizado. Tu satisfacción es nuestra prioridad.">
+
+    <meta property="og:title" content="Opiniones de Clientes - Destape Rápido">
+    <meta property="og:description"
+        content="Descubre por qué somos la empresa de destapes mejor evaluada del sector oriente.">
 
     <link rel="stylesheet" href="/output.css">
 
@@ -20,20 +24,30 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
 
-
-
+        /* Hero específico para Testimonios */
+        .hero-service {
+            background-image:
+                linear-gradient(to right, rgba(30, 58, 138, 0.92) 0%, rgba(30, 58, 138, 0.85) 100%),
+                url('/images/hero_service.webp');
+            background-size: cover;
+            background-position: center;
+            background-attachment: scroll;
+        }
+    </style>
 
     <style>
         /*Botón de whatsapp escritorio*/
-        /* --- VARIABLES Y ESTILOS BASE --- */
         :root {
             --wa-green: #25D366;
             --wa-dark: #075E54;
             --wa-red: #ff3b30;
         }
 
-        /* 1. NOTIFICACIÓN ROJA (Nuevo) */
         .wa-notification-dot {
             position: absolute;
             top: -5px;
@@ -73,7 +87,6 @@
             }
         }
 
-        /* 2. BOTÓN FLOTANTE */
         .wa-floating-btn {
             position: fixed;
             bottom: 20px;
@@ -83,7 +96,6 @@
             background-color: var(--wa-green);
             color: white;
             border-radius: 50%;
-
             align-items: center;
             justify-content: center;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
@@ -145,7 +157,6 @@
             }
         }
 
-        /* 3. VENTANA DE CHAT */
         .wa-chat-box {
             display: none;
             position: fixed;
@@ -211,6 +222,7 @@
 
         .wa-close-btn:hover {
             opacity: 1;
+            transform: scale(1);
         }
 
         .wa-profile-pic {
@@ -315,7 +327,6 @@
             filter: brightness(0) invert(1);
         }
 
-        /* ===== AVAILABILITY BADGE (MÓVIL) ===== */
         .availability-badge {
             transition: all 0.5s ease;
         }
@@ -333,7 +344,6 @@
             }
         }
 
-        /* Posición específica para Camión (Botón Rectangular) */
         .wa-notification-dot.on-icon {
             top: -5px;
             right: -5px;
@@ -347,6 +357,7 @@
 
 <body class="bg-slate-50 text-slate-600 antialiased selection:bg-brand-600 selection:text-white pb-30 md:pb-0">
 
+    <!-- Navigation -->
     <nav
         class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -591,428 +602,365 @@
         </div>
     </div>
 
-    <header class="hero-about py-24 pt-40 relative">
-        <div class="container mx-auto px-4 relative z-10 text-center">
-            <div class="availability-badge inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-6 text-white"
-                data-theme="dark">
-                <span class="relative flex h-2 w-2">
-                    <span class="ping-dot w-2 h-2 rounded-full bg-green-400 animate-pulse absolute"></span>
-                    <span class="static-dot w-2 h-2 rounded-full bg-green-500 relative"></span>
-                </span>
-                <span>
-                    <span class="unit-count">3</span> <span class="unit-text">Camiones disponibles RM</span>
-                </span>
-            </div>
+    <header class="min-h-[50vh] flex items-center relative pt-28 pb-20 overflow-hidden">
+        <!-- Optimized Hero Image -->
+        <img src="/images/hero_service.webp" alt="Testimonios Destape Rápido"
+            class="absolute inset-0 w-full h-full object-cover -z-20" fetchpriority="high" width="1920" height="1080">
 
-            <span class="text-brand-200 font-bold uppercase tracking-widest text-sm mb-4 block">Nuestra Historia</span>
-            <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6 leading-tight">
-                Más que destapes, <br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">Entregamos
-                    Tranquilidad</span>
+        <!-- Gradient Overlay -->
+        <div class="absolute inset-0 -z-10"
+            style="background: linear-gradient(to right, rgba(30, 58, 138, 0.92) 0%, rgba(30, 58, 138, 0.85) 100%);">
+        </div>
+
+        <div class="container mx-auto px-4 relative z-10 text-center">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight text-white">
+                Confianza que se <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">Siente</span>
             </h1>
-            <p class="text-lg text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed">
-                Fundada con la misión de profesionalizar el rubro sanitario en Santiago.
-                Combinamos la precisión de la tecnología alemana para departamentos con la fuerza industrial para el
-                sector rural.
+            <p class="text-lg text-blue-100 mb-8 max-w-2xl mx-auto leading-relaxed">
+                Nuestros clientes hablan por nosotros. Descubre por qué somos la opción preferida en el sector oriente.
             </p>
         </div>
     </header>
 
     <section class="py-20 bg-white">
         <div class="container mx-auto px-4">
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <div class="relative">
-                    <div class="absolute -top-4 -left-4 w-24 h-24 bg-brand-100 rounded-full -z-10"></div>
-                    <div class="absolute -bottom-4 -right-4 w-32 h-32 bg-slate-100 rounded-full -z-10"></div>
-                    <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=2070&auto=format&fit=crop"
-                        alt="Técnico trabajando" class="rounded-3xl shadow-2xl w-full object-cover h-[500px]">
-                    <div
-                        class="absolute bottom-10 left-10 bg-white p-6 rounded-2xl shadow-xl max-w-xs border-l-4 border-brand-500">
-                        <p class="text-4xl font-extrabold text-brand-600 mb-1">10+</p>
-                        <p class="text-sm font-bold text-slate-500 uppercase tracking-wide">Años de Experiencia en
-                            Terreno</p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-slate-50 rounded-2xl p-8 border border-slate-100 shadow-sm hover:shadow-lg transition">
+                    <div class="flex items-center gap-1 text-yellow-400 mb-4 text-sm">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
                     </div>
-                </div>
-
-                <div>
-                    <h2 class="text-3xl font-extrabold text-slate-900 mb-6">Dos Mundos, Un Estándar de Calidad</h2>
-                    <p class="text-slate-600 mb-6 leading-relaxed">
-                        Entendemos que no es lo mismo trabajar en un departamento en Vitacura que en una parcela en
-                        Colina. Por eso, hemos estructurado nuestra empresa en dos divisiones especializadas:
+                    <p class="text-slate-600 mb-6 leading-relaxed italic">
+                        "Se me tapó el WC un domingo en la tarde. Llegaron en 20 minutos a mi departamento en Las
+                        Condes. Muy profesionales y limpios. Recomendados 100%."
                     </p>
-
-                    <div class="space-y-8 mt-8">
-                        <div class="flex gap-4">
-                            <div
-                                class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl flex-shrink-0">
-                                <i class="fa-solid fa-city"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-slate-900 text-lg">División Urbana (Limpieza)</h3>
-                                <p class="text-slate-500 text-sm mt-2">
-                                    Equipos portátiles, eléctricos y silenciosos. Nuestro objetivo es entrar a tu hogar,
-                                    solucionar el problema y salir sin dejar rastro. Cuidamos tus pisos y cerámicas.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="flex gap-4">
-                            <div
-                                class="w-12 h-12 rounded-xl bg-green-50 text-green-600 flex items-center justify-center text-xl flex-shrink-0">
-                                <i class="fa-solid fa-tractor"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-slate-900 text-lg">División Rural (Potencia)</h3>
-                                <p class="text-slate-500 text-sm mt-2">
-                                    Camiones de alto tonelaje y mangueras de largo alcance. Sabemos lidiar con barro,
-                                    raíces y accesos difíciles en parcelas. Certificación sanitaria garantizada.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-20 bg-slate-50 border-y border-slate-200">
-        <div class="container mx-auto px-4">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="text-brand-600 font-bold uppercase tracking-widest text-xs">Nuestra Promesa</span>
-                <h2 class="text-3xl font-extrabold text-slate-900 mt-2">¿Por qué los clientes nos prefieren?</h2>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <div
-                    class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition text-center group">
-                    <div
-                        class="w-16 h-16 mx-auto bg-slate-50 rounded-full flex items-center justify-center text-slate-900 text-2xl mb-6 group-hover:bg-brand-600 group-hover:text-white transition-colors">
-                        <i class="fa-solid fa-stopwatch"></i>
-                    </div>
-                    <h3 class="font-bold text-xl text-slate-900 mb-3">Rapidez Real</h3>
-                    <p class="text-slate-500 text-sm">
-                        No prometemos "llegar en 10 minutos" si no es verdad. Te damos tiempos estimados reales basados
-                        en la ubicación de nuestros móviles GPS.
-                    </p>
-                </div>
-
-                <div
-                    class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition text-center group">
-                    <div
-                        class="w-16 h-16 mx-auto bg-slate-50 rounded-full flex items-center justify-center text-slate-900 text-2xl mb-6 group-hover:bg-brand-600 group-hover:text-white transition-colors">
-                        <i class="fa-solid fa-file-invoice-dollar"></i>
-                    </div>
-                    <h3 class="font-bold text-xl text-slate-900 mb-3">Sin Letra Chica</h3>
-                    <p class="text-slate-500 text-sm">
-                        Nuestros presupuestos son transparentes. Te explicamos qué incluye el servicio antes de empezar.
-                        Sin cobros sorpresa al final.
-                    </p>
-                </div>
-
-                <div
-                    class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition text-center group">
-                    <div
-                        class="w-16 h-16 mx-auto bg-slate-50 rounded-full flex items-center justify-center text-slate-900 text-2xl mb-6 group-hover:bg-brand-600 group-hover:text-white transition-colors">
-                        <i class="fa-solid fa-medal"></i>
-                    </div>
-                    <h3 class="font-bold text-xl text-slate-900 mb-3">Garantía Técnica</h3>
-                    <p class="text-slate-500 text-sm">
-                        Si el trabajo no queda bien hecho, volvemos. Entregamos informes técnicos válidos para seguros y
-                        administraciones.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-20 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="bg-slate-900 rounded-3xl overflow-hidden shadow-2xl">
-                <div class="grid lg:grid-cols-2">
-                    <div class="p-10 md:p-16 flex flex-col justify-center">
-                        <span class="text-brand-400 font-bold uppercase tracking-widest text-xs mb-4">Tecnología de
-                            Punta</span>
-                        <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-6">Invertimos en lo mejor para ti
-                        </h2>
-                        <p class="text-slate-400 mb-8 leading-relaxed">
-                            No usamos herramientas caseras. Nuestra flota incluye:
-                        </p>
-                        <ul class="space-y-4">
-                            <li class="flex items-center gap-4 text-slate-300">
-                                <i class="fa-solid fa-check text-green-400"></i>
-                                <span>Camiones de alto vacío (10.000 y 20.000 Lts)</span>
-                            </li>
-                            <li class="flex items-center gap-4 text-slate-300">
-                                <i class="fa-solid fa-check text-green-400"></i>
-                                <span>Hidrojet de alta presión para grasas duras</span>
-                            </li>
-                            <li class="flex items-center gap-4 text-slate-300">
-                                <i class="fa-solid fa-check text-green-400"></i>
-                                <span>Cámaras de video inspección HD</span>
-                            </li>
-                            <li class="flex items-center gap-4 text-slate-300">
-                                <i class="fa-solid fa-check text-green-400"></i>
-                                <span>Detectores de fugas por ultrasonido</span>
-                            </li>
-                        </ul>
-                        <div class="mt-10">
-                            <a href="contacto.html"
-                                class="inline-block bg-brand-600 hover:bg-brand-500 text-white font-bold py-3 px-8 rounded-xl transition">
-                                Contactar al Equipo
-                            </a>
-                        </div>
-                    </div>
-                    <div class="h-full min-h-[400px] relative">
-                        <img src="https://images.unsplash.com/photo-1616952682822-19543fb00042?q=80&w=987&auto=format&fit=crop"
-                            alt="Flota de camiones" class="absolute inset-0 w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-slate-900/20"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="bg-slate-50 text-slate-500 py-12 text-sm border-t border-slate-200">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
-
-                <div class="lg:col-span-2">
-                    <a href="/" class="flex items-center gap-3 mb-6" aria-label="Destape Rápido - Página de Inicio">
-                        <div class="w-[72px] h-[72px] flex items-center justify-center">
-                            <img src="/logo-nav.webp" alt="Logo Destape Rápido, servicio de destapes en la RM"
-                                width="72" height="72" class="w-full h-full object-contain">
+                    <div class="flex items-center gap-4">
+                        <div
+                            class="w-10 h-10 bg-brand-100 rounded-full flex items-center justify-center text-brand-600 font-bold">
+                            MP
                         </div>
                         <div>
-                            <span
-                                class="block font-extrabold text-slate-900 text-xl leading-none tracking-tight">DESTAPE<span
-                                    class="text-brand-600">RÁPIDO</span></span>
-                            <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Región
-                                Metropolitana</span>
+                            <h4 class="font-bold text-slate-900">María Paz</h4>
+                            <p class="text-xs text-slate-500">Las Condes</p>
                         </div>
-                    </a>
-                    <p class="mb-6 text-slate-500 max-w-xs leading-relaxed">Soluciones sanitarias profesionales para
-                        hogares y empresas. Atendemos urgencias reales con equipos certificados.</p>
-                    <div class="flex gap-4">
-                        <a href="/" class="text-slate-500 hover:text-brand-600 transition" aria-label="Facebook">
-                            <i class="fa-brands fa-facebook text-xl"></i>
-                        </a>
-                        <a href="/" class="text-slate-500 hover:text-brand-600 transition" aria-label="Instagram">
-                            <i class="fa-brands fa-instagram text-xl"></i>
-                        </a>
-                        <a href="/" class="text-slate-500 hover:text-brand-600 transition" aria-label="LinkedIn">
-                            <i class="fa-brands fa-linkedin text-xl"></i>
-                        </a>
                     </div>
                 </div>
 
-                <div>
-                    <h4 class="text-slate-900 font-bold mb-4 uppercase tracking-wider text-xs">Servicios</h4>
-                    <ul class="space-y-2">
-                        <li><a href="/servicios/destape-alcantarillado.html"
-                                class="hover:text-brand-600 transition">Destape Alcantarillado</a></li>
-                        <li><a href="/servicios/limpieza-fosas-septicas.html"
-                                class="hover:text-brand-600 transition">Limpieza Fosas Sépticas</a></li>
-                        <li><a href="/servicios/destape-alcantarillado.html#mantencion"
-                                class="hover:text-brand-600 transition">Mantención Edificios</a></li>
-                        <li><a href="/servicios/destape-alcantarillado.html"
-                                class="font-medium text-brand-600 hover:underline text-xs mt-2 block">Ver todos los
-                                servicios &rarr;</a></li>
-                    </ul>
+                <!-- Testimonial 2 -->
+                <div class="bg-slate-50 rounded-2xl p-8 border border-slate-100 shadow-sm hover:shadow-lg transition">
+                    <div class="flex items-center gap-1 text-yellow-400 mb-4 text-sm">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-slate-600 mb-6 leading-relaxed italic">
+                        "Excelente servicio para mi restaurante en Vitacura. Teníamos un problema recurrente con las
+                        grasas y lo solucionaron con el hidrojet. Ahora tenemos contrato mensual."
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div
+                            class="w-10 h-10 bg-brand-100 rounded-full flex items-center justify-center text-brand-600 font-bold">
+                            RG
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900">Roberto G.</h4>
+                            <p class="text-xs text-slate-500">Vitacura</p>
+                        </div>
+                    </div>
                 </div>
 
-                <div>
-                    <h4 class="text-slate-900 font-bold mb-4 uppercase tracking-wider text-xs">Cobertura</h4>
-                    <ul class="space-y-2">
-                        <li><a href="/zonas/urbano/index.html" class="hover:text-brand-600 transition">Las Condes /
-                                Vitacura</a></li>
-                        <li><a href="/zonas/rural/chicureo.html" class="hover:text-brand-600 transition">Chicureo /
-                                Colina</a></li>
-                        <li><a href="/zonas/rural/pirque.html" class="hover:text-brand-600 transition">Pirque / Cajón
-                                del Maipo</a></li>
-                        <li><a href="/zonas/urbano/index.html"
-                                class="font-medium text-brand-600 hover:underline text-xs mt-2 block">Ver
-                                todas las zonas &rarr;</a></li>
-                    </ul>
+                <!-- Testimonial 3 -->
+                <div class="bg-slate-50 rounded-2xl p-8 border border-slate-100 shadow-sm hover:shadow-lg transition">
+                    <div class="flex items-center gap-1 text-yellow-400 mb-4 text-sm">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-slate-600 mb-6 leading-relaxed italic">
+                        "Vivo en Chicureo y es difícil encontrar gente que venga rápido. Destape Rápido llegó el mismo
+                        día y destaparon la fosa séptica sin problemas. Muy amables."
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div
+                            class="w-10 h-10 bg-brand-100 rounded-full flex items-center justify-center text-brand-600 font-bold">
+                            JS
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900">Juan S.</h4>
+                            <p class="text-xs text-slate-500">Chicureo</p>
+                        </div>
+                    </div>
                 </div>
 
-                <div>
-                    <h4 class="text-slate-900 font-bold mb-4 uppercase tracking-wider text-xs">Blog & Ayuda</h4>
-                    <ul class="space-y-2">
-                        <li><a href="/servicios/destape-alcantarillado.html#consejos"
-                                class="hover:text-brand-600 transition">Consejos de Mantención</a></li>
-                        <li><a href="/servicios/destape-alcantarillado.html#faq"
-                                class="hover:text-brand-600 transition">Preguntas Frecuentes</a></li>
-                        <li><a href="/servicios/destape-alcantarillado.html#trabaja"
-                                class="hover:text-brand-600 transition">Trabaja con Nosotros</a></li>
-                        <li><a href="/servicios/destape-alcantarillado.html#contacto"
-                                class="hover:text-brand-600 transition">Contacto Administrativo</a></li>
-                        <li><a href="/blog/index.html"
-                                class="hover:text-brand-600 transition font-bold text-brand-600 mt-2 block">Blog de
-                                Consejos &rarr;</a></li>
-                    </ul>
+                <!-- Testimonial 4 -->
+                <div class="bg-slate-50 rounded-2xl p-8 border border-slate-100 shadow-sm hover:shadow-lg transition">
+                    <div class="flex items-center gap-1 text-yellow-400 mb-4 text-sm">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-slate-600 mb-6 leading-relaxed italic">
+                        "Administro un edificio en Providencia y siempre los llamamos. Son puntuales, dan factura y
+                        garantía. Es un alivio contar con proveedores así."
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div
+                            class="w-10 h-10 bg-brand-100 rounded-full flex items-center justify-center text-brand-600 font-bold">
+                            AE
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900">Admin. Edificio</h4>
+                            <p class="text-xs text-slate-500">Providencia</p>
+                        </div>
+                    </div>
                 </div>
 
+                <!-- Testimonial 5 -->
+                <div class="bg-slate-50 rounded-2xl p-8 border border-slate-100 shadow-sm hover:shadow-lg transition">
+                    <div class="flex items-center gap-1 text-yellow-400 mb-4 text-sm">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-slate-600 mb-6 leading-relaxed italic">
+                        "Tenía una urgencia con la alcantarilla del patio. Vinieron con una cámara y me mostraron
+                        exactamente dónde estaba la raíz que tapaba todo. ¡Geniales!"
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div
+                            class="w-10 h-10 bg-brand-100 rounded-full flex items-center justify-center text-brand-600 font-bold">
+                            CL
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900">Carolina L.</h4>
+                            <p class="text-xs text-slate-500">La Reina</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 6 -->
+                <div class="bg-slate-50 rounded-2xl p-8 border border-slate-100 shadow-sm hover:shadow-lg transition">
+                    <div class="flex items-center gap-1 text-yellow-400 mb-4 text-sm">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-slate-600 mb-6 leading-relaxed italic">
+                        "Precio justo y trabajo rápido. Me cobraron lo que me dijeron por teléfono, sin sorpresas. Eso
+                        se valora mucho hoy en día."
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div
+                            class="w-10 h-10 bg-brand-100 rounded-full flex items-center justify-center text-brand-600 font-bold">
+                            FM
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900">Felipe M.</h4>
+                            <p class="text-xs text-slate-500">Lo Barnechea</p>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div
-                class="border-t border-slate-200 pt-8 text-center flex flex-col md:flex-row justify-between items-center pb-24 md:pb-0">
-                <div class="flex flex-col items-center md:items-start gap-2">
-                    <p>&copy; <span id="year"></span> destaperapido. Todos los derechos reservados.</p>
-                    <p class="text-xs text-slate-500">Diseñado por <a href="https://www.paginasfast.cl/" target="_blank"
-                            rel="noopener" class="hover:text-brand-600 transition">PaginasFast.cl</a></p>
+            <div class="mt-16 text-center">
+                <h3 class="text-2xl font-bold text-slate-900 mb-6">Únete a nuestros clientes satisfechos</h3>
+                <a href="https://wa.me/56936470112"
+                    class="inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-500 text-white font-bold py-4 px-10 rounded-xl shadow-lg transition transform hover:-translate-y-1 text-lg">
+                    <i class="fa-brands fa-whatsapp"></i> Agendar Visita
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Same as other pages) -->
+    <footer class="bg-slate-900 text-slate-300 py-12 border-t border-slate-800">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
+                            <img src="/logo-nav.webp" alt="Logo Footer" class="w-8 h-8 object-contain">
+                        </div>
+                        <span class="text-white font-bold text-xl">DESTAPE<span
+                                class="text-brand-500">RÁPIDO</span></span>
+                    </div>
+                    <p class="text-sm text-slate-400 mb-4">
+                        Expertos en destapes y gasfitería con maquinaria de última tecnología. Atendemos 24/7 en todo
+                        Santiago Oriente y zonas rurales.
+                    </p>
                 </div>
-                <div class="flex gap-4 mt-4 md:mt-0">
-                    <a href="/" class="hover:text-slate-800 transition" aria-label="Facebook"><i
-                            class="fa-brands fa-facebook text-lg"></i></a>
-                    <a href="/" class="hover:text-slate-800 transition" aria-label="Instagram"><i
-                            class="fa-brands fa-instagram text-lg"></i></a>
-                    <a href="/" class="hover:text-slate-800 transition" aria-label="LinkedIn"><i
-                            class="fa-brands fa-linkedin text-lg"></i></a>
+
+                <div>
+                    <h4 class="text-white font-bold mb-4">Servicios</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="/servicios/destape-alcantarillado.html"
+                                class="hover:text-brand-400 transition">Destape
+                                Alcantarillado</a></li>
+                        <li><a href="/servicios/limpieza-fosas-septicas.html"
+                                class="hover:text-brand-400 transition">Limpieza Fosas</a></li>
+                        <li><a href="/servicios/camion-alta-presion-hidrojet.html"
+                                class="hover:text-brand-400 transition">Hidrojet Alta Presión</a></li>
+                        <li><a href="/servicios/inspeccion-camara-alcantarillado.html"
+                                class="hover:text-brand-400 transition">Inspección Cámara</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold mb-4">Zonas</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="/zonas/urbano/las-condes.html" class="hover:text-brand-400 transition">Las
+                                Condes</a>
+                        </li>
+                        <li><a href="/zonas/urbano/vitacura.html" class="hover:text-brand-400 transition">Vitacura</a>
+                        </li>
+                        <li><a href="/zonas/urbano/lo-barnechea.html" class="hover:text-brand-400 transition">Lo
+                                Barnechea</a></li>
+                        <li><a href="/zonas/rural/chicureo.html" class="hover:text-brand-400 transition">Chicureo</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold mb-4">Contacto</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-phone text-brand-500"></i>
+                            <a href="tel:+56936470112" class="hover:text-white transition">+56 9 1234 5678</a>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-green-500"></i>
+                            <a href="https://wa.me/56936470112" class="hover:text-white transition">WhatsApp Directo</a>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-envelope text-brand-500"></i>
+                            <a href="mailto:contacto@destaperapido.cl"
+                                class="hover:text-white transition">contacto@destaperapido.cl</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-xs text-slate-500">
+                    &copy; 2024 Destape Rápido. Todos los derechos reservados.
+                </p>
+                <div class="flex gap-4">
+                    <a href="#" class="text-slate-500 hover:text-white transition"><i
+                            class="fa-brands fa-facebook"></i></a>
+                    <a href="#" class="text-slate-500 hover:text-white transition"><i
+                            class="fa-brands fa-instagram"></i></a>
                 </div>
             </div>
         </div>
     </footer>
 
+    <!-- WhatsApp Widget -->
+    <div class="wa-floating-btn" id="wa-floating-btn">
+        <svg class="wa-icon wa-icon-logo" viewBox="0 0 32 32">
+            <path
+                d="M16,2A13,13,0,0,0,8,25.23L2.93,27.11a1,1,0,0,0-.32,1.89l5.13,1.89A13,13,0,0,0,16,32C23.18,32,29,26.18,29,19S23.18,2,16,2Zm0,2A11,11,0,0,1,27,15c0,6.08-4.92,11-11,11a10.94,10.94,0,0,1-5.54-1.5l-4.33,1.6,1.6-4.33A10.94,10.94,0,0,1,5,15C5,8.92,9.92,4,16,4Zm5.87,14.68c-.21-.11-1.23-.61-1.42-.68s-.33-.11-.47.11-.54.68-.66.82-.24.16-.45.05a5.66,5.66,0,0,1-1.67-1,6.24,6.24,0,0,1-1.15-1.43c-.12-.21,0-.32.1-.42s.21-.24.32-.36.14-.2.21-.33.03-.24-.02-.33-.47-1.13-.64-1.55c-.17-.41-.35-.35-.48-.36s-.26,0-.4,0a.77.77,0,0,0-.56.26,2.36,2.36,0,0,0-.74,1.76,4.11,4.11,0,0,0,.86,2.18,9.46,9.46,0,0,0,3.62,3.2,11.88,11.88,0,0,0,1.21.45,2.88,2.88,0,0,0,1.32.08,2.14,2.14,0,0,0,1.4-1,1.73,1.73,0,0,0,.12-1C22.25,18.89,22.08,18.79,21.87,18.68Z" />
+        </svg>
+        <svg class="wa-icon wa-icon-close" viewBox="0 0 24 24">
+            <path
+                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+        </svg>
+        <div class="wa-notification-dot on-icon" id="wa-notification-dot">1</div>
+    </div>
 
+    <div class="wa-chat-box" id="wa-chat-box">
+        <div class="wa-header">
+            <div class="wa-profile-pic">
+                <img src="/logo-nav.webp" alt="Profile" style="width:100%; height:100%; border-radius:50%;">
+            </div>
+            <div class="wa-info">
+                <h4>Destape Rápido</h4>
+                <p>Respuesta inmediata</p>
+            </div>
+            <button class="wa-close-btn" id="wa-close-btn">&times;</button>
+        </div>
+        <div class="wa-body">
+            <div class="wa-message">
+                <div class="wa-msg-text">Hola! 👋 ¿Quieres ver más referencias?</div>
+                <span class="wa-time">Justo ahora</span>
+            </div>
+            <div class="wa-message" style="animation-delay: 0.5s;">
+                <div class="wa-msg-text">Escríbenos y te contamos más sobre nuestra experiencia.</div>
+                <span class="wa-time">Justo ahora</span>
+            </div>
+        </div>
+        <div class="wa-footer">
+            <a href="https://wa.me/56936470112?text=Hola,%20vi%20los%20testimonios%20y%20quiero%20agendar"
+                class="wa-start-chat-btn" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+                Contactar por WhatsApp
+            </a>
+        </div>
+    </div>
 
     <script>
-        document.getElementById('year').textContent = new Date().getFullYear();
-
-        const overlay = document.getElementById('mobile-menu-overlay');
-        const panel = document.getElementById('mobile-menu-panel');
-
+        // Mobile Menu Logic
         function openMenu() {
+            const overlay = document.getElementById('mobile-menu-overlay');
+            const panel = document.getElementById('mobile-menu-panel');
             overlay.classList.remove('invisible', 'opacity-0');
             panel.classList.remove('translate-x-full');
-            document.body.style.overflow = 'hidden';
         }
 
         function closeMenu() {
-            panel.classList.add('translate-x-full');
+            const overlay = document.getElementById('mobile-menu-overlay');
+            const panel = document.getElementById('mobile-menu-panel');
             overlay.classList.add('invisible', 'opacity-0');
-            document.body.style.overflow = '';
+            panel.classList.add('translate-x-full');
         }
 
         function toggleSubmenu(id, btn) {
             const submenu = document.getElementById(id);
             const icon = btn.querySelector('.fa-chevron-down');
-            if (submenu) {
-                if (submenu.classList.contains('hidden')) {
-                    submenu.classList.remove('hidden');
-                    if (icon) icon.style.transform = 'rotate(180deg)';
-                } else {
-                    submenu.classList.add('hidden');
-                    if (icon) icon.style.transform = 'rotate(0deg)';
-                }
-            }
+            submenu.classList.toggle('hidden');
+            icon.classList.toggle('rotate-180');
         }
-    </script>
 
-    <div class="fixed bottom-0 left-0 right-0 z-50 md:hidden flex flex-col shadow-[0_-4px_20px_rgba(0,0,0,0.15)]">
-        <div class="availability-badge w-full bg-green-50 border-t border-green-200 py-1.5 flex items-center justify-center gap-2 text-[11px] font-bold text-green-800 transition-all duration-500 opacity-0"
-            role="status">
-            <span class="relative flex h-2 w-2">
-                <span class="ping-dot absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                <span class="static-dot relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-            </span>
-            <span>
-                <span class="unit-count">...</span>
-                <span class="unit-text">buscando...</span>
-            </span>
-        </div>
+        // WhatsApp Widget Logic
+        const waBtn = document.getElementById('wa-floating-btn');
+        const waChatBox = document.getElementById('wa-chat-box');
+        const waCloseBtn = document.getElementById('wa-close-btn');
+        const waNotificationDot = document.getElementById('wa-notification-dot');
 
-        <div class="bg-white p-3 flex gap-3 border-t border-slate-100">
-            <a href="tel:+56936470112"
-                class="flex-1 bg-brand-600 text-white font-bold rounded-xl py-3 flex items-center justify-center gap-2 active:scale-95 transition shadow-lg shadow-brand-600/20"
-                aria-label="Llamar ahora">
-                <i class="fa-solid fa-phone animate-pulse"></i> Llamar
-            </a>
+        // Mostrar notificación después de 3 segundos
+        setTimeout(() => {
+            waNotificationDot.classList.add('show');
+        }, 3000);
 
-            <a href="https://wa.me/56936470112"
-                class="flex-1 bg-green-600 text-white font-bold rounded-xl py-3 flex items-center justify-center gap-2 active:scale-95 transition shadow-lg shadow-green-500/20"
-                aria-label="Enviar mensaje por WhatsApp a Destape Rápido">
-                <div class="relative flex items-center justify-center">
-                    <span class="wa-notification-dot on-icon" id="wa-dot-mobile">1</span>
-                    <i class="fa-brands fa-whatsapp text-xl"></i>
-                </div>
-                WhatsApp
-            </a>
-        </div>
-    </div>
-
-
-    <div class="wa-floating-btn hidden md:flex" id="wa-btn" onclick="toggleChat()">
-        <svg class="wa-icon wa-icon-logo" viewBox="0 0 24 24">
-            <path
-                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.008-.57-.008-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-        </svg>
-        <svg class="wa-icon wa-icon-close" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-            <line x1="6" y1="6" x2="18" y2="18"></line>
-        </svg>
-        <span class="wa-notification-dot" id="wa-dot">1</span>
-    </div>
-
-    <div class="wa-chat-box" id="whatsapp-chat">
-        <div class="wa-header">
-            <button class="wa-close-btn" onclick="toggleChat()">×</button>
-            <img src="/logo-nav.png" alt="Perfil" class="wa-profile-pic">
-            <div class="wa-info">
-                <h4>Destape Rápido</h4>
-                <p>En línea</p>
-            </div>
-        </div>
-        <div class="wa-body">
-            <div class="wa-message">
-                <div class="wa-msg-text">Bienvenido/a. ¿En qué podemos servirle?</div>
-                <span class="wa-time">Justo ahora</span>
-            </div>
-        </div>
-        <div class="wa-footer">
-            <a href="https://wa.me/56936470112?text=Hola,%20necesito%20ayuda" target="_blank" class="wa-start-chat-btn">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="22" y1="2" x2="11" y2="13"></line>
-                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                </svg>
-                COMENZAR CHAT
-            </a>
-        </div>
-    </div>
-
-
-    <script src="/js/availability-badge.js"></script>
-
-    <script>
-        // 3. WHATSAPP Y NOTIFICACIONES
-        window.addEventListener('load', function () {
-            setTimeout(function () {
-                var dot = document.getElementById("wa-dot");
-                var dotMobile = document.getElementById("wa-dot-mobile");
-                var chatBox = document.getElementById("whatsapp-chat");
-                if (chatBox && chatBox.style.display !== "flex") {
-                    if (dot) dot.classList.add("show");
-                    if (dotMobile) dotMobile.classList.add("show");
-                }
-            }, 5000);
+        waBtn.addEventListener('click', () => {
+            waBtn.classList.toggle('active');
+            if (waChatBox.style.display === 'flex') {
+                waChatBox.style.display = 'none';
+            } else {
+                waChatBox.style.display = 'flex';
+                waNotificationDot.classList.remove('show'); // Ocultar notificación al abrir
+            }
         });
 
-        function toggleChat() {
-            var chatBox = document.getElementById("whatsapp-chat");
-            var btn = document.getElementById("wa-btn");
-            var dot = document.getElementById("wa-dot");
-            if (chatBox.style.display === "none" || chatBox.style.display === "") {
-                chatBox.style.display = "flex";
-                if (btn) btn.classList.add("active");
-                if (dot) { dot.classList.remove("show"); dot.style.display = "none"; }
-            } else {
-                chatBox.style.display = "none";
-                if (btn) btn.classList.remove("active");
-            }
-        }
+        waCloseBtn.addEventListener('click', () => {
+            waChatBox.style.display = 'none';
+            waBtn.classList.remove('active');
+        });
     </script>
-
 </body>
 
 </html>

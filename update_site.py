@@ -68,32 +68,24 @@ def update_files():
                 if 'pb-30' not in content:
                     content = re.sub(r'<body\s+class="([^"]*)"', r'<body class="\1 pb-30 md:pb-0"', content)
                 
-                # 2. Replace Nav
-                # Find existing nav
-                content = re.sub(r'<nav\s+class="fixed w-full z-50.*?<\/nav>', nav_block, content, flags=re.DOTALL)
-                
-                # 3. Replace Mobile Menu Overlay
-                # Find existing mobile menu. It might vary in other files.
-                # We look for <div id="mobile-menu-overlay" ...
-                # And replace until the next major tag.
-                # To be safe, we can try to match the ID.
-                if 'id="mobile-menu-overlay"' in content:
-                     # Regex to replace from <div id="mobile-menu-overlay" to the closing div of the panel?
-                     # This is risky with regex.
-                     # Alternative: Identify the block by start string and end string?
-                     # In most files, it's before <header> or <section>.
-                     # Let's try to replace the whole block if we can identify it.
-                     # If the file has the exact same structure, regex works.
-                     # If not, we might need to be careful.
-                     # Given the project structure, it's likely consistent.
-                     content = re.sub(r'<div id="mobile-menu-overlay".*?<\/div>\s*<\/div>', mobile_menu_block, content, flags=re.DOTALL)
-                else:
-                    # If not found, insert it after nav?
-                    # Usually it's after nav.
-                    content = content.replace('</nav>', '</nav>\n\n' + mobile_menu_block)
+                # Check if it's a landing page
+                is_landing_page = '/landing/' in file_path or '\\landing\\' in file_path
 
-                # 4. Replace Footer
-                content = re.sub(r'<footer class="bg-slate-50.*?<\/footer>', footer_block, content, flags=re.DOTALL)
+                if not is_landing_page:
+                    # 2. Replace Nav
+                    # Find existing nav
+                    content = re.sub(r'<nav\s+class="fixed w-full z-50.*?<\/nav>', nav_block, content, flags=re.DOTALL)
+                    
+                    # 3. Replace Mobile Menu Overlay
+                    if 'id="mobile-menu-overlay"' in content:
+                         content = re.sub(r'<div id="mobile-menu-overlay".*?<\/div>\s*<\/div>', mobile_menu_block, content, flags=re.DOTALL)
+                    else:
+                        # If not found, insert it after nav?
+                        # Usually it's after nav.
+                        content = content.replace('</nav>', '</nav>\n\n' + mobile_menu_block)
+
+                    # 4. Replace Footer
+                    content = re.sub(r'<footer class="bg-slate-50.*?<\/footer>', footer_block, content, flags=re.DOTALL)
                 
                 # 5. Accessibility Fix for mantencion-preventiva.html
                 if 'mantencion-preventiva.html' in file_path:
