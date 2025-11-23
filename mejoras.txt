@@ -1,0 +1,31 @@
+1. 
+
+en el nav la versión mobile... en la sección @@@@  solo aparece las condes, Vitacura... 
+
+agregar todas y también el botón de Ver Todas las zonas para urbano 
+
+en rural solo aparece Chicureo, colina. 
+
+
+
+2. Falta agregar espacio en el footer, en la versión mobile...  ya que el sticky footer se superpone con el contenido. 
+
+
+
+3. Agregar backlink de https://www.paginasfast.cl/ como el sitio web que hizo la página web.
+
+4. falta en el footer un link que pueda llevar al blog... (me gustaría solo en el footer...) ya que en el nav superior, distraería las conversiones... 
+solo es para gente más intrusa y para el SEO por eso dejarlo en el footer... 
+
+5. en el menú de servicios en mobile... falta agregar el enlace a la sección de servicios... (@@@ index de servicios, donde aparecen todos los servicios)
+
+6. en la página de /servicios/mantencion-preventiva.html @@@ hay un problema de accesibilidad... en el botón: 
+
+<a href="tel:+56912345678" class="bg-white text-prev-700 font-bold py-4 px-10 rounded-full shadow-lg hover:bg-slate-100 transition">
+                    <i class="fa-solid fa-phone mr-2"></i> Llamar Ahora
+                </a>
+
+                ya que el background es blanco y e texto del botón es blanco, haciendo que no se vea el texto. 
+
+
+7. 

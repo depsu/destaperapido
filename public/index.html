@@ -738,10 +738,15 @@
         <div class="max-w-6xl mx-auto w-full grid lg:grid-cols-2 gap-12 items-center relative z-10">
 
             <div class="text-left text-white fade-up pt-4">
-                <div
-                    class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-6">
-                    <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
-                    Disponibles ahora en RM
+                <div class="availability-badge inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-6"
+                    data-theme="dark">
+                    <span class="relative flex h-2 w-2">
+                        <span class="ping-dot w-2 h-2 rounded-full bg-green-400 animate-pulse absolute"></span>
+                        <span class="static-dot w-2 h-2 rounded-full bg-green-500 relative"></span>
+                    </span>
+                    <span>
+                        <span class="unit-count">3</span> <span class="unit-text">Camiones disponibles RM</span>
+                    </span>
                 </div>
 
                 <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight tracking-tight">
@@ -1301,139 +1306,11 @@
             // 1. AÑO DEL FOOTER
             const yearSpan = document.getElementById('year');
             if (yearSpan) yearSpan.textContent = new Date().getFullYear();
-
-            // 2. LÓGICA DEL BADGE DE DISPONIBILIDAD (CON CACHÉ Y PERSISTENCIA)
-            const CONFIG = {
-                DROP_TO_2_MIN: 30000, // 30 segundos
-                DROP_TO_2_MAX: 60000, // 60 segundos
-                DROP_TO_1_MIN: 300000,
-                DROP_TO_1_MAX: 600000,
-                RESET_HOURS: 2,
-                STORAGE_KEY: 'alc_pro_units_state_v3'
-            };
-
-            const getRandomTime = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
-
-            const calculateState = () => {
-                const now = Date.now();
-                const savedState = localStorage.getItem(CONFIG.STORAGE_KEY);
-                const resetTimeMs = CONFIG.RESET_HOURS * 60 * 60 * 1000;
-
-                if (!savedState) return createNewState(now);
-
-                let data = JSON.parse(savedState);
-
-                if (!data.timestamp || (now - data.timestamp > resetTimeMs)) {
-                    return createNewState(now);
-                }
-
-                data.timestamp = now;
-
-                if (data.count <= 1) {
-                    localStorage.setItem(CONFIG.STORAGE_KEY, JSON.stringify(data));
-                    return data;
-                }
-
-                if (now > data.nextChange) {
-                    data.count--;
-                    if (data.count === 2) {
-                        data.nextChange = now + getRandomTime(CONFIG.DROP_TO_1_MIN, CONFIG.DROP_TO_1_MAX);
-                    } else {
-                        data.nextChange = null;
-                    }
-                    localStorage.setItem(CONFIG.STORAGE_KEY, JSON.stringify(data));
-                    triggerFlashEffect();
-                } else {
-                    localStorage.setItem(CONFIG.STORAGE_KEY, JSON.stringify(data));
-                }
-                return data;
-            };
-
-            const createNewState = (now) => {
-                const newState = {
-                    count: 3, // Empezamos con 3 para bajar luego a 2
-                    nextChange: now + getRandomTime(CONFIG.DROP_TO_2_MIN, CONFIG.DROP_TO_2_MAX),
-                    timestamp: now
-                };
-                localStorage.setItem(CONFIG.STORAGE_KEY, JSON.stringify(newState));
-                return newState;
-            };
-
-            const renderUI = (count) => {
-                const badges = document.querySelectorAll('.availability-badge');
-                badges.forEach(badge => {
-                    const countSpan = badge.querySelector('.unit-count');
-                    const textSpan = badge.querySelector('.unit-text');
-                    const pingDot = badge.querySelector('.ping-dot');
-                    const staticDot = badge.querySelector('.static-dot');
-
-                    // --- LÓGICA DE TEXTOS ACTUALIZADA ---
-
-                    if (count <= 1) {
-                        // CASO 1: URGENCIA (Naranja)
-                        if (countSpan) countSpan.innerText = "Queda 1 camión";
-                        if (textSpan) textSpan.innerText = "disponible Región Metropolitana";
-
-                        // Cambiar colores a Naranja
-                        badge.classList.remove('bg-green-50', 'text-green-800', 'border-green-200');
-                        badge.classList.add('bg-orange-50', 'text-orange-800', 'border-orange-200');
-
-                        if (pingDot) {
-                            pingDot.classList.remove('bg-green-400');
-                            pingDot.classList.add('bg-orange-400');
-                        }
-                        if (staticDot) {
-                            staticDot.classList.remove('bg-green-500');
-                            staticDot.classList.add('bg-orange-500');
-                        }
-                    } else {
-                        // CASO 2: NORMAL (Verde)
-                        if (countSpan) countSpan.innerText = count + " Camiones";
-                        if (textSpan) textSpan.innerText = "disponibles RM";
-
-                        // Asegurar colores Verdes
-                        badge.classList.add('bg-green-50', 'text-green-800', 'border-green-200');
-                        badge.classList.remove('bg-orange-50', 'text-orange-800', 'border-orange-200');
-
-                        if (pingDot) {
-                            pingDot.classList.add('bg-green-400');
-                            pingDot.classList.remove('bg-orange-400');
-                        }
-                        if (staticDot) {
-                            staticDot.classList.add('bg-green-500');
-                            staticDot.classList.remove('bg-orange-500');
-                        }
-                    }
-
-                    // Mostrar badge suavemente
-                    setTimeout(() => {
-                        badge.classList.remove('opacity-0');
-                    }, 500);
-                });
-            };
-
-            const triggerFlashEffect = () => {
-                const badges = document.querySelectorAll('.availability-badge');
-                badges.forEach(b => {
-                    b.style.transform = 'scale(1.05)';
-                    setTimeout(() => { b.style.transform = 'scale(1)'; }, 300);
-                });
-            }
-
-            // Inicializar Badge
-            let currentState = calculateState();
-            renderUI(currentState.count);
-
-            // Timer
-            setInterval(() => {
-                const now = Date.now();
-                if (currentState.count > 1 && currentState.nextChange && now >= currentState.nextChange) {
-                    currentState = calculateState();
-                    renderUI(currentState.count);
-                }
-            }, 1000);
         });
+    </script>
+    <script src="/js/availability-badge.js"></script>
 
+    <script>
         // 3. WHATSAPP Y NOTIFICACIONES
         window.addEventListener('load', function () {
             setTimeout(function () {
