@@ -30,13 +30,7 @@
 
         /* Hero específico para ambiente RURAL/PARCELAS */
         .hero-rural {
-            background-image:
-                linear-gradient(to right, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.7) 100%),
-                url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?q=80&w=2070&auto=format&fit=crop');
-            /* Foto de casa de campo/parcela */
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            position: relative;
         }
 
         .fade-up {
@@ -377,9 +371,10 @@
 
 
     <meta property="og:title" content="Limpieza de Fosas y Destapes Rurales | Destape Rápido">
-    <meta property="og:description" content="Servicio experto en limpieza de fosas sépticas y destapes en Colina, Pirque, Lampa, Calera de Tango y alrededores. Camiones equipados para parcelas.">
+    <meta property="og:description"
+        content="Servicio experto en limpieza de fosas sépticas y destapes en Colina, Pirque, Lampa, Calera de Tango y alrededores. Camiones equipados para parcelas.">
     <meta property="og:url" content="https://www.destaperapido.cl/zonas/rural">
-    <meta property="og:image" content="https://www.destaperapido.cl/images/hero_home.webp">
+    <meta property="og:image" content="https://www.destaperapido.cl/images/camion-haciendo-destape-en-zona-rural.webp">
     <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -629,7 +624,17 @@
         </div>
     </div>
 
-    <header class="hero-rural min-h-[60vh] flex items-center justify-center px-4 relative pt-32 pb-20">
+    <header
+        class="hero-rural min-h-[60vh] flex items-center justify-center px-4 relative pt-32 pb-20 overflow-hidden bg-slate-900">
+        <div class="absolute inset-0 w-full h-full overflow-hidden z-0">
+            <picture class="absolute top-0 left-0 w-full h-full">
+                <source media="(max-width: 768px)" srcset="/images/camion-haciendo-servicio-en-sitio-rural.webp">
+                <source media="(min-width: 769px)" srcset="/images/camion-haciendo-destape-en-zona-rural.webp">
+                <img src="/images/camion-haciendo-destape-en-zona-rural.webp" alt="Limpieza de fosas en zonas rurales"
+                    class="w-full h-full object-cover opacity-40" fetchpriority="high">
+            </picture>
+            <div class="absolute inset-0 bg-slate-900/60 z-10"></div>
+        </div>
         <div class="max-w-4xl mx-auto text-center relative z-10 text-white fade-up">
             <div class="availability-badge inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-6 text-white"
                 data-theme="dark">
@@ -949,7 +954,7 @@
         </div>
     </footer>
 
-<!-- Mobile Sticky Footer -->
+    <!-- Mobile Sticky Footer -->
     <div
         class="fixed bottom-0 left-0 right-0 z-50 md:hidden flex flex-col shadow-[0_-4px_20px_rgba(0,0,0,0.15)] bg-white pb-[env(safe-area-inset-bottom)]">
         <!-- Background extension for overscroll bounce -->
@@ -1199,6 +1204,8 @@
         });
     </script>
 
+    <script src="/js/availability-badge.js"></script>
+
     <script>
         // 3. WHATSAPP Y NOTIFICACIONES
         window.addEventListener('load', function () {
@@ -1223,35 +1230,9 @@
                 if (dot) { dot.classList.remove("show"); dot.style.display = "none"; }
             } else {
                 chatBox.style.display = "none";
-    </script>
-    <script src="/js/availability-badge.js"></script>
-
-    // 3. WHATSAPP Y NOTIFICACIONES
-    window.addEventListener('load', function () {
-    setTimeout(function () {
-    var dot = document.getElementById("wa-dot");
-    var dotMobile = document.getElementById("wa-dot-mobile");
-    var chatBox = document.getElementById("whatsapp-chat");
-    if (chatBox && chatBox.style.display !== "flex") {
-    if (dot) dot.classList.add("show");
-    if (dotMobile) dotMobile.classList.add("show");
-    }
-    }, 5000);
-    });
-
-    function toggleChat() {
-    var chatBox = document.getElementById("whatsapp-chat");
-    var btn = document.getElementById("wa-btn");
-    var dot = document.getElementById("wa-dot");
-    if (chatBox.style.display === "none" || chatBox.style.display === "") {
-    chatBox.style.display = "flex";
-    if (btn) btn.classList.add("active");
-    if (dot) { dot.classList.remove("show"); dot.style.display = "none"; }
-    } else {
-    chatBox.style.display = "none";
-    if (btn) btn.classList.remove("active");
-    }
-    }
+                if (btn) btn.classList.remove("active");
+            }
+        }
     </script>
 
 </body>

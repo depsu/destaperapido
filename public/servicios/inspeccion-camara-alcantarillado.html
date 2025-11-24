@@ -601,8 +601,12 @@
 
     <header class="min-h-[65vh] flex items-center relative pt-28 pb-20 overflow-hidden">
         <!-- Optimized Hero Image -->
-        <img src="/images/video-inspección.jpeg" alt="Cámara de inspección de alcantarillado"
-            class="absolute inset-0 w-full h-full object-cover -z-20" fetchpriority="high">
+        <picture class="absolute inset-0 w-full h-full -z-20">
+            <source media="(max-width: 768px)" srcset="/images/video-inspección.jpeg">
+            <source media="(min-width: 769px)" srcset="/images/video-inspección.jpeg">
+            <img src="/images/video-inspección.jpeg" alt="Cámara de inspección de alcantarillado"
+                class="w-full h-full object-cover" fetchpriority="high">
+        </picture>
 
         <!-- Gradient Overlay -->
         <div class="absolute inset-0 -z-10"

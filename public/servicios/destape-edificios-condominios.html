@@ -602,8 +602,13 @@
 
     <header class="min-h-[65vh] flex items-center relative pt-28 pb-20 overflow-hidden">
         <!-- Optimized Hero Image -->
-        <img src="/images/camion-haciendo-servicio-en-condominio.webp" alt="Mantención de alcantarillado en edificios"
-            class="absolute inset-0 w-full h-full object-cover -z-20" fetchpriority="high">
+        <picture class="absolute inset-0 w-full h-full -z-20">
+            <source media="(max-width: 768px)"
+                srcset="/images/Destape-alcantarillado-con-camion-en-subterraneo-de-edificio.webp">
+            <source media="(min-width: 769px)" srcset="/images/camion-haciendo-servicio-en-condominio.webp">
+            <img src="/images/camion-haciendo-servicio-en-condominio.webp"
+                alt="Mantención de alcantarillado en edificios" class="w-full h-full object-cover" fetchpriority="high">
+        </picture>
 
         <!-- Gradient Overlay -->
         <div class="absolute inset-0 -z-10"

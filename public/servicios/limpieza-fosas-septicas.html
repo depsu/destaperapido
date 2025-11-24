@@ -34,13 +34,7 @@
 
         /* Hero específico para Fosas/Rural */
         .hero-septic {
-            background-image:
-                linear-gradient(to right, rgba(20, 83, 45, 0.9) 0%, rgba(15, 23, 42, 0.8) 100%),
-                url('/images/camion-haciendo-destape-en-zona-rural.webp');
-            /* Foto sugestiva de camión o campo verde */
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            position: relative;
         }
 
         .feature-check {
@@ -617,7 +611,17 @@
         </div>
     </div>
 
-    <header class="hero-septic min-h-[70vh] flex items-center relative pt-28 pb-20">
+    <header class="hero-septic min-h-[70vh] flex items-center relative pt-28 pb-20 overflow-hidden bg-slate-900">
+        <div class="absolute inset-0 w-full h-full overflow-hidden z-0">
+            <picture class="absolute top-0 left-0 w-full h-full">
+                <source media="(max-width: 768px)" srcset="/images/camion-haciendo-servicio-en-sitio-rural.webp">
+                <source media="(min-width: 769px)" srcset="/images/camion-haciendo-destape-en-zona-rural.webp">
+                <img src="/images/camion-haciendo-destape-en-zona-rural.webp"
+                    alt="Limpieza de fosas sépticas en parcelas" class="w-full h-full object-cover opacity-40"
+                    fetchpriority="high">
+            </picture>
+            <div class="absolute inset-0 bg-slate-900/60 z-10"></div>
+        </div>
         <div class="container mx-auto px-4 relative z-10">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <div class="text-white">
