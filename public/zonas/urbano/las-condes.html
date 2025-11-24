@@ -2517,22 +2517,7 @@
             }
         }
     </script>
-    <script src="/js/availability-badge.js"></script>
 
-    <script>
-        // 3. WHATSAPP Y NOTIFICACIONES
-        window.addEventListener('load', function () {
-            setTimeout(function () {
-                var dot = document.getElementById("wa-dot");
-                var dotMobile = document.getElementById("wa-dot-mobile");
-                var chatBox = document.getElementById("whatsapp-chat");
-                if (chatBox && chatBox.style.display !== "flex") {
-                    if (dot) dot.classList.add("show");
-                    if (dotMobile) dotMobile.classList.add("show");
-                }
-            }, 5000);
-        });
-    </script>
     <div id="mobile-menu-overlay" class="fixed inset-0 z-[60] invisible opacity-0 transition-all duration-300">
         <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity" onclick="closeMenu()"></div>
         <div id="mobile-menu-panel"
@@ -2577,79 +2562,90 @@
                         </a>
                     </div>
                 </div>
-                <script>
-                    document.addEventListener('DOMContentLoaded', () => {
-                        // 1. AÑO DEL FOOTER
-                        const yearSpan = document.getElementById('year');
-                        if (yearSpan) yearSpan.textContent = new Date().getFullYear();
-                    });
-                </script>
-                <script src="/js/availability-badge.js"></script>
+            </div>
 
-                <script>
-                    // 3. WHATSAPP Y NOTIFICACIONES
-                    window.addEventListener('load', function () {
-                        setTimeout(function () {
-                            var dot = document.getElementById("wa-dot");
-                            var dotMobile = document.getElementById("wa-dot-mobile");
-                            var chatBox = document.getElementById("whatsapp-chat");
+            <div class="p-6 bg-slate-50 border-t border-slate-100">
+                <a href="https://wa.me/56936470112"
+                    class="flex items-center justify-center gap-2 w-full bg-green-500 text-white font-bold py-3 rounded-xl shadow-lg shadow-green-500/20 active:scale-95 transition">
+                    <i class="fa-brands fa-whatsapp text-xl"></i> WhatsApp 24/7
+                </a>
+            </div>
+        </div>
+    </div>
 
-                            if (chatBox && chatBox.style.display !== "flex") {
-                                if (dot) dot.classList.add("show");
-                                if (dotMobile) dotMobile.classList.add("show");
-                            }
-                        }, 5000);
-                    });
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. AÑO DEL FOOTER
+            const yearSpan = document.getElementById('year');
+            if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+        });
+    </script>
+    <script src="/js/availability-badge.js"></script>
 
-                    function toggleChat() {
-                        var chatBox = document.getElementById("whatsapp-chat");
-                        var btn = document.getElementById("wa-btn");
-                        var dot = document.getElementById("wa-dot");
+    <script>
+        // 3. WHATSAPP Y NOTIFICACIONES
+        window.addEventListener('load', function () {
+            setTimeout(function () {
+                var dot = document.getElementById("wa-dot");
+                var dotMobile = document.getElementById("wa-dot-mobile");
+                var chatBox = document.getElementById("whatsapp-chat");
 
-                        if (chatBox.style.display === "none" || chatBox.style.display === "") {
-                            chatBox.style.display = "flex";
-                            if (btn) btn.classList.add("active");
-                            if (dot) { dot.classList.remove("show"); dot.style.display = "none"; }
-                        } else {
-                            chatBox.style.display = "none";
-                            if (btn) btn.classList.remove("active");
-                        }
-                    }
+                if (chatBox && chatBox.style.display !== "flex") {
+                    if (dot) dot.classList.add("show");
+                    if (dotMobile) dotMobile.classList.add("show");
+                }
+            }, 5000);
+        });
 
-                    // 4. MENÚ MÓVIL
-                    const overlay = document.getElementById('mobile-menu-overlay');
-                    const panel = document.getElementById('mobile-menu-panel');
+        function toggleChat() {
+            var chatBox = document.getElementById("whatsapp-chat");
+            var btn = document.getElementById("wa-btn");
+            var dot = document.getElementById("wa-dot");
 
-                    function openMenu() {
-                        if (overlay && panel) {
-                            overlay.classList.remove('invisible', 'opacity-0');
-                            panel.classList.remove('translate-x-full');
-                            document.body.style.overflow = 'hidden';
-                        }
-                    }
+            if (chatBox.style.display === "none" || chatBox.style.display === "") {
+                chatBox.style.display = "flex";
+                if (btn) btn.classList.add("active");
+                if (dot) { dot.classList.remove("show"); dot.style.display = "none"; }
+            } else {
+                chatBox.style.display = "none";
+                if (btn) btn.classList.remove("active");
+            }
+        }
 
-                    function closeMenu() {
-                        if (overlay && panel) {
-                            panel.classList.add('translate-x-full');
-                            overlay.classList.add('invisible', 'opacity-0');
-                            document.body.style.overflow = '';
-                        }
-                    }
+        // 4. MENÚ MÓVIL
+        const overlay = document.getElementById('mobile-menu-overlay');
+        const panel = document.getElementById('mobile-menu-panel');
 
-                    function toggleSubmenu(id, btn) {
-                        const submenu = document.getElementById(id);
-                        const icon = btn.querySelector('.fa-chevron-down');
-                        if (submenu) {
-                            if (submenu.classList.contains('hidden')) {
-                                submenu.classList.remove('hidden');
-                                if (icon) icon.style.transform = 'rotate(180deg)';
-                            } else {
-                                submenu.classList.add('hidden');
-                                if (icon) icon.style.transform = 'rotate(0deg)';
-                            }
-                        }
-                    }
-                </script>
+        function openMenu() {
+            if (overlay && panel) {
+                overlay.classList.remove('invisible', 'opacity-0');
+                panel.classList.remove('translate-x-full');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeMenu() {
+            if (overlay && panel) {
+                panel.classList.add('translate-x-full');
+                overlay.classList.add('invisible', 'opacity-0');
+                document.body.style.overflow = '';
+            }
+        }
+
+        function toggleSubmenu(id, btn) {
+            const submenu = document.getElementById(id);
+            const icon = btn.querySelector('.fa-chevron-down');
+            if (submenu) {
+                if (submenu.classList.contains('hidden')) {
+                    submenu.classList.remove('hidden');
+                    if (icon) icon.style.transform = 'rotate(180deg)';
+                } else {
+                    submenu.classList.add('hidden');
+                    if (icon) icon.style.transform = 'rotate(0deg)';
+                }
+            }
+        }
+    </script>
 </body>
 
 </html>
