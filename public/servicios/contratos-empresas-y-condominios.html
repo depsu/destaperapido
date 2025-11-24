@@ -995,7 +995,9 @@
 
 <!-- Mobile Sticky Footer -->
     <div
-        class="fixed bottom-0 left-0 right-0 z-50 md:hidden flex flex-col shadow-[0_-4px_20px_rgba(0,0,0,0.15)] bg-white">
+        class="fixed bottom-0 left-0 right-0 z-50 md:hidden flex flex-col shadow-[0_-4px_20px_rgba(0,0,0,0.15)] bg-white pb-[env(safe-area-inset-bottom)]">
+        <!-- Background extension for overscroll bounce -->
+        <div class="absolute top-full left-0 right-0 h-[100vh] bg-white"></div>
 
         <div class="availability-badge w-full bg-green-50 border-t border-green-200 py-1.5 flex items-center justify-center gap-2 text-[11px] font-bold text-green-800 transition-all duration-500 opacity-0"
             role="status">
