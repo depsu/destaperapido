@@ -345,10 +345,12 @@
     </style>
 
 
-    <meta property="og:title" content="Mantención de Edificios y Condominios | Alcantarillado y Verticales | Destape Rápido">
-    <meta property="og:description" content="Servicio especializado para administradores de edificios. Limpieza de verticales, ductos y cámaras desgrasadoras. Contratos de mantención, facturación a 30 días e informes técnicos.">
+    <meta property="og:title"
+        content="Mantención de Edificios y Condominios | Alcantarillado y Verticales | Destape Rápido">
+    <meta property="og:description"
+        content="Servicio especializado para administradores de edificios. Limpieza de verticales, ductos y cámaras desgrasadoras. Contratos de mantención, facturación a 30 días e informes técnicos.">
     <meta property="og:url" content="https://www.destaperapido.cl/servicios/destape-edificios-condominios">
-    <meta property="og:image" content="https://www.destaperapido.cl/images/hero_home.webp">
+    <meta property="og:image" content="https://www.destaperapido.cl/images/camion-haciendo-servicio-en-condominio.webp">
     <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -598,7 +600,15 @@
         </div>
     </div>
 
-    <header class="hero-b2b min-h-[65vh] flex items-center relative pt-28 pb-20">
+    <header class="min-h-[65vh] flex items-center relative pt-28 pb-20 overflow-hidden">
+        <!-- Optimized Hero Image -->
+        <img src="/images/camion-haciendo-servicio-en-condominio.webp" alt="Mantención de alcantarillado en edificios"
+            class="absolute inset-0 w-full h-full object-cover -z-20" fetchpriority="high">
+
+        <!-- Gradient Overlay -->
+        <div class="absolute inset-0 -z-10"
+            style="background: linear-gradient(to right, rgba(30, 58, 138, 0.95) 0%, rgba(88, 28, 135, 0.9) 100%);">
+        </div>
         <div class="container mx-auto px-4 relative z-10">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <div class="text-white">
@@ -805,8 +815,8 @@
                 </div>
 
                 <div class="relative">
-                    <img src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?q=80&w=2069&auto=format&fit=crop"
-                        alt="Hidrolavado de tubería"
+                    <img src="/images/camion-haciendo-destape-en-subterraneo.webp"
+                        alt="Hidrolavado de tubería en edificio"
                         class="rounded-2xl shadow-2xl border-4 border-slate-700/50 transform md:rotate-1 hover:rotate-0 transition duration-500">
 
                     <div
@@ -997,7 +1007,7 @@
         </div>
     </footer>
 
-<!-- Mobile Sticky Footer -->
+    <!-- Mobile Sticky Footer -->
     <div
         class="fixed bottom-0 left-0 right-0 z-50 md:hidden flex flex-col shadow-[0_-4px_20px_rgba(0,0,0,0.15)] bg-white pb-[env(safe-area-inset-bottom)]">
         <!-- Background extension for overscroll bounce -->

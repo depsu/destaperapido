@@ -349,7 +349,7 @@
     <meta property="og:description"
         content="Contáctanos para destapes de alcantarillado y limpieza de fosas en Santiago. Atención 24/7 en zonas urbanas y rurales. Cotiza tu servicio aquí.">
     <meta property="og:url" content="https://www.destaperapido.cl/contacto">
-    <meta property="og:image" content="https://www.destaperapido.cl/images/hero_home.webp">
+    <meta property="og:image" content="https://www.destaperapido.cl/images/camio-haciendo-servicio-en-la-calle.webp">
     <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -599,8 +599,17 @@
         </div>
     </div>
 
-    <header class="hero-contact py-20 pt-32">
-        <div class="container mx-auto px-4 text-center text-white">
+    <header class="relative py-20 pt-32 overflow-hidden">
+        <!-- Optimized Hero Image -->
+        <img src="/images/camio-haciendo-servicio-en-la-calle.webp" alt="Contacto Destape Rápido"
+            class="absolute inset-0 w-full h-full object-cover -z-20" fetchpriority="high">
+
+        <!-- Gradient Overlay -->
+        <div class="absolute inset-0 -z-10"
+            style="background: linear-gradient(to right, rgba(15, 23, 42, 0.95) 0%, rgba(30, 58, 138, 0.9) 100%);">
+        </div>
+
+        <div class="container mx-auto px-4 text-center text-white relative z-10">
             <div class="availability-badge inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-6 text-white"
                 data-theme="dark">
                 <span class="relative flex h-2 w-2">
@@ -884,7 +893,7 @@
         </div>
     </footer>
 
-<!-- Mobile Sticky Footer -->
+    <!-- Mobile Sticky Footer -->
     <div
         class="fixed bottom-0 left-0 right-0 z-50 md:hidden flex flex-col shadow-[0_-4px_20px_rgba(0,0,0,0.15)] bg-white pb-[env(safe-area-inset-bottom)]">
         <!-- Background extension for overscroll bounce -->

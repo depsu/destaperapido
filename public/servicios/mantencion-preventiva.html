@@ -346,9 +346,10 @@
 
 
     <meta property="og:title" content="Planes de Mantención Preventiva | Alcantarillado y Fosas | Destape Rápido">
-    <meta property="og:description" content="Evita emergencias sanitarias con nuestros planes de mantención preventiva. Limpieza programada para edificios, restaurantes, colegios y condominios en RM.">
+    <meta property="og:description"
+        content="Evita emergencias sanitarias con nuestros planes de mantención preventiva. Limpieza programada para edificios, restaurantes, colegios y condominios en RM.">
     <meta property="og:url" content="https://www.destaperapido.cl/servicios/mantencion-preventiva">
-    <meta property="og:image" content="https://www.destaperapido.cl/images/hero_home.webp">
+    <meta property="og:image" content="https://www.destaperapido.cl/images/camion-limpia-fosas-y-mas-servicios.webp">
     <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -598,7 +599,15 @@
         </div>
     </div>
 
-    <header class="hero-prev min-h-[65vh] flex items-center relative pt-28 pb-20">
+    <header class="min-h-[65vh] flex items-center relative pt-28 pb-20 overflow-hidden">
+        <!-- Optimized Hero Image -->
+        <img src="/images/camion-limpia-fosas-y-mas-servicios.webp" alt="Mantención preventiva de alcantarillado"
+            class="absolute inset-0 w-full h-full object-cover -z-20" fetchpriority="high">
+
+        <!-- Gradient Overlay -->
+        <div class="absolute inset-0 -z-10"
+            style="background: linear-gradient(to right, rgba(67, 20, 7, 0.92) 0%, rgba(124, 45, 18, 0.85) 100%);">
+        </div>
         <div class="container mx-auto px-4 relative z-10">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <div class="text-white">
@@ -1004,7 +1013,7 @@
         </div>
     </footer>
 
-<!-- Mobile Sticky Footer -->
+    <!-- Mobile Sticky Footer -->
     <div
         class="fixed bottom-0 left-0 right-0 z-50 md:hidden flex flex-col shadow-[0_-4px_20px_rgba(0,0,0,0.15)] bg-white pb-[env(safe-area-inset-bottom)]">
         <!-- Background extension for overscroll bounce -->

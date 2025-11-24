@@ -346,9 +346,10 @@
 
 
     <meta property="og:title" content="Casos Reales y Trabajos Realizados | Destape Rápido">
-    <meta property="og:description" content="Galería de trabajos reales en Santiago. Fotos de antes y después en destapes de alcantarillado, limpieza de fosas y mantención de edificios.">
+    <meta property="og:description"
+        content="Galería de trabajos reales en Santiago. Fotos de antes y después en destapes de alcantarillado, limpieza de fosas y mantención de edificios.">
     <meta property="og:url" content="https://www.destaperapido.cl/casos-reales">
-    <meta property="og:image" content="https://www.destaperapido.cl/images/hero_home.webp">
+    <meta property="og:image" content="https://www.destaperapido.cl/images/camion-haciendo-destape-en-zona-rural.webp">
     <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -598,7 +599,16 @@
         </div>
     </div>
 
-    <header class="hero-cases py-24 pt-40 relative">
+    <header class="relative py-24 pt-40 overflow-hidden">
+        <!-- Optimized Hero Image -->
+        <img src="/images/camion-haciendo-destape-en-zona-rural.webp" alt="Casos reales de destapes"
+            class="absolute inset-0 w-full h-full object-cover -z-20" fetchpriority="high">
+
+        <!-- Gradient Overlay -->
+        <div class="absolute inset-0 -z-10"
+            style="background: linear-gradient(to right, rgba(15, 23, 42, 0.95) 0%, rgba(30, 58, 138, 0.9) 100%);">
+        </div>
+
         <div class="container mx-auto px-4 relative z-10 text-center text-white">
             <div class="availability-badge inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-6 text-white"
                 data-theme="dark">
@@ -644,8 +654,7 @@
                     class="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl transition-all duration-300 group">
                     <div class="grid md:grid-cols-2 h-full">
                         <div class="relative h-64 md:h-full overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1584622050111-993a426fbf0a?q=80&w=800&auto=format&fit=crop"
-                                alt="Baño Destapado"
+                            <img src="/images/camio-haciendo-servicio-en-la-calle-705px-591px.webp" alt="Baño Destapado"
                                 class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                             <div
                                 class="absolute top-4 left-4 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">
@@ -691,8 +700,7 @@
                     class="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl transition-all duration-300 group">
                     <div class="grid md:grid-cols-2 h-full">
                         <div class="relative h-64 md:h-full overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?q=80&w=800&auto=format&fit=crop"
-                                alt="Parcela Chicureo"
+                            <img src="/images/camion-haciendo-destape-en-zona-rural.webp" alt="Parcela Chicureo"
                                 class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                             <div
                                 class="absolute top-4 left-4 bg-green-600 text-white text-xs font-bold px-3 py-1 rounded-full">
@@ -737,7 +745,7 @@
                     class="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl transition-all duration-300 group">
                     <div class="grid md:grid-cols-2 h-full">
                         <div class="relative h-64 md:h-full overflow-hidden">
-                            <img src="/images/hero_service.webp" alt="Cámara Inspección"
+                            <img src="/images/video-inspección.jpeg" alt="Cámara Inspección"
                                 class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                             <div
                                 class="absolute top-4 left-4 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full">
@@ -783,8 +791,7 @@
                     class="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl transition-all duration-300 group">
                     <div class="grid md:grid-cols-2 h-full">
                         <div class="relative h-64 md:h-full overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1517646287270-a5a9ca602e5c?q=80&w=800&auto=format&fit=crop"
-                                alt="Cocina Restaurante"
+                            <img src="/images/camion-haciendo-servicio-en-condominio.webp" alt="Cocina Restaurante"
                                 class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                             <div
                                 class="absolute top-4 left-4 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full">
@@ -898,7 +905,7 @@
         </div>
     </footer>
 
-<!-- Mobile Sticky Footer -->
+    <!-- Mobile Sticky Footer -->
     <div
         class="fixed bottom-0 left-0 right-0 z-50 md:hidden flex flex-col shadow-[0_-4px_20px_rgba(0,0,0,0.15)] bg-white pb-[env(safe-area-inset-bottom)]">
         <!-- Background extension for overscroll bounce -->

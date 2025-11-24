@@ -346,9 +346,10 @@
 
 
     <meta property="og:title" content="Inspección de Alcantarillado con Cámara | Diagnóstico Video HD | Destape Rápido">
-    <meta property="og:description" content="Servicio de video inspección de tuberías con cámara HD. Detectamos fugas, roturas y raíces sin romper pisos. Informe técnico y grabación incluidos.">
+    <meta property="og:description"
+        content="Servicio de video inspección de tuberías con cámara HD. Detectamos fugas, roturas y raíces sin romper pisos. Informe técnico y grabación incluidos.">
     <meta property="og:url" content="https://www.destaperapido.cl/servicios/inspeccion-camara-alcantarillado">
-    <meta property="og:image" content="https://www.destaperapido.cl/images/hero_home.webp">
+    <meta property="og:image" content="https://www.destaperapido.cl/images/video-inspección.jpeg">
     <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -598,7 +599,15 @@
         </div>
     </div>
 
-    <header class="hero-tech min-h-[65vh] flex items-center relative pt-28 pb-20">
+    <header class="min-h-[65vh] flex items-center relative pt-28 pb-20 overflow-hidden">
+        <!-- Optimized Hero Image -->
+        <img src="/images/video-inspección.jpeg" alt="Cámara de inspección de alcantarillado"
+            class="absolute inset-0 w-full h-full object-cover -z-20" fetchpriority="high">
+
+        <!-- Gradient Overlay -->
+        <div class="absolute inset-0 -z-10"
+            style="background: linear-gradient(to right, rgba(15, 23, 42, 0.95) 0%, rgba(30, 58, 138, 0.9) 100%);">
+        </div>
         <div class="container mx-auto px-4 relative z-10">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <div class="text-white">
@@ -653,8 +662,8 @@
                     <div
                         class="bg-slate-900/80 backdrop-blur-md p-2 rounded-2xl border border-slate-700 shadow-2xl max-w-md mx-auto transform rotate-3 hover:rotate-0 transition duration-500">
                         <div class="bg-black rounded-xl overflow-hidden relative aspect-video">
-                            <img src="https://images.unsplash.com/photo-1599256628382-49c497c70990?q=80&w=1000&auto=format&fit=crop"
-                                alt="Pantalla de inspección" class="opacity-60 w-full h-full object-cover">
+                            <img src="/images/video-inspección.jpeg" alt="Pantalla de inspección"
+                                class="opacity-60 w-full h-full object-cover">
 
                             <div class="absolute top-4 left-4 text-green-400 font-mono text-xs">
                                 REC ● 00:14:25<br>
@@ -742,8 +751,7 @@
         <div class="container mx-auto px-4 relative z-10">
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div class="relative">
-                    <img src="https://images.unsplash.com/photo-1584622050111-993a426fbf0a?q=80&w=2070&auto=format&fit=crop"
-                        alt="Baño impecable"
+                    <img src="/images/ridgid.jpeg" alt="Equipo de inspección Ridgid"
                         class="rounded-2xl shadow-2xl border-4 border-slate-700 transform md:-rotate-1 hover:rotate-0 transition duration-500 grayscale hover:grayscale-0">
                     <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
                         <div class="bg-black/60 p-4 rounded-xl backdrop-blur text-center">
@@ -983,7 +991,7 @@
         </div>
     </footer>
 
-<!-- Mobile Sticky Footer -->
+    <!-- Mobile Sticky Footer -->
     <div
         class="fixed bottom-0 left-0 right-0 z-50 md:hidden flex flex-col shadow-[0_-4px_20px_rgba(0,0,0,0.15)] bg-white pb-[env(safe-area-inset-bottom)]">
         <!-- Background extension for overscroll bounce -->
