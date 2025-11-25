@@ -52,7 +52,7 @@ def apply_seo(file_path):
     # 3. Ñuñoa Fix in Links
     content = content.replace('ñuñoa.html', 'nunoa.html')
     content = content.replace('n%CC%83un%CC%83oa.html', 'nunoa.html')
-    content = content.replace('/zonas/urbano/ñuñoa.html', '/zonas/urbano/nunoa.html')
+    content = content.replace('/zonas/urbano/nunoa.html', '/zonas/urbano/nunoa.html')
     
     # 4. Alt Text for Carbon Fibre
     content = re.sub(r'(src="[^"]*carbon-fibre\.png")(?![^>]*alt=)', r'\1 alt=""', content)
