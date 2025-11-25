@@ -53,11 +53,14 @@
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
         }
 
+
         .text-gradient {
             background: linear-gradient(to right, #60a5fa, #22d3ee);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+
 
         .scrollbar-hide::-webkit-scrollbar {
             display: none;
@@ -355,324 +358,7 @@
         }
     </style>
 
-    <style>
-        /*Botón de whatsapp escritorio*/
-        /* --- VARIABLES Y ESTILOS BASE --- */
-        :root {
-            --wa-green: #25D366;
-            --wa-dark: #075E54;
-            --wa-red: #ff3b30;
-        }
 
-        /* 1. NOTIFICACIÓN ROJA (Nuevo) */
-        .wa-notification-dot {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            background-color: var(--wa-red);
-            color: white;
-            font-size: 12px;
-            font-weight: bold;
-            width: 22px;
-            height: 22px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid white;
-            z-index: 1002;
-            opacity: 0;
-            transform: scale(0);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .wa-notification-dot.show {
-            opacity: 1;
-            transform: scale(1);
-            animation: wa-dot-bounce 1s infinite;
-        }
-
-        @keyframes wa-dot-bounce {
-
-            0%,
-            100% {
-                transform: translateY(0) scale(1);
-            }
-
-            50% {
-                transform: translateY(-4px) scale(1);
-            }
-        }
-
-        /* 2. BOTÓN FLOTANTE */
-        .wa-floating-btn {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            width: 60px;
-            height: 60px;
-            background-color: var(--wa-green);
-            color: white;
-            border-radius: 50%;
-
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            cursor: pointer;
-            z-index: 1000;
-            transition: all 0.3s ease;
-            animation: pulse-green 2s infinite;
-        }
-
-        .wa-floating-btn:not(.active):hover {
-            transform: scale(1.1);
-        }
-
-        .wa-floating-btn.active {
-            background-color: #333;
-            animation: none;
-            transform: rotate(90deg);
-        }
-
-        .wa-icon {
-            position: absolute;
-            width: 35px;
-            height: 35px;
-            fill: white;
-            transition: all 0.3s ease;
-        }
-
-        .wa-icon-logo {
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        .wa-icon-close {
-            opacity: 0;
-            transform: scale(0) rotate(-90deg);
-        }
-
-        .active .wa-icon-logo {
-            opacity: 0;
-            transform: scale(0) rotate(90deg);
-        }
-
-        .active .wa-icon-close {
-            opacity: 1;
-            transform: scale(1) rotate(0);
-        }
-
-        @keyframes pulse-green {
-            0% {
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
-            }
-
-            70% {
-                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
-            }
-
-            100% {
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
-            }
-        }
-
-        /* 3. VENTANA DE CHAT */
-        .wa-chat-box {
-            display: none;
-            position: fixed;
-            bottom: 95px;
-            left: 20px;
-            width: 350px;
-            max-width: 85%;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
-            overflow: visible;
-            z-index: 1001;
-            flex-direction: column;
-            font-family: 'Segoe UI', sans-serif;
-            animation: slideIn 0.3s ease-out forwards;
-        }
-
-        .wa-chat-box::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 20px;
-            width: 0;
-            height: 0;
-            border-left: 10px solid transparent;
-            border-right: 10px solid transparent;
-            border-top: 10px solid white;
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .wa-header {
-            background-color: var(--wa-green);
-            padding: 20px;
-            color: white;
-            display: flex;
-            align-items: center;
-            border-radius: 10px 10px 0 0;
-            position: relative;
-        }
-
-        .wa-close-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 20px;
-            cursor: pointer;
-            opacity: 0.8;
-        }
-
-        .wa-close-btn:hover {
-            opacity: 1;
-        }
-
-        .wa-profile-pic {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            margin-right: 15px;
-            border: 2px solid white;
-            background-color: #ddd;
-            object-fit: cover;
-        }
-
-        .wa-info h4 {
-            margin: 0;
-            font-size: 18px;
-            font-weight: 600;
-        }
-
-        .wa-info p {
-            margin: 2px 0 0;
-            font-size: 12px;
-            opacity: 0.9;
-        }
-
-        .wa-body {
-            background-color: #f0f0f0;
-            background-image: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png');
-            padding: 20px;
-            height: 200px;
-            overflow-y: auto;
-        }
-
-        .wa-message {
-            background: white;
-            padding: 10px 15px;
-            border-radius: 0 10px 10px 10px;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-            width: fit-content;
-            max-width: 80%;
-            position: relative;
-            margin-bottom: 5px;
-        }
-
-        .wa-message::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -8px;
-            width: 0;
-            height: 0;
-            border-top: 10px solid white;
-            border-left: 10px solid transparent;
-        }
-
-        .wa-msg-text {
-            color: #333;
-            font-size: 14px;
-            line-height: 1.4;
-        }
-
-        .wa-time {
-            font-size: 10px;
-            color: #999;
-            display: block;
-            text-align: right;
-            margin-top: 4px;
-        }
-
-        .wa-footer {
-            background: white;
-            padding: 15px;
-            text-align: center;
-            border-radius: 0 0 10px 10px;
-        }
-
-        .wa-start-chat-btn {
-            background-color: var(--wa-green);
-            color: white;
-            text-decoration: none;
-            padding: 12px 24px;
-            border-radius: 25px;
-            font-weight: bold;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            box-sizing: border-box;
-            gap: 8px;
-            transition: background 0.3s;
-            border: none;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        .wa-start-chat-btn:hover {
-            background-color: #1da851;
-        }
-
-        .wa-start-chat-btn img {
-            width: 20px;
-            height: 20px;
-            filter: brightness(0) invert(1);
-        }
-
-        /* ===== AVAILABILITY BADGE (MÓVIL) ===== */
-        .availability-badge {
-            transition: all 0.5s ease;
-        }
-
-        .ping-dot {
-            animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
-        }
-
-        @keyframes ping {
-
-            75%,
-            100% {
-                transform: scale(2);
-                opacity: 0;
-            }
-        }
-
-        /* Posición específica para Camión (Botón Rectangular) */
-        .wa-notification-dot.on-icon {
-            top: -5px;
-            right: -5px;
-            width: 18px;
-            height: 18px;
-            font-size: 10px;
-        }
-    </style>
 
 </head>
 
@@ -1827,79 +1513,90 @@
                         </a>
                     </div>
                 </div>
-                <script>
-                    document.addEventListener('DOMContentLoaded', () => {
-                        // 1. AÑO DEL FOOTER
-                        const yearSpan = document.getElementById('year');
-                        if (yearSpan) yearSpan.textContent = new Date().getFullYear();
-                    });
-                </script>
-                <script src="/js/availability-badge.js"></script>
+            </div>
 
-                <script>
-                    // 3. WHATSAPP Y NOTIFICACIONES
-                    window.addEventListener('load', function () {
-                        setTimeout(function () {
-                            var dot = document.getElementById("wa-dot");
-                            var dotMobile = document.getElementById("wa-dot-mobile");
-                            var chatBox = document.getElementById("whatsapp-chat");
+            <div class="p-6 bg-slate-50 border-t border-slate-100">
+                <a href="https://wa.me/56936470112"
+                    class="flex items-center justify-center gap-2 w-full bg-green-500 text-white font-bold py-3 rounded-xl shadow-lg shadow-green-500/20 active:scale-95 transition">
+                    <i class="fa-brands fa-whatsapp text-xl"></i> WhatsApp 24/7
+                </a>
+            </div>
+        </div>
+    </div>
 
-                            if (chatBox && chatBox.style.display !== "flex") {
-                                if (dot) dot.classList.add("show");
-                                if (dotMobile) dotMobile.classList.add("show");
-                            }
-                        }, 5000);
-                    });
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. AÑO DEL FOOTER
+            const yearSpan = document.getElementById('year');
+            if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+        });
+    </script>
+    <script src="/js/availability-badge.js"></script>
 
-                    function toggleChat() {
-                        var chatBox = document.getElementById("whatsapp-chat");
-                        var btn = document.getElementById("wa-btn");
-                        var dot = document.getElementById("wa-dot");
+    <script>
+        // 3. WHATSAPP Y NOTIFICACIONES
+        window.addEventListener('load', function () {
+            setTimeout(function () {
+                var dot = document.getElementById("wa-dot");
+                var dotMobile = document.getElementById("wa-dot-mobile");
+                var chatBox = document.getElementById("whatsapp-chat");
 
-                        if (chatBox.style.display === "none" || chatBox.style.display === "") {
-                            chatBox.style.display = "flex";
-                            if (btn) btn.classList.add("active");
-                            if (dot) { dot.classList.remove("show"); dot.style.display = "none"; }
-                        } else {
-                            chatBox.style.display = "none";
-                            if (btn) btn.classList.remove("active");
-                        }
-                    }
+                if (chatBox && chatBox.style.display !== "flex") {
+                    if (dot) dot.classList.add("show");
+                    if (dotMobile) dotMobile.classList.add("show");
+                }
+            }, 5000);
+        });
 
-                    // 4. MENÚ MÓVIL
-                    const overlay = document.getElementById('mobile-menu-overlay');
-                    const panel = document.getElementById('mobile-menu-panel');
+        function toggleChat() {
+            var chatBox = document.getElementById("whatsapp-chat");
+            var btn = document.getElementById("wa-btn");
+            var dot = document.getElementById("wa-dot");
 
-                    function openMenu() {
-                        if (overlay && panel) {
-                            overlay.classList.remove('invisible', 'opacity-0');
-                            panel.classList.remove('translate-x-full');
-                            document.body.style.overflow = 'hidden';
-                        }
-                    }
+            if (chatBox.style.display === "none" || chatBox.style.display === "") {
+                chatBox.style.display = "flex";
+                if (btn) btn.classList.add("active");
+                if (dot) { dot.classList.remove("show"); dot.style.display = "none"; }
+            } else {
+                chatBox.style.display = "none";
+                if (btn) btn.classList.remove("active");
+            }
+        }
 
-                    function closeMenu() {
-                        if (overlay && panel) {
-                            panel.classList.add('translate-x-full');
-                            overlay.classList.add('invisible', 'opacity-0');
-                            document.body.style.overflow = '';
-                        }
-                    }
+        // 4. MENÚ MÓVIL
+        const overlay = document.getElementById('mobile-menu-overlay');
+        const panel = document.getElementById('mobile-menu-panel');
 
-                    function toggleSubmenu(id, btn) {
-                        const submenu = document.getElementById(id);
-                        const icon = btn.querySelector('.fa-chevron-down');
-                        if (submenu) {
-                            if (submenu.classList.contains('hidden')) {
-                                submenu.classList.remove('hidden');
-                                if (icon) icon.style.transform = 'rotate(180deg)';
-                            } else {
-                                submenu.classList.add('hidden');
-                                if (icon) icon.style.transform = 'rotate(0deg)';
-                            }
-                        }
-                    }
-                </script>
+        function openMenu() {
+            if (overlay && panel) {
+                overlay.classList.remove('invisible', 'opacity-0');
+                panel.classList.remove('translate-x-full');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeMenu() {
+            if (overlay && panel) {
+                panel.classList.add('translate-x-full');
+                overlay.classList.add('invisible', 'opacity-0');
+                document.body.style.overflow = '';
+            }
+        }
+
+        function toggleSubmenu(id, btn) {
+            const submenu = document.getElementById(id);
+            const icon = btn.querySelector('.fa-chevron-down');
+            if (submenu) {
+                if (submenu.classList.contains('hidden')) {
+                    submenu.classList.remove('hidden');
+                    if (icon) icon.style.transform = 'rotate(180deg)';
+                } else {
+                    submenu.classList.add('hidden');
+                    if (icon) icon.style.transform = 'rotate(0deg)';
+                }
+            }
+        }
+    </script>
 </body>
 
 </html>
