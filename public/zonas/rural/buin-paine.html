@@ -387,20 +387,23 @@
 
 
 
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-PG2RQNCD');</script>
-<!-- End Google Tag Manager -->
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-PG2RQNCD');</script>
+    <!-- End Google Tag Manager -->
 </head>
 
 <body class="bg-slate-50 text-slate-700 antialiased pb-24 md:pb-0 pb-30 md:pb-0">
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PG2RQNCD"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PG2RQNCD" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
 
     <nav
         class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm transition-all duration-300">
@@ -1519,9 +1522,30 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             function deleteReview() { localStorage.removeItem('alc_user_review'); loadReviews(); }
             function toggleReviewForm() { formContainer.classList.toggle('hidden'); }
             function scrollCarousel(d) { carouselTrack.scrollBy({ left: d * 374, behavior: 'smooth' }); }
-        </script>
 
-        <!-- Mobile Menu -->
+            // Chat
+            window.addEventListener('load', () => setTimeout(() => {
+                const chat = document.getElementById("whatsapp-chat");
+                if (chat.style.display !== "flex") document.getElementById("wa-dot").classList.add("show");
+            }, 5000));
+
+            function toggleChat() {
+                const chat = document.getElementById("whatsapp-chat");
+                const btn = document.getElementById("wa-btn");
+                const dot = document.getElementById("wa-dot");
+                if (chat.style.display === "none" || !chat.style.display) {
+                    chat.style.display = "flex";
+                    btn.classList.add("active");
+                    dot.classList.remove("show");
+                    dot.style.display = "none";
+                } else {
+                    chat.style.display = "none";
+                    btn.classList.remove("active");
+                }
+            }
+        </script>
+        <script src="/js/availability-badge.js"></script>
+
         <div id="mobile-menu-overlay" class="fixed inset-0 z-[60] invisible opacity-0 transition-all duration-300">
             <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity" onclick="closeMenu()">
             </div>
@@ -1564,88 +1588,93 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <a href="/servicios/index.html" onclick="closeMenu()"
                                 class="block px-4 py-2 text-sm font-bold text-brand-600 hover:underline mt-1 border-t border-slate-200/50 pt-2">
                                 Ver todos los servicios &rarr;
-                                <div class="p-6 bg-slate-50 border-t border-slate-100">
-                                    <a href="https://wa.me/56936470112"
-                                        class="flex items-center justify-center gap-2 w-full bg-green-500 text-white font-bold py-3 rounded-xl shadow-lg shadow-green-500/20 active:scale-95 transition">
-                                        <i class="fa-brands fa-whatsapp text-xl"></i> WhatsApp 24/7
-                                    </a>
-                                </div>
+                            </a>
                         </div>
                     </div>
+                </div>
 
-                    <script>
-                        document.addEventListener('DOMContentLoaded', () => {
-                            // 1. AÑO DEL FOOTER
-                            const yearSpan = document.getElementById('year');
-                            if (yearSpan) yearSpan.textContent = new Date().getFullYear();
-                        });
-                    </script>
-                    <script src="/js/availability-badge.js"></script>
+                <div class="p-6 bg-slate-50 border-t border-slate-100">
+                    <a href="https://wa.me/56936470112"
+                        class="flex items-center justify-center gap-2 w-full bg-green-500 text-white font-bold py-3 rounded-xl shadow-lg shadow-green-500/20 active:scale-95 transition">
+                        <i class="fa-brands fa-whatsapp text-xl"></i> WhatsApp 24/7
+                    </a>
+                </div>
+            </div>
+        </div>
 
-                    <script>
-                        // 3. WHATSAPP Y NOTIFICACIONES
-                        window.addEventListener('load', function () {
-                            setTimeout(function () {
-                                var dot = document.getElementById("wa-dot");
-                                var dotMobile = document.getElementById("wa-dot-mobile");
-                                var chatBox = document.getElementById("whatsapp-chat");
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                // 1. AÑO DEL FOOTER
+                const yearSpan = document.getElementById('year');
+                if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+            });
+        </script>
+        <script src="/js/availability-badge.js"></script>
 
-                                if (chatBox && chatBox.style.display !== "flex") {
-                                    if (dot) dot.classList.add("show");
-                                    if (dotMobile) dotMobile.classList.add("show");
-                                }
-                            }, 5000);
-                        });
+        <script>
+            // 3. WHATSAPP Y NOTIFICACIONES
+            window.addEventListener('load', function () {
+                setTimeout(function () {
+                    var dot = document.getElementById("wa-dot");
+                    var dotMobile = document.getElementById("wa-dot-mobile");
+                    var chatBox = document.getElementById("whatsapp-chat");
 
-                        function toggleChat() {
-                            var chatBox = document.getElementById("whatsapp-chat");
-                            var btn = document.getElementById("wa-btn");
-                            var dot = document.getElementById("wa-dot");
+                    if (chatBox && chatBox.style.display !== "flex") {
+                        if (dot) dot.classList.add("show");
+                        if (dotMobile) dotMobile.classList.add("show");
+                    }
+                }, 5000);
+            });
 
-                            if (chatBox.style.display === "none" || chatBox.style.display === "") {
-                                chatBox.style.display = "flex";
-                                if (btn) btn.classList.add("active");
-                                if (dot) { dot.classList.remove("show"); dot.style.display = "none"; }
-                            } else {
-                                chatBox.style.display = "none";
-                                if (btn) btn.classList.remove("active");
-                            }
-                        }
+            function toggleChat() {
+                var chatBox = document.getElementById("whatsapp-chat");
+                var btn = document.getElementById("wa-btn");
+                var dot = document.getElementById("wa-dot");
 
-                        // 4. MENÚ MÓVIL
-                        const overlay = document.getElementById('mobile-menu-overlay');
-                        const panel = document.getElementById('mobile-menu-panel');
+                if (chatBox.style.display === "none" || chatBox.style.display === "") {
+                    chatBox.style.display = "flex";
+                    if (btn) btn.classList.add("active");
+                    if (dot) { dot.classList.remove("show"); dot.style.display = "none"; }
+                } else {
+                    chatBox.style.display = "none";
+                    if (btn) btn.classList.remove("active");
+                }
+            }
 
-                        function openMenu() {
-                            if (overlay && panel) {
-                                overlay.classList.remove('invisible', 'opacity-0');
-                                panel.classList.remove('translate-x-full');
-                                document.body.style.overflow = 'hidden';
-                            }
-                        }
+            // 4. MENÚ MÓVIL
+            const overlay = document.getElementById('mobile-menu-overlay');
+            const panel = document.getElementById('mobile-menu-panel');
 
-                        function closeMenu() {
-                            if (overlay && panel) {
-                                panel.classList.add('translate-x-full');
-                                overlay.classList.add('invisible', 'opacity-0');
-                                document.body.style.overflow = '';
-                            }
-                        }
+            function openMenu() {
+                if (overlay && panel) {
+                    overlay.classList.remove('invisible', 'opacity-0');
+                    panel.classList.remove('translate-x-full');
+                    document.body.style.overflow = 'hidden';
+                }
+            }
 
-                        function toggleSubmenu(id, btn) {
-                            const submenu = document.getElementById(id);
-                            const icon = btn.querySelector('.fa-chevron-down');
-                            if (submenu) {
-                                if (submenu.classList.contains('hidden')) {
-                                    submenu.classList.remove('hidden');
-                                    if (icon) icon.style.transform = 'rotate(180deg)';
-                                } else {
-                                    submenu.classList.add('hidden');
-                                    if (icon) icon.style.transform = 'rotate(0deg)';
-                                }
-                            }
-                        }
-                    </script>
+            function closeMenu() {
+                if (overlay && panel) {
+                    panel.classList.add('translate-x-full');
+                    overlay.classList.add('invisible', 'opacity-0');
+                    document.body.style.overflow = '';
+                }
+            }
+
+            function toggleSubmenu(id, btn) {
+                const submenu = document.getElementById(id);
+                const icon = btn.querySelector('.fa-chevron-down');
+                if (submenu) {
+                    if (submenu.classList.contains('hidden')) {
+                        submenu.classList.remove('hidden');
+                        if (icon) icon.style.transform = 'rotate(180deg)';
+                    } else {
+                        submenu.classList.add('hidden');
+                        if (icon) icon.style.transform = 'rotate(0deg)';
+                    }
+                }
+            }
+        </script>
 </body>
 
 </html>
