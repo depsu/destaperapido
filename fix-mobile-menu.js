@@ -132,7 +132,7 @@ files.forEach(file => {
         if (navEndRegex.test(content)) {
             // Insertar antes del cierre de los contenedores del nav
             // Pero necesitamos que esté dentro del contenedor flex principal del nav
-            // El contenedor flex es: <div class="flex justify-between items-center h-20">
+            // El contenedor flex es: <div class="flex justify-between items-center h-17">
 
             // Vamos a intentar insertar justo después del último div que sea hijo directo del flex container.
             // Esto es difícil con regex.
