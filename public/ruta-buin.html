@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seguimiento de Camión | Servicio hacia Buin</title>
+    <meta name="description" content="Seguimiento aproximado del camión desde Maipú hacia Buin, con tiempo estimado de llegada.">
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <style>
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Plus Jakarta Sans", sans-serif;
+        }
+        #map {
+            min-height: 340px;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-50">
+    <div class="min-h-screen flex flex-col">
+        <!-- Header -->
+        <header class="border-b border-slate-900 bg-slate-950/90 backdrop-blur">
+            <div class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <div class="w-9 h-9 rounded-xl bg-blue-600/90 flex items-center justify-center text-xs font-bold tracking-tight">
+                        DR
+                    </div>
+                    <div>
+                        <p class="text-sm font-semibold tracking-tight">Destape Rápido</p>
+                        <p class="text-[11px] text-slate-400">Seguimiento de camión hacia Buin</p>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <p class="text-[11px] uppercase tracking-[0.16em] text-slate-500">Contacto</p>
+                    <p class="text-xs font-semibold text-slate-100">+56 9 1234 5678</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Contenido -->
+        <main class="flex-1 max-w-4xl mx-auto px-4 py-7 space-y-6">
+            <!-- Mensaje para el cliente -->
+            <section class="space-y-2">
+                <h1 class="text-2xl md:text-3xl font-semibold tracking-tight">
+                    Estamos coordinando el camión hacia Buin 🧰
+                </h1>
+                <p class="text-sm md:text-base text-slate-300 max-w-2xl">
+                    En este momento estamos <span class="font-semibold">finalizando un servicio en Maipú</span>.
+                    Luego saldremos en ruta hacia <span class="font-semibold">Buin</span>.
+                    El mapa y el tiempo de llegada son una referencia aproximada.
+                </p>
+            </section>
+
+            <!-- Mapa -->
+            <section class="bg-slate-900/60 border border-slate-800 rounded-2xl overflow-hidden shadow-lg shadow-slate-950/60">
+                <div class="px-4 pt-4 pb-3 flex items-center justify-between gap-2">
+                    <div>
+                        <p class="text-[11px] uppercase tracking-[0.16em] text-slate-400">
+                            Mapa referencial
+                        </p>
+                        <p class="text-sm text-slate-300">
+                            Punto actual aproximado y zona de llegada (Buin).
+                        </p>
+                    </div>
+                    <span class="inline-flex items-center px-2.5 py-1 rounded-full bg-blue-500/10 text-[11px] font-medium text-blue-300 border border-blue-500/40">
+                        Vista aproximada
+                    </span>
+                </div>
+                <div id="map" class="w-full h-[360px]"></div>
+                <div class="px-4 py-2 text-[11px] text-slate-500 border-t border-slate-800 bg-slate-950/80">
+                    La ubicación y la ruta mostradas son aproximadas y pueden variar según el tráfico y la hora.
+                </div>
+            </section>
+
+            <!-- Estado y contador -->
+            <section class="grid md:grid-cols-2 gap-4">
+                <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-4 space-y-3">
+                    <p class="text-[11px] uppercase tracking-[0.16em] text-slate-400">
+                        Tiempo estimado de llegada
+                    </p>
+                    <div class="flex items-baseline gap-2">
+                        <p id="etaText" class="text-3xl font-mono font-semibold text-slate-50">
+                            --:--:--
+                        </p>
+                    </div>
+                    <p class="text-xs text-slate-400">
+                        El contador se basa en un tiempo de viaje estimado desde Maipú hasta Buin.
+                        Puede ajustarse según el tráfico real.
+                    </p>
+                </div>
+
+                <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-4 space-y-3">
+                    <p class="text-[11px] uppercase tracking-[0.16em] text-slate-400">
+                        Estado del camión
+                    </p>
+                    <span id="statusBadge"
+                          class="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-semibold ring-1 ring-inset bg-slate-800 text-slate-100 ring-slate-600">
+                        Calculando...
+                    </span>
+                    <p id="statusText" class="text-sm text-slate-300">
+                        Estamos configurando el tiempo estimado de llegada.
+                    </p>
+                    <div class="mt-1 text-[11px] text-slate-500 bg-slate-950/60 rounded-xl border border-slate-800 p-3">
+                        <span class="font-semibold text-slate-200">Nota:</span>
+                       Falta dirección especifica, para llegar a casa de Buin.
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="border-t border-slate-900/80 bg-slate-950/90">
+            <div class="max-w-4xl mx-auto px-4 py-4 text-[11px] text-slate-500 flex flex-col md:flex-row items-center justify-between gap-2">
+                <p>© <span id="year"></span> Destape Rápido. Seguimiento de servicio.</p>
+                <p>Si tiene dudas, puede respondernos por el mismo WhatsApp donde recibió este enlace.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // AÑO
+        document.getElementById("year").textContent = new Date().getFullYear();
+
+        // ========= CONFIGURACIÓN BÁSICA =========
+        // Coordenadas aproximadas
+        const maipu = [-33.51, -70.76];      // Maipú aprox
+        const buin  = [-33.73, -70.74];      // Buin aprox
+
+        // 👉 Ajusta aquí el tiempo estimado total (en minutos)
+        //    Ejemplo: 90 = 1h 30min, 60 = 1h, etc.
+        const initialEtaMinutes = 90; // CAMBIA ESTE VALOR SEGÚN LO QUE ESTIMES
+
+        // ========= MAPA =========
+        const centerLat = (maipu[0] + buin[0]) / 2;
+        const centerLng = (maipu[1] + buin[1]) / 2;
+
+        const map = L.map("map").setView([centerLat, centerLng], 11);
+
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            maxZoom: 18,
+            attribution: '&copy; OpenStreetMap'
+        }).addTo(map);
+
+        // Marcador de servicio actual (Maipú)
+        const maipuMarker = L.marker(maipu)
+            .addTo(map)
+            .bindPopup("Servicio actual aproximado (Maipú)");
+
+        // Zona Buin – círculo y marcador
+        const buinCircle = L.circle(buin, {
+            radius: 3000, // 3 km aprox
+            color: "#3B82F6",
+            fillColor: "#3B82F6",
+            fillOpacity: 0.15,
+            weight: 2
+        }).addTo(map);
+
+        const buinMarker = L.marker(buin)
+            .addTo(map)
+            .bindPopup("Zona de llegada aproximada (Buin)");
+
+        // Línea Maipú → Buin
+        const routeLine = L.polyline([maipu, buin], {
+            color: "#38bdf8",
+            weight: 3,
+            dashArray: "8 8"
+        }).addTo(map);
+
+        map.fitBounds(routeLine.getBounds(), { padding: [40, 40] });
+
+        // Marcador del camión (se moverá por la ruta)
+        const truckMarker = L.marker(maipu, {
+            title: "Camión en servicio / en ruta"
+        }).addTo(map);
+
+        // ========= CONTADOR Y ESTADO =========
+        const etaTextEl = document.getElementById("etaText");
+        const statusBadgeEl = document.getElementById("statusBadge");
+        const statusTextEl = document.getElementById("statusText");
+
+        const baseBadgeClasses = "inline-flex items-center px-3 py-1 rounded-full text-[11px] font-semibold ring-1 ring-inset";
+
+        const originalDurationMs = initialEtaMinutes * 60 * 1000;
+        const arrivalTime = Date.now() + originalDurationMs;
+
+        function updateCountdown() {
+            const now = Date.now();
+            let remainingMs = arrivalTime - now;
+
+            if (remainingMs <= 0) {
+                // Llegamos / comenzando servicio
+                etaTextEl.textContent = "00:00:00";
+                statusBadgeEl.textContent = "Camión en Buin";
+                statusBadgeEl.className = baseBadgeClasses + " bg-emerald-500/10 text-emerald-300 ring-emerald-500/40";
+                statusTextEl.textContent = "Camión en Buin, comenzando su servicio o en su domicilio.";
+                truckMarker.setLatLng(buin);
+                return;
+            }
+
+            const totalSeconds = Math.floor(remainingMs / 1000);
+            const hours = Math.floor(totalSeconds / 3600);
+            const minutes = Math.floor((totalSeconds % 3600) / 60);
+            const seconds = totalSeconds % 60;
+
+            etaTextEl.textContent =
+                String(hours).padStart(2, "0") + ":" +
+                String(minutes).padStart(2, "0") + ":" +
+                String(seconds).padStart(2, "0");
+
+            const remainingHours = remainingMs / (1000 * 60 * 60);
+
+            if (remainingHours > 1) {
+                // Etapa 1: finalizando servicio en Maipú
+                statusBadgeEl.textContent = "Camión finalizando servicio";
+                statusBadgeEl.className = baseBadgeClasses + " bg-amber-500/10 text-amber-200 ring-amber-500/40";
+                statusTextEl.textContent = "Camión finalizando servicio en Maipú. Apenas terminemos, salimos directo hacia Buin.";
+            } else {
+                // Etapa 2: en ruta hacia Buin
+                statusBadgeEl.textContent = "Camión en ruta";
+                statusBadgeEl.className = baseBadgeClasses + " bg-sky-500/10 text-sky-200 ring-sky-500/40";
+                statusTextEl.textContent = "Camión en ruta a Buin, lo llamaremos al estar cerca.";
+            }
+
+            // Movimiento del camión en la línea
+            const fraction = Math.min(Math.max(1 - (remainingMs / originalDurationMs), 0), 1);
+            const start = routeLine.getLatLngs()[0];
+            const end = routeLine.getLatLngs()[1];
+
+            const lat = start.lat + (end.lat - start.lat) * fraction;
+            const lng = start.lng + (end.lng - start.lng) * fraction;
+            truckMarker.setLatLng([lat, lng]);
+        }
+
+        // Primera actualización inmediata + cada segundo
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
