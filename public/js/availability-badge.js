@@ -139,4 +139,10 @@ document.addEventListener('DOMContentLoaded', () => {
             renderUI(currentState.count);
         }
     }, 1000);
+
+    // Auto-update Copyright Year
+    const yearSpan = document.getElementById('year');
+    if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+    }
 });

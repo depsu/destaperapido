@@ -383,9 +383,9 @@
                         <span
                             class="block font-extrabold text-slate-900 text-base md:text-lg leading-none tracking-tight">DESTAPE<span
                                 class="text-brand-600">RÁPIDO</span></span>
-                        <span
-                            class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Región
-                            Metropolitana</span></div>
+                        <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Región
+                            Metropolitana</span>
+                    </div>
                 </a>
 
                 <!-- Desktop Menu -->
@@ -648,13 +648,13 @@
             </p>
 
             <div class="flex flex-wrap justify-center gap-3">
-                <button
+                <button data-filter="all"
                     class="px-6 py-2 bg-white text-brand-900 font-bold rounded-full shadow-lg hover:bg-slate-100 transition">Todos</button>
-                <button
+                <button data-filter="urbano"
                     class="px-6 py-2 bg-white/10 backdrop-blur text-white font-bold rounded-full border border-white/20 hover:bg-white/20 transition">Urbano</button>
-                <button
+                <button data-filter="rural"
                     class="px-6 py-2 bg-white/10 backdrop-blur text-white font-bold rounded-full border border-white/20 hover:bg-white/20 transition">Rural</button>
-                <button
+                <button data-filter="empresas"
                     class="px-6 py-2 bg-white/10 backdrop-blur text-white font-bold rounded-full border border-white/20 hover:bg-white/20 transition">Empresas</button>
             </div>
         </div>
@@ -664,7 +664,7 @@
         <div class="container mx-auto px-4">
             <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
 
-                <article
+                <article data-category="urbano"
                     class="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl transition-all duration-300 group">
                     <div class="grid md:grid-cols-2 h-full">
                         <div class="relative h-64 md:h-full overflow-hidden">
@@ -710,7 +710,7 @@
                     </div>
                 </article>
 
-                <article
+                <article data-category="rural"
                     class="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl transition-all duration-300 group">
                     <div class="grid md:grid-cols-2 h-full">
                         <div class="relative h-64 md:h-full overflow-hidden">
@@ -755,7 +755,7 @@
                     </div>
                 </article>
 
-                <article
+                <article data-category="empresas"
                     class="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl transition-all duration-300 group">
                     <div class="grid md:grid-cols-2 h-full">
                         <div class="relative h-64 md:h-full overflow-hidden">
@@ -873,48 +873,104 @@
         </div>
     </section>
 
-    <footer class="bg-slate-900 text-slate-400 py-12 text-sm border-t border-slate-800">
+    <footer class="bg-slate-50 text-slate-500 py-12 text-sm border-t border-slate-200">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
+
                 <div class="lg:col-span-2">
-                    <div class="text-xl font-bold text-white mb-4 flex items-center gap-2">
-                        <div class="w-8 h-8 bg-brand-600 rounded flex items-center justify-center text-white text-sm">
-                            <i class="fa-solid fa-droplet"></i>
+                    <a href="/" class="flex items-center gap-3 mb-6" aria-label="Destape Rápido - Página de Inicio">
+                        <div class="w-12 h-12 md:w-[72px] md:h-[72px] flex items-center justify-center">
+                            <img src="/logo-nav.webp" alt="Logo Destape Rápido, servicio de destapes en la RM"
+                                width="72" height="72" class="w-full h-full object-contain">
                         </div>
-                        <span>DESTAPE<span class="text-brand-600">RÁPIDO</span></span>
+                        <div>
+                            <span
+                                class="block font-extrabold text-slate-900 text-xl leading-none tracking-tight">DESTAPE<span
+                                    class="text-brand-600">RÁPIDO</span></span>
+                            <span
+                                class="text-[8px] md:text-[10px] font-bold text-slate-500 uppercase tracking-widest">Región
+                                Metropolitana</span>
+                        </div>
+                    </a>
+                    <p class="mb-6 text-slate-500 max-w-xs leading-relaxed">Soluciones sanitarias profesionales para
+                        hogares y empresas. Atendemos urgencias reales con equipos certificados.</p>
+                    <div class="flex gap-4">
+                        <a href="/" class="text-slate-500 hover:text-brand-600 transition" aria-label="Facebook">
+                            <i class="fa-brands fa-facebook text-xl"></i>
+                        </a>
+                        <a href="/" class="text-slate-500 hover:text-brand-600 transition" aria-label="Instagram">
+                            <i class="fa-brands fa-instagram text-xl"></i>
+                        </a>
+                        <a href="/" class="text-slate-500 hover:text-brand-600 transition" aria-label="LinkedIn">
+                            <i class="fa-brands fa-linkedin text-xl"></i>
+                        </a>
                     </div>
-                    <p class="mb-4 text-slate-500 max-w-xs">Profesionales certificados resolviendo problemas sanitarios
-                        complejos en la Región Metropolitana.</p>
                 </div>
+
                 <div>
-                    <h4 class="text-white font-bold mb-4 uppercase tracking-wider text-xs">Servicios</h4>
+                    <h4 class="text-slate-900 font-bold mb-4 uppercase tracking-wider text-xs">Servicios</h4>
                     <ul class="space-y-2">
-                        <li><a href="../servicios/destape-alcantarillado.html"
-                                class="hover:text-brand-500 transition">Destapes</a></li>
-                        <li><a href="../servicios/limpieza-fosas-septicas.html"
-                                class="hover:text-brand-500 transition">Fosas</a></li>
+                        <li><a href="/servicios/destape-alcantarillado.html"
+                                class="hover:text-brand-600 transition">Destape Alcantarillado</a></li>
+                        <li><a href="/servicios/limpieza-fosas-septicas.html"
+                                class="hover:text-brand-600 transition">Limpieza Fosas Sépticas</a></li>
+                        <li><a href="/servicios/destape-alcantarillado.html#mantencion"
+                                class="hover:text-brand-600 transition">Mantención Edificios</a></li>
+                        <li><a href="/servicios/destape-alcantarillado.html"
+                                class="font-medium text-brand-600 hover:underline text-xs mt-2 block">Ver todos los
+                                servicios &rarr;</a></li>
                     </ul>
                 </div>
+
                 <div>
-                    <h4 class="text-white font-bold mb-4 uppercase tracking-wider text-xs">Cobertura</h4>
+                    <h4 class="text-slate-900 font-bold mb-4 uppercase tracking-wider text-xs">Cobertura</h4>
                     <ul class="space-y-2">
-                        <li><a href="../zonas/urbano/las-condes.html" class="hover:text-brand-500 transition">Las
-                                Condes</a></li>
-                        <li><a href="../zonas/rural/chicureo.html" class="hover:text-brand-500 transition">Chicureo</a>
-                        </li>
+                        <li><a href="/zonas/urbano/index.html" class="hover:text-brand-600 transition">Las Condes /
+                                Vitacura</a></li>
+                        <li><a href="/zonas/rural/chicureo.html" class="hover:text-brand-600 transition">Chicureo /
+                                Colina</a></li>
+                        <li><a href="/zonas/rural/pirque.html" class="hover:text-brand-600 transition">Pirque / Cajón
+                                del Maipo</a></li>
+                        <li><a href="/zonas/urbano/index.html"
+                                class="font-medium text-brand-600 hover:underline text-xs mt-2 block">Ver
+                                todas las zonas &rarr;</a></li>
                     </ul>
                 </div>
+
                 <div>
-                    <h4 class="text-white font-bold mb-4 uppercase tracking-wider text-xs">Ayuda</h4>
+                    <h4 class="text-slate-900 font-bold mb-4 uppercase tracking-wider text-xs">Blog & Ayuda</h4>
                     <ul class="space-y-2">
-                        <li><a href="../contacto.html" class="hover:text-brand-500 transition">Contacto</a></li>
-                        <li><a href="../emergencias-24-7.html" class="hover:text-brand-500 transition">Urgencias</a>
-                        </li>
+                        <li><a href="/servicios/destape-alcantarillado.html#consejos"
+                                class="hover:text-brand-600 transition">Consejos de Mantención</a></li>
+                        <li><a href="/servicios/destape-alcantarillado.html#faq"
+                                class="hover:text-brand-600 transition">Preguntas Frecuentes</a></li>
+                        <li><a href="/servicios/destape-alcantarillado.html#trabaja"
+                                class="hover:text-brand-600 transition">Trabaja con Nosotros</a></li>
+                        <li><a href="/servicios/destape-alcantarillado.html#contacto"
+                                class="hover:text-brand-600 transition">Contacto Administrativo</a></li>
+                        <li><a href="/blog/index.html"
+                                class="hover:text-brand-600 transition font-bold text-brand-600 mt-2 block">Blog de
+                                Consejos &rarr;</a></li>
                     </ul>
                 </div>
+
             </div>
-            <div class="border-t border-slate-800 pt-8 text-center">
-                <p>&copy; <span id="year"></span> Destape Rápido. Todos los derechos reservados.</p>
+
+            <div
+                class="border-t border-slate-200 pt-8 text-center flex flex-col md:flex-row justify-between items-center pb-24 md:pb-0">
+                <div class="flex flex-col items-center md:items-start gap-2">
+                    <p>&copy; <span id="year"></span> destaperapido. Todos los derechos reservados.</p>
+                    <p class="text-xs text-slate-500">Diseñado por <a href="https://www.paginasfast.cl/" target="_blank"
+                            rel="noopener" class="hover:text-brand-600 transition">PaginasFast.cl</a></p>
+                </div>
+                <div class="flex gap-4 mt-4 md:mt-0">
+                    <a href="/" class="hover:text-slate-800 transition" aria-label="Facebook"><i
+                            class="fa-brands fa-facebook text-lg"></i></a>
+                    <a href="/" class="hover:text-slate-800 transition" aria-label="Instagram"><i
+                            class="fa-brands fa-instagram text-lg"></i></a>
+                    <a href="/" class="hover:text-slate-800 transition" aria-label="LinkedIn"><i
+                            class="fa-brands fa-linkedin text-lg"></i></a>
+                </div>
             </div>
         </div>
     </footer>
@@ -964,7 +1020,34 @@
 
 
     <script>
-        document.getElementById('year').textContent = new Date().getFullYear();
+        // Filtering Logic for Casos Reales
+        document.addEventListener('DOMContentLoaded', () => {
+            const buttons = document.querySelectorAll('button[data-filter]');
+            const articles = document.querySelectorAll('article');
+
+            buttons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Update active state
+                    buttons.forEach(b => {
+                        b.classList.remove('bg-white', 'text-brand-900', 'shadow-lg');
+                        b.classList.add('bg-white/10', 'text-white', 'border-white/20');
+                    });
+                    btn.classList.remove('bg-white/10', 'text-white', 'border-white/20');
+                    btn.classList.add('bg-white', 'text-brand-900', 'shadow-lg');
+
+                    const filter = btn.getAttribute('data-filter');
+
+                    articles.forEach(article => {
+                        if (filter === 'all' || article.getAttribute('data-category') === filter) {
+                            article.style.display = 'block';
+                            article.classList.add('animate-fade-in');
+                        } else {
+                            article.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
 
         const overlay = document.getElementById('mobile-menu-overlay');
         const panel = document.getElementById('mobile-menu-panel');
