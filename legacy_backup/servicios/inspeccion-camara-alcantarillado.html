@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self' https:; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' https: data:;">
+    <link rel="preconnect" href="https://www.transparenttextures.com">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inspección de Alcantarillado con Cámara | Diagnóstico Video HD | Destape Rápido</title>
+    <meta name="description"
+        content="Servicio de video inspección de tuberías con cámara HD. Detectamos fugas, roturas y raíces sin romper pisos. Informe técnico y grabación incluidos.">
+
+    <link rel="canonical" href="https://www.destaperapido.cl/servicios/inspeccion-camara-alcantarillado">
+    <link rel="stylesheet" href="/output.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+
+
+
+    <style>
+        /*Botón de whatsapp escritorio*/
+        /* --- VARIABLES Y ESTILOS BASE --- */
+        :root {
+            --wa-green: #25D366;
+            --wa-dark: #075E54;
+            --wa-red: #ff3b30;
+        }
+
+        /* 1. NOTIFICACIÓN ROJA (Nuevo) */
+        .wa-notification-dot {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: var(--wa-red);
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid white;
+            z-index: 1002;
+            opacity: 0;
+            transform: scale(0);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .wa-notification-dot.show {
+            opacity: 1;
+            transform: scale(1);
+            animation: wa-dot-bounce 1s infinite;
+        }
+
+        @keyframes wa-dot-bounce {
+
+            0%,
+            100% {
+                transform: translateY(0) scale(1);
+            }
+
+            50% {
+                transform: translateY(-4px) scale(1);
+            }
+        }
+
+        /* 2. BOTÓN FLOTANTE */
+        .wa-floating-btn {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: var(--wa-green);
+            color: white;
+            border-radius: 50%;
+
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            animation: pulse-green 2s infinite;
+        }
+
+        .wa-floating-btn:not(.active):hover {
+            transform: scale(1.1);
+        }
+
+        .wa-floating-btn.active {
+            background-color: #333;
+            animation: none;
+            transform: rotate(90deg);
+        }
+
+        .wa-icon {
+            position: absolute;
+            width: 35px;
+            height: 35px;
+            fill: white;
+            transition: all 0.3s ease;
+        }
+
+        .wa-icon-logo {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .wa-icon-close {
+            opacity: 0;
+            transform: scale(0) rotate(-90deg);
+        }
+
+        .active .wa-icon-logo {
+            opacity: 0;
+            transform: scale(0) rotate(90deg);
+        }
+
+        .active .wa-icon-close {
+            opacity: 1;
+            transform: scale(1) rotate(0);
+        }
+
+        @keyframes pulse-green {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+
+        /* 3. VENTANA DE CHAT */
+        .wa-chat-box {
+            display: none;
+            position: fixed;
+            bottom: 95px;
+            left: 20px;
+            width: 350px;
+            max-width: 85%;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+            overflow: visible;
+            z-index: 1001;
+            flex-direction: column;
+            font-family: 'Segoe UI', sans-serif;
+            animation: slideIn 0.3s ease-out forwards;
+        }
+
+        .wa-chat-box::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 20px;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid white;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .wa-header {
+            background-color: var(--wa-green);
+            padding: 20px;
+            color: white;
+            display: flex;
+            align-items: center;
+            border-radius: 10px 10px 0 0;
+            position: relative;
+        }
+
+        .wa-close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0.8;
+        }
+
+        .wa-close-btn:hover {
+            opacity: 1;
+        }
+
+        .wa-profile-pic {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+            border: 2px solid white;
+            background-color: #ddd;
+            object-fit: cover;
+        }
+
+        .wa-info h4 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .wa-info p {
+            margin: 2px 0 0;
+            font-size: 12px;
+            opacity: 0.9;
+        }
+
+        .wa-body {
+            background-color: #f0f0f0;
+            background-image: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png');
+            padding: 20px;
+            height: 200px;
+            overflow-y: auto;
+        }
+
+        .wa-message {
+            background: white;
+            padding: 10px 15px;
+            border-radius: 0 10px 10px 10px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            width: fit-content;
+            max-width: 80%;
+            position: relative;
+            margin-bottom: 5px;
+        }
+
+        .wa-message::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -8px;
+            width: 0;
+            height: 0;
+            border-top: 10px solid white;
+            border-left: 10px solid transparent;
+        }
+
+        .wa-msg-text {
+            color: #333;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .wa-time {
+            font-size: 10px;
+            color: #999;
+            display: block;
+            text-align: right;
+            margin-top: 4px;
+        }
+
+        .wa-footer {
+            background: white;
+            padding: 15px;
+            text-align: center;
+            border-radius: 0 0 10px 10px;
+        }
+
+        .wa-start-chat-btn {
+            background-color: var(--wa-green);
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            box-sizing: border-box;
+            gap: 8px;
+            transition: background 0.3s;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .wa-start-chat-btn:hover {
+            background-color: #1da851;
+        }
+
+        .wa-start-chat-btn img {
+            width: 20px;
+            height: 20px;
+            filter: brightness(0) invert(1);
+        }
+
+        /* ===== AVAILABILITY BADGE (MÓVIL) ===== */
+        .availability-badge {
+            transition: all 0.5s ease;
+        }
+
+        .ping-dot {
+            animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+        }
+
+        @keyframes ping {
+
+            75%,
+            100% {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+
+        /* Posición específica para Camión (Botón Rectangular) */
+        .wa-notification-dot.on-icon {
+            top: -5px;
+            right: -5px;
+            width: 18px;
+            height: 18px;
+            font-size: 10px;
+        }
+    </style>
+
+
+    <meta property="og:title" content="Inspección de Alcantarillado con Cámara | Diagnóstico Video HD | Destape Rápido">
+    <meta property="og:description"
+        content="Servicio de video inspección de tuberías con cámara HD. Detectamos fugas, roturas y raíces sin romper pisos. Informe técnico y grabación incluidos.">
+    <meta property="og:url" content="https://www.destaperapido.cl/servicios/inspeccion-camara-alcantarillado">
+    <meta property="og:image" content="https://www.destaperapido.cl/images/video-inspección.jpeg">
+    <meta name="twitter:card" content="summary_large_image">
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-PG2RQNCD');</script>
+    <!-- End Google Tag Manager -->
+</head>
+
+<body class="bg-slate-50 text-slate-600 antialiased selection:bg-tech-600 selection:text-white pb-30 md:pb-0">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PG2RQNCD" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <nav
+        class="absolute md:fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-17">
+
+                <a href="/" class="flex items-center gap-1" aria-label="Destape Rápido - Destapes Las Condes 24/7">
+                    <div class="w-12 h-12 md:w-[72px] md:h-[72px] flex items-center justify-center">
+                        <img src="/logo-nav.webp" alt="Logo Destape Rápido - Expertos en Alcantarillado" width="72"
+                            height="72" class="w-full h-full object-contain">
+                    </div>
+                    <div class="flex flex-col justify-center -space-y-0.5">
+                        <span
+                            class="block font-extrabold text-slate-900 text-base md:text-lg leading-none tracking-tight">DESTAPE<span
+                                class="text-brand-600">RÁPIDO</span></span>
+                        <span
+                            class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Región
+                            Metropolitana</span></div>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center gap-8 font-semibold text-slate-600 text-sm">
+                    <a href="/" class="hover:text-brand-600 transition-colors">Inicio</a>
+
+                    <!-- Servicios Dropdown -->
+                    <div class="relative group h-20 flex items-center">
+                        <button
+                            class="flex items-center gap-1 hover:text-brand-600 transition-colors focus:outline-none cursor-default">
+                            Servicios <i
+                                class="fa-solid fa-chevron-down text-xs opacity-50 group-hover:rotate-180 transition-transform duration-300"></i>
+                        </button>
+                        <div
+                            class="absolute top-full left-0 w-72 bg-white rounded-xl shadow-xl border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 overflow-hidden">
+                            <div class="p-2 space-y-1">
+                                <a href="/servicios/destape-alcantarillado.html"
+                                    class="block px-4 py-2.5 rounded-lg hover:bg-brand-50 hover:text-brand-600 transition-colors">
+                                    <i class="fa-solid fa-toilet w-5 text-brand-400"></i> Destape Alcantarillado
+                                </a>
+                                <a href="/servicios/limpieza-fosas-septicas.html"
+                                    class="block px-4 py-2.5 rounded-lg hover:bg-brand-50 hover:text-brand-600 transition-colors">
+                                    <i class="fa-solid fa-truck-droplet w-5 text-brand-400"></i> Limpieza de Fosas
+                                </a>
+                                <a href="/servicios/destape-edificios-condominios.html"
+                                    class="block px-4 py-2.5 rounded-lg hover:bg-brand-50 hover:text-brand-600 transition-colors">
+                                    <i class="fa-solid fa-building w-5 text-brand-400"></i> Edificios y Condominios
+                                </a>
+                                <a href="/servicios/inspeccion-camara-alcantarillado.html"
+                                    class="block px-4 py-2.5 rounded-lg hover:bg-brand-50 hover:text-brand-600 transition-colors">
+                                    <i class="fa-solid fa-video w-5 text-brand-400"></i> Inspección con Cámara
+                                </a>
+                                <a href="/servicios/mantencion-preventiva.html"
+                                    class="block px-4 py-2.5 rounded-lg hover:bg-brand-50 hover:text-brand-600 transition-colors">
+                                    <i class="fa-solid fa-clipboard-check w-5 text-brand-400"></i> Mantención Preventiva
+                                </a>
+                            </div>
+                            <div class="bg-slate-50 border-t border-slate-100 p-2">
+                                <a href="/servicios/index.html"
+                                    class="block w-full text-center px-4 py-2 text-xs font-bold text-brand-600 hover:underline uppercase tracking-wide">
+                                    Ver todos los servicios &rarr;
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Zonas Dropdown -->
+                    <div class="relative group h-20 flex items-center">
+                        <button
+                            class="flex items-center gap-1 hover:text-brand-600 transition-colors focus:outline-none cursor-default">
+                            Zonas <i
+                                class="fa-solid fa-chevron-down text-xs opacity-50 group-hover:rotate-180 transition-transform duration-300"></i>
+                        </button>
+                        <!-- Mega Menu for Zones -->
+                        <div
+                            class="absolute top-full left-1/2 -translate-x-1/2 w-[500px] bg-white rounded-xl shadow-xl border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 overflow-hidden">
+                            <div class="grid grid-cols-2 p-4 gap-4">
+                                <div>
+                                    <div
+                                        class="px-2 py-1 text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2 border-b border-slate-100">
+                                        Urbano</div>
+                                    <div class="space-y-1">
+                                        <a href="/zonas/urbano/las-condes.html"
+                                            class="block px-3 py-1.5 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors text-sm">Las
+                                            Condes</a>
+                                        <a href="/zonas/urbano/vitacura.html"
+                                            class="block px-3 py-1.5 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors text-sm">Vitacura</a>
+                                        <a href="/zonas/urbano/lo-barnechea.html"
+                                            class="block px-3 py-1.5 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors text-sm">Lo
+                                            Barnechea</a>
+                                        <a href="/zonas/urbano/providencia.html"
+                                            class="block px-3 py-1.5 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors text-sm">Providencia</a>
+                                        <a href="/zonas/urbano/la-reina.html"
+                                            class="block px-3 py-1.5 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors text-sm">La
+                                            Reina</a>
+                                        <a href="/zonas/urbano/nunoa.html"
+                                            class="block px-3 py-1.5 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors text-sm">Ñuñoa</a>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div
+                                        class="px-2 py-1 text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2 border-b border-slate-100">
+                                        Rural</div>
+                                    <div class="space-y-1">
+                                        <a href="/zonas/rural/chicureo.html"
+                                            class="block px-3 py-1.5 rounded-lg hover:bg-green-50 hover:text-green-600 transition-colors text-sm">Chicureo</a>
+                                        <a href="/zonas/rural/colina.html"
+                                            class="block px-3 py-1.5 rounded-lg hover:bg-green-50 hover:text-green-600 transition-colors text-sm">Colina</a>
+                                        <a href="/zonas/rural/lampa.html"
+                                            class="block px-3 py-1.5 rounded-lg hover:bg-green-50 hover:text-green-600 transition-colors text-sm">Lampa</a>
+                                        <a href="/zonas/rural/pirque.html"
+                                            class="block px-3 py-1.5 rounded-lg hover:bg-green-50 hover:text-green-600 transition-colors text-sm">Pirque</a>
+                                        <a href="/zonas/rural/buin-paine.html"
+                                            class="block px-3 py-1.5 rounded-lg hover:bg-green-50 hover:text-green-600 transition-colors text-sm">Buin
+                                            / Paine</a>
+                                        <a href="/zonas/rural/index.html"
+                                            class="block px-3 py-1.5 text-xs font-bold text-green-600 hover:underline mt-2">Ver
+                                            todas &rarr;</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bg-slate-50 border-t border-slate-100 p-2 text-center">
+                                <a href="/zonas/urbano/index.html"
+                                    class="text-xs font-bold text-brand-600 hover:underline uppercase tracking-wide">
+                                    Ver mapa de cobertura completo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="/casos-reales/index.html" class="hover:text-brand-600 transition-colors">Casos Reales</a>
+                    <a href="/contacto.html" class="hover:text-brand-600 transition-colors">Contacto</a>
+
+                    <div class="flex items-center gap-4 ml-4">
+                        <a href="tel:+56930153632"
+                            class="text-slate-900 font-bold hover:text-brand-600 transition hidden xl:block">
+                            <i class="fa-solid fa-phone mr-1"></i> +56 9 3015 3632
+                        </a>
+                        <a href="https://wa.me/56936470112"
+                            class="bg-brand-600 hover:bg-brand-700 text-white px-5 py-2.5 rounded-full font-bold shadow-lg shadow-brand-500/20 transition hover:-translate-y-0.5 flex items-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-lg"></i> Urgencia
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Mobile Toggle -->
+                <div class="flex items-center gap-4 lg:hidden">
+                    <a href="tel:+56930153632"
+                        class="flex items-center justify-center w-10 h-10 rounded-full bg-slate-100 text-slate-900 active:scale-95 transition">
+                        <i class="fa-solid fa-phone"></i>
+                    </a>
+                    <button onclick="openMenu()" aria-label="Abrir menú de navegación"
+                        class="p-2.5 rounded-lg text-slate-900 hover:bg-slate-100 focus:outline-none transition active:scale-95">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div id="mobile-menu-overlay" class="fixed inset-0 z-[60] invisible opacity-0 transition-all duration-300">
+        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity" onclick="closeMenu()"></div>
+        <div id="mobile-menu-panel"
+            class="absolute top-0 right-0 w-[85%] max-w-sm h-full bg-white shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col">
+
+            <div class="px-6 h-20 flex items-center justify-between border-b border-slate-100">
+                <span class="font-extrabold text-slate-900 text-lg tracking-tight">MENÚ</span>
+                <button onclick="closeMenu()" aria-label="Cerrar menú"
+                    class="w-10 h-10 rounded-full bg-slate-50 text-slate-500 hover:bg-red-50 hover:text-red-500 transition flex items-center justify-center">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
+
+            <div class="flex-1 overflow-y-auto py-6 px-6 space-y-2">
+                <a href="/" onclick="closeMenu()"
+                    class="block px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 hover:text-brand-600 transition">Inicio</a>
+
+                <div class="group">
+                    <button
+                        class="w-full flex items-center justify-between px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 transition"
+                        onclick="toggleSubmenu('sub-servicios', this)">
+                        Servicios
+                        <i class="fa-solid fa-chevron-down text-xs text-slate-400 transition-transform"></i>
+                    </button>
+                    <div id="sub-servicios" class="hidden pl-4 space-y-1 bg-slate-50/50 rounded-b-xl pb-2">
+                        <a href="/servicios/destape-alcantarillado.html" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Destape
+                            Alcantarillado</a>
+                        <a href="/servicios/limpieza-fosas-septicas.html" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Limpieza
+                            Fosas</a>
+                        <a href="/servicios/destape-edificios-condominios.html" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Edificios</a>
+                        <a href="/servicios/inspeccion-camara-alcantarillado.html" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Cámara
+                            Inspección</a>
+                        <a href="/servicios/mantencion-preventiva.html" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Mantención</a>
+                        <a href="/servicios/index.html" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-bold text-brand-600 hover:underline mt-1 border-t border-slate-200/50 pt-2">
+                            Ver todos los servicios &rarr;
+                        </a>
+                    </div>
+                </div>
+
+                <div class="group">
+                    <button
+                        class="w-full flex items-center justify-between px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 transition"
+                        onclick="toggleSubmenu('sub-zonas', this)">
+                        Zonas
+                        <i class="fa-solid fa-chevron-down text-xs text-slate-400 transition-transform"></i>
+                    </button>
+                    <div id="sub-zonas" class="hidden pl-4 space-y-1 bg-slate-50/50 rounded-b-xl pb-2">
+                        <div class="px-4 py-1 text-[10px] font-bold text-slate-400 uppercase">Urbano</div>
+                        <a href="/zonas/urbano/las-condes.html" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Las
+                            Condes</a>
+                        <a href="/zonas/urbano/vitacura.html" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Vitacura</a>
+                        <div class="px-4 py-1 text-[10px] font-bold text-slate-400 uppercase mt-2">Rural</div>
+                        <a href="/zonas/rural/chicureo.html" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Chicureo</a>
+                        <a href="/zonas/rural/colina.html" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Colina</a>
+                        <a href="/zonas/urbano/index.html" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-bold text-brand-600 hover:underline mt-2 border-t border-slate-200/50 pt-2">
+                            Ver todas las zonas &rarr;
+                        </a>
+                    </div>
+                </div>
+
+                <a href="/casos-reales/index.html" onclick="closeMenu()"
+                    class="block px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 hover:text-brand-600 transition">Casos
+                    Reales</a>
+                <a href="/contacto.html" onclick="closeMenu()"
+                    class="block px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 hover:text-brand-600 transition">Contacto</a>
+            </div>
+
+            <div class="p-6 bg-slate-50 border-t border-slate-100">
+                <a href="https://wa.me/56936470112"
+                    class="flex items-center justify-center gap-2 w-full bg-green-500 text-white font-bold py-3 rounded-xl shadow-lg shadow-green-500/20 active:scale-95 transition">
+                    <i class="fa-brands fa-whatsapp text-xl"></i> WhatsApp 24/7
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <header class="min-h-[65vh] flex items-center relative pt-28 pb-20 overflow-hidden">
+        <!-- Optimized Hero Image -->
+        <picture class="absolute inset-0 w-full h-full -z-20">
+            <source media="(max-width: 768px)" srcset="/images/video-inspección.jpeg">
+            <source media="(min-width: 769px)" srcset="/images/video-inspección.jpeg">
+            <img src="/images/video-inspección.jpeg" alt="Cámara de inspección de alcantarillado"
+                class="w-full h-full object-cover" fetchpriority="high">
+        </picture>
+
+        <!-- Gradient Overlay -->
+        <div class="absolute inset-0 -z-10"
+            style="background: linear-gradient(to right, rgba(15, 23, 42, 0.95) 0%, rgba(30, 58, 138, 0.9) 100%);">
+        </div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="text-white">
+                    <div class="availability-badge inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-6 text-white"
+                        data-theme="dark">
+                        <span class="relative flex h-2 w-2">
+                            <span class="ping-dot w-2 h-2 rounded-full bg-green-400 animate-pulse absolute"></span>
+                            <span class="static-dot w-2 h-2 rounded-full bg-green-500 relative"></span>
+                        </span>
+                        <span>
+                            <span class="unit-count">3</span> <span class="unit-text">Camiones disponibles RM</span>
+                        </span>
+                    </div>
+
+                    <div
+                        class="inline-flex items-center gap-2 bg-sky-900/60 border border-sky-400/30 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-6 text-sky-100">
+                        <i class="fa-solid fa-eye text-sky-300"></i>
+                        Tecnología No Invasiva
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
+                        Inspección con <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-200">Cámara de
+                            Video</span>
+                    </h1>
+
+                    <p class="text-lg text-slate-300 mb-8 max-w-xl leading-relaxed">
+                        Deja de adivinar dónde está el problema. Nuestro diagnóstico por video localiza roturas, raíces
+                        y obstrucciones con precisión milimétrica <strong>sin romper ni un solo azulejo</strong>.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#contacto"
+                            class="bg-tech-600 hover:bg-tech-500 text-white text-lg font-bold py-4 px-8 rounded-xl shadow-xl shadow-sky-900/50 transition transform hover:-translate-y-1 text-center flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-magnifying-glass"></i> Agendar Inspección
+                        </a>
+                        <a href="tel:+56930153632"
+                            class="bg-white text-tech-900 text-lg font-bold py-4 px-8 rounded-xl hover:bg-slate-100 transition transform hover:-translate-y-1 text-center flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-phone"></i> Consultas
+                        </a>
+                    </div>
+
+                    <div class="mt-8 flex flex-wrap items-center gap-6 text-sm font-semibold text-slate-300">
+                        <div class="flex items-center gap-2"><i class="fa-solid fa-video text-sky-400"></i> Grabación HD
+                        </div>
+                        <div class="flex items-center gap-2"><i class="fa-solid fa-file-pdf text-sky-400"></i> Informe
+                            Técnico</div>
+                    </div>
+                </div>
+
+                <div class="hidden lg:block relative">
+                    <div
+                        class="bg-slate-900/80 backdrop-blur-md p-2 rounded-2xl border border-slate-700 shadow-2xl max-w-md mx-auto transform rotate-3 hover:rotate-0 transition duration-500">
+                        <div class="bg-black rounded-xl overflow-hidden relative aspect-video">
+                            <img src="/images/video-inspección.jpeg" alt="Pantalla de inspección"
+                                class="opacity-60 w-full h-full object-cover">
+
+                            <div class="absolute top-4 left-4 text-green-400 font-mono text-xs">
+                                REC ● 00:14:25<br>
+                                DIST: 12.4m
+                            </div>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="border-2 border-red-500/50 w-16 h-16 rounded-full animate-pulse"></div>
+                                <div class="w-2 h-2 bg-red-500 rounded-full absolute"></div>
+                            </div>
+                            <div
+                                class="absolute bottom-4 left-4 right-4 bg-black/50 p-2 rounded text-white text-xs font-mono">
+                                > DETECCIÓN: OBSTRUCCIÓN POR RAÍCES<br>
+                                > UBICACIÓN: TRAMO 2 - PATIO
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="absolute -bottom-6 -right-6 bg-tech-600 p-4 rounded-xl shadow-xl text-white text-center">
+                        <p class="font-bold text-sm">Localización Exacta</p>
+                        <p class="text-xs text-sky-200">Profundidad y Dirección</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="beneficios" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-tech-600 font-bold uppercase tracking-widest text-xs">Ahorro Inteligente</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mt-2 mb-4">¿Por qué inspeccionar antes de
+                    reparar?</h2>
+                <p class="text-slate-500">Romper el piso "para ver qué pasa" es costoso y sucio. La tecnología nos
+                    permite ir directo al problema.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div
+                    class="bg-slate-50 rounded-2xl p-8 border border-slate-100 hover:shadow-hover-card transition duration-300 group">
+                    <div
+                        class="w-14 h-14 bg-white rounded-xl shadow-sm flex items-center justify-center text-tech-600 text-2xl mb-6 group-hover:bg-tech-600 group-hover:text-white transition">
+                        <i class="fa-solid fa-ban"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Evita Romper Pisos</h3>
+                    <p class="text-slate-600 mb-4 text-sm leading-relaxed">
+                        Identificamos el punto exacto de la falla. Si hay que reparar, solo picamos el área
+                        estrictamente necesaria (un metro cuadrado vs todo el patio).
+                    </p>
+                </div>
+
+                <div
+                    class="bg-slate-50 rounded-2xl p-8 border border-slate-100 hover:shadow-hover-card transition duration-300 group">
+                    <div
+                        class="w-14 h-14 bg-white rounded-xl shadow-sm flex items-center justify-center text-tech-600 text-2xl mb-6 group-hover:bg-tech-600 group-hover:text-white transition">
+                        <i class="fa-solid fa-file-contract"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Evidencia para Seguros</h3>
+                    <p class="text-slate-600 mb-4 text-sm leading-relaxed">
+                        Entregamos un informe técnico con grabación de video. Documentación fundamental para cobrar
+                        seguros de hogar o exigir garantías a constructoras.
+                    </p>
+                </div>
+
+                <div
+                    class="bg-slate-50 rounded-2xl p-8 border border-slate-100 hover:shadow-hover-card transition duration-300 group">
+                    <div
+                        class="w-14 h-14 bg-white rounded-xl shadow-sm flex items-center justify-center text-tech-600 text-2xl mb-6 group-hover:bg-tech-600 group-hover:text-white transition">
+                        <i class="fa-solid fa-check-double"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Diagnóstico Certero</h3>
+                    <p class="text-slate-600 mb-4 text-sm leading-relaxed">
+                        Diferencia si es un simple atasco de papel, una raíz de árbol o una tubería colapsada. La
+                        solución para cada caso es muy diferente.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="usos" class="py-20 bg-slate-900 text-white relative overflow-hidden">
+        <div
+            class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]">
+        </div>
+
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="relative">
+                    <img src="/images/ridgid.jpeg" alt="Equipo de inspección Ridgid"
+                        class="rounded-2xl shadow-2xl border-4 border-slate-700 transform md:-rotate-1 hover:rotate-0 transition duration-500 grayscale hover:grayscale-0">
+                    <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                        <div class="bg-black/60 p-4 rounded-xl backdrop-blur text-center">
+                            <p class="text-green-400 font-bold text-xl"><i class="fa-solid fa-check"></i> Solucionado
+                            </p>
+                            <p class="text-xs text-white">Sin obras civiles</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-extrabold mb-6">¿Cuándo solicitar una Video Inspección?</h2>
+                    <p class="text-slate-300 text-lg mb-8">
+                        Recomendamos este servicio cuando los destapes tradicionales no duran o cuando se sospechan
+                        problemas estructurales.
+                    </p>
+
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div
+                                class="w-10 h-10 rounded-full bg-sky-600 flex items-center justify-center text-white shrink-0 font-bold">
+                                1</div>
+                            <div>
+                                <h4 class="font-bold text-xl">Atascos Recurrentes</h4>
+                                <p class="text-slate-400 text-sm mt-1">Si destapas el WC y se vuelve a tapar a la
+                                    semana, hay algo atascado en la línea principal que la sonda normal no está sacando.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div
+                                class="w-10 h-10 rounded-full bg-sky-600 flex items-center justify-center text-white shrink-0 font-bold">
+                                2</div>
+                            <div>
+                                <h4 class="font-bold text-xl">Raíces de Árboles</h4>
+                                <p class="text-slate-400 text-sm mt-1">Común en casas con jardín. Las cámaras ven si las
+                                    raíces han roto el tubo o entrado por las uniones.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div
+                                class="w-10 h-10 rounded-full bg-sky-600 flex items-center justify-center text-white shrink-0 font-bold">
+                                3</div>
+                            <div>
+                                <h4 class="font-bold text-xl">Recepción de Propiedades</h4>
+                                <p class="text-slate-400 text-sm mt-1">Antes de comprar una casa usada o recibir una
+                                    nueva, revisa que el alcantarillado no tenga escombros o fallas ocultas.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-10">
+                        <a href="#contacto"
+                            class="inline-block bg-white text-slate-900 font-bold py-3 px-8 rounded-full hover:bg-sky-50 transition">
+                            Solicitar Cotización
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="py-20 bg-white border-t border-slate-100">
+        <div class="container mx-auto px-4 max-w-3xl">
+            <h2 class="text-3xl font-extrabold text-slate-900 mb-10 text-center">Preguntas Frecuentes</h2>
+
+            <div class="space-y-4">
+                <details
+                    class="group bg-slate-50 rounded-xl p-4 [&_summary::-webkit-details-marker]:hidden cursor-pointer border border-slate-100">
+                    <summary
+                        class="flex items-center justify-between font-bold text-slate-800 group-hover:text-tech-600">
+                        ¿Qué diámetro de tubería pueden inspeccionar?
+                        <span class="ml-2 transition group-open:rotate-180"><i
+                                class="fa-solid fa-chevron-down"></i></span>
+                    </summary>
+                    <p class="mt-4 text-slate-600 text-sm leading-relaxed">
+                        Nuestras cámaras son versátiles y pueden inspeccionar desde tuberías domiciliarias de
+                        <strong>40mm (desagües de cocina) hasta colectores de 300mm</strong>. Contamos con cabezales de
+                        distintos tamaños.
+                    </p>
+                </details>
+
+                <details
+                    class="group bg-slate-50 rounded-xl p-4 [&_summary::-webkit-details-marker]:hidden cursor-pointer border border-slate-100">
+                    <summary
+                        class="flex items-center justify-between font-bold text-slate-800 group-hover:text-tech-600">
+                        ¿Entregan el video de la inspección?
+                        <span class="ml-2 transition group-open:rotate-180"><i
+                                class="fa-solid fa-chevron-down"></i></span>
+                    </summary>
+                    <p class="mt-4 text-slate-600 text-sm leading-relaxed">
+                        Sí. Al finalizar el servicio te enviamos un enlace digital o archivo con la grabación en alta
+                        definición y un informe PDF con las observaciones del técnico y recomendaciones.
+                    </p>
+                </details>
+
+                <details
+                    class="group bg-slate-50 rounded-xl p-4 [&_summary::-webkit-details-marker]:hidden cursor-pointer border border-slate-100">
+                    <summary
+                        class="flex items-center justify-between font-bold text-slate-800 group-hover:text-tech-600">
+                        ¿La cámara puede detectar fugas de agua potable?
+                        <span class="ml-2 transition group-open:rotate-180"><i
+                                class="fa-solid fa-chevron-down"></i></span>
+                    </summary>
+                    <p class="mt-4 text-slate-600 text-sm leading-relaxed">
+                        La video inspección es principalmente para <strong>alcantarillado y ductos vacíos</strong>. Para
+                        fugas de agua a presión (cañerías de agua potable), utilizamos tecnología de ultrasonido o gas
+                        trazador, que es un servicio diferente.
+                    </p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="py-16 bg-tech-900 relative overflow-hidden">
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 rounded-full bg-tech-500 opacity-20 blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-64 h-64 rounded-full bg-blue-500 opacity-20 blur-3xl">
+        </div>
+
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <h2 class="text-3xl font-extrabold text-white mb-6">Obtén un diagnóstico profesional hoy</h2>
+            <p class="text-sky-200 mb-8 max-w-2xl mx-auto">
+                Deja de gastar en destapes que no solucionan el problema de fondo. Mira lo que realmente pasa en tus
+                tuberías.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="tel:+56930153632"
+                    class="bg-white text-tech-900 font-bold py-4 px-10 rounded-full shadow-lg hover:bg-slate-100 transition">
+                    <i class="fa-solid fa-phone mr-2"></i> Llamar Ahora
+                </a>
+                <a href="https://wa.me/56936470112"
+                    class="bg-green-500 text-white font-bold py-4 px-10 rounded-full shadow-lg hover:bg-green-600 transition">
+                    <i class="fa-brands fa-whatsapp mr-2"></i> WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-50 text-slate-500 py-12 text-sm border-t border-slate-200">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
+
+                <div class="lg:col-span-2">
+                    <a href="/" class="flex items-center gap-3 mb-6" aria-label="Destape Rápido - Página de Inicio">
+                        <div class="w-12 h-12 md:w-[72px] md:h-[72px] flex items-center justify-center">
+                            <img src="/logo-nav.webp" alt="Logo Destape Rápido, servicio de destapes en la RM"
+                                width="72" height="72" class="w-full h-full object-contain">
+                        </div>
+                        <div>
+                            <span
+                                class="block font-extrabold text-slate-900 text-xl leading-none tracking-tight">DESTAPE<span
+                                    class="text-brand-600">RÁPIDO</span></span>
+                            <span
+                                class="text-[8px] md:text-[10px] font-bold text-slate-500 uppercase tracking-widest">Región
+                                Metropolitana</span>
+                        </div>
+                    </a>
+                    <p class="mb-6 text-slate-500 max-w-xs leading-relaxed">Soluciones sanitarias profesionales para
+                        hogares y empresas. Atendemos urgencias reales con equipos certificados.</p>
+                    <div class="flex gap-4">
+                        <a href="/" class="text-slate-500 hover:text-brand-600 transition" aria-label="Facebook">
+                            <i class="fa-brands fa-facebook text-xl"></i>
+                        </a>
+                        <a href="/" class="text-slate-500 hover:text-brand-600 transition" aria-label="Instagram">
+                            <i class="fa-brands fa-instagram text-xl"></i>
+                        </a>
+                        <a href="/" class="text-slate-500 hover:text-brand-600 transition" aria-label="LinkedIn">
+                            <i class="fa-brands fa-linkedin text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-slate-900 font-bold mb-4 uppercase tracking-wider text-xs">Servicios</h4>
+                    <ul class="space-y-2">
+                        <li><a href="/servicios/destape-alcantarillado.html"
+                                class="hover:text-brand-600 transition">Destape Alcantarillado</a></li>
+                        <li><a href="/servicios/limpieza-fosas-septicas.html"
+                                class="hover:text-brand-600 transition">Limpieza Fosas Sépticas</a></li>
+                        <li><a href="/servicios/destape-alcantarillado.html#mantencion"
+                                class="hover:text-brand-600 transition">Mantención Edificios</a></li>
+                        <li><a href="/servicios/destape-alcantarillado.html"
+                                class="font-medium text-brand-600 hover:underline text-xs mt-2 block">Ver todos los
+                                servicios &rarr;</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-slate-900 font-bold mb-4 uppercase tracking-wider text-xs">Cobertura</h4>
+                    <ul class="space-y-2">
+                        <li><a href="/zonas/urbano/index.html" class="hover:text-brand-600 transition">Las Condes /
+                                Vitacura</a></li>
+                        <li><a href="/zonas/rural/chicureo.html" class="hover:text-brand-600 transition">Chicureo /
+                                Colina</a></li>
+                        <li><a href="/zonas/rural/pirque.html" class="hover:text-brand-600 transition">Pirque / Cajón
+                                del Maipo</a></li>
+                        <li><a href="/zonas/urbano/index.html"
+                                class="font-medium text-brand-600 hover:underline text-xs mt-2 block">Ver
+                                todas las zonas &rarr;</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-slate-900 font-bold mb-4 uppercase tracking-wider text-xs">Blog & Ayuda</h4>
+                    <ul class="space-y-2">
+                        <li><a href="/servicios/destape-alcantarillado.html#consejos"
+                                class="hover:text-brand-600 transition">Consejos de Mantención</a></li>
+                        <li><a href="/servicios/destape-alcantarillado.html#faq"
+                                class="hover:text-brand-600 transition">Preguntas Frecuentes</a></li>
+                        <li><a href="/servicios/destape-alcantarillado.html#trabaja"
+                                class="hover:text-brand-600 transition">Trabaja con Nosotros</a></li>
+                        <li><a href="/servicios/destape-alcantarillado.html#contacto"
+                                class="hover:text-brand-600 transition">Contacto Administrativo</a></li>
+                        <li><a href="/blog/index.html"
+                                class="hover:text-brand-600 transition font-bold text-brand-600 mt-2 block">Blog de
+                                Consejos &rarr;</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div
+                class="border-t border-slate-200 pt-8 text-center flex flex-col md:flex-row justify-between items-center pb-24 md:pb-0">
+                <div class="flex flex-col items-center md:items-start gap-2">
+                    <p>&copy; <span id="year"></span> destaperapido. Todos los derechos reservados.</p>
+                    <p class="text-xs text-slate-500">Diseñado por <a href="https://www.paginasfast.cl/" target="_blank"
+                            rel="noopener" class="hover:text-brand-600 transition">PaginasFast.cl</a></p>
+                </div>
+                <div class="flex gap-4 mt-4 md:mt-0">
+                    <a href="/" class="hover:text-slate-800 transition" aria-label="Facebook"><i
+                            class="fa-brands fa-facebook text-lg"></i></a>
+                    <a href="/" class="hover:text-slate-800 transition" aria-label="Instagram"><i
+                            class="fa-brands fa-instagram text-lg"></i></a>
+                    <a href="/" class="hover:text-slate-800 transition" aria-label="LinkedIn"><i
+                            class="fa-brands fa-linkedin text-lg"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Sticky Footer -->
+    <div
+        class="fixed bottom-0 left-0 right-0 z-50 md:hidden flex flex-col shadow-[0_-4px_20px_rgba(0,0,0,0.15)] bg-white pb-[env(safe-area-inset-bottom)]">
+        <!-- Background extension for overscroll bounce -->
+        <div class="absolute top-full left-0 right-0 h-[100vh] bg-white"></div>
+
+        <div class="availability-badge w-full bg-green-50 border-t border-green-200 py-1.5 flex items-center justify-center gap-2 text-[11px] font-bold text-green-800 transition-all duration-500 opacity-0"
+            role="status">
+            <span class="relative flex h-2 w-2">
+                <span class="ping-dot absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span class="static-dot relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+            </span>
+            <span>
+                <span class="unit-count">...</span>
+                <span class="unit-text">buscando...</span>
+            </span>
+        </div>
+
+        <div class="bg-white p-3 flex gap-3 border-t border-slate-100">
+            <a href="tel:+56930153632"
+                class="flex-1 bg-brand-600 text-white font-bold rounded-xl py-3 flex items-center justify-center gap-2 active:scale-95 transition shadow-lg shadow-brand-600/20"
+                aria-label="Llamar ahora">
+                <i class="fa-solid fa-phone animate-pulse"></i> Llamar
+            </a>
+
+            <a href="https://wa.me/56936470112"
+                class="flex-1 bg-green-600 text-white font-bold rounded-xl py-3 flex items-center justify-center gap-2 active:scale-95 transition shadow-lg shadow-green-500/20"
+                aria-label="Enviar mensaje por WhatsApp a Destape Rápido">
+
+                <div class="relative flex items-center justify-center">
+
+                    <span class="wa-notification-dot on-icon" id="wa-dot-mobile">1</span>
+
+                    <i class="fa-brands fa-whatsapp text-xl"></i>
+                </div>
+
+                WhatsApp
+            </a>
+        </div>
+    </div>
+    <!-- End Mobile Sticky Footer -->
+
+
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        const overlay = document.getElementById('mobile-menu-overlay');
+        const panel = document.getElementById('mobile-menu-panel');
+
+        function openMenu() {
+            overlay.classList.remove('invisible', 'opacity-0');
+            panel.classList.remove('translate-x-full');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenu() {
+            panel.classList.add('translate-x-full');
+            overlay.classList.add('invisible', 'opacity-0');
+            document.body.style.overflow = '';
+        }
+
+        function toggleSubmenu(id, btn) {
+            const submenu = document.getElementById(id);
+            const icon = btn.querySelector('.fa-chevron-down');
+            if (submenu) {
+                if (submenu.classList.contains('hidden')) {
+                    submenu.classList.remove('hidden');
+                    if (icon) icon.style.transform = 'rotate(180deg)';
+                } else {
+                    submenu.classList.add('hidden');
+                    if (icon) icon.style.transform = 'rotate(0deg)';
+                }
+            }
+        }
+    </script>
+
+    <div class="fixed bottom-0 left-0 right-0 z-50 md:hidden flex flex-col shadow-[0_-4px_20px_rgba(0,0,0,0.15)]">
+        <div class="availability-badge w-full bg-green-50 border-t border-green-200 py-1.5 flex items-center justify-center gap-2 text-[11px] font-bold text-green-800 transition-all duration-500 opacity-0"
+            role="status">
+            <span class="relative flex h-2 w-2">
+                <span class="ping-dot absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span class="static-dot relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+            </span>
+            <span>
+                <span class="unit-count">...</span>
+                <span class="unit-text">buscando...</span>
+            </span>
+        </div>
+
+        <div class="bg-white p-3 flex gap-3 border-t border-slate-100">
+            <a href="tel:+56930153632"
+                class="flex-1 bg-brand-600 text-white font-bold rounded-xl py-3 flex items-center justify-center gap-2 active:scale-95 transition shadow-lg shadow-brand-600/20"
+                aria-label="Llamar ahora">
+                <i class="fa-solid fa-phone animate-pulse"></i> Llamar
+            </a>
+
+            <a href="https://wa.me/56936470112"
+                class="flex-1 bg-green-600 text-white font-bold rounded-xl py-3 flex items-center justify-center gap-2 active:scale-95 transition shadow-lg shadow-green-500/20"
+                aria-label="Enviar mensaje por WhatsApp a Destape Rápido">
+                <div class="relative flex items-center justify-center">
+                    <span class="wa-notification-dot on-icon" id="wa-dot-mobile">1</span>
+                    <i class="fa-brands fa-whatsapp text-xl"></i>
+                </div>
+                WhatsApp
+            </a>
+        </div>
+    </div>
+
+
+    <div class="wa-floating-btn hidden md:flex" id="wa-btn" onclick="toggleChat()">
+        <svg class="wa-icon wa-icon-logo" viewBox="0 0 24 24">
+            <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.008-.57-.008-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+        </svg>
+        <svg class="wa-icon wa-icon-close" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+        <span class="wa-notification-dot" id="wa-dot">1</span>
+    </div>
+
+    <div class="wa-chat-box" id="whatsapp-chat">
+        <div class="wa-header">
+            <button class="wa-close-btn" onclick="toggleChat()">×</button>
+            <img src="/logo-nav.png" alt="Perfil" class="wa-profile-pic">
+            <div class="wa-info">
+                <h4>Destape Rápido</h4>
+                <p>En línea</p>
+            </div>
+        </div>
+        <div class="wa-body">
+            <div class="wa-message">
+                <div class="wa-msg-text">Bienvenido/a. ¿En qué podemos servirle?</div>
+                <span class="wa-time">Justo ahora</span>
+            </div>
+        </div>
+        <div class="wa-footer">
+            <a href="https://wa.me/56936470112?text=Hola,%20necesito%20ayuda" target="_blank" class="wa-start-chat-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+                COMENZAR CHAT
+            </a>
+        </div>
+    </div>
+
+
+
+    <script src="/js/availability-badge.js"></script>
+
+    <script>
+        // 3. WHATSAPP Y NOTIFICACIONES
+        window.addEventListener('load', function () {
+            setTimeout(function () {
+                var dot = document.getElementById("wa-dot");
+                var dotMobile = document.getElementById("wa-dot-mobile");
+                var chatBox = document.getElementById("whatsapp-chat");
+                if (chatBox && chatBox.style.display !== "flex") {
+                    if (dot) dot.classList.add("show");
+                    if (dotMobile) dotMobile.classList.add("show");
+                }
+            }, 5000);
+        });
+
+        function toggleChat() {
+            var chatBox = document.getElementById("whatsapp-chat");
+            var btn = document.getElementById("wa-btn");
+            var dot = document.getElementById("wa-dot");
+            if (chatBox.style.display === "none" || chatBox.style.display === "") {
+                chatBox.style.display = "flex";
+                if (btn) btn.classList.add("active");
+                if (dot) { dot.classList.remove("show"); dot.style.display = "none"; }
+            } else {
+                chatBox.style.display = "none";
+                if (btn) btn.classList.remove("active");
+            }
+        }
+    </script>
+
+</body>
+
+</html>

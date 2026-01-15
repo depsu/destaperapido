@@ -1,0 +1,141 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CardCaso from '../../components/CardCaso.astro';
+import { getCollection } from 'astro:content';
+
+const allCasos = await getCollection('casos');
+---
+
+<Layout title="Casos Reales y Trabajos Realizados | Destape Rápido" description="Galería de trabajos reales en Santiago. Fotos de antes y después en destapes de alcantarillado, limpieza de fosas y mantención de edificios.">
+    <header class="relative py-24 pt-40 overflow-hidden">
+        <!-- Optimized Hero Image -->
+        <img src="/images/camion-haciendo-destape-en-zona-rural.webp" alt="Casos reales de destapes"
+            class="absolute inset-0 w-full h-full object-cover -z-20" fetchpriority="high">
+
+        <!-- Gradient Overlay -->
+        <div class="absolute inset-0 -z-10"
+            style="background: linear-gradient(to right, rgba(15, 23, 42, 0.95) 0%, rgba(30, 58, 138, 0.9) 100%);">
+        </div>
+
+        <div class="container mx-auto px-4 relative z-10 text-center text-white">
+            <div class="availability-badge inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-6 text-white"
+                data-theme="dark">
+                <span class="relative flex h-2 w-2">
+                    <span class="ping-dot w-2 h-2 rounded-full bg-green-400 animate-pulse absolute"></span>
+                    <span class="static-dot w-2 h-2 rounded-full bg-green-500 relative"></span>
+                </span>
+                <span>
+                    <span class="unit-count">3</span> <span class="unit-text">Camiones disponibles RM</span>
+                </span>
+            </div>
+
+            <span class="text-brand-200 font-bold uppercase tracking-widest text-sm mb-4 block">Portafolio de
+                Trabajos</span>
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
+                Así resolvemos tus <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">Problemas
+                    Sanitarios</span>
+            </h1>
+            <p class="text-lg text-slate-300 max-w-2xl mx-auto mb-10">
+                Transparencia total. Mira cómo enfrentamos situaciones reales en hogares y empresas de la Región
+                Metropolitana.
+            </p>
+
+            <div class="flex flex-wrap justify-center gap-3">
+                <button data-filter="all"
+                    class="filter-btn px-6 py-2 bg-brand-600 text-white font-bold rounded-full border border-transparent shadow-lg transition hover:-translate-y-0.5">Todos</button>
+                <button data-filter="urbano"
+                    class="filter-btn px-6 py-2 bg-white text-slate-600 font-bold rounded-full border border-slate-200 hover:bg-slate-50 transition">Urbano</button>
+                <button data-filter="rural"
+                    class="filter-btn px-6 py-2 bg-white text-slate-600 font-bold rounded-full border border-slate-200 hover:bg-slate-50 transition">Rural</button>
+                <button data-filter="empresas"
+                    class="filter-btn px-6 py-2 bg-white text-slate-600 font-bold rounded-full border border-slate-200 hover:bg-slate-50 transition">Empresas</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="py-20 bg-slate-50">
+        <div class="container mx-auto px-4">
+            <div id="casos-grid" class="grid md:grid-cols-2 lg:grid-cols-2 gap-8 min-h-[500px]">
+                {allCasos.length > 0 ? (
+                    allCasos.map((caso, index) => (
+                        <CardCaso
+                            {...caso.data}
+                            slug={caso.slug}
+                            delay={index * 100}
+                        />
+                    ))
+                ) : (
+                   <div class="col-span-full text-center text-slate-400 font-medium py-10">No hay casos disponibles.</div>
+                )}
+            </div>
+            
+            <div id="no-results" class="hidden text-center text-slate-400 font-medium py-10">
+                No hay casos en esta categoría aún.
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-slate-900 text-white text-center relative overflow-hidden">
+        <div
+            class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]">
+        </div>
+        <div class="container mx-auto px-4 relative z-10">
+            <h2 class="text-3xl md:text-4xl font-extrabold mb-6">¿Tienes un problema similar?</h2>
+            <p class="text-slate-300 mb-8 max-w-2xl mx-auto">
+                Nuestra experiencia es tu garantía. Cuéntanos qué sucede y te enviaremos al equipo con la solución
+                exacta.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="/contacto"
+                    class="bg-white text-slate-900 font-bold py-3 px-8 rounded-xl hover:bg-slate-100 transition">
+                    Solicitar Visita
+                </a>
+                <a href="https://wa.me/56936470112"
+                    class="bg-brand-600 hover:bg-brand-500 text-white font-bold py-3 px-8 rounded-xl transition flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp"></i> Enviar Foto del Problema
+                </a>
+            </div>
+        </div>
+    </section>
+
+<script>
+    // Filter Logic
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const articles = document.querySelectorAll('#casos-grid article');
+    const noResults = document.getElementById('no-results');
+
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+             // Update active state
+             filterButtons.forEach(b => {
+                b.classList.remove('bg-brand-600', 'text-white', 'border-transparent');
+                b.classList.add('bg-white', 'text-slate-600', 'border-slate-200');
+            });
+            btn.classList.remove('bg-white', 'text-slate-600', 'border-slate-200');
+            btn.classList.add('bg-brand-600', 'text-white', 'border-transparent');
+
+            const filter = (btn as HTMLElement).dataset.filter;
+            let visibleCount = 0;
+
+            articles.forEach(article => {
+                const category = (article as HTMLElement).dataset.category;
+                if (filter === 'all' || category === filter) {
+                    (article as HTMLElement).style.display = '';
+                     // Add fade-in animation re-trigger if desired, or just show
+                     visibleCount++;
+                } else {
+                    (article as HTMLElement).style.display = 'none';
+                }
+            });
+
+            if (visibleCount === 0 && noResults) {
+                noResults.classList.remove('hidden');
+            } else if (noResults) {
+                noResults.classList.add('hidden');
+            }
+        });
+    });
+</script>
+
+</Layout>

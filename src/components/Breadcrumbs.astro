@@ -1,0 +1,41 @@
+---
+interface Props {
+    items: {
+        label: string;
+        href: string;
+    }[];
+}
+
+const { items } = Astro.props;
+---
+
+<nav aria-label="Breadcrumb" class="py-4 text-sm text-slate-500">
+    <ol class="flex items-center gap-2 flex-wrap" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li class="flex items-center gap-2" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a href="/" class="hover:text-brand-600 transition-colors" itemprop="item">
+                <i class="fa-solid fa-house"></i>
+                <span itemprop="name" class="sr-only">Inicio</span>
+            </a>
+            <meta itemprop="position" content="1" />
+            <i class="fa-solid fa-chevron-right text-[10px] text-slate-300"></i>
+        </li>
+
+        {items.map((item, index) => (
+            <li class="flex items-center gap-2" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                {index === items.length - 1 ? (
+                    <span class="font-bold text-brand-600" aria-current="page" itemprop="name">
+                        {item.label}
+                    </span>
+                ) : (
+                    <>
+                        <a href={item.href} class="hover:text-brand-600 transition-colors" itemprop="item">
+                            <span itemprop="name">{item.label}</span>
+                        </a>
+                        <i class="fa-solid fa-chevron-right text-[10px] text-slate-300"></i>
+                    </>
+                )}
+                <meta itemprop="position" content={(index + 2).toString()} />
+            </li>
+        ))}
+    </ol>
+</nav>

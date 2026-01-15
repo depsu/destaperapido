@@ -1,0 +1,61 @@
+---
+interface Props {
+	title: string;
+	category: string;
+	location: string;
+	image: string;
+	badgeColor?: string;
+	badgeText?: string;
+	problem: string;
+	solution: string;
+	meta: string;
+	slug: string;
+    delay?: number;
+}
+
+const { title, category, location, image, badgeColor = "bg-blue-600", badgeText = "Caso", problem, solution, meta, slug, delay = 0 } = Astro.props;
+---
+
+<article class="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl transition-all duration-300 group fade-in" 
+         data-category={category}
+         style={`animation-delay: ${delay}ms`}>
+    <div class="grid md:grid-cols-2 h-full">
+        <div class="relative h-64 md:h-full overflow-hidden">
+            <img src={image} alt={title} loading="lazy" width="600" height="400"
+                class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+            <div class={`absolute top-4 left-4 ${badgeColor} text-white text-xs font-bold px-3 py-1 rounded-full`}>
+                {badgeText}
+            </div>
+        </div>
+        <div class="p-8 flex flex-col justify-between">
+            <div>
+                <div class="flex items-center gap-2 text-slate-400 text-xs font-bold uppercase tracking-wider mb-3">
+                    <i class="fa-solid fa-location-dot"></i> {location}
+                </div>
+                <h3 class="text-xl font-extrabold text-slate-900 mb-4">{title}</h3>
+
+                <div class="space-y-4">
+                    <div>
+                        <h4 class="text-sm font-bold text-red-500 mb-1 flex items-center gap-2">
+                            <i class="fa-solid fa-circle-xmark"></i> El Problema
+                        </h4>
+                        <p class="text-sm text-slate-600">{problem}</p>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-bold text-green-600 mb-1 flex items-center gap-2">
+                            <i class="fa-solid fa-circle-check"></i> La Solución
+                        </h4>
+                        <p class="text-sm text-slate-600">{solution}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 pt-6 border-t border-slate-100 flex justify-between items-center">
+                <span class="text-xs font-bold text-slate-400">{meta}</span>
+                <a href={`/casos/${slug}`} class="text-brand-600 font-bold text-sm hover:underline">
+                    Tengo este problema &rarr;
+                </a>
+            </div>
+        </div>
+    </div>
+</article>

@@ -1,0 +1,118 @@
+---
+import '../styles/global.css';
+import { ClientRouter } from 'astro:transitions';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description = "Servicio premium de destape de alcantarillado y limpieza de fosas sépticas. Atendemos sector oriente y zonas rurales (Chicureo, Pirque). Emergencias 24/7." } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title}</title>
+    <meta name="description" content={description}>
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self' https:; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' https: data:;">
+
+    <ClientRouter />
+    <link rel="canonical" href={Astro.url}>
+    <!-- Favicon or other links can go here -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://www.transparenttextures.com">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Global Scripts -->
+    <!-- Google Tag Manager -->
+    <script is:inline>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-PG2RQNCD');
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <style is:global>
+        /* Estilos base */
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        /* Imagen de fondo Hero con Overlay Gradiente Profesional */
+        .hero-bg {
+            background-image:
+                linear-gradient(to right, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.7) 100%),
+                url('/images/camio-haciendo-servicio-en-la-calle.webp');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        /* Efecto Glassmorphism para el Nav */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Animación suave para elementos */
+        .fade-up {
+            animation: fadeUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .delay-100 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-200 {
+            animation-delay: 0.2s;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-slate-50 text-slate-600 antialiased selection:bg-brand-600 selection:text-white pb-30 md:pb-0 pd-10 md:pd-0">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PG2RQNCD" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <Navbar />
+
+    <slot />
+
+    <Footer />
+    
+    <WhatsAppButton />
+
+    <script src="/js/availability-badge.js" is:inline></script>
+</body>
+</html>

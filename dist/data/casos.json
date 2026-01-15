@@ -1,0 +1,41 @@
+[
+    {
+        "id": "caso-1",
+        "title": "Recuperación de Vertical de Cocina",
+        "category": "urbano",
+        "location": "Las Condes, Sector El Golf",
+        "image": "/images/camio-haciendo-servicio-en-la-calle-705px-591px.webp",
+        "badgeColor": "bg-blue-600",
+        "badgeText": "Urbano",
+        "problem": "Inundación en departamento piso 3 por obstrucción total de grasa en la bajada común del edificio.",
+        "solution": "Hidrolavado a alta presión desde la azotea. Se recuperó el 100% del diámetro de la tubería sin entrar a los departamentos.",
+        "meta": "Tiempo: 2.5 Horas",
+        "link": "/contacto.html"
+    },
+    {
+        "id": "caso-2",
+        "title": "Limpieza de Fosa en Parcela",
+        "category": "rural",
+        "location": "Chicureo, Piedra Roja",
+        "image": "/images/camion-haciendo-destape-en-zona-rural.webp",
+        "badgeColor": "bg-green-600",
+        "badgeText": "Rural",
+        "problem": "Malos olores en el jardín y drenaje lento en los baños. Fosa séptica saturada y cámara de grasa colapsada.",
+        "solution": "Vaciado completo (10m³) y lavado de paredes. Se utilizó manguera de 50m para no dañar el pasto. Aplicación de bacterias.",
+        "meta": "Tiempo: 1.5 Horas",
+        "link": "/contacto.html"
+    },
+    {
+        "id": "caso-3",
+        "title": "Detección de Raíces Invasivas",
+        "category": "empresas",
+        "location": "Vitacura, Jardín del Este",
+        "image": "/images/video-inspección.jpeg",
+        "badgeColor": "bg-purple-600",
+        "badgeText": "Diagnóstico",
+        "problem": "Atascos reiterados cada 2 meses en casa antigua. Destapes con varilla simple no solucionaban el fondo.",
+        "solution": "Video inspección identificó raíz de árbol rompiendo el tubo. Se realizó reparación puntual (sin romper todo el piso) y corte de raíz.",
+        "meta": "Ahorro: $500.000 en obras",
+        "link": "/contacto.html"
+    }
+]

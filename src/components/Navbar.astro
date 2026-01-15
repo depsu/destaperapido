@@ -1,0 +1,318 @@
+---
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.slice(1); // remove the first "/"
+---
+
+<nav
+    class="absolute md:fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-17">
+
+            <a href="/" class="flex items-center gap-1" aria-label="Destape Rápido - Destapes Las Condes 24/7">
+                <div class="w-12 h-12 md:w-[72px] md:h-[72px] flex items-center justify-center">
+                    <img src="/logo-nav.webp" alt="Logo Destape Rápido - Expertos en Alcantarillado" width="72"
+                        height="72" class="w-full h-full object-contain">
+                </div>
+                <div class="flex flex-col justify-center -space-y-0.5">
+                    <span
+                        class="block font-extrabold text-slate-900 text-base md:text-lg leading-none tracking-tight">DESTAPE<span
+                            class="text-brand-600">RÁPIDO</span></span>
+                    <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Región
+                        Metropolitana</span>
+                </div>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden lg:flex items-center gap-8 font-semibold text-slate-600 text-sm">
+                <a href="/" class={`hover:text-brand-600 transition-colors ${pathname === '/' ? 'text-brand-600' : ''}`}>Inicio</a>
+
+                <!-- Servicios Dropdown -->
+                <div class="relative group h-20 flex items-center">
+                    <button
+                        class={`flex items-center gap-1 hover:text-brand-600 transition-colors focus:outline-none cursor-default ${pathname.startsWith('/servicios') ? 'text-brand-600' : ''}`}>
+                        Servicios <i
+                            class="fa-solid fa-chevron-down text-xs opacity-50 group-hover:rotate-180 transition-transform duration-300"></i>
+                    </button>
+                    <div
+                        class="absolute top-full left-0 w-72 bg-white rounded-xl shadow-xl border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 overflow-hidden">
+                        <div class="p-2 space-y-1">
+                            <a href="/servicios/destape-alcantarillado"
+                                class="block px-4 py-2.5 rounded-lg hover:bg-brand-50 hover:text-brand-600 transition-colors">
+                                <i class="fa-solid fa-toilet w-5 text-brand-400"></i> Destape Alcantarillado
+                            </a>
+                            <a href="/servicios/limpieza-fosas-septicas"
+                                class="block px-4 py-2.5 rounded-lg hover:bg-brand-50 hover:text-brand-600 transition-colors">
+                                <i class="fa-solid fa-truck-droplet w-5 text-brand-400"></i> Limpieza de Fosas
+                            </a>
+                            <a href="/servicios/destape-edificios-condominios"
+                                class="block px-4 py-2.5 rounded-lg hover:bg-brand-50 hover:text-brand-600 transition-colors">
+                                <i class="fa-solid fa-building w-5 text-brand-400"></i> Edificios y Condominios
+                            </a>
+                            <a href="/servicios/inspeccion-camara-alcantarillado"
+                                class="block px-4 py-2.5 rounded-lg hover:bg-brand-50 hover:text-brand-600 transition-colors">
+                                <i class="fa-solid fa-video w-5 text-brand-400"></i> Inspección con Cámara
+                            </a>
+                            <a href="/servicios/mantencion-preventiva"
+                                class="block px-4 py-2.5 rounded-lg hover:bg-brand-50 hover:text-brand-600 transition-colors">
+                                <i class="fa-solid fa-clipboard-check w-5 text-brand-400"></i> Mantención Preventiva
+                            </a>
+                        </div>
+                        <div class="bg-slate-50 border-t border-slate-100 p-2">
+                            <a href="/servicios"
+                                class="block w-full text-center px-4 py-2 text-xs font-bold text-brand-600 hover:underline uppercase tracking-wide">
+                                Ver todos los servicios &rarr;
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Zonas Dropdown -->
+                <div class="relative group h-20 flex items-center">
+                    <button
+                        class={`flex items-center gap-1 hover:text-brand-600 transition-colors focus:outline-none cursor-default ${pathname.startsWith('/zonas') ? 'text-brand-600' : ''}`}>
+                        Zonas <i
+                            class="fa-solid fa-chevron-down text-xs opacity-50 group-hover:rotate-180 transition-transform duration-300"></i>
+                    </button>
+                    <!-- Mega Menu for Zones -->
+                    <div
+                        class="absolute top-full left-1/2 -translate-x-1/2 w-[500px] bg-white rounded-xl shadow-xl border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 overflow-hidden">
+                        <div class="grid grid-cols-2 p-4 gap-4">
+                            <div>
+                                <div
+                                    class="px-2 py-1 text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2 border-b border-slate-100">
+                                    Urbano</div>
+                                <div class="space-y-1">
+                                    <a href="/zonas/urbano/las-condes"
+                                        class="block px-3 py-1.5 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors text-sm">Las
+                                        Condes</a>
+                                    <a href="/zonas/urbano/vitacura"
+                                        class="block px-3 py-1.5 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors text-sm">Vitacura</a>
+                                    <a href="/zonas/urbano/lo-barnechea"
+                                        class="block px-3 py-1.5 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors text-sm">Lo
+                                        Barnechea</a>
+                                    <a href="/zonas/urbano/providencia"
+                                        class="block px-3 py-1.5 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors text-sm">Providencia</a>
+                                    <a href="/zonas/urbano/la-reina"
+                                        class="block px-3 py-1.5 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors text-sm">La
+                                        Reina</a>
+                                    <a href="/zonas/urbano/nunoa"
+                                        class="block px-3 py-1.5 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors text-sm">Ñuñoa</a>
+                                </div>
+                            </div>
+                            <div>
+                                <div
+                                    class="px-2 py-1 text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2 border-b border-slate-100">
+                                    Rural</div>
+                                <div class="space-y-1">
+                                    <a href="/zonas/rural/chicureo"
+                                        class="block px-3 py-1.5 rounded-lg hover:bg-green-50 hover:text-green-600 transition-colors text-sm">Chicureo</a>
+                                    <a href="/zonas/rural/colina"
+                                        class="block px-3 py-1.5 rounded-lg hover:bg-green-50 hover:text-green-600 transition-colors text-sm">Colina</a>
+                                    <a href="/zonas/rural/lampa"
+                                        class="block px-3 py-1.5 rounded-lg hover:bg-green-50 hover:text-green-600 transition-colors text-sm">Lampa</a>
+                                    <a href="/zonas/rural/pirque"
+                                        class="block px-3 py-1.5 rounded-lg hover:bg-green-50 hover:text-green-600 transition-colors text-sm">Pirque</a>
+                                    <a href="/zonas/rural/buin-paine"
+                                        class="block px-3 py-1.5 rounded-lg hover:bg-green-50 hover:text-green-600 transition-colors text-sm">Buin
+                                        / Paine</a>
+                                    <a href="/zonas/rural"
+                                        class="block px-3 py-1.5 text-xs font-bold text-green-600 hover:underline mt-2">Ver
+                                        todas &rarr;</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-slate-50 border-t border-slate-100 p-2 text-center">
+                            <a href="/zonas/urbano"
+                                class="text-xs font-bold text-brand-600 hover:underline uppercase tracking-wide">
+                                Ver mapa de cobertura completo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="/casos-reales" class={`hover:text-brand-600 transition-colors ${pathname.startsWith('/casos-reales') ? 'text-brand-600' : ''}`}>Casos Reales</a>
+                <a href="/contacto" class={`hover:text-brand-600 transition-colors ${pathname === '/contacto' ? 'text-brand-600' : ''}`}>Contacto</a>
+
+                <div class="flex items-center gap-4 ml-4">
+                    <a href="tel:+56930153632"
+                        class="text-slate-900 font-bold hover:text-brand-600 transition hidden xl:block">
+                        <i class="fa-solid fa-phone mr-1"></i> +56 9 3015 3632
+                    </a>
+                    <a href="https://wa.me/56936470112"
+                        class="bg-brand-600 hover:bg-brand-700 text-white px-5 py-2.5 rounded-full font-bold shadow-lg shadow-brand-500/20 transition hover:-translate-y-0.5 flex items-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-lg"></i> Urgencia
+                    </a>
+                </div>
+            </div>
+
+            <!-- Mobile Toggle -->
+            <div class="flex items-center gap-4 lg:hidden">
+                <a href="tel:+56930153632"
+                    class="flex items-center justify-center w-10 h-10 rounded-full bg-slate-100 text-slate-900 active:scale-95 transition">
+                    <i class="fa-solid fa-phone"></i>
+                </a>
+                <button id="mobile-menu-open" aria-label="Abrir menú de navegación"
+                    class="p-2.5 rounded-lg text-slate-900 hover:bg-slate-100 focus:outline-none transition active:scale-95">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Mobile Menu Overlay -->
+<div id="mobile-menu-overlay" class="fixed inset-0 z-[60] invisible opacity-0 transition-all duration-300">
+    <div id="mobile-menu-backdrop" class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity"></div>
+    <div id="mobile-menu-panel"
+        class="absolute top-0 right-0 w-[85%] max-w-sm h-full bg-white shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col">
+
+        <div class="px-6 h-20 flex items-center justify-between border-b border-slate-100">
+            <span class="font-extrabold text-slate-900 text-lg tracking-tight">MENÚ</span>
+            <button id="mobile-menu-close" aria-label="Cerrar menú"
+                class="w-10 h-10 rounded-full bg-slate-50 text-slate-500 hover:bg-red-50 hover:text-red-500 transition flex items-center justify-center">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+        </div>
+
+        <div class="flex-1 overflow-y-auto py-6 px-6 space-y-2">
+            <a href="/" class="mobile-link block px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 hover:text-brand-600 transition">Inicio</a>
+
+            <div class="group">
+                <button
+                    class="w-full flex items-center justify-between px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 transition toggle-submenu"
+                    data-target="sub-servicios">
+                    Servicios
+                    <i class="fa-solid fa-chevron-down text-xs text-slate-400 transition-transform"></i>
+                </button>
+                <div id="sub-servicios" class="hidden pl-4 space-y-1 bg-slate-50/50 rounded-b-xl pb-2">
+                    <a href="/servicios/destape-alcantarillado" class="mobile-link block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Destape
+                        Alcantarillado</a>
+                    <a href="/servicios/limpieza-fosas-septicas" class="mobile-link block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Limpieza
+                        Fosas</a>
+                    <a href="/servicios/destape-edificios-condominios" class="mobile-link block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Edificios</a>
+                    <a href="/servicios/inspeccion-camara-alcantarillado" class="mobile-link block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Cámara
+                        Inspección</a>
+                    <a href="/servicios/mantencion-preventiva" class="mobile-link block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Mantención</a>
+                    <a href="/servicios"
+                        class="mobile-link block px-4 py-2 text-sm font-bold text-brand-600 hover:underline mt-1 border-t border-slate-200/50 pt-2">
+                        Ver todos los servicios &rarr;
+                    </a>
+                </div>
+            </div>
+
+            <div class="group">
+                <button
+                    class="w-full flex items-center justify-between px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 transition toggle-submenu"
+                    data-target="sub-zonas">
+                    Zonas
+                    <i class="fa-solid fa-chevron-down text-xs text-slate-400 transition-transform"></i>
+                </button>
+                <div id="sub-zonas" class="hidden pl-4 space-y-1 bg-slate-50/50 rounded-b-xl pb-2">
+                    <div class="px-4 py-1 text-[10px] font-bold text-slate-400 uppercase">Urbano</div>
+                    <a href="/zonas/urbano/las-condes" class="mobile-link block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Las
+                        Condes</a>
+                    <a href="/zonas/urbano/vitacura" class="mobile-link block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Vitacura</a>
+                    <a href="/zonas/urbano/lo-barnechea" class="mobile-link block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Lo
+                        Barnechea</a>
+                    <a href="/zonas/urbano/providencia" class="mobile-link block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Providencia</a>
+                    <a href="/zonas/urbano/la-reina" class="mobile-link block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">La Reina</a>
+                    <a href="/zonas/urbano/nunoa" class="mobile-link block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Ñuñoa</a>
+                    <a href="/zonas/urbano" class="mobile-link block px-4 py-2 text-sm font-bold text-brand-600 hover:underline mt-1 mb-2">
+                        Ver todas Urbano &rarr;
+                    </a>
+
+                    <div
+                        class="px-4 py-1 text-[10px] font-bold text-slate-400 uppercase mt-2 border-t border-slate-200/50 pt-2">
+                        Rural</div>
+                    <a href="/zonas/rural/chicureo" class="mobile-link block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Chicureo</a>
+                    <a href="/zonas/rural/colina" class="mobile-link block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Colina</a>
+                    <a href="/zonas/rural/lampa" class="mobile-link block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Lampa</a>
+                    <a href="/zonas/rural/pirque" class="mobile-link block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Pirque</a>
+                    <a href="/zonas/rural/buin-paine" class="mobile-link block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Buin /
+                        Paine</a>
+                    <a href="/zonas/rural"
+                        class="mobile-link block px-4 py-2 text-sm font-bold text-brand-600 hover:underline mt-2 border-t border-slate-200/50 pt-2">
+                        Ver todas las zonas &rarr;
+                    </a>
+                </div>
+            </div>
+
+            <a href="/casos-reales" class="mobile-link block px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 hover:text-brand-600 transition">Casos
+                Reales</a>
+            <a href="/contacto"
+                class="mobile-link block px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 hover:text-brand-600 transition">Contacto</a>
+        </div>
+
+        <div class="p-6 bg-slate-50 border-t border-slate-100">
+            <a href="https://wa.me/56936470112"
+                class="flex items-center justify-center gap-2 w-full bg-green-500 text-white font-bold py-3 rounded-xl shadow-lg shadow-green-500/20 active:scale-95 transition">
+                <i class="fa-brands fa-whatsapp text-xl"></i> WhatsApp 24/7
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+    function setupMobileMenu() {
+        // Logic for mobile menu
+        const overlay = document.getElementById('mobile-menu-overlay');
+        const panel = document.getElementById('mobile-menu-panel');
+        const backdrop = document.getElementById('mobile-menu-backdrop');
+        const openBtn = document.getElementById('mobile-menu-open');
+        const closeBtn = document.getElementById('mobile-menu-close');
+        const links = document.querySelectorAll('.mobile-link');
+        const toggles = document.querySelectorAll('.toggle-submenu');
+
+        function openMenu() {
+            if (overlay && panel) {
+                overlay.classList.remove('invisible', 'opacity-0');
+                panel.classList.remove('translate-x-full');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeMenu() {
+            if (overlay && panel) {
+                panel.classList.add('translate-x-full');
+                overlay.classList.add('invisible', 'opacity-0');
+                document.body.style.overflow = '';
+            }
+        }
+
+        if(openBtn) openBtn.addEventListener('click', openMenu);
+        if(closeBtn) closeBtn.addEventListener('click', closeMenu);
+        if(backdrop) backdrop.addEventListener('click', closeMenu);
+        
+        links.forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+
+        toggles.forEach(btn => {
+            // Remove old listeners to avoid duplicates if re-running
+            const newBtn = btn.cloneNode(true);
+            btn.parentNode?.replaceChild(newBtn, btn);
+            
+            (newBtn as HTMLElement).addEventListener('click', (e) => {
+                const targetId = (e.currentTarget as HTMLElement).dataset.target;
+                const submenu = document.getElementById(targetId || '');
+                const icon = (newBtn as HTMLElement).querySelector('.fa-chevron-down');
+                
+                if (submenu) {
+                    if (submenu.classList.contains('hidden')) {
+                        submenu.classList.remove('hidden');
+                        if (icon) (icon as HTMLElement).style.transform = 'rotate(180deg)';
+                    } else {
+                        submenu.classList.add('hidden');
+                        if (icon) (icon as HTMLElement).style.transform = 'rotate(0deg)';
+                    }
+                }
+            });
+        });
+    }
+
+    // Run on initial load
+    setupMobileMenu();
+
+    // Run on view transition navigation
+    document.addEventListener('astro:page-load', setupMobileMenu);
+</script>
