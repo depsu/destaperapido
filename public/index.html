@@ -681,6 +681,51 @@
                             <i class="fa-solid fa-phone mr-1"></i> +56 9 3015 3632
                         </a>
                         <a href="https://wa.me/56936470112"
+                            class="bg-brand-600 hover:bg-brand-700 text-white px-5 py-2.5 rounded-full font-bold shadow-lg shadow-brand-500/20 transition hover:-translate-y-0.5 flex items-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-lg"></i> Urgencia
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Mobile Toggle -->
+                <div class="flex items-center gap-4 lg:hidden">
+                    <a href="tel:+56930153632"
+                        class="flex items-center justify-center w-10 h-10 rounded-full bg-slate-100 text-slate-900 active:scale-95 transition">
+                        <i class="fa-solid fa-phone"></i>
+                    </a>
+                    <button onclick="openMenu()" aria-label="Abrir menú de navegación"
+                        class="p-2.5 rounded-lg text-slate-900 hover:bg-slate-100 focus:outline-none transition active:scale-95">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div id="mobile-menu-overlay" class="fixed inset-0 z-[60] invisible opacity-0 transition-all duration-300">
+        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity" onclick="closeMenu()"></div>
+        <div id="mobile-menu-panel"
+            class="absolute top-0 right-0 w-[85%] max-w-sm h-full bg-white shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col">
+
+            <div class="px-6 h-20 flex items-center justify-between border-b border-slate-100">
+                <span class="font-extrabold text-slate-900 text-lg tracking-tight">MENÚ</span>
+                <button onclick="closeMenu()" aria-label="Cerrar menú"
+                    class="w-10 h-10 rounded-full bg-slate-50 text-slate-500 hover:bg-red-50 hover:text-red-500 transition flex items-center justify-center">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
+
+            <div class="flex-1 overflow-y-auto py-6 px-6 space-y-2">
+                <a href="/" onclick="closeMenu()"
+                    class="block px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 hover:text-brand-600 transition">Inicio</a>
+
+                <div class="group">
+                    <button
+                        class="w-full flex items-center justify-between px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 transition"
+                        onclick="toggleSubmenu('sub-servicios', this)">
+                        Servicios
+                        <i class="fa-solid fa-chevron-down text-xs text-slate-400 transition-transform"></i>
+                    </button>
                     <div id="sub-servicios" class="hidden pl-4 space-y-1 bg-slate-50/50 rounded-b-xl pb-2">
                         <a href="/servicios/destape-alcantarillado.html" onclick="closeMenu()"
                             class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Destape
