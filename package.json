@@ -4,7 +4,11 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "build": "tailwindcss -i ./src/input.css -o ./public/output.css --minify"
+        "dev": "tailwindcss -i ./input.css -o ./public/output.css --watch",
+        "build": "tailwindcss -i ./input.css -o ./public/output.css --minify",
+        "build:css": "tailwindcss -i ./input.css -o ./public/output.css",
+        "start": "npx serve ./public",
+        "preview": "npx serve ./public"
     },
     "keywords": [],
     "author": "",

@@ -1,6 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./public/**/*.{html,js}"],
+  content: [
+    './public/**/*.{html,js}',
+  ],
   theme: {
     extend: {
       fontFamily: {
@@ -30,5 +32,14 @@ module.exports = {
       }
     },
   },
+  safelist: [
+    // utilidades que pueden aparecer dinámicamente o vía JS
+    'hidden',
+    'block',
+    'flex',
+    'opacity-0',
+    'opacity-100',
+    'translate-x-full',
+  ],
   plugins: [],
 }
