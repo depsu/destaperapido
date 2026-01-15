@@ -2,7 +2,7 @@
 title: "Detección de Raíces Invasivas"
 category: "empresas"
 location: "Vitacura, Jardín del Este"
-image: "/images/video-inspección.jpeg"
+image: "/images/video-inspeccion.jpeg"
 badgeColor: "bg-purple-600"
 badgeText: "Diagnóstico"
 problem: "Atascos reiterados cada 2 meses en casa antigua. Destapes con varilla simple no solucionaban el fondo."
