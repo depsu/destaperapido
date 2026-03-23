@@ -48,34 +48,50 @@
         }
 
         @keyframes fadeUp {
-            to { opacity: 1; transform: translateY(0); }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* ── BADGE DISPONIBILIDAD ── */
-        .availability-badge { transition: all 0.5s ease; }
-        .ping-dot { animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite; }
+        .availability-badge {
+            transition: all 0.5s ease;
+        }
+
+        .ping-dot {
+            animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+        }
 
         @keyframes ping {
-            75%, 100% { transform: scale(2); opacity: 0; }
+
+            75%,
+            100% {
+                transform: scale(2);
+                opacity: 0;
+            }
         }
 
         /* ── CARD USOS hover ── */
         .uso-card {
             transition: transform .25s ease, box-shadow .25s ease;
         }
+
         .uso-card:hover {
             transform: translateY(-6px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.10);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.10);
         }
 
         /* ── PLANES / PRICING ── */
         .plan-card {
             transition: transform .25s ease, box-shadow .25s ease;
         }
+
         .plan-card:hover {
             transform: translateY(-6px);
-            box-shadow: 0 24px 48px rgba(37,99,235,0.12);
+            box-shadow: 0 24px 48px rgba(37, 99, 235, 0.12);
         }
+
         .plan-featured {
             background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 100%);
         }
@@ -96,120 +112,322 @@
         }
 
         /* ── WHATSAPP FLOTANTE ── */
-        :root { --wa-green: #25D366; --wa-dark: #075E54; --wa-red: #ff3b30; }
+        :root {
+            --wa-green: #25D366;
+            --wa-dark: #075E54;
+            --wa-red: #ff3b30;
+        }
 
         .wa-notification-dot {
-            position: absolute; top: -5px; right: -5px;
-            background-color: var(--wa-red); color: white;
-            font-size: 12px; font-weight: bold;
-            width: 22px; height: 22px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            border: 2px solid white; z-index: 1002;
-            opacity: 0; transform: scale(0);
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: var(--wa-red);
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid white;
+            z-index: 1002;
+            opacity: 0;
+            transform: scale(0);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        .wa-notification-dot.show { opacity: 1; transform: scale(1); animation: wa-dot-bounce 1s infinite; }
-        @keyframes wa-dot-bounce { 0%,100%{transform:translateY(0) scale(1)} 50%{transform:translateY(-4px) scale(1)} }
+
+        .wa-notification-dot.show {
+            opacity: 1;
+            transform: scale(1);
+            animation: wa-dot-bounce 1s infinite;
+        }
+
+        @keyframes wa-dot-bounce {
+
+            0%,
+            100% {
+                transform: translateY(0) scale(1)
+            }
+
+            50% {
+                transform: translateY(-4px) scale(1)
+            }
+        }
 
         .wa-floating-btn {
-            position: fixed; bottom: 20px; left: 20px;
-            width: 60px; height: 60px;
-            background-color: var(--wa-green); color: white; border-radius: 50%;
-            align-items: center; justify-content: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            cursor: pointer; z-index: 1000; transition: all .3s ease;
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: var(--wa-green);
+            color: white;
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            z-index: 1000;
+            transition: all .3s ease;
             animation: pulse-green 2s infinite;
         }
-        .wa-floating-btn:not(.active):hover { transform: scale(1.1); }
-        .wa-floating-btn.active { background-color: #333; animation: none; transform: rotate(90deg); }
 
-        .wa-icon { position: absolute; width: 35px; height: 35px; fill: white; transition: all .3s ease; }
-        .wa-icon-logo { opacity: 1; transform: scale(1); }
-        .wa-icon-close { opacity: 0; transform: scale(0) rotate(-90deg); fill: none; }
-        .active .wa-icon-logo { opacity: 0; transform: scale(0) rotate(90deg); }
-        .active .wa-icon-close { opacity: 1; transform: scale(1) rotate(0); }
+        .wa-floating-btn:not(.active):hover {
+            transform: scale(1.1);
+        }
+
+        .wa-floating-btn.active {
+            background-color: #333;
+            animation: none;
+            transform: rotate(90deg);
+        }
+
+        .wa-icon {
+            position: absolute;
+            width: 35px;
+            height: 35px;
+            fill: white;
+            transition: all .3s ease;
+        }
+
+        .wa-icon-logo {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .wa-icon-close {
+            opacity: 0;
+            transform: scale(0) rotate(-90deg);
+            fill: none;
+        }
+
+        .active .wa-icon-logo {
+            opacity: 0;
+            transform: scale(0) rotate(90deg);
+        }
+
+        .active .wa-icon-close {
+            opacity: 1;
+            transform: scale(1) rotate(0);
+        }
 
         @keyframes pulse-green {
-            0%   { box-shadow: 0 0 0 0 rgba(37,211,102,.7); }
-            70%  { box-shadow: 0 0 0 15px rgba(37,211,102,0); }
-            100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, .7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
         }
 
         .wa-chat-box {
-            display: none; position: fixed; bottom: 95px; left: 20px;
-            width: 350px; max-width: 85%; background: white;
-            border-radius: 10px; box-shadow: 0 5px 25px rgba(0,0,0,.2);
-            overflow: visible; z-index: 1001; flex-direction: column;
+            display: none;
+            position: fixed;
+            bottom: 95px;
+            left: 20px;
+            width: 350px;
+            max-width: 85%;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, .2);
+            overflow: visible;
+            z-index: 1001;
+            flex-direction: column;
             font-family: 'Segoe UI', sans-serif;
             animation: slideIn .3s ease-out forwards;
         }
+
         .wa-chat-box::after {
-            content:''; position:absolute; bottom:-10px; left:20px;
-            width:0; height:0;
-            border-left:10px solid transparent; border-right:10px solid transparent;
-            border-top:10px solid white;
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 20px;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid white;
         }
-        @keyframes slideIn { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
 
         .wa-header {
-            background-color: var(--wa-green); padding: 20px; color: white;
-            display: flex; align-items: center; border-radius: 10px 10px 0 0; position: relative;
+            background-color: var(--wa-green);
+            padding: 20px;
+            color: white;
+            display: flex;
+            align-items: center;
+            border-radius: 10px 10px 0 0;
+            position: relative;
         }
-        .wa-close-btn { position:absolute; top:10px; right:10px; background:none; border:none; color:white; font-size:20px; cursor:pointer; opacity:.8; }
-        .wa-close-btn:hover { opacity:1; }
-        .wa-profile-pic { width:50px; height:50px; border-radius:50%; margin-right:15px; border:2px solid white; background-color:#ddd; object-fit:cover; }
-        .wa-info h4 { margin:0; font-size:18px; font-weight:600; }
-        .wa-info p  { margin:2px 0 0; font-size:12px; opacity:.9; }
+
+        .wa-close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: .8;
+        }
+
+        .wa-close-btn:hover {
+            opacity: 1;
+        }
+
+        .wa-profile-pic {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+            border: 2px solid white;
+            background-color: #ddd;
+            object-fit: cover;
+        }
+
+        .wa-info h4 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .wa-info p {
+            margin: 2px 0 0;
+            font-size: 12px;
+            opacity: .9;
+        }
 
         .wa-body {
-            background-color:#f0f0f0;
-            background-image:url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png');
-            padding:20px; height:200px; overflow-y:auto;
+            background-color: #f0f0f0;
+            background-image: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png');
+            padding: 20px;
+            height: 200px;
+            overflow-y: auto;
         }
+
         .wa-message {
-            background:white; padding:10px 15px; border-radius:0 10px 10px 10px;
-            box-shadow:0 1px 2px rgba(0,0,0,.1); width:fit-content; max-width:80%;
-            position:relative; margin-bottom:5px;
+            background: white;
+            padding: 10px 15px;
+            border-radius: 0 10px 10px 10px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+            width: fit-content;
+            max-width: 80%;
+            position: relative;
+            margin-bottom: 5px;
         }
-        .wa-message::before { content:''; position:absolute; top:0; left:-8px; width:0; height:0; border-top:10px solid white; border-left:10px solid transparent; }
-        .wa-msg-text { color:#333; font-size:14px; line-height:1.4; }
-        .wa-time { font-size:10px; color:#999; display:block; text-align:right; margin-top:4px; }
 
-        .wa-footer { background:white; padding:15px; text-align:center; border-radius:0 0 10px 10px; }
+        .wa-message::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -8px;
+            width: 0;
+            height: 0;
+            border-top: 10px solid white;
+            border-left: 10px solid transparent;
+        }
+
+        .wa-msg-text {
+            color: #333;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .wa-time {
+            font-size: 10px;
+            color: #999;
+            display: block;
+            text-align: right;
+            margin-top: 4px;
+        }
+
+        .wa-footer {
+            background: white;
+            padding: 15px;
+            text-align: center;
+            border-radius: 0 0 10px 10px;
+        }
+
         .wa-start-chat-btn {
-            background-color:var(--wa-green); color:white; text-decoration:none;
-            padding:12px 24px; border-radius:25px; font-weight:bold;
-            display:flex; justify-content:center; align-items:center;
-            width:100%; box-sizing:border-box; gap:8px; transition:background .3s;
-            border:none; font-size:16px; cursor:pointer;
+            background-color: var(--wa-green);
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            box-sizing: border-box;
+            gap: 8px;
+            transition: background .3s;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
         }
-        .wa-start-chat-btn:hover { background-color:#1da851; }
 
-        .wa-notification-dot.on-icon { top:-5px; right:-5px; width:18px; height:18px; font-size:10px; }
+        .wa-start-chat-btn:hover {
+            background-color: #1da851;
+        }
+
+        .wa-notification-dot.on-icon {
+            top: -5px;
+            right: -5px;
+            width: 18px;
+            height: 18px;
+            font-size: 10px;
+        }
     </style>
 
     <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PG2RQNCD');</script>
+    <script>(function (w, d, s, l, i) { w[l] = w[l] || []; w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' }); var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f); })(window, document, 'script', 'dataLayer', 'GTM-PG2RQNCD');</script>
 </head>
 
 <body class="bg-slate-50 text-slate-600 antialiased selection:bg-brand-600 selection:text-white pb-30 md:pb-0">
 
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PG2RQNCD" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PG2RQNCD" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
 
     <!-- ══════════════════════════════════════
          NAV
     ══════════════════════════════════════ -->
-    <nav class="absolute md:fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm transition-all duration-300">
+    <nav
+        class="absolute md:fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-17">
 
                 <a href="/" class="flex items-center gap-1" aria-label="Destape Rápido - Inicio">
                     <div class="w-12 h-12 md:w-[72px] md:h-[72px] flex items-center justify-center">
-                        <img src="/logo-nav.webp" alt="Logo Destape Rápido" width="72" height="72" class="w-full h-full object-contain">
+                        <img src="/logo-nav.webp" alt="Logo Destape Rápido" width="72" height="72"
+                            class="w-full h-full object-contain">
                     </div>
                     <div class="flex flex-col justify-center -space-y-0.5">
-                        <span class="block font-extrabold text-slate-900 text-base md:text-lg leading-none tracking-tight">DESTAPE<span class="text-brand-600">RÁPIDO</span></span>
-                        <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Región Metropolitana</span>
+                        <span
+                            class="block font-extrabold text-slate-900 text-base md:text-lg leading-none tracking-tight">DESTAPE<span
+                                class="text-brand-600">RÁPIDO</span></span>
+                        <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Región
+                            Metropolitana</span>
                     </div>
                 </a>
 
@@ -219,32 +437,42 @@
 
                     <!-- Servicios Dropdown -->
                     <div class="relative group h-20 flex items-center">
-                        <button class="flex items-center gap-1 hover:text-brand-600 transition-colors focus:outline-none cursor-default">
-                            Servicios <i class="fa-solid fa-chevron-down text-xs opacity-50 group-hover:rotate-180 transition-transform duration-300"></i>
+                        <button
+                            class="flex items-center gap-1 hover:text-brand-600 transition-colors focus:outline-none cursor-default">
+                            Servicios <i
+                                class="fa-solid fa-chevron-down text-xs opacity-50 group-hover:rotate-180 transition-transform duration-300"></i>
                         </button>
-                        <div class="absolute top-full left-0 w-72 bg-white rounded-xl shadow-xl border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 overflow-hidden">
+                        <div
+                            class="absolute top-full left-0 w-72 bg-white rounded-xl shadow-xl border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 overflow-hidden">
                             <div class="p-2 space-y-1">
-                                <a href="/servicios/destape-alcantarillado" class="block px-4 py-2.5 rounded-lg hover:bg-brand-50 hover:text-brand-600 transition-colors">
+                                <a href="/servicios/destape-alcantarillado"
+                                    class="block px-4 py-2.5 rounded-lg hover:bg-brand-50 hover:text-brand-600 transition-colors">
                                     <i class="fa-solid fa-toilet w-5 text-brand-400"></i> Destape Alcantarillado
                                 </a>
-                                <a href="/servicios/limpieza-fosas-septicas" class="block px-4 py-2.5 rounded-lg hover:bg-brand-50 hover:text-brand-600 transition-colors">
+                                <a href="/servicios/limpieza-fosas-septicas"
+                                    class="block px-4 py-2.5 rounded-lg hover:bg-brand-50 hover:text-brand-600 transition-colors">
                                     <i class="fa-solid fa-truck-droplet w-5 text-brand-400"></i> Limpieza de Fosas
                                 </a>
-                                <a href="/servicios/banos-quimicos" class="block px-4 py-2.5 rounded-lg bg-brand-50 text-brand-600 font-semibold transition-colors">
+                                <a href="/servicios/banos-quimicos"
+                                    class="block px-4 py-2.5 rounded-lg bg-brand-50 text-brand-600 font-semibold transition-colors">
                                     <i class="fa-solid fa-restroom w-5 text-brand-400"></i> Baños Químicos
                                 </a>
-                                <a href="/servicios/destape-edificios-condominios" class="block px-4 py-2.5 rounded-lg hover:bg-brand-50 hover:text-brand-600 transition-colors">
+                                <a href="/servicios/destape-edificios-condominios"
+                                    class="block px-4 py-2.5 rounded-lg hover:bg-brand-50 hover:text-brand-600 transition-colors">
                                     <i class="fa-solid fa-building w-5 text-brand-400"></i> Edificios y Condominios
                                 </a>
-                                <a href="/servicios/inspeccion-camara-alcantarillado" class="block px-4 py-2.5 rounded-lg hover:bg-brand-50 hover:text-brand-600 transition-colors">
+                                <a href="/servicios/inspeccion-camara-alcantarillado"
+                                    class="block px-4 py-2.5 rounded-lg hover:bg-brand-50 hover:text-brand-600 transition-colors">
                                     <i class="fa-solid fa-video w-5 text-brand-400"></i> Inspección con Cámara
                                 </a>
-                                <a href="/servicios/mantencion-preventiva" class="block px-4 py-2.5 rounded-lg hover:bg-brand-50 hover:text-brand-600 transition-colors">
+                                <a href="/servicios/mantencion-preventiva"
+                                    class="block px-4 py-2.5 rounded-lg hover:bg-brand-50 hover:text-brand-600 transition-colors">
                                     <i class="fa-solid fa-clipboard-check w-5 text-brand-400"></i> Mantención Preventiva
                                 </a>
                             </div>
                             <div class="bg-slate-50 border-t border-slate-100 p-2">
-                                <a href="/servicios/" class="block w-full text-center px-4 py-2 text-xs font-bold text-brand-600 hover:underline uppercase tracking-wide">
+                                <a href="/servicios/"
+                                    class="block w-full text-center px-4 py-2 text-xs font-bold text-brand-600 hover:underline uppercase tracking-wide">
                                     Ver todos los servicios &rarr;
                                 </a>
                             </div>
@@ -253,36 +481,63 @@
 
                     <!-- Zonas Dropdown -->
                     <div class="relative group h-20 flex items-center">
-                        <button class="flex items-center gap-1 hover:text-brand-600 transition-colors focus:outline-none cursor-default">
-                            Zonas <i class="fa-solid fa-chevron-down text-xs opacity-50 group-hover:rotate-180 transition-transform duration-300"></i>
+                        <button
+                            class="flex items-center gap-1 hover:text-brand-600 transition-colors focus:outline-none cursor-default">
+                            Zonas <i
+                                class="fa-solid fa-chevron-down text-xs opacity-50 group-hover:rotate-180 transition-transform duration-300"></i>
                         </button>
-                        <div class="absolute top-full left-1/2 -translate-x-1/2 w-[500px] bg-white rounded-xl shadow-xl border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 overflow-hidden">
+                        <div
+                            class="absolute top-full left-1/2 -translate-x-1/2 w-[500px] bg-white rounded-xl shadow-xl border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 overflow-hidden">
                             <div class="grid grid-cols-2 p-4 gap-4">
                                 <div>
-                                    <div class="px-2 py-1 text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2 border-b border-slate-100">Urbano</div>
+                                    <div
+                                        class="px-2 py-1 text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2 border-b border-slate-100">
+                                        Urbano</div>
                                     <div class="space-y-1">
-                                        <a href="/zonas/urbano/las-condes" class="block px-3 py-1.5 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors text-sm">Las Condes</a>
-                                        <a href="/zonas/urbano/vitacura" class="block px-3 py-1.5 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors text-sm">Vitacura</a>
-                                        <a href="/zonas/urbano/lo-barnechea" class="block px-3 py-1.5 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors text-sm">Lo Barnechea</a>
-                                        <a href="/zonas/urbano/providencia" class="block px-3 py-1.5 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors text-sm">Providencia</a>
-                                        <a href="/zonas/urbano/la-reina" class="block px-3 py-1.5 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors text-sm">La Reina</a>
-                                        <a href="/zonas/urbano/nunoa" class="block px-3 py-1.5 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors text-sm">Ñuñoa</a>
+                                        <a href="/zonas/urbano/las-condes"
+                                            class="block px-3 py-1.5 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors text-sm">Las
+                                            Condes</a>
+                                        <a href="/zonas/urbano/vitacura"
+                                            class="block px-3 py-1.5 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors text-sm">Vitacura</a>
+                                        <a href="/zonas/urbano/lo-barnechea"
+                                            class="block px-3 py-1.5 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors text-sm">Lo
+                                            Barnechea</a>
+                                        <a href="/zonas/urbano/providencia"
+                                            class="block px-3 py-1.5 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors text-sm">Providencia</a>
+                                        <a href="/zonas/urbano/la-reina"
+                                            class="block px-3 py-1.5 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors text-sm">La
+                                            Reina</a>
+                                        <a href="/zonas/urbano/nunoa"
+                                            class="block px-3 py-1.5 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors text-sm">Ñuñoa</a>
                                     </div>
                                 </div>
                                 <div>
-                                    <div class="px-2 py-1 text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2 border-b border-slate-100">Rural</div>
+                                    <div
+                                        class="px-2 py-1 text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2 border-b border-slate-100">
+                                        Rural</div>
                                     <div class="space-y-1">
-                                        <a href="/zonas/rural/chicureo" class="block px-3 py-1.5 rounded-lg hover:bg-green-50 hover:text-green-600 transition-colors text-sm">Chicureo</a>
-                                        <a href="/zonas/rural/colina" class="block px-3 py-1.5 rounded-lg hover:bg-green-50 hover:text-green-600 transition-colors text-sm">Colina</a>
-                                        <a href="/zonas/rural/lampa" class="block px-3 py-1.5 rounded-lg hover:bg-green-50 hover:text-green-600 transition-colors text-sm">Lampa</a>
-                                        <a href="/zonas/rural/pirque" class="block px-3 py-1.5 rounded-lg hover:bg-green-50 hover:text-green-600 transition-colors text-sm">Pirque / Cajón</a>
-                                        <a href="/zonas/rural/buin-paine" class="block px-3 py-1.5 rounded-lg hover:bg-green-50 hover:text-green-600 transition-colors text-sm">Buin / Paine</a>
-                                        <a href="/zonas/rural/" class="block px-3 py-1.5 text-xs font-bold text-green-600 hover:underline mt-2">Ver todas &rarr;</a>
+                                        <a href="/zonas/rural/chicureo"
+                                            class="block px-3 py-1.5 rounded-lg hover:bg-green-50 hover:text-green-600 transition-colors text-sm">Chicureo</a>
+                                        <a href="/zonas/rural/colina"
+                                            class="block px-3 py-1.5 rounded-lg hover:bg-green-50 hover:text-green-600 transition-colors text-sm">Colina</a>
+                                        <a href="/zonas/rural/lampa"
+                                            class="block px-3 py-1.5 rounded-lg hover:bg-green-50 hover:text-green-600 transition-colors text-sm">Lampa</a>
+                                        <a href="/zonas/rural/pirque"
+                                            class="block px-3 py-1.5 rounded-lg hover:bg-green-50 hover:text-green-600 transition-colors text-sm">Pirque
+                                            / Cajón</a>
+                                        <a href="/zonas/rural/buin-paine"
+                                            class="block px-3 py-1.5 rounded-lg hover:bg-green-50 hover:text-green-600 transition-colors text-sm">Buin
+                                            / Paine</a>
+                                        <a href="/zonas/rural/"
+                                            class="block px-3 py-1.5 text-xs font-bold text-green-600 hover:underline mt-2">Ver
+                                            todas &rarr;</a>
                                     </div>
                                 </div>
                             </div>
                             <div class="bg-slate-50 border-t border-slate-100 p-2 text-center">
-                                <a href="/zonas/urbano/" class="text-xs font-bold text-brand-600 hover:underline uppercase tracking-wide">Ver mapa de cobertura completo</a>
+                                <a href="/zonas/urbano/"
+                                    class="text-xs font-bold text-brand-600 hover:underline uppercase tracking-wide">Ver
+                                    mapa de cobertura completo</a>
                             </div>
                         </div>
                     </div>
@@ -291,10 +546,12 @@
                     <a href="/contacto" class="hover:text-brand-600 transition-colors">Contacto</a>
 
                     <div class="flex items-center gap-4 ml-4">
-                        <a href="tel:+56930153632" class="text-slate-900 font-bold hover:text-brand-600 transition hidden xl:block">
+                        <a href="tel:+56930153632"
+                            class="text-slate-900 font-bold hover:text-brand-600 transition hidden xl:block">
                             <i class="fa-solid fa-phone mr-1"></i> +56 9 3015 3632
                         </a>
-                        <a href="https://wa.me/56936470112" class="bg-brand-600 hover:bg-brand-700 text-white px-5 py-2.5 rounded-full font-bold shadow-lg shadow-brand-500/20 transition hover:-translate-y-0.5 flex items-center gap-2">
+                        <a href="https://wa.me/56936470112"
+                            class="bg-brand-600 hover:bg-brand-700 text-white px-5 py-2.5 rounded-full font-bold shadow-lg shadow-brand-500/20 transition hover:-translate-y-0.5 flex items-center gap-2">
                             <i class="fa-brands fa-whatsapp text-lg"></i> Urgencia
                         </a>
                     </div>
@@ -302,10 +559,12 @@
 
                 <!-- Mobile Toggle -->
                 <div class="flex items-center gap-4 lg:hidden">
-                    <a href="tel:+56930153632" class="flex items-center justify-center w-10 h-10 rounded-full bg-slate-100 text-slate-900 active:scale-95 transition">
+                    <a href="tel:+56930153632"
+                        class="flex items-center justify-center w-10 h-10 rounded-full bg-slate-100 text-slate-900 active:scale-95 transition">
                         <i class="fa-solid fa-phone"></i>
                     </a>
-                    <button onclick="openMenu()" aria-label="Abrir menú" class="p-2.5 rounded-lg text-slate-900 hover:bg-slate-100 focus:outline-none transition active:scale-95">
+                    <button onclick="openMenu()" aria-label="Abrir menú"
+                        class="p-2.5 rounded-lg text-slate-900 hover:bg-slate-100 focus:outline-none transition active:scale-95">
                         <i class="fa-solid fa-bars text-2xl"></i>
                     </button>
                 </div>
@@ -316,48 +575,77 @@
     <!-- Mobile Menu -->
     <div id="mobile-menu-overlay" class="fixed inset-0 z-[60] invisible opacity-0 transition-all duration-300">
         <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity" onclick="closeMenu()"></div>
-        <div id="mobile-menu-panel" class="absolute top-0 right-0 w-[85%] max-w-sm h-full bg-white shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col">
+        <div id="mobile-menu-panel"
+            class="absolute top-0 right-0 w-[85%] max-w-sm h-full bg-white shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col">
             <div class="px-6 h-20 flex items-center justify-between border-b border-slate-100">
                 <span class="font-extrabold text-slate-900 text-lg tracking-tight">MENÚ</span>
-                <button onclick="closeMenu()" aria-label="Cerrar menú" class="w-10 h-10 rounded-full bg-slate-50 text-slate-500 hover:bg-red-50 hover:text-red-500 transition flex items-center justify-center">
+                <button onclick="closeMenu()" aria-label="Cerrar menú"
+                    class="w-10 h-10 rounded-full bg-slate-50 text-slate-500 hover:bg-red-50 hover:text-red-500 transition flex items-center justify-center">
                     <i class="fa-solid fa-xmark text-xl"></i>
                 </button>
             </div>
             <div class="flex-1 overflow-y-auto py-6 px-6 space-y-2">
-                <a href="/" onclick="closeMenu()" class="block px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 hover:text-brand-600 transition">Inicio</a>
+                <a href="/" onclick="closeMenu()"
+                    class="block px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 hover:text-brand-600 transition">Inicio</a>
                 <div class="group">
-                    <button class="w-full flex items-center justify-between px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 transition" onclick="toggleSubmenu('sub-servicios', this)">
+                    <button
+                        class="w-full flex items-center justify-between px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 transition"
+                        onclick="toggleSubmenu('sub-servicios', this)">
                         Servicios <i class="fa-solid fa-chevron-down text-xs text-slate-400 transition-transform"></i>
                     </button>
                     <div id="sub-servicios" class="hidden pl-4 space-y-1 bg-slate-50/50 rounded-b-xl pb-2">
-                        <a href="/servicios/destape-alcantarillado" onclick="closeMenu()" class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Destape Alcantarillado</a>
-                        <a href="/servicios/limpieza-fosas-septicas" onclick="closeMenu()" class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Limpieza Fosas</a>
-                        <a href="/servicios/banos-quimicos" onclick="closeMenu()" class="block px-4 py-2 text-sm font-bold text-brand-600">Baños Químicos</a>
-                        <a href="/servicios/destape-edificios-condominios" onclick="closeMenu()" class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Edificios</a>
-                        <a href="/servicios/inspeccion-camara-alcantarillado" onclick="closeMenu()" class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Cámara Inspección</a>
-                        <a href="/servicios/mantencion-preventiva" onclick="closeMenu()" class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Mantención</a>
-                        <a href="/servicios/" onclick="closeMenu()" class="block px-4 py-2 text-sm font-bold text-brand-600 hover:underline mt-1 border-t border-slate-200/50 pt-2">Ver todos &rarr;</a>
+                        <a href="/servicios/destape-alcantarillado" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Destape
+                            Alcantarillado</a>
+                        <a href="/servicios/limpieza-fosas-septicas" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Limpieza
+                            Fosas</a>
+                        <a href="/servicios/banos-quimicos" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-bold text-brand-600">Baños Químicos</a>
+                        <a href="/servicios/destape-edificios-condominios" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Edificios</a>
+                        <a href="/servicios/inspeccion-camara-alcantarillado" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Cámara
+                            Inspección</a>
+                        <a href="/servicios/mantencion-preventiva" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Mantención</a>
+                        <a href="/servicios/" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-bold text-brand-600 hover:underline mt-1 border-t border-slate-200/50 pt-2">Ver
+                            todos &rarr;</a>
                     </div>
                 </div>
                 <div class="group">
-                    <button class="w-full flex items-center justify-between px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 transition" onclick="toggleSubmenu('sub-zonas', this)">
+                    <button
+                        class="w-full flex items-center justify-between px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 transition"
+                        onclick="toggleSubmenu('sub-zonas', this)">
                         Zonas <i class="fa-solid fa-chevron-down text-xs text-slate-400 transition-transform"></i>
                     </button>
                     <div id="sub-zonas" class="hidden pl-4 space-y-1 bg-slate-50/50 rounded-b-xl pb-2">
                         <div class="px-4 py-1 text-[10px] font-bold text-slate-400 uppercase">Urbano</div>
-                        <a href="/zonas/urbano/las-condes" onclick="closeMenu()" class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Las Condes</a>
-                        <a href="/zonas/urbano/vitacura" onclick="closeMenu()" class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Vitacura</a>
+                        <a href="/zonas/urbano/las-condes" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Las
+                            Condes</a>
+                        <a href="/zonas/urbano/vitacura" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Vitacura</a>
                         <div class="px-4 py-1 text-[10px] font-bold text-slate-400 uppercase mt-2">Rural</div>
-                        <a href="/zonas/rural/chicureo" onclick="closeMenu()" class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Chicureo</a>
-                        <a href="/zonas/rural/colina" onclick="closeMenu()" class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Colina</a>
-                        <a href="/zonas/urbano/" onclick="closeMenu()" class="block px-4 py-2 text-sm font-bold text-brand-600 hover:underline mt-2 border-t border-slate-200/50 pt-2">Ver todas &rarr;</a>
+                        <a href="/zonas/rural/chicureo" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Chicureo</a>
+                        <a href="/zonas/rural/colina" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Colina</a>
+                        <a href="/zonas/urbano/" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-bold text-brand-600 hover:underline mt-2 border-t border-slate-200/50 pt-2">Ver
+                            todas &rarr;</a>
                     </div>
                 </div>
-                <a href="/casos-reales/" onclick="closeMenu()" class="block px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 hover:text-brand-600 transition">Casos Reales</a>
-                <a href="/contacto" onclick="closeMenu()" class="block px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 hover:text-brand-600 transition">Contacto</a>
+                <a href="/casos-reales/" onclick="closeMenu()"
+                    class="block px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 hover:text-brand-600 transition">Casos
+                    Reales</a>
+                <a href="/contacto" onclick="closeMenu()"
+                    class="block px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 hover:text-brand-600 transition">Contacto</a>
             </div>
             <div class="p-6 bg-slate-50 border-t border-slate-100">
-                <a href="https://wa.me/56936470112" class="flex items-center justify-center gap-2 w-full bg-green-500 text-white font-bold py-3 rounded-xl shadow-lg shadow-green-500/20 active:scale-95 transition">
+                <a href="https://wa.me/56936470112"
+                    class="flex items-center justify-center gap-2 w-full bg-green-500 text-white font-bold py-3 rounded-xl shadow-lg shadow-green-500/20 active:scale-95 transition">
                     <i class="fa-brands fa-whatsapp text-xl"></i> WhatsApp 24/7
                 </a>
             </div>
@@ -370,7 +658,8 @@
     <header class="hero-banos min-h-[80vh] flex items-center justify-center px-4 relative pt-32 pb-20">
         <div class="max-w-4xl mx-auto text-center relative z-10 text-white fade-up">
 
-            <div class="availability-badge inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-6 text-white" data-theme="dark">
+            <div class="availability-badge inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-6 text-white"
+                data-theme="dark">
                 <span class="relative flex h-2 w-2">
                     <span class="ping-dot w-2 h-2 rounded-full bg-blue-400 animate-pulse absolute"></span>
                     <span class="static-dot w-2 h-2 rounded-full bg-blue-500 relative"></span>
@@ -380,11 +669,13 @@
 
             <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight tracking-tight">
                 Arriendo de<br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">Baños Químicos</span>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">Baños
+                    Químicos</span>
             </h1>
 
             <p class="text-lg text-slate-300 mb-8 max-w-2xl mx-auto leading-relaxed">
-                Los llevamos y retiramos <strong>donde tú nos digas</strong>. Obras en construcción, eventos, parcelas y ferias. Incluye mantención periódica y gestión de residuos autorizada.
+                Los llevamos y retiramos <strong>donde tú nos digas</strong>. Obras en construcción, eventos, parcelas y
+                ferias. Incluye mantención periódica y gestión de residuos autorizada.
             </p>
 
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
@@ -400,13 +691,16 @@
 
             <!-- Trust pills -->
             <div class="flex flex-wrap gap-3 justify-center mt-10 text-sm">
-                <span class="bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-2 rounded-full font-semibold flex items-center gap-2">
+                <span
+                    class="bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-2 rounded-full font-semibold flex items-center gap-2">
                     <i class="fa-solid fa-truck text-blue-400"></i> Despacho incluido
                 </span>
-                <span class="bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-2 rounded-full font-semibold flex items-center gap-2">
+                <span
+                    class="bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-2 rounded-full font-semibold flex items-center gap-2">
                     <i class="fa-solid fa-rotate text-blue-400"></i> Mantención periódica
                 </span>
-                <span class="bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-2 rounded-full font-semibold flex items-center gap-2">
+                <span
+                    class="bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-2 rounded-full font-semibold flex items-center gap-2">
                     <i class="fa-solid fa-shield-halved text-blue-400"></i> Residuos autorizados
                 </span>
             </div>
@@ -419,59 +713,76 @@
     <section id="usos" class="py-20 bg-white relative -mt-10 z-20 rounded-t-[2.5rem]">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
-                <span class="text-brand-600 font-bold uppercase tracking-widest text-xs mb-2 block">¿Para quién es?</span>
+                <span class="text-brand-600 font-bold uppercase tracking-widest text-xs mb-2 block">¿Para quién
+                    es?</span>
                 <h2 class="text-3xl font-extrabold text-slate-900 mb-4">Soluciones para Cada Necesidad</h2>
-                <p class="text-slate-500 max-w-2xl mx-auto">Desde una obra de construcción hasta un matrimonio en parcela, tenemos el equipo adecuado.</p>
+                <p class="text-slate-500 max-w-2xl mx-auto">Desde una obra de construcción hasta un matrimonio en
+                    parcela, tenemos el equipo adecuado.</p>
             </div>
 
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
 
-                <div class="uso-card group bg-slate-50 hover:bg-blue-50 border border-slate-100 hover:border-blue-200 p-6 rounded-2xl text-center shadow-sm cursor-default">
-                    <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-blue-600 text-xl mx-auto mb-3 shadow-sm group-hover:scale-110 transition-transform">
+                <div
+                    class="uso-card group bg-slate-50 hover:bg-blue-50 border border-slate-100 hover:border-blue-200 p-6 rounded-2xl text-center shadow-sm cursor-default">
+                    <div
+                        class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-blue-600 text-xl mx-auto mb-3 shadow-sm group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-helmet-safety"></i>
                     </div>
                     <h3 class="font-bold text-slate-800 group-hover:text-blue-700 text-sm">Obras y Construcción</h3>
                     <span class="text-xs text-slate-400 block mt-1 group-hover:text-blue-500">Norma MINSAL</span>
                 </div>
 
-                <div class="uso-card group bg-slate-50 hover:bg-blue-50 border border-slate-100 hover:border-blue-200 p-6 rounded-2xl text-center shadow-sm cursor-default">
-                    <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-blue-600 text-xl mx-auto mb-3 shadow-sm group-hover:scale-110 transition-transform">
+                <div
+                    class="uso-card group bg-slate-50 hover:bg-blue-50 border border-slate-100 hover:border-blue-200 p-6 rounded-2xl text-center shadow-sm cursor-default">
+                    <div
+                        class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-blue-600 text-xl mx-auto mb-3 shadow-sm group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-champagne-glasses"></i>
                     </div>
                     <h3 class="font-bold text-slate-800 group-hover:text-blue-700 text-sm">Eventos y Fiestas</h3>
-                    <span class="text-xs text-slate-400 block mt-1 group-hover:text-blue-500">Matrimonios · Cumpleaños</span>
+                    <span class="text-xs text-slate-400 block mt-1 group-hover:text-blue-500">Matrimonios ·
+                        Cumpleaños</span>
                 </div>
 
-                <div class="uso-card group bg-slate-50 hover:bg-blue-50 border border-slate-100 hover:border-blue-200 p-6 rounded-2xl text-center shadow-sm cursor-default">
-                    <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-blue-600 text-xl mx-auto mb-3 shadow-sm group-hover:scale-110 transition-transform">
+                <div
+                    class="uso-card group bg-slate-50 hover:bg-blue-50 border border-slate-100 hover:border-blue-200 p-6 rounded-2xl text-center shadow-sm cursor-default">
+                    <div
+                        class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-blue-600 text-xl mx-auto mb-3 shadow-sm group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-tent"></i>
                     </div>
                     <h3 class="font-bold text-slate-800 group-hover:text-blue-700 text-sm">Camping y Parcelas</h3>
                     <span class="text-xs text-slate-400 block mt-1 group-hover:text-blue-500">Sector rural</span>
                 </div>
 
-                <div class="uso-card group bg-slate-50 hover:bg-blue-50 border border-slate-100 hover:border-blue-200 p-6 rounded-2xl text-center shadow-sm cursor-default">
-                    <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-blue-600 text-xl mx-auto mb-3 shadow-sm group-hover:scale-110 transition-transform">
+                <div
+                    class="uso-card group bg-slate-50 hover:bg-blue-50 border border-slate-100 hover:border-blue-200 p-6 rounded-2xl text-center shadow-sm cursor-default">
+                    <div
+                        class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-blue-600 text-xl mx-auto mb-3 shadow-sm group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-store"></i>
                     </div>
                     <h3 class="font-bold text-slate-800 group-hover:text-blue-700 text-sm">Ferias y Mercados</h3>
                     <span class="text-xs text-slate-400 block mt-1 group-hover:text-blue-500">Instalación rápida</span>
                 </div>
 
-                <div class="uso-card group bg-slate-50 hover:bg-blue-50 border border-slate-100 hover:border-blue-200 p-6 rounded-2xl text-center shadow-sm cursor-default">
-                    <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-blue-600 text-xl mx-auto mb-3 shadow-sm group-hover:scale-110 transition-transform">
+                <div
+                    class="uso-card group bg-slate-50 hover:bg-blue-50 border border-slate-100 hover:border-blue-200 p-6 rounded-2xl text-center shadow-sm cursor-default">
+                    <div
+                        class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-blue-600 text-xl mx-auto mb-3 shadow-sm group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-building-columns"></i>
                     </div>
                     <h3 class="font-bold text-slate-800 group-hover:text-blue-700 text-sm">Municipios</h3>
-                    <span class="text-xs text-slate-400 block mt-1 group-hover:text-blue-500">Licitaciones · Parques</span>
+                    <span class="text-xs text-slate-400 block mt-1 group-hover:text-blue-500">Licitaciones ·
+                        Parques</span>
                 </div>
 
-                <div class="uso-card group bg-slate-50 hover:bg-blue-50 border border-slate-100 hover:border-blue-200 p-6 rounded-2xl text-center shadow-sm cursor-default">
-                    <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-blue-600 text-xl mx-auto mb-3 shadow-sm group-hover:scale-110 transition-transform">
+                <div
+                    class="uso-card group bg-slate-50 hover:bg-blue-50 border border-slate-100 hover:border-blue-200 p-6 rounded-2xl text-center shadow-sm cursor-default">
+                    <div
+                        class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-blue-600 text-xl mx-auto mb-3 shadow-sm group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-industry"></i>
                     </div>
                     <h3 class="font-bold text-slate-800 group-hover:text-blue-700 text-sm">Industria y Minería</h3>
-                    <span class="text-xs text-slate-400 block mt-1 group-hover:text-blue-500">Faenas · Campamentos</span>
+                    <span class="text-xs text-slate-400 block mt-1 group-hover:text-blue-500">Faenas ·
+                        Campamentos</span>
                 </div>
 
             </div>
@@ -479,7 +790,8 @@
             <div class="mt-8 text-center">
                 <p class="text-slate-600 font-medium">
                     ¿Otro uso?
-                    <a href="https://wa.me/56936470112" class="text-brand-600 font-bold hover:underline inline-flex items-center gap-1">
+                    <a href="https://wa.me/56936470112"
+                        class="text-brand-600 font-bold hover:underline inline-flex items-center gap-1">
                         <i class="fa-brands fa-whatsapp"></i> Cuéntanos tu caso y cotizamos
                     </a>
                 </p>
@@ -494,73 +806,85 @@
         <div class="container mx-auto px-4">
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div>
-                    <span class="text-brand-600 font-bold uppercase tracking-widest text-xs mb-2 block">Servicio Completo</span>
+                    <span class="text-brand-600 font-bold uppercase tracking-widest text-xs mb-2 block">Servicio
+                        Completo</span>
                     <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-6">
                         Todo incluido: entrega, mantención y retiro
                     </h2>
                     <p class="text-lg text-slate-600 mb-8">
-                        No te preocupes por la logística. Nosotros nos encargamos de llevar el baño hasta tu obra o evento, hacer la mantención programada y retirarlo cuando ya no lo necesites.
+                        No te preocupes por la logística. Nosotros nos encargamos de llevar el baño hasta tu obra o
+                        evento, hacer la mantención programada y retirarlo cuando ya no lo necesites.
                     </p>
 
                     <ul class="space-y-6">
                         <li class="flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-brand-600 text-xl flex-shrink-0 shadow-sm">
+                            <div
+                                class="w-10 h-10 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-brand-600 text-xl flex-shrink-0 shadow-sm">
                                 <i class="fa-solid fa-truck"></i>
                             </div>
                             <div>
                                 <h4 class="font-bold text-slate-900">Despacho y Retiro</h4>
-                                <p class="text-sm text-slate-500 mt-1">Llevamos el baño a la dirección exacta que necesitas. Sin costos ocultos de transporte dentro de la RM.</p>
+                                <p class="text-sm text-slate-500 mt-1">Llevamos el baño a la dirección exacta que
+                                    necesitas. Sin costos ocultos de transporte dentro de la RM.</p>
                             </div>
                         </li>
                         <li class="flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-brand-600 text-xl flex-shrink-0 shadow-sm">
+                            <div
+                                class="w-10 h-10 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-brand-600 text-xl flex-shrink-0 shadow-sm">
                                 <i class="fa-solid fa-spray-can-sparkles"></i>
                             </div>
                             <div>
                                 <h4 class="font-bold text-slate-900">Mantención Periódica</h4>
-                                <p class="text-sm text-slate-500 mt-1">Limpieza y desinfección programada según uso. Reposición de insumos y vaciado de residuos con gestión autorizada.</p>
+                                <p class="text-sm text-slate-500 mt-1">Limpieza y desinfección programada según uso.
+                                    Reposición de insumos y vaciado de residuos con gestión autorizada.</p>
                             </div>
                         </li>
                         <li class="flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-brand-600 text-xl flex-shrink-0 shadow-sm">
+                            <div
+                                class="w-10 h-10 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-brand-600 text-xl flex-shrink-0 shadow-sm">
                                 <i class="fa-solid fa-file-invoice"></i>
                             </div>
                             <div>
                                 <h4 class="font-bold text-slate-900">Documentación y Factura</h4>
-                                <p class="text-sm text-slate-500 mt-1">Emitimos factura para empresas constructoras. Cumplimos normativa MINSAL y requisitos de obra.</p>
+                                <p class="text-sm text-slate-500 mt-1">Emitimos factura para empresas constructoras.
+                                    Cumplimos normativa MINSAL y requisitos de obra.</p>
                             </div>
                         </li>
                         <li class="flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-brand-600 text-xl flex-shrink-0 shadow-sm">
+                            <div
+                                class="w-10 h-10 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-brand-600 text-xl flex-shrink-0 shadow-sm">
                                 <i class="fa-solid fa-wheelchair"></i>
                             </div>
                             <div>
                                 <h4 class="font-bold text-slate-900">Modelos Especiales</h4>
-                                <p class="text-sm text-slate-500 mt-1">Disponemos de unidades accesibles para personas con movilidad reducida y baños premium para eventos.</p>
+                                <p class="text-sm text-slate-500 mt-1">Disponemos de unidades accesibles para personas
+                                    con movilidad reducida y baños premium para eventos.</p>
                             </div>
                         </li>
                     </ul>
 
                     <div class="mt-10">
-                        <a href="#cotizar" class="text-brand-600 font-bold hover:underline">Solicitar cotización &rarr;</a>
+                        <a href="#cotizar" class="text-brand-600 font-bold hover:underline">Solicitar cotización
+                            &rarr;</a>
                     </div>
                 </div>
 
                 <div class="relative">
                     <div class="aspect-[4/3] bg-slate-200 rounded-3xl overflow-hidden shadow-2xl relative group">
-                        <img src="/images/banos-quimicos-arriendo.webp"
-                            alt="Baños químicos en obra de construcción"
+                        <img src="/images/banos-quimicos-arriendo.webp" alt="Baños químicos en obra de construcción"
                             class="object-cover w-full h-full group-hover:scale-105 transition duration-700">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-8">
                             <div class="text-white">
-                                <div class="bg-brand-600 text-xs font-bold px-2 py-1 rounded inline-block mb-2">Flota Propia</div>
+                                <div class="bg-brand-600 text-xs font-bold px-2 py-1 rounded inline-block mb-2">Flota
+                                    Propia</div>
                                 <p class="font-bold text-xl">Entrega en 24–48 hrs</p>
                                 <p class="text-sm text-slate-200">Cubrimos toda la Región Metropolitana</p>
                             </div>
                         </div>
                     </div>
                     <!-- Floating stat card -->
-                    <div class="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl p-5 border border-slate-100 hidden md:block">
+                    <div
+                        class="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl p-5 border border-slate-100 hidden md:block">
                         <div class="flex items-center gap-3">
                             <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center">
                                 <i class="fa-solid fa-restroom text-brand-600 text-xl"></i>
@@ -582,9 +906,11 @@
     <section id="como-funciona" class="py-20 bg-white">
         <div class="container mx-auto px-4">
             <div class="text-center mb-14">
-                <span class="text-brand-600 font-bold uppercase tracking-widest text-xs mb-2 block">Proceso simple</span>
+                <span class="text-brand-600 font-bold uppercase tracking-widest text-xs mb-2 block">Proceso
+                    simple</span>
                 <h2 class="text-3xl font-extrabold text-slate-900 mb-4">¿Cómo funciona el arriendo?</h2>
-                <p class="text-slate-500 max-w-xl mx-auto">En 4 pasos tienes tu baño químico instalado donde lo necesitas.</p>
+                <p class="text-slate-500 max-w-xl mx-auto">En 4 pasos tienes tu baño químico instalado donde lo
+                    necesitas.</p>
             </div>
 
             <div class="max-w-3xl mx-auto space-y-6">
@@ -592,7 +918,8 @@
                     <div class="step-number">1</div>
                     <div>
                         <h3 class="font-bold text-slate-900 text-lg mb-1">Cotiza por WhatsApp o Teléfono</h3>
-                        <p class="text-slate-500 text-sm">Cuéntanos la cantidad de baños, el uso, la dirección y la duración del arriendo. Te respondemos con precio final en minutos.</p>
+                        <p class="text-slate-500 text-sm">Cuéntanos la cantidad de baños, el uso, la dirección y la
+                            duración del arriendo. Te respondemos con precio final en minutos.</p>
                     </div>
                 </div>
 
@@ -600,7 +927,8 @@
                     <div class="step-number">2</div>
                     <div>
                         <h3 class="font-bold text-slate-900 text-lg mb-1">Confirmamos y Coordinamos</h3>
-                        <p class="text-slate-500 text-sm">Una vez aceptada la cotización, coordinamos la fecha de entrega. Emitimos factura para empresas si se requiere.</p>
+                        <p class="text-slate-500 text-sm">Una vez aceptada la cotización, coordinamos la fecha de
+                            entrega. Emitimos factura para empresas si se requiere.</p>
                     </div>
                 </div>
 
@@ -608,7 +936,8 @@
                     <div class="step-number">3</div>
                     <div>
                         <h3 class="font-bold text-slate-900 text-lg mb-1">Entregamos e Instalamos</h3>
-                        <p class="text-slate-500 text-sm">Nuestro equipo lleva el baño a la dirección indicada, lo instala en el lugar que elijas y deja todo listo para usar.</p>
+                        <p class="text-slate-500 text-sm">Nuestro equipo lleva el baño a la dirección indicada, lo
+                            instala en el lugar que elijas y deja todo listo para usar.</p>
                     </div>
                 </div>
 
@@ -616,7 +945,8 @@
                     <div class="step-number">4</div>
                     <div>
                         <h3 class="font-bold text-slate-900 text-lg mb-1">Mantención y Retiro</h3>
-                        <p class="text-slate-500 text-sm">Durante el arriendo hacemos la mantención programada. Al finalizar, retiramos el equipo sin que tengas que preocuparte de nada.</p>
+                        <p class="text-slate-500 text-sm">Durante el arriendo hacemos la mantención programada. Al
+                            finalizar, retiramos el equipo sin que tengas que preocuparte de nada.</p>
                     </div>
                 </div>
             </div>
@@ -631,7 +961,8 @@
             <div class="text-center mb-14">
                 <span class="text-brand-600 font-bold uppercase tracking-widest text-xs mb-2 block">Modalidades</span>
                 <h2 class="text-3xl font-extrabold text-slate-900 mb-4">Tipos de Arriendo</h2>
-                <p class="text-slate-500 max-w-xl mx-auto">Adaptamos el servicio según tu necesidad. Precio final según dirección y cantidad.</p>
+                <p class="text-slate-500 max-w-xl mx-auto">Adaptamos el servicio según tu necesidad. Precio final según
+                    dirección y cantidad.</p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
@@ -642,35 +973,51 @@
                         <i class="fa-solid fa-calendar-day text-brand-600 text-2xl"></i>
                     </div>
                     <h3 class="font-extrabold text-slate-900 text-xl mb-2">Evento Puntual</h3>
-                    <p class="text-slate-500 text-sm mb-6">Arriendo por día o fin de semana. Ideal para matrimonios, fiestas de campo y eventos de empresa.</p>
+                    <p class="text-slate-500 text-sm mb-6">Arriendo por día o fin de semana. Ideal para matrimonios,
+                        fiestas de campo y eventos de empresa.</p>
                     <ul class="space-y-3 text-sm text-slate-600 mb-8">
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> Entrega y retiro incluido</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> Limpieza inicial</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> Mínimo 1 unidad</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> Disponible fines de semana</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> Entrega y
+                            retiro incluido</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> Limpieza
+                            inicial</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> Mínimo 1
+                            unidad</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> Disponible
+                            fines de semana</li>
                     </ul>
-                    <a href="https://wa.me/56936470112?text=Hola,%20quiero%20cotizar%20arriendo%20de%20ba%C3%B1o%20qu%C3%ADmico%20para%20evento" target="_blank"
+                    <a href="https://wa.me/56936470112?text=Hola,%20quiero%20cotizar%20arriendo%20de%20ba%C3%B1o%20qu%C3%ADmico%20para%20evento"
+                        target="_blank"
                         class="block w-full text-center bg-slate-100 hover:bg-brand-600 hover:text-white text-slate-800 font-bold py-3 rounded-xl transition">
                         Cotizar Evento
                     </a>
                 </div>
 
                 <!-- Obra Mensual — DESTACADO -->
-                <div class="plan-card plan-featured rounded-3xl p-8 border-0 shadow-xl text-white relative overflow-hidden">
-                    <div class="absolute top-4 right-4 bg-yellow-400 text-slate-900 text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-wide">Más solicitado</div>
+                <div
+                    class="plan-card plan-featured rounded-3xl p-8 border-0 shadow-xl text-white relative overflow-hidden">
+                    <div
+                        class="absolute top-4 right-4 bg-yellow-400 text-slate-900 text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-wide">
+                        Más solicitado</div>
                     <div class="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center mb-6">
                         <i class="fa-solid fa-helmet-safety text-white text-2xl"></i>
                     </div>
                     <h3 class="font-extrabold text-white text-xl mb-2">Arriendo Mensual</h3>
-                    <p class="text-white/80 text-sm mb-6">Para obras en construcción o arrendamientos de largo plazo. Incluye mantención semanal.</p>
+                    <p class="text-white/80 text-sm mb-6">Para obras en construcción o arrendamientos de largo plazo.
+                        Incluye mantención semanal.</p>
                     <ul class="space-y-3 text-sm text-white/90 mb-8">
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-yellow-400"></i> Mantención semanal incluida</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-yellow-400"></i> Entrega y retiro incluido</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-yellow-400"></i> Factura para empresa</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-yellow-400"></i> Cumple norma MINSAL</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-yellow-400"></i> Descuentos por volumen</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-yellow-400"></i> Mantención
+                            semanal incluida</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-yellow-400"></i> Entrega y
+                            retiro incluido</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-yellow-400"></i> Factura
+                            para empresa</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-yellow-400"></i> Cumple
+                            norma MINSAL</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-yellow-400"></i> Descuentos
+                            por volumen</li>
                     </ul>
-                    <a href="https://wa.me/56936470112?text=Hola,%20quiero%20cotizar%20arriendo%20mensual%20de%20ba%C3%B1os%20qu%C3%ADmicos%20para%20obra" target="_blank"
+                    <a href="https://wa.me/56936470112?text=Hola,%20quiero%20cotizar%20arriendo%20mensual%20de%20ba%C3%B1os%20qu%C3%ADmicos%20para%20obra"
+                        target="_blank"
                         class="block w-full text-center bg-white text-blue-800 hover:bg-yellow-400 hover:text-slate-900 font-bold py-3 rounded-xl transition">
                         Cotizar Obra
                     </a>
@@ -682,14 +1029,20 @@
                         <i class="fa-solid fa-building text-brand-600 text-2xl"></i>
                     </div>
                     <h3 class="font-extrabold text-slate-900 text-xl mb-2">Contrato Anual</h3>
-                    <p class="text-slate-500 text-sm mb-6">Para empresas constructoras, municipios o campamentos que necesitan baños de forma permanente.</p>
+                    <p class="text-slate-500 text-sm mb-6">Para empresas constructoras, municipios o campamentos que
+                        necesitan baños de forma permanente.</p>
                     <ul class="space-y-3 text-sm text-slate-600 mb-8">
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> Precio preferencial</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> Mantención programada</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> Múltiples ubicaciones</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> Facturación mensual</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> Precio
+                            preferencial</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> Mantención
+                            programada</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> Múltiples
+                            ubicaciones</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> Facturación
+                            mensual</li>
                     </ul>
-                    <a href="https://wa.me/56936470112?text=Hola,%20necesito%20cotizar%20un%20contrato%20anual%20de%20ba%C3%B1os%20qu%C3%ADmicos" target="_blank"
+                    <a href="https://wa.me/56936470112?text=Hola,%20necesito%20cotizar%20un%20contrato%20anual%20de%20ba%C3%B1os%20qu%C3%ADmicos"
+                        target="_blank"
                         class="block w-full text-center bg-slate-100 hover:bg-brand-600 hover:text-white text-slate-800 font-bold py-3 rounded-xl transition">
                         Hablar con Ejecutivo
                     </a>
@@ -704,9 +1057,11 @@
     <section id="cobertura" class="py-20 bg-white">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
-                <span class="text-brand-600 font-bold uppercase tracking-widest text-xs mb-2 block">Dónde llegamos</span>
+                <span class="text-brand-600 font-bold uppercase tracking-widest text-xs mb-2 block">Dónde
+                    llegamos</span>
                 <h2 class="text-3xl font-extrabold text-slate-900 mb-4">Cobertura en toda la RM y Alrededores</h2>
-                <p class="text-slate-500 max-w-2xl mx-auto">Llegamos donde otros no llegan. Desde el centro de Santiago hasta las comunas más alejadas de la región.</p>
+                <p class="text-slate-500 max-w-2xl mx-auto">Llegamos donde otros no llegan. Desde el centro de Santiago
+                    hasta las comunas más alejadas de la región.</p>
             </div>
 
             <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -718,16 +1073,26 @@
                         Zona Urbana
                     </h3>
                     <div class="grid grid-cols-2 gap-2 text-sm text-slate-600">
-                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-green-500 text-xs"></i> Santiago Centro</span>
-                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-green-500 text-xs"></i> Las Condes</span>
-                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-green-500 text-xs"></i> Vitacura</span>
-                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-green-500 text-xs"></i> Providencia</span>
-                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-green-500 text-xs"></i> Ñuñoa</span>
-                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-green-500 text-xs"></i> La Reina</span>
-                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-green-500 text-xs"></i> Maipú</span>
-                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-green-500 text-xs"></i> Pudahuel</span>
-                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-green-500 text-xs"></i> Quilicura</span>
-                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-green-500 text-xs"></i> San Bernardo</span>
+                        <span class="flex items-center gap-1.5"><i
+                                class="fa-solid fa-circle-check text-green-500 text-xs"></i> Santiago Centro</span>
+                        <span class="flex items-center gap-1.5"><i
+                                class="fa-solid fa-circle-check text-green-500 text-xs"></i> Las Condes</span>
+                        <span class="flex items-center gap-1.5"><i
+                                class="fa-solid fa-circle-check text-green-500 text-xs"></i> Vitacura</span>
+                        <span class="flex items-center gap-1.5"><i
+                                class="fa-solid fa-circle-check text-green-500 text-xs"></i> Providencia</span>
+                        <span class="flex items-center gap-1.5"><i
+                                class="fa-solid fa-circle-check text-green-500 text-xs"></i> Ñuñoa</span>
+                        <span class="flex items-center gap-1.5"><i
+                                class="fa-solid fa-circle-check text-green-500 text-xs"></i> La Reina</span>
+                        <span class="flex items-center gap-1.5"><i
+                                class="fa-solid fa-circle-check text-green-500 text-xs"></i> Maipú</span>
+                        <span class="flex items-center gap-1.5"><i
+                                class="fa-solid fa-circle-check text-green-500 text-xs"></i> Pudahuel</span>
+                        <span class="flex items-center gap-1.5"><i
+                                class="fa-solid fa-circle-check text-green-500 text-xs"></i> Quilicura</span>
+                        <span class="flex items-center gap-1.5"><i
+                                class="fa-solid fa-circle-check text-green-500 text-xs"></i> San Bernardo</span>
                     </div>
                 </div>
                 <div class="bg-green-50 rounded-2xl p-8 border border-green-100">
@@ -738,16 +1103,26 @@
                         Zona Rural y Alrededores
                     </h3>
                     <div class="grid grid-cols-2 gap-2 text-sm text-slate-600">
-                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-green-500 text-xs"></i> Chicureo</span>
-                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-green-500 text-xs"></i> Colina</span>
-                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-green-500 text-xs"></i> Lampa</span>
-                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-green-500 text-xs"></i> Pirque</span>
-                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-green-500 text-xs"></i> Calera de Tango</span>
-                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-green-500 text-xs"></i> Buin / Paine</span>
-                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-green-500 text-xs"></i> Talagante</span>
-                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-green-500 text-xs"></i> Melipilla</span>
-                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-green-500 text-xs"></i> Cajón del Maipo</span>
-                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-green-500 text-xs"></i> Lo Barnechea</span>
+                        <span class="flex items-center gap-1.5"><i
+                                class="fa-solid fa-circle-check text-green-500 text-xs"></i> Chicureo</span>
+                        <span class="flex items-center gap-1.5"><i
+                                class="fa-solid fa-circle-check text-green-500 text-xs"></i> Colina</span>
+                        <span class="flex items-center gap-1.5"><i
+                                class="fa-solid fa-circle-check text-green-500 text-xs"></i> Lampa</span>
+                        <span class="flex items-center gap-1.5"><i
+                                class="fa-solid fa-circle-check text-green-500 text-xs"></i> Pirque</span>
+                        <span class="flex items-center gap-1.5"><i
+                                class="fa-solid fa-circle-check text-green-500 text-xs"></i> Calera de Tango</span>
+                        <span class="flex items-center gap-1.5"><i
+                                class="fa-solid fa-circle-check text-green-500 text-xs"></i> Buin / Paine</span>
+                        <span class="flex items-center gap-1.5"><i
+                                class="fa-solid fa-circle-check text-green-500 text-xs"></i> Talagante</span>
+                        <span class="flex items-center gap-1.5"><i
+                                class="fa-solid fa-circle-check text-green-500 text-xs"></i> Melipilla</span>
+                        <span class="flex items-center gap-1.5"><i
+                                class="fa-solid fa-circle-check text-green-500 text-xs"></i> Cajón del Maipo</span>
+                        <span class="flex items-center gap-1.5"><i
+                                class="fa-solid fa-circle-check text-green-500 text-xs"></i> Lo Barnechea</span>
                     </div>
                 </div>
             </div>
@@ -755,7 +1130,8 @@
             <div class="mt-8 text-center">
                 <p class="text-slate-600 font-medium">
                     ¿Tu dirección no aparece?
-                    <a href="https://wa.me/56936470112" class="text-brand-600 font-bold hover:underline inline-flex items-center gap-1">
+                    <a href="https://wa.me/56936470112"
+                        class="text-brand-600 font-bold hover:underline inline-flex items-center gap-1">
                         <i class="fa-brands fa-whatsapp"></i> Escríbenos y verificamos cobertura
                     </a>
                 </p>
@@ -769,59 +1145,80 @@
     <section id="faq" class="py-20 bg-slate-50 border-t border-slate-200">
         <div class="container mx-auto px-4 max-w-3xl">
             <div class="text-center mb-12">
-                <span class="text-brand-600 font-bold uppercase tracking-widest text-xs mb-2 block">Preguntas Frecuentes</span>
+                <span class="text-brand-600 font-bold uppercase tracking-widest text-xs mb-2 block">Preguntas
+                    Frecuentes</span>
                 <h2 class="text-3xl font-extrabold text-slate-900 mb-4">Todo lo que Necesitas Saber</h2>
             </div>
 
             <div class="space-y-4" id="faq-list">
 
                 <div class="faq-item bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm">
-                    <button class="w-full flex items-center justify-between px-6 py-5 font-bold text-slate-800 text-left" onclick="toggleFaq(this)">
+                    <button
+                        class="w-full flex items-center justify-between px-6 py-5 font-bold text-slate-800 text-left"
+                        onclick="toggleFaq(this)">
                         ¿Cuánto tiempo demoran en entregar el baño?
                         <i class="fa-solid fa-chevron-down text-brand-600 transition-transform flex-shrink-0 ml-4"></i>
                     </button>
                     <div class="faq-answer hidden px-6 pb-5 text-slate-500 text-sm leading-relaxed">
-                        En la mayoría de los casos entregamos en 24 a 48 horas hábiles después de confirmar el pedido. Para urgencias o eventos de último minuto, contáctanos directamente por WhatsApp y buscamos una solución.
+                        En la mayoría de los casos entregamos en 24 a 48 horas hábiles después de confirmar el pedido.
+                        Para urgencias o eventos de último minuto, contáctanos directamente por WhatsApp y buscamos una
+                        solución.
                     </div>
                 </div>
 
                 <div class="faq-item bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm">
-                    <button class="w-full flex items-center justify-between px-6 py-5 font-bold text-slate-800 text-left" onclick="toggleFaq(this)">
+                    <button
+                        class="w-full flex items-center justify-between px-6 py-5 font-bold text-slate-800 text-left"
+                        onclick="toggleFaq(this)">
                         ¿Cuántos baños necesito para mi obra?
                         <i class="fa-solid fa-chevron-down text-brand-600 transition-transform flex-shrink-0 ml-4"></i>
                     </button>
                     <div class="faq-answer hidden px-6 pb-5 text-slate-500 text-sm leading-relaxed">
-                        La norma chilena (MINSAL) exige 1 baño por cada 10 trabajadores para obras de construcción. Para eventos, la recomendación general es 1 baño cada 50–75 personas en eventos de hasta 4 horas. Te asesoramos según tu caso específico.
+                        La norma chilena (MINSAL) exige 1 baño por cada 10 trabajadores para obras de construcción. Para
+                        eventos, la recomendación general es 1 baño cada 50–75 personas en eventos de hasta 4 horas. Te
+                        asesoramos según tu caso específico.
                     </div>
                 </div>
 
                 <div class="faq-item bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm">
-                    <button class="w-full flex items-center justify-between px-6 py-5 font-bold text-slate-800 text-left" onclick="toggleFaq(this)">
+                    <button
+                        class="w-full flex items-center justify-between px-6 py-5 font-bold text-slate-800 text-left"
+                        onclick="toggleFaq(this)">
                         ¿Con qué frecuencia hacen la mantención?
                         <i class="fa-solid fa-chevron-down text-brand-600 transition-transform flex-shrink-0 ml-4"></i>
                     </button>
                     <div class="faq-answer hidden px-6 pb-5 text-slate-500 text-sm leading-relaxed">
-                        Para arriendos mensuales de obra la mantención es semanal (limpieza, desinfección y vaciado de residuos). Para eventos puntuales, el baño se entrega limpio y listo para usar. Si necesitas mayor frecuencia, lo podemos acordar en el contrato.
+                        Para arriendos mensuales de obra la mantención es semanal (limpieza, desinfección y vaciado de
+                        residuos). Para eventos puntuales, el baño se entrega limpio y listo para usar. Si necesitas
+                        mayor frecuencia, lo podemos acordar en el contrato.
                     </div>
                 </div>
 
                 <div class="faq-item bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm">
-                    <button class="w-full flex items-center justify-between px-6 py-5 font-bold text-slate-800 text-left" onclick="toggleFaq(this)">
+                    <button
+                        class="w-full flex items-center justify-between px-6 py-5 font-bold text-slate-800 text-left"
+                        onclick="toggleFaq(this)">
                         ¿Emiten factura para empresa?
                         <i class="fa-solid fa-chevron-down text-brand-600 transition-transform flex-shrink-0 ml-4"></i>
                     </button>
                     <div class="faq-answer hidden px-6 pb-5 text-slate-500 text-sm leading-relaxed">
-                        Sí, emitimos factura electrónica para personas jurídicas. Puedes pagarnos por transferencia bancaria, tarjeta o efectivo. Para contratos anuales o de largo plazo, ofrecemos facturación mensual consolidada.
+                        Sí, emitimos factura electrónica para personas jurídicas. Puedes pagarnos por transferencia
+                        bancaria, tarjeta o efectivo. Para contratos anuales o de largo plazo, ofrecemos facturación
+                        mensual consolidada.
                     </div>
                 </div>
 
                 <div class="faq-item bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm">
-                    <button class="w-full flex items-center justify-between px-6 py-5 font-bold text-slate-800 text-left" onclick="toggleFaq(this)">
+                    <button
+                        class="w-full flex items-center justify-between px-6 py-5 font-bold text-slate-800 text-left"
+                        onclick="toggleFaq(this)">
                         ¿Llegan a zonas rurales o de difícil acceso?
                         <i class="fa-solid fa-chevron-down text-brand-600 transition-transform flex-shrink-0 ml-4"></i>
                     </button>
                     <div class="faq-answer hidden px-6 pb-5 text-slate-500 text-sm leading-relaxed">
-                        Sí. Tenemos experiencia en parcelas, fundos, campamentos y obras en caminos de tierra. Si la dirección requiere coordenadas o acceso especial, cuéntanoslo al momento de cotizar para planificar bien la entrega.
+                        Sí. Tenemos experiencia en parcelas, fundos, campamentos y obras en caminos de tierra. Si la
+                        dirección requiere coordenadas o acceso especial, cuéntanoslo al momento de cotizar para
+                        planificar bien la entrega.
                     </div>
                 </div>
 
@@ -834,17 +1231,22 @@
     ══════════════════════════════════════ -->
     <section id="cotizar" class="py-20 bg-white">
         <div class="container mx-auto px-4">
-            <div class="bg-slate-900 rounded-3xl p-8 md:p-12 text-center text-white shadow-2xl relative overflow-hidden">
-                <div class="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
+            <div
+                class="bg-slate-900 rounded-3xl p-8 md:p-12 text-center text-white shadow-2xl relative overflow-hidden">
+                <div
+                    class="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10">
+                </div>
 
-                <span class="inline-block bg-brand-600 text-white text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6 relative z-10">
+                <span
+                    class="inline-block bg-brand-600 text-white text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6 relative z-10">
                     Cotización sin compromiso
                 </span>
                 <h2 class="text-3xl md:text-4xl font-extrabold mb-4 relative z-10">
                     ¿Necesitas Baños Químicos?
                 </h2>
                 <p class="text-slate-300 mb-8 max-w-2xl mx-auto relative z-10">
-                    Dinos la dirección, la cantidad y por cuánto tiempo los necesitas. Te enviamos precio en minutos. Cubrimos toda la Región Metropolitana y alrededores.
+                    Dinos la dirección, la cantidad y por cuánto tiempo los necesitas. Te enviamos precio en minutos.
+                    Cubrimos toda la Región Metropolitana y alrededores.
                 </p>
 
                 <div class="flex flex-col sm:flex-row gap-4 justify-center relative z-10">
@@ -870,29 +1272,44 @@
                 <div class="lg:col-span-2">
                     <a href="/" class="flex items-center gap-3 mb-6" aria-label="Destape Rápido - Página de Inicio">
                         <div class="w-12 h-12 md:w-[72px] md:h-[72px] flex items-center justify-center">
-                            <img src="/logo-nav.webp" alt="Logo Destape Rápido" width="72" height="72" class="w-full h-full object-contain">
+                            <img src="/logo-nav.webp" alt="Logo Destape Rápido" width="72" height="72"
+                                class="w-full h-full object-contain">
                         </div>
                         <div>
-                            <span class="block font-extrabold text-slate-900 text-xl leading-none tracking-tight">DESTAPE<span class="text-brand-600">RÁPIDO</span></span>
-                            <span class="text-[8px] md:text-[10px] font-bold text-slate-500 uppercase tracking-widest">Región Metropolitana</span>
+                            <span
+                                class="block font-extrabold text-slate-900 text-xl leading-none tracking-tight">DESTAPE<span
+                                    class="text-brand-600">RÁPIDO</span></span>
+                            <span
+                                class="text-[8px] md:text-[10px] font-bold text-slate-500 uppercase tracking-widest">Región
+                                Metropolitana</span>
                         </div>
                     </a>
-                    <p class="mb-6 text-slate-500 max-w-xs leading-relaxed">Soluciones sanitarias profesionales para hogares y empresas. Baños químicos, destapes y limpieza de fosas en toda la RM.</p>
+                    <p class="mb-6 text-slate-500 max-w-xs leading-relaxed">Soluciones sanitarias profesionales para
+                        hogares y empresas. Baños químicos, destapes y limpieza de fosas en toda la RM.</p>
                     <div class="flex gap-4">
-                        <a href="/" class="text-slate-500 hover:text-brand-600 transition" aria-label="Facebook"><i class="fa-brands fa-facebook text-xl"></i></a>
-                        <a href="/" class="text-slate-500 hover:text-brand-600 transition" aria-label="Instagram"><i class="fa-brands fa-instagram text-xl"></i></a>
-                        <a href="/" class="text-slate-500 hover:text-brand-600 transition" aria-label="LinkedIn"><i class="fa-brands fa-linkedin text-xl"></i></a>
+                        <a href="/" class="text-slate-500 hover:text-brand-600 transition" aria-label="Facebook"><i
+                                class="fa-brands fa-facebook text-xl"></i></a>
+                        <a href="/" class="text-slate-500 hover:text-brand-600 transition" aria-label="Instagram"><i
+                                class="fa-brands fa-instagram text-xl"></i></a>
+                        <a href="/" class="text-slate-500 hover:text-brand-600 transition" aria-label="LinkedIn"><i
+                                class="fa-brands fa-linkedin text-xl"></i></a>
                     </div>
                 </div>
 
                 <div>
                     <h4 class="text-slate-900 font-bold mb-4 uppercase tracking-wider text-xs">Servicios</h4>
                     <ul class="space-y-2">
-                        <li><a href="/servicios/destape-alcantarillado" class="hover:text-brand-600 transition">Destape Alcantarillado</a></li>
-                        <li><a href="/servicios/limpieza-fosas-septicas" class="hover:text-brand-600 transition">Limpieza Fosas Sépticas</a></li>
-                        <li><a href="/servicios/banos-quimicos" class="font-semibold text-brand-600 hover:underline">Baños Químicos</a></li>
-                        <li><a href="/servicios/inspeccion-camara-alcantarillado" class="hover:text-brand-600 transition">Inspección con Cámara</a></li>
-                        <li><a href="/servicios/" class="font-medium text-brand-600 hover:underline text-xs mt-2 block">Ver todos &rarr;</a></li>
+                        <li><a href="/servicios/destape-alcantarillado" class="hover:text-brand-600 transition">Destape
+                                Alcantarillado</a></li>
+                        <li><a href="/servicios/limpieza-fosas-septicas"
+                                class="hover:text-brand-600 transition">Limpieza Fosas Sépticas</a></li>
+                        <li><a href="/servicios/banos-quimicos"
+                                class="font-semibold text-brand-600 hover:underline">Baños Químicos</a></li>
+                        <li><a href="/servicios/inspeccion-camara-alcantarillado"
+                                class="hover:text-brand-600 transition">Inspección con Cámara</a></li>
+                        <li><a href="/servicios/"
+                                class="font-medium text-brand-600 hover:underline text-xs mt-2 block">Ver todos
+                                &rarr;</a></li>
                     </ul>
                 </div>
 
@@ -900,10 +1317,15 @@
                     <h4 class="text-slate-900 font-bold mb-4 uppercase tracking-wider text-xs">Cobertura</h4>
                     <ul class="space-y-2">
                         <li><a href="/zonas/urbano/" class="hover:text-brand-600 transition">Santiago y RM</a></li>
-                        <li><a href="/zonas/rural/chicureo" class="hover:text-brand-600 transition">Chicureo / Colina</a></li>
-                        <li><a href="/zonas/rural/pirque" class="hover:text-brand-600 transition">Pirque / Cajón del Maipo</a></li>
-                        <li><a href="/zonas/rural/buin-paine" class="hover:text-brand-600 transition">Buin / Paine</a></li>
-                        <li><a href="/zonas/urbano/" class="font-medium text-brand-600 hover:underline text-xs mt-2 block">Ver todas las zonas &rarr;</a></li>
+                        <li><a href="/zonas/rural/chicureo" class="hover:text-brand-600 transition">Chicureo /
+                                Colina</a></li>
+                        <li><a href="/zonas/rural/pirque" class="hover:text-brand-600 transition">Pirque / Cajón del
+                                Maipo</a></li>
+                        <li><a href="/zonas/rural/buin-paine" class="hover:text-brand-600 transition">Buin / Paine</a>
+                        </li>
+                        <li><a href="/zonas/urbano/"
+                                class="font-medium text-brand-600 hover:underline text-xs mt-2 block">Ver todas las
+                                zonas &rarr;</a></li>
                     </ul>
                 </div>
 
@@ -913,20 +1335,27 @@
                         <li><a href="#faq" class="hover:text-brand-600 transition">Preguntas Frecuentes</a></li>
                         <li><a href="#como-funciona" class="hover:text-brand-600 transition">Cómo Funciona</a></li>
                         <li><a href="/contacto" class="hover:text-brand-600 transition">Contacto</a></li>
-                        <li><a href="/blog/" class="hover:text-brand-600 transition font-bold text-brand-600 mt-2 block">Blog &rarr;</a></li>
+                        <li><a href="/blog/"
+                                class="hover:text-brand-600 transition font-bold text-brand-600 mt-2 block">Blog
+                                &rarr;</a></li>
                     </ul>
                 </div>
             </div>
 
-            <div class="border-t border-slate-200 pt-8 text-center flex flex-col md:flex-row justify-between items-center pb-24 md:pb-0">
+            <div
+                class="border-t border-slate-200 pt-8 text-center flex flex-col md:flex-row justify-between items-center pb-24 md:pb-0">
                 <div class="flex flex-col items-center md:items-start gap-2">
                     <p>&copy; <span id="year"></span> destaperapido. Todos los derechos reservados.</p>
-                    <p class="text-xs text-slate-500">Diseñado por <a href="https://www.paginasfast.cl/" target="_blank" rel="noopener" class="hover:text-brand-600 transition">PaginasFast.cl</a></p>
+                    <p class="text-xs text-slate-500">Diseñado por <a href="https://www.paginasfast.cl/" target="_blank"
+                            rel="noopener" class="hover:text-brand-600 transition">PaginasFast.cl</a></p>
                 </div>
                 <div class="flex gap-4 mt-4 md:mt-0">
-                    <a href="/" class="hover:text-slate-800 transition" aria-label="Facebook"><i class="fa-brands fa-facebook text-lg"></i></a>
-                    <a href="/" class="hover:text-slate-800 transition" aria-label="Instagram"><i class="fa-brands fa-instagram text-lg"></i></a>
-                    <a href="/" class="hover:text-slate-800 transition" aria-label="LinkedIn"><i class="fa-brands fa-linkedin text-lg"></i></a>
+                    <a href="/" class="hover:text-slate-800 transition" aria-label="Facebook"><i
+                            class="fa-brands fa-facebook text-lg"></i></a>
+                    <a href="/" class="hover:text-slate-800 transition" aria-label="Instagram"><i
+                            class="fa-brands fa-instagram text-lg"></i></a>
+                    <a href="/" class="hover:text-slate-800 transition" aria-label="LinkedIn"><i
+                            class="fa-brands fa-linkedin text-lg"></i></a>
                 </div>
             </div>
         </div>
@@ -957,9 +1386,11 @@
     <!-- WhatsApp desktop flotante -->
     <div class="wa-floating-btn hidden md:flex" id="wa-btn" onclick="toggleChat()">
         <svg class="wa-icon wa-icon-logo" viewBox="0 0 24 24">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.008-.57-.008-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.008-.57-.008-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
         </svg>
-        <svg class="wa-icon wa-icon-close" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg class="wa-icon wa-icon-close" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
             <line x1="18" y1="6" x2="6" y2="18"></line>
             <line x1="6" y1="6" x2="18" y2="18"></line>
         </svg>
@@ -982,8 +1413,10 @@
             </div>
         </div>
         <div class="wa-footer">
-            <a href="https://wa.me/56936470112?text=Hola,%20quiero%20cotizar%20arriendo%20de%20ba%C3%B1os%20qu%C3%ADmicos" target="_blank" class="wa-start-chat-btn">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <a href="https://wa.me/56936470112?text=Hola,%20quiero%20cotizar%20arriendo%20de%20ba%C3%B1os%20qu%C3%ADmicos"
+                target="_blank" class="wa-start-chat-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
                     <line x1="22" y1="2" x2="11" y2="13"></line>
                     <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
                 </svg>
@@ -999,23 +1432,23 @@
         document.getElementById('year').textContent = new Date().getFullYear();
 
         const overlay = document.getElementById('mobile-menu-overlay');
-        const panel   = document.getElementById('mobile-menu-panel');
+        const panel = document.getElementById('mobile-menu-panel');
 
-        function openMenu()  { overlay.classList.remove('invisible','opacity-0'); panel.classList.remove('translate-x-full'); document.body.style.overflow='hidden'; }
-        function closeMenu() { panel.classList.add('translate-x-full'); overlay.classList.add('invisible','opacity-0'); document.body.style.overflow=''; }
+        function openMenu() { overlay.classList.remove('invisible', 'opacity-0'); panel.classList.remove('translate-x-full'); document.body.style.overflow = 'hidden'; }
+        function closeMenu() { panel.classList.add('translate-x-full'); overlay.classList.add('invisible', 'opacity-0'); document.body.style.overflow = ''; }
 
         function toggleSubmenu(id, btn) {
             const submenu = document.getElementById(id);
-            const icon    = btn.querySelector('.fa-chevron-down');
+            const icon = btn.querySelector('.fa-chevron-down');
             if (submenu) {
-                if (submenu.classList.contains('hidden')) { submenu.classList.remove('hidden'); if (icon) icon.style.transform='rotate(180deg)'; }
-                else { submenu.classList.add('hidden'); if (icon) icon.style.transform='rotate(0deg)'; }
+                if (submenu.classList.contains('hidden')) { submenu.classList.remove('hidden'); if (icon) icon.style.transform = 'rotate(180deg)'; }
+                else { submenu.classList.add('hidden'); if (icon) icon.style.transform = 'rotate(0deg)'; }
             }
         }
 
         function toggleFaq(btn) {
             const answer = btn.nextElementSibling;
-            const icon   = btn.querySelector('.fa-chevron-down');
+            const icon = btn.querySelector('.fa-chevron-down');
             if (answer.classList.contains('hidden')) {
                 answer.classList.remove('hidden');
                 if (icon) icon.style.transform = 'rotate(180deg)';
@@ -1054,4 +1487,5 @@
     </script>
 
 </body>
+
 </html>
