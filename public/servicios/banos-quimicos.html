@@ -11,6 +11,7 @@
         content="Arriendo y mantención de baños químicos para obras, eventos y parcelas. Llevamos y retiramos en toda la Región Metropolitana y alrededores. Cotiza ahora.">
 
     <link rel="stylesheet" href="/output.css">
+    <link rel="preload" as="image" href="/images/banos-quimicos/banos-quimicos-en-region-metropolitana.webp" fetchpriority="high">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
@@ -421,8 +422,9 @@
             style="display:none;visibility:hidden"></iframe></noscript>
 
     <!-- ══════════════════════════════════════
-         NAV
+         NAV OCULTO (reemplazado por header minimalista abajo)
     ══════════════════════════════════════ -->
+    <style>nav, #mobile-menu-overlay { display: none !important; }</style>
     <nav
         class="absolute md:fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -664,6 +666,26 @@
     </div>
 
     <!-- ══════════════════════════════════════
+         HEADER MINIMALISTA
+    ══════════════════════════════════════ -->
+    <header id="landing-header" class="absolute top-0 left-0 w-full z-50 py-4">
+        <div class="max-w-6xl mx-auto px-4 flex items-center justify-between">
+            <a href="/" class="flex items-center gap-2" aria-label="Destape Rápido - Inicio">
+                <div class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center bg-white/10 backdrop-blur-md rounded-full p-1.5">
+                    <img src="/logo-nav.webp" alt="Logo Destape Rápido" width="48" height="48" class="w-full h-full object-contain">
+                </div>
+                <span class="font-extrabold text-white text-base leading-none tracking-tight drop-shadow">DESTAPE<span class="text-blue-300">RÁPIDO</span></span>
+            </a>
+            <a href="tel:+56921964789"
+                class="flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-white font-bold px-4 py-2.5 rounded-full hover:bg-white/20 transition text-sm">
+                <i class="fa-solid fa-phone text-green-400 text-xs"></i>
+                <span class="hidden sm:inline">+569 2196 4789</span>
+                <span class="sm:hidden">Llamar</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- ══════════════════════════════════════
          HERO
     ══════════════════════════════════════ -->
     <header class="hero-banos min-h-[90vh] flex items-center px-4 relative pt-28 pb-16">
@@ -683,14 +705,14 @@
                     </div>
 
                     <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight tracking-tight">
-                        Arriendo de<br>
-                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">Baños
-                            Químicos</span>
+                        Baños Químicos<br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">para Santiago y toda la RM</span>
                     </h1>
 
                     <p class="text-lg text-slate-300 mb-8 max-w-xl leading-relaxed">
-                        Los llevamos y retiramos <strong>donde tú nos digas</strong>. Obras en construcción,
-                        eventos, parcelas y ferias. Incluye mantención periódica y gestión de residuos autorizada.
+                        ¿Necesitas baños para tu obra o evento <strong>sin complicaciones</strong>?
+                        Los llevamos, mantenemos y retiramos — tú solo preocúpate de lo tuyo.
+                        Cubrimos toda la RM incluyendo zonas rurales y parcelas.
                     </p>
 
                     <div class="flex flex-col sm:flex-row gap-4">
@@ -754,6 +776,7 @@
                             <label class="block text-sm font-bold mb-2 text-slate-200">Tipo de uso</label>
                             <select id="quick-uso"
                                 class="w-full py-3 px-4 rounded-xl bg-white/10 border border-white/20 text-white focus:outline-none focus:border-blue-400 font-medium">
+                                <option value="" disabled selected>Selecciona tu caso…</option>
                                 <option value="una obra de construcción">Obra o Construcción</option>
                                 <option value="un evento o fiesta">Evento (fin de semana)</option>
                                 <option value="una parcela o uso particular">Parcela / Uso particular</option>
@@ -778,6 +801,65 @@
             </div>
         </div>
     </header>
+
+    <!-- ══════════════════════════════════════
+         TRUST BAR
+    ══════════════════════════════════════ -->
+    <section class="py-8 bg-white border-b border-slate-100 relative z-20">
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="flex flex-wrap items-center justify-center gap-6 md:gap-10">
+                <div class="flex items-center gap-3">
+                    <div class="w-11 h-11 bg-blue-50 rounded-xl flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-restroom text-brand-600 text-lg"></i>
+                    </div>
+                    <div>
+                        <p class="text-2xl font-extrabold text-slate-900 leading-none">+500</p>
+                        <p class="text-xs text-slate-500">Servicios realizados</p>
+                    </div>
+                </div>
+                <div class="h-8 w-px bg-slate-200 hidden md:block"></div>
+                <div class="flex items-center gap-3">
+                    <div class="w-11 h-11 bg-yellow-50 rounded-xl flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-star text-yellow-500 text-lg"></i>
+                    </div>
+                    <div>
+                        <p class="text-2xl font-extrabold text-slate-900 leading-none">4.9 ⭐</p>
+                        <p class="text-xs text-slate-500">Valoración Google</p>
+                    </div>
+                </div>
+                <div class="h-8 w-px bg-slate-200 hidden md:block"></div>
+                <div class="flex items-center gap-3">
+                    <div class="w-11 h-11 bg-green-50 rounded-xl flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-clock text-green-600 text-lg"></i>
+                    </div>
+                    <div>
+                        <p class="text-2xl font-extrabold text-slate-900 leading-none">24 hrs</p>
+                        <p class="text-xs text-slate-500">Entrega garantizada</p>
+                    </div>
+                </div>
+                <div class="h-8 w-px bg-slate-200 hidden md:block"></div>
+                <div class="flex items-center gap-3">
+                    <div class="w-11 h-11 bg-slate-100 rounded-xl flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-file-invoice text-slate-600 text-lg"></i>
+                    </div>
+                    <div>
+                        <p class="text-2xl font-extrabold text-slate-900 leading-none">Factura</p>
+                        <p class="text-xs text-slate-500">Electrónica disponible</p>
+                    </div>
+                </div>
+                <div class="h-8 w-px bg-slate-200 hidden md:block"></div>
+                <div class="flex items-center gap-3">
+                    <div class="w-11 h-11 bg-purple-50 rounded-xl flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-truck text-purple-600 text-lg"></i>
+                    </div>
+                    <div>
+                        <p class="text-2xl font-extrabold text-slate-900 leading-none">+200</p>
+                        <p class="text-xs text-slate-500">Unidades activas RM</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- ══════════════════════════════════════
          USOS / PARA QUIÉN
@@ -1118,9 +1200,68 @@
                     <a href="https://wa.me/56921964789?text=Hola,%20necesito%20cotizar%20un%20contrato%20anual%20de%20ba%C3%B1os%20qu%C3%ADmicos"
                         target="_blank"
                         class="block w-full text-center bg-slate-100 hover:bg-brand-600 hover:text-white text-slate-800 font-bold py-3 rounded-xl transition">
-                        Hablar con Ejecutivo
+                        Cotización Corporativa →
                     </a>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         TESTIMONIOS
+    ══════════════════════════════════════ -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <span class="text-brand-600 font-bold uppercase tracking-widest text-xs mb-2 block">Lo que dicen nuestros clientes</span>
+                <h2 class="text-3xl font-extrabold text-slate-900 mb-4">Clientes que Confían en Nosotros</h2>
+                <p class="text-slate-500 max-w-xl mx-auto">Llevamos años entregando baños a tiempo, mantenéndolos impecables y retirándolos sin complicaciones.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+
+                <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100">
+                    <div class="flex items-center gap-1 mb-3 text-yellow-400 text-sm">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">“Arrendamos 4 baños para una obra en Lampa. Los entregaron al día siguiente, puntualísimos, y la mantención semanal fue impecable. Sin duda los recomiendo.”</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-brand-600 rounded-full flex items-center justify-center text-white font-bold text-sm">CR</div>
+                        <div>
+                            <p class="font-bold text-slate-900 text-sm">Carlos R.</p>
+                            <p class="text-xs text-slate-500">Jefe de Obra · Constructora Norte</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100">
+                    <div class="flex items-center gap-1 mb-3 text-yellow-400 text-sm">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">“Para el matrimonio de mi hija en Pirque necesitaba algo confiable. Me respondieron rápido por WhatsApp, el baño llegó limpio y a tiempo. Perfectos.”</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center text-white font-bold text-sm">PM</div>
+                        <div>
+                            <p class="font-bold text-slate-900 text-sm">Patricia M.</p>
+                            <p class="text-xs text-slate-500">Evento familiar · Pirque</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100">
+                    <div class="flex items-center gap-1 mb-3 text-yellow-400 text-sm">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">“Tenemos contrato anual para nuestras obras en la RM. Precio competitivo, atención muy buena y emiten factura sin problemas.”</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-slate-600 rounded-full flex items-center justify-center text-white font-bold text-sm">FV</div>
+                        <div>
+                            <p class="font-bold text-slate-900 text-sm">Felipe V.</p>
+                            <p class="text-xs text-slate-500">Gerente · Inmobiliaria Sur</p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -1230,6 +1371,21 @@
                     <button
                         class="w-full flex items-center justify-between px-6 py-5 font-bold text-slate-800 text-left"
                         onclick="toggleFaq(this)">
+                        ¿Cuánto cuesta arrendar un baño químico?
+                        <i class="fa-solid fa-chevron-down text-brand-600 transition-transform flex-shrink-0 ml-4"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-5 text-slate-500 text-sm leading-relaxed">
+                        El precio varía según cantidad de baños, duración y ubicación. Un arriendo puntual para evento parte
+                        generalmente desde <strong>$45.000 + IVA por unidad</strong>. Para arriendos mensuales de obra con mantención
+                        semanal, el valor depende del número de baños y acceso al lugar.
+                        Escíbenos con la dirección y la cantidad que necesitas y te damos precio exacto en minutos — sin compromiso.
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm">
+                    <button
+                        class="w-full flex items-center justify-between px-6 py-5 font-bold text-slate-800 text-left"
+                        onclick="toggleFaq(this)">
                         ¿Cuánto tiempo demoran en entregar el baño?
                         <i class="fa-solid fa-chevron-down text-brand-600 transition-transform flex-shrink-0 ml-4"></i>
                     </button>
@@ -1296,43 +1452,6 @@
                     </div>
                 </div>
 
-            </div>
-        </div>
-    </section>
-
-    <!-- ══════════════════════════════════════
-         CTA FINAL
-    ══════════════════════════════════════ -->
-    <section id="cotizar" class="py-20 bg-white">
-        <div class="container mx-auto px-4">
-            <div
-                class="bg-slate-900 rounded-3xl p-8 md:p-12 text-center text-white shadow-2xl relative overflow-hidden">
-                <div
-                    class="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10">
-                </div>
-
-                <span
-                    class="inline-block bg-brand-600 text-white text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6 relative z-10">
-                    Cotización sin compromiso
-                </span>
-                <h2 class="text-3xl md:text-4xl font-extrabold mb-4 relative z-10">
-                    ¿Necesitas Baños Químicos?
-                </h2>
-                <p class="text-slate-300 mb-8 max-w-2xl mx-auto relative z-10">
-                    Dinos la dirección, la cantidad y por cuánto tiempo los necesitas. Te enviamos precio en minutos.
-                    Cubrimos toda la Región Metropolitana y alrededores.
-                </p>
-
-                <div class="flex flex-col sm:flex-row gap-4 justify-center relative z-10">
-                    <a href="tel:+56921964789"
-                        class="bg-white text-slate-900 font-bold py-3 px-8 rounded-xl hover:bg-slate-100 transition transform hover:-translate-y-1 flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-phone animate-pulse"></i> Llamar ahora
-                    </a>
-                    <a href="https://wa.me/56921964789?text=Hola,%20quiero%20cotizar%20arriendo%20de%20ba%C3%B1os%20qu%C3%ADmicos"
-                        class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-xl transition transform hover:-translate-y-1 flex items-center justify-center gap-2">
-                        <i class="fa-brands fa-whatsapp"></i> Cotizar por WhatsApp
-                    </a>
-                </div>
             </div>
         </div>
     </section>
