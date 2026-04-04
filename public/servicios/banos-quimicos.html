@@ -10,8 +10,6 @@
     <meta name="description"
         content="Arriendo y mantención de baños químicos para obras, eventos y parcelas. Llevamos y retiramos en toda la Región Metropolitana y alrededores. Cotiza ahora.">
 
-    <script src="https://cdn.tailwindcss.com"></script>
-
     <link rel="stylesheet" href="/output.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -681,13 +679,13 @@
             </p>
 
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#cotizar"
-                    class="bg-brand-600 hover:bg-brand-700 text-white text-base font-bold py-4 px-8 rounded-xl shadow-xl shadow-brand-600/20 transition transform hover:-translate-y-1">
-                    <i class="fa-solid fa-calculator mr-2"></i> Cotizar Arriendo
+                <a href="https://wa.me/56921964789?text=Hola,%20quiero%20saber%20precios%20de%20arriendo%20de%20ba%C3%B1os%20qu%C3%ADmicos"
+                    class="bg-[#25D366] hover:bg-[#20bd5a] text-white text-base font-bold py-4 px-8 rounded-xl shadow-xl shadow-green-500/20 transition transform hover:-translate-y-1">
+                    <i class="fa-brands fa-whatsapp mr-2 text-lg"></i> Cotiza gratis en Whatsapp
                 </a>
                 <a href="tel:+56921964789"
                     class="bg-white text-slate-900 text-base font-bold py-4 px-8 rounded-xl hover:bg-slate-100 transition flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-phone"></i> Llamar ahora
+                    <i class="fa-solid fa-phone text-brand-600"></i> Cotiza por llamada +569 2196 4789
                 </a>
             </div>
 
@@ -866,8 +864,10 @@
                     </ul>
 
                     <div class="mt-10">
-                        <a href="#cotizar" class="text-brand-600 font-bold hover:underline">Solicitar cotización
-                            &rarr;</a>
+                        <a href="https://wa.me/56921964789?text=Hola,%20quiero%20saber%20precios%20para%20arrendo%20de%20ba%C3%B1os%20qu%C3%ADmicos" class="text-brand-600 font-bold hover:underline flex items-center gap-1">
+                            <i class="fa-brands fa-whatsapp"></i> Solicitar cotización
+                            &rarr;
+                        </a>
                     </div>
                 </div>
 
@@ -1477,9 +1477,10 @@
     </footer>
 
     <!-- ══════════════════════════════════════
+    <!-- ══════════════════════════════════════
          MOBILE BOTTOM BAR
     ══════════════════════════════════════ -->
-    <div class="fixed bottom-0 left-0 right-0 z-50 md:hidden flex flex-col shadow-[0_-4px_20px_rgba(0,0,0,0.15)]">
+    <div id="mobile-bottom-bar" class="fixed bottom-0 left-0 right-0 z-50 md:hidden flex flex-col shadow-[0_-4px_20px_rgba(0,0,0,0.15)] transform translate-y-full transition-transform duration-500">
         <div class="bg-white p-3 flex gap-3 border-t border-slate-100">
             <a href="tel:+56921964789"
                 class="flex-1 bg-slate-800 text-white font-bold rounded-xl py-3 flex items-center justify-center gap-2 active:scale-95 transition shadow-lg shadow-slate-800/20"
@@ -1661,6 +1662,24 @@
                 }, 4000);
             });
         }
+
+        // Animación Sticky Scroll
+        document.addEventListener('DOMContentLoaded', () => {
+            const bottomBar = document.getElementById('mobile-bottom-bar');
+            
+            if (bottomBar) {
+                window.addEventListener('scroll', () => {
+                    // Muestra el bottom bar al bajar más de 300px
+                    if (window.scrollY > 300) {
+                        bottomBar.classList.remove('translate-y-full');
+                        bottomBar.classList.add('translate-y-0');
+                    } else {
+                        bottomBar.classList.add('translate-y-full');
+                        bottomBar.classList.remove('translate-y-0');
+                    }
+                });
+            }
+        });
     </script>
 
 </body>
