@@ -650,6 +650,8 @@
                         <a href="/servicios/limpieza-fosas-septicas" onclick="closeMenu()"
                             class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Limpieza
                             Fosas</a>
+                        <a href="/servicios/banos-quimicos" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Baños Químicos</a>
                         <a href="/servicios/destape-edificios-condominios" onclick="closeMenu()"
                             class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Edificios</a>
                         <a href="/servicios/inspeccion-camara-alcantarillado" onclick="closeMenu()"
@@ -678,12 +680,46 @@
                             Condes</a>
                         <a href="/zonas/urbano/vitacura" onclick="closeMenu()"
                             class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Vitacura</a>
-                        <div class="px-4 py-1 text-[10px] font-bold text-slate-400 uppercase mt-2">Rural</div>
+                        <a href="/zonas/urbano/lo-barnechea" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Lo
+                            Barnechea</a>
+                        <a href="/zonas/urbano/providencia" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Providencia</a>
+                        <a href="/zonas/urbano/la-reina" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">La Reina</a>
+                        <a href="/zonas/urbano/nunoa" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Ñuñoa</a>
+                        <a href="/zonas/urbano/" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-bold text-brand-600 hover:underline mt-1 mb-2">
+                            Ver todas Urbano &rarr;
+                        </a>
+
+                        <div
+                            class="px-4 py-1 text-[10px] font-bold text-slate-400 uppercase mt-2 border-t border-slate-200/50 pt-2">
+                            Rural</div>
                         <a href="/zonas/rural/chicureo" onclick="closeMenu()"
                             class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Chicureo</a>
                         <a href="/zonas/rural/colina" onclick="closeMenu()"
                             class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Colina</a>
-                        <a href="/zonas/urbano/" onclick="closeMenu()"
+                        <a href="/zonas/rural/lampa" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Lampa</a>
+                        <a href="/zonas/rural/pirque" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Pirque</a>
+                        <a href="/zonas/rural/buin-paine" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Buin /
+                            Paine</a>
+                        <a href="/zonas/rural/san-jose-de-maipo" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">San José de
+                            Maipo</a>
+                        <a href="/zonas/rural/talagante" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Talagante</a>
+                        <a href="/zonas/rural/isla-de-maipo" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Isla de
+                            Maipo</a>
+                        <a href="/zonas/rural/calera-de-tango" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Calera de
+                            Tango</a>
+                        <a href="/zonas/rural/" onclick="closeMenu()"
                             class="block px-4 py-2 text-sm font-bold text-brand-600 hover:underline mt-2 border-t border-slate-200/50 pt-2">
                             Ver todas las zonas &rarr;
                         </a>
@@ -882,6 +918,101 @@
                         class="block w-full py-3 text-center rounded-xl bg-white border-2 border-prev-100 text-brand-600 font-bold hover:border-prev-500 hover:bg-prev-50 transition">Cotizar
                         Parcela</a>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Planes de Abono Mensual: producto formalizado -->
+    <!-- TODO: ajustar precios "desde" a los valores reales que defina el negocio -->
+    <section id="planes-abono" class="py-20 bg-slate-50 border-y border-slate-200">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <span class="text-prev-600 font-bold uppercase tracking-widest text-xs">Planes de Abono</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mt-2 mb-4">Mantención mensual con prioridad y precio fijo</h2>
+                <p class="text-slate-600">Olvídate de cotizar cada vez que algo falla. Con un abono activo recibes visitas programadas, prioridad 24/7 y tarifas preferenciales en cualquier urgencia adicional.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                <!-- Plan Esencial -->
+                <div class="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm hover:shadow-xl transition flex flex-col">
+                    <div class="mb-2">
+                        <span class="text-xs font-bold uppercase tracking-widest text-slate-500">Plan Esencial</span>
+                    </div>
+                    <h3 class="text-2xl font-extrabold text-slate-900 mb-1">Casas y Parcelas</h3>
+                    <p class="text-sm text-slate-500 mb-6">1 visita preventiva trimestral.</p>
+                    <div class="mb-6">
+                        <span class="text-sm text-slate-400 font-medium">desde</span>
+                        <div class="text-4xl font-extrabold text-prev-600">$39.000<span class="text-base font-bold text-slate-500">/mes</span></div>
+                        <p class="text-xs text-slate-400 mt-1">Valor referencial — facturación mensual o anual.</p>
+                    </div>
+                    <ul class="check-list text-sm space-y-2 mb-8 flex-1">
+                        <li>4 visitas al año programadas</li>
+                        <li>Inspección de fosa y cámaras</li>
+                        <li>20% dcto. en urgencias adicionales</li>
+                        <li>Recordatorio automático WhatsApp</li>
+                    </ul>
+                    <a href="https://wa.me/56997946463?text=Hola%2C%20quiero%20cotizar%20el%20Plan%20Esencial%20de%20mantenci%C3%B3n%20preventiva."
+                        class="block w-full py-3 text-center rounded-xl bg-white border-2 border-prev-200 text-prev-700 font-bold hover:border-prev-500 hover:bg-prev-50 transition">
+                        Cotizar Plan Esencial
+                    </a>
+                </div>
+
+                <!-- Plan Activo (destacado) -->
+                <div class="bg-white rounded-2xl p-8 border-2 border-prev-500 shadow-xl relative flex flex-col transform md:scale-105 z-10">
+                    <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-prev-600 text-white text-[10px] font-bold px-4 py-1 rounded-full uppercase tracking-widest shadow-lg">
+                        Más Contratado
+                    </div>
+                    <div class="mb-2">
+                        <span class="text-xs font-bold uppercase tracking-widest text-prev-600">Plan Activo</span>
+                    </div>
+                    <h3 class="text-2xl font-extrabold text-slate-900 mb-1">Edificios y Condominios</h3>
+                    <p class="text-sm text-slate-500 mb-6">Visita mensual + urgencias prioritarias.</p>
+                    <div class="mb-6">
+                        <span class="text-sm text-slate-400 font-medium">desde</span>
+                        <div class="text-4xl font-extrabold text-prev-600">$89.000<span class="text-base font-bold text-slate-500">/mes</span></div>
+                        <p class="text-xs text-slate-400 mt-1">Valor referencial según tamaño y ductos.</p>
+                    </div>
+                    <ul class="check-list text-sm space-y-2 mb-8 flex-1">
+                        <li>12 visitas al año programadas</li>
+                        <li>Hidrolavado de verticales y pozos</li>
+                        <li>Respuesta urgencias &lt; 90 min</li>
+                        <li>Informe técnico para administración</li>
+                        <li>30% dcto. en servicios extra</li>
+                    </ul>
+                    <a href="https://wa.me/56997946463?text=Hola%2C%20quiero%20cotizar%20el%20Plan%20Activo%20para%20mi%20edificio%2Fcondominio."
+                        class="block w-full py-3 text-center rounded-xl bg-prev-600 text-white font-bold hover:bg-prev-700 transition shadow-lg shadow-prev-200">
+                        Cotizar Plan Activo
+                    </a>
+                </div>
+
+                <!-- Plan 360° -->
+                <div class="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm hover:shadow-xl transition flex flex-col">
+                    <div class="mb-2">
+                        <span class="text-xs font-bold uppercase tracking-widest text-slate-500">Plan 360°</span>
+                    </div>
+                    <h3 class="text-2xl font-extrabold text-slate-900 mb-1">Restaurantes y Cocinas</h3>
+                    <p class="text-sm text-slate-500 mb-6">Quincenal con certificado sanitario.</p>
+                    <div class="mb-6">
+                        <span class="text-sm text-slate-400 font-medium">desde</span>
+                        <div class="text-4xl font-extrabold text-prev-600">$149.000<span class="text-base font-bold text-slate-500">/mes</span></div>
+                        <p class="text-xs text-slate-400 mt-1">Valor referencial según volumen y M².</p>
+                    </div>
+                    <ul class="check-list text-sm space-y-2 mb-8 flex-1">
+                        <li>Visita quincenal a cámara desgrasadora</li>
+                        <li>Retiro y disposición certificada</li>
+                        <li>Certificado SEREMI mensual</li>
+                        <li>Atención 24/7 sin recargo nocturno</li>
+                        <li>Continuidad operativa garantizada</li>
+                    </ul>
+                    <a href="https://wa.me/56997946463?text=Hola%2C%20quiero%20cotizar%20el%20Plan%20360%C2%B0%20para%20mi%20restaurante%2Fcocina."
+                        class="block w-full py-3 text-center rounded-xl bg-white border-2 border-prev-200 text-prev-700 font-bold hover:border-prev-500 hover:bg-prev-50 transition">
+                        Cotizar Plan 360°
+                    </a>
+                </div>
+            </div>
+
+            <div class="text-center mt-10">
+                <p class="text-sm text-slate-600">¿Tu caso no encaja en estos planes? <a href="../contacto" class="text-prev-600 font-bold hover:underline">Pide un plan a medida</a> y te visitamos sin costo para evaluar.</p>
             </div>
         </div>
     </section>
@@ -1139,7 +1270,7 @@
             </div>
 
             <div
-                class="border-t border-slate-200 pt-8 text-center flex flex-col md:flex-row justify-between items-center pb-24 md:pb-0">
+                class="border-t border-slate-200 pt-8 text-center flex flex-col md:flex-row justify-between items-center pb-32 md:pb-0">
                 <div class="flex flex-col items-center md:items-start gap-2">
                     <p>&copy; <span id="year"></span> destaperapido. Todos los derechos reservados.</p>
                     <p class="text-xs text-slate-500">Diseñado por <a href="https://www.paginasfast.cl/" target="_blank"
