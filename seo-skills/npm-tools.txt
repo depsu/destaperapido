@@ -1,0 +1,208 @@
+================================================================================
+HERRAMIENTAS NPM PARA AUDITAR Y MEJORAR SEO
+Sitio estático · Limpia Fosas + Baños Químicos · Chile
+================================================================================
+
+Lista curada de paquetes que SÍ vale la pena instalar. Todos compatibles con
+pnpm. Probados en sitios estáticos servidos desde Vercel.
+
+Instalación rápida (lote esencial):
+
+  pnpm add -D lighthouse pa11y broken-link-checker html-validate \
+              linkinator sitemap-validator @lhci/cli web-vitals
+
+================================================================================
+1. AUDITORÍA TÉCNICA (CORE WEB VITALS, LIGHTHOUSE)
+================================================================================
+
+lighthouse
+  Auditoría completa: performance, SEO, accesibilidad, PWA, mejores prácticas.
+  $ pnpm dlx lighthouse https://www.limpiafosasydestape.cl --view
+  $ pnpm dlx lighthouse http://localhost:3000 --output html --output-path ./lh.html
+
+@lhci/cli  (Lighthouse CI)
+  Para correr Lighthouse en cada deploy, comparar contra baseline, fallar build
+  si LCP empeora, etc. Ideal para integrar en GitHub Actions.
+  $ pnpm dlx @lhci/cli autorun
+
+web-vitals
+  Librería ligera para medir CWV reales en producción (RUM básico).
+  Útil si quieres enviar métricas a tu propio endpoint en lugar de GA.
+
+unlighthouse
+  Lighthouse pero crawleando TODO el sitio en paralelo. Excelente para sitios
+  con muchas zonas/servicios.
+  $ pnpm dlx unlighthouse --site https://www.limpiafosasydestape.cl
+
+================================================================================
+2. ENLACES ROTOS Y CRAWLING
+================================================================================
+
+linkinator
+  Detecta enlaces rotos (internos y externos). Más rápido y mejor mantenido
+  que broken-link-checker.
+  $ pnpm dlx linkinator https://www.limpiafosasydestape.cl --recurse --skip "wa.me|tel:|mailto:"
+
+broken-link-checker (blc)
+  Alternativa clásica. Más viejo pero estable.
+  $ pnpm dlx broken-link-checker https://www.limpiafosasydestape.cl -ro
+
+================================================================================
+3. SITEMAP / ROBOTS / VALIDADORES DE ESTÁNDARES
+================================================================================
+
+sitemap-validator
+  Valida sitemap.xml contra el schema oficial de sitemaps.org.
+
+xml-validator
+  Valida cualquier XML, útil para feeds o ficheros de Schema.
+
+sitemap-generator-cli
+  Genera un sitemap.xml crawleando un sitio. Útil para no mantenerlo a mano,
+  aunque para sitios chicos es preferible mantenerlo manual.
+  $ pnpm dlx sitemap-generator-cli https://www.limpiafosasydestape.cl
+
+robots-parser
+  Parsea robots.txt programáticamente para tests automatizados.
+
+================================================================================
+4. VALIDACIÓN HTML / ACCESIBILIDAD
+================================================================================
+
+html-validate
+  Validación HTML con reglas configurables. Buena para CI.
+  $ pnpm dlx html-validate "public/**/*.html"
+
+@markuplint/cli (markuplint)
+  Linter HTML moderno con reglas estrictas de accesibilidad.
+  $ pnpm dlx markuplint "public/**/*.html"
+
+pa11y
+  Auditoría de accesibilidad WCAG. La a11y impacta SEO indirectamente.
+  $ pnpm dlx pa11y https://www.limpiafosasydestape.cl/zonas/rural/colina.html
+
+pa11y-ci
+  Como pa11y pero crawlea desde un sitemap.xml.
+  $ pnpm dlx pa11y-ci --sitemap https://www.limpiafosasydestape.cl/sitemap.xml
+
+axe-core / @axe-core/cli
+  Estándar de la industria para a11y. Más estricto que pa11y en algunos casos.
+
+================================================================================
+5. ESTRUCTURA SEO / META / SCHEMA
+================================================================================
+
+cheerio
+  Parser HTML estilo jQuery. Base para escribir tus propios scripts de
+  auditoría: leer todos los <title>, <meta>, JSON-LD, etc.
+
+structured-data-testing-tool
+  Valida JSON-LD contra Schema.org en local (sin depender del Rich Results Test
+  de Google).
+  $ pnpm dlx structured-data-testing-tool --url https://www.limpiafosasydestape.cl
+
+schema-dts
+  Tipos TypeScript de Schema.org. Si usas TS para generar JSON-LD, evita
+  errores de spec.
+
+================================================================================
+6. RENDIMIENTO DE IMÁGENES
+================================================================================
+
+sharp / sharp-cli
+  Conversión a webp/avif, redimensionado masivo. Imprescindible para CWV.
+  $ pnpm dlx sharp-cli -i public/images/*.jpg -f webp -o public/images/
+
+imagemin-cli + plugins
+  Compresión adicional. Más viejo que sharp pero útil para PNG/SVG.
+
+svgo
+  Optimiza SVG (logos, íconos). Reduce 40-70%.
+  $ pnpm dlx svgo -f public/images/
+
+squoosh-cli
+  La CLI de Squoosh (Google). Buena para AVIF.
+
+================================================================================
+7. RENDIMIENTO CSS / JS
+================================================================================
+
+size-limit
+  Falla el build si el CSS/JS supera un budget. Ideal para no engordar Tailwind.
+
+purgecss / @fullhuman/postcss-purgecss
+  Si Tailwind genera CSS gordo, purga lo no usado. (Tailwind 3 ya lo hace por
+  defecto vía content[].)
+
+terser
+  Minificación JS si en algún momento agregas bundle propio.
+
+================================================================================
+8. PRUEBAS DE SERP / KEYWORDS (OPCIONAL, REQUIEREN CUENTA)
+================================================================================
+
+NO INSTALAR sin cuenta paga. Listadas como referencia.
+
+dataforseo-client (paquete oficial DataForSEO)
+  API más barata para datos de SERP/keywords en LATAM.
+
+serpapi
+  Cliente Node oficial de SerpApi (Google SERP). Mejor calidad, más caro.
+
+google-trends-api
+  Wrapper no oficial de Google Trends. Útil para detectar estacionalidad
+  ("limpieza fosa séptica" sube en otoño-invierno por las lluvias).
+
+================================================================================
+9. UTILIDADES DE SCRAPING / COMPETENCIA (USAR ÉTICAMENTE)
+================================================================================
+
+playwright
+  Navegador headless. La opción moderna.
+  $ pnpm add -D playwright
+
+puppeteer
+  Alternativa clásica.
+
+cheerio (ver arriba)
+  Para scraping ligero sin browser.
+
+================================================================================
+10. SCRIPTS DE AYUDA QUE USAMOS A MANO
+================================================================================
+
+Estos los corrés con pnpm dlx (no necesitas instalarlos en el package.json):
+
+  # Auditar todas las páginas de zonas con Lighthouse
+  pnpm dlx unlighthouse --site http://localhost:3000
+
+  # Detectar duplicate content en titles/metas
+  pnpm dlx cheerio-cli ... (mejor escribir un script propio en scripts/)
+
+  # Validar todo el HTML
+  pnpm dlx html-validate "public/**/*.html"
+
+  # Detectar enlaces rotos en local
+  pnpm dlx linkinator http://localhost:3000 --recurse
+
+================================================================================
+11. WORKFLOW SUGERIDO ANTES DE CADA DEPLOY
+================================================================================
+
+  1. pnpm run build                                          (compila CSS)
+  2. pnpm dlx html-validate "public/**/*.html"               (valida HTML)
+  3. pnpm dlx linkinator http://localhost:3000 --recurse     (links rotos)
+  4. pnpm dlx unlighthouse --site http://localhost:3000      (CWV global)
+  5. pnpm dlx pa11y-ci --sitemap http://localhost:3000/sitemap.xml
+  6. Revisar manualmente JSON-LD de páginas nuevas en https://search.google.com/test/rich-results
+
+================================================================================
+NOTAS
+================================================================================
+
+- Preferí pnpm dlx sobre npx (más rápido, mejor caché).
+- Las skills /seo-audit-onpage y /seo-core-web-vitals te dejan correr varias
+  de estas herramientas guiadas por Claude Code.
+- No instales todo a la vez: empieza con el lote esencial y ve sumando.
+- Si el proyecto crece, considera crear un script `pnpm run seo:audit` que
+  encadene los chequeos críticos.

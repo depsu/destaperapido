@@ -20,7 +20,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
 
 
 
@@ -359,6 +361,77 @@
                     'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
         })(window, document, 'script', 'dataLayer', 'GTM-PG2RQNCD');</script>
     <!-- End Google Tag Manager -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_CL">
+    <meta property="og:site_name" content="Destape Rápido">
+    <meta name="twitter:title" content="Página no encontrada | Destape Rápido">
+    <meta name="twitter:description" content="Error 404. La página que buscas no existe. Volver al inicio de Destape Rápido.">
+    <meta name="twitter:image" content="https://www.destaperapido.cl/images/camio-haciendo-servicio-en-la-calle.webp">
+    <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": [
+      "LocalBusiness",
+      "Plumber"
+    ],
+    "@id": "https://www.destaperapido.cl/#business",
+    "name": "Destape Rápido",
+    "url": "https://www.destaperapido.cl",
+    "telephone": "+56997946463",
+    "email": "contacto@destaperapido.cl",
+    "image": "https://www.destaperapido.cl/logo-nav.webp",
+    "logo": "https://www.destaperapido.cl/logo-nav.webp",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Santiago",
+      "addressRegion": "Región Metropolitana",
+      "addressCountry": "CL"
+    },
+    "areaServed": [
+      {
+        "@type": "AdministrativeArea",
+        "name": "Región Metropolitana, Chile"
+      }
+    ],
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "00:00",
+        "closes": "23:59"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Inicio",
+        "item": "https://www.destaperapido.cl/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "404",
+        "item": "https://www.destaperapido.cl/404"
+      }
+    ]
+  }
+]
+    </script>
 </head>
 
 <body
@@ -856,7 +929,7 @@
         </div>
     </div>
 
-    <script src="/js/availability-badge.js"></script>
+    <script src="/js/availability-badge.js" defer></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // 1. AÑO DEL FOOTER

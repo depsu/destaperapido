@@ -1,4 +1,11 @@
 User-agent: *
 Allow: /
 
+# Endpoints serverless de Vercel (no aportan SEO)
+Disallow: /api/
+
+# Páginas que no deben indexar
+Disallow: /404.html
+Disallow: /servicios/test.html
+
 Sitemap: https://www.destaperapido.cl/sitemap.xml

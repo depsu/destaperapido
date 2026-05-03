@@ -23,7 +23,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
 
     <style>
         body {
@@ -364,6 +366,80 @@
                     'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
         })(window, document, 'script', 'dataLayer', 'GTM-PG2RQNCD');</script>
     <!-- End Google Tag Manager -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.destaperapido.cl/testimonios">
+    <meta property="og:image" content="https://www.destaperapido.cl/images/camio-haciendo-servicio-en-la-calle.webp">
+    <meta property="og:locale" content="es_CL">
+    <meta property="og:site_name" content="Destape Rápido">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Testimonios y Opiniones | Destape Rápido">
+    <meta name="twitter:description" content="Lee las opiniones de nuestros clientes en Las Condes, Vitacura, Lo Barnechea y más. Servicio 5 estrellas garantizado. Tu satisfacción es nuestra prioridad.">
+    <meta name="twitter:image" content="https://www.destaperapido.cl/images/camio-haciendo-servicio-en-la-calle.webp">
+    <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": [
+      "LocalBusiness",
+      "Plumber"
+    ],
+    "@id": "https://www.destaperapido.cl/#business",
+    "name": "Destape Rápido",
+    "url": "https://www.destaperapido.cl",
+    "telephone": "+56997946463",
+    "email": "contacto@destaperapido.cl",
+    "image": "https://www.destaperapido.cl/logo-nav.webp",
+    "logo": "https://www.destaperapido.cl/logo-nav.webp",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Santiago",
+      "addressRegion": "Región Metropolitana",
+      "addressCountry": "CL"
+    },
+    "areaServed": [
+      {
+        "@type": "AdministrativeArea",
+        "name": "Región Metropolitana, Chile"
+      }
+    ],
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "00:00",
+        "closes": "23:59"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Inicio",
+        "item": "https://www.destaperapido.cl/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Testimonios",
+        "item": "https://www.destaperapido.cl/testimonios"
+      }
+    ]
+  }
+]
+    </script>
 </head>
 
 <body class="bg-slate-50 text-slate-600 antialiased selection:bg-brand-600 selection:text-white pb-30 md:pb-0">
@@ -637,6 +713,28 @@
             </p>
         </div>
     </header>
+
+    <!-- Reseñas reales de Google Business -->
+    <section class="py-12 bg-slate-50 border-b border-slate-200" aria-labelledby="google-reviews-title">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <div class="text-center mb-8">
+                <span class="inline-flex items-center gap-2 bg-blue-100 text-blue-700 text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full">
+                    <i class="fa-brands fa-google"></i> Verificadas por Google
+                </span>
+                <h2 id="google-reviews-title" class="text-3xl md:text-4xl font-extrabold text-slate-900 mt-4 mb-2">Reseñas reales de nuestros clientes</h2>
+                <p class="text-slate-600 max-w-2xl mx-auto">Estas reseñas vienen directamente de nuestro perfil de Google Business — no las editamos ni filtramos.</p>
+            </div>
+            <div data-google-reviews data-limit="6" data-min-stars="4">
+                <p class="text-sm text-slate-500 text-center">Cargando reseñas reales…</p>
+            </div>
+            <div class="text-center mt-6">
+                <a href="https://g.page/r/CYrKgTox0N1gEBM/review" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-white border border-slate-200 hover:border-blue-500 text-slate-700 hover:text-blue-700 font-semibold px-5 py-2.5 rounded-full text-sm transition">
+                    <i class="fa-brands fa-google text-blue-600"></i> Deja tu reseña en Google
+                </a>
+            </div>
+        </div>
+    </section>
+    <script src="/js/google-reviews.js" defer></script>
 
     <section class="py-20 bg-white">
         <div class="container mx-auto px-4">
