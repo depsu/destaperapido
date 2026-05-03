@@ -3,6 +3,33 @@
   "outputDirectory": "public",
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/Archivo/:path*",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/Blogs/:path*",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/servicios/test",
+      "destination": "/servicios",
+      "permanent": true
+    },
+    {
+      "source": "/zonas/urbano/ñuñoa",
+      "destination": "/zonas/urbano/nunoa",
+      "permanent": true
+    },
+    {
+      "source": "/zonas/urbano/%C3%B1u%C3%B1oa",
+      "destination": "/zonas/urbano/nunoa",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/:path((?!api/|_next/|.*\\.).*)",
