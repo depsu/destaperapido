@@ -12,6 +12,9 @@
         content="Servicio de video inspección de tuberías con cámara HD. Detectamos fugas, roturas y raíces sin romper pisos. Informe técnico y grabación incluidos.">
 
     <link rel="canonical" href="https://www.destaperapido.cl/servicios/inspeccion-camara-alcantarillado">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     <link rel="stylesheet" href="/output.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -470,7 +473,7 @@
                 <a href="/" class="flex items-center gap-1" aria-label="Destape Rápido - Destapes Las Condes 24/7">
                     <div class="w-12 h-12 md:w-[72px] md:h-[72px] flex items-center justify-center">
                         <img src="/logo-nav.webp" alt="Logo Destape Rápido - Expertos en Alcantarillado" width="72"
-                            height="72" class="w-full h-full object-contain">
+                            height="72" class="w-full h-full object-contain" loading="lazy" decoding="async">
                     </div>
                     <div class="flex flex-col justify-center -space-y-0.5">
                         <span
@@ -810,7 +813,7 @@
                         class="bg-slate-900/80 backdrop-blur-md p-2 rounded-2xl border border-slate-700 shadow-2xl max-w-md mx-auto transform rotate-3 hover:rotate-0 transition duration-500">
                         <div class="bg-black rounded-xl overflow-hidden relative aspect-video">
                             <img src="/images/video-inspección.jpeg" alt="Pantalla de inspección"
-                                class="opacity-60 w-full h-full object-cover">
+                                class="opacity-60 w-full h-full object-cover" loading="lazy" decoding="async">
 
                             <div class="absolute top-4 left-4 text-green-400 font-mono text-xs">
                                 REC ● 00:14:25<br>
@@ -898,8 +901,8 @@
         <div class="container mx-auto px-4 relative z-10">
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div class="relative">
-                    <img src="/images/ridgid.jpeg" alt="Equipo de inspección Ridgid"
-                        class="rounded-2xl shadow-2xl border-4 border-slate-700 transform md:-rotate-1 hover:rotate-0 transition duration-500 grayscale hover:grayscale-0">
+                    <img src="/images/ridgid.jpeg" srcset="/images/ridgid-480w.webp 480w, /images/ridgid-768w.webp 768w, /images/ridgid.jpeg 1245w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="Equipo de inspección Ridgid"
+                        class="rounded-2xl shadow-2xl border-4 border-slate-700 transform md:-rotate-1 hover:rotate-0 transition duration-500 grayscale hover:grayscale-0" loading="lazy" decoding="async">
                     <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
                         <div class="bg-black/60 p-4 rounded-xl backdrop-blur text-center">
                             <p class="text-green-400 font-bold text-xl"><i class="fa-solid fa-check"></i> Solucionado
@@ -1081,7 +1084,7 @@
                     <a href="/" class="flex items-center gap-3 mb-6" aria-label="Destape Rápido - Página de Inicio">
                         <div class="w-12 h-12 md:w-[72px] md:h-[72px] flex items-center justify-center">
                             <img src="/logo-nav.webp" alt="Logo Destape Rápido, servicio de destapes en la RM"
-                                width="72" height="72" class="w-full h-full object-contain">
+                                width="72" height="72" class="w-full h-full object-contain" loading="lazy" decoding="async">
                         </div>
                         <div>
                             <span
@@ -1301,7 +1304,7 @@
     <div class="wa-chat-box" id="whatsapp-chat">
         <div class="wa-header">
             <button class="wa-close-btn" onclick="toggleChat()">×</button>
-            <img src="/logo-nav.png" alt="Perfil" class="wa-profile-pic">
+            <img src="/logo-nav.png" alt="Perfil" class="wa-profile-pic" loading="lazy" decoding="async">
             <div class="wa-info">
                 <h4>Destape Rápido</h4>
                 <p>En línea</p>
@@ -1358,6 +1361,7 @@
         }
     </script>
 
+    <script src="/js/conversion.js" defer></script>
 </body>
 
 </html>

@@ -1,0 +1,307 @@
+/* CSS común para páginas de zona/comuna y blog. Reutilizable. */
+
+:root {
+  --wa-green: #25D366;
+  --wa-dark: #075E54;
+  --wa-red: #ff3b30;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* ── Patches CSS puros para clases que pueden faltar si Tailwind no se recompila ── */
+/* Importante: estos overrides usan selectores específicos para no chocar con Tailwind cuando sí está */
+
+/* Highlight cyan en heros */
+h1 .text-cyan-300,
+h2 .text-cyan-300,
+.text-cyan-300 {
+  color: #67e8f9 !important;
+}
+
+/* Texto auxiliar azul claro sobre fondo oscuro */
+.hero-comuna .text-blue-100,
+section[class*="from-blue-"] .text-blue-100,
+.cta-azul .text-blue-100 {
+  color: #dbeafe !important;
+}
+
+/* CTA azul al final de cada comuna: garantiza fondo y texto correctos */
+section.bg-gradient-to-br.from-blue-600.to-blue-800,
+section.bg-gradient-to-br[class*="from-blue-600"][class*="to-blue-800"] {
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%) !important;
+  color: #ffffff !important;
+}
+section.bg-gradient-to-br.from-blue-600.to-blue-800 *,
+section.bg-gradient-to-br[class*="from-blue-600"][class*="to-blue-800"] :not(a):not(button) {
+  color: inherit;
+}
+section.bg-gradient-to-br.from-blue-600.to-blue-800 .text-blue-100 {
+  color: #dbeafe !important;
+}
+
+/* Iconos sobre cards con gradient suave: garantiza fondo claro visible */
+.bg-gradient-to-br.from-blue-50.to-cyan-100 { background: linear-gradient(135deg, #eff6ff 0%, #cffafe 100%) !important; }
+.bg-gradient-to-br.from-amber-50.to-yellow-100 { background: linear-gradient(135deg, #fffbeb 0%, #fef9c3 100%) !important; }
+.bg-gradient-to-br.from-red-50.to-rose-100 { background: linear-gradient(135deg, #fef2f2 0%, #ffe4e6 100%) !important; }
+.bg-gradient-to-br.from-green-50.to-emerald-100 { background: linear-gradient(135deg, #f0fdf4 0%, #d1fae5 100%) !important; }
+.bg-gradient-to-br.from-orange-50.to-amber-100 { background: linear-gradient(135deg, #fff7ed 0%, #fef3c7 100%) !important; }
+.bg-gradient-to-br.from-indigo-50.to-violet-100 { background: linear-gradient(135deg, #eef2ff 0%, #ede9fe 100%) !important; }
+.bg-gradient-to-br.from-purple-50.to-fuchsia-100 { background: linear-gradient(135deg, #faf5ff 0%, #fae8ff 100%) !important; }
+.bg-gradient-to-br.from-sky-50.to-cyan-100 { background: linear-gradient(135deg, #f0f9ff 0%, #cffafe 100%) !important; }
+
+/* Iconos grandes sobre cards: asegura color visible */
+.text-blue-600 { color: #2563eb; }
+.text-cyan-600 { color: #0891b2; }
+.text-orange-600 { color: #ea580c; }
+.text-purple-600 { color: #9333ea; }
+.text-indigo-600 { color: #4f46e5; }
+.text-green-600 { color: #16a34a; }
+.text-amber-600 { color: #d97706; }
+.text-red-600 { color: #dc2626; }
+.text-sky-600 { color: #0284c7; }
+
+/* Brand colors para cuando Tailwind config no compiló */
+.bg-brand-600 { background-color: #2563eb; }
+.bg-brand-700 { background-color: #1d4ed8; }
+.bg-brand-50 { background-color: #eff6ff; }
+.text-brand-600 { color: #2563eb; }
+.text-brand-700 { color: #1d4ed8; }
+.text-brand-400 { color: #60a5fa; }
+.text-brand-900 { color: #1e3a8a; }
+.hover\:bg-brand-700:hover { background-color: #1d4ed8; }
+.hover\:bg-brand-600:hover { background-color: #2563eb; }
+.hover\:text-brand-600:hover { color: #2563eb; }
+.hover\:text-brand-400:hover { color: #60a5fa; }
+.border-brand-100 { border-color: #dbeafe; }
+
+/* Borders amber/blue para componentes específicos */
+.border-amber-400 { border-color: #fbbf24; }
+.border-amber-500 { border-color: #f59e0b; }
+.border-blue-500 { border-color: #3b82f6; }
+.bg-amber-50 { background-color: #fffbeb; }
+.text-amber-900 { color: #78350f; }
+.text-amber-800 { color: #92400e; }
+.bg-blue-50 { background-color: #eff6ff; }
+.text-blue-900 { color: #1e3a8a; }
+.text-blue-800 { color: #1e40af; }
+.text-blue-700 { color: #1d4ed8; }
+
+/* Utilidades adicionales que pueden faltar */
+.text-blue-600 { color: #2563eb; }
+.hover\:underline:hover { text-decoration: underline; }
+.hover\:bg-blue-50:hover { background-color: #eff6ff; }
+.hover\:bg-blue-700:hover { background-color: #1d4ed8; }
+.bg-blue-700 { background-color: #1d4ed8; }
+.text-blue-100 { color: #dbeafe; }
+
+/* Shadow override para CTAs */
+.shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1); }
+.shadow-xl { box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1); }
+
+/* ── Hero de comuna ── */
+.hero-comuna {
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 60%, #2563eb 100%);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+.hero-comuna::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+  background-size: 30px 30px;
+  pointer-events: none;
+}
+.hero-comuna .hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Tarjetas ── */
+.card-soft {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  transition: all 0.25s ease;
+}
+.card-soft:hover {
+  border-color: #2563eb;
+  box-shadow: 0 10px 25px -10px rgba(37, 99, 235, 0.25);
+  transform: translateY(-2px);
+}
+
+/* ── Listas con ícono ── */
+.bullet-check li {
+  list-style: none;
+  position: relative;
+  padding-left: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+.bullet-check li::before {
+  content: "\f00c";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  position: absolute;
+  left: 0;
+  top: 0.15rem;
+  color: #16a34a;
+}
+
+/* ── Prose (blog y comuna) ── */
+.prose-base h2 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 2rem 0 1rem;
+}
+.prose-base h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 1.5rem 0 0.75rem;
+}
+.prose-base p {
+  line-height: 1.75;
+  margin-bottom: 1.25rem;
+  color: #334155;
+}
+.prose-base ul,
+.prose-base ol {
+  margin: 1rem 0 1.5rem 1.5rem;
+}
+.prose-base li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+  color: #334155;
+}
+.prose-base table {
+  font-size: 0.95rem;
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.25rem 0;
+}
+.prose-base th,
+.prose-base td {
+  border: 1px solid #e2e8f0;
+  padding: 0.75rem;
+  text-align: left;
+}
+.prose-base th {
+  background: #f1f5f9;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+/* ── Botón flotante WhatsApp ── */
+.wa-floating-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: var(--wa-green);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  animation: pulse-green 2s infinite;
+  text-decoration: none;
+}
+.wa-floating-btn:hover {
+  transform: scale(1.1);
+}
+@keyframes pulse-green {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+/* ── Animaciones de entrada ── */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fade-up {
+  animation: fade-up 0.6s ease-out backwards;
+}
+.fade-up.delay-1 { animation-delay: 0.1s; }
+.fade-up.delay-2 { animation-delay: 0.2s; }
+.fade-up.delay-3 { animation-delay: 0.3s; }
+
+/* ── FAQ ── */
+.faq-item {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 0.75rem;
+}
+.faq-item h3 {
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 0.5rem;
+}
+.faq-item p {
+  color: #475569;
+  margin: 0;
+  line-height: 1.65;
+}
+
+/* ── Pill / tag ── */
+.pill {
+  display: inline-block;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.pill-blue { background: #dbeafe; color: #1d4ed8; }
+.pill-green { background: #dcfce7; color: #15803d; }
+.pill-red { background: #fee2e2; color: #b91c1c; }
+.pill-amber { background: #fef3c7; color: #b45309; }
+
+/* ── Stat box (datos de comuna) ── */
+.stat-box {
+  background: white;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  text-align: center;
+  border: 1px solid #e2e8f0;
+}
+.stat-value {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #2563eb;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+.stat-label {
+  font-size: 0.875rem;
+  color: #64748b;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}

@@ -12,6 +12,9 @@
         content="Conoce a Destape Rápido. Más de 10 años de experiencia en destapes y limpieza de fosas en la Región Metropolitana. Equipos certificados y atención 24/7.">
 
     <link rel="canonical" href="https://www.destaperapido.cl/nosotros">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     <link rel="stylesheet" href="/output.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -451,7 +454,7 @@
                 <a href="/" class="flex items-center gap-1" aria-label="Destape Rápido - Destapes Las Condes 24/7">
                     <div class="w-12 h-12 md:w-[72px] md:h-[72px] flex items-center justify-center">
                         <img src="/logo-nav.webp" alt="Logo Destape Rápido - Expertos en Alcantarillado" width="72"
-                            height="72" class="w-full h-full object-contain">
+                            height="72" class="w-full h-full object-contain" loading="lazy" decoding="async">
                     </div>
                     <div class="flex flex-col justify-center -space-y-0.5">
                         <span
@@ -757,7 +760,7 @@
                     <div class="absolute -top-4 -left-4 w-24 h-24 bg-brand-100 rounded-full -z-10"></div>
                     <div class="absolute -bottom-4 -right-4 w-32 h-32 bg-slate-100 rounded-full -z-10"></div>
                     <img src="/images/camio-junto-a-trabajador-al-frente-de-una-empresa-haciendo-servicio-con-un-trabajador-3-.webp"
-                        alt="Técnico trabajando" class="rounded-3xl shadow-2xl w-full object-cover h-[500px]">
+                        alt="Técnico trabajando" class="rounded-3xl shadow-2xl w-full object-cover h-[500px]" loading="lazy" decoding="async">
 
                     <!-- Stats Cards -->
                     <div
@@ -906,7 +909,7 @@
                     </div>
                     <div class="h-full min-h-[400px] relative">
                         <img src="/images/camiones-y-camionetas-estacionados.webp" alt="Flota de camiones"
-                            class="absolute inset-0 w-full h-full object-cover">
+                            class="absolute inset-0 w-full h-full object-cover" loading="lazy" decoding="async">
                         <div class="absolute inset-0 bg-slate-900/20"></div>
                     </div>
                 </div>
@@ -962,7 +965,7 @@
                     <a href="/" class="flex items-center gap-3 mb-6" aria-label="Destape Rápido - Página de Inicio">
                         <div class="w-12 h-12 md:w-[72px] md:h-[72px] flex items-center justify-center">
                             <img src="/logo-nav.webp" alt="Logo Destape Rápido, servicio de destapes en la RM"
-                                width="72" height="72" class="w-full h-full object-contain">
+                                width="72" height="72" class="w-full h-full object-contain" loading="lazy" decoding="async">
                         </div>
                         <div>
                             <span
@@ -1182,7 +1185,7 @@
     <div class="wa-chat-box" id="whatsapp-chat">
         <div class="wa-header">
             <button class="wa-close-btn" onclick="toggleChat()">×</button>
-            <img src="/logo-nav.png" alt="Perfil" class="wa-profile-pic">
+            <img src="/logo-nav.png" alt="Perfil" class="wa-profile-pic" loading="lazy" decoding="async">
             <div class="wa-info">
                 <h4>Destape Rápido</h4>
                 <p>En línea</p>
@@ -1238,6 +1241,7 @@
         }
     </script>
 
+    <script src="/js/conversion.js" defer></script>
 </body>
 
 </html>

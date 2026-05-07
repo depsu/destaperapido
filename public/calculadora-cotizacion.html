@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de cotización destape | Estimado en 30 segundos</title>
+    <meta name="description" content="Calcula el precio aproximado de tu destape o limpieza de fosa en menos de 30 segundos. Selecciona servicio, comuna y tipo de propiedad. Cotización por WhatsApp.">
+    <link rel="canonical" href="https://www.destaperapido.cl/calculadora-cotizacion">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/output.css">
+    <link rel="stylesheet" href="/css/zonas.css">
+    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_CL">
+    <meta property="og:site_name" content="Destape Rápido">
+    <meta property="og:title" content="Calculadora de cotización destape | Estimado en 30 segundos">
+    <meta property="og:description" content="Calcula el precio aproximado de tu destape o limpieza de fosa en menos de 30 segundos. Selecciona servicio, comuna y tipo de propiedad.">
+    <meta property="og:url" content="https://www.destaperapido.cl/calculadora-cotizacion">
+    <meta property="og:image" content="https://www.destaperapido.cl/images/camio-haciendo-servicio-en-la-calle.webp">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <style>
+        .opt-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 1.25rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 0.75rem;
+            background: white;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: left;
+            width: 100%;
+            font-family: inherit;
+            font-size: 0.95rem;
+        }
+        .opt-btn:hover {
+            border-color: #93c5fd;
+            background: #eff6ff;
+        }
+        .opt-btn.active {
+            border-color: #2563eb;
+            background: #dbeafe;
+            box-shadow: 0 4px 12px -4px rgba(37, 99, 235, 0.3);
+        }
+        .opt-btn .ico {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #f1f5f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #475569;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+        .opt-btn.active .ico {
+            background: #2563eb;
+            color: white;
+        }
+        .opt-btn .lbl { font-weight: 700; color: #0f172a; line-height: 1.2; }
+        .opt-btn .sub { font-size: 0.8rem; color: #64748b; margin-top: 0.15rem; }
+        .step {
+            display: none;
+            animation: fade-up 0.4s ease-out;
+        }
+        .step.active { display: block; }
+        .step-num {
+            display: inline-flex;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #2563eb;
+            color: white;
+            font-weight: 700;
+            font-size: 0.85rem;
+            align-items: center;
+            justify-content: center;
+            margin-right: 0.5rem;
+        }
+        .progress {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+        .progress-bar {
+            flex: 1;
+            height: 6px;
+            background: #e2e8f0;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        .progress-bar.active {
+            background: #2563eb;
+        }
+        .result-box {
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+            color: white;
+            border-radius: 1.5rem;
+            padding: 2rem;
+            text-align: center;
+        }
+        .price-range {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1;
+            margin: 1rem 0;
+        }
+        @media (max-width: 640px) {
+            .price-range { font-size: 1.8rem; }
+        }
+    </style>
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Calculadora de cotización Destape Rápido",
+  "url": "https://www.destaperapido.cl/calculadora-cotizacion",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "CLP" },
+  "description": "Herramienta interactiva que estima el costo de servicios sanitarios (destape, hidrojet, cámara, limpieza de fosa) según servicio, comuna y tipo de propiedad."
+}
+    </script>
+
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PG2RQNCD');</script>
+</head>
+
+<body class="bg-slate-50 text-slate-700 antialiased">
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PG2RQNCD" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <nav class="bg-white border-b border-slate-200 shadow-sm sticky top-0 z-40">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="/" class="flex items-center gap-1"><span class="block font-extrabold text-slate-900 text-lg">DESTAPE<span class="text-brand-600">RÁPIDO</span></span></a>
+                <div class="hidden md:flex items-center gap-6 text-sm">
+                    <a href="/servicios" class="text-slate-600 font-semibold hover:text-brand-600">Servicios</a>
+                    <a href="/zonas/urbano" class="text-slate-600 font-semibold hover:text-brand-600">Zonas</a>
+                    <a href="/blog" class="text-slate-600 font-semibold hover:text-brand-600">Blog</a>
+                </div>
+                <a href="tel:+56997946463" class="bg-brand-600 text-white px-4 py-2 rounded-full font-bold hover:bg-brand-700 transition text-sm"><i class="fa-solid fa-phone mr-1"></i> Llamar</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="py-12 md:py-16 max-w-3xl mx-auto px-4">
+        <div class="text-center mb-10">
+            <span class="pill pill-blue mb-3"><i class="fa-solid fa-calculator mr-1"></i> Herramienta gratuita</span>
+            <h1 class="text-3xl md:text-5xl font-extrabold text-slate-900 mb-4">Calcula tu cotización en 30 segundos</h1>
+            <p class="text-lg text-slate-600 max-w-xl mx-auto">Selecciona el servicio, tu comuna y el tipo de propiedad. Te entregamos un rango estimado y un botón directo a WhatsApp para confirmarlo.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-lg p-6 md:p-10 border border-slate-200">
+            <div class="progress" id="progressBar">
+                <div class="progress-bar active" data-step="1"></div>
+                <div class="progress-bar" data-step="2"></div>
+                <div class="progress-bar" data-step="3"></div>
+                <div class="progress-bar" data-step="4"></div>
+            </div>
+
+            <!-- Paso 1 -->
+            <div class="step active" data-step="1">
+                <h2 class="text-xl font-extrabold text-slate-900 mb-4"><span class="step-num">1</span> ¿Qué servicio necesitas?</h2>
+                <div class="grid sm:grid-cols-2 gap-3 mt-4">
+                    <button class="opt-btn" data-service="destape-wc" data-base-min="35000" data-base-max="60000">
+                        <span class="ico"><i class="fa-solid fa-toilet"></i></span>
+                        <span><span class="lbl">Destapar WC / baño</span><span class="sub">Sin romper cerámica</span></span>
+                    </button>
+                    <button class="opt-btn" data-service="destape-lavaplatos" data-base-min="35000" data-base-max="70000">
+                        <span class="ico"><i class="fa-solid fa-sink"></i></span>
+                        <span><span class="lbl">Destapar lavaplatos</span><span class="sub">Cocina, ducha, lavandería</span></span>
+                    </button>
+                    <button class="opt-btn" data-service="destape-alcantarillado" data-base-min="60000" data-base-max="150000">
+                        <span class="ico"><i class="fa-solid fa-house-flood-water"></i></span>
+                        <span><span class="lbl">Destape alcantarillado</span><span class="sub">Domiciliario, condominio</span></span>
+                    </button>
+                    <button class="opt-btn" data-service="hidrojet" data-base-min="90000" data-base-max="250000">
+                        <span class="ico"><i class="fa-solid fa-spray-can-sparkles"></i></span>
+                        <span><span class="lbl">Hidrojet alta presión</span><span class="sub">Grasa endurecida, raíces</span></span>
+                    </button>
+                    <button class="opt-btn" data-service="camara" data-base-min="60000" data-base-max="180000">
+                        <span class="ico"><i class="fa-solid fa-video"></i></span>
+                        <span><span class="lbl">Inspección con cámara</span><span class="sub">Diagnóstico HD</span></span>
+                    </button>
+                    <button class="opt-btn" data-service="fosa-septica" data-base-min="80000" data-base-max="250000">
+                        <span class="ico"><i class="fa-solid fa-tractor"></i></span>
+                        <span><span class="lbl">Limpieza fosa séptica</span><span class="sub">Parcelas, sector rural</span></span>
+                    </button>
+                    <button class="opt-btn" data-service="urgencia" data-base-min="60000" data-base-max="180000">
+                        <span class="ico"><i class="fa-solid fa-bolt"></i></span>
+                        <span><span class="lbl">Emergencia 24/7</span><span class="sub">Inundación, rebalse activo</span></span>
+                    </button>
+                    <button class="opt-btn" data-service="mantencion" data-base-min="60000" data-base-max="180000">
+                        <span class="ico"><i class="fa-solid fa-shield-halved"></i></span>
+                        <span><span class="lbl">Mantención preventiva</span><span class="sub">Anual, antes invierno</span></span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Paso 2 -->
+            <div class="step" data-step="2">
+                <h2 class="text-xl font-extrabold text-slate-900 mb-4"><span class="step-num">2</span> ¿En qué comuna estás?</h2>
+                <select id="comuna" class="w-full px-4 py-3 border-2 border-slate-200 rounded-xl text-slate-900 font-medium focus:border-blue-500 focus:outline-none">
+                    <option value="">Selecciona tu comuna…</option>
+                    <optgroup label="Zonas centrales">
+                        <option value="santiago-centro" data-mult="1.0">Santiago Centro</option>
+                        <option value="providencia" data-mult="1.0">Providencia</option>
+                        <option value="nunoa" data-mult="1.0">Ñuñoa</option>
+                        <option value="recoleta" data-mult="1.0">Recoleta</option>
+                        <option value="independencia" data-mult="1.0">Independencia</option>
+                        <option value="estacion-central" data-mult="1.0">Estación Central</option>
+                        <option value="san-miguel" data-mult="1.0">San Miguel</option>
+                        <option value="macul" data-mult="1.0">Macul</option>
+                    </optgroup>
+                    <optgroup label="Sector oriente">
+                        <option value="las-condes" data-mult="1.05">Las Condes</option>
+                        <option value="vitacura" data-mult="1.05">Vitacura</option>
+                        <option value="lo-barnechea" data-mult="1.15">Lo Barnechea</option>
+                        <option value="la-reina" data-mult="1.05">La Reina</option>
+                        <option value="penalolen" data-mult="1.1">Peñalolén</option>
+                    </optgroup>
+                    <optgroup label="Sector poniente y sur">
+                        <option value="maipu" data-mult="1.05">Maipú</option>
+                        <option value="cerrillos" data-mult="1.05">Cerrillos</option>
+                        <option value="pudahuel" data-mult="1.1">Pudahuel</option>
+                        <option value="la-florida" data-mult="1.05">La Florida</option>
+                        <option value="puente-alto" data-mult="1.15">Puente Alto</option>
+                    </optgroup>
+                    <optgroup label="Sector norte">
+                        <option value="quilicura" data-mult="1.1">Quilicura</option>
+                        <option value="colina" data-mult="1.2">Colina</option>
+                        <option value="lampa" data-mult="1.2">Lampa</option>
+                        <option value="chicureo" data-mult="1.2">Chicureo</option>
+                    </optgroup>
+                    <optgroup label="Sector rural">
+                        <option value="pirque" data-mult="1.25">Pirque</option>
+                        <option value="buin" data-mult="1.25">Buin / Paine</option>
+                        <option value="calera-de-tango" data-mult="1.25">Calera de Tango</option>
+                        <option value="isla-de-maipo" data-mult="1.3">Isla de Maipo</option>
+                        <option value="san-jose-de-maipo" data-mult="1.4">San José de Maipo</option>
+                        <option value="talagante" data-mult="1.3">Talagante</option>
+                        <option value="penaflor" data-mult="1.25">Peñaflor</option>
+                        <option value="padre-hurtado" data-mult="1.2">Padre Hurtado</option>
+                        <option value="melipilla" data-mult="1.4">Melipilla</option>
+                        <option value="curacavi" data-mult="1.4">Curacaví</option>
+                    </optgroup>
+                    <optgroup label="Otras">
+                        <option value="otra" data-mult="1.15">Otra comuna RM</option>
+                    </optgroup>
+                </select>
+                <div class="flex gap-3 mt-6">
+                    <button class="back-btn flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-3 rounded-xl transition" type="button">← Atrás</button>
+                    <button id="next2" class="flex-1 bg-brand-600 hover:bg-brand-700 text-white font-bold py-3 rounded-xl transition disabled:opacity-50 disabled:cursor-not-allowed" disabled type="button">Siguiente →</button>
+                </div>
+            </div>
+
+            <!-- Paso 3 -->
+            <div class="step" data-step="3">
+                <h2 class="text-xl font-extrabold text-slate-900 mb-4"><span class="step-num">3</span> ¿Qué tipo de propiedad?</h2>
+                <div class="grid sm:grid-cols-2 gap-3 mt-4">
+                    <button class="opt-btn" data-tipo="depto" data-mult="0.9">
+                        <span class="ico"><i class="fa-solid fa-door-closed"></i></span>
+                        <span><span class="lbl">Departamento</span><span class="sub">Hasta 100 m²</span></span>
+                    </button>
+                    <button class="opt-btn" data-tipo="casa" data-mult="1.0">
+                        <span class="ico"><i class="fa-solid fa-house"></i></span>
+                        <span><span class="lbl">Casa</span><span class="sub">Tradicional con jardín</span></span>
+                    </button>
+                    <button class="opt-btn" data-tipo="casa-grande" data-mult="1.2">
+                        <span class="ico"><i class="fa-solid fa-house-chimney"></i></span>
+                        <span><span class="lbl">Casa grande / parcela</span><span class="sub">+200 m² o terreno amplio</span></span>
+                    </button>
+                    <button class="opt-btn" data-tipo="condominio" data-mult="1.3">
+                        <span class="ico"><i class="fa-solid fa-building"></i></span>
+                        <span><span class="lbl">Condominio / edificio</span><span class="sub">Áreas comunes, vertical</span></span>
+                    </button>
+                    <button class="opt-btn" data-tipo="local" data-mult="1.15">
+                        <span class="ico"><i class="fa-solid fa-shop"></i></span>
+                        <span><span class="lbl">Local comercial</span><span class="sub">Restaurante, oficina, retail</span></span>
+                    </button>
+                    <button class="opt-btn" data-tipo="empresa" data-mult="1.4">
+                        <span class="ico"><i class="fa-solid fa-industry"></i></span>
+                        <span><span class="lbl">Empresa / industria</span><span class="sub">Bodegas, plantas, frigoríficos</span></span>
+                    </button>
+                </div>
+                <div class="flex gap-3 mt-6">
+                    <button class="back-btn flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-3 rounded-xl transition" type="button">← Atrás</button>
+                </div>
+            </div>
+
+            <!-- Paso 4: Resultado -->
+            <div class="step" data-step="4">
+                <div class="result-box">
+                    <p class="text-blue-100 font-semibold uppercase text-sm tracking-wide" id="resultLabel">Estimado para tu caso</p>
+                    <div class="price-range" id="priceRange">$0 - $0</div>
+                    <p class="text-blue-100 text-sm" id="resultDetail"></p>
+                </div>
+
+                <div class="bg-amber-50 border-l-4 border-amber-400 p-4 my-6 rounded">
+                    <p class="text-amber-900 text-sm m-0"><i class="fa-solid fa-circle-info mr-2"></i> <strong>Es un estimado.</strong> El precio final depende del diagnóstico real, accesibilidad y horario. Confirma siempre por WhatsApp antes de despacho.</p>
+                </div>
+
+                <div class="grid sm:grid-cols-2 gap-3 mt-4">
+                    <a id="waBtn" href="https://wa.me/56997946463" class="bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-6 rounded-xl shadow-lg transition flex items-center justify-center gap-2"><i class="fa-brands fa-whatsapp text-xl"></i> Confirmar por WhatsApp</a>
+                    <a href="tel:+56997946463" class="bg-brand-600 hover:bg-brand-700 text-white font-bold py-4 px-6 rounded-xl shadow-lg transition flex items-center justify-center gap-2"><i class="fa-solid fa-phone"></i> Llamar al técnico</a>
+                </div>
+
+                <button id="resetBtn" class="w-full mt-4 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-3 rounded-xl transition" type="button"><i class="fa-solid fa-arrow-rotate-left mr-2"></i> Calcular de nuevo</button>
+            </div>
+        </div>
+
+        <div class="mt-10 text-center text-sm text-slate-500">
+            <p>¿Prefieres revisar nuestras zonas? <a href="/zonas/urbano" class="text-brand-600 font-semibold hover:underline">Ver cobertura urbana</a> · <a href="/zonas/rural" class="text-brand-600 font-semibold hover:underline">Ver cobertura rural</a></p>
+        </div>
+    </section>
+
+    <section class="py-16 bg-white">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-2xl font-extrabold text-slate-900 mb-6 text-center">¿Cómo funciona la calculadora?</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="card-soft text-center">
+                    <div class="text-3xl text-blue-600 mb-3"><i class="fa-solid fa-clipboard-check"></i></div>
+                    <h3 class="font-bold text-slate-900 mb-2">Datos reales 2026</h3>
+                    <p class="text-sm text-slate-600">Los rangos están basados en cotizaciones reales de los últimos 12 meses en cada comuna.</p>
+                </div>
+                <div class="card-soft text-center">
+                    <div class="text-3xl text-orange-600 mb-3"><i class="fa-solid fa-location-dot"></i></div>
+                    <h3 class="font-bold text-slate-900 mb-2">Considera la comuna</h3>
+                    <p class="text-sm text-slate-600">Distancia, accesibilidad y características típicas (cañerías antiguas, condominios masivos, parcelas) influyen en el rango.</p>
+                </div>
+                <div class="card-soft text-center">
+                    <div class="text-3xl text-green-600 mb-3"><i class="fa-brands fa-whatsapp"></i></div>
+                    <h3 class="font-bold text-slate-900 mb-2">Cierra por WhatsApp</h3>
+                    <p class="text-sm text-slate-600">Al final, te da un botón con el mensaje prellenado para confirmar el precio definitivo en menos de 10 minutos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-900 text-slate-400 py-12 text-sm">
+        <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-4 gap-8 mb-8">
+            <div class="md:col-span-2"><a href="/" class="flex items-center gap-3 mb-4"><span class="block font-extrabold text-white text-xl">DESTAPE<span class="text-brand-400">RÁPIDO</span></span></a><p class="mb-2">Soluciones sanitarias profesionales en toda la Región Metropolitana. Atención 24/7.</p></div>
+            <div><h4 class="text-white font-bold mb-3 uppercase text-xs tracking-wider">Servicios</h4><ul class="space-y-2"><li><a href="/servicios/destape-alcantarillado" class="hover:text-brand-400">Destape alcantarillado</a></li><li><a href="/servicios/camion-alta-presion-hidrojet" class="hover:text-brand-400">Hidrojet</a></li><li><a href="/servicios/inspeccion-camara-alcantarillado" class="hover:text-brand-400">Cámara</a></li><li><a href="/servicios/" class="hover:text-brand-400">Ver todos →</a></li></ul></div>
+            <div><h4 class="text-white font-bold mb-3 uppercase text-xs tracking-wider">Zonas</h4><ul class="space-y-2"><li><a href="/zonas/urbano" class="hover:text-brand-400">Urbanas</a></li><li><a href="/zonas/rural" class="hover:text-brand-400">Rurales</a></li><li><a href="/blog" class="hover:text-brand-400">Blog</a></li></ul></div>
+        </div>
+        <div class="border-t border-slate-800 pt-6 text-center text-xs">&copy; <span id="year"></span> Destape Rápido. Todos los derechos reservados.</div>
+    </footer>
+
+    <a href="https://wa.me/56997946463" class="wa-floating-btn" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp" style="font-size: 32px;"></i></a>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        const state = {
+            service: null,
+            serviceLabel: null,
+            baseMin: 0,
+            baseMax: 0,
+            comuna: null,
+            comunaLabel: null,
+            comunaMult: 1,
+            tipo: null,
+            tipoLabel: null,
+            tipoMult: 1,
+            currentStep: 1
+        };
+
+        const SERVICE_LABELS = {
+            'destape-wc': 'Destape WC',
+            'destape-lavaplatos': 'Destape lavaplatos',
+            'destape-alcantarillado': 'Destape de alcantarillado',
+            'hidrojet': 'Hidrojet alta presión',
+            'camara': 'Inspección con cámara',
+            'fosa-septica': 'Limpieza de fosa séptica',
+            'urgencia': 'Emergencia 24/7',
+            'mantencion': 'Mantención preventiva'
+        };
+        const TIPO_LABELS = {
+            'depto': 'departamento',
+            'casa': 'casa',
+            'casa-grande': 'casa grande/parcela',
+            'condominio': 'condominio/edificio',
+            'local': 'local comercial',
+            'empresa': 'empresa/industria'
+        };
+
+        function showStep(n) {
+            state.currentStep = n;
+            document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+            document.querySelector(`.step[data-step="${n}"]`).classList.add('active');
+            document.querySelectorAll('.progress-bar').forEach(b => {
+                b.classList.toggle('active', parseInt(b.dataset.step) <= n);
+            });
+            window.scrollTo({ top: document.querySelector('.bg-white.rounded-2xl').offsetTop - 80, behavior: 'smooth' });
+        }
+
+        // Paso 1: servicio
+        document.querySelectorAll('.step[data-step="1"] .opt-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.step[data-step="1"] .opt-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                state.service = btn.dataset.service;
+                state.serviceLabel = SERVICE_LABELS[state.service];
+                state.baseMin = parseInt(btn.dataset.baseMin);
+                state.baseMax = parseInt(btn.dataset.baseMax);
+                setTimeout(() => showStep(2), 200);
+            });
+        });
+
+        // Paso 2: comuna
+        const comunaSelect = document.getElementById('comuna');
+        const next2 = document.getElementById('next2');
+        comunaSelect.addEventListener('change', () => {
+            const opt = comunaSelect.options[comunaSelect.selectedIndex];
+            if (opt.value) {
+                state.comuna = opt.value;
+                state.comunaLabel = opt.textContent.trim();
+                state.comunaMult = parseFloat(opt.dataset.mult);
+                next2.disabled = false;
+            } else {
+                next2.disabled = true;
+            }
+        });
+        next2.addEventListener('click', () => showStep(3));
+
+        // Paso 3: tipo
+        document.querySelectorAll('.step[data-step="3"] .opt-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.step[data-step="3"] .opt-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                state.tipo = btn.dataset.tipo;
+                state.tipoLabel = TIPO_LABELS[state.tipo];
+                state.tipoMult = parseFloat(btn.dataset.mult);
+                setTimeout(() => calcAndShow(), 250);
+            });
+        });
+
+        // Atrás
+        document.querySelectorAll('.back-btn').forEach(btn => {
+            btn.addEventListener('click', () => showStep(state.currentStep - 1));
+        });
+
+        function fmt(n) {
+            return '$' + Math.round(n / 1000) * 1000 + '';
+        }
+        function fmtCLP(n) {
+            return new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP', maximumFractionDigits: 0 }).format(Math.round(n / 1000) * 1000);
+        }
+
+        function calcAndShow() {
+            const totalMult = state.comunaMult * state.tipoMult;
+            const min = state.baseMin * totalMult;
+            const max = state.baseMax * totalMult;
+
+            document.getElementById('resultLabel').textContent = `Estimado para ${state.serviceLabel}`;
+            document.getElementById('priceRange').textContent = `${fmtCLP(min)} – ${fmtCLP(max)}`;
+            document.getElementById('resultDetail').textContent = `${state.comunaLabel} · ${state.tipoLabel}`;
+
+            const msg = encodeURIComponent(
+                `Hola, vengo de la calculadora de cotización.\n` +
+                `Servicio: ${state.serviceLabel}\n` +
+                `Comuna: ${state.comunaLabel}\n` +
+                `Propiedad: ${state.tipoLabel}\n` +
+                `Estimado vio: ${fmtCLP(min)} – ${fmtCLP(max)}\n\n` +
+                `¿Pueden confirmar precio y disponibilidad?`
+            );
+            document.getElementById('waBtn').href = `https://wa.me/56997946463?text=${msg}`;
+
+            showStep(4);
+
+            // GTM event
+            if (window.dataLayer) {
+                window.dataLayer.push({
+                    event: 'calculadora_completada',
+                    servicio: state.service,
+                    comuna: state.comuna,
+                    tipo: state.tipo,
+                    precio_min: Math.round(min),
+                    precio_max: Math.round(max)
+                });
+            }
+        }
+
+        document.getElementById('resetBtn').addEventListener('click', () => {
+            state.service = null;
+            state.comuna = null;
+            state.tipo = null;
+            document.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('active'));
+            comunaSelect.value = '';
+            next2.disabled = true;
+            showStep(1);
+        });
+    </script>
+</body>
+</html>

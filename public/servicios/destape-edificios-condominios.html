@@ -12,6 +12,9 @@
         content="Servicio especializado para administradores de edificios. Limpieza de verticales, ductos y cámaras desgrasadoras. Contratos de mantención, facturación a 30 días e informes técnicos.">
 
     <link rel="canonical" href="https://www.destaperapido.cl/servicios/destape-edificios-condominios">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     <link rel="stylesheet" href="/output.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -471,7 +474,7 @@
                 <a href="/" class="flex items-center gap-1" aria-label="Destape Rápido - Destapes Las Condes 24/7">
                     <div class="w-12 h-12 md:w-[72px] md:h-[72px] flex items-center justify-center">
                         <img src="/logo-nav.webp" alt="Logo Destape Rápido - Expertos en Alcantarillado" width="72"
-                            height="72" class="w-full h-full object-contain">
+                            height="72" class="w-full h-full object-contain" loading="lazy" decoding="async">
                     </div>
                     <div class="flex flex-col justify-center -space-y-0.5">
                         <span
@@ -749,7 +752,7 @@
             <source media="(max-width: 768px)"
                 srcset="/images/Destape-alcantarillado-con-camion-en-subterraneo-de-edificio.webp">
             <source media="(min-width: 769px)" srcset="/images/camion-haciendo-servicio-en-condominio.webp">
-            <img src="/images/camion-haciendo-servicio-en-condominio.webp"
+            <img src="/images/camion-haciendo-servicio-en-condominio.webp" srcset="/images/camion-haciendo-servicio-en-condominio-480w.webp 480w, /images/camion-haciendo-servicio-en-condominio.webp 756w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 alt="Mantención de alcantarillado en edificios" class="w-full h-full object-cover" fetchpriority="high">
         </picture>
 
@@ -965,7 +968,7 @@
                 <div class="relative">
                     <img src="/images/camion-haciendo-destape-en-subterraneo.webp"
                         alt="Hidrolavado de tubería en edificio"
-                        class="rounded-2xl shadow-2xl border-4 border-slate-700/50 transform md:rotate-1 hover:rotate-0 transition duration-500">
+                        class="rounded-2xl shadow-2xl border-4 border-slate-700/50 transform md:rotate-1 hover:rotate-0 transition duration-500" loading="lazy" decoding="async">
 
                     <div
                         class="absolute -bottom-6 -right-6 bg-corp-600 p-6 rounded-xl shadow-xl hidden md:block text-center">
@@ -1098,7 +1101,7 @@
                     <a href="/" class="flex items-center gap-3 mb-6" aria-label="Destape Rápido - Página de Inicio">
                         <div class="w-12 h-12 md:w-[72px] md:h-[72px] flex items-center justify-center">
                             <img src="/logo-nav.webp" alt="Logo Destape Rápido, servicio de destapes en la RM"
-                                width="72" height="72" class="w-full h-full object-contain">
+                                width="72" height="72" class="w-full h-full object-contain" loading="lazy" decoding="async">
                         </div>
                         <div>
                             <span
@@ -1318,7 +1321,7 @@
     <div class="wa-chat-box" id="whatsapp-chat">
         <div class="wa-header">
             <button class="wa-close-btn" onclick="toggleChat()">×</button>
-            <img src="/logo-nav.png" alt="Perfil" class="wa-profile-pic">
+            <img src="/logo-nav.png" alt="Perfil" class="wa-profile-pic" loading="lazy" decoding="async">
             <div class="wa-info">
                 <h4>Destape Rápido</h4>
                 <p>En línea</p>
@@ -1375,6 +1378,7 @@
         }
     </script>
 
+    <script src="/js/conversion.js" defer></script>
 </body>
 
 </html>

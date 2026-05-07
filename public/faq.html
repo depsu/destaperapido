@@ -16,6 +16,9 @@
         content="¿Cuánto cuesta? ¿Rompen el piso? ¿Atienden urgencias? Encuentra todas las respuestas aquí.">
 
     <link rel="canonical" href="https://www.destaperapido.cl/faq">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     <link rel="stylesheet" href="/output.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -502,7 +505,7 @@
                 <a href="/" class="flex items-center gap-1" aria-label="Destape Rápido - Destapes Las Condes 24/7">
                     <div class="w-12 h-12 md:w-[72px] md:h-[72px] flex items-center justify-center">
                         <img src="/logo-nav.webp" alt="Logo Destape Rápido - Expertos en Alcantarillado" width="72"
-                            height="72" class="w-full h-full object-contain">
+                            height="72" class="w-full h-full object-contain" loading="lazy" decoding="async">
                     </div>
                     <div class="flex flex-col justify-center -space-y-0.5">
                         <span
@@ -894,7 +897,7 @@
                     <a href="/" class="flex items-center gap-3 mb-6" aria-label="Destape Rápido - Página de Inicio">
                         <div class="w-12 h-12 md:w-[72px] md:h-[72px] flex items-center justify-center">
                             <img src="/logo-nav.webp" alt="Logo Destape Rápido, servicio de destapes en la RM"
-                                width="72" height="72" class="w-full h-full object-contain">
+                                width="72" height="72" class="w-full h-full object-contain" loading="lazy" decoding="async">
                         </div>
                         <div>
                             <span
@@ -1046,7 +1049,7 @@
     <div class="wa-chat-box" id="wa-chat-box">
         <div class="wa-header">
             <div class="wa-profile-pic">
-                <img src="/logo-nav.webp" alt="Profile" style="width:100%; height:100%; border-radius:50%;">
+                <img src="/logo-nav.webp" alt="Profile" style="width:100%; height:100%; border-radius:50%;" loading="lazy" decoding="async">
             </div>
             <div class="wa-info">
                 <h4>Destape Rápido</h4>
@@ -1067,7 +1070,7 @@
         <div class="wa-footer">
             <a href="https://wa.me/56997946463?text=Hola,%20tengo%20una%20duda%20sobre..." class="wa-start-chat-btn"
                 target="_blank">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" loading="lazy" decoding="async">
                 Consultar por WhatsApp
             </a>
         </div>
@@ -1122,6 +1125,7 @@
             waBtn.classList.remove('active');
         });
     </script>
+    <script src="/js/conversion.js" defer></script>
 </body>
 
 </html>

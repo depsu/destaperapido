@@ -1,0 +1,90 @@
+/* CSS común para blog posts. Extraído del CSS inline duplicado.
+   Para optimización: futuros posts pueden cargar este archivo y omitir el bloque <style> interno.
+   Los posts existentes mantienen su <style> inline como fallback. */
+
+:root {
+  --wa-green: #25D366;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* ── Tipografía del artículo ── */
+.prose h2 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 2rem 0 1rem;
+}
+.prose h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 1.5rem 0 0.75rem;
+}
+.prose p {
+  line-height: 1.75;
+  margin-bottom: 1.25rem;
+  color: #334155;
+}
+.prose ul,
+.prose ol {
+  margin: 1rem 0 1.5rem 1.5rem;
+}
+.prose li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+  color: #334155;
+}
+.prose table {
+  font-size: 0.95rem;
+  width: 100%;
+  border-collapse: collapse;
+}
+.prose th,
+.prose td {
+  border: 1px solid #e2e8f0;
+  padding: 0.75rem;
+  text-align: left;
+}
+.prose th {
+  background: #f1f5f9;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+/* ── Botón flotante WhatsApp ── */
+.wa-floating-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: var(--wa-green);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  z-index: 1000;
+  text-decoration: none;
+  animation: pulse-green 2s infinite;
+  transition: all 0.3s ease;
+}
+.wa-floating-btn:hover {
+  transform: scale(1.1);
+}
+@keyframes pulse-green {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}

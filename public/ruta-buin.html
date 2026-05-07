@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="https://www.destaperapido.cl/ruta-buin">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     <title>Seguimiento de Camión | Servicio hacia Buin</title>
     <meta name="description"
         content="Seguimiento aproximado del camión desde Maipú hacia Buin, con tiempo estimado de llegada.">
@@ -208,7 +211,7 @@
                         <a href="/" class="flex items-center gap-3 mb-6" aria-label="Destape Rápido - Página de Inicio">
                             <div class="w-12 h-12 md:w-[72px] md:h-[72px] flex items-center justify-center">
                                 <img src="/logo-nav.webp" alt="Logo Destape Rápido, servicio de destapes en la RM"
-                                    width="72" height="72" class="w-full h-full object-contain">
+                                    width="72" height="72" class="w-full h-full object-contain" loading="lazy" decoding="async">
                             </div>
                             <div>
                                 <span
@@ -341,6 +344,7 @@
         map.fitBounds(routeLine.getBounds(), { padding: [50, 50] });
 
     </script>
+    <script src="/js/conversion.js" defer></script>
 </body>
 
 </html>

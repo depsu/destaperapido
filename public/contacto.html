@@ -12,6 +12,9 @@
         content="Contáctanos para destapes de alcantarillado y limpieza de fosas en Santiago. Atención 24/7 en zonas urbanas y rurales. Cotiza tu servicio aquí.">
 
     <link rel="canonical" href="https://www.destaperapido.cl/contacto">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     <link rel="stylesheet" href="/output.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -450,7 +453,7 @@
                 <a href="/" class="flex items-center gap-1" aria-label="Destape Rápido - Destapes Las Condes 24/7">
                     <div class="w-12 h-12 md:w-[72px] md:h-[72px] flex items-center justify-center">
                         <img src="/logo-nav.webp" alt="Logo Destape Rápido - Expertos en Alcantarillado" width="72"
-                            height="72" class="w-full h-full object-contain">
+                            height="72" class="w-full h-full object-contain" loading="lazy" decoding="async">
                     </div>
                     <div class="flex flex-col justify-center -space-y-0.5">
                         <span
@@ -724,7 +727,7 @@
 
     <header class="relative py-20 pt-32 overflow-hidden">
         <!-- Optimized Hero Image -->
-        <img src="/images/camio-haciendo-servicio-en-la-calle.webp" alt="Contacto Destape Rápido"
+        <img src="/images/camio-haciendo-servicio-en-la-calle.webp" srcset="/images/camio-haciendo-servicio-en-la-calle-480w.webp 480w, /images/camio-haciendo-servicio-en-la-calle-768w.webp 768w, /images/camio-haciendo-servicio-en-la-calle.webp 1032w" sizes="100vw" alt="Contacto Destape Rápido"
             class="absolute inset-0 w-full h-full object-cover -z-20" fetchpriority="high">
 
         <!-- Gradient Overlay -->
@@ -830,17 +833,17 @@
                 <div class="lg:col-span-2">
                     <div class="bg-white p-8 md:p-10 rounded-2xl shadow-xl border-t-4 border-brand-600">
                         <h2 class="text-2xl font-extrabold text-slate-900 mb-6">Envíanos un mensaje</h2>
-                        <form id="formulario-contacto" action="#" class="space-y-6">
+                        <form id="formulario-contacto" class="space-y-6" novalidate>
                             <div class="grid md:grid-cols-2 gap-6">
                                 <div>
-                                    <label class="block text-sm font-bold text-slate-700 mb-2">Nombre completo</label>
-                                    <input type="text"
+                                    <label for="form-nombre" class="block text-sm font-bold text-slate-700 mb-2">Nombre completo</label>
+                                    <input id="form-nombre" name="name" type="text" required autocomplete="name"
                                         class="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none transition"
                                         placeholder="Tu nombre">
                                 </div>
                                 <div>
-                                    <label class="block text-sm font-bold text-slate-700 mb-2">Teléfono</label>
-                                    <input type="tel"
+                                    <label for="form-telefono" class="block text-sm font-bold text-slate-700 mb-2">Teléfono</label>
+                                    <input id="form-telefono" name="phone" type="tel" required inputmode="tel" autocomplete="tel" pattern="[0-9 +\-]{8,}"
                                         class="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none transition"
                                         placeholder="+56 9...">
                                 </div>
@@ -848,20 +851,20 @@
 
                             <div class="grid md:grid-cols-2 gap-6">
                                 <div>
-                                    <label class="block text-sm font-bold text-slate-700 mb-2">Tipo de Servicio</label>
-                                    <select
+                                    <label for="form-servicio" class="block text-sm font-bold text-slate-700 mb-2">Tipo de Servicio</label>
+                                    <select id="form-servicio" name="service"
                                         class="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none transition">
-                                        <option>Seleccione...</option>
+                                        <option value="">Seleccione...</option>
                                         <option value="urbano">Destape Urbano (WC/Cocina)</option>
                                         <option value="rural">Limpieza Fosa Séptica</option>
                                         <option value="edificio">Mantención Edificio</option>
                                     </select>
                                 </div>
                                 <div>
-                                    <label class="block text-sm font-bold text-slate-700 mb-2">Comuna</label>
-                                    <select
+                                    <label for="form-comuna" class="block text-sm font-bold text-slate-700 mb-2">Comuna</label>
+                                    <select id="form-comuna" name="comuna" autocomplete="address-level2"
                                         class="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none transition">
-                                        <option>Seleccione...</option>
+                                        <option value="">Seleccione...</option>
                                         <optgroup label="Sector Oriente">
                                             <option>Las Condes</option>
                                             <option>Vitacura</option>
@@ -879,10 +882,15 @@
                             </div>
 
                             <div>
-                                <label class="block text-sm font-bold text-slate-700 mb-2">Detalle del problema</label>
-                                <textarea rows="4"
+                                <label for="form-mensaje" class="block text-sm font-bold text-slate-700 mb-2">Detalle del problema</label>
+                                <textarea id="form-mensaje" name="message" rows="4" autocomplete="off"
                                     class="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none transition"
                                     placeholder="Describe brevemente qué sucede..."></textarea>
+                            </div>
+
+                            <!-- Anti-spam honeypot: invisible para humanos, visible para bots -->
+                            <div style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden" aria-hidden="true">
+                                <label>No completar: <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
                             </div>
 
                             <div
@@ -891,11 +899,53 @@
                                 <span>Tus datos están protegidos. Respuesta en máx 30 min.</span>
                             </div>
 
-                            <button type="button"
-                                class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-4 rounded-xl shadow-lg shadow-brand-500/30 transition transform hover:-translate-y-1">
+                            <div id="form-feedback" class="hidden text-sm font-bold p-3 rounded-lg" role="status" aria-live="polite"></div>
+
+                            <button type="submit" id="form-submit"
+                                class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-4 rounded-xl shadow-lg shadow-brand-500/30 transition transform hover:-translate-y-1 disabled:opacity-60 disabled:cursor-not-allowed">
                                 Solicitar Presupuesto
                             </button>
                         </form>
+                        <script>
+                            (function () {
+                                var form = document.getElementById('formulario-contacto');
+                                if (!form) return;
+                                var btn = document.getElementById('form-submit');
+                                var fb = document.getElementById('form-feedback');
+                                form.addEventListener('submit', async function (e) {
+                                    e.preventDefault();
+                                    fb.className = 'hidden text-sm font-bold p-3 rounded-lg';
+                                    fb.textContent = '';
+                                    var data = Object.fromEntries(new FormData(form).entries());
+                                    if (data.website) return; // honeypot
+                                    if (!data.name || !data.phone) {
+                                        fb.className = 'text-sm font-bold p-3 rounded-lg bg-red-50 text-red-700';
+                                        fb.textContent = 'Nombre y teléfono son obligatorios.';
+                                        return;
+                                    }
+                                    btn.disabled = true;
+                                    btn.textContent = 'Enviando...';
+                                    try {
+                                        var res = await fetch('/api/send-contact-form', {
+                                            method: 'POST',
+                                            headers: { 'Content-Type': 'application/json' },
+                                            body: JSON.stringify(data)
+                                        });
+                                        if (!res.ok) throw new Error('No se pudo enviar');
+                                        // Redirect a /gracias para que GTM/Ads/GA4 disparen la
+                                        // conversión por URL (configurada en GTM).
+                                        window.location.assign('/gracias');
+                                        return;
+                                    } catch (err) {
+                                        fb.className = 'text-sm font-bold p-3 rounded-lg bg-red-50 text-red-700';
+                                        fb.innerHTML = 'No pudimos enviar el formulario. <a class="underline" href="https://wa.me/56997946463">Escríbenos por WhatsApp</a>.';
+                                    } finally {
+                                        btn.disabled = false;
+                                        btn.textContent = 'Solicitar Presupuesto';
+                                    }
+                                });
+                            })();
+                        </script>
                     </div>
                 </div>
             </div>
@@ -923,7 +973,7 @@
                     <a href="/" class="flex items-center gap-3 mb-6" aria-label="Destape Rápido - Página de Inicio">
                         <div class="w-12 h-12 md:w-[72px] md:h-[72px] flex items-center justify-center">
                             <img src="/logo-nav.webp" alt="Logo Destape Rápido, servicio de destapes en la RM"
-                                width="72" height="72" class="w-full h-full object-contain">
+                                width="72" height="72" class="w-full h-full object-contain" loading="lazy" decoding="async">
                         </div>
                         <div>
                             <span
@@ -1143,7 +1193,7 @@
     <div class="wa-chat-box" id="whatsapp-chat">
         <div class="wa-header">
             <button class="wa-close-btn" onclick="toggleChat()">×</button>
-            <img src="/logo-nav.png" alt="Perfil" class="wa-profile-pic">
+            <img src="/logo-nav.png" alt="Perfil" class="wa-profile-pic" loading="lazy" decoding="async">
             <div class="wa-info">
                 <h4>Destape Rápido</h4>
                 <p>En línea</p>
@@ -1197,6 +1247,7 @@
         }
     </script>
 
+    <script src="/js/conversion.js" defer></script>
 </body>
 
 </html>
