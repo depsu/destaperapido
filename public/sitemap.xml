@@ -297,6 +297,24 @@
 
   <!-- ══ BLOG ══ -->
   <url>
+    <loc>https://www.destaperapido.cl/blog/destape-cocina-restaurante-sushi</loc>
+    <lastmod>2026-05-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.destaperapido.cl/blog/destape-emergencia-cabanas-fin-semana-largo</loc>
+    <lastmod>2026-05-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.destaperapido.cl/blog/errores-pyme-contratan-destape-pirata</loc>
+    <lastmod>2026-05-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.destaperapido.cl/blog/guia-mantencion-fosas-chicureo-pirque</loc>
     <lastmod>2026-05-03</lastmod>
     <changefreq>yearly</changefreq>
@@ -335,6 +353,66 @@
   <url>
     <loc>https://www.destaperapido.cl/blog/hidrojet-vs-destape-mecanico-cual-elegir</loc>
     <lastmod>2026-05-03</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.destaperapido.cl/blog/como-destapar-lavaplatos-7-metodos-que-funcionan</loc>
+    <lastmod>2026-05-07</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.destaperapido.cl/blog/mal-olor-alcantarilla-casa-causas-soluciones</loc>
+    <lastmod>2026-05-07</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.destaperapido.cl/blog/inundacion-bano-que-hacer-primeros-minutos</loc>
+    <lastmod>2026-05-07</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.destaperapido.cl/blog/raices-en-tuberias-detectar-eliminar-prevenir</loc>
+    <lastmod>2026-05-07</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.destaperapido.cl/blog/biodigestor-vs-fosa-septica-cual-conviene-parcela</loc>
+    <lastmod>2026-05-07</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.destaperapido.cl/blog/pozo-absorbente-saturado-senales-causas-soluciones</loc>
+    <lastmod>2026-05-07</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.destaperapido.cl/blog/quien-paga-destape-edificio-condominio-ley-chile</loc>
+    <lastmod>2026-05-07</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.destaperapido.cl/blog/prevenir-rebalse-alcantarillado-invierno-santiago</loc>
+    <lastmod>2026-05-07</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.destaperapido.cl/blog/inspeccion-camara-canerias-cuando-conviene-cuanto-cuesta</loc>
+    <lastmod>2026-05-07</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.destaperapido.cl/blog/limpiar-canaletas-bajadas-agua-antes-invierno</loc>
+    <lastmod>2026-05-07</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
