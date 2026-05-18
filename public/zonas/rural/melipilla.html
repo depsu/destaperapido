@@ -8,9 +8,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="https://www.destaperapido.cl/zonas/rural/melipilla">
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="alternate" hreflang="es-CL" href="https://www.destaperapido.cl/zonas/rural/melipilla">
+    <link rel="alternate" hreflang="x-default" href="https://www.destaperapido.cl/zonas/rural/melipilla">
     <link rel="preconnect" href="https://www.googletagmanager.com">
-    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     <title>Limpieza de Fosas Sépticas en Melipilla | Agroindustria 24/7</title>
 
     <meta name="description" content="Limpieza de fosas en Melipilla: Pomaire, Bollenar, Codigua y San Pedro. Parcelas, agricultura y agroindustria con camiones preparados.">
@@ -19,8 +19,6 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://images.unsplash.com">
-
     <meta property="og:type" content="website">
     <meta property="og:locale" content="es_CL">
     <meta property="og:site_name" content="Destape Rápido">
@@ -36,10 +34,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    <link rel="stylesheet" href="/fonts/fontawesome/all.min.css"
         media="print" onload="this.media='all'">
     <noscript>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="stylesheet" href="/fonts/fontawesome/all.min.css">
     </noscript>
 
 
@@ -678,14 +676,25 @@
     </style>
 
     <!-- Google Tag Manager -->
-    <script>(function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({
-                'gtm.start':
-                    new Date().getTime(), event: 'gtm.js'
-            }); var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-PG2RQNCD');</script>
+    <script>(function(w, d, s, l, i){
+    function _loadGTM(){
+      w[l] = w[l] || []; w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+      var f = d.getElementsByTagName(s)[0], j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+      j.async = true;
+      j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+      f.parentNode.insertBefore(j, f);
+    }
+    function _schedule(){
+      if ('requestIdleCallback' in w) {
+        requestIdleCallback(_loadGTM, { timeout: 3000 });
+      } else {
+        setTimeout(_loadGTM, 1500);
+      }
+    }
+    if (d.readyState === 'complete') { _schedule(); }
+    else { w.addEventListener('load', _schedule, { once: true }); }
+})(window, document, 'script', 'dataLayer', 'GTM-PG2RQNCD');</script>
     <!-- End Google Tag Manager -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Limpieza de Fosas Sépticas en Melipilla | Agroindustria 24/7">
@@ -734,7 +743,14 @@
         "opens": "00:00",
         "closes": "23:59"
       }
-    ]
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "reviewCount": "16",
+      "bestRating": "5",
+      "worstRating": "1"
+    }
   },
   {
     "@context": "https://schema.org",
@@ -781,10 +797,12 @@
     ]
   }
 ]
-    </script>
+</script>
 </head>
 
-<body class="bg-slate-50 text-slate-700 antialiased pb-32 md:pb-0 pb-30 md:pb-0">
+<body class="bg-slate-50 text-slate-700 antialiased pb-32 md:pb-0">
+    <a href="#main-content" id="skip-to-content-link" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-brand-600 focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:shadow-lg focus:font-bold">Saltar al contenido</a>
+
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PG2RQNCD" height="0" width="0"
             style="display:none;visibility:hidden"></iframe></noscript>
@@ -798,7 +816,7 @@
                 <a href="/" class="flex items-center gap-1" aria-label="Destape Rápido - Destapes Las Condes 24/7">
                     <div class="w-12 h-12 md:w-[72px] md:h-[72px] flex items-center justify-center">
                         <img src="/logo-nav.webp" alt="Logo Destape Rápido - Expertos en Alcantarillado" width="72"
-                            height="72" class="w-full h-full object-contain" loading="lazy" decoding="async">
+                            height="72" class="w-full h-full object-contain" loading="eager" fetchpriority="high" decoding="async">
                     </div>
                     <div class="flex flex-col justify-center -space-y-0.5">
                         <span
@@ -818,30 +836,30 @@
                         <button
                             class="flex items-center gap-1 hover:text-brand-600 transition-colors focus:outline-none cursor-default">
                             Servicios <i
-                                class="fa-solid fa-chevron-down text-xs opacity-50 group-hover:rotate-180 transition-transform duration-300"></i>
+                                class="fa-solid fa-chevron-down text-xs opacity-50 group-hover:rotate-180 transition-transform duration-300" aria-hidden="true"></i>
                         </button>
                         <div
                             class="absolute top-full left-0 w-72 bg-white rounded-xl shadow-xl border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 overflow-hidden">
                             <div class="p-2 space-y-1">
                                 <a href="/servicios/destape-alcantarillado"
                                     class="block px-4 py-2.5 rounded-lg hover:bg-brand-50 hover:text-brand-600 transition-colors">
-                                    <i class="fa-solid fa-toilet w-5 text-brand-400"></i> Destape Alcantarillado
+                                    <i class="fa-solid fa-toilet w-5 text-brand-400" aria-hidden="true"></i> Destape Alcantarillado
                                 </a>
                                 <a href="/servicios/limpieza-fosas-septicas"
                                     class="block px-4 py-2.5 rounded-lg hover:bg-brand-50 hover:text-brand-600 transition-colors">
-                                    <i class="fa-solid fa-truck-droplet w-5 text-brand-400"></i> Limpieza de Fosas
+                                    <i class="fa-solid fa-truck-droplet w-5 text-brand-400" aria-hidden="true"></i> Limpieza de Fosas
                                 </a>
                                 <a href="/servicios/destape-edificios-condominios"
                                     class="block px-4 py-2.5 rounded-lg hover:bg-brand-50 hover:text-brand-600 transition-colors">
-                                    <i class="fa-solid fa-building w-5 text-brand-400"></i> Edificios y Condominios
+                                    <i class="fa-solid fa-building w-5 text-brand-400" aria-hidden="true"></i> Edificios y Condominios
                                 </a>
                                 <a href="/servicios/inspeccion-camara-alcantarillado"
                                     class="block px-4 py-2.5 rounded-lg hover:bg-brand-50 hover:text-brand-600 transition-colors">
-                                    <i class="fa-solid fa-video w-5 text-brand-400"></i> Inspección con Cámara
+                                    <i class="fa-solid fa-video w-5 text-brand-400" aria-hidden="true"></i> Inspección con Cámara
                                 </a>
                                 <a href="/servicios/mantencion-preventiva"
                                     class="block px-4 py-2.5 rounded-lg hover:bg-brand-50 hover:text-brand-600 transition-colors">
-                                    <i class="fa-solid fa-clipboard-check w-5 text-brand-400"></i> Mantención Preventiva
+                                    <i class="fa-solid fa-clipboard-check w-5 text-brand-400" aria-hidden="true"></i> Mantención Preventiva
                                 </a>
                             </div>
                             <div class="bg-slate-50 border-t border-slate-100 p-2">
@@ -858,7 +876,7 @@
                         <button
                             class="flex items-center gap-1 hover:text-brand-600 transition-colors focus:outline-none cursor-default">
                             Zonas <i
-                                class="fa-solid fa-chevron-down text-xs opacity-50 group-hover:rotate-180 transition-transform duration-300"></i>
+                                class="fa-solid fa-chevron-down text-xs opacity-50 group-hover:rotate-180 transition-transform duration-300" aria-hidden="true"></i>
                         </button>
                         <!-- Mega Menu for Zones -->
                         <div
@@ -923,11 +941,11 @@
                     <div class="flex items-center gap-4 ml-4">
                         <a href="tel:+56997946463"
                             class="text-slate-900 font-bold hover:text-brand-600 transition hidden xl:block">
-                            <i class="fa-solid fa-phone mr-1"></i> +56 9 9794 6463
+                            <i class="fa-solid fa-phone mr-1" aria-hidden="true"></i> +56 9 9794 6463
                         </a>
                         <a href="https://wa.me/56997946463"
                             class="bg-brand-600 hover:bg-brand-700 text-white px-5 py-2.5 rounded-full font-bold shadow-lg shadow-brand-500/20 transition hover:-translate-y-0.5 flex items-center gap-2">
-                            <i class="fa-brands fa-whatsapp text-lg"></i> Urgencia
+                            <i class="fa-brands fa-whatsapp text-lg" aria-hidden="true"></i> Urgencia
                         </a>
                     </div>
                 </div>
@@ -936,21 +954,22 @@
                 <div class="flex items-center gap-4 lg:hidden">
                     <a href="tel:+56997946463"
                         class="flex items-center justify-center w-10 h-10 rounded-full bg-slate-100 text-slate-900 active:scale-95 transition">
-                        <i class="fa-solid fa-phone"></i>
+                        <i class="fa-solid fa-phone" aria-hidden="true"></i>
                     </a>
                     <button onclick="openMenu()" aria-label="Abrir menú de navegación"
-                        class="p-2.5 rounded-lg text-slate-900 hover:bg-slate-100 focus:outline-none transition active:scale-95">
-                        <i class="fa-solid fa-bars text-2xl"></i>
+                        class="p-2.5 rounded-lg text-slate-900 hover:bg-slate-100 focus:outline-none transition active:scale-95" aria-expanded="false" aria-controls="mobile-menu-overlay">
+                        <i class="fa-solid fa-bars text-2xl" aria-hidden="true"></i>
                     </button>
                 </div>
             </div>
         </div>
     </nav>
 
+    <main id="main-content">
     <header class="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden bg-slate-900">
         <div class="absolute inset-0 w-full h-full overflow-hidden z-0">
-            <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=2070&auto=format&fit=crop"
-                alt="Paisaje rural Melipilla" class="absolute top-0 left-0 w-full h-full object-cover opacity-40" loading="lazy" decoding="async">
+            <img src="/images/camion-haciendo-destape-en-zona-rural.webp"
+ alt="Paisaje rural Melipilla" class="absolute top-0 left-0 w-full h-full object-cover opacity-40" loading="lazy" decoding="async">
             <div class="absolute inset-0 bg-slate-900/60 z-10"></div>
             <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-600/30 rounded-full blur-[120px] z-10">
             </div>
@@ -961,7 +980,7 @@
                 <div class="text-center lg:text-left">
                     <div
                         class="inline-flex items-center gap-2 border border-slate-600/50 bg-slate-800/50 backdrop-blur-sm rounded-full px-4 py-1.5 text-xs font-bold text-slate-300 mb-6 uppercase tracking-wider">
-                        <i class="fa-solid fa-tractor text-yellow-400"></i> Especialistas en Parcelas y Zonas
+                        <i class="fa-solid fa-tractor text-yellow-400" aria-hidden="true"></i> Especialistas en Parcelas y Zonas
                         Industriales
                     </div>
 
@@ -980,19 +999,19 @@
                     <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                         <a href="tel:+56997946463"
                             class="bg-white text-brand-900 font-bold py-4 px-8 rounded-xl shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:shadow-[0_0_40px_rgba(255,255,255,0.4)] transition transform hover:-translate-y-1 flex items-center justify-center gap-3">
-                            <i class="fa-solid fa-phone text-brand-600"></i> Llamar Ahora
+                            <i class="fa-solid fa-phone text-brand-600" aria-hidden="true"></i> Llamar Ahora
                         </a>
                         <a href="https://wa.me/56997946463"
                             class="bg-green-600 hover:bg-green-500 text-white font-bold py-4 px-8 rounded-xl shadow-lg transition transform hover:-translate-y-1 flex items-center justify-center gap-3">
-                            <i class="fa-brands fa-whatsapp text-xl"></i> WhatsApp Urgencia
+                            <i class="fa-brands fa-whatsapp text-xl" aria-hidden="true"></i> WhatsApp Urgencia
                         </a>
                     </div>
 
                     <div
                         class="mt-8 flex items-center justify-center lg:justify-start gap-6 text-sm font-medium text-slate-300">
-                        <span class="flex items-center gap-2"><i class="fa-solid fa-certificate text-brand-500"></i>
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-certificate text-brand-500" aria-hidden="true"></i>
                             Autorizado Seremi</span>
-                        <span class="flex items-center gap-2"><i class="fa-solid fa-bolt text-yellow-400"></i> Vamos a
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-bolt text-yellow-400" aria-hidden="true"></i> Vamos a
                             Batuco</span>
                     </div>
                 </div>
@@ -1017,7 +1036,7 @@
                             class="flex items-center gap-4 p-3 bg-slate-700/50 rounded-xl border border-slate-600/30 group-hover:bg-slate-700/80 transition-colors">
                             <div
                                 class="w-10 h-10 bg-blue-500/20 text-blue-400 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                                <i class="fa-solid fa-truck-front"></i>
+                                <i class="fa-solid fa-truck-front" aria-hidden="true"></i>
                             </div>
                             <div>
                                 <p class="text-slate-200 text-sm font-bold">Camión Zona Norte</p>
@@ -1029,7 +1048,7 @@
                             class="flex items-center gap-4 p-3 bg-slate-700/50 rounded-xl border border-slate-600/30 group-hover:bg-slate-700/80 transition-colors">
                             <div
                                 class="w-10 h-10 bg-purple-500/20 text-purple-400 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                                <i class="fa-solid fa-clipboard-list"></i>
+                                <i class="fa-solid fa-clipboard-list" aria-hidden="true"></i>
                             </div>
                             <div>
                                 <p class="text-slate-200 text-sm font-bold">Certificado Inmediato</p>
@@ -1049,13 +1068,13 @@
             <div
                 class="flex flex-wrap justify-center items-center gap-8 md:gap-16 grayscale hover:grayscale-0 transition-all duration-500">
                 <div class="flex items-center gap-2 font-bold text-slate-700 text-lg"><i
-                        class="fa-solid fa-jar text-2xl"></i> Pomaire</div>
+                        class="fa-solid fa-jar text-2xl" aria-hidden="true"></i> Pomaire</div>
                 <div class="flex items-center gap-2 font-bold text-slate-700 text-lg"><i
-                        class="fa-solid fa-tractor text-2xl"></i> Bollenar</div>
+                        class="fa-solid fa-tractor text-2xl" aria-hidden="true"></i> Bollenar</div>
                 <div class="flex items-center gap-2 font-bold text-slate-700 text-lg"><i
-                        class="fa-solid fa-tree text-2xl"></i> Codigua</div>
+                        class="fa-solid fa-tree text-2xl" aria-hidden="true"></i> Codigua</div>
                 <div class="flex items-center gap-2 font-bold text-slate-700 text-lg"><i
-                        class="fa-solid fa-mountain-sun text-2xl"></i> San Pedro</div>
+                        class="fa-solid fa-mountain-sun text-2xl" aria-hidden="true"></i> San Pedro</div>
             </div>
         </div>
     </section>
@@ -1067,7 +1086,7 @@
         </div>
         <div class="container mx-auto px-4 relative z-10 text-center">
             <div class="inline-block p-4 rounded-full bg-brand-800/50 mb-6 border border-brand-700">
-                <i class="fa-solid fa-triangle-exclamation text-4xl text-yellow-400 animate-pulse-slow"></i>
+                <i class="fa-solid fa-triangle-exclamation text-4xl text-yellow-400 animate-pulse-slow" aria-hidden="true"></i>
             </div>
             <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-6">
                 ¿Emergencia en Melipilla?
@@ -1078,13 +1097,13 @@
             </p>
             <div class="flex justify-center gap-8 text-white/90 font-medium text-sm uppercase tracking-widest">
                 <div class="flex flex-col items-center gap-2">
-                    <i class="fa-solid fa-check-circle text-green-500 text-xl"></i> Domingos
+                    <i class="fa-solid fa-check-circle text-green-500 text-xl" aria-hidden="true"></i> Domingos
                 </div>
                 <div class="flex flex-col items-center gap-2">
-                    <i class="fa-solid fa-check-circle text-green-500 text-xl"></i> Festivos
+                    <i class="fa-solid fa-check-circle text-green-500 text-xl" aria-hidden="true"></i> Festivos
                 </div>
                 <div class="flex flex-col items-center gap-2">
-                    <i class="fa-solid fa-check-circle text-green-500 text-xl"></i> Noches
+                    <i class="fa-solid fa-check-circle text-green-500 text-xl" aria-hidden="true"></i> Noches
                 </div>
             </div>
         </div>
@@ -1112,7 +1131,7 @@
                             class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" decoding="async">
                         <div
                             class="absolute bottom-[15px] right-6 w-14 h-14 bg-brand-600 rounded-xl flex items-center justify-center text-white text-2xl shadow-lg z-10 group-hover:bg-brand-900 transition-colors">
-                            <i class="fa-solid fa-truck-droplet"></i>
+                            <i class="fa-solid fa-truck-droplet" aria-hidden="true"></i>
                         </div>
                     </div>
                     <div class="p-8 pt-10">
@@ -1122,9 +1141,9 @@
                             para evitar malos olores en tu parcela.
                         </p>
                         <ul class="text-xs text-slate-500 space-y-1">
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500" aria-hidden="true"></i>
                                 Disposición certificada</li>
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500" aria-hidden="true"></i>
                                 Revisión de niveles</li>
                         </ul>
                     </div>
@@ -1138,7 +1157,7 @@
                             class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" decoding="async">
                         <div
                             class="absolute bottom-[15px] right-6 w-14 h-14 bg-brand-600 rounded-xl flex items-center justify-center text-white text-2xl shadow-lg z-10 group-hover:bg-brand-900 transition-colors">
-                            <i class="fa-solid fa-water"></i>
+                            <i class="fa-solid fa-water" aria-hidden="true"></i>
                         </div>
                     </div>
                     <div class="p-8 pt-10">
@@ -1148,9 +1167,9 @@
                             recuperamos con agua a alta presión.
                         </p>
                         <ul class="text-xs text-slate-500 space-y-1">
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500" aria-hidden="true"></i>
                                 Recupera permeabilidad</li>
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> Evita
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500" aria-hidden="true"></i> Evita
                                 hacer pozos nuevos</li>
                         </ul>
                     </div>
@@ -1159,12 +1178,12 @@
                 <article
                     class="bg-white rounded-2xl shadow-card border border-slate-100 overflow-hidden group hover:shadow-xl transition-all duration-300">
                     <div class="relative h-56 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1605980776566-0486c3ac7617?q=80&w=800&auto=format&fit=crop"
-                            alt="Destape de raíces en tuberías" width="400" height="224" loading="lazy"
-                            class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" decoding="async">
+                        <img src="/images/Destape-alcantarillado-en-parcela.webp"
+ alt="Destape de raíces en tuberías" width="400" height="224" loading="lazy"
+ class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" decoding="async">
                         <div
                             class="absolute bottom-[15px] right-6 w-14 h-14 bg-brand-600 rounded-xl flex items-center justify-center text-white text-2xl shadow-lg z-10 group-hover:bg-brand-900 transition-colors">
-                            <i class="fa-solid fa-root-variable"></i>
+                            <i class="fa-solid fa-tree" aria-hidden="true"></i>
                         </div>
                     </div>
                     <div class="p-8 pt-10">
@@ -1174,9 +1193,9 @@
                             para liberar el flujo sin romper.
                         </p>
                         <ul class="text-xs text-slate-500 space-y-1">
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500" aria-hidden="true"></i>
                                 Máquinas Ridgid</li>
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> Video
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500" aria-hidden="true"></i> Video
                                 inspección</li>
                         </ul>
                     </div>
@@ -1194,17 +1213,17 @@
                     class="inline-flex items-center gap-3 bg-slate-50 px-6 py-3 rounded-full border border-slate-200 shadow-sm">
                     <div class="flex flex-col items-start">
                         <div class="flex text-yellow-400 text-sm space-x-1">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                class="fa-solid fa-star-half-stroke"></i>
+                            <i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i
+                                class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i
+                                class="fa-solid fa-star-half-stroke" aria-hidden="true"></i>
                         </div>
-                        <a href="/testimonios" class="text-xs text-slate-500 font-bold mt-1 hover:text-brand-600 transition underline decoration-slate-300"><i class="fa-brands fa-google mr-1"></i>Ver 50+ Opiniones Reales</a>
+                        <a href="/testimonios" class="text-xs text-slate-500 font-bold mt-1 hover:text-brand-600 transition underline decoration-slate-300"><i class="fa-brands fa-google mr-1" aria-hidden="true"></i>Ver 50+ Opiniones Reales</a>
                     </div>
                     <div id="action-container" class="flex items-center">
                         <div class="h-8 w-px bg-slate-300 mx-2"></div>
                         <button onclick="toggleReviewForm()"
                             class="text-sm font-bold text-brand-600 hover:text-brand-800 underline decoration-2 underline-offset-2 transition">
-                            <i class="fa-regular fa-pen-to-square mr-1"></i> Escribir
+                            <i class="fa-regular fa-pen-to-square mr-1" aria-hidden="true"></i> Escribir
                         </button>
                     </div>
                 </div>
@@ -1215,7 +1234,7 @@
                 <div class="bg-white rounded-2xl shadow-2xl p-6 max-w-md w-full relative animate-fade-in-up">
                     <button onclick="toggleReviewForm()"
                         class="absolute top-4 right-4 text-slate-400 hover:text-slate-600"><i
-                            class="fa-solid fa-xmark text-xl"></i></button>
+                            class="fa-solid fa-xmark text-xl" aria-hidden="true"></i></button>
                     <h3 class="text-xl font-bold text-slate-900 mb-4">Tu experiencia</h3>
                     <form id="userReviewForm" class="space-y-4">
                         <div class="grid grid-cols-2 gap-4">
@@ -1258,10 +1277,10 @@
             <div class="relative group px-4 md:px-12">
                 <button onclick="scrollCarousel(-1)" aria-label="Anterior testimonio"
                     class="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 bg-white border border-slate-200 rounded-full items-center justify-center text-slate-600 shadow-md hover:bg-slate-50 z-10 transition"><i
-                        class="fa-solid fa-chevron-left"></i></button>
+                        class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
                 <button onclick="scrollCarousel(1)" aria-label="Siguiente testimonio"
                     class="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 bg-white border border-slate-200 rounded-full items-center justify-center text-slate-600 shadow-md hover:bg-slate-50 z-10 transition"><i
-                        class="fa-solid fa-chevron-right"></i></button>
+                        class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
                 <div id="carousel-track"
                     class="flex gap-6 overflow-x-auto snap-x snap-mandatory pt-5 pb-12 px-4 scrollbar-hide scroll-smooth items-stretch">
                 </div>
@@ -1275,7 +1294,7 @@
                 <div>
                     <div
                         class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-brand-600 text-xs font-bold uppercase mb-6">
-                        <i class="fa-solid fa-map-location-dot"></i> Conocimiento Local
+                        <i class="fa-solid fa-map-location-dot" aria-hidden="true"></i> Conocimiento Local
                     </div>
                     <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-6">
                         Expertos en Parcelas de Melipilla
@@ -1289,7 +1308,7 @@
                         <div class="flex gap-4">
                             <div
                                 class="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 flex-shrink-0">
-                                <i class="fa-solid fa-up-down-left-right"></i>
+                                <i class="fa-solid fa-up-down-left-right" aria-hidden="true"></i>
                             </div>
                             <div>
                                 <h3 class="text-lg font-bold text-slate-900">Mangueras de Largo Alcance</h3>
@@ -1303,7 +1322,7 @@
                         <div class="flex gap-4">
                             <div
                                 class="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 flex-shrink-0">
-                                <i class="fa-brands fa-envira"></i>
+                                <i class="fa-brands fa-envira" aria-hidden="true"></i>
                             </div>
                             <div>
                                 <h3 class="text-lg font-bold text-slate-900">Cuidado Ambiental</h3>
@@ -1320,9 +1339,9 @@
                     <div
                         class="absolute inset-0 bg-gradient-to-tr from-brand-600 to-transparent opacity-10 rounded-3xl">
                     </div>
-                    <img src="https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?q=80&w=600&auto=format&fit=crop"
-                        alt="Parcela en Melipilla" loading="lazy" width="600" height="400"
-                        class="rounded-3xl shadow-2xl border border-slate-100 grayscale hover:grayscale-0 transition duration-700 w-full h-auto" decoding="async">
+                    <img src="/images/Destape-alcantarillado-con-camion-en-subterraneo-de-edificio.webp"
+ alt="Parcela en Melipilla" loading="lazy" width="600" height="400"
+ class="rounded-3xl shadow-2xl border border-slate-100 grayscale hover:grayscale-0 transition duration-700 w-full h-auto" decoding="async">
                     <div
                         class="absolute bottom-8 left-8 bg-white/90 backdrop-blur p-4 rounded-xl shadow-lg max-w-xs border-l-4 border-brand-500">
                         <p class="text-xs font-bold text-slate-500 uppercase">Dato Técnico</p>
@@ -1340,9 +1359,9 @@
                 <div class="relative order-2 lg:order-1">
                     <div class="absolute inset-0 bg-gradient-to-tl from-blue-600 to-transparent opacity-10 rounded-3xl">
                     </div>
-                    <img src="https://images.unsplash.com/photo-1533624689043-b2b019943912?q=80&w=600&auto=format&fit=crop"
-                        alt="Camino rural en Melipilla" loading="lazy" width="600" height="400"
-                        class="rounded-3xl shadow-2xl border border-slate-100 grayscale hover:grayscale-0 transition duration-700 w-full h-auto" decoding="async">
+                    <img src="/images/camion-limpia-fosas-y-mas-servicios.webp"
+ alt="Camino rural en Melipilla" loading="lazy" width="600" height="400"
+ class="rounded-3xl shadow-2xl border border-slate-100 grayscale hover:grayscale-0 transition duration-700 w-full h-auto" decoding="async">
                     <div
                         class="absolute bottom-8 right-8 bg-white/95 backdrop-blur p-5 rounded-xl shadow-lg max-w-xs border-r-4 border-blue-500 text-right">
                         <p class="text-xs font-bold text-slate-400 uppercase">Certificación</p>
@@ -1354,7 +1373,7 @@
                 <div class="order-1 lg:order-2">
                     <div
                         class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-50 text-green-700 text-xs font-bold uppercase mb-6">
-                        <i class="fa-solid fa-file-contract"></i> Normativa Sanitaria
+                        <i class="fa-solid fa-file-contract" aria-hidden="true"></i> Normativa Sanitaria
                     </div>
                     <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-6">
                         Cumplimiento y Tranquilidad
@@ -1368,7 +1387,7 @@
                         <div class="flex gap-5">
                             <div
                                 class="w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center text-brand-600 flex-shrink-0 shadow-sm">
-                                <i class="fa-solid fa-file-signature text-2xl"></i>
+                                <i class="fa-solid fa-file-signature text-2xl" aria-hidden="true"></i>
                             </div>
                             <div>
                                 <h3 class="text-lg font-bold text-slate-900">Certificado de Disposición</h3>
@@ -1382,7 +1401,7 @@
                         <div class="flex gap-5">
                             <div
                                 class="w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center text-brand-600 flex-shrink-0 shadow-sm">
-                                <i class="fa-solid fa-hand-holding-droplet text-2xl"></i>
+                                <i class="fa-solid fa-hand-holding-droplet text-2xl" aria-hidden="true"></i>
                             </div>
                             <div>
                                 <h3 class="text-lg font-bold text-slate-900">Mantención de Bombas</h3>
@@ -1413,11 +1432,11 @@
                     <div class="flex flex-col sm:flex-row gap-5 justify-center">
                         <a href="tel:+56997946463"
                             class="bg-white text-slate-900 text-lg font-bold py-4 px-10 rounded-xl hover:bg-slate-100 transition shadow-lg transform hover:-translate-y-1">
-                            <i class="fa-solid fa-phone mr-2"></i> Llamar Ahora
+                            <i class="fa-solid fa-phone mr-2" aria-hidden="true"></i> Llamar Ahora
                         </a>
                         <a href="https://wa.me/56997946463"
                             class="bg-green-600 text-white text-lg font-bold py-4 px-10 rounded-xl hover:bg-green-500 transition shadow-lg shadow-green-500/25 transform hover:-translate-y-1 flex items-center justify-center gap-2">
-                            <i class="fa-brands fa-whatsapp text-2xl"></i> WhatsApp
+                            <i class="fa-brands fa-whatsapp text-2xl" aria-hidden="true"></i> WhatsApp
                         </a>
                     </div>
                     <p class="mt-6 text-sm text-slate-400">Cobertura total en Melipilla: Pomaire, Bollenar y Codigua.</p>
@@ -1475,7 +1494,7 @@
                         class="flex justify-between items-center font-bold text-slate-900 list-none p-6 cursor-pointer hover:bg-slate-50 transition select-none">
                         <span>¿Atienden agroindustria, lecherías o avícolas en Melipilla?</span>
                         <span class="transition duration-300 group-open:rotate-180"><i
-                                class="fa-solid fa-chevron-down text-brand-500"></i></span>
+                                class="fa-solid fa-chevron-down text-brand-500" aria-hidden="true"></i></span>
                     </summary>
                     <div class="text-slate-600 px-6 pb-6 text-sm leading-relaxed border-t border-slate-100 pt-4">
                         <p>Sí, somos especialistas en limpieza de fosas y cámaras industriales para agroindustria. Trabajamos con boleta o factura, con certificado de retiro y cumpliendo el DS 236/1926. Nuestros camiones están preparados para transitar por
@@ -1488,7 +1507,7 @@
                         class="flex justify-between items-center font-bold text-slate-900 list-none p-6 cursor-pointer hover:bg-slate-50 transition select-none">
                         <span>¿La manguera alcanza si la fosa está al fondo del sitio?</span>
                         <span class="transition duration-300 group-open:rotate-180"><i
-                                class="fa-solid fa-chevron-down text-brand-500"></i></span>
+                                class="fa-solid fa-chevron-down text-brand-500" aria-hidden="true"></i></span>
                     </summary>
                     <div class="text-slate-600 px-6 pb-6 text-sm leading-relaxed border-t border-slate-100 pt-4">
                         <p>Generalmente sí. Contamos con extensiones de manguera de <strong>hasta 80 metros</strong>.
@@ -1502,7 +1521,7 @@
                         class="flex justify-between items-center font-bold text-slate-900 list-none p-6 cursor-pointer hover:bg-slate-50 transition select-none">
                         <span>¿Realizan limpieza de cámaras desgrasadoras?</span>
                         <span class="transition duration-300 group-open:rotate-180"><i
-                                class="fa-solid fa-chevron-down text-brand-500"></i></span>
+                                class="fa-solid fa-chevron-down text-brand-500" aria-hidden="true"></i></span>
                     </summary>
                     <div class="text-slate-600 px-6 pb-6 text-sm leading-relaxed border-t border-slate-100 pt-4">
                         <p>Sí, y es muy recomendable hacerlo junto con la fosa. La grasa de la cocina es la principal
@@ -1515,7 +1534,7 @@
                         class="flex justify-between items-center font-bold text-slate-900 list-none p-6 cursor-pointer hover:bg-slate-50 transition select-none">
                         <span>¿Qué pasa si hay raíces en las tuberías?</span>
                         <span class="transition duration-300 group-open:rotate-180"><i
-                                class="fa-solid fa-chevron-down text-brand-500"></i></span>
+                                class="fa-solid fa-chevron-down text-brand-500" aria-hidden="true"></i></span>
                     </summary>
                     <div class="text-slate-600 px-6 pb-6 text-sm leading-relaxed border-t border-slate-100 pt-4">
                         <p>En Melipilla el problema clásico son raíces y la grasa industrial de pequeñas plantas. Tenemos máquinas eléctricas y hidrojet de alta presión para ambos casos. Utilizamos máquinas eléctricas con
@@ -1575,19 +1594,21 @@
                 <div>
                     <h3 class="font-bold text-slate-800 mb-3 border-b border-slate-100 pb-2">Atención Especializada</h3>
                     <ul class="space-y-2">
-                        <li><span class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500"></i>
+                        <li><span class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500" aria-hidden="true"></i>
                                 Parcelas de Agrado</span></li>
-                        <li><span class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500"></i>
+                        <li><span class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500" aria-hidden="true"></i>
                                 Condominios</span></li>
-                        <li><span class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500"></i> Zonas
+                        <li><span class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500" aria-hidden="true"></i> Zonas
                                 Industriales</span></li>
-                        <li><span class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500"></i>
+                        <li><span class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500" aria-hidden="true"></i>
                                 Colegios Rurales</span></li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
+
+    </main>
 
     <footer class="bg-slate-50 text-slate-500 py-12 text-sm border-t border-slate-200">
         <div class="container mx-auto px-4">
@@ -1612,13 +1633,13 @@
                         hogares y empresas. Atendemos urgencias reales con equipos certificados.</p>
                     <div class="flex gap-4">
                         <a href="/" class="text-slate-500 hover:text-brand-600 transition" aria-label="Facebook">
-                            <i class="fa-brands fa-facebook text-xl"></i>
+                            <i class="fa-brands fa-facebook text-xl" aria-hidden="true"></i>
                         </a>
                         <a href="/" class="text-slate-500 hover:text-brand-600 transition" aria-label="Instagram">
-                            <i class="fa-brands fa-instagram text-xl"></i>
+                            <i class="fa-brands fa-instagram text-xl" aria-hidden="true"></i>
                         </a>
                         <a href="/" class="text-slate-500 hover:text-brand-600 transition" aria-label="LinkedIn">
-                            <i class="fa-brands fa-linkedin text-xl"></i>
+                            <i class="fa-brands fa-linkedin text-xl" aria-hidden="true"></i>
                         </a>
                     </div>
                 </div>
@@ -1681,11 +1702,11 @@
                 </div>
                 <div class="flex gap-4 mt-4 md:mt-0">
                     <a href="/" class="hover:text-slate-800 transition" aria-label="Facebook"><i
-                            class="fa-brands fa-facebook text-lg"></i></a>
+                            class="fa-brands fa-facebook text-lg" aria-hidden="true"></i></a>
                     <a href="/" class="hover:text-slate-800 transition" aria-label="Instagram"><i
-                            class="fa-brands fa-instagram text-lg"></i></a>
+                            class="fa-brands fa-instagram text-lg" aria-hidden="true"></i></a>
                     <a href="/" class="hover:text-slate-800 transition" aria-label="LinkedIn"><i
-                            class="fa-brands fa-linkedin text-lg"></i></a>
+                            class="fa-brands fa-linkedin text-lg" aria-hidden="true"></i></a>
                 </div>
             </div>
         </div>
@@ -1708,12 +1729,12 @@
             <a href="tel:+56997946463"
                 class="flex-1 bg-brand-600 text-white font-bold rounded-xl py-3 flex items-center justify-center gap-2 active:scale-95 transition shadow-lg shadow-brand-600/20"
                 aria-label="Llamar ahora">
-                <i class="fa-solid fa-phone animate-pulse"></i> Llamar
+                <i class="fa-solid fa-phone animate-pulse" aria-hidden="true"></i> Llamar
             </a>
             <a href="https://wa.me/56997946463"
                 class="flex-1 bg-green-600 text-white font-bold rounded-xl py-3 flex items-center justify-center gap-2 active:scale-95 transition shadow-lg shadow-green-500/20"
                 aria-label="WhatsApp">
-                <i class="fa-brands fa-whatsapp text-xl"></i> WhatsApp
+                <i class="fa-brands fa-whatsapp text-xl" aria-hidden="true"></i> WhatsApp
             </a>
         </div>
     </div>
@@ -1736,7 +1757,7 @@
     <div class="wa-chat-box" id="whatsapp-chat">
         <div class="wa-header">
             <button class="wa-close-btn" onclick="toggleChat()">×</button>
-            <img src="/logo-nav.png" alt="Perfil" class="wa-profile-pic" loading="lazy" decoding="async">
+            <img src="/logo-nav.webp" alt="Avatar de Destape Rápido en WhatsApp" class="wa-profile-pic" width="50" height="50" loading="lazy" decoding="async">
             <div class="wa-info">
                 <h4>Destape Rápido</h4>
                 <p>En línea</p>
@@ -1789,10 +1810,10 @@
                 card.className = `min-w-[85%] md:min-w-[350px] min-h-[281px] bg-white p-8 rounded-2xl relative border ${border} shadow-sm snap-center flex flex-col h-full`;
 
                 let stars = '';
-                for (let i = 0; i < 5; i++) stars += i < r.stars ? '<i class="fa-solid fa-star"></i>' : '<i class="fa-regular fa-star text-slate-300"></i>';
+                for (let i = 0; i < 5; i++) stars += i < r.stars ? '<i class="fa-solid fa-star" aria-hidden="true"></i>' : '<i class="fa-regular fa-star text-slate-300" aria-hidden="true"></i>';
 
-                const badge = isUser ? `<div class="absolute -top-5 left-6 bg-brand-600 text-white text-[11px] font-bold px-4 py-1.5 rounded-full shadow-lg z-20 flex items-center gap-2"><i class="fa-solid fa-user-pen"></i> Tu Opinión</div>` : '';
-                const del = isUser ? `<button onclick="deleteReview()" class="absolute top-4 right-4 text-slate-300 hover:text-red-500 transition p-2 z-20 bg-white rounded-full"><i class="fa-regular fa-trash-can"></i></button>` : `<i class="fa-solid fa-quote-right absolute top-8 right-8 text-slate-100 text-5xl -z-0"></i>`;
+                const badge = isUser ? `<div class="absolute -top-5 left-6 bg-brand-600 text-white text-[11px] font-bold px-4 py-1.5 rounded-full shadow-lg z-20 flex items-center gap-2"><i class="fa-solid fa-user-pen" aria-hidden="true"></i> Tu Opinión</div>` : '';
+                const del = isUser ? `<button onclick="deleteReview()" class="absolute top-4 right-4 text-slate-300 hover:text-red-500 transition p-2 z-20 bg-white rounded-full"><i class="fa-regular fa-trash-can" aria-hidden="true"></i></button>` : `<i class="fa-solid fa-quote-right absolute top-8 right-8 text-slate-100 text-5xl -z-0" aria-hidden="true"></i>`;
 
                 card.innerHTML = `${badge}${del}
                     <div class="relative z-10 flex-1">
@@ -1896,7 +1917,7 @@
                 <span class="font-extrabold text-slate-900 text-lg tracking-tight">MENÚ</span>
                 <button onclick="closeMenu()" aria-label="Cerrar menú"
                     class="w-10 h-10 rounded-full bg-slate-50 text-slate-500 hover:bg-red-50 hover:text-red-500 transition flex items-center justify-center">
-                    <i class="fa-solid fa-xmark text-xl"></i>
+                    <i class="fa-solid fa-xmark text-xl" aria-hidden="true"></i>
                 </button>
             </div>
 
@@ -1909,7 +1930,7 @@
                         class="w-full flex items-center justify-between px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 transition"
                         onclick="toggleSubmenu('sub-servicios', this)">
                         Servicios
-                        <i class="fa-solid fa-chevron-down text-xs text-slate-400 transition-transform"></i>
+                        <i class="fa-solid fa-chevron-down text-xs text-slate-400 transition-transform" aria-hidden="true"></i>
                     </button>
                     <div id="sub-servicios" class="hidden pl-4 space-y-1 bg-slate-50/50 rounded-b-xl pb-2">
                         <a href="/servicios/destape-alcantarillado" onclick="closeMenu()"
@@ -1937,7 +1958,7 @@
                         class="w-full flex items-center justify-between px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 transition"
                         onclick="toggleSubmenu('sub-zonas', this)">
                         Zonas
-                        <i class="fa-solid fa-chevron-down text-xs text-slate-400 transition-transform"></i>
+                        <i class="fa-solid fa-chevron-down text-xs text-slate-400 transition-transform" aria-hidden="true"></i>
                     </button>
                     <div id="sub-zonas" class="hidden pl-4 space-y-1 bg-slate-50/50 rounded-b-xl pb-2">
                         <div class="px-4 py-1 text-[10px] font-bold text-slate-400 uppercase">Urbano</div>
@@ -1955,6 +1976,32 @@
                             class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">La Reina</a>
                         <a href="/zonas/urbano/nunoa" onclick="closeMenu()"
                             class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Ñuñoa</a>
+                        <a href="/zonas/urbano/cerrillos" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Cerrillos</a>
+                        <a href="/zonas/urbano/estacion-central" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Estación Central</a>
+                        <a href="/zonas/urbano/independencia" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Independencia</a>
+                        <a href="/zonas/urbano/la-florida" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">La Florida</a>
+                        <a href="/zonas/urbano/macul" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Macul</a>
+                        <a href="/zonas/urbano/maipu" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Maipú</a>
+                        <a href="/zonas/urbano/penalolen" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Peñalolén</a>
+                        <a href="/zonas/urbano/pudahuel" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Pudahuel</a>
+                        <a href="/zonas/urbano/puente-alto" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Puente Alto</a>
+                        <a href="/zonas/urbano/quilicura" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Quilicura</a>
+                        <a href="/zonas/urbano/recoleta" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Recoleta</a>
+                        <a href="/zonas/urbano/san-miguel" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">San Miguel</a>
+                        <a href="/zonas/urbano/santiago-centro" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Santiago Centro</a>
                         <a href="/zonas/urbano/" onclick="closeMenu()"
                             class="block px-4 py-2 text-sm font-bold text-brand-600 hover:underline mt-1 mb-2">
                             Ver todas Urbano &rarr;
@@ -1985,6 +2032,14 @@
                         <a href="/zonas/rural/calera-de-tango" onclick="closeMenu()"
                             class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Calera de
                             Tango</a>
+                        <a href="/zonas/rural/curacavi" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Curacaví</a>
+                        <a href="/zonas/rural/melipilla" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Melipilla</a>
+                        <a href="/zonas/rural/padre-hurtado" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Padre Hurtado</a>
+                        <a href="/zonas/rural/penaflor" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Peñaflor</a>
                         <a href="/zonas/rural/" onclick="closeMenu()"
                             class="block px-4 py-2 text-sm font-bold text-brand-600 hover:underline mt-2 border-t border-slate-200/50 pt-2">
                             Ver todas las zonas &rarr;
@@ -2002,7 +2057,7 @@
             <div class="p-6 bg-slate-50 border-t border-slate-100">
                 <a href="https://wa.me/56997946463"
                     class="flex items-center justify-center gap-2 w-full bg-green-500 text-white font-bold py-3 rounded-xl shadow-lg shadow-green-500/20 active:scale-95 transition">
-                    <i class="fa-brands fa-whatsapp text-xl"></i> WhatsApp 24/7
+                    <i class="fa-brands fa-whatsapp text-xl" aria-hidden="true"></i> WhatsApp 24/7
                 </a>
             </div>
         </div>
@@ -2082,6 +2137,9 @@
                     }
                 </script>
     <script src="/js/conversion.js" defer></script>
+    <script src="/js/a11y-menu.js" defer></script>
+    <script src="/js/mobile-sticky-cta.js" defer></script>
+    <script src="/js/register-sw.js" defer></script>
 </body>
 
 </html>

@@ -1,0 +1,734 @@
+{
+  "metadata": {
+    "sitio": "https://destaperapido.cl",
+    "repositorio_github": "https://github.com/depsu/destaperapido",
+    "fecha": "2026-05-17",
+    "version": "3.0 - DETALLADA PARA IMPLEMENTACIÓN",
+    "objetivo": "Conseguir 100/100 en Performance, Accesibilidad, Best Practices y SEO en mobile",
+    "fuente": "Lighthouse 13.0.1 (Moto G Power, 4G lenta) + CrUX (últimos 28 días) + Inspección DOM",
+    "stack_detectado": {
+      "css": "Tailwind CSS (output.css local)",
+      "iconos": "Font Awesome 6.4-6.5 via cdnjs",
+      "fuentes": "Google Fonts (fonts.googleapis.com)",
+      "analytics": "Google Tag Manager + Microsoft Clarity",
+      "scripts_propios": [
+        "availability-badge.js",
+        "conversion.js",
+        "google-reviews.js"
+      ]
+    }
+  },
+  "scores_actuales_mobile": {
+    "/": {
+      "perf": 76,
+      "a11y": 90,
+      "bp": 96,
+      "seo": 100
+    },
+    "/zonas/rural/talagante": {
+      "perf": 60,
+      "a11y": 90,
+      "bp": 96,
+      "seo": 100
+    },
+    "/zonas/rural/isla-de-maipo": {
+      "perf": 73,
+      "a11y": 90,
+      "bp": 96,
+      "seo": 100
+    },
+    "/zonas/rural/colina": {
+      "perf": 61,
+      "a11y": 90,
+      "bp": 96,
+      "seo": 100
+    },
+    "/zonas/rural/buin-paine": {
+      "perf": 66,
+      "a11y": 90,
+      "bp": 100,
+      "seo": 100
+    },
+    "/zonas/rural/lampa": {
+      "perf": 52,
+      "a11y": 92,
+      "bp": 100,
+      "seo": 100
+    },
+    "/zonas/rural/calera-de-tango": {
+      "perf": 58,
+      "a11y": 92,
+      "bp": 100,
+      "seo": 100
+    },
+    "/zonas/rural/pirque": {
+      "perf": 65,
+      "a11y": 92,
+      "bp": 100,
+      "seo": 100
+    },
+    "/precios-orientativos": {
+      "perf": 63,
+      "a11y": 88,
+      "bp": 96,
+      "seo": 100
+    }
+  },
+  "problemas_detectados_por_google": {
+    "PERFORMANCE": {
+      "P1_imagenes_pesadas_sin_optimizar": {
+        "titulo": "Mejorar la entrega de imágenes",
+        "detalle_google": "Las imágenes se sirven con dimensiones mayores a las necesarias para mobile.",
+        "paginas_afectadas": {
+          "/zonas/rural/lampa": "Ahorro estimado: 311 KiB",
+          "/zonas/rural/calera-de-tango": "Ahorro estimado: 307 KiB",
+          "/zonas/rural/pirque": "Ahorro estimado: 307 KiB",
+          "/zonas/rural/buin-paine": "Ahorro estimado: 221 KiB",
+          "/zonas/rural/talagante": "Ahorro estimado: 170 KiB",
+          "/zonas/rural/isla-de-maipo": "Ahorro estimado: 133 KiB",
+          "/zonas/rural/colina": "Ahorro estimado: 117 KiB",
+          "/precios-orientativos": "Ahorro estimado: 10 KiB",
+          "/": "Ahorro estimado: 69 KiB"
+        },
+        "evidencia_codigo": {
+          "problema_1": "Hero LCP del home tiene loading=lazy: <img src='/logo-nav.webp' loading='lazy' decoding='async'>. El logo NO debe ser lazy ya que es above-the-fold.",
+          "problema_2": "Imagen 'Paisaje rural Lampa' tiene natW=2070 pero se muestra a 1440px (mobile lo achica a 393px). Se sirven 4-5x más píxeles de los necesarios.",
+          "problema_3": "Imágenes hero rurales tienen loading='lazy' siendo que son LCP. Bloquea el preload y aumenta LCP en 4-9s en redes lentas."
+        }
+      },
+      "P2_render_blocking_resources": {
+        "titulo": "Solicitudes que bloquean el renderizado",
+        "detalle_google": "CSS y JS síncronos bloquean el primer pintado.",
+        "paginas_afectadas": {
+          "/zonas/rural/lampa": "450 ms ahorro",
+          "/zonas/rural/talagante": "450 ms ahorro",
+          "/precios-orientativos": "300 ms ahorro",
+          "/zonas/rural/colina": "300 ms ahorro",
+          "/zonas/rural/calera-de-tango": "300 ms ahorro",
+          "/zonas/rural/buin-paine": "150 ms ahorro",
+          "/zonas/rural/isla-de-maipo": "150 ms ahorro",
+          "/zonas/rural/pirque": "150 ms ahorro"
+        },
+        "evidencia_codigo": {
+          "problema_1": "Font Awesome CDN cargado síncrono: <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'> - este archivo pesa ~70 KiB y bloquea render.",
+          "problema_2": "Google Fonts cargado síncrono via <link rel='stylesheet' href='https://fonts.googleapis.com/...'>",
+          "problema_3": "output.css de Tailwind probablemente sin purge - se cargan muchas reglas no usadas (18-28 KiB ahorro detectado)."
+        }
+      },
+      "P3_js_no_usado": {
+        "titulo": "Reduce el contenido JavaScript que no se use",
+        "detalle_google": "148-149 KiB de JavaScript se descarga pero no se ejecuta.",
+        "paginas_afectadas": "TODAS - 148 KiB consistente en cada página",
+        "evidencia_codigo": {
+          "problema_1": "Posible bundle único con librerías no usadas en mobile.",
+          "problema_2": "Microsoft Clarity + GTM cargan código adicional dinámicamente.",
+          "problema_3": "Font Awesome JS si está cargado junto con CSS duplica funcionalidad."
+        }
+      },
+      "P4_css_no_usado": {
+        "titulo": "Reduce el contenido CSS que no se use",
+        "detalle_google": "18-28 KiB de CSS descargado pero no aplicado.",
+        "paginas_afectadas": "TODAS",
+        "evidencia_codigo": {
+          "problema_1": "Tailwind output.css sin purge correcto - genera todas las utilidades incluso las no usadas en HTML.",
+          "problema_2": "Font Awesome carga el CSS completo (all.min.css) cuando se usan ~10-15 iconos."
+        }
+      },
+      "P5_tareas_largas_hilo_principal": {
+        "titulo": "Evita tareas largas del hilo principal",
+        "detalle_google": "Tareas que bloquean el thread principal por más de 50ms.",
+        "paginas_afectadas": {
+          "/zonas/rural/lampa": "7 tareas largas - TBT 360ms",
+          "/zonas/rural/isla-de-maipo": "5 tareas largas - TBT 120ms",
+          "/zonas/rural/pirque": "4 tareas largas - TBT 100ms",
+          "/precios-orientativos": "4 tareas largas - TBT 270ms",
+          "/zonas/rural/buin-paine": "3 tareas largas - TBT 260ms",
+          "/zonas/rural/colina": "3 tareas largas - TBT 160ms",
+          "/zonas/rural/talagante": "3 tareas largas - TBT 120ms",
+          "/zonas/rural/calera-de-tango": "3 tareas largas - TBT 80ms",
+          "/": "5 tareas largas - TBT 220ms"
+        },
+        "evidencia_codigo": {
+          "problema_1": "GTM ejecuta múltiples tags simultáneamente al cargar.",
+          "problema_2": "availability-badge.js y conversion.js se cargan defer pero ejecutan trabajo pesado al inicio.",
+          "problema_3": "google-reviews.js hace llamadas a API en main thread."
+        }
+      },
+      "P6_preconnect_excesivos": {
+        "titulo": "Advertencia: más de 4 conexiones preconnect",
+        "detalle_google": "Se detectaron 6 preconnect. Solo deben usarse para orígenes críticos.",
+        "preconnects_actuales": [
+          "https://www.transparenttextures.com/",
+          "https://cdnjs.cloudflare.com/",
+          "https://www.googletagmanager.com/",
+          "https://fonts.googleapis.com/",
+          "https://fonts.gstatic.com/",
+          "https://images.unsplash.com/"
+        ],
+        "recomendacion": "Mantener solo: fonts.gstatic.com (LCP critical) y www.googletagmanager.com. Eliminar el resto.",
+        "paginas_afectadas": "TODAS las páginas de zonas"
+      },
+      "P7_cache_eficiente": {
+        "titulo": "Usar tiempos de vida de caché eficientes",
+        "detalle_google": "Ahorro estimado: 10 KiB. Recursos con cache muy corta.",
+        "paginas_afectadas": "TODAS"
+      },
+      "P8_visualizacion_fuentes": {
+        "titulo": "Visualización de fuentes (FOIT)",
+        "detalle_google": "Ahorro estimado 20-30ms. Las fuentes no muestran texto hasta cargar (font-display ausente o incorrecto).",
+        "paginas_afectadas": "TODAS"
+      },
+      "P9_redistribucion_forzada": {
+        "titulo": "Redistribución forzada (forced reflow)",
+        "detalle_google": "JavaScript causa reflows que bloquean el render.",
+        "paginas_afectadas": [
+          "/zonas/rural/lampa",
+          "/zonas/rural/talagante",
+          "/zonas/rural/calera-de-tango",
+          "/zonas/rural/colina"
+        ]
+      },
+      "P10_animaciones_no_compuestas": {
+        "titulo": "Evita las animaciones no compuestas",
+        "detalle_google": "1 elemento animado encontrado. Las animaciones deben usar transform/opacity, no width/left/top.",
+        "paginas_afectadas": [
+          "/zonas/rural/pirque",
+          "/zonas/rural/calera-de-tango"
+        ]
+      }
+    },
+    "ACCESIBILIDAD": {
+      "A1_contraste_insuficiente": {
+        "titulo": "CONTRASTE: Los colores de fondo y de primer plano no tienen una relación de contraste adecuada",
+        "detalle_google": "Texto con ratio menor a 4.5:1 (texto normal) o 3:1 (texto grande). WCAG AA.",
+        "paginas_afectadas": "TODAS (home, talagante, isla-de-maipo, colina, buin-paine, lampa, calera-de-tango, pirque, precios-orientativos)",
+        "ubicaciones_probables": [
+          "Botones flotantes WhatsApp/teléfono con texto blanco sobre fondo claro o azul claro",
+          "Subtítulos en gris claro (text-slate-400, text-gray-300) sobre fondo blanco",
+          "Texto en hero overlay sobre imagen sin oscurecer suficiente",
+          "Footer con texto gris sobre fondo oscuro"
+        ]
+      },
+      "A2_enlaces_sin_nombre": {
+        "titulo": "NOMBRES Y ETIQUETAS: Los enlaces no tienen nombres reconocibles",
+        "detalle_google": "Enlaces que contienen solo iconos sin texto ni aria-label.",
+        "paginas_afectadas": "TODAS",
+        "evidencia_codigo_real": "Detectado en home: <a href='tel:+56997946463' class='flex items-center justify-center w-10 h-10 rounded-full bg-slate-100 text-slate-900 active:scale-95 transition'><i class='fa-solid fa-phone'></i></a> - el enlace solo tiene un icono sin texto ni aria-label.",
+        "nota": "Los lectores de pantalla dirán 'enlace' sin saber qué hace."
+      },
+      "A3_orden_headings": {
+        "titulo": "NAVEGACIÓN: Los elementos de encabezado no aparecen en orden secuencial descendente",
+        "detalle_google": "Se detectó salto en jerarquía (ej: H1 → H3 saltando H2).",
+        "paginas_afectadas": [
+          "/",
+          "/zonas/rural/lampa",
+          "/zonas/rural/colina",
+          "/zonas/rural/calera-de-tango"
+        ],
+        "evidencia_codigo_real": "En home se detectó: H1 'Destape de Cañerías' → H3 '¿Dónde es el problema?' (falta H2 intermedio). El H2 'Certificados, autorizados y trazables' aparece después.",
+        "impacto": "Lectores de pantalla y SEO no entienden estructura jerárquica."
+      },
+      "A4_landmark_principal_faltante": {
+        "titulo": "PRÁCTICAS RECOMENDADAS: El documento no tiene un punto de referencia principal",
+        "detalle_google": "Falta elemento <main> que actúe como landmark principal.",
+        "paginas_afectadas": [
+          "/zonas/rural/isla-de-maipo"
+        ],
+        "solucion": "Envolver el contenido principal en <main>...</main> después del <header>."
+      }
+    },
+    "BEST_PRACTICES": {
+      "BP1_score_96": {
+        "paginas_afectadas": [
+          "/",
+          "/zonas/rural/talagante",
+          "/zonas/rural/isla-de-maipo",
+          "/zonas/rural/colina",
+          "/precios-orientativos"
+        ],
+        "posibles_causas": [
+          "Cookies de terceros (Clarity, GTM) sin SameSite explícito",
+          "Errores de console (revisar uso de variables no definidas)",
+          "Uso de document.write() en algún script (común en GTM mal configurado)",
+          "Imágenes con relación de aspecto incorrecta (atributo width/height no coincide con natural)"
+        ]
+      }
+    }
+  },
+  "plan_de_implementacion_para_100": [
+    {
+      "id": "FIX-01",
+      "titulo": "Optimizar imagen LCP (hero) en todas las páginas",
+      "prioridad": "CRÍTICA - mayor impacto en score",
+      "impacto_esperado": "+15-25 puntos performance",
+      "archivos_a_modificar": [
+        "public/index.html",
+        "public/zonas/rural/lampa.html",
+        "public/zonas/rural/talagante.html",
+        "public/zonas/rural/calera-de-tango.html",
+        "public/zonas/rural/buin-paine.html",
+        "public/zonas/rural/pirque.html",
+        "public/zonas/rural/colina.html",
+        "public/zonas/rural/isla-de-maipo.html",
+        "public/precios-orientativos.html"
+      ],
+      "pasos": [
+        "1) Generar versiones AVIF + WebP responsive de cada hero. Usar squoosh.app o sharp/imagemin. Dimensiones: 400w (mobile), 800w (tablet), 1200w (desktop). Calidad: AVIF 50, WebP 75.",
+        "2) Comprimir a tamaño objetivo: hero mobile <60KB, tablet <120KB, desktop <200KB.",
+        "3) Cambiar el <img> hero por <picture> con srcset.",
+        "4) Agregar fetchpriority='high' al <img> hero y eliminar loading='lazy' del hero.",
+        "5) Agregar <link rel='preload' as='image' imagesrcset='...' imagesizes='100vw'> en <head> antes que cualquier CSS.",
+        "6) Para el resto de imágenes (below-the-fold): mantener loading='lazy' y decoding='async'."
+      ],
+      "codigo_ejemplo": "<!-- En <head> al inicio -->\n<link rel='preload' as='image' \n  imagesrcset='/images/hero-lampa-400.avif 400w, /images/hero-lampa-800.avif 800w, /images/hero-lampa-1200.avif 1200w'\n  imagesizes='100vw' type='image/avif'>\n\n<!-- En el body, donde está la imagen hero -->\n<picture>\n  <source type='image/avif' \n    srcset='/images/hero-lampa-400.avif 400w, /images/hero-lampa-800.avif 800w, /images/hero-lampa-1200.avif 1200w'\n    sizes='100vw'>\n  <source type='image/webp' \n    srcset='/images/hero-lampa-400.webp 400w, /images/hero-lampa-800.webp 800w, /images/hero-lampa-1200.webp 1200w'\n    sizes='100vw'>\n  <img src='/images/hero-lampa-800.webp' \n    alt='Paisaje rural Lampa - servicio limpieza fosas'\n    width='1200' height='600'\n    fetchpriority='high' decoding='async'>\n</picture>"
+    },
+    {
+      "id": "FIX-02",
+      "titulo": "Quitar loading='lazy' del logo en header (NO es lazy, es above-the-fold)",
+      "prioridad": "CRÍTICA",
+      "impacto_esperado": "+3-5 puntos LCP",
+      "pasos": [
+        "Buscar en TODOS los HTML: <img src='/logo-nav.webp' ... loading='lazy'",
+        "Cambiar loading='lazy' por loading='eager' o eliminar el atributo",
+        "Cambiar decoding='async' por decoding='sync' si es above-the-fold"
+      ],
+      "codigo_actual": "<img src='/logo-nav.webp' alt='Logo Destape Rápido' width='72' height='72' loading='lazy' decoding='async'>",
+      "codigo_correcto": "<img src='/logo-nav.webp' alt='Logo Destape Rápido' width='72' height='72' loading='eager' fetchpriority='high'>"
+    },
+    {
+      "id": "FIX-03",
+      "titulo": "Eliminar Font Awesome CDN y usar solo los iconos necesarios (SVG inline)",
+      "prioridad": "ALTA",
+      "impacto_esperado": "+8-12 puntos performance (elimina ~70KB CSS bloqueante + 250KB woff)",
+      "pasos": [
+        "1) Auditar qué iconos se usan: grep -rho 'fa-[a-z-]*' public/ | sort -u",
+        "2) Reemplazar cada <i class='fa-solid fa-phone'></i> por su SVG inline equivalente.",
+        "3) Descargar SVGs desde fontawesome.com o usar heroicons.com (más livianos).",
+        "4) Eliminar el <link rel='stylesheet' href='https://cdnjs.cloudflare.com/.../font-awesome/...'>",
+        "5) Eliminar el preconnect a cdnjs.cloudflare.com"
+      ],
+      "alternativa": "Si quieres mantener Font Awesome: usar el kit autohosted con subsetting (solo iconos usados, ~5KB) en lugar del CDN completo (~70KB)."
+    },
+    {
+      "id": "FIX-04",
+      "titulo": "Limitar preconnects a máximo 3 dominios críticos",
+      "prioridad": "ALTA",
+      "impacto_esperado": "+3-5 puntos performance",
+      "pasos": [
+        "Eliminar en TODOS los HTML los siguientes preconnect:",
+        "- https://www.transparenttextures.com/  (mover patrón a imagen local SVG inline)",
+        "- https://cdnjs.cloudflare.com/ (eliminar tras FIX-03)",
+        "- https://images.unsplash.com/ (descargar imágenes a /images locales)",
+        "- https://fonts.googleapis.com/ (mantener solo si usas Google Fonts)",
+        "Mantener únicamente: https://fonts.gstatic.com (crossorigin) y https://www.googletagmanager.com"
+      ],
+      "codigo_correcto": "<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>\n<link rel='preconnect' href='https://www.googletagmanager.com'>"
+    },
+    {
+      "id": "FIX-05",
+      "titulo": "Auto-hospedar Google Fonts y agregar font-display: swap",
+      "prioridad": "ALTA",
+      "impacto_esperado": "+3-5 puntos performance, elimina FOIT",
+      "pasos": [
+        "1) Descargar fuentes desde google-webfonts-helper.herokuapp.com en formato woff2.",
+        "2) Hospedar en /fonts/ del proyecto.",
+        "3) Agregar @font-face inline en <head> con font-display: swap.",
+        "4) Preload de la fuente principal del LCP.",
+        "5) Eliminar <link rel='stylesheet' href='https://fonts.googleapis.com/...'>"
+      ],
+      "codigo_ejemplo": "<link rel='preload' href='/fonts/inter-regular.woff2' as='font' type='font/woff2' crossorigin>\n<style>\n@font-face {\n  font-family: 'Inter';\n  src: url('/fonts/inter-regular.woff2') format('woff2');\n  font-weight: 400;\n  font-display: swap;\n}\n</style>"
+    },
+    {
+      "id": "FIX-06",
+      "titulo": "Inline critical CSS y diferir el resto",
+      "prioridad": "ALTA",
+      "impacto_esperado": "+5-8 puntos performance",
+      "pasos": [
+        "1) Generar critical CSS usando 'critical' (npm) o critters: npx critical public/index.html --width=412 --height=915 --inline",
+        "2) Pegar el CSS crítico (~10-15 KB) inline en <style> dentro de <head>.",
+        "3) Cargar el resto del output.css de forma asíncrona:",
+        "<link rel='preload' href='/output.css' as='style' onload=\"this.onload=null;this.rel='stylesheet'\">",
+        "<noscript><link rel='stylesheet' href='/output.css'></noscript>"
+      ]
+    },
+    {
+      "id": "FIX-07",
+      "titulo": "Reducir CSS no usado: configurar purge de Tailwind correctamente",
+      "prioridad": "ALTA",
+      "impacto_esperado": "+3-5 puntos, reduce output.css en 18-28 KiB",
+      "pasos": [
+        "1) Verificar tailwind.config.js que el content array incluya todos los HTML:",
+        "content: ['./public/**/*.html', './public/**/*.js']",
+        "2) Re-compilar Tailwind en modo production:",
+        "NODE_ENV=production npx tailwindcss -i ./src/input.css -o ./public/output.css --minify",
+        "3) Verificar que output.css quedó <30 KB."
+      ]
+    },
+    {
+      "id": "FIX-08",
+      "titulo": "Diferir GTM y Microsoft Clarity (mover a body o cargar después de load)",
+      "prioridad": "ALTA",
+      "impacto_esperado": "+5-10 puntos TBT/performance",
+      "pasos": [
+        "1) Mover los scripts de GTM y Clarity del <head> al final del <body>.",
+        "2) Envolver la inicialización en un setTimeout para esperar a que la página esté interactiva:",
+        "<script>setTimeout(function(){/* GTM init */}, 3000);</script>",
+        "3) Considerar cargar GTM solo después de consentimiento de cookies."
+      ],
+      "codigo_ejemplo": "<!-- Antes del </body> -->\n<script>\nwindow.addEventListener('load', function(){\n  setTimeout(function(){\n    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':\n    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],\n    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=\n    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);\n    })(window,document,'script','dataLayer','GTM-PG2RQNCD');\n  }, 2000);\n});\n</script>"
+    },
+    {
+      "id": "FIX-09",
+      "titulo": "Eliminar texturas externas (transparenttextures.com)",
+      "prioridad": "MEDIA",
+      "impacto_esperado": "+2-3 puntos, elimina request externo",
+      "pasos": [
+        "1) Descargar el patrón 'carbon-fibre.png' a /images/textures/",
+        "2) O usar un SVG inline como background pattern (más liviano).",
+        "3) Eliminar preconnect y todos los src de transparenttextures.com",
+        "4) Para fondos, considerar usar gradients CSS puros en lugar de imágenes."
+      ]
+    },
+    {
+      "id": "FIX-10",
+      "titulo": "Optimizar imágenes restantes (no hero) con dimensiones correctas",
+      "prioridad": "MEDIA",
+      "impacto_esperado": "+3-5 puntos",
+      "pasos": [
+        "1) Auditar TODAS las imágenes con DevTools: 'Cobertura' y 'Render'.",
+        "2) Cambiar imágenes con natW=2070 que se ven a 393px → servir versión 800px.",
+        "3) Convertir todas las /images/*.webp a AVIF si es posible (30-50% más livianas).",
+        "4) Agregar width y height EXPLÍCITOS para evitar CLS."
+      ]
+    },
+    {
+      "id": "FIX-A11Y-01",
+      "titulo": "Mejorar contraste de texto en CTAs y subtítulos",
+      "prioridad": "ALTA",
+      "impacto_esperado": "Accesibilidad de 88-92 → 95-100",
+      "pasos": [
+        "1) Auditar con webaim.org/resources/contrastchecker/ cada par texto/fondo.",
+        "2) Texto normal: ratio mínimo 4.5:1. Texto grande (18pt+): 3:1.",
+        "3) Reemplazar text-slate-400, text-gray-400, text-gray-300 sobre fondo blanco por text-slate-600 o text-slate-700.",
+        "4) En hero con imagen de fondo: agregar overlay oscuro (bg-black/50) o sombra a textos.",
+        "5) Botones flotantes: usar fondo sólido con buen contraste (no transparencias)."
+      ]
+    },
+    {
+      "id": "FIX-A11Y-02",
+      "titulo": "Agregar aria-label a TODOS los enlaces con solo icono",
+      "prioridad": "ALTA",
+      "impacto_esperado": "Accesibilidad +3-5 puntos",
+      "pasos": [
+        "Para cada <a> con <i class='fa-...'></i> sin texto: agregar aria-label descriptivo.",
+        "Buscar con regex: <a[^>]*>\\s*<i\\s+class='fa-[^']*'></i>\\s*</a>"
+      ],
+      "codigo_antes": "<a href='tel:+56997946463' class='...'><i class='fa-solid fa-phone'></i></a>",
+      "codigo_despues": "<a href='tel:+56997946463' aria-label='Llamar al teléfono +56 9 9794 6463' class='...'><i class='fa-solid fa-phone' aria-hidden='true'></i></a>"
+    },
+    {
+      "id": "FIX-A11Y-03",
+      "titulo": "Corregir orden de headings (h1 → h2 → h3 sin saltos)",
+      "prioridad": "MEDIA",
+      "impacto_esperado": "Accesibilidad +2-3 puntos, mejor SEO",
+      "pasos": [
+        "1) Revisar TODOS los HTML buscando saltos: H1 → H3.",
+        "2) En el home: agregar H2 'Servicios principales' antes del bloque que tiene H3 '¿Dónde es el problema?'.",
+        "3) Reglas: solo 1 H1 por página, H2 para secciones principales, H3 dentro de H2."
+      ]
+    },
+    {
+      "id": "FIX-A11Y-04",
+      "titulo": "Agregar <main> landmark a páginas que no lo tienen",
+      "prioridad": "MEDIA",
+      "impacto_esperado": "Accesibilidad +1-2 puntos",
+      "pasos": [
+        "Envolver el contenido principal en <main role='main'>...</main>.",
+        "Estructura: <body><header>...</header><main>...</main><footer>...</footer></body>"
+      ]
+    },
+    {
+      "id": "FIX-SEO-01",
+      "titulo": "Eliminar versión http://destaperapido.cl (recuperar 6045 impresiones)",
+      "prioridad": "CRÍTICA",
+      "impacto_esperado": "+150-300 clics/mes potenciales",
+      "pasos": [
+        "1) Verificar redirect 301 http→https a nivel servidor (Nginx/Apache/Cloudflare).",
+        "2) En .htaccess (Apache): RewriteEngine On / RewriteCond %{HTTPS} off / RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]",
+        "3) En Nginx: server { listen 80; server_name destaperapido.cl www.destaperapido.cl; return 301 https://www.destaperapido.cl$request_uri; }",
+        "4) Decidir entre www y non-www y mantener consistencia en TODOS los canonical.",
+        "5) En Search Console: eliminar la propiedad 'http://destaperapido.cl/' o validar que redirige a la propiedad de dominio."
+      ]
+    },
+    {
+      "id": "FIX-SEO-02",
+      "titulo": "Expandir /precios-orientativos de 227 a 800+ palabras",
+      "prioridad": "ALTA",
+      "impacto_esperado": "Mejorar ranking para queries 'precio destape', 'cuanto cuesta'",
+      "pasos": [
+        "1) Agregar H2 'Precios destape de alcantarillado en Santiago' con tabla por tipo de servicio.",
+        "2) Agregar H2 'Precios limpieza fosas sépticas' con rangos según m³.",
+        "3) Agregar H2 'Factores que afectan el precio' (distancia, urgencia, hora, tipo problema).",
+        "4) Agregar H2 'Comparativa por comuna' con tabla.",
+        "5) Agregar H2 'Preguntas frecuentes sobre precios' con 5-8 FAQs.",
+        "6) Implementar Schema.org PriceSpecification + FAQ Page."
+      ]
+    },
+    {
+      "id": "FIX-SEO-03",
+      "titulo": "Mejorar CTR de pages con bajo CTR (query 'limpia fosas')",
+      "prioridad": "ALTA",
+      "impacto_esperado": "+10-15 clics/mes solo de esta query",
+      "pasos": [
+        "1) Actualizar <title> a algo más atractivo: 'Limpia Fosas Sépticas Santiago 24/7 ⚡ Desde $X | Destape Rápido'",
+        "2) Actualizar <meta name='description'> con propuesta clara y call-to-action.",
+        "3) Implementar Schema LocalBusiness con aggregateRating para mostrar estrellas en SERP.",
+        "4) Agregar sitelinks search box con Schema."
+      ]
+    }
+  ],
+  "cronograma_implementacion": {
+    "SEMANA_1_quick_wins": {
+      "duracion_estimada": "8-12 horas",
+      "impacto_esperado": "Performance mobile: 52-76 → 85-95",
+      "tareas": [
+        {
+          "id": "FIX-02",
+          "desc": "Quitar loading=lazy del logo (15 min)"
+        },
+        {
+          "id": "FIX-04",
+          "desc": "Limpiar preconnects: solo dejar 2 críticos (30 min)"
+        },
+        {
+          "id": "FIX-09",
+          "desc": "Reemplazar transparenttextures.com por SVG local o gradient (45 min)"
+        },
+        {
+          "id": "FIX-07",
+          "desc": "Re-compilar Tailwind con purge correcto (1h)"
+        },
+        {
+          "id": "FIX-A11Y-02",
+          "desc": "Agregar aria-label a enlaces con solo icono (2h)"
+        },
+        {
+          "id": "FIX-A11Y-04",
+          "desc": "Agregar <main> landmark donde falta (30 min)"
+        },
+        {
+          "id": "FIX-SEO-01",
+          "desc": "Configurar redirect 301 http→https y validar (1h)"
+        },
+        {
+          "id": "FIX-01_parcial",
+          "desc": "Optimizar imagen LCP del home y lampa (las 2 peores) (3h)"
+        }
+      ]
+    },
+    "SEMANA_2_optimizaciones_pesadas": {
+      "duracion_estimada": "12-16 horas",
+      "impacto_esperado": "Performance mobile: 85-95 → 95-100",
+      "tareas": [
+        {
+          "id": "FIX-01_resto",
+          "desc": "Optimizar imagen LCP de las 7 páginas restantes (4h)"
+        },
+        {
+          "id": "FIX-03",
+          "desc": "Reemplazar Font Awesome CDN por SVGs inline (3h)"
+        },
+        {
+          "id": "FIX-05",
+          "desc": "Auto-hospedar Google Fonts con font-display:swap (2h)"
+        },
+        {
+          "id": "FIX-06",
+          "desc": "Inline critical CSS + defer resto (3h)"
+        },
+        {
+          "id": "FIX-08",
+          "desc": "Diferir GTM y Microsoft Clarity 2-3 segundos (1h)"
+        },
+        {
+          "id": "FIX-10",
+          "desc": "Optimizar resto de imágenes (responsive srcset) (3h)"
+        }
+      ]
+    },
+    "SEMANA_3_accesibilidad_y_seo": {
+      "duracion_estimada": "10-14 horas",
+      "impacto_esperado": "A11y: 88-92 → 100. SEO: ya en 100 pero mejorar CTR/contenido",
+      "tareas": [
+        {
+          "id": "FIX-A11Y-01",
+          "desc": "Auditar y corregir contraste de TODO el sitio (3h)"
+        },
+        {
+          "id": "FIX-A11Y-03",
+          "desc": "Corregir jerarquía de headings en todas las páginas (2h)"
+        },
+        {
+          "id": "FIX-SEO-02",
+          "desc": "Expandir /precios-orientativos con FAQ Schema (4h)"
+        },
+        {
+          "id": "FIX-SEO-03",
+          "desc": "Optimizar titles/meta de páginas con bajo CTR (2h)"
+        },
+        {
+          "id": "Indexar",
+          "desc": "Indexar manualmente 12 URLs en Search Console (1h)"
+        }
+      ]
+    },
+    "SEMANA_4_monitoreo": {
+      "duracion_estimada": "Continuo",
+      "tareas": [
+        "Validar PageSpeed Insights de las 9 páginas - confirmar 95+ en todas",
+        "Validar Lighthouse desktop también",
+        "Monitorear Search Console: clics, impresiones, posición promedio",
+        "Configurar alertas de Core Web Vitals en GSC",
+        "A/B test de meta descriptions para mejorar CTR"
+      ]
+    }
+  },
+  "checklist_validacion_final": {
+    "performance_100": [
+      "[ ] LCP <2.5s en lab (ideal <1.5s)",
+      "[ ] FCP <1.8s",
+      "[ ] TBT <200ms (ideal <100ms)",
+      "[ ] CLS <0.1 (ideal 0)",
+      "[ ] No render-blocking resources detectados",
+      "[ ] Imágenes <100KB cada una en mobile",
+      "[ ] JS bundle <100KB total",
+      "[ ] CSS <30KB total"
+    ],
+    "accesibilidad_100": [
+      "[ ] Todos los textos con contraste 4.5:1+",
+      "[ ] Todos los enlaces tienen nombre accesible (texto o aria-label)",
+      "[ ] Todas las imágenes tienen alt descriptivo",
+      "[ ] Jerarquía de headings correcta (h1 → h2 → h3)",
+      "[ ] Existe elemento <main>",
+      "[ ] Existe elemento <nav>",
+      "[ ] Formularios tienen <label> asociados",
+      "[ ] HTML tiene lang='es' en <html>"
+    ],
+    "best_practices_100": [
+      "[ ] HTTPS en todos los recursos",
+      "[ ] No errores en console",
+      "[ ] Imágenes con relación de aspecto correcta",
+      "[ ] Sin document.write()",
+      "[ ] Cookies con SameSite y Secure",
+      "[ ] CSP (Content-Security-Policy) configurado"
+    ],
+    "seo_100": [
+      "[ ] Title único 50-60 caracteres",
+      "[ ] Meta description única 150-160 caracteres",
+      "[ ] Canonical correcto",
+      "[ ] robots.txt válido",
+      "[ ] sitemap.xml válido",
+      "[ ] HTML válido (lang, charset)",
+      "[ ] Texto crawleable",
+      "[ ] Mobile friendly (viewport meta)",
+      "[ ] Schema.org markup"
+    ]
+  },
+  "comandos_utiles": {
+    "auditar_imagenes": "find public/images -name '*.jpg' -o -name '*.png' | xargs ls -lh",
+    "generar_avif": "npx @squoosh/cli --avif '{quality:50}' --webp '{quality:75}' public/images/*.jpg",
+    "comprimir_imagenes": "npx imagemin 'public/images/*.{jpg,png}' --out-dir=public/images/optimized",
+    "generar_critical_css": "npx critical public/index.html --width=412 --height=915 --inline > public/index-critical.html",
+    "validar_lighthouse_local": "npx lighthouse https://destaperapido.cl --preset=mobile --output=html --output-path=./report.html",
+    "tailwind_purge": "NODE_ENV=production npx tailwindcss -i ./src/input.css -o ./public/output.css --minify",
+    "validar_html": "npx html-validator-cli --file=public/index.html"
+  },
+  "diagnostico_archivos_a_modificar": {
+    "estructura_repositorio": {
+      "raiz": "https://github.com/depsu/destaperapido",
+      "carpeta_publica": "public/",
+      "archivos_html": [
+        "public/index.html",
+        "public/precios-orientativos.html",
+        "public/zonas/rural/talagante.html",
+        "public/zonas/rural/isla-de-maipo.html",
+        "public/zonas/rural/colina.html",
+        "public/zonas/rural/buin-paine.html",
+        "public/zonas/rural/lampa.html",
+        "public/zonas/rural/calera-de-tango.html",
+        "public/zonas/rural/pirque.html",
+        "public/zonas/rural/chicureo.html",
+        "public/zonas/rural/curacavi.html",
+        "public/zonas/rural/melipilla.html",
+        "public/zonas/rural/padre-hurtado.html",
+        "public/zonas/rural/penaflor.html",
+        "public/zonas/rural/san-jose-de-maipo.html",
+        "public/zonas/urbano/las-condes.html",
+        "public/zonas/urbano/vitacura.html",
+        "public/zonas/urbano/lo-barnechea.html",
+        "public/zonas/urbano/providencia.html",
+        "public/zonas/urbano/la-reina.html",
+        "public/zonas/urbano/nunoa.html"
+      ],
+      "js_files": [
+        "public/js/availability-badge.js",
+        "public/js/conversion.js",
+        "public/js/google-reviews.js"
+      ],
+      "css_files": [
+        "public/output.css"
+      ]
+    },
+    "patron_recomendado_head": "<!-- HEAD OPTIMIZADO COMPLETO -->\n<!DOCTYPE html>\n<html lang='es'>\n<head>\n<meta charset='UTF-8'>\n<meta name='viewport' content='width=device-width, initial-scale=1.0'>\n<title>[TITLE]</title>\n<meta name='description' content='[DESC]'>\n<link rel='canonical' href='[URL]'>\n\n<!-- Preload del LCP -->\n<link rel='preload' as='image' \n  imagesrcset='/images/hero-400.avif 400w, /images/hero-800.avif 800w'\n  imagesizes='100vw' type='image/avif'>\n<link rel='preload' href='/fonts/inter-regular.woff2' as='font' type='font/woff2' crossorigin>\n\n<!-- Solo 2 preconnects críticos -->\n<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>\n<link rel='preconnect' href='https://www.googletagmanager.com'>\n\n<!-- Critical CSS inline -->\n<style>/* CSS crítico generado con npx critical */</style>\n\n<!-- CSS no crítico (asíncrono) -->\n<link rel='preload' href='/output.css' as='style' onload=\"this.onload=null;this.rel='stylesheet'\">\n<noscript><link rel='stylesheet' href='/output.css'></noscript>\n\n<!-- Schema.org -->\n<script type='application/ld+json'>...</script>\n</head>"
+  },
+  "kpis_objetivo": {
+    "performance_actual_vs_objetivo": {
+      "/": {
+        "actual": 76,
+        "objetivo": 95
+      },
+      "/zonas/rural/talagante": {
+        "actual": 60,
+        "objetivo": 95
+      },
+      "/zonas/rural/isla-de-maipo": {
+        "actual": 73,
+        "objetivo": 95
+      },
+      "/zonas/rural/colina": {
+        "actual": 61,
+        "objetivo": 95
+      },
+      "/zonas/rural/buin-paine": {
+        "actual": 66,
+        "objetivo": 95
+      },
+      "/zonas/rural/lampa": {
+        "actual": 52,
+        "objetivo": 90
+      },
+      "/zonas/rural/calera-de-tango": {
+        "actual": 58,
+        "objetivo": 95
+      },
+      "/zonas/rural/pirque": {
+        "actual": 65,
+        "objetivo": 95
+      },
+      "/precios-orientativos": {
+        "actual": 63,
+        "objetivo": 95
+      }
+    },
+    "busqueda_organica": {
+      "clics_actuales_28d": 166,
+      "clics_objetivo_28d": 300,
+      "impresiones_actuales_28d": 5180,
+      "impresiones_objetivo_28d": 8000,
+      "ctr_actual": "3.2%",
+      "ctr_objetivo": "5.5%",
+      "posicion_actual": 7.5,
+      "posicion_objetivo": 4.5
+    }
+  }
+}
