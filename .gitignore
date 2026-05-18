@@ -1,3 +1,9 @@
 node_modules
 public.zip* *
 public.zip
+
+# Capturas de validación local previas a push
+mejoras-destaperapido/capturas-pre-push/
+
+# Critical CSS intermedio
+public/css/critical-home.css
