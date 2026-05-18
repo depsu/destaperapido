@@ -13,9 +13,7 @@
     <meta name="robots" content="noindex, nofollow"> <!-- Landing page for Ads -->
 
     <link rel="canonical" href="https://www.destaperapido.cl/landing/destape-urgente-sector-oriente">
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="preconnect" href="https://www.googletagmanager.com">
-    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     <link rel="stylesheet" href="/output.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,9 +21,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
 
-    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    <link rel="preload" as="style" href="/fonts/fontawesome/all.min.css">
+    <link rel="stylesheet" href="/fonts/fontawesome/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="/fonts/fontawesome/all.min.css"></noscript>
 
     <style>
         body {
@@ -75,11 +73,25 @@
     <meta property="og:image" content="https://www.destaperapido.cl/images/hero_home.webp">
     <meta name="twitter:card" content="summary_large_image">
 <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-PG2RQNCD');</script>
+<script>(function(w, d, s, l, i){
+    function _loadGTM(){
+      w[l] = w[l] || []; w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+      var f = d.getElementsByTagName(s)[0], j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+      j.async = true;
+      j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+      f.parentNode.insertBefore(j, f);
+    }
+    function _schedule(){
+      if ('requestIdleCallback' in w) {
+        requestIdleCallback(_loadGTM, { timeout: 3000 });
+      } else {
+        setTimeout(_loadGTM, 1500);
+      }
+    }
+    if (d.readyState === 'complete') { _schedule(); }
+    else { w.addEventListener('load', _schedule, { once: true }); }
+})(window, document, 'script', 'dataLayer', 'GTM-PG2RQNCD');</script>
 <!-- End Google Tag Manager -->
     <meta property="og:type" content="website">
     <meta property="og:locale" content="es_CL">
@@ -105,14 +117,152 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     "priceRange": "$$",
     "address": {
       "@type": "PostalAddress",
-      "addressLocality": "Santiago",
-      "addressRegion": "Región Metropolitana",
+      "streetAddress": "Gaspar de Orense 831",
+      "addressLocality": "Maipú",
+      "addressRegion": "Región Metropolitana de Santiago",
+      "postalCode": "8500000",
       "addressCountry": "CL"
     },
     "areaServed": [
       {
         "@type": "AdministrativeArea",
-        "name": "Región Metropolitana, Chile"
+        "name": "Región Metropolitana de Santiago"
+      },
+      {
+        "@type": "City",
+        "name": "Santiago Centro"
+      },
+      {
+        "@type": "City",
+        "name": "Las Condes"
+      },
+      {
+        "@type": "City",
+        "name": "Vitacura"
+      },
+      {
+        "@type": "City",
+        "name": "Lo Barnechea"
+      },
+      {
+        "@type": "City",
+        "name": "Providencia"
+      },
+      {
+        "@type": "City",
+        "name": "La Reina"
+      },
+      {
+        "@type": "City",
+        "name": "Ñuñoa"
+      },
+      {
+        "@type": "City",
+        "name": "Peñalolén"
+      },
+      {
+        "@type": "City",
+        "name": "Macul"
+      },
+      {
+        "@type": "City",
+        "name": "La Florida"
+      },
+      {
+        "@type": "City",
+        "name": "Puente Alto"
+      },
+      {
+        "@type": "City",
+        "name": "San Miguel"
+      },
+      {
+        "@type": "City",
+        "name": "Maipú"
+      },
+      {
+        "@type": "City",
+        "name": "Cerrillos"
+      },
+      {
+        "@type": "City",
+        "name": "Estación Central"
+      },
+      {
+        "@type": "City",
+        "name": "Pudahuel"
+      },
+      {
+        "@type": "City",
+        "name": "Quilicura"
+      },
+      {
+        "@type": "City",
+        "name": "Huechuraba"
+      },
+      {
+        "@type": "City",
+        "name": "Recoleta"
+      },
+      {
+        "@type": "City",
+        "name": "Independencia"
+      },
+      {
+        "@type": "City",
+        "name": "Padre Hurtado"
+      },
+      {
+        "@type": "City",
+        "name": "Calera de Tango"
+      },
+      {
+        "@type": "City",
+        "name": "Chicureo"
+      },
+      {
+        "@type": "City",
+        "name": "Colina"
+      },
+      {
+        "@type": "City",
+        "name": "Lampa"
+      },
+      {
+        "@type": "City",
+        "name": "Pirque"
+      },
+      {
+        "@type": "City",
+        "name": "San José de Maipo"
+      },
+      {
+        "@type": "City",
+        "name": "Buin"
+      },
+      {
+        "@type": "City",
+        "name": "Paine"
+      },
+      {
+        "@type": "City",
+        "name": "Isla de Maipo"
+      },
+      {
+        "@type": "City",
+        "name": "Talagante"
+      },
+      {
+        "@type": "City",
+        "name": "Peñaflor"
+      },
+      {
+        "@type": "City",
+        "name": "Melipilla"
+      },
+      {
+        "@type": "City",
+        "name": "Curacaví"
       }
     ],
     "openingHoursSpecification": [
@@ -130,7 +280,31 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         "opens": "00:00",
         "closes": "23:59"
       }
-    ]
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "reviewCount": "16",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "foundingDate": "2014",
+    "slogan": "Destape y saneamiento profesional 24/7 en la Región Metropolitana",
+    "knowsAbout": [
+      "Destape de alcantarillado",
+      "Limpieza de fosas sépticas",
+      "Hidrojet de alta presión",
+      "Inspección de cañerías con cámara CCTV",
+      "Trampas de grasa para gastronomía",
+      "Biodigestores y plantas de tratamiento",
+      "Saneamiento rural y parcelas",
+      "Mantención preventiva para empresas y condominios",
+      "Arriendo de baños químicos para obras y eventos"
+    ],
+    "sameAs": [
+      "https://www.limpiafosasydestape.cl"
+    ],
+    "dateModified": "2026-05-08"
   },
   {
     "@context": "https://schema.org",
@@ -171,10 +345,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     ]
   }
 ]
-    </script>
+</script>
 </head>
 
-<body class="bg-slate-50 text-slate-600 antialiased pb-32 md:pb-0 pb-30 md:pb-0">
+<body class="bg-slate-50 text-slate-600 antialiased pb-32 md:pb-0">
+    <a href="#main-content" id="skip-to-content-link" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-brand-600 focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:shadow-lg focus:font-bold">Saltar al contenido</a>
+
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PG2RQNCD"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -184,7 +360,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <header class="bg-white shadow-sm py-4 sticky top-0 z-50">
         <div class="container mx-auto px-4 flex justify-between items-center">
             <div class="flex items-center gap-2">
-                <img src="/logo-nav.webp" alt="Logo Destape Rápido" class="w-12 h-12 object-contain" loading="lazy" decoding="async">
+                <img src="/logo-nav.webp" alt="Logo Destape Rápido" class="w-12 h-12 object-contain" loading="eager" fetchpriority="high" decoding="async">
                 <div>
                     <span class="block font-extrabold text-slate-900 text-lg leading-none">DESTAPE<span
                             class="text-brand-600">RÁPIDO</span></span>
@@ -193,7 +369,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
             <a href="tel:+56997946463"
                 class="hidden md:flex items-center gap-2 bg-brand-600 text-white font-bold py-2 px-6 rounded-full hover:bg-brand-700 transition">
-                <i class="fa-solid fa-phone"></i> +56 9 9794 6463
+                <i class="fa-solid fa-phone" aria-hidden="true"></i> +56 9 9794 6463
             </a>
         </div>
     </header>
@@ -218,11 +394,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <div class="flex flex-col sm:flex-row gap-4">
                         <a href="tel:+56997946463"
                             class="pulse-button flex items-center justify-center gap-3 bg-red-600 text-white font-bold py-4 px-8 rounded-xl hover:bg-red-700 transition text-lg w-full sm:w-auto">
-                            <i class="fa-solid fa-phone-volume"></i> LLAMAR AHORA
+                            <i class="fa-solid fa-phone-volume" aria-hidden="true"></i> LLAMAR AHORA
                         </a>
                         <a href="https://wa.me/56997946463?text=Hola,%20necesito%20un%20destape%20urgente"
                             class="flex items-center justify-center gap-3 bg-green-500 text-white font-bold py-4 px-8 rounded-xl hover:bg-green-600 transition text-lg w-full sm:w-auto">
-                            <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                            <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> WhatsApp
                         </a>
                     </div>
                 </div>
@@ -232,28 +408,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <li class="flex items-center gap-3">
                                 <div
                                     class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white text-sm">
-                                    <i class="fa-solid fa-check"></i>
+                                    <i class="fa-solid fa-check" aria-hidden="true"></i>
                                 </div>
                                 <span>Sin romper pisos ni paredes</span>
                             </li>
                             <li class="flex items-center gap-3">
                                 <div
                                     class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white text-sm">
-                                    <i class="fa-solid fa-check"></i>
+                                    <i class="fa-solid fa-check" aria-hidden="true"></i>
                                 </div>
                                 <span>Maquinaria eléctrica profesional</span>
                             </li>
                             <li class="flex items-center gap-3">
                                 <div
                                     class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white text-sm">
-                                    <i class="fa-solid fa-check"></i>
+                                    <i class="fa-solid fa-check" aria-hidden="true"></i>
                                 </div>
                                 <span>Garantía de 30 días</span>
                             </li>
                             <li class="flex items-center gap-3">
                                 <div
                                     class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white text-sm">
-                                    <i class="fa-solid fa-check"></i>
+                                    <i class="fa-solid fa-check" aria-hidden="true"></i>
                                 </div>
                                 <span>Boleta o Factura</span>
                             </li>
@@ -270,19 +446,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <h2 class="text-3xl font-bold text-center text-slate-900 mb-12">¿Qué necesitas destapar?</h2>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
                 <div class="bg-slate-50 p-6 rounded-xl text-center hover:shadow-lg transition border border-slate-100">
-                    <i class="fa-solid fa-toilet text-4xl text-brand-500 mb-4"></i>
+                    <i class="fa-solid fa-toilet text-4xl text-brand-500 mb-4" aria-hidden="true"></i>
                     <h3 class="font-bold text-slate-900">WC y Baños</h3>
                 </div>
                 <div class="bg-slate-50 p-6 rounded-xl text-center hover:shadow-lg transition border border-slate-100">
-                    <i class="fa-solid fa-sink text-4xl text-brand-500 mb-4"></i>
+                    <i class="fa-solid fa-sink text-4xl text-brand-500 mb-4" aria-hidden="true"></i>
                     <h3 class="font-bold text-slate-900">Lavaplatos</h3>
                 </div>
                 <div class="bg-slate-50 p-6 rounded-xl text-center hover:shadow-lg transition border border-slate-100">
-                    <i class="fa-solid fa-circle-dot text-4xl text-brand-500 mb-4"></i>
+                    <i class="fa-solid fa-circle-dot text-4xl text-brand-500 mb-4" aria-hidden="true"></i>
                     <h3 class="font-bold text-slate-900">Cámaras</h3>
                 </div>
                 <div class="bg-slate-50 p-6 rounded-xl text-center hover:shadow-lg transition border border-slate-100">
-                    <i class="fa-solid fa-shower text-4xl text-brand-500 mb-4"></i>
+                    <i class="fa-solid fa-shower text-4xl text-brand-500 mb-4" aria-hidden="true"></i>
                     <h3 class="font-bold text-slate-900">Duchas/Tinas</h3>
                 </div>
             </div>
@@ -328,13 +504,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         hogares y empresas. Atendemos urgencias reales con equipos certificados.</p>
                     <div class="flex gap-4">
                         <a href="/" class="text-slate-500 hover:text-brand-600 transition" aria-label="Facebook">
-                            <i class="fa-brands fa-facebook text-xl"></i>
+                            <i class="fa-brands fa-facebook text-xl" aria-hidden="true"></i>
                         </a>
                         <a href="/" class="text-slate-500 hover:text-brand-600 transition" aria-label="Instagram">
-                            <i class="fa-brands fa-instagram text-xl"></i>
+                            <i class="fa-brands fa-instagram text-xl" aria-hidden="true"></i>
                         </a>
                         <a href="/" class="text-slate-500 hover:text-brand-600 transition" aria-label="LinkedIn">
-                            <i class="fa-brands fa-linkedin text-xl"></i>
+                            <i class="fa-brands fa-linkedin text-xl" aria-hidden="true"></i>
                         </a>
                     </div>
                 </div>
@@ -397,11 +573,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </div>
                 <div class="flex gap-4 mt-4 md:mt-0">
                     <a href="/" class="hover:text-slate-800 transition" aria-label="Facebook"><i
-                            class="fa-brands fa-facebook text-lg"></i></a>
+                            class="fa-brands fa-facebook text-lg" aria-hidden="true"></i></a>
                     <a href="/" class="hover:text-slate-800 transition" aria-label="Instagram"><i
-                            class="fa-brands fa-instagram text-lg"></i></a>
+                            class="fa-brands fa-instagram text-lg" aria-hidden="true"></i></a>
                     <a href="/" class="hover:text-slate-800 transition" aria-label="LinkedIn"><i
-                            class="fa-brands fa-linkedin text-lg"></i></a>
+                            class="fa-brands fa-linkedin text-lg" aria-hidden="true"></i></a>
                 </div>
             </div>
         </div>
@@ -411,15 +587,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="sticky-cta bg-white border-t border-slate-200 p-4 flex gap-4 md:hidden">
         <a href="tel:+56997946463"
             class="flex-1 bg-red-600 text-white font-bold py-3 rounded-lg flex items-center justify-center gap-2 shadow-lg">
-            <i class="fa-solid fa-phone"></i> Llamar
+            <i class="fa-solid fa-phone" aria-hidden="true"></i> Llamar
         </a>
         <a href="https://wa.me/56997946463?text=Hola,%20necesito%20un%20destape%20urgente"
             class="flex-1 bg-green-500 text-white font-bold py-3 rounded-lg flex items-center justify-center gap-2 shadow-lg">
-            <i class="fa-brands fa-whatsapp"></i> WhatsApp
+            <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> WhatsApp
         </a>
     </div>
 
     <script src="/js/conversion.js" defer></script>
+    <script src="/js/mobile-sticky-cta.js" defer></script>
+    <script src="/js/register-sw.js" defer></script>
 </body>
 
 </html>

@@ -7,9 +7,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="https://www.destaperapido.cl/servicios/banos-quimicos">
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="alternate" hreflang="es-CL" href="https://www.destaperapido.cl/servicios/banos-quimicos">
+    <link rel="alternate" hreflang="x-default" href="https://www.destaperapido.cl/servicios/banos-quimicos">
     <link rel="preconnect" href="https://www.googletagmanager.com">
-    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     <title>Arriendo de Baños Químicos | Destape Rápido – Región Metropolitana</title>
     <meta name="description"
         content="Arriendo y mantención de baños químicos para obras, eventos y parcelas. Llevamos y retiramos en toda la Región Metropolitana y alrededores. Cotiza ahora.">
@@ -20,9 +20,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    <link rel="preload" as="style" href="/fonts/fontawesome/all.min.css">
+    <link rel="stylesheet" href="/fonts/fontawesome/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="/fonts/fontawesome/all.min.css"></noscript>
 
     <style>
         body {
@@ -419,7 +419,25 @@
     </style>
 
     <!-- Google Tag Manager -->
-    <script>(function (w, d, s, l, i) { w[l] = w[l] || []; w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' }); var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f); })(window, document, 'script', 'dataLayer', 'GTM-PG2RQNCD');</script>
+    <script>(function(w, d, s, l, i){
+    function _loadGTM(){
+      w[l] = w[l] || []; w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+      var f = d.getElementsByTagName(s)[0], j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+      j.async = true;
+      j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+      f.parentNode.insertBefore(j, f);
+    }
+    function _schedule(){
+      if ('requestIdleCallback' in w) {
+        requestIdleCallback(_loadGTM, { timeout: 3000 });
+      } else {
+        setTimeout(_loadGTM, 1500);
+      }
+    }
+    if (d.readyState === 'complete') { _schedule(); }
+    else { w.addEventListener('load', _schedule, { once: true }); }
+})(window, document, 'script', 'dataLayer', 'GTM-PG2RQNCD');</script>
     <meta property="og:title" content="Arriendo de Baños Químicos | Destape Rápido – Región Metropolitana">
     <meta property="og:description" content="Arriendo y mantención de baños químicos para obras, eventos y parcelas. Llevamos y retiramos en toda la Región Metropolitana y alrededores. Cotiza ahora.">
     <meta property="og:type" content="website">
@@ -449,14 +467,152 @@
     "priceRange": "$$",
     "address": {
       "@type": "PostalAddress",
-      "addressLocality": "Santiago",
-      "addressRegion": "Región Metropolitana",
+      "streetAddress": "Gaspar de Orense 831",
+      "addressLocality": "Maipú",
+      "addressRegion": "Región Metropolitana de Santiago",
+      "postalCode": "8500000",
       "addressCountry": "CL"
     },
     "areaServed": [
       {
         "@type": "AdministrativeArea",
-        "name": "Región Metropolitana, Chile"
+        "name": "Región Metropolitana de Santiago"
+      },
+      {
+        "@type": "City",
+        "name": "Santiago Centro"
+      },
+      {
+        "@type": "City",
+        "name": "Las Condes"
+      },
+      {
+        "@type": "City",
+        "name": "Vitacura"
+      },
+      {
+        "@type": "City",
+        "name": "Lo Barnechea"
+      },
+      {
+        "@type": "City",
+        "name": "Providencia"
+      },
+      {
+        "@type": "City",
+        "name": "La Reina"
+      },
+      {
+        "@type": "City",
+        "name": "Ñuñoa"
+      },
+      {
+        "@type": "City",
+        "name": "Peñalolén"
+      },
+      {
+        "@type": "City",
+        "name": "Macul"
+      },
+      {
+        "@type": "City",
+        "name": "La Florida"
+      },
+      {
+        "@type": "City",
+        "name": "Puente Alto"
+      },
+      {
+        "@type": "City",
+        "name": "San Miguel"
+      },
+      {
+        "@type": "City",
+        "name": "Maipú"
+      },
+      {
+        "@type": "City",
+        "name": "Cerrillos"
+      },
+      {
+        "@type": "City",
+        "name": "Estación Central"
+      },
+      {
+        "@type": "City",
+        "name": "Pudahuel"
+      },
+      {
+        "@type": "City",
+        "name": "Quilicura"
+      },
+      {
+        "@type": "City",
+        "name": "Huechuraba"
+      },
+      {
+        "@type": "City",
+        "name": "Recoleta"
+      },
+      {
+        "@type": "City",
+        "name": "Independencia"
+      },
+      {
+        "@type": "City",
+        "name": "Padre Hurtado"
+      },
+      {
+        "@type": "City",
+        "name": "Calera de Tango"
+      },
+      {
+        "@type": "City",
+        "name": "Chicureo"
+      },
+      {
+        "@type": "City",
+        "name": "Colina"
+      },
+      {
+        "@type": "City",
+        "name": "Lampa"
+      },
+      {
+        "@type": "City",
+        "name": "Pirque"
+      },
+      {
+        "@type": "City",
+        "name": "San José de Maipo"
+      },
+      {
+        "@type": "City",
+        "name": "Buin"
+      },
+      {
+        "@type": "City",
+        "name": "Paine"
+      },
+      {
+        "@type": "City",
+        "name": "Isla de Maipo"
+      },
+      {
+        "@type": "City",
+        "name": "Talagante"
+      },
+      {
+        "@type": "City",
+        "name": "Peñaflor"
+      },
+      {
+        "@type": "City",
+        "name": "Melipilla"
+      },
+      {
+        "@type": "City",
+        "name": "Curacaví"
       }
     ],
     "openingHoursSpecification": [
@@ -474,7 +630,31 @@
         "opens": "00:00",
         "closes": "23:59"
       }
-    ]
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "reviewCount": "16",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "foundingDate": "2014",
+    "slogan": "Destape y saneamiento profesional 24/7 en la Región Metropolitana",
+    "knowsAbout": [
+      "Destape de alcantarillado",
+      "Limpieza de fosas sépticas",
+      "Hidrojet de alta presión",
+      "Inspección de cañerías con cámara CCTV",
+      "Trampas de grasa para gastronomía",
+      "Biodigestores y plantas de tratamiento",
+      "Saneamiento rural y parcelas",
+      "Mantención preventiva para empresas y condominios",
+      "Arriendo de baños químicos para obras y eventos"
+    ],
+    "sameAs": [
+      "https://www.limpiafosasydestape.cl"
+    ],
+    "dateModified": "2026-05-08"
   },
   {
     "@context": "https://schema.org",
@@ -515,6 +695,47 @@
     ]
   }
 ]
+</script>
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Cuántos baños químicos necesito para mi evento?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La regla general es 1 baño cada 50-75 personas para 4 horas. Para eventos de más de 6 horas o con alcohol, súbelo a 1 cada 40 personas. Para obras, 1 baño cada 10 trabajadores con limpieza semanal."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué es el líquido azul de los baños químicos?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Es una solución biocida con tinte azul que neutraliza olores, descompone residuos y desinfecta. La fórmula moderna es biodegradable. Permite usar el baño hasta 3-5 días sin malos olores ni proliferación bacteriana."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto cuesta arrendar un baño químico?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Desde $45.000 por evento de 1 día (instalación + retiro). Mensual para obras desde $90.000 con limpieza semanal incluida. Modelos premium con lavamanos y luz desde $120.000."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Hacen entrega y retiro?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Coordinamos entrega 24-48h antes del evento u obra, instalación nivelada y retiro al término. Limpieza de servicio incluida según frecuencia contratada."
+      }
+    }
+  ]
+}
     </script>
 </head>
 
@@ -537,7 +758,7 @@
                 <a href="/" class="flex items-center gap-1" aria-label="Destape Rápido - Inicio">
                     <div class="w-12 h-12 md:w-[72px] md:h-[72px] flex items-center justify-center">
                         <img src="/logo-nav.webp" alt="Logo Destape Rápido" width="72" height="72"
-                            class="w-full h-full object-contain" loading="lazy" decoding="async">
+                            class="w-full h-full object-contain" loading="eager" fetchpriority="high" decoding="async">
                     </div>
                     <div class="flex flex-col justify-center -space-y-0.5">
                         <span
@@ -1000,7 +1221,7 @@
                         <i class="fa-solid fa-star text-yellow-500 text-lg" aria-hidden="true"></i>
                     </div>
                     <div>
-                        <p class="text-2xl font-extrabold text-slate-900 leading-none">4.9 ⭐</p>
+                        <p class="text-2xl font-extrabold text-slate-900 leading-none">5.0 ⭐</p>
                         <p class="text-xs text-slate-500 mt-1 whitespace-nowrap">Valoración Google</p>
                     </div>
                 </div>
@@ -2126,6 +2347,8 @@
 
     <script src="/js/conversion.js" defer></script>
     <script src="/js/a11y-menu.js" defer></script>
+    <script src="/js/mobile-sticky-cta.js" defer></script>
+    <script src="/js/register-sw.js" defer></script>
 </body>
 
 </html>

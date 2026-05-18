@@ -12,9 +12,9 @@
         content="Contáctanos para destapes de alcantarillado y limpieza de fosas en Santiago. Atención 24/7 en zonas urbanas y rurales. Cotiza tu servicio aquí.">
 
     <link rel="canonical" href="https://www.destaperapido.cl/contacto">
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="alternate" hreflang="es-CL" href="https://www.destaperapido.cl/contacto">
+    <link rel="alternate" hreflang="x-default" href="https://www.destaperapido.cl/contacto">
     <link rel="preconnect" href="https://www.googletagmanager.com">
-    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     <link rel="stylesheet" href="/output.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,9 +22,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
 
-    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    <link rel="preload" as="style" href="/fonts/fontawesome/all.min.css">
+    <link rel="stylesheet" href="/fonts/fontawesome/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="/fonts/fontawesome/all.min.css"></noscript>
 
 
 
@@ -357,14 +357,25 @@
     <meta property="og:image" content="https://www.destaperapido.cl/images/camio-haciendo-servicio-en-la-calle.webp">
     <meta name="twitter:card" content="summary_large_image">
     <!-- Google Tag Manager -->
-    <script>(function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({
-                'gtm.start':
-                    new Date().getTime(), event: 'gtm.js'
-            }); var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-PG2RQNCD');</script>
+    <script>(function(w, d, s, l, i){
+    function _loadGTM(){
+      w[l] = w[l] || []; w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+      var f = d.getElementsByTagName(s)[0], j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+      j.async = true;
+      j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+      f.parentNode.insertBefore(j, f);
+    }
+    function _schedule(){
+      if ('requestIdleCallback' in w) {
+        requestIdleCallback(_loadGTM, { timeout: 3000 });
+      } else {
+        setTimeout(_loadGTM, 1500);
+      }
+    }
+    if (d.readyState === 'complete') { _schedule(); }
+    else { w.addEventListener('load', _schedule, { once: true }); }
+})(window, document, 'script', 'dataLayer', 'GTM-PG2RQNCD');</script>
     <!-- End Google Tag Manager -->
     <meta property="og:type" content="website">
     <meta property="og:locale" content="es_CL">
@@ -390,14 +401,152 @@
     "priceRange": "$$",
     "address": {
       "@type": "PostalAddress",
-      "addressLocality": "Santiago",
-      "addressRegion": "Región Metropolitana",
+      "streetAddress": "Gaspar de Orense 831",
+      "addressLocality": "Maipú",
+      "addressRegion": "Región Metropolitana de Santiago",
+      "postalCode": "8500000",
       "addressCountry": "CL"
     },
     "areaServed": [
       {
         "@type": "AdministrativeArea",
-        "name": "Región Metropolitana, Chile"
+        "name": "Región Metropolitana de Santiago"
+      },
+      {
+        "@type": "City",
+        "name": "Santiago Centro"
+      },
+      {
+        "@type": "City",
+        "name": "Las Condes"
+      },
+      {
+        "@type": "City",
+        "name": "Vitacura"
+      },
+      {
+        "@type": "City",
+        "name": "Lo Barnechea"
+      },
+      {
+        "@type": "City",
+        "name": "Providencia"
+      },
+      {
+        "@type": "City",
+        "name": "La Reina"
+      },
+      {
+        "@type": "City",
+        "name": "Ñuñoa"
+      },
+      {
+        "@type": "City",
+        "name": "Peñalolén"
+      },
+      {
+        "@type": "City",
+        "name": "Macul"
+      },
+      {
+        "@type": "City",
+        "name": "La Florida"
+      },
+      {
+        "@type": "City",
+        "name": "Puente Alto"
+      },
+      {
+        "@type": "City",
+        "name": "San Miguel"
+      },
+      {
+        "@type": "City",
+        "name": "Maipú"
+      },
+      {
+        "@type": "City",
+        "name": "Cerrillos"
+      },
+      {
+        "@type": "City",
+        "name": "Estación Central"
+      },
+      {
+        "@type": "City",
+        "name": "Pudahuel"
+      },
+      {
+        "@type": "City",
+        "name": "Quilicura"
+      },
+      {
+        "@type": "City",
+        "name": "Huechuraba"
+      },
+      {
+        "@type": "City",
+        "name": "Recoleta"
+      },
+      {
+        "@type": "City",
+        "name": "Independencia"
+      },
+      {
+        "@type": "City",
+        "name": "Padre Hurtado"
+      },
+      {
+        "@type": "City",
+        "name": "Calera de Tango"
+      },
+      {
+        "@type": "City",
+        "name": "Chicureo"
+      },
+      {
+        "@type": "City",
+        "name": "Colina"
+      },
+      {
+        "@type": "City",
+        "name": "Lampa"
+      },
+      {
+        "@type": "City",
+        "name": "Pirque"
+      },
+      {
+        "@type": "City",
+        "name": "San José de Maipo"
+      },
+      {
+        "@type": "City",
+        "name": "Buin"
+      },
+      {
+        "@type": "City",
+        "name": "Paine"
+      },
+      {
+        "@type": "City",
+        "name": "Isla de Maipo"
+      },
+      {
+        "@type": "City",
+        "name": "Talagante"
+      },
+      {
+        "@type": "City",
+        "name": "Peñaflor"
+      },
+      {
+        "@type": "City",
+        "name": "Melipilla"
+      },
+      {
+        "@type": "City",
+        "name": "Curacaví"
       }
     ],
     "openingHoursSpecification": [
@@ -415,7 +564,31 @@
         "opens": "00:00",
         "closes": "23:59"
       }
-    ]
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "reviewCount": "16",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "foundingDate": "2014",
+    "slogan": "Destape y saneamiento profesional 24/7 en la Región Metropolitana",
+    "knowsAbout": [
+      "Destape de alcantarillado",
+      "Limpieza de fosas sépticas",
+      "Hidrojet de alta presión",
+      "Inspección de cañerías con cámara CCTV",
+      "Trampas de grasa para gastronomía",
+      "Biodigestores y plantas de tratamiento",
+      "Saneamiento rural y parcelas",
+      "Mantención preventiva para empresas y condominios",
+      "Arriendo de baños químicos para obras y eventos"
+    ],
+    "sameAs": [
+      "https://www.limpiafosasydestape.cl"
+    ],
+    "dateModified": "2026-05-08"
   },
   {
     "@context": "https://schema.org",
@@ -436,10 +609,12 @@
     ]
   }
 ]
-    </script>
+</script>
 </head>
 
-<body class="bg-slate-50 text-slate-600 antialiased selection:bg-brand-600 selection:text-white pb-30 md:pb-0">
+<body class="bg-slate-50 text-slate-600 antialiased selection:bg-brand-600 selection:text-white pb-32 md:pb-0">
+    <a href="#main-content" id="skip-to-content-link" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-brand-600 focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:shadow-lg focus:font-bold">Saltar al contenido</a>
+
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PG2RQNCD" height="0" width="0"
             style="display:none;visibility:hidden"></iframe></noscript>
@@ -453,7 +628,7 @@
                 <a href="/" class="flex items-center gap-1" aria-label="Destape Rápido - Destapes Las Condes 24/7">
                     <div class="w-12 h-12 md:w-[72px] md:h-[72px] flex items-center justify-center">
                         <img src="/logo-nav.webp" alt="Logo Destape Rápido - Expertos en Alcantarillado" width="72"
-                            height="72" class="w-full h-full object-contain" loading="lazy" decoding="async">
+                            height="72" class="w-full h-full object-contain" loading="eager" fetchpriority="high" decoding="async">
                     </div>
                     <div class="flex flex-col justify-center -space-y-0.5">
                         <span
@@ -473,30 +648,30 @@
                         <button
                             class="flex items-center gap-1 hover:text-brand-600 transition-colors focus:outline-none cursor-default">
                             Servicios <i
-                                class="fa-solid fa-chevron-down text-xs opacity-50 group-hover:rotate-180 transition-transform duration-300"></i>
+                                class="fa-solid fa-chevron-down text-xs opacity-50 group-hover:rotate-180 transition-transform duration-300" aria-hidden="true"></i>
                         </button>
                         <div
                             class="absolute top-full left-0 w-72 bg-white rounded-xl shadow-xl border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 overflow-hidden">
                             <div class="p-2 space-y-1">
                                 <a href="/servicios/destape-alcantarillado"
                                     class="block px-4 py-2.5 rounded-lg hover:bg-brand-50 hover:text-brand-600 transition-colors">
-                                    <i class="fa-solid fa-toilet w-5 text-brand-400"></i> Destape Alcantarillado
+                                    <i class="fa-solid fa-toilet w-5 text-brand-400" aria-hidden="true"></i> Destape Alcantarillado
                                 </a>
                                 <a href="/servicios/limpieza-fosas-septicas"
                                     class="block px-4 py-2.5 rounded-lg hover:bg-brand-50 hover:text-brand-600 transition-colors">
-                                    <i class="fa-solid fa-truck-droplet w-5 text-brand-400"></i> Limpieza de Fosas
+                                    <i class="fa-solid fa-truck-droplet w-5 text-brand-400" aria-hidden="true"></i> Limpieza de Fosas
                                 </a>
                                 <a href="/servicios/destape-edificios-condominios"
                                     class="block px-4 py-2.5 rounded-lg hover:bg-brand-50 hover:text-brand-600 transition-colors">
-                                    <i class="fa-solid fa-building w-5 text-brand-400"></i> Edificios y Condominios
+                                    <i class="fa-solid fa-building w-5 text-brand-400" aria-hidden="true"></i> Edificios y Condominios
                                 </a>
                                 <a href="/servicios/inspeccion-camara-alcantarillado"
                                     class="block px-4 py-2.5 rounded-lg hover:bg-brand-50 hover:text-brand-600 transition-colors">
-                                    <i class="fa-solid fa-video w-5 text-brand-400"></i> Inspección con Cámara
+                                    <i class="fa-solid fa-video w-5 text-brand-400" aria-hidden="true"></i> Inspección con Cámara
                                 </a>
                                 <a href="/servicios/mantencion-preventiva"
                                     class="block px-4 py-2.5 rounded-lg hover:bg-brand-50 hover:text-brand-600 transition-colors">
-                                    <i class="fa-solid fa-clipboard-check w-5 text-brand-400"></i> Mantención Preventiva
+                                    <i class="fa-solid fa-clipboard-check w-5 text-brand-400" aria-hidden="true"></i> Mantención Preventiva
                                 </a>
                             </div>
                             <div class="bg-slate-50 border-t border-slate-100 p-2">
@@ -513,7 +688,7 @@
                         <button
                             class="flex items-center gap-1 hover:text-brand-600 transition-colors focus:outline-none cursor-default">
                             Zonas <i
-                                class="fa-solid fa-chevron-down text-xs opacity-50 group-hover:rotate-180 transition-transform duration-300"></i>
+                                class="fa-solid fa-chevron-down text-xs opacity-50 group-hover:rotate-180 transition-transform duration-300" aria-hidden="true"></i>
                         </button>
                         <!-- Mega Menu for Zones -->
                         <div
@@ -578,11 +753,11 @@
                     <div class="flex items-center gap-4 ml-4">
                         <a href="tel:+56997946463"
                             class="text-slate-900 font-bold hover:text-brand-600 transition hidden xl:block">
-                            <i class="fa-solid fa-phone mr-1"></i> +56 9 9794 6463
+                            <i class="fa-solid fa-phone mr-1" aria-hidden="true"></i> +56 9 9794 6463
                         </a>
                         <a href="https://wa.me/56997946463"
                             class="bg-brand-600 hover:bg-brand-700 text-white px-5 py-2.5 rounded-full font-bold shadow-lg shadow-brand-500/20 transition hover:-translate-y-0.5 flex items-center gap-2">
-                            <i class="fa-brands fa-whatsapp text-lg"></i> Urgencia
+                            <i class="fa-brands fa-whatsapp text-lg" aria-hidden="true"></i> Urgencia
                         </a>
                     </div>
                 </div>
@@ -591,11 +766,11 @@
                 <div class="flex items-center gap-4 lg:hidden">
                     <a href="tel:+56997946463"
                         class="flex items-center justify-center w-10 h-10 rounded-full bg-slate-100 text-slate-900 active:scale-95 transition">
-                        <i class="fa-solid fa-phone"></i>
+                        <i class="fa-solid fa-phone" aria-hidden="true"></i>
                     </a>
                     <button onclick="openMenu()" aria-label="Abrir menú de navegación"
-                        class="p-2.5 rounded-lg text-slate-900 hover:bg-slate-100 focus:outline-none transition active:scale-95">
-                        <i class="fa-solid fa-bars text-2xl"></i>
+                        class="p-2.5 rounded-lg text-slate-900 hover:bg-slate-100 focus:outline-none transition active:scale-95" aria-expanded="false" aria-controls="mobile-menu-overlay">
+                        <i class="fa-solid fa-bars text-2xl" aria-hidden="true"></i>
                     </button>
                 </div>
             </div>
@@ -611,7 +786,7 @@
                 <span class="font-extrabold text-slate-900 text-lg tracking-tight">MENÚ</span>
                 <button onclick="closeMenu()" aria-label="Cerrar menú"
                     class="w-10 h-10 rounded-full bg-slate-50 text-slate-500 hover:bg-red-50 hover:text-red-500 transition flex items-center justify-center">
-                    <i class="fa-solid fa-xmark text-xl"></i>
+                    <i class="fa-solid fa-xmark text-xl" aria-hidden="true"></i>
                 </button>
             </div>
 
@@ -624,7 +799,7 @@
                         class="w-full flex items-center justify-between px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 transition"
                         onclick="toggleSubmenu('sub-servicios', this)">
                         Servicios
-                        <i class="fa-solid fa-chevron-down text-xs text-slate-400 transition-transform"></i>
+                        <i class="fa-solid fa-chevron-down text-xs text-slate-400 transition-transform" aria-hidden="true"></i>
                     </button>
                     <div id="sub-servicios" class="hidden pl-4 space-y-1 bg-slate-50/50 rounded-b-xl pb-2">
                         <a href="/servicios/destape-alcantarillado" onclick="closeMenu()"
@@ -654,7 +829,7 @@
                         class="w-full flex items-center justify-between px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 transition"
                         onclick="toggleSubmenu('sub-zonas', this)">
                         Zonas
-                        <i class="fa-solid fa-chevron-down text-xs text-slate-400 transition-transform"></i>
+                        <i class="fa-solid fa-chevron-down text-xs text-slate-400 transition-transform" aria-hidden="true"></i>
                     </button>
                     <div id="sub-zonas" class="hidden pl-4 space-y-1 bg-slate-50/50 rounded-b-xl pb-2">
                         <div class="px-4 py-1 text-[10px] font-bold text-slate-400 uppercase">Urbano</div>
@@ -672,6 +847,32 @@
                             class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">La Reina</a>
                         <a href="/zonas/urbano/nunoa" onclick="closeMenu()"
                             class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Ñuñoa</a>
+                        <a href="/zonas/urbano/cerrillos" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Cerrillos</a>
+                        <a href="/zonas/urbano/estacion-central" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Estación Central</a>
+                        <a href="/zonas/urbano/independencia" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Independencia</a>
+                        <a href="/zonas/urbano/la-florida" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">La Florida</a>
+                        <a href="/zonas/urbano/macul" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Macul</a>
+                        <a href="/zonas/urbano/maipu" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Maipú</a>
+                        <a href="/zonas/urbano/penalolen" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Peñalolén</a>
+                        <a href="/zonas/urbano/pudahuel" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Pudahuel</a>
+                        <a href="/zonas/urbano/puente-alto" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Puente Alto</a>
+                        <a href="/zonas/urbano/quilicura" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Quilicura</a>
+                        <a href="/zonas/urbano/recoleta" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Recoleta</a>
+                        <a href="/zonas/urbano/san-miguel" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">San Miguel</a>
+                        <a href="/zonas/urbano/santiago-centro" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Santiago Centro</a>
                         <a href="/zonas/urbano/" onclick="closeMenu()"
                             class="block px-4 py-2 text-sm font-bold text-brand-600 hover:underline mt-1 mb-2">
                             Ver todas Urbano &rarr;
@@ -702,6 +903,14 @@
                         <a href="/zonas/rural/calera-de-tango" onclick="closeMenu()"
                             class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Calera de
                             Tango</a>
+                        <a href="/zonas/rural/curacavi" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Curacaví</a>
+                        <a href="/zonas/rural/melipilla" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Melipilla</a>
+                        <a href="/zonas/rural/padre-hurtado" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Padre Hurtado</a>
+                        <a href="/zonas/rural/penaflor" onclick="closeMenu()"
+                            class="block px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600">Peñaflor</a>
                         <a href="/zonas/rural/" onclick="closeMenu()"
                             class="block px-4 py-2 text-sm font-bold text-brand-600 hover:underline mt-2 border-t border-slate-200/50 pt-2">
                             Ver todas las zonas &rarr;
@@ -719,16 +928,17 @@
             <div class="p-6 bg-slate-50 border-t border-slate-100">
                 <a href="https://wa.me/56997946463"
                     class="flex items-center justify-center gap-2 w-full bg-green-500 text-white font-bold py-3 rounded-xl shadow-lg shadow-green-500/20 active:scale-95 transition">
-                    <i class="fa-brands fa-whatsapp text-xl"></i> WhatsApp 24/7
+                    <i class="fa-brands fa-whatsapp text-xl" aria-hidden="true"></i> WhatsApp 24/7
                 </a>
             </div>
         </div>
     </div>
 
+    <main id="main-content">
     <header class="relative py-20 pt-32 overflow-hidden">
         <!-- Optimized Hero Image -->
         <img src="/images/camio-haciendo-servicio-en-la-calle.webp" srcset="/images/camio-haciendo-servicio-en-la-calle-480w.webp 480w, /images/camio-haciendo-servicio-en-la-calle-768w.webp 768w, /images/camio-haciendo-servicio-en-la-calle.webp 1032w" sizes="100vw" alt="Contacto Destape Rápido"
-            class="absolute inset-0 w-full h-full object-cover -z-20" fetchpriority="high">
+            class="absolute inset-0 w-full h-full object-cover -z-20" fetchpriority="high" decoding="async">
 
         <!-- Gradient Overlay -->
         <div class="absolute inset-0 -z-10"
@@ -765,7 +975,7 @@
 
                 <div class="lg:col-span-1 space-y-6">
                     <div class="bg-slate-900 text-white p-8 rounded-2xl shadow-xl relative overflow-hidden">
-                        <div class="absolute top-0 right-0 p-4 opacity-10 text-6xl"><i class="fa-solid fa-headset"></i>
+                        <div class="absolute top-0 right-0 p-4 opacity-10 text-6xl"><i class="fa-solid fa-headset" aria-hidden="true"></i>
                         </div>
                         <h3 class="text-2xl font-bold mb-2">Atención Inmediata</h3>
                         <p class="text-slate-400 mb-6 text-sm">Línea directa con técnicos en ruta.</p>
@@ -775,7 +985,7 @@
                                 class="flex items-center gap-4 hover:text-brand-400 transition group">
                                 <div
                                     class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-brand-600 transition">
-                                    <i class="fa-solid fa-phone"></i>
+                                    <i class="fa-solid fa-phone" aria-hidden="true"></i>
                                 </div>
                                 <div>
                                     <span class="block text-xs text-slate-400 uppercase font-bold">Llamar Ahora</span>
@@ -787,7 +997,7 @@
                                 class="flex items-center gap-4 hover:text-brand-400 transition group">
                                 <div
                                     class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-brand-600 transition">
-                                    <i class="fa-solid fa-envelope"></i>
+                                    <i class="fa-solid fa-envelope" aria-hidden="true"></i>
                                 </div>
                                 <div>
                                     <span class="block text-xs text-slate-400 uppercase font-bold">Correo</span>
@@ -799,7 +1009,7 @@
                                 class="flex items-center gap-4 hover:text-green-400 transition group">
                                 <div
                                     class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-green-600 transition">
-                                    <i class="fa-brands fa-whatsapp"></i>
+                                    <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
                                 </div>
                                 <div>
                                     <span class="block text-xs text-slate-400 uppercase font-bold">WhatsApp</span>
@@ -811,7 +1021,7 @@
 
                     <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-100">
                         <h3 class="font-bold text-slate-900 mb-4 flex items-center gap-2">
-                            <i class="fa-regular fa-clock text-brand-600"></i> Horarios de Atención
+                            <i class="fa-regular fa-clock text-brand-600" aria-hidden="true"></i> Horarios de Atención
                         </h3>
                         <ul class="space-y-3 text-sm text-slate-600">
                             <li class="flex justify-between">
@@ -895,7 +1105,7 @@
 
                             <div
                                 class="flex items-center gap-2 text-sm text-slate-500 bg-slate-50 p-3 rounded-lg border border-slate-100">
-                                <i class="fa-solid fa-shield-halved text-brand-500"></i>
+                                <i class="fa-solid fa-shield-halved text-brand-500" aria-hidden="true"></i>
                                 <span>Tus datos están protegidos. Respuesta en máx 30 min.</span>
                             </div>
 
@@ -952,18 +1162,65 @@
         </div>
     </section>
 
-    <section class="h-[400px] bg-slate-200 relative">
-        <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d212974.9678467734!2d-70.77362775!3d-33.47278735!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c5410425af2f%3A0x8475d53c400f0931!2sSantiago%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses!2scl!4v1684422000000!5m2!1ses!2scl"
-            width="100%" height="100%" style="border:0; filter: grayscale(100%) contrast(1.2);" allowfullscreen=""
-            loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
-        <div
-            class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-white px-6 py-3 rounded-full shadow-xl font-bold text-slate-800 text-sm flex items-center gap-2 pointer-events-none">
-            <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-            Cobertura en toda la Región Metropolitana
+    <section class="bg-white border-t border-slate-100 py-12">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <span class="text-brand-600 font-bold uppercase tracking-widest text-xs mb-2 block">Oficina y depósito</span>
+                    <h2 class="text-2xl font-extrabold text-slate-900 mb-4">Dónde nos encuentras</h2>
+                    <address class="not-italic text-slate-700 leading-relaxed">
+                        <strong class="block text-slate-900 text-lg">Destape Rápido</strong>
+                        Gaspar de Orense 831<br>
+                        Maipú · Región Metropolitana<br>
+                        Código postal 8500000 · Chile
+                    </address>
+                    <p class="text-sm text-slate-500 mt-4">Atendemos urgencias 24/7 en toda la Región Metropolitana — los servicios se coordinan por WhatsApp o teléfono y el equipo se despacha por GPS al técnico más cercano.</p>
+                    <div class="flex flex-col sm:flex-row gap-3 mt-6">
+                        <a href="tel:+56997946463" class="inline-flex items-center justify-center gap-2 bg-brand-600 hover:bg-brand-700 text-white font-bold py-3 px-6 rounded-xl transition"><i class="fa-solid fa-phone" aria-hidden="true"></i> +56 9 9794 6463</a>
+                        <a href="https://wa.me/56997946463" class="inline-flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-xl transition"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> WhatsApp 24/7</a>
+                    </div>
+                </div>
+                <div class="h-[400px] bg-slate-200 rounded-2xl overflow-hidden relative shadow-md">
+                    <iframe
+                        src="https://www.google.com/maps?q=Gaspar+de+Orense+831,+Maip%C3%BA,+Regi%C3%B3n+Metropolitana,+Chile&output=embed"
+                        width="100%" height="100%" style="border:0; filter: grayscale(60%) contrast(1.1);" allowfullscreen=""
+                        loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                        title="Mapa: Gaspar de Orense 831, Maipú">
+                    </iframe>
+                    <div class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-white px-5 py-2 rounded-full shadow-xl font-bold text-slate-800 text-xs flex items-center gap-2 pointer-events-none">
+                        <div class="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse"></div>
+                        Cobertura en toda la RM
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
+
+    </main>
+    <!-- Banner KPIs cuantificados (GEO/SEO: refuerzo de señales para LLMs) -->
+    <section id="kpis-banner" class="bg-slate-900 text-white py-10 border-t border-slate-800">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <p class="text-center text-xs font-bold uppercase tracking-widest text-blue-300 mb-6">Destape Rápido en cifras · Mayo 2026</p>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 text-center">
+                <div><span class="block text-2xl font-extrabold">5,0 / 5</span><span class="text-xs text-slate-400">Google · 16 reseñas reales</span></div>
+                <div><span class="block text-2xl font-extrabold">12 años</span><span class="text-xs text-slate-400">operando desde 2014</span></div>
+                <div><span class="block text-2xl font-extrabold">30+</span><span class="text-xs text-slate-400">comunas RM atendidas</span></div>
+                <div><span class="block text-2xl font-extrabold">3 tamaños</span><span class="text-xs text-slate-400">cisternas 2k / 5k / 15k L</span></div>
+                <div><span class="block text-2xl font-extrabold">5.000 PSI</span><span class="text-xs text-slate-400">hidrojet máx (industrial)</span></div>
+                <div><span class="block text-2xl font-extrabold">24 / 7</span><span class="text-xs text-slate-400">WhatsApp con IA</span></div>
+            </div>
+            <p class="text-center text-xs text-slate-500 mt-6">
+                Resolución sanitaria <strong class="text-slate-300">SEREMI vigente</strong> ·
+                Factura electrónica con OC ·
+                Certificado de disposición por servicio ·
+                <a href="/flota" class="text-blue-300 hover:text-white underline">flota</a> ·
+                <a href="/empresas" class="text-blue-300 hover:text-white underline">empresas B2B</a> ·
+                <a href="/por-que-elegirnos" class="text-blue-300 hover:text-white underline">por qué elegirnos</a>
+            </p>
+        </div>
+    </section>
+
+
 
     <footer class="bg-slate-50 text-slate-500 py-12 text-sm border-t border-slate-200">
         <div class="container mx-auto px-4">
@@ -988,13 +1245,13 @@
                         hogares y empresas. Atendemos urgencias reales con equipos certificados.</p>
                     <div class="flex gap-4">
                         <a href="/" class="text-slate-500 hover:text-brand-600 transition" aria-label="Facebook">
-                            <i class="fa-brands fa-facebook text-xl"></i>
+                            <i class="fa-brands fa-facebook text-xl" aria-hidden="true"></i>
                         </a>
                         <a href="/" class="text-slate-500 hover:text-brand-600 transition" aria-label="Instagram">
-                            <i class="fa-brands fa-instagram text-xl"></i>
+                            <i class="fa-brands fa-instagram text-xl" aria-hidden="true"></i>
                         </a>
                         <a href="/" class="text-slate-500 hover:text-brand-600 transition" aria-label="LinkedIn">
-                            <i class="fa-brands fa-linkedin text-xl"></i>
+                            <i class="fa-brands fa-linkedin text-xl" aria-hidden="true"></i>
                         </a>
                     </div>
                 </div>
@@ -1057,11 +1314,11 @@
                 </div>
                 <div class="flex gap-4 mt-4 md:mt-0">
                     <a href="/" class="hover:text-slate-800 transition" aria-label="Facebook"><i
-                            class="fa-brands fa-facebook text-lg"></i></a>
+                            class="fa-brands fa-facebook text-lg" aria-hidden="true"></i></a>
                     <a href="/" class="hover:text-slate-800 transition" aria-label="Instagram"><i
-                            class="fa-brands fa-instagram text-lg"></i></a>
+                            class="fa-brands fa-instagram text-lg" aria-hidden="true"></i></a>
                     <a href="/" class="hover:text-slate-800 transition" aria-label="LinkedIn"><i
-                            class="fa-brands fa-linkedin text-lg"></i></a>
+                            class="fa-brands fa-linkedin text-lg" aria-hidden="true"></i></a>
                 </div>
             </div>
         </div>
@@ -1089,7 +1346,7 @@
             <a href="tel:+56997946463"
                 class="flex-1 bg-brand-600 text-white font-bold rounded-xl py-3 flex items-center justify-center gap-2 active:scale-95 transition shadow-lg shadow-brand-600/20"
                 aria-label="Llamar ahora">
-                <i class="fa-solid fa-phone animate-pulse"></i> Llamar
+                <i class="fa-solid fa-phone animate-pulse" aria-hidden="true"></i> Llamar
             </a>
 
             <a href="https://wa.me/56997946463"
@@ -1100,7 +1357,7 @@
 
                     <span class="wa-notification-dot on-icon" id="wa-dot-mobile">1</span>
 
-                    <i class="fa-brands fa-whatsapp text-xl"></i>
+                    <i class="fa-brands fa-whatsapp text-xl" aria-hidden="true"></i>
                 </div>
 
                 WhatsApp
@@ -1119,12 +1376,26 @@
 
         function openMenu() {
             overlay.classList.remove('invisible', 'opacity-0');
+            // a11y: actualizar aria-expanded del botón hamburguesa
+            try {
+                document.querySelectorAll('[onclick="openMenu()"]').forEach(function (b) {
+                    b.setAttribute('aria-expanded', 'true'); /* ariaExpandedTrueDestaperapido */
+                });
+            } catch (e) {}
+
             panel.classList.remove('translate-x-full');
             document.body.style.overflow = 'hidden';
         }
 
         function closeMenu() {
             panel.classList.add('translate-x-full');
+            // a11y: actualizar aria-expanded del botón hamburguesa
+            try {
+                document.querySelectorAll('[onclick="openMenu()"]').forEach(function (b) {
+                    b.setAttribute('aria-expanded', 'false'); /* ariaExpandedTrueDestaperapido */
+                });
+            } catch (e) {}
+
             overlay.classList.add('invisible', 'opacity-0');
             document.body.style.overflow = '';
         }
@@ -1144,37 +1415,7 @@
         }
     </script>
 
-    <div class="fixed bottom-0 left-0 right-0 z-50 md:hidden flex flex-col shadow-[0_-4px_20px_rgba(0,0,0,0.15)]">
-        <div class="availability-badge w-full bg-green-50 border-t border-green-200 py-1.5 flex items-center justify-center gap-2 text-[11px] font-bold text-green-800 transition-all duration-500 opacity-0"
-            role="status">
-            <span class="relative flex h-2 w-2">
-                <span class="ping-dot absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                <span class="static-dot relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-            </span>
-            <span>
-                <span class="unit-count">...</span>
-                <span class="unit-text">buscando...</span>
-            </span>
-        </div>
-
-        <div class="bg-white p-3 flex gap-3 border-t border-slate-100">
-            <a href="tel:+56997946463"
-                class="flex-1 bg-brand-600 text-white font-bold rounded-xl py-3 flex items-center justify-center gap-2 active:scale-95 transition shadow-lg shadow-brand-600/20"
-                aria-label="Llamar ahora">
-                <i class="fa-solid fa-phone animate-pulse"></i> Llamar
-            </a>
-
-            <a href="https://wa.me/56997946463"
-                class="flex-1 bg-green-600 text-white font-bold rounded-xl py-3 flex items-center justify-center gap-2 active:scale-95 transition shadow-lg shadow-green-500/20"
-                aria-label="Enviar mensaje por WhatsApp a Destape Rápido">
-                <div class="relative flex items-center justify-center">
-                    <span class="wa-notification-dot on-icon" id="wa-dot-mobile">1</span>
-                    <i class="fa-brands fa-whatsapp text-xl"></i>
-                </div>
-                WhatsApp
-            </a>
-        </div>
-    </div>
+    
 
 
     <div class="wa-floating-btn hidden md:flex" id="wa-btn" onclick="toggleChat()">
@@ -1193,7 +1434,7 @@
     <div class="wa-chat-box" id="whatsapp-chat">
         <div class="wa-header">
             <button class="wa-close-btn" onclick="toggleChat()">×</button>
-            <img src="/logo-nav.png" alt="Perfil" class="wa-profile-pic" loading="lazy" decoding="async">
+            <img src="/logo-nav.webp" alt="Avatar de Destape Rápido en WhatsApp" class="wa-profile-pic" width="50" height="50" loading="lazy" decoding="async">
             <div class="wa-info">
                 <h4>Destape Rápido</h4>
                 <p>En línea</p>
@@ -1248,6 +1489,9 @@
     </script>
 
     <script src="/js/conversion.js" defer></script>
+    <script src="/js/a11y-menu.js" defer></script>
+    <script src="/js/mobile-sticky-cta.js" defer></script>
+    <script src="/js/register-sw.js" defer></script>
 </body>
 
 </html>
