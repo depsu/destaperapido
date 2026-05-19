@@ -1,0 +1,45 @@
+prioridad,categoria,sitio,url_formulario,login_requerido,verificacion,descripcion_a_usar,categoria_a_marcar,estado,url_perfil_creado,fecha,notas
+1,Mapas,Google Business Profile,https://business.google.com/es/business-profile/,Google,SMS+postal,Larga A,Plumber + Septic system service,publicado,https://maps.app.goo.gl/e97qNtXnJ37A5cWe9,2026-05-18,Verificado y publicado. Pedir resenas a clientes recientes para subir de 16 a 30+
+1,Mapas,Bing Places,https://www.bingplaces.com/,Microsoft,Email,Larga B,Plumber,pendiente,,,Importa desde Google si ya esta hecho
+1,Mapas,Apple Business Connect,https://businessconnect.apple.com/,Apple ID,Email/DNS,Larga C,Plumber,pendiente,,,Verificacion por TXT DNS o documento
+1,Mapas,Waze for Business,https://www.waze.com/business,Google,Email,Corta A,Servicios,pendiente,,,Util en urgencias
+2,Directorios CL,Paginas Amarillas (amarillas.emol.com),https://amarillas.emol.com/,Si,Email,Media A,Servicios Sanitarios,pendiente,,,Plan basico gratis + pagos. Pedir info de plan empresa
+2,Directorios CL,Mercantil.cl,https://www.mercantil.com/,Contacto humano,Email/llamada,Larga A,Limpieza de fosas septicas,pendiente,,,Contactar contacto@portalesdenegocios.com o +56 2 27540000
+2,Directorios CL,Infoisinfo Chile,https://www.infoisinfo.cl/,Si,Email,Media B,Alcantarillado,pendiente,,,Boton Anade tu empresa. Gratis
+2,Directorios CL,Directorio Empresas Chile,https://www.directorioempresaschile.cl/,Si,Email,Larga B,Servicios sanitarios,pendiente,,,Tiene categoria sanitarios exacta
+2,Directorios CL,Buscatuempresa.cl,https://buscatuempresa.cl/,Si,Email,Media C,Gasfiteria,pendiente,,,Gratis con upsell opcional
+2,Directorios CL,Indizze.cl,http://www.indizze.cl/,Si,Email,Corta B,Servicios para el hogar,pendiente,,,Cobertura nacional
+2,Directorios CL,Directorio-chile.com,https://www.directorio-chile.com/,Si,Email,Larga C,Servicios,pendiente,,,
+2,Directorios CL,ChileServicios,https://chileservicios.com/empresas/,Si,Email,Media A,Servicios,pendiente,,,
+2,Directorios CL,Empresasyejecutivoschile.cl,https://empresasyejecutivoschile.cl/,Si,Email,Media B,Sanitarios,pendiente,,,
+2,Directorios CL,Kom.cl,http://www.kom.cl,Si,Email,Corta C,Servicios,pendiente,,,
+3,Portales servicio,Cronoshare,https://www.cronoshare.cl/profesionales/registro,Si,SMS+Email,Larga A,Gasfiter,pendiente,,,Genera leads reales. Completar 100% perfil con fotos
+3,Portales servicio,Habitissimo Chile,https://empresas.habitissimo.cl/,Si,Email,Larga B,Gasfiteria > Destapes,pendiente,,,Especializado en hogar/reformas
+3,Portales servicio,Homify Chile,https://www.homify.cl/professionals/sign_up,Si,Email,Larga C,Servicios para el hogar,pendiente,,,Mas enfocado arquitectura, pero permite saneamiento
+3,Portales servicio,Gasfiter.cl,https://gasfiter.cl/registro,Si,Email,Media A,Destape de alcantarillado,pendiente,,,Nicho exacto
+3,Portales servicio,Plomero.cl,https://plomero.cl/,Email/contacto,Email,Media B,Gasfiter,pendiente,,,Nicho exacto. Confirmar form de registro
+3,Portales servicio,Yapo.cl,https://www.yapo.cl/poner_anuncio,Si,SMS,Media C,Servicios > Otros,pendiente,,,Tarafico alto. Link nofollow pero da exposicion
+4,Clasificados,Doplim Chile,https://www.doplim.cl/post-ad.html,Si,Email,Corta A,Servicios > Hogar,pendiente,,,Renovar mensualmente
+4,Clasificados,OLX Chile,https://www.olx.cl,Si,SMS,Corta B,Servicios,pendiente,,,Verificar si OLX sigue operando en CL
+4,Clasificados,Anunico.cl,http://www.anunico.cl,Si,Email,Media A,Servicios,pendiente,,,
+4,Clasificados,Mundoanuncio.cl,http://www.mundoanuncio.cl,Si,Email,Media B,Servicios,pendiente,,,
+4,Clasificados,Chileanuncios.cl,http://www.chileanuncios.cl,Si,Email,Media C,Servicios,pendiente,,,
+4,Clasificados,Anunciosyavisos.cl,http://www.anunciosyavisos.cl,Si,Email,Corta C,Servicios,pendiente,,,
+4,Clasificados,Mipagina.cl,http://www.mipagina.cl,Si,Email,Corta A,Servicios,pendiente,,,
+4,Clasificados,Superanuncios.cl,http://www.superanuncios.cl,Si,Email,Corta B,Servicios,pendiente,,,
+4,Clasificados,Coticefacil.com,http://www.coticefacil.com,Si,Email,Media A,Servicios,pendiente,,,
+5,Guest post,Blog Sodimac/Easy,buscar contacto editorial,Email pitch,N/A,Larga A (bio),N/A,pendiente,,,Pitch con 3 ideas de articulos
+5,Guest post,houserepairchile.cl,https://houserepairchile.cl/contacto,Email pitch,N/A,Larga B (bio),N/A,pendiente,,,Construccion y reformas
+5,Guest post,remodelaciondecasaschile.cl,buscar email contacto,Email pitch,N/A,Larga C (bio),N/A,pendiente,,,
+5,Guest post,donjoel.cl,buscar email contacto,Email pitch,N/A,Larga A (bio),N/A,pendiente,,,Remodelacion
+5,Guest post,Comunidad Feliz (administracion edificios),https://comunidadfeliz.cl/contacto,Email pitch,N/A,Larga B (bio),N/A,pendiente,,,Audiencia: administradores que contratan destapes
+5,Guest post,Edifito,buscar contacto,Email pitch,N/A,Larga C (bio),N/A,pendiente,,,Administracion de comunidades
+6,Prensa,Comunicae (nota de prensa CL),https://comunicae.es/registro,Si,Email,Larga A,Empresa servicios,pendiente,,,Distribuye nota a medios
+6,Prensa,Iberian Press,https://www.iberianpress.es/registro,Si,Email,Larga B,Empresa servicios,pendiente,,,Distribuye nota a medios
+6,Gremios,Camara Chilena de la Construccion,https://www.cchc.cl/asociados,Pago membresia,Documento legal,Larga C,Servicios construccion,pendiente,,,Pagada pero alto valor. Evaluar costo/beneficio
+6,Gremios,Camara de Comercio Maipu,buscar web/contacto,Pago membresia,Documento legal,Media A,Servicios,pendiente,,,Camara comunal por sede en Maipu
+7,Trust signals,Trustpilot Chile,https://es.trustpilot.com/users/business_signup_password,Si,Email,Media B,Local service business,pendiente,,,Reviews verificadas
+7,Trust signals,Facebook Business Page,https://www.facebook.com/business,Facebook,Email,Larga A,Servicios para el hogar,publicado,https://www.facebook.com/profile.php?id=61586933706026,2026-05-18,Verificar que perfil tenga username corto tipo /destaperapido en vez de profile.php?id=
+7,Trust signals,Instagram Business,https://business.instagram.com/,Facebook,Email,Corta A,Servicios para el hogar,publicado,https://www.instagram.com/destaperapidorm/,2026-05-18,Username: @destaperapidorm. Verificar que sea cuenta Business (no personal)
+7,Trust signals,LinkedIn Company Page,https://www.linkedin.com/company/setup/new/,LinkedIn,Email,Larga B,Servicios ambientales,pendiente,,,DA muy alto del dominio LinkedIn
+7,Trust signals,YouTube Canal,https://www.youtube.com/create_channel,Google,Email,Larga C,N/A,pendiente,,,Subir 2-3 videos: antes/despues destape, hidrojet en accion
