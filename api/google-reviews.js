@@ -137,24 +137,19 @@ async function fetchByCid(cid, apiKey) {
 
 async function fetchByPlaceId(placeId, apiKey) {
   const url = `https://places.googleapis.com/v1/places/${encodeURIComponent(placeId)}`;
-  const fields = [
+  const fieldMask = [
     'id',
     'displayName',
     'rating',
     'userRatingCount',
-    'reviews.rating',
-    'reviews.text',
-    'reviews.authorAttribution.displayName',
-    'reviews.authorAttribution.photoUri',
-    'reviews.publishTime',
-    'reviews.relativePublishTimeDescription',
+    'reviews',
     'googleMapsUri',
   ].join(',');
 
-  const r = await fetch(`${url}?fields=${fields}&languageCode=es`, {
+  const r = await fetch(`${url}?languageCode=es`, {
     headers: {
       'X-Goog-Api-Key': apiKey,
-      'Content-Type': 'application/json',
+      'X-Goog-FieldMask': fieldMask,
     },
   });
 
