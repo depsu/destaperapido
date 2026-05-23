@@ -8,6 +8,10 @@
   var COUNT = document.getElementById('search-count');
   var fuse = null;
 
+  function normalize(str) {
+    return typeof str === 'string' ? str.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase() : '';
+  }
+
   fetch('/data/search-index.json')
     .then(function (r) { return r.json(); })
     .then(function (data) {
@@ -20,7 +24,12 @@
         ],
         threshold: 0.4,
         includeScore: true,
-        minMatchCharLength: 2
+        minMatchCharLength: 2,
+        getFn: function (obj, path) {
+          var value = Fuse.config.getFn(obj, path);
+          if (Array.isArray(value)) return value.map(normalize);
+          return normalize(value);
+        }
       });
 
       var params = new URLSearchParams(window.location.search);
@@ -44,7 +53,7 @@
       return;
     }
 
-    var results = fuse.search(query, { limit: 20 });
+    var results = fuse.search(normalize(query), { limit: 20 });
     EMPTY.classList.add('hidden');
 
     if (results.length === 0) {
