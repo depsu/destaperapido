@@ -195,12 +195,16 @@
   function filterReviews(reviews, container) {
     const minStars = parseInt(container.dataset.minStars || '0', 10);
     const limit = parseInt(container.dataset.limit || '6', 10);
-    const exclude = (container.dataset.exclude || '').toLowerCase().split(',').map((s) => s.trim()).filter(Boolean);
+    const deprioritize = (container.dataset.exclude || '').toLowerCase().split(',').map((s) => s.trim()).filter(Boolean);
 
-    return reviews
-      .filter((r) => r.rating >= minStars && r.text)
-      .filter((r) => !exclude.length || !exclude.some((kw) => (r.text || '').toLowerCase().includes(kw)))
-      .slice(0, limit);
+    const valid = reviews.filter((r) => r.rating >= minStars && r.text);
+
+    if (!deprioritize.length) return valid.slice(0, limit);
+
+    const preferred = valid.filter((r) => !deprioritize.some((kw) => (r.text || '').toLowerCase().includes(kw)));
+    const rest = valid.filter((r) => deprioritize.some((kw) => (r.text || '').toLowerCase().includes(kw)));
+
+    return [...preferred, ...rest].slice(0, limit);
   }
 
   function render(container, data) {
