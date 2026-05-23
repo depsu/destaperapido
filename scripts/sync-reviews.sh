@@ -26,9 +26,13 @@ while IFS= read -r -d '' file; do
   fi
 done < <(find public -name '*.html' -print0)
 
-# Actualizar también textos hardcodeados tipo "Google · 16 reseñas reales"
+# Actualizar textos hardcodeados con variantes comunes
 while IFS= read -r -d '' file; do
   sed -i '' -E "s/Google · [0-9]+ reseñas reales/Google · $TOTAL reseñas reales/" "$file"
+  sed -i '' -E "s/en Google \([0-9]+ reseñas reales\)/en Google ($TOTAL reseñas reales)/" "$file"
+  sed -i '' -E "s/en Google \([0-9]+ reseñas\)/en Google ($TOTAL reseñas)/" "$file"
+  sed -i '' -E "s/5,0 \/ 5 \([0-9]+ reseñas reales\)/5,0 \/ 5 ($TOTAL reseñas reales)/" "$file"
+  sed -i '' -E "s/con [0-9]+ reseñas reales/con $TOTAL reseñas reales/" "$file"
 done < <(find public -name '*.html' -print0)
 
 echo "Actualizado reviewCount a $TOTAL en $COUNT archivos."
