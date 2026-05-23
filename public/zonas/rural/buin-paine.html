@@ -10,6 +10,7 @@
     <title>Limpieza de Fosas Sépticas Buin y Paine | Parcelas 24/7</title>
 
     <meta name="description" content="Limpieza de fosas sépticas en Buin y Paine: parcelas, agroindustria y empresas. Camiones de alto tonelaje y certificado de retiro. Cotiza.">
+    <meta name="author" content="Alejandro Rivera Carrasco">
 
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
@@ -415,25 +416,6 @@
 
 
     <!-- Google Tag Manager -->
-    <script>(function(w, d, s, l, i){
-    function _loadGTM(){
-      w[l] = w[l] || []; w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
-      var f = d.getElementsByTagName(s)[0], j = d.createElement(s),
-          dl = l != 'dataLayer' ? '&l=' + l : '';
-      j.async = true;
-      j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-      f.parentNode.insertBefore(j, f);
-    }
-    function _schedule(){
-      if ('requestIdleCallback' in w) {
-        requestIdleCallback(_loadGTM, { timeout: 3000 });
-      } else {
-        setTimeout(_loadGTM, 1500);
-      }
-    }
-    if (d.readyState === 'complete') { _schedule(); }
-    else { w.addEventListener('load', _schedule, { once: true }); }
-})(window, document, 'script', 'dataLayer', 'GTM-PG2RQNCD');</script>
     <!-- End Google Tag Manager -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Limpieza de Fosas Sépticas Buin y Paine | Parcelas 24/7">
@@ -511,7 +493,7 @@
                         <img src="/logo-nav.webp" alt="Logo Destape Rápido - Expertos en Alcantarillado" width="72"
                             height="72" class="w-full h-full object-contain" loading="eager" fetchpriority="high" decoding="async">
                     </div>
-                    <div class="flex flex-col justify-center -space-y-0.5">
+                    <div class="hidden sm:flex flex-col justify-center -space-y-0.5">
                         <span
                             class="block font-extrabold text-slate-900 text-base md:text-lg leading-none tracking-tight">DESTAPE<span
                                 class="text-brand-600">RÁPIDO</span></span>
@@ -645,9 +627,10 @@
 
                 <!-- Mobile Toggle -->
                 <div class="flex items-center gap-4 xl:hidden">
-                    <a aria-label="Llamar al +56 9 9794 6463" href="tel:+56997946463"
-                        class="flex items-center justify-center w-10 h-10 rounded-full bg-slate-100 text-slate-900 active:scale-95 transition">
-                        <i class="fa-solid fa-phone" aria-hidden="true"></i>
+                    <a href="tel:+56997946463"
+                        aria-label="Llamar a Destape Rápido"
+                        class="flex items-center gap-1.5 rounded-full bg-slate-100 text-slate-900 active:scale-95 transition font-bold text-sm px-3 py-2">
+                        <i class="fa-solid fa-phone text-xs" aria-hidden="true"></i> +56 9 9794 6463
                     </a>
                     <button onclick="openMenu()" aria-label="Abrir menú de navegación"
                         class="p-2.5 rounded-lg text-slate-900 hover:bg-slate-100 focus:outline-none transition active:scale-95" aria-expanded="false" aria-controls="mobile-menu-overlay">
@@ -904,89 +887,6 @@
                     </div>
                 </article>
 
-            </div>
-        </div>
-    </section>
-
-    <section id="testimonios" class="pt-24 pb-16 bg-white border-y border-slate-100 scroll-mt-20">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-extrabold text-slate-900 mb-4">Lo que dicen en Buin y Paine</h2>
-                <div
-                    class="inline-flex items-center gap-3 bg-slate-50 px-6 py-3 rounded-full border border-slate-200 shadow-sm">
-                    <div class="flex flex-col items-start">
-                        <div class="flex text-yellow-400 text-sm space-x-1">
-                            <i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i
-                                class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i
-                                class="fa-solid fa-star" aria-hidden="true"></i>
-                        </div>
-                        <a href="/testimonios" class="text-xs text-slate-500 font-bold mt-1 hover:text-brand-600 transition underline decoration-slate-300"><i class="fa-brands fa-google mr-1" aria-hidden="true"></i>Ver 50+ Opiniones Reales</a>
-                    </div>
-                    <div id="action-container" class="flex items-center">
-                        <div class="h-8 w-px bg-slate-300 mx-2"></div>
-                        <button onclick="toggleReviewForm()"
-                            class="text-sm font-bold text-brand-600 hover:text-brand-800 underline decoration-2 underline-offset-2 transition">
-                            <i class="fa-regular fa-pen-to-square mr-1" aria-hidden="true"></i> Escribir
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div id="review-form-container"
-                class="hidden fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4 transition-opacity">
-                <div class="bg-white rounded-2xl shadow-2xl p-6 max-w-md w-full relative animate-fade-in-up">
-                    <button aria-label="Cerrar formulario" onclick="toggleReviewForm()"
-                        class="absolute top-4 right-4 text-slate-400 hover:text-slate-600"><i
-                            class="fa-solid fa-xmark text-xl" aria-hidden="true"></i></button>
-                    <h3 class="text-xl font-bold text-slate-900 mb-4">Tu experiencia</h3>
-                    <form id="userReviewForm" class="space-y-4">
-                        <div class="grid grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-[10px] font-bold text-slate-500 uppercase mb-1">Nombre</label>
-                                <input type="text" id="inputName" required
-                                    class="w-full px-3 py-2 border border-slate-200 rounded-lg focus:border-brand-500 outline-none text-sm"
-                                    placeholder="Ej: Carlos">
-                            </div>
-                            <div>
-                                <label class="block text-[10px] font-bold text-slate-500 uppercase mb-1">Sector</label>
-                                <input type="text" id="inputSector" required
-                                    class="w-full px-3 py-2 border border-slate-200 rounded-lg focus:border-brand-500 outline-none text-sm"
-                                    placeholder="Ej: Linderos">
-                            </div>
-                        </div>
-                        <div>
-                            <label
-                                class="block text-[10px] font-bold text-slate-500 uppercase mb-1">Calificación</label>
-                            <select id="inputStars"
-                                class="w-full px-3 py-2 border border-slate-200 rounded-lg text-yellow-500 font-bold text-sm bg-white">
-                                <option value="5">★★★★★ Excelente</option>
-                                <option value="4">★★★★☆ Bueno</option>
-                                <option value="3">★★★☆☆ Regular</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-[10px] font-bold text-slate-500 uppercase mb-1">Comentario</label>
-                            <textarea id="inputComment" required rows="3"
-                                class="w-full px-3 py-2 border border-slate-200 rounded-lg focus:border-brand-500 outline-none text-sm"
-                                placeholder="¿Cómo fue el servicio?"></textarea>
-                        </div>
-                        <button type="submit"
-                            class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-3 rounded-xl transition shadow-lg text-sm">Publicar
-                            Opinión</button>
-                    </form>
-                </div>
-            </div>
-
-            <div class="relative group px-4 md:px-12">
-                <button onclick="scrollCarousel(-1)" aria-label="Anterior testimonio"
-                    class="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 bg-white border border-slate-200 rounded-full items-center justify-center text-slate-600 shadow-md hover:bg-slate-50 z-10 transition"><i
-                        class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
-                <button onclick="scrollCarousel(1)" aria-label="Siguiente testimonio"
-                    class="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 bg-white border border-slate-200 rounded-full items-center justify-center text-slate-600 shadow-md hover:bg-slate-50 z-10 transition"><i
-                        class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
-                <div id="carousel-track"
-                    class="flex gap-6 overflow-x-auto snap-x snap-mandatory pt-5 pb-12 px-4 scrollbar-hide scroll-smooth items-stretch">
-                </div>
             </div>
         </div>
     </section>
@@ -1519,87 +1419,6 @@
             </a>
         </div>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            loadReviews();
-        });
-
-        // Lógica de Reseñas (Adaptada a Buin y Paine)
-        const carouselTrack = document.getElementById('carousel-track');
-        const actionContainer = document.getElementById('action-container');
-        const formContainer = document.getElementById('review-form-container');
-
-        const realReviews = [
-            { name: "Marcela T.", sector: "Linderos", stars: 5, text: "Vivo en una parcela antigua y la fosa estaba colapsada. Vinieron rápido, el camión muy limpio y no me rompieron nada del jardín.", initial: "M", color: "bg-green-100 text-green-600" },
-            { name: "Jorge P.", sector: "Alto Jahuel", stars: 5, text: "Excelente atención. Necesitaba el certificado para la Seremi y me lo entregaron el mismo día. Muy recomendables.", initial: "J", color: "bg-blue-100 text-blue-600" },
-            { name: "Fundo Los Nogales", sector: "Champa", stars: 5, text: "Siempre les encargamos la limpieza de los pozos de los trabajadores. Puntuales y serios.", initial: "F", color: "bg-orange-100 text-orange-600" },
-            { name: "Ana María", sector: "Paine Centro", stars: 4, text: "Buen servicio, el chofer muy amable. Se demoraron un poco en llegar pero avisaron. El trabajo quedó bien hecho.", initial: "A", color: "bg-purple-100 text-purple-600" },
-            { name: "Ricardo", sector: "Valdivia de Paine", stars: 5, text: "Tenía un problema con las raíces en el alcantarillado. Trajeron una máquina especial y lo solucionaron sin excavar.", initial: "R", color: "bg-yellow-100 text-yellow-700" }
-        ];
-
-        function loadReviews() {
-            if (!carouselTrack) return;
-            carouselTrack.innerHTML = '';
-            const userReview = JSON.parse(localStorage.getItem('alc_user_review'));
-            const all = userReview ? [userReview, ...realReviews] : realReviews;
-
-            if (actionContainer) actionContainer.style.display = userReview ? 'none' : 'flex';
-
-            all.forEach(r => {
-                const isUser = r.isUser === true;
-                const card = document.createElement('div');
-                const border = isUser ? 'border-brand-200 ring-1 ring-brand-50 shadow-lg' : 'border-slate-100';
-                card.className = `min-w-[85%] md:min-w-[350px] min-h-[281px] bg-white p-8 rounded-2xl relative border ${border} shadow-sm snap-center flex flex-col h-full`;
-
-                let stars = '';
-                for (let i = 0; i < 5; i++) stars += i < r.stars ? '<i class="fa-solid fa-star" aria-hidden="true"></i>' : '<i class="fa-regular fa-star text-slate-300" aria-hidden="true"></i>';
-
-                const badge = isUser ? `<div class="absolute -top-5 left-6 bg-brand-600 text-white text-[11px] font-bold px-4 py-1.5 rounded-full shadow-lg z-20 flex items-center gap-2"><i class="fa-solid fa-user-pen" aria-hidden="true"></i> Tu Opinión</div>` : '';
-                const del = isUser ? `<button aria-label="Eliminar reseña" onclick="deleteReview()" class="absolute top-4 right-4 text-slate-300 hover:text-red-500 transition p-2 z-20 bg-white rounded-full"><i class="fa-regular fa-trash-can" aria-hidden="true"></i></button>` : `<i class="fa-solid fa-quote-right absolute top-8 right-8 text-slate-100 text-5xl -z-0" aria-hidden="true"></i>`;
-
-                card.innerHTML = `${badge}${del}
-                    <div class="relative z-10 flex-1">
-                        <div class="flex text-yellow-400 mb-4 text-xs gap-1">${stars}</div>
-                        <p class="text-slate-600 italic mb-6 text-sm leading-relaxed">"${r.text}"</p>
-                    </div>
-                    <div class="flex items-center gap-3 mt-4 relative z-10 pt-4 border-t border-slate-50">
-                        <div class="w-10 h-10 rounded-full ${r.color || 'bg-slate-100 text-slate-500'} flex items-center justify-center font-bold shadow-sm text-xs shrink-0">${r.initial}</div>
-                        <div>
-                            <p class="font-bold text-slate-900 text-sm leading-tight">${r.name}</p>
-                            <p class="text-[11px] text-slate-400 uppercase tracking-wide font-bold mt-0.5">${r.sector}</p>
-                        </div>
-                    </div>`;
-                carouselTrack.appendChild(card);
-            });
-        }
-
-        const form = document.getElementById('userReviewForm');
-        if (form) {
-            form.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const newReview = {
-                    isUser: true,
-                    name: document.getElementById('inputName').value,
-                    sector: document.getElementById('inputSector').value,
-                    stars: document.getElementById('inputStars').value,
-                    text: document.getElementById('inputComment').value,
-                    initial: document.getElementById('inputName').value.charAt(0).toUpperCase(),
-                    color: "bg-slate-800 text-white"
-                };
-                localStorage.setItem('alc_user_review', JSON.stringify(newReview));
-                toggleReviewForm();
-                loadReviews();
-                carouselTrack.scrollTo({ left: 0, behavior: 'smooth' });
-            });
-        }
-
-        function deleteReview() { localStorage.removeItem('alc_user_review'); loadReviews(); }
-        function toggleReviewForm() { formContainer.classList.toggle('hidden'); }
-        function scrollCarousel(d) { carouselTrack.scrollBy({ left: d * 374, behavior: 'smooth' }); }
-
-
-    </script>
     <script src="/js/availability-badge.js" defer></script>
 
     <div id="mobile-menu-overlay" class="fixed inset-0 z-[60] invisible opacity-0 transition-all duration-300">

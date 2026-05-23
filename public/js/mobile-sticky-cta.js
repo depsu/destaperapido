@@ -40,7 +40,7 @@
     if (document.getElementById('mobile-sticky-pad-styles')) return;
     var s = document.createElement('style');
     s.id = 'mobile-sticky-pad-styles';
-    s.textContent = '@media (max-width: 767px){body{padding-bottom:calc(96px + env(safe-area-inset-bottom));}body.has-bottom-pad-extra{padding-bottom:calc(120px + env(safe-area-inset-bottom));}}';
+    s.textContent = '@media (max-width: 767px){body{padding-bottom:calc(96px + env(safe-area-inset-bottom));}body.has-bottom-pad-extra{padding-bottom:calc(120px + env(safe-area-inset-bottom));}.wa-floating-btn{display:none !important;}}';
     document.head.appendChild(s);
   }
 

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Destape de Alcantarillado y Fosas Sépticas en Santiago | 24/7 RM</title>
     <meta name="description" content="Destape de alcantarillado, WC y limpieza de fosas sépticas en Santiago. Urgencias 24/7 en Las Condes, Vitacura, Chicureo, Pirque y toda la RM. Cotiza por WhatsApp.">
+    <meta name="author" content="Alejandro Rivera Carrasco">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' https: data:;">
 
     <link rel="canonical" href="https://www.destaperapido.cl/">
@@ -530,7 +531,15 @@
   "name": "Destape Rápido",
   "url": "https://www.destaperapido.cl/",
   "inLanguage": "es-CL",
-  "publisher": { "@id": "https://www.destaperapido.cl" }
+  "publisher": { "@id": "https://www.destaperapido.cl" },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://www.destaperapido.cl/buscar?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
 }
     </script>
     <link rel="preload" as="image" href="/images/camio-haciendo-servicio-en-la-calle.webp" fetchpriority="high" imagesrcset="/images/camio-haciendo-servicio-en-la-calle-480w.webp 480w, /images/camio-haciendo-servicio-en-la-calle-768w.webp 768w, /images/camio-haciendo-servicio-en-la-calle.webp 1032w" imagesizes="100vw">
@@ -559,7 +568,7 @@
                         <img src="/logo-nav.webp" alt="Logo Destape Rápido - Expertos en Alcantarillado" width="72"
                             height="72" class="w-full h-full object-contain" loading="eager" fetchpriority="high" decoding="async">
                     </div>
-                    <div class="flex flex-col justify-center -space-y-0.5">
+                    <div class="hidden sm:flex flex-col justify-center -space-y-0.5">
                         <span
                             class="block font-extrabold text-slate-900 text-base md:text-lg leading-none tracking-tight">DESTAPE<span
                                 class="text-brand-600">RÁPIDO</span></span>
@@ -701,8 +710,8 @@
                 <div class="flex items-center gap-4 xl:hidden">
                     <a href="tel:+56997946463"
                         aria-label="Llamar a Destape Rápido"
-                        class="flex items-center justify-center w-10 h-10 rounded-full bg-slate-100 text-slate-900 active:scale-95 transition">
-                        <i class="fa-solid fa-phone" aria-hidden="true"></i>
+                        class="flex items-center gap-1.5 rounded-full bg-slate-100 text-slate-900 active:scale-95 transition font-bold text-sm px-3 py-2">
+                        <i class="fa-solid fa-phone text-xs" aria-hidden="true"></i> +56 9 9794 6463
                     </a>
                     <button onclick="openMenu()" aria-label="Abrir menú de navegación"
                         class="p-2.5 rounded-lg text-slate-900 hover:bg-slate-100 focus:outline-none transition active:scale-95" aria-expanded="false" aria-controls="mobile-menu-overlay">

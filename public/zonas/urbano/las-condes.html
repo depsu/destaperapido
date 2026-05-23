@@ -10,6 +10,7 @@
     <title>Destape Alcantarillado Las Condes | Edificios y Casas 24/7</title>
 
     <meta name="description" content="Destape de alcantarillado y cañerías en Las Condes para casas, edificios y comercios. Servicio sin romper, urgencias 24/7. Cotiza por WhatsApp.">
+    <meta name="author" content="Alejandro Rivera Carrasco">
 
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
@@ -1105,25 +1106,6 @@
     </style>
 
     <!-- Google Tag Manager -->
-    <script>(function(w, d, s, l, i){
-    function _loadGTM(){
-      w[l] = w[l] || []; w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
-      var f = d.getElementsByTagName(s)[0], j = d.createElement(s),
-          dl = l != 'dataLayer' ? '&l=' + l : '';
-      j.async = true;
-      j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-      f.parentNode.insertBefore(j, f);
-    }
-    function _schedule(){
-      if ('requestIdleCallback' in w) {
-        requestIdleCallback(_loadGTM, { timeout: 3000 });
-      } else {
-        setTimeout(_loadGTM, 1500);
-      }
-    }
-    if (d.readyState === 'complete') { _schedule(); }
-    else { w.addEventListener('load', _schedule, { once: true }); }
-})(window, document, 'script', 'dataLayer', 'GTM-PG2RQNCD');</script>
     <!-- End Google Tag Manager -->
     <script type="application/ld+json">
 [
@@ -1193,7 +1175,7 @@
                         <img src="/logo-nav.webp" alt="Logo Destape Rápido - Expertos en Alcantarillado" width="72"
                             height="72" class="w-full h-full object-contain" loading="eager" fetchpriority="high" decoding="async">
                     </div>
-                    <div class="flex flex-col justify-center -space-y-0.5">
+                    <div class="hidden sm:flex flex-col justify-center -space-y-0.5">
                         <span
                             class="block font-extrabold text-slate-900 text-base md:text-lg leading-none tracking-tight">DESTAPE<span
                                 class="text-brand-600">RÁPIDO</span></span>
@@ -1328,8 +1310,9 @@
                 <!-- Mobile Toggle -->
                 <div class="flex items-center gap-4 xl:hidden">
                     <a href="tel:+56997946463"
-                        class="flex items-center justify-center w-10 h-10 rounded-full bg-slate-100 text-slate-900 active:scale-95 transition">
-                        <i class="fa-solid fa-phone" aria-hidden="true"></i>
+                        aria-label="Llamar a Destape Rápido"
+                        class="flex items-center gap-1.5 rounded-full bg-slate-100 text-slate-900 active:scale-95 transition font-bold text-sm px-3 py-2">
+                        <i class="fa-solid fa-phone text-xs" aria-hidden="true"></i> +56 9 9794 6463
                     </a>
                     <button onclick="openMenu()" aria-label="Abrir menú de navegación"
                         class="p-2.5 rounded-lg text-slate-900 hover:bg-slate-100 focus:outline-none transition active:scale-95" aria-expanded="false" aria-controls="mobile-menu-overlay">
@@ -1595,103 +1578,6 @@
 
             </div>
         </div>
-    </section>
-    <section id="testimonios" class="pt-24 pb-15 bg-white border-y border-slate-100 scroll-mt-20">
-        <div class="container mx-auto px-4">
-
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-extrabold text-slate-900 mb-4">Lo que dicen tus vecinos</h2>
-
-                <div
-                    class="inline-flex items-center gap-3 bg-slate-50 px-6 py-3 rounded-full border border-slate-200 shadow-sm">
-                    <div class="flex flex-col items-start">
-                        <div class="flex text-yellow-400 text-sm space-x-1">
-                            <i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i
-                                class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i
-                                class="fa-solid fa-star-half-stroke" aria-hidden="true"></i>
-                        </div>
-                        <a href="/testimonios"
-                            class="text-xs text-slate-500 font-bold mt-1 hover:text-brand-600 transition underline decoration-slate-300"><i
-                                class="fa-brands fa-google mr-1" aria-hidden="true"></i>Ver 50+ Opiniones Reales</a>
-                    </div>
-
-                    <div id="action-container" class="flex items-center">
-                        <div class="h-8 w-px bg-slate-300 mx-2"></div>
-                        <button onclick="toggleReviewForm()"
-                            class="text-sm font-bold text-brand-600 hover:text-brand-800 underline decoration-2 underline-offset-2 transition">
-                            <i class="fa-regular fa-pen-to-square mr-1" aria-hidden="true"></i> Escribir
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div id="review-form-container"
-                class="hidden fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4 transition-opacity">
-                <div class="bg-white rounded-2xl shadow-2xl p-6 max-w-md w-full relative animate-fade-in-up">
-                    <button onclick="toggleReviewForm()"
-                        class="absolute top-4 right-4 text-slate-400 hover:text-slate-600"><i
-                            class="fa-solid fa-xmark text-xl" aria-hidden="true"></i></button>
-                    <h3 class="text-xl font-bold text-slate-900 mb-4">Tu experiencia</h3>
-                    <form id="userReviewForm" class="space-y-4">
-                        <div class="grid grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-[10px] font-bold text-slate-500 uppercase mb-1">Nombre</label>
-                                <input type="text" id="inputName" required
-                                    class="w-full px-3 py-2 border border-slate-200 rounded-lg focus:border-brand-500 outline-none text-sm"
-                                    placeholder="Ej: Pedro">
-                            </div>
-                            <div>
-                                <label class="block text-[10px] font-bold text-slate-500 uppercase mb-1">Sector</label>
-                                <input type="text" id="inputSector" required
-                                    class="w-full px-3 py-2 border border-slate-200 rounded-lg focus:border-brand-500 outline-none text-sm"
-                                    placeholder="Ej: El Golf">
-                            </div>
-                        </div>
-                        <div>
-                            <label
-                                class="block text-[10px] font-bold text-slate-500 uppercase mb-1">Calificación</label>
-                            <select id="inputStars"
-                                class="w-full px-3 py-2 border border-slate-200 rounded-lg text-yellow-500 font-bold text-sm bg-white">
-                                <option value="5">★★★★★ Excelente</option>
-                                <option value="4">★★★★☆ Bueno</option>
-                                <option value="3">★★★☆☆ Regular</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-[10px] font-bold text-slate-500 uppercase mb-1">Comentario</label>
-                            <textarea id="inputComment" required rows="3"
-                                class="w-full px-3 py-2 border border-slate-200 rounded-lg focus:border-brand-500 outline-none text-sm"
-                                placeholder="¿Cómo fue el servicio?"></textarea>
-                        </div>
-                        <button type="submit"
-                            class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-3 rounded-xl transition shadow-lg text-sm">Publicar
-                            Opinión</button>
-                    </form>
-                </div>
-            </div>
-
-            <div class="relative group px-4 md:px-12">
-
-                <button onclick="scrollCarousel(-1)" aria-label="Anterior testimonio"
-                    class="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 bg-white border border-slate-200 rounded-full items-center justify-center text-slate-600 shadow-md hover:bg-slate-50 z-10 transition">
-                    <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
-                </button>
-                <button onclick="scrollCarousel(1)" aria-label="Siguiente testimonio"
-                    class="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 bg-white border border-slate-200 rounded-full items-center justify-center text-slate-600 shadow-md hover:bg-slate-50 z-10 transition">
-                    <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
-                </button>
-
-                <div id="carousel-track"
-                    class="flex gap-6 overflow-x-auto snap-x snap-mandatory pt-5 pb-12 px-4 scrollbar-hide scroll-smooth items-stretch">
-
-                    <div class="flex justify-center gap-2 md:hidden">
-                        <div class="w-2 h-2 rounded-full bg-brand-600"></div>
-                        <div class="w-2 h-2 rounded-full bg-slate-300"></div>
-                        <div class="w-2 h-2 rounded-full bg-slate-300"></div>
-                    </div>
-                </div>
-
-            </div>
     </section>
 
     <section class="py-20 bg-white">
@@ -2276,285 +2162,6 @@
             </a>
         </div>
     </div>
-
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-
-            // ==========================================
-            // 1. LÓGICA DE DISPONIBILIDAD (TU CÓDIGO ORIGINAL)
-            // ==========================================
-            const CONFIG = {
-                DROP_TO_2_MIN: 30000,
-                DROP_TO_2_MAX: 60000,
-                DROP_TO_1_MIN: 300000,
-                DROP_TO_1_MAX: 600000,
-                RESET_HOURS: 24,
-                STORAGE_KEY: 'alc_pro_units_state_v3'
-            };
-
-            const getRandomTime = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
-
-            const calculateState = () => {
-                const now = Date.now();
-                const savedState = localStorage.getItem(CONFIG.STORAGE_KEY);
-                const resetTimeMs = CONFIG.RESET_HOURS * 60 * 60 * 1000;
-
-                if (!savedState) return createNewState(now);
-
-                let data = JSON.parse(savedState);
-
-                if (!data.timestamp || (now - data.timestamp > resetTimeMs)) {
-                    return createNewState(now);
-                }
-
-                data.timestamp = now;
-
-                if (data.count <= 1) {
-                    localStorage.setItem(CONFIG.STORAGE_KEY, JSON.stringify(data));
-                    return data;
-                }
-
-                if (now > data.nextChange) {
-                    data.count--;
-                    if (data.count === 2) {
-                        data.nextChange = now + getRandomTime(CONFIG.DROP_TO_1_MIN, CONFIG.DROP_TO_1_MAX);
-                    } else {
-                        data.nextChange = null;
-                    }
-                    localStorage.setItem(CONFIG.STORAGE_KEY, JSON.stringify(data));
-                    triggerFlashEffect();
-                } else {
-                    localStorage.setItem(CONFIG.STORAGE_KEY, JSON.stringify(data));
-                }
-                return data;
-            };
-
-            const createNewState = (now) => {
-                const newState = {
-                    count: 3,
-                    nextChange: now + getRandomTime(CONFIG.DROP_TO_2_MIN, CONFIG.DROP_TO_2_MAX),
-                    timestamp: now
-                };
-                localStorage.setItem(CONFIG.STORAGE_KEY, JSON.stringify(newState));
-                return newState;
-            };
-
-            const renderUI = (count) => {
-                const badges = document.querySelectorAll('.availability-badge');
-                badges.forEach(badge => {
-                    const countSpan = badge.querySelector('.unit-count');
-                    const textSpan = badge.querySelector('.unit-text');
-                    const pingDot = badge.querySelector('.ping-dot');
-                    const staticDot = badge.querySelector('.static-dot');
-
-                    if (countSpan) countSpan.innerText = count;
-
-                    if (count <= 1) {
-                        if (textSpan) textSpan.innerText = "Camión disponible";
-                        badge.classList.remove('bg-green-50', 'text-green-800', 'border-green-200', 'text-green-700', 'border-green-100');
-                        badge.classList.add('bg-orange-50', 'text-orange-800', 'border-orange-200');
-                        if (pingDot) {
-                            pingDot.classList.remove('bg-green-400');
-                            pingDot.classList.add('bg-orange-400');
-                        }
-                        if (staticDot) {
-                            staticDot.classList.remove('bg-green-500');
-                            staticDot.classList.add('bg-orange-500');
-                        }
-                    } else {
-                        if (textSpan) textSpan.innerText = "Camiones disponibles";
-                    }
-                    setTimeout(() => {
-                        badge.classList.remove('opacity-0');
-                    }, 50);
-                });
-            };
-
-            const triggerFlashEffect = () => {
-                const badges = document.querySelectorAll('.availability-badge');
-                badges.forEach(b => {
-                    b.style.transition = 'all 0.2s ease';
-                    b.style.transform = 'scale(1.1)';
-                    b.style.filter = 'brightness(1.2)';
-                    setTimeout(() => {
-                        b.style.transform = 'scale(1)';
-                        b.style.filter = 'brightness(1)';
-                    }, 300);
-                });
-            }
-
-            let currentState = calculateState();
-            renderUI(currentState.count);
-
-            const timer = setInterval(() => {
-                const now = Date.now();
-                if (currentState.count > 1 && currentState.nextChange && now >= currentState.nextChange) {
-                    currentState = calculateState();
-                    renderUI(currentState.count);
-                }
-            }, 1000);
-
-            // ==========================================
-            // 2. LÓGICA DE RESEÑAS (ARREGLADA)
-            // ==========================================
-
-            // Inicializar reseñas al cargar
-            loadReviews();
-        });
-
-        // --- VARIABLES Y FUNCIONES GLOBALES DE RESEÑAS ---
-
-        const carouselTrack = document.getElementById('carousel-track');
-        const actionContainer = document.getElementById('action-container');
-        const formContainer = document.getElementById('review-form-container');
-
-        // Tu lista de reseñas (Agregada correctamente)
-        const realReviews = [
-            { name: "María Consuelo", sector: "San Carlos de Apoquindo", stars: 5, text: "Tenía el lavaplatos tapado hace dias y vinieron super rapido. Usaron una maquina que no ensucio nada. Se nota la experiencia.", initial: "M", color: "bg-blue-100 text-blue-600" },
-            { name: "Roberto A.", sector: "Administrador Edificio", stars: 5, text: "Administro un edificio antiguo en El Golf. Siempre tenemos dramas con las verticales y son los unicos q llegan de verdad en 30 min.", initial: "R", color: "bg-purple-100 text-purple-600" },
-            { name: "Jaime V.", sector: "Vitacura", stars: 4, text: "Buen servicio. Llegaron un poco despues de lo acordado pero solucionaron el problema del baño que estaba colapsado. Recomendable.", initial: "J", color: "bg-orange-100 text-orange-600" },
-            { name: "Carmen Gloria", sector: "La Dehesa", stars: 5, text: "Exelente servicio, muy amables los jovenes. Me explicaron todo lo que pasaba con la camara. Quedé muy conforme.", initial: "C", color: "bg-pink-100 text-pink-600" },
-            { name: "Felipe T.", sector: "Las Condes", stars: 5, text: "Me salvaron el domingo a las 10 de la noche. Nadie mas contestaba el telefono. Caros pero valen la pena por la urgencia.", initial: "F", color: "bg-green-100 text-green-600" },
-            { name: "Sra. Patricia", sector: "Chicureo", stars: 5, text: "Vinieron a limpiar la fosa de la parcela. El camion impecable y el chofer muy educado, dejaron todo limpio al irse. Un 7.", initial: "P", color: "bg-yellow-100 text-yellow-700" },
-            { name: "Andrés M.", sector: "Ñuñoa", stars: 4, text: "Rapidos. Tenia el desague del patio con raices y lo sacaron todo. El precio acorde al mercado.", initial: "A", color: "bg-indigo-100 text-indigo-600" },
-            { name: "Esteban", sector: "Pirque", stars: 5, text: "Cuesta encontrar gente seria que venga hasta acá. Cumplieron con la hora y vaciaron la fosa completa. Los dejé agendados para la mantencion.", initial: "E", color: "bg-red-100 text-red-600" },
-            { name: "Loreto", sector: "Providencia", stars: 5, text: "El técnico fue super seco, detectó altiro que era un juguete del niño lo q tapaba el wc. En 15 minutos estaba listo.", initial: "L", color: "bg-teal-100 text-teal-700" },
-            { name: "Gonzalo I.", sector: "Calera de Tango", stars: 3, text: "El trabajo quedo bueno, pero se demoraron en llegar porque se perdieron. De todas formas solucionaron el problema de la fosa.", initial: "G", color: "bg-gray-200 text-gray-600" }
-        ];
-
-        // Función principal para renderizar (Esta era la que faltaba)
-        function loadReviews() {
-            if (!carouselTrack) return; // Seguridad
-            carouselTrack.innerHTML = '';
-
-            // Obtener reseña de usuario
-            const userReview = JSON.parse(localStorage.getItem('alc_user_review'));
-
-            // Unir listas: Usuario primero, luego las reales
-            const allReviews = userReview ? [userReview, ...realReviews] : realReviews;
-
-            // Ocultar botón "Escribir" si ya existe reseña
-            if (userReview) {
-                if (actionContainer) actionContainer.style.display = 'none';
-            } else {
-                if (actionContainer) actionContainer.style.display = 'flex';
-            }
-
-            // Crear HTML de las tarjetas
-            allReviews.forEach(review => {
-                const isUser = review.isUser === true;
-                const card = document.createElement('div');
-
-                // CLASES: h-full y flex-col para igualar alturas
-                const borderClass = isUser ? 'border-brand-200 ring-1 ring-brand-50 shadow-lg' : 'border-slate-100';
-                card.className = `min-w-[85%] md:min-w-[350px] min-h-[281px] bg-white p-8 rounded-2xl relative border ${borderClass} shadow-sm snap-center transition flex flex-col h-full`;
-
-                // Estrellas
-                let starsHtml = '';
-                for (let i = 0; i < 5; i++) {
-                    starsHtml += i < review.stars ? '<i class="fa-solid fa-star" aria-hidden="true"></i>' : '<i class="fa-regular fa-star text-slate-300" aria-hidden="true"></i>';
-                }
-
-                // Badge "Tu Reseña" (Posicionado más arriba con -top-5 para que no se corte gracias al pt-14 del container)
-                const userBadge = isUser ?
-                    `<div class="absolute -top-5 left-6 bg-brand-600 text-white text-[11px] font-bold px-4 py-1.5 rounded-full shadow-lg z-20 flex items-center gap-2 transform hover:scale-105 transition">
-                    <i class="fa-solid fa-user-pen" aria-hidden="true"></i> Tu Opinión
-                 </div>` : '';
-
-                // Botón eliminar
-                const deleteBtn = isUser ?
-                    `<button onclick="deleteReview()" class="absolute top-4 right-4 text-slate-300 hover:text-red-500 transition p-2 z-20 bg-white rounded-full hover:bg-red-50" title="Borrar reseña">
-                    <i class="fa-regular fa-trash-can text-lg" aria-hidden="true"></i>
-                 </button>` :
-                    `<i class="fa-solid fa-quote-right absolute top-8 right-8 text-slate-100 text-5xl -z-0" aria-hidden="true"></i>`;
-
-                card.innerHTML = `
-                ${userBadge}
-                ${deleteBtn}
-                
-                <div class="relative z-10 flex-1">
-                    <div class="flex text-yellow-400 mb-4 text-xs gap-1">${starsHtml}</div>
-                    <p class="text-slate-600 italic mb-6 text-sm leading-relaxed">"${review.text}"</p>
-                </div>
-                
-                <div class="flex items-center gap-3 mt-4 relative z-10 pt-4 border-t border-slate-50">
-                    <div class="w-10 h-10 rounded-full ${review.color || 'bg-slate-100 text-slate-500'} flex items-center justify-center font-bold shadow-sm text-xs shrink-0">
-                        ${review.initial}
-                    </div>
-                    <div>
-                        <p class="font-bold text-slate-900 text-sm leading-tight">${review.name}</p>
-                        <p class="text-[11px] text-slate-400 uppercase tracking-wide font-bold mt-0.5">${review.sector}</p>
-                    </div>
-                </div>
-            `;
-                carouselTrack.appendChild(card);
-            });
-        }
-
-        // Guardar reseña
-        const form = document.getElementById('userReviewForm');
-        if (form) {
-            form.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const name = document.getElementById('inputName').value;
-
-                const newReview = {
-                    isUser: true,
-                    name: name,
-                    sector: document.getElementById('inputSector').value,
-                    stars: document.getElementById('inputStars').value,
-                    text: document.getElementById('inputComment').value,
-                    initial: name.charAt(0).toUpperCase(),
-                    color: "bg-slate-800 text-white"
-                };
-
-                localStorage.setItem('alc_user_review', JSON.stringify(newReview));
-                toggleReviewForm();
-                loadReviews();
-
-                // Scroll al inicio
-                carouselTrack.scrollTo({ left: 0, behavior: 'smooth' });
-            });
-        }
-
-        // Eliminar reseña sin preguntar
-        function deleteReview() {
-            localStorage.removeItem('alc_user_review');
-            loadReviews();
-        }
-
-        // Utilidades
-        function toggleReviewForm() {
-            formContainer.classList.toggle('hidden');
-        }
-
-        function scrollCarousel(direction) {
-            const cardWidth = 350 + 24;
-            carouselTrack.scrollBy({ left: direction * cardWidth, behavior: 'smooth' });
-        }
-
-
-
-
-
-
-
-        function toggleChat() {
-            var chatBox = document.getElementById("whatsapp-chat");
-            var btn = document.getElementById("wa-btn");
-            var dot = document.getElementById("wa-dot");
-            if (chatBox.style.display === "none" || chatBox.style.display === "") {
-                chatBox.style.display = "flex";
-                if (btn) btn.classList.add("active");
-                if (dot) { dot.classList.remove("show"); dot.style.display = "none"; }
-            } else {
-                // CERRAR CHAT
-                chatBox.style.display = "none";
-                btn.classList.remove("active");
-            }
-        }
-    </script>
 
     <div id="mobile-menu-overlay" class="fixed inset-0 z-[60] invisible opacity-0 transition-all duration-300">
         <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity" onclick="closeMenu()"></div>
