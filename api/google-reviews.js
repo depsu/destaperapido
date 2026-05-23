@@ -35,22 +35,19 @@ export default async function handler(req, res) {
 
   if (isAuthorizedRefresh) {
     cache = { data: null, expiresAt: 0 };
-    // Si pasaron token: no cachear esta respuesta en CDN
-    res.setHeader('Cache-Control', 'no-store');
-  } else {
-    // Cache normal en CDN edge (sirve sin tocar el lambda durante 7 días)
-    res.setHeader(
-      'Cache-Control',
-      `public, s-maxage=${CACHE_TTL_SEC}, stale-while-revalidate=86400`,
-    );
   }
 
-  // Si está pidiendo refresh sin token válido → 403 (para que sepan que el token está mal)
+  // Si está pidiendo refresh sin token válido → 403
   if (refreshParam && !isAuthorizedRefresh) {
+    res.setHeader('Cache-Control', 'no-store');
     return res.status(403).json({ error: 'Invalid refresh token' });
   }
 
   if (cache.data && Date.now() < cache.expiresAt) {
+    res.setHeader(
+      'Cache-Control',
+      `public, s-maxage=${CACHE_TTL_SEC}, stale-while-revalidate=86400`,
+    );
     return res.status(200).json({ ...cache.data, cached: true });
   }
 
@@ -59,10 +56,12 @@ export default async function handler(req, res) {
   const placeId = process.env.GOOGLE_PLACE_ID;
 
   if (!apiKey) {
+    res.setHeader('Cache-Control', 'no-store');
     return res.status(500).json({ error: 'Missing GOOGLE_PLACES_API_KEY env var' });
   }
 
   if (!placeCid && !placeId) {
+    res.setHeader('Cache-Control', 'no-store');
     return res.status(500).json({
       error: 'Missing GOOGLE_PLACE_CID or GOOGLE_PLACE_ID env var',
     });
@@ -74,9 +73,14 @@ export default async function handler(req, res) {
       : await fetchByPlaceId(placeId, apiKey);
 
     cache = { data: payload, expiresAt: Date.now() + CACHE_TTL_MS };
+    res.setHeader(
+      'Cache-Control',
+      `public, s-maxage=${CACHE_TTL_SEC}, stale-while-revalidate=86400`,
+    );
     return res.status(200).json(payload);
   } catch (err) {
     console.error('Reviews handler error:', err);
+    res.setHeader('Cache-Control', 'no-store');
     return res.status(err.status || 500).json({
       error: 'Cannot fetch reviews',
       message: err.message,
