@@ -336,6 +336,14 @@
             }
         }
 
+        /* Posición específica para Escritorio */
+        .wa-floating-btn .wa-notification-dot {
+            top: -5px;
+            right: -5px;
+            width: 22px;
+            height: 22px;
+        }
+
         .wa-notification-dot.on-icon {
             top: -5px;
             right: -5px;
@@ -892,45 +900,47 @@
     </div>
     <!-- End Mobile Sticky Footer -->
 
-    <!-- WhatsApp Widget -->
-    <div class="wa-floating-btn" id="wa-floating-btn">
-        <svg class="wa-icon wa-icon-logo" viewBox="0 0 32 32">
+    <!-- WhatsApp Widget (solo desktop) -->
+    <div class="wa-floating-btn hidden md:flex" id="wa-btn" onclick="toggleChat()" role="button" tabindex="0"
+        aria-label="Abrir chat de WhatsApp">
+        <svg class="wa-icon wa-icon-logo" viewBox="0 0 24 24">
             <path
-                d="M16,2A13,13,0,0,0,8,25.23L2.93,27.11a1,1,0,0,0-.32,1.89l5.13,1.89A13,13,0,0,0,16,32C23.18,32,29,26.18,29,19S23.18,2,16,2Zm0,2A11,11,0,0,1,27,15c0,6.08-4.92,11-11,11a10.94,10.94,0,0,1-5.54-1.5l-4.33,1.6,1.6-4.33A10.94,10.94,0,0,1,5,15C5,8.92,9.92,4,16,4Zm5.87,14.68c-.21-.11-1.23-.61-1.42-.68s-.33-.11-.47.11-.54.68-.66.82-.24.16-.45.05a5.66,5.66,0,0,1-1.67-1,6.24,6.24,0,0,1-1.15-1.43c-.12-.21,0-.32.1-.42s.21-.24.32-.36.14-.2.21-.33.03-.24-.02-.33-.47-1.13-.64-1.55c-.17-.41-.35-.35-.48-.36s-.26,0-.4,0a.77.77,0,0,0-.56.26,2.36,2.36,0,0,0-.74,1.76,4.11,4.11,0,0,0,.86,2.18,9.46,9.46,0,0,0,3.62,3.2,11.88,11.88,0,0,0,1.21.45,2.88,2.88,0,0,0,1.32.08,2.14,2.14,0,0,0,1.4-1,1.73,1.73,0,0,0,.12-1C22.25,18.89,22.08,18.79,21.87,18.68Z" />
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.008-.57-.008-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
         </svg>
-        <svg class="wa-icon wa-icon-close" viewBox="0 0 24 24">
-            <path
-                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+        <svg class="wa-icon wa-icon-close" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
         </svg>
-        <div class="wa-notification-dot on-icon" id="wa-notification-dot">1</div>
+
+        <span class="wa-notification-dot" id="wa-dot">1</span>
     </div>
 
-    <div class="wa-chat-box" id="wa-chat-box">
+    <div class="wa-chat-box" id="whatsapp-chat">
         <div class="wa-header">
-            <div class="wa-profile-pic">
-                <img height="144" width="139" src="/logo-nav.webp" alt="Profile" style="width:100%; height:100%; border-radius:50%;" loading="lazy" decoding="async">
-            </div>
+            <button class="wa-close-btn" onclick="toggleChat()">×</button>
+            <img src="/logo-nav.webp" alt="Avatar de Destape Rápido en WhatsApp" class="wa-profile-pic" width="50" height="50" loading="lazy" decoding="async">
             <div class="wa-info">
                 <h4>Destape Rápido</h4>
-                <p>Respuesta inmediata</p>
+                <p>En línea</p>
             </div>
-            <button class="wa-close-btn" id="wa-close-btn">&times;</button>
         </div>
         <div class="wa-body">
             <div class="wa-message">
-                <div class="wa-msg-text">Hola! 👋 ¿Tienes alguna duda sobre nuestros servicios?</div>
-                <span class="wa-time">Justo ahora</span>
-            </div>
-            <div class="wa-message" style="animation-delay: 0.5s;">
-                <div class="wa-msg-text">Escríbenos y te respondemos de inmediato.</div>
+                <div class="wa-msg-text">
+                    Bienvenido/a. ¿En qué podemos servirle?
+                </div>
                 <span class="wa-time">Justo ahora</span>
             </div>
         </div>
         <div class="wa-footer">
-            <a href="https://wa.me/56997946463?text=Hola,%20tengo%20una%20duda%20sobre..." class="wa-start-chat-btn"
-                target="_blank">
-                <img height="600" width="800" src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" loading="lazy" decoding="async">
-                Consultar por WhatsApp
+            <a href="https://wa.me/56997946463?text=Hola,%20necesito%20ayuda" target="_blank" class="wa-start-chat-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+                COMENZAR CHAT
             </a>
         </div>
     </div>
@@ -959,30 +969,33 @@
         }
 
         // WhatsApp Widget Logic
-        const waBtn = document.getElementById('wa-floating-btn');
-        const waChatBox = document.getElementById('wa-chat-box');
-        const waCloseBtn = document.getElementById('wa-close-btn');
-        const waNotificationDot = document.getElementById('wa-notification-dot');
+        window.addEventListener('load', function () {
+            setTimeout(function () {
+                var dot = document.getElementById("wa-dot");
+                var dotMobile = document.getElementById("wa-dot-mobile");
+                var chatBox = document.getElementById("whatsapp-chat");
 
-        // Mostrar notificación después de 3 segundos
-        setTimeout(() => {
-            waNotificationDot.classList.add('show');
-        }, 3000);
+                if (chatBox && chatBox.style.display !== "flex") {
+                    if (dot) dot.classList.add("show");
+                    if (dotMobile) dotMobile.classList.add("show");
+                }
+            }, 5000);
+        });
 
-        waBtn.addEventListener('click', () => {
-            waBtn.classList.toggle('active');
-            if (waChatBox.style.display === 'flex') {
-                waChatBox.style.display = 'none';
+        function toggleChat() {
+            var chatBox = document.getElementById("whatsapp-chat");
+            var btn = document.getElementById("wa-btn");
+            var dot = document.getElementById("wa-dot");
+
+            if (chatBox.style.display === "none" || chatBox.style.display === "") {
+                chatBox.style.display = "flex";
+                if (btn) btn.classList.add("active");
+                if (dot) { dot.classList.remove("show"); dot.style.display = "none"; }
             } else {
-                waChatBox.style.display = 'flex';
-                waNotificationDot.classList.remove('show'); // Ocultar notificación al abrir
+                chatBox.style.display = "none";
+                if (btn) btn.classList.remove("active");
             }
-        });
-
-        waCloseBtn.addEventListener('click', () => {
-            waChatBox.style.display = 'none';
-            waBtn.classList.remove('active');
-        });
+        }
     </script>
     <script src="/js/fuse.min.js" defer></script>
     <script src="/js/search.js" defer></script>
