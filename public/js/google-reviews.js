@@ -23,11 +23,27 @@
       const size = isMid ? 'h-14 w-14 md:h-16 md:w-16' : 'h-10 w-10 md:h-12 md:w-12';
       const shadow = isMid ? 'drop-shadow-lg' : 'drop-shadow';
 
-      const fill = i <= full ? 'fill-yellow-400' : 'fill-slate-200';
-      html += `
-        <svg class="${size} gr-star opacity-0 scale-0 ${fill} ${shadow}" viewBox="0 0 24 24" data-delay="${delay}">
-          <path d="${starPath}"/>
-        </svg>`;
+      if (i <= full && isMid) {
+        html += `
+          <svg class="${size} gr-star opacity-0 scale-0 ${shadow}" viewBox="0 0 24 24" data-delay="${delay}">
+            <defs>
+              <clipPath id="${uid}-tl"><rect x="0" y="0" width="12" height="12"/></clipPath>
+              <clipPath id="${uid}-tr"><rect x="12" y="0" width="12" height="12"/></clipPath>
+              <clipPath id="${uid}-br"><rect x="12" y="12" width="12" height="12"/></clipPath>
+              <clipPath id="${uid}-bl"><rect x="0" y="12" width="12" height="12"/></clipPath>
+            </defs>
+            <path clip-path="url(#${uid}-tl)" fill="#EA4335" d="${starPath}"/>
+            <path clip-path="url(#${uid}-tr)" fill="#4285F4" d="${starPath}"/>
+            <path clip-path="url(#${uid}-br)" fill="#34A853" d="${starPath}"/>
+            <path clip-path="url(#${uid}-bl)" fill="#FBBC05" d="${starPath}"/>
+          </svg>`;
+      } else {
+        const fill = i <= full ? 'fill-yellow-400' : 'fill-slate-200';
+        html += `
+          <svg class="${size} gr-star opacity-0 scale-0 ${fill} ${shadow}" viewBox="0 0 24 24" data-delay="${delay}">
+            <path d="${starPath}"/>
+          </svg>`;
+      }
     }
     return html;
   }
