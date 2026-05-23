@@ -1,0 +1,48 @@
+{
+  "placeName": "Destape Rápido",
+  "rating": 5,
+  "total": 22,
+  "mapsUrl": "https://maps.google.com/?cid=6979963907347696266",
+  "reviews": [
+    {
+      "author": "CARRASCO cesar",
+      "photo": "https://lh3.googleusercontent.com/a/ACg8ocID1nJOPHAPMY3PNvdA_CotWVbem4WI_xk30Nt-1dy7bGZuXw=s128-c0x00000000-cc-rp-mo",
+      "rating": 5,
+      "text": "Mi Fosa Séptica estaba muy lejos de donde se podía dejar el camión, pero tenían mangueras extra largas hasta 50 metros y lograron hacer el servicio a la perfección, el mismo día que los contacté solucionaron mi problema, mi fosa séptica era de 10mil litros y se lo llevaron sin problemas",
+      "relativeTime": "Hace 4 meses",
+      "publishTime": "2026-01-20T12:41:20Z"
+    },
+    {
+      "author": "Catalina Acevedo",
+      "photo": "https://lh3.googleusercontent.com/a-/ALV-UjUDmLakppcMzUivikww01KfjQopOaguxwul3RE82fLFStk3SCLG=s128-c0x00000000-cc-rp-mo",
+      "rating": 5,
+      "text": "Excelente servicio de lavado de fosas. Trabajo rápido, limpio y muy profesional. Cumplieron con los tiempos acordados y dejaron todo en perfecto estado. 100% recomendado",
+      "relativeTime": "Hace 3 meses",
+      "publishTime": "2026-01-23T21:26:12Z"
+    },
+    {
+      "author": "DEPSU",
+      "photo": "https://lh3.googleusercontent.com/a-/ALV-UjVcixyb1R53cOf3-hq9Ve9O4fd1lrRAVkpOEobpIlBbpQ7Gc9g=s128-c0x00000000-cc-rp-mo",
+      "rating": 5,
+      "text": "Excelente servicio de limpia fosas, se llevó todo, grasas, suciedad y se fue el mal olor con el tratamiento de bacterias",
+      "relativeTime": "Hace 5 meses",
+      "publishTime": "2025-12-19T20:22:20Z"
+    },
+    {
+      "author": "Estela Gutierrez",
+      "photo": "https://lh3.googleusercontent.com/a-/ALV-UjUW3anj9ZxzXxmQfejYe5gsnIJT4ut1WUn_HDz3-etsJip2lXtb=s128-c0x00000000-cc-rp-mo",
+      "rating": 5,
+      "text": "Un excelente servicio 💯 recomendados me solucionaron el problema que tenía con las fosas sépticas de mí domicilio 👍",
+      "relativeTime": "Hace 5 meses",
+      "publishTime": "2025-12-20T00:40:00Z"
+    },
+    {
+      "author": "Carolina Soto Mannett",
+      "photo": "https://lh3.googleusercontent.com/a-/ALV-UjUHL4-9GUoWhfjT1TN7k-QqnX33f3xraWhc3lhvfgNbAKWTkU4=s128-c0x00000000-cc-rp-mo",
+      "rating": 5,
+      "text": "Excelente servicio ! Rápidos y muy profesionales",
+      "relativeTime": "Hace 5 meses",
+      "publishTime": "2025-12-13T21:46:51Z"
+    }
+  ]
+}

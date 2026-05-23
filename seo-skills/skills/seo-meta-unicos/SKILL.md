@@ -69,7 +69,7 @@ Idealmente, **alternar la keyword principal** entre comunas:
 
 **Páginas top:**
 - Home: `"Limpia Fosas y Destapes en RM | Servicio 24/7 — Full Fosas"`
-- Contacto: `"Contacto Full Fosas | WhatsApp +56 9 2846 1485"`
+- Contacto: `"Contacto Full Fosas | WhatsApp +56 9 9794 6463"`
 - FAQ: `"Preguntas Frecuentes — Limpieza de Fosas y Destapes"`
 - Nosotros: `"Sobre Full Fosas | +15 Años en Saneamiento RM"`
 
