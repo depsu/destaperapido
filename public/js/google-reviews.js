@@ -166,10 +166,7 @@
   }
 
   function renderCompact(container, data) {
-    const minStars = parseInt(container.dataset.minStars || '0', 10);
-    const reviews = (data.reviews || [])
-      .filter((r) => r.rating >= minStars && r.text)
-      .slice(0, 2);
+    const reviews = filterReviews(data.reviews || [], container).slice(0, 2);
 
     if (!data.rating) {
       container.innerHTML = '';
@@ -195,16 +192,23 @@
     `;
   }
 
+  function filterReviews(reviews, container) {
+    const minStars = parseInt(container.dataset.minStars || '0', 10);
+    const limit = parseInt(container.dataset.limit || '6', 10);
+    const exclude = (container.dataset.exclude || '').toLowerCase().split(',').map((s) => s.trim()).filter(Boolean);
+
+    return reviews
+      .filter((r) => r.rating >= minStars && r.text)
+      .filter((r) => !exclude.length || !exclude.some((kw) => (r.text || '').toLowerCase().includes(kw)))
+      .slice(0, limit);
+  }
+
   function render(container, data) {
     if (container.hasAttribute('data-compact')) {
       return renderCompact(container, data);
     }
 
-    const limit = parseInt(container.dataset.limit || '6', 10);
-    const minStars = parseInt(container.dataset.minStars || '0', 10);
-    const reviews = (data.reviews || [])
-      .filter((r) => r.rating >= minStars && r.text)
-      .slice(0, limit);
+    const reviews = filterReviews(data.reviews || [], container);
 
     if (!reviews.length && !data.rating) {
       container.innerHTML = '<p class="text-sm text-slate-500 text-center">A&uacute;n no hay rese&ntilde;as para mostrar.</p>';

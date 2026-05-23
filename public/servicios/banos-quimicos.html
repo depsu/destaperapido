@@ -1246,15 +1246,6 @@
                         <p class="text-xs text-slate-500 mt-1 whitespace-nowrap">Electrónica disponible</p>
                     </div>
                 </div>
-                <div class="flex items-center gap-3">
-                    <div class="w-11 h-11 bg-purple-50 rounded-xl flex items-center justify-center shrink-0">
-                        <i class="fa-solid fa-truck text-purple-600 text-lg" aria-hidden="true"></i>
-                    </div>
-                    <div>
-                        <p class="text-2xl font-extrabold text-slate-900 leading-none">+200</p>
-                        <p class="text-xs text-slate-500 mt-1 whitespace-nowrap">Unidades activas RM</p>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -1348,6 +1339,13 @@
                     </a>
                 </p>
             </div>
+        </div>
+    </section>
+
+    <!-- Reseñas reales de Google Business -->
+    <section class="py-20 md:py-24 bg-gradient-to-b from-slate-50 to-white border-t border-slate-200">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <div data-google-reviews data-limit="6" data-min-stars="4" data-exclude="fosa,séptica,fosas"></div>
         </div>
     </section>
 
@@ -1953,12 +1951,6 @@
     </section>
 
 
-    <!-- Reseñas Google (compacto) -->
-    <section class="py-12 bg-slate-50 border-t border-slate-200">
-        <div class="max-w-4xl mx-auto px-4">
-            <div data-google-reviews data-compact data-min-stars="4"></div>
-        </div>
-    </section>
     <script src="/js/google-reviews.js" defer></script>
 
     </main>
