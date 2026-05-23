@@ -9,7 +9,7 @@
   var fuse = null;
 
   function normalize(str) {
-    return typeof str === 'string' ? str.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase() : '';
+    return typeof str === 'string' ? str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase() : '';
   }
 
   fetch('/data/search-index.json')
