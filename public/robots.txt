@@ -15,3 +15,4 @@ Sitemap: https://www.destaperapido.cl/sitemap-pages.xml
 Sitemap: https://www.destaperapido.cl/sitemap-blog.xml
 Sitemap: https://www.destaperapido.cl/sitemap-zonas.xml
 Sitemap: https://www.destaperapido.cl/sitemap-servicios.xml
+Sitemap: https://www.destaperapido.cl/sitemap-landing.xml
