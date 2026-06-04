@@ -105,7 +105,7 @@ Incluir SIEMPRE:
   "provider": {
     "@type": "LocalBusiness",
     "name": "Full Fosas",
-    "telephone": "+56997946463",
+    "telephone": "+56928461485",
     "url": "https://www.limpiafosasydestape.cl",
     "address": {
       "@type": "PostalAddress",

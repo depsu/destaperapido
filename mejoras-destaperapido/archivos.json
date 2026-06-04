@@ -213,7 +213,7 @@
         "titulo": "NOMBRES Y ETIQUETAS: Los enlaces no tienen nombres reconocibles",
         "detalle_google": "Enlaces que contienen solo iconos sin texto ni aria-label.",
         "paginas_afectadas": "TODAS",
-        "evidencia_codigo_real": "Detectado en home: <a href='tel:+56997946463' class='flex items-center justify-center w-10 h-10 rounded-full bg-slate-100 text-slate-900 active:scale-95 transition'><i class='fa-solid fa-phone'></i></a> - el enlace solo tiene un icono sin texto ni aria-label.",
+        "evidencia_codigo_real": "Detectado en home: <a href='tel:+56928461485' class='flex items-center justify-center w-10 h-10 rounded-full bg-slate-100 text-slate-900 active:scale-95 transition'><i class='fa-solid fa-phone'></i></a> - el enlace solo tiene un icono sin texto ni aria-label.",
         "nota": "Los lectores de pantalla dirán 'enlace' sin saber qué hace."
       },
       "A3_orden_headings": {
@@ -423,8 +423,8 @@
         "Para cada <a> con <i class='fa-...'></i> sin texto: agregar aria-label descriptivo.",
         "Buscar con regex: <a[^>]*>\\s*<i\\s+class='fa-[^']*'></i>\\s*</a>"
       ],
-      "codigo_antes": "<a href='tel:+56997946463' class='...'><i class='fa-solid fa-phone'></i></a>",
-      "codigo_despues": "<a href='tel:+56997946463' aria-label='Llamar al teléfono +56 9 9794 6463' class='...'><i class='fa-solid fa-phone' aria-hidden='true'></i></a>"
+      "codigo_antes": "<a href='tel:+56928461485' class='...'><i class='fa-solid fa-phone'></i></a>",
+      "codigo_despues": "<a href='tel:+56928461485' aria-label='Llamar al teléfono +56 9 2846 1485' class='...'><i class='fa-solid fa-phone' aria-hidden='true'></i></a>"
     },
     {
       "id": "FIX-A11Y-03",

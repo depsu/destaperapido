@@ -17,7 +17,7 @@ mejorar el SEO local y backlinks. Tengo una hoja NAP que es la fuente única de 
 REGLAS GLOBALES (no las rompas nunca):
 
 1. NAP CONSISTENTE: usa siempre el mismo nombre, mismo teléfono formateado igual
-   (+56 9 9794 6463 con espacios o +56997946463 sin espacios según pida el sitio),
+   (+56 9 2846 1485 con espacios o +56928461485 sin espacios según pida el sitio),
    y la misma URL (https://www.destaperapido.cl con www, sin barra al final).
 
 2. NO INVENTES DATOS. Si un campo obligatorio no está en mi hoja NAP, DETENTE y
@@ -76,7 +76,7 @@ for Business] y quiero registrar Destape Rapido. Sigue estos pasos:
    NAP (urbanas y rurales). Si limita a 20, prioriza las urbanas + Chicureo, Pirque,
    Buin, Talagante, Melipilla.
 
-5. Telefono: +56 9 9794 6463.
+5. Telefono: +56 9 2846 1485.
 
 6. Horario: marca "abierto 24 horas" todos los dias de la semana.
 
@@ -182,7 +182,7 @@ clientes, asi que el perfil debe quedar lo mas COMPLETO posible. Pasos:
 7. Disponibilidad: 24/7, todos los dias.
 
 8. Si el portal envia leads por email/SMS, configura la notificacion al telefono
-   +56 9 9794 6463 y email contacto@destaperapido.cl.
+   +56 9 2846 1485 y email contacto@destaperapido.cl.
 
 9. Antes de publicar perfil: resumen + mi OK.
 
@@ -204,10 +204,10 @@ perfil de empresa, es un anuncio que puede vencer). Pasos:
    "Destape Alcantarillado 24h Santiago — Hidrojet y Camara CCTV"
 
 3. Descripcion del aviso: usa la version MEDIA C de la hoja NAP. Al final agrega:
-   "Llama o escribe ahora: +56 9 9794 6463 (WhatsApp 24/7).
+   "Llama o escribe ahora: +56 9 2846 1485 (WhatsApp 24/7).
    Web: www.destaperapido.cl"
 
-4. Telefono de contacto: +56 9 9794 6463.
+4. Telefono de contacto: +56 9 2846 1485.
 
 5. Ubicacion del aviso: Region Metropolitana > Santiago. Si pide comuna especifica,
    marca "Maipu" o "Todas las comunas RM".
@@ -316,7 +316,7 @@ Estamos creando la pagina de empresa en [RED SOCIAL]. Pasos:
 
 6. Sitio web: https://www.destaperapido.cl
 
-7. Telefono / WhatsApp: +56 9 9794 6463 (marca como WhatsApp donde se pueda).
+7. Telefono / WhatsApp: +56 9 2846 1485 (marca como WhatsApp donde se pueda).
 
 8. Email: contacto@destaperapido.cl
 

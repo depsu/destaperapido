@@ -15,7 +15,7 @@ Usar en TODA página, con el mismo `@id` para que Google entienda que es la mism
   "@id": "https://www.limpiafosasydestape.cl/#business",
   "name": "Full Fosas",
   "url": "https://www.limpiafosasydestape.cl",
-  "telephone": "+56997946463",
+  "telephone": "+56928461485",
   "email": "contacto@destaperapido.cl",
   "image": "https://www.limpiafosasydestape.cl/logo.png",
   "logo": "https://www.limpiafosasydestape.cl/logo.png",
@@ -100,7 +100,7 @@ Usar en TODA página, con el mismo `@id` para que Google entienda que es la mism
       "name": "¿Atienden en {{COMUNA}}?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Sí, cubrimos {{COMUNA}} y sectores aledaños con disponibilidad 24/7. Cotización inmediata por WhatsApp al +56 9 9794 6463."
+        "text": "Sí, cubrimos {{COMUNA}} y sectores aledaños con disponibilidad 24/7. Cotización inmediata por WhatsApp al +56 9 2846 1485."
       }
     }
   ]

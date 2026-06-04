@@ -33,7 +33,7 @@ description: Genera, audita y corrige bloques JSON-LD (Schema.org) para páginas
 3. **No mezclar tipos sin sentido.** Una página de zona NO es una `Article`.
 4. **Usar URLs absolutas con `https://www.` consistente.**
 5. **`@id` único** por entidad. Si Full Fosas se repite en muchas páginas, usar el MISMO `@id` (ej: `https://www.limpiafosasydestape.cl/#organization`).
-6. **`telephone`** en formato E.164: `+56997946463`.
+6. **`telephone`** en formato E.164: `+56928461485`.
 7. **`address` y `areaServed`** completos y precisos. Para empresa que no tiene dirección física pública, usar `addressRegion` y `addressCountry` sin `streetAddress`.
 
 ## Snippets base
@@ -47,7 +47,7 @@ description: Genera, audita y corrige bloques JSON-LD (Schema.org) para páginas
   "@id": "https://www.limpiafosasydestape.cl/#business",
   "name": "Full Fosas",
   "url": "https://www.limpiafosasydestape.cl",
-  "telephone": "+56997946463",
+  "telephone": "+56928461485",
   "email": "contacto@destaperapido.cl",
   "image": "https://www.limpiafosasydestape.cl/logo.png",
   "logo": "https://www.limpiafosasydestape.cl/logo.png",

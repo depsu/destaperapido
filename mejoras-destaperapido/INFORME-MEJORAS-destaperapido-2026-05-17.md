@@ -64,7 +64,7 @@
 **A2. Enlaces sin nombre reconocible** (todas)
 - **EVIDENCIA REAL EN CÓDIGO:**
   ```html
-  <a href="tel:+56997946463" class="...">
+  <a href="tel:+56928461485" class="...">
     <i class="fa-solid fa-phone"></i>
   </a>
   ```
@@ -129,12 +129,12 @@ Verificar que output.css quede <30 KB.
 **Patrón a corregir en TODOS los HTML:**
 ```html
 <!-- ANTES -->
-<a href="tel:+56997946463" class="...">
+<a href="tel:+56928461485" class="...">
   <i class="fa-solid fa-phone"></i>
 </a>
 
 <!-- DESPUÉS -->
-<a href="tel:+56997946463" aria-label="Llamar al +56 9 9794 6463" class="...">
+<a href="tel:+56928461485" aria-label="Llamar al +56 9 2846 1485" class="...">
   <i class="fa-solid fa-phone" aria-hidden="true"></i>
 </a>
 ```
