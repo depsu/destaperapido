@@ -15,9 +15,9 @@
     var path = (location.pathname || "").toLowerCase();
     if (path.indexOf("/servicios/banos-quimicos") === 0 ||
         path.indexOf("/banos-quimicos") === 0) {
-      return "56936470112";
+      return "56997946463";
     }
-    return "56936470112";
+    return "56997946463";
   }
 
   function alreadyHasWaBtn() {
