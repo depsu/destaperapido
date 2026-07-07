@@ -1,0 +1,39 @@
+# Bitácora de destaperapido
+
+Relato en simple de lo que las rondas y sesiones de la IA hacen por este cliente
+(lo nuevo ARRIBA). Las propuestas accionables viven en la cola del dashboard (🎯 Tareas);
+aquí queda la historia. La escriben ronda-ads, ronda-correo y las sesiones.
+
+---
+
+## 2026-07-07 — Enlazado interno: 5 huérfanas rescatadas (publicado)
+
+El crawler detectó 5 posts del blog sin NINGÚN enlace entrante (la grilla listaba 28 de
+35). Se completó la grilla y se agregaron 9 enlaces contextuales desde 7 páginas (detalle
+por URL en cambios-seo.md). Gates: reglas de Google ✓ + backlog ✓. Publicado vía git
+push→Vercel bajo el permiso «publicar-mejoras-seo» (libre poder con gates, 2026-07-07).
+
+## 2026-07-06 — 📣 Ronda de Ads (v1 solo-lectura)
+- 03 Urbano (23950664619): 18 conv/sem. Budget-lost bajó 57,1%→41,7% (la plata ayudó) pero apareció 38,3% perdido por RANKING — señal nueva. Gasta 8,6k/10k. → ads-rescate-2.
+- baños quimicos (23710767076): ranking volvió a subir 19,6%→25,0%; budget-lost bajó 56,6%→36,5% gastando solo 2,8k/12k (señal rara persiste). → ads-rescate-4.
+- 01 Rural Fosas (23302036223): budget-lost 66,3%→45,3% pero solo 3 conv/sem, CPA ~16,7k, gasta 7,2k/19k. Diagnosticar antes de escalar. → ads-rural-fosas.
+- Negativas: única con gasto real sigue siendo «aguas andinas destape de alcantarillado» (637 CLP, 0 conv). Resto (duchas/eventos) con 0 gasto. → ads-rescate-5.
+- Todas encoladas como PLATA (requieren OK de Alejandro). Correr --dry-run primero.
+
+## 2026-07-06 · Ronda Ads (solo lectura)
+- 03 Urbano: 18 conv/sem, budget -41,7%, rank -38,3%, ~8,6k/10k (ads-rescate-2).
+- baños quimicos: 8 conv, rank 25,0%, budget -36,5% gastando solo 2,8k/12k (ads-rescate-4).
+- 01 Rural Fosas: 4,7 conv/sem, CPA ~10,7k (sostenido), budget -45,3% con 7,2k/19k (ads-rural-fosas).
+- Negativas candidatas confirmadas: aguas andinas, duchas, eventos (ads-rescate-5).
+
+## 2026-07-06 (21:06) · Ronda Ads (solo lectura) — CAMBIO
+- ⚠️ «03 Urbano - Destapes Santiago» (23950664619) ahora está PAUSADA. Era la que más convertía (48 conv/30d, ~18/sem) y es el servicio central. Hoy destaperapido NO pauta destapes urbanos — solo «01 Rural» y «baños quimicos». → ads-rescate-2 reconvertida a ALERTA (¿reactivar o intencional? decide Alejandro).
+- baños quimicos (23710767076): sin cambios — rank 25,0%, budget -36,5%, 8 conv/sem, ~2,9k/12k (ads-rescate-4).
+- 01 Rural Fosas (23302036223): sin cambios — 4,7 conv/sem, CPA ~10,7k, budget -45,3%, 7,2k/19k (ads-rural-fosas).
+- Negativas: sin cambios — «aguas andinas destape de alcantarillado» sigue como única con gasto (637 CLP, 0 conv); duchas/eventos con 0 gasto (ads-rescate-5).
+
+## 2026-07-07 · Ronda Ads (solo lectura)
+- «03 Urbano» (23950664619) SIGUE PAUSADA pero trajo 21 conv en 7d antes de la pausa. Destapes urbanos sin pauta (ads-rescate-2, decide Alejandro).
+- baños quimicos (23710767076): DESPEGÓ — 27 conv/sem (venía en 8), CPA ~1,7k, budget -24,3%, rank -27,8%, ~6,4k/12k. Oportunidad de escalar (ads-rescate-4).
+- 01 Rural Fosas (23302036223): 6 conv/sem, CPA ~10,8k, budget -33,1%, rank sano 7,6%, ~9,3k/19k. Términos geo por comuna gastan sin convertir → revisar landings (ads-rural-fosas).
+- Negativas: + marcas competencia «disal» y «sanicer»; siguen «aguas andinas» (637 CLP), duchas y eventos. NO tocar términos de precio (ads-rescate-5).
