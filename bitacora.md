@@ -6,6 +6,18 @@ aquí queda la historia. La escriben ronda-ads, ronda-correo y las sesiones.
 
 ---
 
+## 2026-07-08 — 👷 Constructor: título+meta de «/» (home, publicado)
+
+Tarea t3 de la cola (CTR-bajo, score 29): la home (/) rankea posición 5.7 con 1.647
+impresiones pero CTR 1.03% (esperado ~4%). Se reescribió título + meta description (más
+atractivos, con urgencia y beneficio: «45 Min», garantía, precio desde $45.000 — mismo dato
+real del cuerpo: hero «Llegamos en 45 min. Sin romper. 24/7.», FAQ con precio desde $45.000 y
+garantía total) y se alinearon og:/twitter:. Gates: reglas de Google ✓ + backlog ✓
+(cambios-seo.md). Publicado vía git push→Vercel bajo «publicar-mejoras-seo» (libre poder con
+gates, 2026-07-07). Sin INDEXNOW_KEY en este clon → se saltó el ping (Google se entera por
+sitemap). Nota: el archivo tenía un cambio sin commitear de otra tarea (H1, de un pase
+anterior sin terminar) — se dejó intacto y sin publicar, no es parte de esta tarea.
+
 ## 2026-07-08 — 👷 Constructor: título+meta de «/precios-orientativos» (publicado)
 
 Tarea t2 de la cola (CTR-bajo, score 29): la página /precios-orientativos rankea posición
