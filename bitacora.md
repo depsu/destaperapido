@@ -6,6 +6,25 @@ aquí queda la historia. La escriben ronda-ads, ronda-correo y las sesiones.
 
 ---
 
+## 2026-07-08 — 👷 Constructor: quick-win «mal olor a alcantarilla» (publicado)
+
+Tarea t11 de la cola (quick-win, score 28, la de mayor impresiones entre las empatadas):
+la página /blog/mal-olor-alcantarilla-casa-causas-soluciones rankea posición 6.1 con 3.342
+impresiones. Encontré cambios ya hechos (sin publicar) de un pase anterior sin terminar que
+calzaban justo con esta tarea: H1 reformulado como pregunta («¿Mal olor a alcantarilla en
+casa? 8 causas y cómo eliminarlo», mejor match de intención) y un enlace interno agregado en
+la causa #5 hacia /servicios/destape-alcantarillado. Sumé el enlace de refuerzo que pedía la
+tarea desde una página fuerte: en /servicios/destape-alcantarillado (página de servicio)
+agregué una frase que enlaza de vuelta al post con anchor «causas del mal olor a alcantarilla
+en casa», para que quien solo tiene olor (sin rebalse) revise las causas antes de contratar
+destape. Dejé sin tocar los demás cambios sin commitear del pase anterior (index.html,
+por-que-se-tapa-desague-cocina, liquido-azul-banos-quimicos, baños químicos): pertenecen a
+otras tareas de la cola (t13/t14) y la regla es una tarea completa por pasada. Gates: reglas
+de Google ✓ (anchors descriptivos y distintos entre sí, sin stuffing, contenido real) +
+backlog ✓ (cambios-seo.md). Publicado vía git push→Vercel bajo «publicar-mejoras-seo» (libre
+poder con gates, 2026-07-07). Sin INDEXNOW_KEY en este clon → se saltó el ping (Google se
+entera por sitemap).
+
 ## 2026-07-08 — 👷 Constructor: título+meta de «/» (home, publicado)
 
 Tarea t3 de la cola (CTR-bajo, score 29): la home (/) rankea posición 5.7 con 1.647
