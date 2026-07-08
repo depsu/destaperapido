@@ -6,6 +6,24 @@ aquí queda la historia. La escriben ronda-ads, ronda-correo y las sesiones.
 
 ---
 
+## 2026-07-08 — 👷 Constructor: quick-win «/» home (publicado)
+
+Tarea t12 de la cola (quick-win, score 28, la de mayor impresiones entre las empatadas
+sin `hecha_por`): la home (/) rankea posición 5.7 con 1.647 impresiones. Encontré el H1
+del hero sin commitear de un pase anterior sin terminar («Destape y Limpieza de Fosas en
+Santiago» → «Destape de Alcantarillado y Limpieza de Fosas en Santiago»): calzaba justo con
+esta tarea, así que lo tomé y lo terminé. El título/meta ya estaban alineados con esa keyword
+(tarea t3) y el contenido (FAQ «¿Cuánto cuesta un destape de alcantarillado en Santiago?»,
+bloque de servicios) ya cubría la intención con enlaces internos a
+`/servicios/destape-alcantarillado`, así que no hizo falta agregar más — solo el H1 estaba
+desalineado. Dejé sin tocar los demás cambios sin commitear del pase anterior
+(por-que-se-tapa-desague-cocina, liquido-azul-banos-quimicos, baños químicos): pertenecen a
+otras tareas de la cola (t13/t14) y la regla es una tarea completa por pasada. Gates: reglas
+de Google ✓ (H1 describe un servicio real de la página, sin stuffing) + backlog ✓
+(cambios-seo.md). Publicado vía git push→Vercel bajo «publicar-mejoras-seo» (libre poder con
+gates, 2026-07-07). Sin INDEXNOW_KEY en este clon → se saltó el ping (Google se entera por
+sitemap).
+
 ## 2026-07-08 — 👷 Constructor: quick-win «mal olor a alcantarilla» (publicado)
 
 Tarea t11 de la cola (quick-win, score 28, la de mayor impresiones entre las empatadas):
