@@ -6,6 +6,20 @@ aquí queda la historia. La escriben ronda-ads, ronda-correo y las sesiones.
 
 ---
 
+## 2026-07-08 — 👷 Constructor: quick-win «líquido azul de baños químicos» (publicado)
+
+Tarea t14 de la cola (quick-win, score 28, ganó el desempate por impresiones: 677 vs 506 de
+t15): `/blog/liquido-azul-banos-quimicos-que-tiene-riesgos` rankea posición 6.5 con 677
+impresiones y solo 3 clics. El archivo ya tenía el título y H1 mejorados de un pase anterior
+sin terminar (sin commitear) — los revisé, están bien alineados con la intención de búsqueda
+y la keyword se lee natural, así que los dejé. Agregué 2 enlaces internos de refuerzo desde el
+propio post (arriendo de baños químicos, tabla de cálculo por evento) y un enlace recíproco
+desde `/servicios/banos-quimicos` (página fuerte) hacia el post. Gates: reglas de Google ✓
+(anchors descriptivos y variados, sin stuffing, sin datos inventados) + backlog ✓
+(cambios-seo.md). Publicado vía git push→Vercel bajo «publicar-mejoras-seo» (libre poder con
+gates, 2026-07-07). Sin `INDEXNOW_KEY` en este clon → se saltó el ping (Google se entera por
+sitemap).
+
 ## 2026-07-08 — 👷 Constructor: quick-win «desagüe de cocina tapado» (publicado)
 
 Tarea t13 de la cola (quick-win, score 28, la de mayor impresiones entre las empatadas sin
