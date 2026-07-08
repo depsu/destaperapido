@@ -6,6 +6,23 @@ aquí queda la historia. La escriben ronda-ads, ronda-correo y las sesiones.
 
 ---
 
+## 2026-07-08 — 👷 Constructor: quick-win «desagüe de cocina tapado» (publicado)
+
+Tarea t13 de la cola (quick-win, score 28, la de mayor impresiones entre las empatadas sin
+`hecha_por`): `/blog/por-que-se-tapa-desague-cocina` rankea posición 6.7 con 877 impresiones
+y solo 3 clics. Encontré el título+meta+H1 y dos secciones de contenido nuevas
+("¿Cuánto cuesta destapar el desagüe de la cocina?" con el precio real de
+`/precios-orientativos`, y "¿Y si el agua ya no baja?" con enlaces a la guía de 7 métodos y
+al servicio de destape de cocina) ya hechas sin commitear de un pase anterior sin terminar:
+calzaban justo con esta tarea, así que las tomé y las terminé — solo actualicé el
+`dateModified` a hoy. Sumé además el enlace de refuerzo que faltaba: desde la página fuerte
+`/servicios/destape-desagues-cocina-y-grasa` (que no enlazaba a este post) hacia la guía,
+con anchor «por qué se tapa el desagüe de la cocina». Dejé sin tocar los cambios sin
+commitear de liquido-azul-banos-quimicos y banos-quimicos.html (tarea t14, otra pasada).
+Gates: reglas de Google ✓ (sin stuffing, precio y enlaces ya sustentados en el sitio) +
+backlog ✓ (cambios-seo.md). Publicado vía git push→Vercel bajo «publicar-mejoras-seo» (libre
+poder con gates, 2026-07-07). Sin `INDEXNOW_KEY` en este clon → se saltó el ping.
+
 ## 2026-07-08 — 👷 Constructor: quick-win «/» home (publicado)
 
 Tarea t12 de la cola (quick-win, score 28, la de mayor impresiones entre las empatadas
