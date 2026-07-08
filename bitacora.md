@@ -6,6 +6,18 @@ aquí queda la historia. La escriben ronda-ads, ronda-correo y las sesiones.
 
 ---
 
+## 2026-07-08 — 👷 Constructor: título+meta de «/precios-orientativos» (publicado)
+
+Tarea t2 de la cola (CTR-bajo, score 29): la página /precios-orientativos rankea posición
+4.2 con 2.177 impresiones pero CTR 4.82% (esperado ~7%). Se reescribió título + meta
+description (más atractivos, mismo dato real del cuerpo: WC desde $45.000, cocina $55.000,
+alcantarillado $75.000, garantía 30 días, sin romper pisos) y se alinearon og:/twitter:.
+Gates: reglas de Google ✓ + backlog ✓ (cambios-seo.md). Publicado vía git push→Vercel bajo
+«publicar-mejoras-seo» (libre poder con gates, 2026-07-07). Sin INDEXNOW_KEY en este clon →
+se saltó el ping (Google se entera por sitemap). Nota: el repo tenía cambios sin commitear
+de otro pase anterior sin terminar (index.html, servicios/*, blog/*) — se dejaron intactos y
+sin publicar, no son parte de esta tarea.
+
 ## 2026-07-07 — 👷 Constructor: título+meta de «mal olor a alcantarilla» (publicado)
 
 Tarea t1 de la cola (CTR-bajo, score 29): la página /blog/mal-olor-alcantarilla-casa-causas-soluciones

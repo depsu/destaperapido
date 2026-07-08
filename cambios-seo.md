@@ -6,6 +6,7 @@ Search Essentials antes de publicar.
 
 | fecha | URL | acción | qué se hizo | gate Google |
 |---|---|---|---|---|
+| 2026-07-08 | /precios-orientativos | modificado | título+meta reescritos (CTR 4.82% vs ~7% esperado en pos. 4.2, 2.177 impr.): «Precios de Destape 2026: Desde $45.000 + Garantía 30 Días» — mismo dato real del cuerpo (WC $45.000, cocina $55.000, alcantarillado $75.000, garantía 30 días, sin romper pisos), sin inventar nada; también actualicé og:/twitter: | ✓ sin keyword stuffing, datos ya sustentados en el cuerpo de la página |
 | 2026-07-07 | /blog/mal-olor-alcantarilla-casa-causas-soluciones | modificado | título+meta reescritos (CTR 1.5% vs ~4% esperado en pos. 6.1, 3.342 impr.): «Huele a Alcantarilla en Casa: Test de 3 Minutos + Solución» — mismo dato real (90% sifón/ventilación, test de 3 min ya en el cuerpo), sin inventar nada; también actualicé og:/twitter:/headline del BlogPosting para que coincidan | ✓ sin keyword stuffing, dato ya sustentado en el cuerpo del artículo |
 | 2026-07-07 | /blog/ (índice) | modificado | grilla completada: 5 tarjetas nuevas (los 5 posts que estaban huérfanos), markup idéntico al existente, orden por fecha | ✓ navegación real, sin relleno |
 | 2026-07-07 | /cobertura | modificado | +1 enlace contextual en intro «Nuestras Zonas de Cobertura» → post de cobertura RM (anchor descriptivo) | ✓ anchor natural |
