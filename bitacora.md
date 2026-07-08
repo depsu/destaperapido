@@ -6,6 +6,21 @@ aquí queda la historia. La escriben ronda-ads, ronda-correo y las sesiones.
 
 ---
 
+## 2026-07-08 — 👷 Constructor: quick-win «inspección con cámara» (publicado)
+
+Tarea t15 de la cola (quick-win, score 28): `/servicios/inspeccion-camara-alcantarillado`
+rankea posición 9.4 con 506 impresiones y 23 clics. El H1 no tenía la keyword «alcantarillado»
+(solo decía «Inspección con Cámara de Video») — se corrigió a «Inspección de Alcantarillado
+con Cámara de Video». Título+meta reescritos con el precio real (desde $80.000, ya en el FAQ
+schema de la página). De paso encontré que el FAQPage de esta página prometía 2 preguntas
+(precio y «sirve para reclamar a constructora») que no estaban visibles en el body — las
+agregué al FAQ visible para que el schema sea honesto. El enlazado interno ya era fuerte (nav,
+grilla de «otros servicios», 4 posts del blog dedicados al tema) así que no agregué más para
+no forzarlo. Gates: reglas de Google ✓ (dato ya sustentado en el propio JSON-LD, sin stuffing)
++ backlog ✓ (cambios-seo.md). Publicado vía git push→Vercel bajo «publicar-mejoras-seo»
+(libre poder con gates, 2026-07-07). Sin INDEXNOW_KEY activo en este clon (el `.txt` de la
+clave sigue sin desplegar, ver `indexnow.md`) → se saltó el ping.
+
 ## 2026-07-08 — 👷 Constructor: quick-win «líquido azul de baños químicos» (publicado)
 
 Tarea t14 de la cola (quick-win, score 28, ganó el desempate por impresiones: 677 vs 506 de
