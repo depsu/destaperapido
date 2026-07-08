@@ -6,6 +6,7 @@ Search Essentials antes de publicar.
 
 | fecha | URL | acción | qué se hizo | gate Google |
 |---|---|---|---|---|
+| 2026-07-07 | /blog/mal-olor-alcantarilla-casa-causas-soluciones | modificado | título+meta reescritos (CTR 1.5% vs ~4% esperado en pos. 6.1, 3.342 impr.): «Huele a Alcantarilla en Casa: Test de 3 Minutos + Solución» — mismo dato real (90% sifón/ventilación, test de 3 min ya en el cuerpo), sin inventar nada; también actualicé og:/twitter:/headline del BlogPosting para que coincidan | ✓ sin keyword stuffing, dato ya sustentado en el cuerpo del artículo |
 | 2026-07-07 | /blog/ (índice) | modificado | grilla completada: 5 tarjetas nuevas (los 5 posts que estaban huérfanos), markup idéntico al existente, orden por fecha | ✓ navegación real, sin relleno |
 | 2026-07-07 | /cobertura | modificado | +1 enlace contextual en intro «Nuestras Zonas de Cobertura» → post de cobertura RM (anchor descriptivo) | ✓ anchor natural |
 | 2026-07-07 | /zonas/rural/ | modificado | +1 enlace al cierre de «Rutas Diarias en tu Sector» → post cobertura RM | ✓ anchor variado (distinto al de /cobertura) |
