@@ -6,6 +6,17 @@ aquí queda la historia. La escriben ronda-ads, ronda-correo y las sesiones.
 
 ---
 
+## 2026-07-07 — 👷 Constructor: título+meta de «mal olor a alcantarilla» (publicado)
+
+Tarea t1 de la cola (CTR-bajo, score 29): la página /blog/mal-olor-alcantarilla-casa-causas-soluciones
+rankea posición 6.1 con 3.342 impresiones pero CTR 1.5% (esperado ~4%). Se reescribió título +
+meta description (más atractivos, mismo dato real del cuerpo: 90% sifón/ventilación, test de
+3 min) y se alinearon og:/twitter:/JSON-LD BlogPosting. Gates: reglas de Google ✓ + backlog ✓
+(cambios-seo.md). Publicado vía git push→Vercel bajo «publicar-mejoras-seo» (libre poder con
+gates, 2026-07-07). Sin INDEXNOW_KEY en este clon → se saltó el ping (Google se entera por
+sitemap). Nota: el archivo tenía cambios sin commitear de otra tarea (H1 + enlace interno, de
+un pase anterior sin terminar) — se dejaron intactos y sin publicar, no son parte de esta tarea.
+
 ## 2026-07-07 — Enlazado interno: 5 huérfanas rescatadas (publicado)
 
 El crawler detectó 5 posts del blog sin NINGÚN enlace entrante (la grilla listaba 28 de
