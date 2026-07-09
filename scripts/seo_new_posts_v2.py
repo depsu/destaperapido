@@ -23,8 +23,8 @@ BLOG = ROOT / "public" / "blog"
 
 BASE = "https://www.destaperapido.cl"
 HERO_DEFAULT = f"{BASE}/images/camio-haciendo-servicio-en-la-calle.webp"
-PHONE_E164 = "+56997946463"
-PHONE_DISPLAY = "+56 9 9794 6463"
+PHONE_E164 = "+56965889226"
+PHONE_DISPLAY = "+56 9 6588 9226"
 
 AUTHOR_NAME = "Alejandro Rivera Carrasco"
 AUTHOR_LINKEDIN = "https://www.linkedin.com/in/alejandro-rivera-carrasco-61436b182/"

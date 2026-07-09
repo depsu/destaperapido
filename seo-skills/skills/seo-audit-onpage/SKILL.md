@@ -15,7 +15,7 @@ description: Auditoría on-page SEO completa de una página HTML estática del r
 
 - Marca: **Full Fosas**
 - Dominio canónico: `https://www.limpiafosasydestape.cl`
-- Teléfono: `+56 9 9794 6463` (WhatsApp `https://wa.me/56997946463`)
+- Teléfono: `+56 9 6588 9226` (WhatsApp `https://wa.me/56965889226`)
 - Email: `contacto@destaperapido.cl` (NO `@limpiafosasydestape.cl` — decisión del dueño)
 - Mercado: Región Metropolitana, Chile
 
@@ -85,8 +85,8 @@ Lee el HTML completo. Si el archivo es muy grande, foco en `<head>`, primeros `<
 - [ ] Sin `<style>` enormes inline.
 
 **Marca y datos sensibles**
-- [ ] Teléfono en formato consistente: `+56 9 9794 6463`.
-- [ ] Enlaces wa.me: `https://wa.me/56997946463` (sin espacios, sin +).
+- [ ] Teléfono en formato consistente: `+56 9 6588 9226`.
+- [ ] Enlaces wa.me: `https://wa.me/56965889226` (sin espacios, sin +).
 - [ ] Dominio canónico con `www`.
 - [ ] Logo split correcto: `<span>FULL<span class="text-brand-600">FOSAS</span></span>`.
 

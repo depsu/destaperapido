@@ -14,9 +14,9 @@
 | Tagline corto | Destape de alcantarillado y fosas sépticas 24/7 en Santiago |
 | Sitio web (canónico) | `https://www.destaperapido.cl` |
 | Sitio web (sin www, redirige) | `https://destaperapido.cl` |
-| Teléfono principal (formato internacional) | `+56 9 9794 6463` |
-| Teléfono (sin espacios) | `+56997946463` |
-| WhatsApp 24/7 | `https://wa.me/56997946463` |
+| Teléfono principal (formato internacional) | `+56 9 6588 9226` |
+| Teléfono (sin espacios) | `+56965889226` |
+| WhatsApp 24/7 | `https://wa.me/56965889226` |
 | WhatsApp B2B / baños químicos | `+56 9 3647 0112` |
 | Email | `contacto@destaperapido.cl` |
 | Política de dirección pública | **OCULTAR** siempre que la plataforma lo permita (Service Area Business). |
@@ -41,15 +41,15 @@
 
 ### CORTA (≤160 caracteres — Twitter, meta, perfiles tipo tarjeta)
 
-**A.** Destape de alcantarillado, WC y fosas sépticas en Santiago. Atención 24/7 con hidrojet y cámara CCTV. Cotiza por WhatsApp +56 9 9794 6463.
+**A.** Destape de alcantarillado, WC y fosas sépticas en Santiago. Atención 24/7 con hidrojet y cámara CCTV. Cotiza por WhatsApp +56 9 6588 9226.
 
-**B.** Empresa de saneamiento en la RM: destape de alcantarillado, fosas, edificios y cocinas. Flota propia 24/7. WhatsApp +56 9 9794 6463.
+**B.** Empresa de saneamiento en la RM: destape de alcantarillado, fosas, edificios y cocinas. Flota propia 24/7. WhatsApp +56 9 6588 9226.
 
-**C.** Destapes con hidrojet, limpia fosas y cámara de inspección en toda la Región Metropolitana. Urgencias 24/7. +56 9 9794 6463.
+**C.** Destapes con hidrojet, limpia fosas y cámara de inspección en toda la Región Metropolitana. Urgencias 24/7. +56 9 6588 9226.
 
 ### MEDIA (300–400 caracteres — perfil estándar de directorio)
 
-**A.** Destape Rápido es una empresa chilena de saneamiento con 12 años de experiencia. Atendemos 24/7 destapes de alcantarillado, WC, lavaplatos y fosas sépticas en la Región Metropolitana, con flota propia de tres tamaños, hidrojet de alta presión e inspección con cámara CCTV. Resolución sanitaria SEREMI vigente. WhatsApp +56 9 9794 6463.
+**A.** Destape Rápido es una empresa chilena de saneamiento con 12 años de experiencia. Atendemos 24/7 destapes de alcantarillado, WC, lavaplatos y fosas sépticas en la Región Metropolitana, con flota propia de tres tamaños, hidrojet de alta presión e inspección con cámara CCTV. Resolución sanitaria SEREMI vigente. WhatsApp +56 9 6588 9226.
 
 **B.** Servicio integral de destapes y limpieza de fosas sépticas para residencias, condominios, edificios y empresas en Santiago. Operamos en 30+ comunas de la RM con camiones de 2.000, 5.000 y 15.000 litros, hidrojet propio y certificado de disposición final por servicio. Atención 24/7. Cotiza en minutos por WhatsApp.
 
@@ -58,13 +58,13 @@
 ### LARGA (700–900 caracteres — perfil completo, "acerca de", guest post bio)
 
 **A.**
-Destape Rápido es una empresa chilena de saneamiento profesional fundada en 2014. Operamos 24 horas, los 7 días, en toda la Región Metropolitana con flota propia de tres tamaños de camión (2.000, 5.000 y 15.000 litros), hidrojet de alta presión montado en flota e inspección con cámara CCTV bajo norma PACP. Atendemos desde una urgencia residencial de destape de WC o lavaplatos hasta contratos B2B continuos para retail, gastronomía, condominios y plantas industriales. Cada servicio incluye trazabilidad fotográfica antes y después y, en limpieza de fosas, certificado de disposición final en planta autorizada por SEREMI. Cobertura en 30+ comunas urbanas y rurales: Las Condes, Vitacura, Providencia, Ñuñoa, Maipú, Chicureo, Pirque, Buin, Melipilla, entre otras. WhatsApp 24/7: +56 9 9794 6463.
+Destape Rápido es una empresa chilena de saneamiento profesional fundada en 2014. Operamos 24 horas, los 7 días, en toda la Región Metropolitana con flota propia de tres tamaños de camión (2.000, 5.000 y 15.000 litros), hidrojet de alta presión montado en flota e inspección con cámara CCTV bajo norma PACP. Atendemos desde una urgencia residencial de destape de WC o lavaplatos hasta contratos B2B continuos para retail, gastronomía, condominios y plantas industriales. Cada servicio incluye trazabilidad fotográfica antes y después y, en limpieza de fosas, certificado de disposición final en planta autorizada por SEREMI. Cobertura en 30+ comunas urbanas y rurales: Las Condes, Vitacura, Providencia, Ñuñoa, Maipú, Chicureo, Pirque, Buin, Melipilla, entre otras. WhatsApp 24/7: +56 9 6588 9226.
 
 **B.**
 Destape Rápido es la empresa de destapes y limpieza de fosas sépticas que cubre lo que la competencia normalmente no: residencial y industrial con una sola operación. Tenemos camión chico para parcelas y accesos angostos, camión grande para colectores industriales y todo lo intermedio. Trabajamos con hidrojet propio (no subcontratamos), cámara de inspección CCTV con códigos PACP, y resolución sanitaria SEREMI vigente. Llevamos más de una década atendiendo urgencias 24/7 en Santiago centro, sector oriente, sur, poniente y zona rural de la Región Metropolitana, incluyendo Pirque, San José de Maipo, Chicureo, Talagante y Melipilla. Empresa con factura electrónica, OC y reportes documentados para clientes B2B. Calificación 5,0 / 5 en Google.
 
 **C.**
-Servicio profesional de destapes y saneamiento en toda la Región Metropolitana de Chile, con 12 años de operación y flota propia. Destape Rápido resuelve urgencias residenciales (WC, lavaplatos, alcantarillado domiciliario) y operaciones de mayor escala (limpieza de fosas sépticas en parcelas, hidrojet en plantas industriales, mantención preventiva en cadenas de retail y gastronomía, atención a edificios y condominios). Equipos certificados, inspección con cámara cuando no se sabe dónde está el tapón, certificado de disposición final en planta autorizada y factura electrónica. Atendemos 24 horas, todos los días del año, vía WhatsApp +56 9 9794 6463. Sitio: www.destaperapido.cl.
+Servicio profesional de destapes y saneamiento en toda la Región Metropolitana de Chile, con 12 años de operación y flota propia. Destape Rápido resuelve urgencias residenciales (WC, lavaplatos, alcantarillado domiciliario) y operaciones de mayor escala (limpieza de fosas sépticas en parcelas, hidrojet en plantas industriales, mantención preventiva en cadenas de retail y gastronomía, atención a edificios y condominios). Equipos certificados, inspección con cámara cuando no se sabe dónde está el tapón, certificado de disposición final en planta autorizada y factura electrónica. Atendemos 24 horas, todos los días del año, vía WhatsApp +56 9 6588 9226. Sitio: www.destaperapido.cl.
 
 ---
 
@@ -224,7 +224,7 @@ a nuestro sitio. Si te encaja alguno (o si tienes otra idea), feliz de coordinar
 
 Saludos,
 [Tu nombre]
-Destape Rápido — +56 9 9794 6463
+Destape Rápido — +56 9 6588 9226
 ```
 
 ---

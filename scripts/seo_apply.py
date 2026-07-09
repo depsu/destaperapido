@@ -4,7 +4,7 @@ Aplicador SEO masivo para Destape Rápido.
 
 Ejecuta de forma idempotente sobre todo public/*.html:
 - Unifica dominio canónico (siempre con www).
-- Estandariza teléfono (+56 9 9794 6463 / +56997946463).
+- Estandariza teléfono (+56 9 6588 9226 / +56965889226).
 - Inserta canonical, OG, Twitter Card y JSON-LD donde falten.
 - Genera JSON-LD apropiado por tipo de página (home, servicio, zona,
   blog, landing, etc.).
@@ -34,8 +34,8 @@ PUBLIC = ROOT / "public"
 BRAND = "Destape Rápido"
 BASE_URL = "https://www.destaperapido.cl"
 SITE_ID = f"{BASE_URL}/#business"
-PHONE_DISPLAY = "+56 9 9794 6463"
-PHONE_E164 = "+56997946463"
+PHONE_DISPLAY = "+56 9 6588 9226"
+PHONE_E164 = "+56965889226"
 EMAIL = "contacto@destaperapido.cl"
 LOGO = f"{BASE_URL}/logo-nav.webp"
 DEFAULT_OG_IMAGE = f"{BASE_URL}/images/camio-haciendo-servicio-en-la-calle.webp"
@@ -228,7 +228,7 @@ def normalize_domain_and_phone(content: str) -> str:
     # Standardize phone
     content = re.sub(r"\+56[\s\xa0]*9[\s\xa0]*3647[\s\xa0]*0112", PHONE_DISPLAY, content)
     content = content.replace("+56936470112", PHONE_E164)
-    content = content.replace("tel:+56 9 9794 6463", f"tel:{PHONE_E164}")
+    content = content.replace("tel:+56 9 6588 9226", f"tel:{PHONE_E164}")
     return content
 
 

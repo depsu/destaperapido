@@ -73,7 +73,7 @@ function buildSvg(name, secondary) {
     <text x="80" y="290" font-size="84" font-weight="800" fill="#ffffff">${safeName}</text>
     <text x="80" y="370" font-size="36" font-weight="500" fill="#cbd5e1">${safeSec}</text>
     <text x="80" y="540" font-size="22" font-weight="600" fill="#94a3b8">24/7 · Cobertura Región Metropolitana</text>
-    <text x="80" y="575" font-size="32" font-weight="700" fill="#ffffff">+56 9 9794 6463</text>
+    <text x="80" y="575" font-size="32" font-weight="700" fill="#ffffff">+56 9 6588 9226</text>
   </g>
   <g transform="translate(950, 60)">
     <rect x="0" y="0" width="170" height="60" rx="30" fill="#16a34a" />

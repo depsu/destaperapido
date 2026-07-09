@@ -108,7 +108,7 @@ test('CTA WhatsApp visible sin scroll en home', async ({ page }) => {
 ### Pendiente para Ads (manual, fuera de código)
 1. **GTM**: crear triggers para `click_whatsapp`, `click_tel`, `lead_submit` y enlazarlos a tags de **Conversión Ads** + **GA4**.
 2. **Google Ads conversion linker**: agregar tag `Conversion Linker` en GTM (gclid persistence).
-3. **Phone call extensions**: en Ads, activar "call asset" con +56 9 9794 6463.
+3. **Phone call extensions**: en Ads, activar "call asset" con +56 9 6588 9226.
 4. **Local Services Ads (LSA)**: revisar elegibilidad para "Plomeros - Santiago" — hace lead generation directo y ranquea sobre Ads tradicional.
 5. **Landing pages dedicadas a Ads** (ya existen: `/landing/destape-urgente-sector-oriente`, etc.) — revisar que cada una matchee 1 ad group con keywords específicas.
 6. **Bid modifier mobile +20%** si los datos muestran mejor CR mobile (lo más probable en este rubro).

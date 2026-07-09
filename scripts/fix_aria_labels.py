@@ -2,7 +2,7 @@
 """Add aria-label to icon-only links/buttons in pilot pages.
 
 Patterns:
-- <a href="tel:..."><i fa-phone></i></a>  -> add aria-label="Llamar al +56 9 9794 6463"
+- <a href="tel:..."><i fa-phone></i></a>  -> add aria-label="Llamar al +56 9 6588 9226"
 - <a href="https://wa.me/..."><i fa-whatsapp></i></a> -> add aria-label="Escribir por WhatsApp"
 - <button onclick="toggleReviewForm()"><i fa-xmark></i></button> -> aria-label="Cerrar formulario"
 - <button onclick="deleteReview()"><i fa-trash-can></i></button> -> aria-label="Eliminar reseña"
@@ -40,10 +40,10 @@ RULES = [
     # tel: phone icon
     (
         re.compile(
-            r'<a\s+(?![^>]*aria-label)href="tel:\+56997946463"[^>]*>\s*<i\s+[^>]*fa-phone[^>]*></i>\s*</a>',
+            r'<a\s+(?![^>]*aria-label)href="tel:\+56965889226"[^>]*>\s*<i\s+[^>]*fa-phone[^>]*></i>\s*</a>',
             re.DOTALL,
         ),
-        "Llamar al +56 9 9794 6463",
+        "Llamar al +56 9 6588 9226",
     ),
     # WhatsApp icon
     (
