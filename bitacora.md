@@ -6,6 +6,41 @@ aquí queda la historia. La escriben ronda-ads, ronda-correo y las sesiones.
 
 ---
 
+## 2026-07-10 — 👷 Constructor: pasada sin cambios nuevos (todo lo ejecutable ya estaba hecho)
+
+Cola regenerada hoy (08:31) volvió a mostrar t1/t2/t3 (ctr-bajo) y t11-t15 (quick-win) con
+las mismas métricas de siempre (esperado: Search Console tarda 1-2 semanas en reflejar el
+CTR/posición bajo el título nuevo). Empecé por t1 (score 29, ganó el desempate por
+impresiones: 3.342) y por error reescribí título/meta/og/twitter/headline de nuevo antes de
+revisar la bitácora — lo noté a tiempo y revertí el archivo a la versión del 2026-07-07 sin
+publicar nada. Verifiqué también t2, t3 y t11-t15 contra el sitio real: los 8 ya tienen el
+título/meta/H1/enlazado descritos en `cambios-seo.md` (07-07/07-08), nada quedó a medias. El
+resto de la cola (reseñas/maps/clarity/ads-\*/sin-conversión/engagement) es de Alejandro o no
+es tipo ejecutable; `t19` (crear-contenido, destapando.cl) es de Alejandro (🎨, esfuerzo alto,
+landings nuevas con decisiones de diseño). Marqué `hecha_por: constructor` en las 8 tareas del
+`tareas.json` maestro para dejarlo trazado; si en 1-2 semanas el CTR/posición sigue igual, ahí
+sí hay que revisar de verdad. Sin publicación → no aplica gate 2 de esta pasada.
+
+## 2026-07-09 (3ª pasada) · Ronda Ads (solo lectura) — CAMBIO
+
+- ⚠️ «01 - Rural - Fosas y Parcelas» (23302036223) ahora está PAUSADA (en la pasada anterior de hoy mismo estaba ENABLED). Junto con «03 Urbano» (ya pausada hace días), destaperapido hoy **solo pauta «baños quimicos»** — 2 de 3 campañas con historial dormidas. → nueva tarea `ads-rescate-6` (¿reactivar o intencional? decide Alejandro), reemplaza a `ads-rural-fosas`.
+- baños quimicos (23710767076): sigue fuerte — 57 conv/sem, ~13,2k/12k (sigue pasada del tope), rank -27,3%/budget -25,0% (ads-rescate-4).
+- Negativas: sin cambios — ninguna candidata reapareció en el top de gasto (ads-rescate-5).
+
+## 2026-07-09 — 👷 Constructor: pasada sin cambios nuevos (t1 ya estaba hecha)
+
+Tarea t1 de la cola (CTR-bajo, score 29, mayor impresiones del empate): `/blog/mal-olor-alcantarilla-casa-causas-soluciones`.
+Verifiqué el archivo y el título/meta actual **ya es** el que se reescribió el 2026-07-07
+(«Huele a Alcantarilla en Casa: Test de 3 Minutos + Solución», con la evidencia de 90%
+sifón/ventilación y test de 3 min ya en el cuerpo) — no hacía falta ni se repitió ningún
+cambio. También reconfirmé que t2, t3 y las quick-win t11-t15 (todo el resto de lo ejecutable
+de esta pasada) ya están hechas desde el 07-07/07-08. La cola las vuelve a mostrar porque
+Search Console tarda 2-3 días en reflejar el CTR nuevo bajo el título nuevo — es el mecanismo
+de verificación esperado (docs/23), no un fallo del constructor. Marqué t1 con
+`hecha_por: constructor` en tareas.json para dejarlo trazado; si en 1-2 semanas el CTR real
+sigue igual, ahí sí hay que revisar de verdad. Sin publicación (nada que publicar) → no aplica
+gate 2 de esta pasada (no hay URL nueva tocada).
+
 ## 2026-07-08 — 👷 Constructor: quick-win «inspección con cámara» (publicado)
 
 Tarea t15 de la cola (quick-win, score 28): `/servicios/inspeccion-camara-alcantarillado`
