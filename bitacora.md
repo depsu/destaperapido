@@ -6,6 +6,21 @@ aquí queda la historia. La escriben ronda-ads, ronda-correo y las sesiones.
 
 ---
 
+## 2026-07-10 — 👷 Constructor: 6 casos reales des-orfanados (publicado)
+
+Tarea `crawl-drapido-casos-reales` de la cola (enlazado, score 22): los 6 casos reales
+(`/casos-reales/*`) estaban en el sitemap y en el ItemList del schema del índice, pero
+ninguna página los enlazaba — invisibles para Google y prueba social desperdiciada. El repo
+tenía este trabajo casi listo de un pase anterior sin terminar (sin commitear): grilla
+«Casos documentados paso a paso» con las 6 tarjetas en `/casos-reales/` + 5 enlaces
+contextuales desde páginas afines (cocina/grasa → Providencia, edificios → Las Condes,
+fosas → Chicureo, mantención → Ñuñoa, Pirque → Pirque). Se verificó tarjeta por tarjeta
+que cada cifra del anchor sale del propio caso (gate Google ✓) y se completó el 6º enlace
+que faltaba: hidrojet → planta industrial Quilicura (operación nocturna, camión 15.000 L).
+Cada caso queda con ≥2 enlaces entrantes (grilla + contextual). Detalle por URL en
+`cambios-seo.md`. Publicado vía git push→Vercel bajo «publicar-mejoras-seo» (libre poder
+con gates, 2026-07-07) + ping IndexNow (clave viva desde 07-09).
+
 ## 2026-07-10 — 👷 Constructor: pasada sin cambios nuevos (todo lo ejecutable ya estaba hecho)
 
 Cola regenerada hoy (08:31) volvió a mostrar t1/t2/t3 (ctr-bajo) y t11-t15 (quick-win) con
