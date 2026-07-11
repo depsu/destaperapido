@@ -205,3 +205,9 @@ push→Vercel bajo el permiso «publicar-mejoras-seo» (libre poder con gates, 2
 - baños quimicos (23710767076): DESPEGÓ — 27 conv/sem (venía en 8), CPA ~1,7k, budget -24,3%, rank -27,8%, ~6,4k/12k. Oportunidad de escalar (ads-rescate-4).
 - 01 Rural Fosas (23302036223): 6 conv/sem, CPA ~10,8k, budget -33,1%, rank sano 7,6%, ~9,3k/19k. Términos geo por comuna gastan sin convertir → revisar landings (ads-rural-fosas).
 - Negativas: + marcas competencia «disal» y «sanicer»; siguen «aguas andinas» (637 CLP), duchas y eventos. NO tocar términos de precio (ads-rescate-5).
+
+## 2026-07-10 · 👷 Constructor — enlazado: des-orfanar /nosotros, /testimonios y /ruta-buin (crawl-drapido-nav-paginas)
+- Qué: `/nosotros` y `/testimonios` existían e indexaban pero ninguna página las enlazaba estáticamente. Ahora: footer del home (columna «Empresa», anchors «Quiénes somos» / «Testimonios de clientes») + 2 enlaces contextuales en `/por-que-elegirnos` (hero → nosotros; nota de verificación de reseñas → testimonios). Cada una queda con 2 enlaces entrantes.
+- `/ruta-buin` (seguimiento referencial del camión): +1 enlace contextual desde `/zonas/rural/buin-paine` (sección de emergencia, anchor «seguimiento referencial del camión hacia Buin»). ⚠️ Duda anotada: es página operativa tipo tracking, igual que la de fullfosas que espera decisión (¿evergreen o noindex?); si Alejandro decide noindex, quitar el enlace.
+- Gates: (1) Google ✓ — anchors descriptivos y variados, contenido propio real, nada inventado; (2) backlog ✓ — 3 filas en cambios-seo.md.
+- Publicado: commit + git push (Vercel publica) bajo `publicar-mejoras-seo` (libre poder 2026-07-07). Verificación: re-crawl `--site https://www.destaperapido.cl` → las 3 deben salir de `huerfanas`.
