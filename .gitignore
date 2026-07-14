@@ -8,3 +8,8 @@ mejoras-destaperapido/capturas-icons-prod/
 
 # Critical CSS intermedio
 public/css/critical-home.css
+
+# Credenciales locales (NUNCA subir) — blindaje 2026-07-15
+.env*.local
+**/.env.local
+scripts/.env.local
