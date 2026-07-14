@@ -6,6 +6,73 @@ aquí queda la historia. La escriben ronda-ads, ronda-correo y las sesiones.
 
 ---
 
+## 2026-07-14 — 👷 Constructor: título y meta de la home reescritos (publicado)
+
+Tarea t2 de la cola (CTR-bajo, score 29; empató con t3 pero ganó el desempate por
+impresiones: 1.775 vs 945): `/` (home). Posición 5,7 pero CTR 1,35% (esperado ~4% en esa
+posición) con 1.775 impresiones — el título viejo («Destape de Alcantarillado Santiago: 45
+Min | Destape Rápido») terminaba en relleno de marca sin gancho. Reescribí título, meta
+description, og:title/og:description y twitter:title/twitter:description: nuevo título
+«Destape de Alcantarillado en Santiago: Llegamos en 45 Min», nueva descripción con dolor +
+urgencia + garantía + CTA («Cañería o WC tapado no espera. Vamos a tu casa en 45 min, sin
+romper pisos y con garantía de 30 días. Revisa precios reales y cotiza gratis por
+WhatsApp.»). Saqué el precio «$45.000» del snippet a propósito: en `/precios-orientativos`
+el destape de **alcantarillado** parte en $75.000 (el $45.000 es solo el WC) — ponerlo en
+el título de la keyword «alcantarillado» hubiera sido un dato inexacto (Gate 1). Pasó los
+DOS gates (detalle en `cambios-seo.md`) → publicado directo (ledger `publicar-mejoras-seo`,
+2026-07-07): commit + `git push` (Vercel-Git). Verificación: re-medir el CTR de la home en
+1-2 semanas.
+
+## 2026-07-14 — 👷 Constructor: pasada sin cambios nuevos (t1 ya estaba hecha)
+
+Tarea t1 de la cola (CTR-bajo, score 29, ganó el desempate por impresiones: 3.828):
+`/blog/mal-olor-alcantarilla-casa-causas-soluciones`. Verifiqué el archivo real y el
+título/meta/og/twitter/headline **ya son** los reescritos el 2026-07-07 («Huele a
+Alcantarilla en Casa: Test de 3 Minutos + Solución», con el dato real de 90% sifón/ventilación
+y test de 3 min ya en el cuerpo) — nada quedó a medias, no repetí el cambio. Search Console
+sigue sin reflejar el CTR nuevo bajo el título nuevo (van más de 2 semanas; es más lento de lo
+esperado, pero el mecanismo de verificación sigue siendo correcto: la tarea se recrea sola
+mientras la métrica siga mal). Marqué `hecha_por: constructor` (fecha 2026-07-14) en
+`tareas.json` del maestro para dejarlo trazado. Sin publicación (nada nuevo que publicar) → no
+aplica gate 2 de esta pasada.
+
+---
+
+## 2026-07-14 · 📣 Ronda de Ads: la demanda de «baños quimicos» cede un poco, «03 Urbano» ya quedó en cero total
+- «baños quimicos» (la única campaña activa) bajó de 85 a 73 conversiones/semana y el CPA
+  subió un poco (~1.618 vs ~1.503) — igual sigue gastando 41% sobre su tope de presupuesto
+  (venía 53%), así que la señal de "presupuesto chico para la demanda" se mantiene, solo
+  algo menos urgente esta semana.
+- «03 Urbano - Destapes Santiago» (pausada) ya no arrastra NADA de actividad en el reporte
+  de 7 días — confirma que la pausa lleva bastantes semanas. «01 Rural Fosas» sigue en el
+  mismo camino, cada vez con menos rastro.
+- En negativas: reapareció «baños quimicos ventas» (gente que busca comprar, no arrendar) —
+  sigue siendo candidata débil, sin urgencia. Nada nuevo grave.
+
+## 2026-07-12 · 📣 Ronda de Ads: las negativas candidatas se siguen cayendo
+- Ventana casi idéntica a la pasada anterior: «baños quimicos» sigue sola, con récord vigente
+  y topando presupuesto (ver `ads-rescate-4`); «01 Rural» y «03 Urbano» siguen pausadas.
+- «rimak baños quimicos» volvió a convertir (2ª vez) → descartada como negativa; «para
+  fiestas» y «arriendo baños para eventos» también convirtieron → eventos/fiestas no se tocan.
+- Única candidata nueva (débil): «baños quimicos ventas» (piden comprar; el negocio arrienda).
+  Actualizada `ads-rescate-5` con la lista depurada.
+
+## 2026-07-11 (13ª pasada) · 📣 Ronda de Ads: matiz en las negativas candidatas
+- Ventana idéntica a la pasada anterior (récord de «baños quimicos» sigue vigente, tope de
+  presupuesto también — ver `ads-rescate-4`).
+- Matiz: «rimak baños quimicos» (marca competidora) muestra 1 conversión en la ventana y
+  «baños portatiles para fiestas» también convirtió — las candidatas a negativa de
+  `ads-rescate-5` pierden fuerza; solo «para eventos» sigue con gasto sin convertir.
+
+
+## 2026-07-11 · 📣 Ronda de Ads: «baños quimicos» marcó récord y su presupuesto quedó chico
+- Récord de la campaña: 76,3 conversiones/sem con CPA ~1.665, gastando ~18,2k/día contra un
+  tope de 12k (un 50% pasado). La demanda sigue subiendo y es la ÚNICA campaña activa del
+  cliente («01 Rural» y «03 Urbano» siguen pausadas).
+- Subir ese presupuesto es la palanca más clara ahora — es plata, así que espera el OK de
+  Alejandro (tarea `ads-rescate-4`, score máximo de la cola).
+- «baños portatiles» volvió a convertir: confirmado que NO va como negativa.
+
 ## 2026-07-10 — 👷 Constructor: 6 casos reales des-orfanados (publicado)
 
 Tarea `crawl-drapido-casos-reales` de la cola (enlazado, score 22): los 6 casos reales
@@ -211,3 +278,11 @@ push→Vercel bajo el permiso «publicar-mejoras-seo» (libre poder con gates, 2
 - `/ruta-buin` (seguimiento referencial del camión): +1 enlace contextual desde `/zonas/rural/buin-paine` (sección de emergencia, anchor «seguimiento referencial del camión hacia Buin»). ⚠️ Duda anotada: es página operativa tipo tracking, igual que la de fullfosas que espera decisión (¿evergreen o noindex?); si Alejandro decide noindex, quitar el enlace.
 - Gates: (1) Google ✓ — anchors descriptivos y variados, contenido propio real, nada inventado; (2) backlog ✓ — 3 filas en cambios-seo.md.
 - Publicado: commit + git push (Vercel publica) bajo `publicar-mejoras-seo` (libre poder 2026-07-07). Verificación: re-crawl `--site https://www.destaperapido.cl` → las 3 deben salir de `huerfanas`.
+
+## 2026-07-11 · 👷 Constructor — pasada sin cambios (todo en ventana de verificación)
+- La cola trae de vuelta t1-t3 (ctr-bajo) y t11-t15 (quick-win), pero TODAS ya se ejecutaron
+  y publicaron entre el 07 y 08-jul (títulos/meta/H1/contenido/enlaces — ver cambios-seo.md).
+  El scout las regeneró con datos GSC que aún no reflejan los cambios (rezago 2-3 días).
+- Decisión: NO re-tocar (sería churn de títulos, malo para SEO). Se anotó `nota_constructor`
+  en t1 y t2 con la fecha de re-evaluación (~21/22-jul). Si el CTR sigue bajo entonces,
+  corresponde la siguiente iteración.
