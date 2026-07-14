@@ -6,6 +6,22 @@ aquí queda la historia. La escriben ronda-ads, ronda-correo y las sesiones.
 
 ---
 
+## 2026-07-14 — 👷 Constructor: título y meta del post de cocina reescritos (publicado)
+
+Tarea t3 de la cola (CTR-bajo, score 29): `/blog/por-que-se-tapa-desague-cocina`. Posición
+6,7 pero CTR 0,32% (esperado ~4% en esa posición) con 945 impresiones — bajó respecto a la
+pasada anterior pese al ajuste del 08-jul, señal de que ese título («Causas y solución») no
+enganchó lo suficiente. Reescribí título, meta description, og:title/og:description,
+twitter:title/twitter:description y el headline/description del schema BlogPosting: nuevo
+título «¿Por qué se tapa el desagüe de la cocina? Causas y precio del arreglo» y meta que
+suma el precio real («desde $55.000, sin romper cañerías ni usar químicos agresivos» — el
+mismo dato que ya está en el cuerpo, enlazado a `/precios-orientativos`). No toqué H1 ni
+contenido (fuera del alcance de esta tarea puntual de CTR). Gates: (1) Google ✓ — precio ya
+sustentado en la página, sin keyword stuffing, sin datos inventados; (2) backlog ✓ — fila en
+`cambios-seo.md`. Publicado: commit + `git push` (Vercel-Git publica), bajo
+`publicar-mejoras-seo` (libre poder 2026-07-07). Verificación: re-medir el CTR de esta
+página en 1-2 semanas (~28-jul).
+
 ## 2026-07-14 — 👷 Constructor: título y meta de la home reescritos (publicado)
 
 Tarea t2 de la cola (CTR-bajo, score 29; empató con t3 pero ganó el desempate por
