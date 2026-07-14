@@ -22,3 +22,10 @@ complétalo al trabajar aquí.
 
 - Google Ads: analizar con MCP (lectura GAQL); mutaciones SOLO por scripts del maestro con
   el flujo del Guardián. Campañas apuntan a cliente de ALTA intención.
+
+## Contexto rápido: grafo del maestro 🕸️
+
+El mapa de conocimiento de TODO el sistema (método, scripts, skills, workers) vive en el
+maestro — este clon NO genera grafo propio. Antes de explorar a ciegas:
+`graphify explain "X" --graph /Users/alejandroriveracarrasco/SaSS/DIXDY/graphify-out/graph.json`
+(o `graphify path "A" "B" --graph <misma ruta>`). Vista visual: dashboard → 🕸️ Grafo.
