@@ -6,6 +6,25 @@ aquí queda la historia. La escriben ronda-ads, ronda-correo y las sesiones.
 
 ---
 
+## 2026-07-15 — 👷 Constructor: título y meta del post de mal olor reescritos, 3er intento (publicado)
+
+Tarea t1 de la cola (CTR-bajo, score 29; ganó el desempate por impresiones: 3.900):
+`/blog/mal-olor-alcantarilla-casa-causas-soluciones`. Posición 5,8 pero CTR 1,51% (esperado
+~4% en esa posición) — seguía bajo pese a los dos ajustes previos (07-jul y 08-jul), ambos
+con el mismo gancho «Test de 3 Minutos + Solución» que no logró subir el CTR. Reescribí
+título, meta description, og:title/og:description, twitter:title/twitter:description y el
+headline/description del schema BlogPosting probando un ángulo distinto: número concreto en
+vez del test — «Olor a Alcantarilla en la Casa: 8 Causas Reales (y Cuál Es la Tuya)» / «90%
+de las veces NO es la alcantarilla: es un sifón seco o la ventilación tapada. Identifica tu
+causa entre las 8 posibles con este test de 3 minutos y su solución.» Mismos datos que ya
+están en el H1 (que ya decía «8 causas») y en el cuerpo del artículo (90% sifón/ventilación,
+test de 3 min); no toqué H1 ni contenido (fuera del alcance de esta tarea puntual de CTR).
+Gates: (1) Google ✓ — dato ya sustentado en el H1/cuerpo, sin keyword stuffing, sin datos
+inventados; (2) backlog ✓ — fila en `cambios-seo.md`. Publicado: commit + `git push`
+(Vercel-Git publica), bajo `publicar-mejoras-seo` (libre poder 2026-07-07). Verificación:
+re-medir el CTR de esta página en 1-2 semanas (~29-jul); si sigue sin subir, el problema
+puede no ser el título sino el snippet que Google arma solo (frecuente en posición >5).
+
 ## 2026-07-14 — 👷 Constructor: título y meta del post de cocina reescritos (publicado)
 
 Tarea t3 de la cola (CTR-bajo, score 29): `/blog/por-que-se-tapa-desague-cocina`. Posición
