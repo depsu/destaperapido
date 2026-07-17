@@ -1,14 +1,55 @@
+# destaperapido.cl — Destape exprés + limpieza de fosas RM
+# https://www.destaperapido.cl
+#
+# Política de acceso (DIXDY):
+#   • Dejamos entrar a TODOS los buscadores y motores de IA. Queremos que nos
+#     lean y nos CITEN (ChatGPT, Gemini, Claude, Grok, Perplexity, Copilot, etc.).
+#     La regla "User-agent: *  Allow: /" de abajo ya los cubre a todos —incluidos
+#     los que aún no existen— sin tener que mantener una lista al día.
+#   • Solo bloqueamos scrapers de inteligencia SEO: gastan crawl budget, dejan que
+#     la competencia nos espíe y no traen ni un cliente.
+#
+# Motores de IA bienvenidos explícitamente (cubiertos por la regla * de abajo):
+#   OpenAI/ChatGPT (GPTBot, OAI-SearchBot, ChatGPT-User) · Anthropic/Claude
+#   (ClaudeBot, anthropic-ai, Claude-User, Claude-SearchBot) · Google/Gemini
+#   (Google-Extended) · xAI/Grok (GrokBot, xAI-Grok, Grok-DeepSearch) ·
+#   Perplexity (PerplexityBot, Perplexity-User) · Apple (Applebot-Extended) ·
+#   Common Crawl (CCBot, alimenta a casi todos los LLM) · Mistral, Meta AI,
+#   Amazon, Cohere, DuckDuckGo AI, You.com, Andi.
+
 User-agent: *
 Allow: /
 
-# Endpoints serverless de Vercel (no aportan SEO)
+# No aportan SEO / no deben indexarse (aplica a TODOS, IA incluida)
 Disallow: /api/
-
-# Páginas que no deben indexar
 Disallow: /404.html
 Disallow: /servicios/test.html
 Disallow: /gracias
 Disallow: /gracias.html
+
+# URLs con parámetros de tracking (evita duplicados en el índice)
+Disallow: /*?utm_*
+Disallow: /*?gclid=*
+Disallow: /*?fbclid=*
+
+# ── Scrapers de inteligencia SEO — bloqueados (espían y gastan crawl budget) ──
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
 
 Sitemap: https://www.destaperapido.cl/sitemap.xml
 Sitemap: https://www.destaperapido.cl/sitemap-pages.xml
