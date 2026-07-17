@@ -5,6 +5,12 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/",
+      "has": [{ "type": "host", "value": "destaperapido.cl" }],
+      "destination": "https://www.destaperapido.cl/",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [{ "type": "host", "value": "destaperapido.cl" }],
       "destination": "https://www.destaperapido.cl/:path*",

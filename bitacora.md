@@ -6,6 +6,94 @@ aquí queda la historia. La escriben ronda-ads, ronda-correo y las sesiones.
 
 ---
 
+## 2026-07-17 · 👷 constructor · la portada estaba viviendo en tres direcciones a la vez
+
+**Qué se hizo:** la tarea de hoy decía «la portada está en el puesto 5,6 y le va mal en clics
+(1,53%)». Antes de tocar el título fui a mirar el dato crudo en Google… y la tarea estaba
+midiendo un fantasma.
+
+Tu portada existe hoy en **tres direcciones distintas**: la buena
+(`https://www.destaperapido.cl/`) y dos copias (`destaperapido.cl` sin *www*, y la misma en
+*http*). El reporte las suma como si fueran una sola, y ahí nace el número feo. Separadas, la
+foto real es otra:
+
+- **La portada buena:** 261 apariciones y 20 clics → **7,7% de clics**, casi el DOBLE de lo
+  esperado (~4%). No está mala: está bien.
+- **Las dos copias:** 1.632 apariciones y 9 clics entre ambas → 0,55%. Son ellas las que
+  hunden el promedio.
+
+O sea: **el 86% de las veces que Google muestra tu portada, muestra una copia** — y la copia
+casi no se clickea. Nadie tenía que arreglar el título; había que arreglar la duplicación.
+
+**La causa (un detalle de una línea):** el sitio ya tenía la orden de mandar todo desde la
+dirección sin *www* a la buena… pero esa orden **funcionaba en todas las páginas menos en la
+portada**. Lo comprobé en vivo: `/precios-orientativos` y `/blog` saltan correctamente, la
+raíz `/` no saltaba. Por eso la portada era la única página con copias sueltas dando vueltas
+por Google. Agregué la regla que faltaba para la raíz.
+
+**Por qué importa:** Google reparte la fuerza de tu portada entre tres direcciones en vez de
+concentrarla en una. Al unirlas, esa fuerza se junta — y de paso el reporte deja de mentir,
+así que las próximas tareas no van a perseguir el mismo fantasma (el título de la portada ya
+se reescribió dos veces este mes persiguiéndolo: 08-jul y 14-jul).
+
+**Ojo:** esto explica el número del CTR, no el puesto. La portada canónica está en el puesto
+~10, y ese sigue siendo el trabajo de fondo pendiente.
+
+**Publicado:** sí (commit + Vercel). Cambio de una línea, reversible.
+
+---
+
+## 2026-07-17 · 👷 constructor · el artículo más visto ahora se puede leer «por síntoma»
+
+**Qué se hizo:** la página que más gente ve de todo el sitio es el artículo del mal olor a
+alcantarilla (casi 4.000 apariciones en Google al mes, en el puesto ~5,7). Le faltaba algo
+simple: **entrar por dónde te huele**. El artículo listaba las 8 causas ordenadas de la más
+simple a la más compleja, que es el orden del técnico, no el de la persona que llega asustada
+buscando «me huele a alcantarilla en el baño».
+
+Ahora, apenas empieza el artículo, hay un cuadro «¿Dónde se siente el olor? Empieza por ahí»:
+si te huele en un baño que no usas, en el dormitorio, en el patio, cuando llueve… cada caso
+te lleva de un clic a su causa. **No se inventó nada:** cada fila sale de lo que el propio
+artículo ya explicaba.
+
+**Por qué se hizo así:** le pregunté a Google Search Console qué escribe exactamente la gente
+que llega a esa página, y la mayoría describe *el lugar* («olor a alcantarilla en el baño»,
+«olor a cloaca en el dormitorio», «olor a pozo en la casa») — casi todas con cero clics. El
+artículo respondía esas dudas, pero no se notaba. De paso ayuda a otro problema conocido: solo
+el 13% de la gente bajaba en la página.
+
+**Lo que NO se tocó, a propósito:** el título y la descripción que salen en Google. Se
+reescribieron hace dos días (15-jul) y hay que dejar pasar 2-3 semanas para saber si esa
+apuesta funcionó. Cambiarlos otra vez ahora sería quedarse sin saber qué sirvió.
+
+**Estado:** publicado y verificado en vivo · avisado a Bing/IndexNow · a re-medir desde el
+~7 de agosto. Detalle técnico y gate de Google en `cambios-seo.md`.
+
+---
+
+## 2026-07-17 · 👷 constructor · pasada sin cambios publicados (y un hallazgo)
+
+Las dos tareas de la cola que tocaban a este cliente (t1 y t2, las de mayor score) **ya
+estaban hechas**: el título del post de mal olor se reescribió el 15-jul y el de la home el
+14-jul. Google todavía no alcanza a mostrar si sirvieron (las tareas piden re-medir en 1-2
+semanas), así que el constructor **no tocó nada**: reescribir de nuevo a los 2 días borraría
+la medición. Se anotó en ambas tareas para que la próxima pasada no vuelva a intentarlo.
+
+**El hallazgo:** buscando cómo subirle el CTR a la home apareció que el sitio se contradice
+solo. La home dice en sus preguntas frecuentes (y en el código que lee Google) que un destape
+de alcantarillado **parte en $45.000**, pero la página de precios dice que alcantarillado
+**parte en $75.000** — los $45.000 son del destape de WC. Google está leyendo dos respuestas
+distintas a la misma pregunta dentro del mismo sitio.
+
+Eso importa porque la gente busca **precio** («destape de alcantarillado precio» es la
+consulta que más tráfico trae) y la única página que muestra el precio en el título rinde
+**9,09% de CTR** contra el **1,53%** de la home. Poner el precio en el título de la home es
+la palanca obvia, pero mientras el dato no sea uno solo y verdadero, hacerlo sería prometer
+un precio que no es. Se dejó anotado y se le preguntó a Alejandro cuál es el correcto:
+con esa respuesta, la IA corrige el FAQ y el título en una pasada.
+
+---
+
 ## 2026-07-15 — 👷 Constructor: título y meta del post de mal olor reescritos, 3er intento (publicado)
 
 Tarea t1 de la cola (CTR-bajo, score 29; ganó el desempate por impresiones: 3.900):

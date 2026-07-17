@@ -8,12 +8,17 @@
 - **URL pública tras el deploy:** `https://www.destaperapido.cl/08b52d2c0230edeb4b9d84f3f37bbe47.txt`
 - **Creada:** 2026-07-07 (generada con `scripts/indexnow-ping.py --genkey` del maestro)
 - **Host canónico:** `www.destaperapido.cl` (el apex hace 308 → www; usar siempre `www` en
-  `--site` y en las URLs para que `host`/`keyLocation` coincidan con lo que se avisa)
+  `--site` y en las URLs para que `host`/`keyLocation` coincidan con lo que se avisa).
+  **Corregido 2026-07-17:** ese 308 valía para todas las rutas MENOS la raíz — `/` en el apex
+  respondía 200 (la regla `"source": "/:path*"` de `vercel.json` no matchea `/`), así que la
+  home vivía duplicada en 3 hosts. Arreglado con una regla explícita `"source": "/"`; desde
+  hoy la afirmación de arriba sí es cierta también para la home.
 
 ## Estado
 
-⏳ **Pendiente de deploy.** NO hacer ping hasta que el `.txt` esté publicado (el deploy lo hace
-la sesión principal: push → Vercel). Si se pinga antes, IndexNow responde 403/422.
+✅ **Operativo desde 2026-07-17.** El `.txt` está publicado y responde 200 en
+`https://www.destaperapido.cl/08b52d2c0230edeb4b9d84f3f37bbe47.txt`; el primer ping real
+(pasada del constructor, tarea t13) respondió 200. Ya se puede pinguear al publicar.
 
 ## Comando de ping (listo para usar tras el deploy)
 
