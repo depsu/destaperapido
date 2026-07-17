@@ -6,6 +6,7 @@ Search Essentials antes de publicar.
 
 | fecha | URL | acción | qué se hizo | gate Google |
 |---|---|---|---|---|
+| 2026-07-17 | /blog/mal-olor-alcantarilla-casa-causas-soluciones | modificado | tarea t13 (quick-win, score 28, pos. 5,7 con 3.988 impr. — la de más impresiones del sitio). **Título/meta/H1 NO se tocaron a propósito:** se reescribieron el 15-jul (t1) y la propia tarea pide re-medir en 2-3 semanas; un 4º cambio de título en 2 días haría imposible saber qué funcionó. Se trabajó la dimensión pendiente del quick-win: CONTENIDO. Consultadas las consultas reales de ESTA URL en Search Console (28d, filtro por página): la cola larga describe **dónde** huele («olor a alcantarilla en el baño» pos 9,4 · «olor a cloaca en el dormitorio» · «olor a pozo en la casa» pos 8,1 · «olor a desague en casa» 23 impr pos 6,9, todas con 0 clics). El artículo tenía las 8 causas ordenadas por complejidad y un test de 3 minutos, pero ninguna entrada por síntoma-ubicación. Se agregó la sección «¿Dónde se siente el olor? Empieza por ahí» justo tras el lead: 7 filas ubicación → causa probable, cada una enlazando por ancla al desarrollo de esa causa (se añadieron ids `c1`…`c8` a los H2). También sirve al enganche débil detectado en t39 (13% de scroll): da valor y ruta en la primera pantalla. `dateModified` del BlogPosting 15-jul → 17-jul y la cabecera visible pasa a «Publicado: Mayo 2026 · Actualizado: Julio 2026» (antes solo decía «Publicado: Mayo 2026» mientras el schema ya declaraba julio: desajuste corregido). Sin clases Tailwind nuevas → `output.css` intacto | ✓ CADA fila del enrutador se deriva de texto que YA está en el artículo (sifón seco = baño sin uso/rejilla en verano; sello de cera = «se intensifica al tirar la cadena»; fuga oculta = «olor concentrado en una habitación específica»; tapón parcial = «drenaje lento en varias rejillas»; ventilación/lluvia = FAQ y paso 3 del test; cámara sin sello = «gas escapa al patio»; fosa/pozo = causas 6 y 7) — cero datos nuevos inventados, sin precios, sin keyword stuffing (anclas internas descriptivas y todas distintas), sin texto oculto, fecha visible consistente con el schema |
 | 2026-07-16 | /blog/pozo-absorbente-saturado-senales-causas-soluciones | modificado | tarea t17 (quick-win, score 28, pos. 5.9, 624 impr., 8 clics — CTR ~1,3% vs ~4% esperado; página nunca tocada por el constructor, dateModified seguía en la fecha de publicación). Título+meta+og+twitter+headline+H1 reescritos con gancho real ya sustentado en el cuerpo: «7 señales» (el H2 ya listaba exactamente 7) + mito de que vaciar el pozo lo resuelve (la sección «Lo que NO hace sentido hacer» y el FAQ ya explican que solo da alivio de 1-3 semanas) — «Pozo Absorbente Saturado: 7 Señales (y Por Qué Vaciarlo No Sirve)». Enlazado: en «Protocolo recomendado» los pasos «Limpiar la fosa» e «Inspección con cámara» ahora enlazan a `/servicios/limpieza-fosas-septicas` y `/servicios/inspeccion-camara-alcantarillado` (antes texto plano); y desde `/servicios/limpieza-fosas-septicas` (página fuerte, sección «¿Drenaje Saturado?», mismo tema exacto) se agregó un enlace de entrada nuevo hacia el post con anchor «7 señales de un pozo absorbente saturado» | ✓ dato (7 señales, mito de vaciar) ya sustentado en el cuerpo/FAQ, anchors descriptivos y distintos entre sí, sin keyword stuffing, sin datos inventados, schema (headline/description) consistente con el meta visible |
 | 2026-07-15 | /blog/liquido-azul-banos-quimicos-que-tiene-riesgos | modificado | tarea t16 (quick-win, score 28, pos. 6.1, 784 impr., 3 clics — CTR ~0,38% vs ~4% esperado, sin mejora pese al ajuste de título/H1 del 08-jul). Título+meta+og+twitter+headline reescritos alineados al H1 existente («qué tiene, mitos y riesgo real», antes el title decía solo «qué es y sus riesgos»), con gancho del formaldehído (ya sustentado en el cuerpo) y las «5 preguntas antes de contratar» (ya son una sección real del post). H1 y contenido no se tocaron (ya cubrían bien la intención de búsqueda) | ✓ dato (formaldehído, 5 preguntas) ya sustentado en el cuerpo, sin keyword stuffing, sin datos inventados, schema (headline/description) consistente con el meta visible |
 | 2026-07-15 | /servicios/banos-quimicos | modificado | soporte de t16 (enlazado desde página fuerte): el FAQPage schema ya declaraba la pregunta «¿Qué es el líquido azul de los baños químicos?» pero NO se mostraba en el FAQ visible de la página (mismatch schema/contenido) — se agregó como card visible con la misma respuesta del schema + enlace a `/blog/liquido-azul-banos-quimicos-que-tiene-riesgos` para el detalle completo. 2do enlace interno real hacia el post (el 1º ya existía desde 08-jul en la sección de mantención) | ✓ corrige mismatch schema/visible (mismo texto exacto), anchor descriptivo distinto al ya usado en mantención, sin datos inventados |
@@ -44,3 +45,35 @@ Search Essentials antes de publicar.
 
 **Beneficiadas (dejaron de ser huérfanas — 0 → ≥2 enlaces entrantes):**
 `/blog/cobertura-saneamiento-rm-2026-comunas` · `/blog/como-digitalizamos-solicitudes-destape-en-15-minutos` · `/blog/comparativa-hidrojet-vs-vactor-vs-camion-chico` · `/blog/empresas-saneamiento-certificadas-seremi-chile-verificar` · `/blog/top-empresas-hidrojet-rm-2026-como-comparar`
+
+---
+
+## ⚠️ Precio de alcantarillado: la home se contradice con /precios-orientativos
+
+**Detectado 2026-07-17 (pasada del constructor, tarea t2). No se tocó nada: es dato del
+negocio, no SEO — decide Alejandro.**
+
+El sitio responde HOY con dos precios distintos a la misma pregunta, «¿cuánto cuesta un
+destape de alcantarillado?»:
+
+- **Home (`/`)** — FAQ visible + FAQPage schema: «Un destape residencial parte **desde
+  $45.000** con equipo manual y **desde $90.000** con hidrojet».
+- **`/precios-orientativos`** — tarjeta «Alcantarillado y cámaras»: **desde $75.000**
+  (las tarjetas de $45.000 y $55.000 son WC/baños y cocina/grasa, no alcantarillado).
+
+La fila del 2026-07-14 ya había detectado el borde ($45.000 es solo WC) y por eso sacó el
+precio del snippet de la home. Lo nuevo de esta pasada: la contradicción **no está solo en el
+snippet, está publicada en el FAQ visible y en el FAQPage schema de la home** — o sea, Google
+lee dos respuestas distintas a la misma pregunta dentro del mismo sitio.
+
+**Qué falta (1 decisión de Alejandro):** ¿cuál es el precio real de partida de un destape de
+**alcantarillado**, $45.000 o $75.000? Con esa respuesta la IA corrige el FAQ de la home
+(visible + schema) en una pasada y recién ahí se puede volver a evaluar meter el precio en el
+título de la home.
+
+**Por qué importa para el CTR (t2):** las consultas que traen tráfico son de precio («destape
+de alcantarillado precio», 280 impr., pos. 4,2; «valor destape alcantarillado»), y
+`/precios-orientativos` — la única que lleva precio en el título — rinde **9,09% de CTR en
+pos. 3,3** contra el 1,53% de la home. El precio en el título es la palanca obvia para la
+home, pero está bloqueada hasta que el dato sea único y verdadero.
+
