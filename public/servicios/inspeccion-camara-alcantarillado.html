@@ -674,7 +674,7 @@
     </script>
 </head>
 
-<body class="bg-slate-50 text-slate-600 antialiased selection:bg-tech-600 selection:text-white pb-32 md:pb-0">
+<body class="bg-slate-50 text-slate-600 antialiased selection:bg-tech-600 selection:text-white pb-32 md:pb-24">
     <a href="#main-content" id="skip-to-content-link" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-brand-600 focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:shadow-lg focus:font-bold">Saltar al contenido</a>
 
     <!-- Google Tag Manager (noscript) -->
@@ -707,7 +707,7 @@
 
                     <!-- Servicios Dropdown -->
                     <div class="relative group h-20 flex items-center">
-                        <button
+                        <button type="button"
                             class="flex items-center gap-1 hover:text-brand-600 transition-colors focus:outline-none cursor-default">
                             Servicios <i
                                 class="fa-solid fa-chevron-down text-xs opacity-50 group-hover:rotate-180 transition-transform duration-300" aria-hidden="true"></i>
@@ -747,7 +747,7 @@
 
                     <!-- Zonas Dropdown -->
                     <div class="relative group h-20 flex items-center">
-                        <button
+                        <button type="button"
                             class="flex items-center gap-1 hover:text-brand-600 transition-colors focus:outline-none cursor-default">
                             Zonas <i
                                 class="fa-solid fa-chevron-down text-xs opacity-50 group-hover:rotate-180 transition-transform duration-300" aria-hidden="true"></i>
@@ -811,7 +811,7 @@
 
                     <a href="/casos-reales/" class="hover:text-brand-600 transition-colors">Casos Reales</a>
                     <a href="/contacto" class="hover:text-brand-600 transition-colors">Contacto</a>
-                    <a href="/buscar" class="hover:text-brand-600 transition-colors" title="Buscar en el sitio"><i class="fa-solid fa-magnifying-glass text-sm" aria-hidden="true"></i></a>
+                    <a href="/buscar" class="hover:text-brand-600 transition-colors" title="Buscar en el sitio" aria-label="Buscar en el sitio"><i class="fa-solid fa-magnifying-glass text-sm" aria-hidden="true"></i></a>
 
                     <div class="flex items-center gap-4 ml-4">
                         <a href="tel:+56965889226"
@@ -832,7 +832,7 @@
                         class="flex items-center gap-1.5 rounded-full bg-slate-100 text-slate-900 active:scale-95 transition font-bold text-sm px-3 py-2">
                         <i class="fa-solid fa-phone text-xs" aria-hidden="true"></i> +56 9 6588 9226
                     </a>
-                    <button onclick="openMenu()" aria-label="Abrir menú de navegación"
+                    <button type="button" onclick="openMenu()" aria-label="Abrir menú de navegación"
                         class="p-2.5 rounded-lg text-slate-900 hover:bg-slate-100 focus:outline-none transition active:scale-95" aria-expanded="false" aria-controls="mobile-menu-overlay">
                         <i class="fa-solid fa-bars text-2xl" aria-hidden="true"></i>
                     </button>
@@ -848,7 +848,7 @@
 
             <div class="px-6 h-20 flex items-center justify-between border-b border-slate-100">
                 <span class="font-extrabold text-slate-900 text-lg tracking-tight">MENÚ</span>
-                <button onclick="closeMenu()" aria-label="Cerrar menú"
+                <button type="button" onclick="closeMenu()" aria-label="Cerrar menú"
                     class="w-10 h-10 rounded-full bg-slate-50 text-slate-500 hover:bg-red-50 hover:text-red-500 transition flex items-center justify-center">
                     <i class="fa-solid fa-xmark text-xl" aria-hidden="true"></i>
                 </button>
@@ -859,7 +859,7 @@
                     class="block px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 hover:text-brand-600 transition">Inicio</a>
 
                 <div class="group">
-                    <button
+                    <button type="button"
                         class="w-full flex items-center justify-between px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 transition"
                         onclick="toggleSubmenu('sub-servicios', this)">
                         Servicios
@@ -889,7 +889,7 @@
                 </div>
 
                 <div class="group">
-                    <button
+                    <button type="button"
                         class="w-full flex items-center justify-between px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 transition"
                         onclick="toggleSubmenu('sub-zonas', this)">
                         Zonas
@@ -988,7 +988,7 @@
                 <a href="/contacto" onclick="closeMenu()"
                     class="block px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 hover:text-brand-600 transition">Contacto</a>
                 <a href="/buscar" onclick="closeMenu()"
-                    class="block px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 hover:text-brand-600 transition"><i class="fa-solid fa-magnifying-glass text-xs mr-1" aria-hidden="true"></i> Buscar</a>
+                    class="block px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 hover:text-brand-600 transition" aria-label="Buscar en el sitio"><i class="fa-solid fa-magnifying-glass text-xs mr-1" aria-hidden="true"></i> Buscar</a>
             </div>
 
             <div class="p-6 bg-slate-50 border-t border-slate-100">
@@ -1181,7 +1181,7 @@
                                 class="w-10 h-10 rounded-full bg-sky-600 flex items-center justify-center text-white shrink-0 font-bold">
                                 1</div>
                             <div>
-                                <h4 class="font-bold text-xl">Atascos Recurrentes</h4>
+                                <h3 class="font-bold text-xl">Atascos Recurrentes</h3>
                                 <p class="text-slate-400 text-sm mt-1">Si destapas el WC y se vuelve a tapar a la
                                     semana, hay algo atascado en la línea principal que la sonda normal no está sacando.
                                 </p>
@@ -1432,7 +1432,7 @@
                 </div>
 
                 <div>
-                    <h4 class="text-slate-900 font-bold mb-4 uppercase tracking-wider text-xs">Servicios</h4>
+                    <h3 class="text-slate-900 font-bold mb-4 uppercase tracking-wider text-xs">Servicios</h3>
                     <ul class="space-y-2">
                         <li><a href="/servicios/destape-alcantarillado"
                                 class="hover:text-brand-600 transition">Destape Alcantarillado</a></li>
@@ -1447,7 +1447,7 @@
                 </div>
 
                 <div>
-                    <h4 class="text-slate-900 font-bold mb-4 uppercase tracking-wider text-xs">Cobertura</h4>
+                    <h3 class="text-slate-900 font-bold mb-4 uppercase tracking-wider text-xs">Cobertura</h3>
                     <ul class="space-y-2">
                         <li><a href="/zonas/urbano/" class="hover:text-brand-600 transition">Las Condes /
                                 Vitacura</a></li>
@@ -1462,7 +1462,7 @@
                 </div>
 
                 <div>
-                    <h4 class="text-slate-900 font-bold mb-4 uppercase tracking-wider text-xs">Blog & Ayuda</h4>
+                    <h3 class="text-slate-900 font-bold mb-4 uppercase tracking-wider text-xs">Blog & Ayuda</h3>
                     <ul class="space-y-2">
                         <li><a href="/servicios/destape-alcantarillado#consejos"
                                 class="hover:text-brand-600 transition">Consejos de Mantención</a></li>
@@ -1482,7 +1482,7 @@
             </div>
 
             <div
-                class="border-t border-slate-200 pt-8 text-center flex flex-col md:flex-row justify-between items-center pb-32 md:pb-0">
+                class="border-t border-slate-200 pt-8 text-center flex flex-col md:flex-row justify-between items-center pb-32 md:pb-24">
                 <div class="flex flex-col items-center md:items-start gap-2">
                     <p>&copy; <span id="year"></span> destaperapido. Todos los derechos reservados.</p>
                     <p class="text-xs text-slate-500">Diseñado por <a href="https://www.paginasfast.cl/" target="_blank"
@@ -1609,7 +1609,7 @@
 
     <div class="wa-chat-box" id="whatsapp-chat">
         <div class="wa-header">
-            <button class="wa-close-btn" onclick="toggleChat()">×</button>
+            <button type="button" class="wa-close-btn" onclick="toggleChat()">×</button>
             <img src="/logo-nav.webp" alt="Avatar de Destape Rápido en WhatsApp" class="wa-profile-pic" width="50" height="50" loading="lazy" decoding="async">
             <div class="wa-info">
                 <h4>Destape Rápido</h4>

@@ -173,7 +173,7 @@
                     <a href="/servicios" class="text-slate-600 font-semibold hover:text-brand-600">Servicios</a>
                     <a href="/zonas/urbano" class="text-slate-600 font-semibold hover:text-brand-600">Zonas</a>
                     <a href="/blog" class="text-slate-600 font-semibold hover:text-brand-600">Blog</a>
-                    <a href="/buscar" class="text-slate-600 hover:text-brand-600" title="Buscar"><i class="fa-solid fa-magnifying-glass text-sm" aria-hidden="true"></i></a>
+                    <a href="/buscar" class="text-slate-600 hover:text-brand-600" title="Buscar" aria-label="Buscar en el sitio"><i class="fa-solid fa-magnifying-glass text-sm" aria-hidden="true"></i></a>
                 </div>
                 <a href="tel:+56965889226" class="flex items-center gap-1.5 bg-brand-600 text-white px-4 py-2 rounded-full font-bold hover:bg-brand-700 transition text-sm">
                         <i class="fa-solid fa-phone text-xs" aria-hidden="true"></i> +56 9 6588 9226
@@ -202,35 +202,35 @@
             <div class="step active" data-step="1">
                 <h2 class="text-xl font-extrabold text-slate-900 mb-4"><span class="step-num">1</span> ¿Qué servicio necesitas?</h2>
                 <div class="grid sm:grid-cols-2 gap-3 mt-4">
-                    <button class="opt-btn" data-service="destape-wc" data-base-min="35000" data-base-max="60000">
+                    <button type="button" class="opt-btn" data-service="destape-wc" data-base-min="35000" data-base-max="60000">
                         <span class="ico"><i class="fa-solid fa-toilet" aria-hidden="true"></i></span>
                         <span><span class="lbl">Destapar WC / baño</span><span class="sub">Sin romper cerámica</span></span>
                     </button>
-                    <button class="opt-btn" data-service="destape-lavaplatos" data-base-min="35000" data-base-max="70000">
+                    <button type="button" class="opt-btn" data-service="destape-lavaplatos" data-base-min="35000" data-base-max="70000">
                         <span class="ico"><i class="fa-solid fa-sink" aria-hidden="true"></i></span>
                         <span><span class="lbl">Destapar lavaplatos</span><span class="sub">Cocina, ducha, lavandería</span></span>
                     </button>
-                    <button class="opt-btn" data-service="destape-alcantarillado" data-base-min="60000" data-base-max="150000">
+                    <button type="button" class="opt-btn" data-service="destape-alcantarillado" data-base-min="60000" data-base-max="150000">
                         <span class="ico"><i class="fa-solid fa-house-flood-water" aria-hidden="true"></i></span>
                         <span><span class="lbl">Destape alcantarillado</span><span class="sub">Domiciliario, condominio</span></span>
                     </button>
-                    <button class="opt-btn" data-service="hidrojet" data-base-min="90000" data-base-max="250000">
+                    <button type="button" class="opt-btn" data-service="hidrojet" data-base-min="90000" data-base-max="250000">
                         <span class="ico"><i class="fa-solid fa-spray-can-sparkles" aria-hidden="true"></i></span>
                         <span><span class="lbl">Hidrojet alta presión</span><span class="sub">Grasa endurecida, raíces</span></span>
                     </button>
-                    <button class="opt-btn" data-service="camara" data-base-min="60000" data-base-max="180000">
+                    <button type="button" class="opt-btn" data-service="camara" data-base-min="60000" data-base-max="180000">
                         <span class="ico"><i class="fa-solid fa-video" aria-hidden="true"></i></span>
                         <span><span class="lbl">Inspección con cámara</span><span class="sub">Diagnóstico HD</span></span>
                     </button>
-                    <button class="opt-btn" data-service="fosa-septica" data-base-min="80000" data-base-max="250000">
+                    <button type="button" class="opt-btn" data-service="fosa-septica" data-base-min="80000" data-base-max="250000">
                         <span class="ico"><i class="fa-solid fa-tractor" aria-hidden="true"></i></span>
                         <span><span class="lbl">Limpieza fosa séptica</span><span class="sub">Parcelas, sector rural</span></span>
                     </button>
-                    <button class="opt-btn" data-service="urgencia" data-base-min="60000" data-base-max="180000">
+                    <button type="button" class="opt-btn" data-service="urgencia" data-base-min="60000" data-base-max="180000">
                         <span class="ico"><i class="fa-solid fa-bolt" aria-hidden="true"></i></span>
                         <span><span class="lbl">Emergencia 24/7</span><span class="sub">Inundación, rebalse activo</span></span>
                     </button>
-                    <button class="opt-btn" data-service="mantencion" data-base-min="60000" data-base-max="180000">
+                    <button type="button" class="opt-btn" data-service="mantencion" data-base-min="60000" data-base-max="180000">
                         <span class="ico"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></span>
                         <span><span class="lbl">Mantención preventiva</span><span class="sub">Anual, antes invierno</span></span>
                     </button>
@@ -252,7 +252,7 @@
             <!-- Paso 2 -->
             <div class="step" data-step="2">
                 <h2 class="text-xl font-extrabold text-slate-900 mb-4"><span class="step-num">2</span> ¿En qué comuna estás?</h2>
-                <select id="comuna" class="w-full px-4 py-3 border-2 border-slate-200 rounded-xl text-slate-900 font-medium focus:border-blue-500 focus:outline-none">
+                <select id="comuna" aria-label="Comuna" class="w-full px-4 py-3 border-2 border-slate-200 rounded-xl text-slate-900 font-medium focus:border-blue-500 focus:outline-none">
                     <option value="">Selecciona tu comuna…</option>
                     <optgroup label="Zonas centrales">
                         <option value="santiago-centro" data-mult="1.0">Santiago Centro</option>
@@ -313,27 +313,27 @@
             <div class="step" data-step="3">
                 <h2 class="text-xl font-extrabold text-slate-900 mb-4"><span class="step-num">3</span> ¿Qué tipo de propiedad?</h2>
                 <div class="grid sm:grid-cols-2 gap-3 mt-4">
-                    <button class="opt-btn" data-tipo="depto" data-mult="0.9">
+                    <button type="button" class="opt-btn" data-tipo="depto" data-mult="0.9">
                         <span class="ico"><i class="fa-solid fa-door-closed" aria-hidden="true"></i></span>
                         <span><span class="lbl">Departamento</span><span class="sub">Hasta 100 m²</span></span>
                     </button>
-                    <button class="opt-btn" data-tipo="casa" data-mult="1.0">
+                    <button type="button" class="opt-btn" data-tipo="casa" data-mult="1.0">
                         <span class="ico"><i class="fa-solid fa-house" aria-hidden="true"></i></span>
                         <span><span class="lbl">Casa</span><span class="sub">Tradicional con jardín</span></span>
                     </button>
-                    <button class="opt-btn" data-tipo="casa-grande" data-mult="1.2">
+                    <button type="button" class="opt-btn" data-tipo="casa-grande" data-mult="1.2">
                         <span class="ico"><i class="fa-solid fa-house-chimney" aria-hidden="true"></i></span>
                         <span><span class="lbl">Casa grande / parcela</span><span class="sub">+200 m² o terreno amplio</span></span>
                     </button>
-                    <button class="opt-btn" data-tipo="condominio" data-mult="1.3">
+                    <button type="button" class="opt-btn" data-tipo="condominio" data-mult="1.3">
                         <span class="ico"><i class="fa-solid fa-building" aria-hidden="true"></i></span>
                         <span><span class="lbl">Condominio / edificio</span><span class="sub">Áreas comunes, vertical</span></span>
                     </button>
-                    <button class="opt-btn" data-tipo="local" data-mult="1.15">
+                    <button type="button" class="opt-btn" data-tipo="local" data-mult="1.15">
                         <span class="ico"><i class="fa-solid fa-shop" aria-hidden="true"></i></span>
                         <span><span class="lbl">Local comercial</span><span class="sub">Restaurante, oficina, retail</span></span>
                     </button>
-                    <button class="opt-btn" data-tipo="empresa" data-mult="1.4">
+                    <button type="button" class="opt-btn" data-tipo="empresa" data-mult="1.4">
                         <span class="ico"><i class="fa-solid fa-industry" aria-hidden="true"></i></span>
                         <span><span class="lbl">Empresa / industria</span><span class="sub">Bodegas, plantas, frigoríficos</span></span>
                     </button>
@@ -356,7 +356,7 @@
                 </div>
 
                 <div class="grid sm:grid-cols-2 gap-3 mt-4">
-                    <a id="waBtn" href="https://wa.me/56965889226" class="bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-6 rounded-xl shadow-lg transition flex items-center justify-center gap-2"><i class="fa-brands fa-whatsapp text-xl" aria-hidden="true"></i> Confirmar por WhatsApp</a>
+                    <a id="waBtn" href="https://wa.me/56965889226" class="bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-6 rounded-xl shadow-lg transition flex items-center justify-center gap-2"><i class="fa-brands fa-whatsapp text-xl" aria-hidden="true"></i> Confirmar por WhatsApp</a>
                     <a href="tel:+56965889226" class="bg-brand-600 hover:bg-brand-700 text-white font-bold py-4 px-6 rounded-xl shadow-lg transition flex items-center justify-center gap-2"><i class="fa-solid fa-phone" aria-hidden="true"></i> Llamar al técnico</a>
                 </div>
 
