@@ -6,6 +6,30 @@ aquí queda la historia. La escriben ronda-ads, ronda-correo y las sesiones.
 
 ---
 
+## 2026-07-20 · 👷 constructor · la portada ya está publicada (y una pregunta para ti)
+
+**Qué pasó:** el cambio de la portada estaba hecho pero se había quedado **sin publicar** —
+listo en el computador, invisible en internet. Lo revisé, pasó los controles y lo publiqué.
+Ya está en línea.
+
+**Qué dice ahora la portada en Google:** antes el título hablaba solo de «alcantarillado»,
+pero cuando uno mira lo que la gente escribe de verdad para llegar a la portada, pide otras
+cosas: destape de cañerías, de desagües, de baños, de WC. Varias de esas búsquedas nos ponen
+entre los tres primeros y **nadie hace clic** — porque el título no les responde. Ahora dice
+«Destape de Cañerías y Alcantarillado en Santiago · 24/7», que es lo que realmente hacemos.
+
+También sacamos del texto de Google la promesa de «45 minutos»: la propia página, más abajo,
+dice que llegamos «en menos de 90 minutos en zona urbana». Prometer 45 arriba y 90 abajo
+decepciona al que llega. Lo de «garantía de 30 días» sí se mantuvo, porque está respaldado en
+las páginas de preguntas frecuentes y de precios.
+
+**Lo que necesito de ti (no lo toqué):** el letrero grande de la portada, el que ve la gente
+al entrar, sigue diciendo **«Llegamos en 45 min»**. Eso es una promesa comercial tuya, no una
+decisión mía. ¿El compromiso real es 45 minutos o 30 a 90? Me dices y lo dejo parejo en todo
+el sitio.
+
+---
+
 ## 2026-07-20 · 👷 constructor · le sacamos un «90%» que nos habíamos inventado
 
 **Qué se hizo:** la tarea del día era el artículo del olor a alcantarilla — la página con más
