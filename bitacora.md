@@ -6,6 +6,40 @@ aquí queda la historia. La escriben ronda-ads, ronda-correo y las sesiones.
 
 ---
 
+## 2026-07-20 · 👷 constructor · le sacamos un «90%» que nos habíamos inventado
+
+**Qué se hizo:** la tarea del día era el artículo del olor a alcantarilla — la página con más
+apariciones en Google de todo el sitio (4.184 en un mes) pero pocos clics: aparece quinta y
+solo 1 de cada 60 personas entra.
+
+Antes de reescribir el título fui a mirar qué escribe la gente de verdad para llegar ahí. La
+búsqueda que manda es **«olor a alcantarilla en casa»**, y nuestro título decía «en la Casa».
+Chico, pero es la diferencia entre que Google vea que le respondes exacto o no. Además el
+título estaba escrito Con Todas Las Palabras En Mayúscula, que es costumbre del inglés: en
+español se lee raro y Google a menudo lo reescribe por su cuenta. Ahora dice, simple:
+**«Olor a alcantarilla en casa: 8 causas y cómo eliminarlo»**.
+
+**Y algo más importante que el título:** el texto que sale en Google decía «90% de las veces
+NO es la alcantarilla». Fui a buscar de dónde salía ese 90%… y no salía de ningún lado — ni
+de las fuentes del artículo, ni de un dato nuestro. Era una precisión inventada, y llevaba
+cinco días publicada en la cara del buscador. La saqué de ahí y del texto de arriba del
+artículo. Ahora dice «casi siempre», que es lo que el artículo sí demuestra (el sifón seco
+está explicado como la causa número 1). Perdemos un poco de gancho y ganamos algo que no se
+negocia: no decimos números que no podemos respaldar.
+
+**Lo que NO se tocó, a propósito:** el ángulo de «8 causas» se estrenó el 15 de julio y aún
+está en medición. Cambiarlo de nuevo cinco días después haría imposible saber qué funcionó,
+así que se mantuvo la promesa y solo se corrigió la forma. El H1 y el contenido quedaron
+intactos.
+
+**Estado:** publicado (ya se ve en vivo) y avisado a los buscadores por IndexNow. El detalle
+técnico, con los dos gates de Google, está en `cambios-seo.md`.
+
+**Cómo saber si funcionó:** en 1-2 semanas el CTR de esta página debería subir del 1,67%
+actual hacia el ~4% que se espera para la posición 5.
+
+---
+
 ## 2026-07-17 · 👷 constructor · la portada estaba viviendo en tres direcciones a la vez
 
 **Qué se hizo:** la tarea de hoy decía «la portada está en el puesto 5,6 y le va mal en clics
