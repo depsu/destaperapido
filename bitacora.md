@@ -6,6 +6,30 @@ aquí queda la historia. La escriben ronda-ads, ronda-correo y las sesiones.
 
 ---
 
+## 2026-07-23 · 👷 constructor · el artículo estrella ahora responde «¿y por qué vuelve el olor?» (rescate de trabajo huérfano)
+
+**Qué pasó:** una pasada anterior (21-jul, interrumpida) dejó trabajo hecho en el disco pero
+sin verificar, sin registrar y sin publicar. Esta pasada tomó UNA de esas piezas — la del
+artículo con más impresiones del sitio (t16, quick-win) — la verificó afirmación por
+afirmación contra el contenido ya publicado (todas con respaldo textual) y la publicó:
+sección nueva «¿Por qué vuelve el olor a los pocos días?» con 6 rutas síntoma→causa y un
+enlace al post de pozo absorbente. El título NO se tocó (el test del 20-jul sigue midiendo).
+**Por qué esta y no otra:** t1-t4 (score 29) están todas en ventana de verificación
+(títulos reescritos 18-21 jul; el scout aún mide los viejos) — re-tocarlas sería churn.
+**Ojo:** queda MÁS trabajo huérfano en el disco (título nuevo de por-que-se-tapa, contenido
+de pozo-absorbente, 2 enlaces) — anotado en `nota_constructor` de t18/t19; cada pieza se
+verificará y publicará en su propia pasada, no en bloque. Gates: Google ✓ + backlog ✓
+(fila en cambios-seo.md). Publicado: commit quirúrgico + push (Vercel) bajo
+«publicar-mejoras-seo» + ping IndexNow.
+
+## 2026-07-23 · 📣 ronda-ads · las campañas rinden pero el presupuesto les queda chico
+
+«Urbano» hizo 39 contactos a ~2.500 c/u y «baños químicos» 38 a ~1.200, pero **más de la
+mitad de las búsquedas de Urbano quedan fuera por presupuesto** (55%). Subir presupuesto es
+plata → la decisión está encolada en Tareas para ti. También sigue la nota de no negativar
+preguntas «raras»: una («como se llama la persona que destapa cañerias») convirtió esta semana.
+
+
 ## 2026-07-20 · 👷 constructor · la portada ya está publicada (y una pregunta para ti)
 
 **Qué pasó:** el cambio de la portada estaba hecho pero se había quedado **sin publicar** —
@@ -467,3 +491,12 @@ push→Vercel bajo el permiso «publicar-mejoras-seo» (libre poder con gates, 2
 - Decisión: NO re-tocar (sería churn de títulos, malo para SEO). Se anotó `nota_constructor`
   en t1 y t2 con la fecha de re-evaluación (~21/22-jul). Si el CTR sigue bajo entonces,
   corresponde la siguiente iteración.
+
+## 2026-07-22 · 📣 Ronda de Ads (solo lectura)
+
+- Las 3 campañas convierten (36 + 32 + 17 conv/7d) pero «03 Urbano» pierde el 57,4% de
+  las búsquedas por PRESUPUESTO — la decisión de plata quedó encolada para Alejandro.
+- Buena noticia: la fuga de «arriendo baño quimico» se cerró sola (6 conversiones esta
+  semana en esas búsquedas) — se eliminó esa tarea de la cola.
+- Nuevo lote de negativas informacionales encolado («desatorador», «quien destapa»,
+  «como se llama», ~2.570 CLP/sem). Nada aplicado; detalle en `cambios-ads.md`.
