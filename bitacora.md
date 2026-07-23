@@ -500,3 +500,23 @@ push→Vercel bajo el permiso «publicar-mejoras-seo» (libre poder con gates, 2
   semana en esas búsquedas) — se eliminó esa tarea de la cola.
 - Nuevo lote de negativas informacionales encolado («desatorador», «quien destapa»,
   «como se llama», ~2.570 CLP/sem). Nada aplicado; detalle en `cambios-ads.md`.
+
+## 2026-07-23 · 👷 Constructor — t17 quick-win home: enlazado interno a WC/baños y desagües de cocina (publicado)
+- Selección: t1-t4 (score 29) siguen en ventana de verificación (~28-jul); entre los
+  quick-wins score 28, t17 ganó el desempate por impresiones (2.228 vs 1.216/1.202/841).
+- Palanca: la ÚNICA libre de la home era el enlazado/contenido — title/meta en vuelo (t2,
+  20-jul), H1 ya alineado (08-jul), hero PROPUESTO esperando a Alejandro (45 vs 90 min).
+- Hallazgo: las consultas top-3 con CTR 0% de la home («destape de baños», «destape wc a
+  domicilio», «destape de desagues», documentadas el 20-jul) tienen páginas de servicio
+  exactas (`/servicios/destape-wc-y-banos`, `/servicios/destape-desagues-cocina-y-grasa`)
+  pero la home solo las mencionaba en el JSON-LD — cero enlaces visibles.
+- Cambio: +8 enlaces en 4 puntos con patrones existentes (menú desktop con fa-bath/fa-sink,
+  menú móvil, footer Servicios, 2 anchors contextuales en la tarjeta «Destapes Urbanos»).
+  Cero CSS nuevo (clases verificadas en output.css); title/meta/H1/schema intactos.
+- Gates: (1) Google ✓ — anchors descriptivos y variados = query objetivo, páginas destino
+  reales (~85-89 KB con FAQ), sin cifras nuevas, HTML ahora coincide con el schema;
+  (2) backlog ✓ — fila en cambios-seo.md.
+- Publicado: commit quirúrgico SOLO de index.html + registros (el trabajo huérfano de
+  t18/t19 sigue intacto en disco) → git push → Vercel. IndexNow: ping a la home con la
+  clave de indexnow.md.
+- Verificación: CTR de esas consultas y clics de las 2 páginas de servicio en 2-3 semanas.
