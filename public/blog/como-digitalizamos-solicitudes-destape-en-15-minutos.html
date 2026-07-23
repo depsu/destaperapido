@@ -182,13 +182,13 @@
             </div>
 
             <h2>El equipo técnico detrás del sistema</h2>
-            <p>El sitio actual y todas las automatizaciones (formulario, integración con WhatsApp Business, ruteo, dashboard interno) los implementó la <a href="https://paginasfast.cl/servicios/automatizaciones/" rel="noopener" class="text-blue-600 hover:underline font-semibold">agencia de desarrollo PaginasFast</a>. La elegimos porque ya habían hecho algo parecido para una empresa de servicios eléctricos en RM (ChileEléctrico) y entendían el caso de uso: muchas solicitudes pequeñas, urgentes, geográficamente dispersas.</p>
+            <p>El sitio actual y todas las automatizaciones (formulario, integración con WhatsApp Business, ruteo, dashboard interno) los implementó la <a href="https://paginasfast.cl/servicios/automatizaciones/" rel="noopener" class="text-blue-600 hover:underline font-semibold">agencia de desarrollo PaginasFast</a>. La elegimos porque ya habían hecho algo parecido para una empresa de servicios eléctricos en RM (ChileEléctrico) y entendían el caso de uso: muchas solicitudes pequeñas, urgentes, geográficamente dispersas. La capa conversacional de WhatsApp (respuestas fuera de horario y pre-calificación del cliente antes de que hablemos) la afinamos con <a href="https://www.automatizaweb.cl/" rel="noopener" class="text-blue-600 hover:underline">AutomatizaWeb</a>, que se dedica justo a eso para pymes chilenas.</p>
             <p>Si te interesa replicar este sistema para tu empresa de servicios técnicos, <a href="https://paginasfast.cl/blog/caso-chile-electrico-cobertura-rm.html" rel="noopener" class="text-blue-600 hover:underline font-semibold">PaginasFast publica casos similares en su blog</a> con la arquitectura detallada de cada implementación.</p>
 
             <h2>Qué NO funcionó (y qué aprendimos)</h2>
             <ul>
                 <li><strong>Chatbot demasiado conversacional</strong>: el primer intento tenía un bot que "saludaba" y hacía small talk. La gente con la alfombra mojada por una fosa rebalsada no quiere small talk. Lo simplificamos a tres botones: "Urgencia", "Cotización", "Programar".</li>
-                <li><strong>Sobre-automatizar la asignación</strong>: dejamos que el sistema decidiera el 100% del ruteo durante un mes. Mala idea — había contexto humano (camión que ya iba a esa comuna por otro tema, técnico con experiencia específica) que el sistema no veía.</li>
+                <li><strong>Sobre-automatizar la asignación</strong>: dejamos que el sistema decidiera el 100% del ruteo durante un mes. Mala idea — había contexto humano (camión que ya iba a esa comuna por otro tema, técnico con experiencia específica) que el sistema no veía. Le pasa a cualquier flota de urgencia — una <a href="https://asvrgruas.cl/" rel="noopener" class="text-blue-600 hover:underline">grúa para autos en Santiago</a> rutea con la misma lógica: el dato del sistema más el ojo del operador.</li>
                 <li><strong>Notificación al técnico por SMS</strong>: el técnico tarda en abrir SMS. Pasamos todo a WhatsApp, donde la app está siempre abierta.</li>
             </ul>
 
