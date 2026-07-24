@@ -1,0 +1,1427 @@
+<meta charset="utf-8">
+<title>dixdybot — prototipo del panel</title>
+<style>
+  :root {
+    --n1:#FAFBFA; --n2:#F1F4F2; --n3:#E7EBE9; --n4:#DDE3E0; --n6:#CBD4CF;
+    --n9:#69766F; --n11:#5C6963; --n12:#1A211D;
+    --ac:#0E7A5F; --ac-sub:#E9F2EE; --ac-txt:#0B6650;
+    --amb:#A85408; --amb-sub:#F7EBDC; --rojo:#B3382C; --rojo-sub:#F8EAE8;
+    --azul:#2F66A8; --azul-sub:#E5EEF7;
+    --flot:0 4px 24px rgba(20,30,25,.13), 0 1px 3px rgba(20,30,25,.08);
+  }
+  @media (prefers-color-scheme: dark) { :root {
+    --n1:#0E100F; --n2:#151918; --n3:#1F2523; --n4:#28302C; --n6:#37423D;
+    --n9:#7C8983; --n11:#94A19A; --n12:#EDF2EF;
+    --ac:#3BC796; --ac-sub:#122A20; --ac-txt:#4ED3A5;
+    --amb:#E09A4B; --amb-sub:#291E10; --rojo:#E07A6D; --rojo-sub:#2B1611;
+    --azul:#6BA3E0; --azul-sub:#15263A;
+    --flot:0 4px 24px rgba(0,0,0,.5), 0 1px 3px rgba(0,0,0,.4);
+  } }
+  :root[data-theme="dark"] {
+    --n1:#0E100F; --n2:#151918; --n3:#1F2523; --n4:#28302C; --n6:#37423D;
+    --n9:#7C8983; --n11:#94A19A; --n12:#EDF2EF;
+    --ac:#3BC796; --ac-sub:#122A20; --ac-txt:#4ED3A5;
+    --amb:#E09A4B; --amb-sub:#291E10; --rojo:#E07A6D; --rojo-sub:#2B1611;
+    --azul:#6BA3E0; --azul-sub:#15263A;
+    --flot:0 4px 24px rgba(0,0,0,.5), 0 1px 3px rgba(0,0,0,.4);
+  }
+  :root[data-theme="light"] {
+    --n1:#FAFBFA; --n2:#F1F4F2; --n3:#E7EBE9; --n4:#DDE3E0; --n6:#CBD4CF;
+    --n9:#69766F; --n11:#5C6963; --n12:#1A211D;
+    --ac:#0E7A5F; --ac-sub:#E9F2EE; --ac-txt:#0B6650;
+    --amb:#A85408; --amb-sub:#F7EBDC; --rojo:#B3382C; --rojo-sub:#F8EAE8;
+    --azul:#2F66A8; --azul-sub:#E5EEF7;
+    --flot:0 4px 24px rgba(20,30,25,.13), 0 1px 3px rgba(20,30,25,.08);
+  }
+  * { box-sizing:border-box; }
+  html, body { height:100%; }
+  body {
+    margin:0; background:var(--n1); color:var(--n12);
+    font-family:system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size:13px; line-height:1.45; font-weight:450;
+    -webkit-font-smoothing:antialiased; overflow:hidden;
+  }
+  .num { font-variant-numeric:tabular-nums; }
+  button { font:inherit; color:inherit; background:none; border:none; cursor:pointer; -webkit-tap-highlight-color:transparent; }
+  input, select { font:inherit; color:var(--n12); }
+  .shell { display:flex; height:100dvh; }
+
+  aside { width:240px; flex:none; background:var(--n2); padding:14px 10px 12px; display:flex; flex-direction:column; gap:2px; }
+  .marca { display:flex; align-items:center; gap:8px; padding:4px 8px 14px; }
+  .marca .punto { width:8px; height:8px; border-radius:99px; background:var(--ac); }
+  .marca b { font-size:13px; font-weight:560; letter-spacing:-.01em; }
+  .marca span { font-size:11px; color:var(--n11); margin-left:auto; }
+  .navi { display:flex; align-items:center; gap:9px; height:28px; padding:0 8px; border-radius:8px; font-size:13px; font-weight:500; color:var(--n11); width:100%; text-align:left; transition:background .1s; }
+  .navi svg { width:15px; height:15px; flex:none; }
+  .navi:hover { background:var(--n3); }
+  .navi.on { background:var(--n4); color:var(--n12); }
+  .navi .cnt { margin-left:auto; font-size:12px; color:var(--n11); font-weight:450; }
+  .navi .cnt.vivo { color:var(--amb); font-weight:560; }
+  .grupo { font-size:12px; font-weight:500; color:var(--n9); padding:16px 8px 4px; }
+  aside footer { margin-top:auto; padding:8px; display:flex; align-items:center; gap:8px; font-size:12px; color:var(--n11); }
+  aside footer .estado { width:8px; height:8px; border-radius:99px; background:var(--ac); }
+
+  main { flex:1; min-width:0; display:flex; flex-direction:column; }
+  .vheader { height:44px; flex:none; display:flex; align-items:center; gap:10px; padding:0 20px; border-bottom:1px solid var(--n3); font-size:14px; font-weight:560; }
+  .vheader .tabs { display:flex; gap:4px; margin-left:14px; }
+  .tabchip { height:26px; padding:0 10px; border-radius:7px; font-size:12.5px; font-weight:500; color:var(--n11); }
+  .tabchip:hover { background:var(--n2); }
+  .tabchip.on { background:var(--n3); color:var(--n12); }
+  .vheader .fin { margin-left:auto; display:flex; align-items:center; gap:8px; font-size:12px; color:var(--n11); }
+  .contenido { flex:1; overflow-y:auto; }
+  .vista { display:none; height:100%; }
+  .vista.activa { display:block; }
+  .vista.flexh.activa { display:flex; }
+  .vista.vcol.activa { display:flex; flex-direction:column; }
+  .sublay { display:flex; flex:1; min-height:0; }
+  .sublay.oculto { display:none; }
+  .col-centro { max-width:760px; margin:0 auto; padding:28px 32px 60px; }
+
+  .fila { display:flex; align-items:center; gap:12px; min-height:48px; padding:0 12px; border-bottom:1px solid var(--n3); transition:background .1s; cursor:pointer; }
+  .fila:hover { background:var(--n2); }
+  .fila .crece { flex:1; min-width:0; }
+  .fila:last-child { border-bottom:none; }
+  .titulo-f { font-size:13px; font-weight:500; }
+  .meta-f { font-size:12px; color:var(--n11); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .pto { width:8px; height:8px; border-radius:99px; flex:none; }
+  .pto.ok { background:var(--ac); } .pto.esp { background:var(--amb); } .pto.mal { background:var(--rojo); }
+  .chip { font-size:11px; font-weight:560; padding:2px 7px; border-radius:99px; white-space:nowrap; }
+  .chip.vivo { background:var(--ac-sub); color:var(--ac-txt); }
+  .chip.draft { background:var(--amb-sub); color:var(--amb); }
+  .btn { height:28px; padding:0 12px; border-radius:7px; font-size:12.5px; font-weight:560; display:inline-flex; align-items:center; gap:6px; transition:filter .1s; }
+  .btn.p { background:var(--ac); color:#fff; }
+  :root[data-theme="dark"] .btn.p { color:#07130E; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .btn.p { color:#07130E; } }
+  .btn.p:hover { filter:brightness(1.06); }
+  .btn.s { border:1px solid var(--n6); color:var(--n11); background:var(--n1); }
+  .btn.s:hover { background:var(--n2); }
+  .hero { font-size:32px; font-weight:560; letter-spacing:-.02em; line-height:1.1; }
+  .hero-l { font-size:12px; color:var(--n11); margin-top:2px; }
+  .seccion { font-size:12px; font-weight:500; color:var(--n9); margin:26px 0 6px; }
+  .seccion:first-child { margin-top:0; }
+  .panelcard { background:var(--n2); border-radius:12px; overflow:hidden; }
+  .panelcard .fila { border-color:var(--n3); }
+  .vacio { color:var(--n11); font-size:13px; padding:18px 4px; }
+
+  .heroline { display:flex; align-items:flex-end; gap:40px; padding:6px 0 2px; }
+  .sec-met { font-size:16px; font-weight:560; }
+  .sec-met small { display:block; font-size:11px; color:var(--n11); font-weight:450; margin-top:1px; }
+  .decision { background:var(--n2); border-radius:12px; padding:14px 16px; margin-bottom:8px; display:flex; align-items:flex-start; gap:14px; }
+  .decision.pausa { box-shadow:inset 2px 0 0 var(--ac); }
+  .decision .cuerpo { flex:1; min-width:0; }
+  .decision .q { font-size:13px; line-height:1.5; }
+  .decision .q em { font-style:normal; font-weight:560; color:var(--ac-txt); }
+  .decision .origen { font-size:11.5px; color:var(--n11); margin-top:3px; }
+  .resp { display:flex; gap:8px; margin-top:10px; flex-wrap:wrap; }
+  .resp input { flex:1; height:30px; border:1px solid var(--n6); border-radius:7px; padding:0 10px; background:var(--n1); font-size:12.5px; min-width:180px; }
+  .resp input::placeholder { color:var(--n9); }
+
+  .chats-head { height:44px; flex:none; display:flex; align-items:center; gap:10px; padding:0 16px; border-bottom:1px solid var(--n3); font-size:14px; font-weight:560; }
+  .vistasw { display:flex; margin-left:auto; background:var(--n2); border-radius:8px; padding:2px; }
+  .vistasw button { height:24px; padding:0 10px; border-radius:6px; font-size:12px; font-weight:500; color:var(--n11); }
+  .vistasw button.on { background:var(--n1); color:var(--n12); box-shadow:0 1px 2px rgba(0,0,0,.08); }
+  .board { flex:1; display:none; gap:12px; padding:18px 20px; overflow-x:auto; align-items:flex-start; }
+  .colk { width:240px; flex:none; background:var(--n2); border-radius:12px; padding:10px; }
+  .colk h5 { margin:2px 4px 10px; font-size:12px; font-weight:560; display:flex; align-items:baseline; gap:6px; }
+  .colk h5 .tot { margin-left:auto; font-size:12px; color:var(--n11); font-weight:500; }
+  .tarjk { background:var(--n1); border-radius:8px; padding:9px 11px; margin-bottom:6px; cursor:pointer; border:1px solid transparent; transition:border-color .1s; }
+  .tarjk:hover { border-color:var(--n6); }
+  .tarjk .t1 { font-size:12.5px; font-weight:500; display:flex; align-items:center; gap:6px; }
+  .tarjk .t2 { font-size:11.5px; color:var(--n11); margin-top:1px; }
+  .tarjk .m { margin-left:auto; font-size:12px; font-weight:560; }
+
+  .lista-conv { width:340px; flex:none; border-right:1px solid var(--n3); overflow-y:auto; }
+  .conv { display:flex; gap:10px; padding:12px 14px; border-bottom:1px solid var(--n3); cursor:pointer; transition:background .1s; }
+  .conv:hover { background:var(--n2); }
+  .conv.on { background:var(--n2); }
+  .ava { width:32px; height:32px; border-radius:99px; background:var(--n3); color:var(--n11); font-size:13px; font-weight:560; display:flex; align-items:center; justify-content:center; flex:none; }
+  .conv .c1 { flex:1; min-width:0; }
+  .conv .nom { font-size:13.5px; font-weight:500; display:flex; align-items:center; gap:6px; }
+  .conv.noleido .nom { font-weight:620; }
+  .conv .prev { font-size:12px; color:var(--n11); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin-top:1px; }
+  .conv.noleido .prev { color:var(--n12); font-weight:500; }
+  .conv .lado { text-align:right; flex:none; display:flex; flex-direction:column; align-items:flex-end; gap:4px; }
+  .conv .hra { font-size:10px; color:var(--n11); }
+  .hilo-col { flex:1; min-width:0; display:flex; flex-direction:column; background:var(--n1); }
+  .hilo-head { height:48px; flex:none; display:flex; align-items:center; gap:10px; padding:0 16px; border-bottom:1px solid var(--n3); }
+  .hilo-head .sub { font-size:12px; color:var(--n11); }
+  .hilo { flex:1; overflow-y:auto; padding:20px 24px; display:flex; flex-direction:column; gap:8px; }
+  .bwrap { display:flex; flex-direction:column; max-width:512px; position:relative; }
+  .bwrap.der { align-self:flex-end; align-items:flex-end; }
+  .bur { padding:9px 13px; border-radius:12px; font-size:13px; line-height:1.5; position:relative; }
+  .bur.cli { background:var(--n3); border-bottom-left-radius:4px; }
+  .bur.bot { background:var(--ac-sub); border-bottom-right-radius:4px; cursor:pointer; }
+  .bur.bot:hover { outline:1px solid var(--n6); }
+  .bur.tu { background:var(--azul-sub); border-bottom-right-radius:4px; }
+  .b-ens { position:absolute; left:-30px; top:50%; transform:translateY(-50%); width:24px; height:24px; border-radius:99px; background:var(--n2); border:1px solid var(--n6); font-size:12px; display:none; align-items:center; justify-content:center; }
+  .bwrap.der:hover .b-ens { display:flex; }
+  .b-ens:hover { background:var(--amb-sub); border-color:var(--amb); }
+  .ens-marca { font-size:10.5px; color:var(--amb); font-weight:560; margin-top:3px; }
+  .anota { margin-top:7px; padding:7px 10px; border-radius:8px; background:var(--n1); font-size:11.5px; color:var(--n11); border:1px solid var(--n3); }
+  .anota b { color:var(--ac-txt); font-weight:560; }
+  .pill-sys { align-self:center; font-size:11.5px; color:var(--n11); background:var(--n2); padding:4px 12px; border-radius:99px; max-width:92%; text-align:center; }
+  .pill-sys.tema { color:var(--amb); background:var(--amb-sub); cursor:pointer; }
+  .composer { flex:none; margin:10px 14px 14px; border:1px solid var(--n6); border-radius:12px; background:var(--n1); display:flex; align-items:center; gap:8px; padding:8px 8px 8px 14px; }
+  .composer input { flex:1; border:none; outline:none; background:none; font-size:13px; min-width:0; }
+  .ctx { width:300px; flex:none; border-left:1px solid var(--n3); padding:18px 16px; overflow-y:auto; }
+  .ctx h3 { font-size:12px; font-weight:500; color:var(--n9); margin:0 0 8px; }
+  .ctx .kv { display:flex; justify-content:space-between; gap:10px; font-size:12.5px; padding:5px 0; }
+  .ctx .kv span { color:var(--n11); }
+  .ctx .kv b { font-weight:500; text-align:right; }
+  .ctx hr { border:none; border-top:1px solid var(--n3); margin:14px 0; }
+
+  .caminos-lay { display:flex; height:100%; }
+  .caminos-izq { flex:1; min-width:0; overflow-y:auto; padding:22px 28px 60px; }
+  .guia { max-width:720px; margin:0 auto 26px; }
+  .g-dialogo { display:none; flex-direction:column; gap:8px; margin-bottom:12px; }
+  .g-dialogo.ver { display:flex; }
+  .g-msg { max-width:88%; padding:9px 13px; border-radius:12px; font-size:13px; line-height:1.55; }
+  .g-msg.yo { background:var(--azul-sub); align-self:flex-end; border-bottom-right-radius:4px; }
+  .g-msg.ia { background:var(--n2); align-self:flex-start; border-bottom-left-radius:4px; }
+  .g-msg.ia b { color:var(--ac-txt); font-weight:560; }
+  .g-msg .lnk { color:var(--ac-txt); font-weight:560; cursor:pointer; text-decoration:underline; text-underline-offset:2px; }
+  .g-input { display:flex; gap:8px; background:var(--n1); border:1px solid var(--n6); border-radius:12px; padding:8px 8px 8px 14px; box-shadow:var(--flot); }
+  .g-input input { flex:1; border:none; outline:none; background:none; font-size:13.5px; min-width:0; }
+  .g-chips { display:flex; flex-wrap:wrap; gap:6px; margin-top:10px; justify-content:center; }
+  .gchip { border:1px solid var(--n6); border-radius:99px; padding:5px 12px; font-size:12px; color:var(--n11); transition:background .1s; }
+  .gchip:hover { background:var(--n2); color:var(--n12); }
+  .cascada-grid { max-width:980px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:14px; align-items:start; }
+  .b-stats { display:flex; gap:10px; font-size:11px; color:var(--n11); margin-top:6px; }
+  .b-stats b { color:var(--n12); font-weight:560; }
+  .grupo-c { background:var(--n2); border-radius:12px; padding:14px 14px 8px; }
+  .grupo-c h4 { margin:0 0 8px; font-size:12.5px; font-weight:560; display:flex; align-items:center; gap:8px; }
+  .grupo-c h4 .n { color:var(--n11); font-weight:450; margin-left:auto; }
+  .bloque { background:var(--n1); border:1px solid transparent; border-radius:8px; padding:9px 11px; margin-bottom:6px; cursor:pointer; transition:border-color .1s; }
+  .bloque:hover { border-color:var(--n6); }
+  .bloque.on { border:2px solid var(--ac); margin:-1px -1px 5px; }
+  .bloque .cuando { font-size:11px; color:var(--n11); }
+  .bloque .accion { font-size:12.5px; font-weight:500; margin-top:1px; }
+  .peek { width:420px; flex:none; border-left:1px solid var(--n3); overflow-y:auto; padding:22px 22px 40px; display:none; }
+  .peek.ver { display:block; }
+  .peek .cab { display:flex; align-items:center; gap:8px; margin-bottom:14px; }
+  .peek h2 { font-size:14px; font-weight:560; margin:0; flex:1; }
+  .peek .kv { display:flex; gap:10px; font-size:12.5px; padding:6px 0; border-bottom:1px solid var(--n3); }
+  .peek .kv span { color:var(--n11); width:110px; flex:none; }
+  .peek .kv b { font-weight:500; }
+  .peek .kv .lnk { color:var(--ac-txt); font-weight:560; cursor:pointer; }
+  .diff { border-radius:8px; overflow:hidden; margin:6px 0; font-size:12px; }
+  .diff .m { background:var(--rojo-sub); color:var(--rojo); padding:5px 11px; text-decoration:line-through; }
+  .diff .p { background:var(--ac-sub); color:var(--ac-txt); padding:5px 11px; box-shadow:inset 2px 0 0 var(--ac); }
+
+  .mod-col { max-width:560px; margin:0 auto; padding:28px 32px 60px; }
+  .sw { position:relative; width:36px; height:22px; flex:none; }
+  .sw input { position:absolute; inset:0; opacity:0; margin:0; cursor:pointer; z-index:2; }
+  .sw .p1 { position:absolute; inset:0; border-radius:99px; background:var(--n6); transition:background .15s; }
+  .sw .p2 { position:absolute; top:2px; left:2px; width:18px; height:18px; border-radius:99px; background:#fff; transition:transform .15s; box-shadow:0 1px 2px rgba(0,0,0,.25); }
+  .sw input:checked ~ .p1 { background:var(--ac); }
+  .sw input:checked ~ .p2 { transform:translateX(14px); }
+  .mod-conf { display:none; padding:2px 12px 12px 12px; }
+  .mod.abierto .mod-conf { display:block; }
+  .mod-conf .kv { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:6px 0; font-size:12.5px; }
+  .mod-conf .kv span { color:var(--n11); }
+  .mod-conf select { height:26px; border:1px solid var(--n6); border-radius:6px; background:var(--n1); font-size:12px; padding:0 6px; }
+  .mini { width:16px; height:16px; accent-color:var(--ac); }
+
+  .ag-lay { display:flex; height:100%; }
+  .ag-lista { width:300px; flex:none; border-right:1px solid var(--n3); padding:16px 12px; }
+  .ag-item { display:flex; align-items:center; gap:10px; padding:10px; border-radius:8px; cursor:pointer; }
+  .ag-item:hover { background:var(--n2); }
+  .ag-item.on { background:var(--n2); }
+  .ag-item .d { flex:1; min-width:0; }
+  .ag-item .nm { font-size:13px; font-weight:560; }
+  .ag-item .dm { font-size:11.5px; color:var(--n11); }
+  .ag-det { flex:1; min-width:0; overflow-y:auto; padding:26px 34px; max-width:640px; }
+  .ag-met { display:flex; gap:36px; margin:14px 0 4px; }
+  .ag-met .m .num { font-size:20px; font-weight:560; }
+  .ag-met .m small { font-size:11px; color:var(--n11); display:block; }
+  .preset { display:flex; align-items:center; gap:10px; padding:8px 0; font-size:12.5px; border-bottom:1px solid var(--n3); }
+  .preset span { color:var(--n11); }
+  .ejemplo { background:var(--n2); border-radius:10px; padding:10px 14px; font-size:12.5px; color:var(--n11); margin-top:10px; }
+  .ejemplo b { color:var(--n12); font-weight:500; }
+
+  .traza { margin:4px 0 0; }
+  .paso { position:relative; padding:0 0 14px 22px; }
+  .paso::before { content:""; position:absolute; left:5px; top:5px; width:8px; height:8px; border-radius:99px; background:var(--n6); }
+  .paso::after { content:""; position:absolute; left:8px; top:16px; bottom:-2px; width:1px; background:var(--n3); }
+  .paso:last-child::after { display:none; }
+  .paso.ok::before { background:var(--ac); }
+  .paso.esp::before { background:var(--amb); }
+  .paso .p-t { font-size:12.5px; font-weight:560; }
+  .paso .p-d { font-size:12px; color:var(--n11); margin-top:1px; line-height:1.45; }
+  .paso .p-d b { color:var(--ac-txt); font-weight:560; }
+
+  .sw-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(104px,1fr)); gap:8px; }
+  .swc { border-radius:10px; overflow:hidden; border:1px solid var(--n3); }
+  .swc .c { height:44px; }
+  .swc .l { padding:6px 9px; font-size:11px; }
+  .swc .l b { display:block; font-weight:560; }
+  .swc .l span { color:var(--n11); }
+  .specs { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .spec { background:var(--n2); border-radius:12px; padding:14px; }
+  .spec-l { font-size:11px; color:var(--n9); font-weight:500; margin-bottom:10px; }
+  .spec .demo { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+  .tipo-fila { display:flex; align-items:baseline; gap:14px; padding:7px 0; border-bottom:1px solid var(--n3); }
+  .tipo-fila small { font-size:11px; color:var(--n11); width:130px; flex:none; }
+
+  .nb { width:18px; height:18px; border-radius:99px; background:var(--amb); color:#fff; font-size:12px; font-weight:700; line-height:1; display:none; align-items:center; justify-content:center; flex:none; margin-left:6px; box-shadow:0 0 0 3px var(--amb-sub); }
+  body.notas .nb { display:inline-flex; }
+  .flotante { position:fixed; right:22px; top:58px; width:320px; max-height:calc(100dvh - 90px); overflow-y:auto; background:var(--n1); border:1px solid var(--n6); border-radius:14px; padding:16px 18px; box-shadow:var(--flot); z-index:80; display:none; }
+  .flotante.ver { display:block; }
+  .flotante h4 { margin:0 0 4px; font-size:13px; font-weight:560; display:flex; align-items:center; gap:8px; }
+  .flotante .cuerpo-n { font-size:12.5px; color:var(--n11); line-height:1.55; }
+  .flotante .cuerpo-n b { color:var(--n12); font-weight:560; }
+  .flotante .preg { margin-top:10px; padding-top:10px; border-top:1px solid var(--n3); font-size:12.5px; font-weight:500; }
+  .flotante .cerrar { position:absolute; top:10px; right:12px; color:var(--n9); font-size:14px; }
+  .etapa-def { padding:9px 0; border-bottom:1px solid var(--n3); }
+  .etapa-def:last-of-type { border-bottom:none; }
+  .etapa-def .e1 { font-size:12.5px; font-weight:560; display:flex; align-items:center; gap:7px; }
+  .etapa-def .e2 { font-size:11.5px; color:var(--n11); margin-top:2px; line-height:1.5; }
+  .etapa-def .e2 b { color:var(--ac-txt); font-weight:560; }
+  .origen-chip { font-size:10px; font-weight:600; padding:1px 6px; border-radius:99px; margin-left:auto; }
+  .origen-chip.cam { background:var(--ac-sub); color:var(--ac-txt); }
+  .origen-chip.tu { background:var(--azul-sub); color:var(--azul); }
+  .origen-chip.ext { background:var(--n3); color:var(--n11); }
+  .objetivos { display:flex; gap:8px; margin-bottom:11px; }
+  .obj { display:inline-flex; align-items:center; gap:6px; font-size:11.5px; font-weight:600; padding:4px 10px; border-radius:99px; background:var(--n3); color:var(--n9); }
+  .obj.activo { background:var(--amb-sub); color:var(--amb); }
+  .obj.listo { background:var(--ac-sub); color:var(--ac-txt); }
+  .p-hilo { display:flex; flex-direction:column; gap:7px; margin-bottom:10px; }
+  .p-hilo .g-msg { max-width:94%; }
+  .prog-card { align-self:flex-end; max-width:512px; border:1px dashed var(--amb); border-radius:12px; overflow:hidden; background:var(--n1); }
+  .prog-card .ph { display:flex; align-items:center; gap:7px; background:var(--amb-sub); color:var(--amb); font-size:11.5px; font-weight:600; padding:6px 12px; }
+  .prog-card .ph svg { width:13px; height:13px; }
+  .prog-card .pt { padding:9px 13px; font-size:13px; line-height:1.5; color:var(--n11); }
+  .prog-card .pa { display:flex; gap:6px; padding:0 12px 10px; }
+  .composer textarea { flex:1; border:none; outline:none; background:none; font:inherit; font-size:13px; resize:none; max-height:120px; line-height:1.45; padding:0; min-width:0; }
+  .buscador { display:flex; align-items:center; gap:7px; margin:10px 12px 6px; border:1px solid var(--n6); border-radius:9px; padding:6px 10px; background:var(--n1); }
+  .buscador input { flex:1; border:none; outline:none; background:none; font-size:12.5px; min-width:0; }
+  .buscador svg { width:13px; height:13px; color:var(--n9); flex:none; }
+  .lc-seccion { font-size:11px; font-weight:500; color:var(--n9); padding:12px 14px 4px; }
+  .tag { font-size:10px; font-weight:600; padding:1px 6px; border-radius:99px; background:var(--n3); color:var(--n11); }
+  .tag.grande { background:var(--ac-sub); color:var(--ac-txt); }
+  .dormidos-f { display:flex; align-items:center; gap:8px; padding:12px 14px; font-size:12px; color:var(--n11); cursor:pointer; border-top:1px solid var(--n3); }
+  .banner-preset { background:var(--azul-sub); border-radius:10px; padding:9px 13px; font-size:12.5px; display:flex; align-items:center; gap:10px; margin-bottom:14px; }
+  .correo-card { align-self:flex-end; max-width:512px; border:1px solid var(--n6); border-radius:12px; padding:10px 13px; background:var(--n1); font-size:12.5px; }
+  .correo-card .cc-h { display:flex; align-items:center; gap:7px; font-weight:560; }
+  .correo-card .cc-h svg { width:14px; height:14px; color:var(--n11); }
+  .correo-card .cc-m { color:var(--n11); font-size:11.5px; margin-top:2px; }
+  .sel-head { border:none; background:transparent; font-size:14px; font-weight:560; color:var(--n12); cursor:pointer; padding:2px 4px; border-radius:6px; }
+  .sel-head:hover { background:var(--n2); }
+  .sec-toggle { cursor:pointer; display:flex; align-items:center; gap:6px; }
+  .sec-toggle .flecha { transition:transform .15s; font-size:10px; }
+  .sec-toggle.abierta .flecha { transform:rotate(90deg); }
+  .resueltas-lista { display:none; }
+  .resueltas-lista.ver { display:block; }
+  .decision.compacta { padding:10px 14px; opacity:.85; }
+  .pausa-chat { align-self:center; width:96%; background:var(--amb-sub); border:1px solid var(--amb); border-radius:12px; padding:12px 14px; }
+  .pausa-chat .q { font-size:13px; line-height:1.5; }
+  .pausa-chat .q em { font-style:normal; font-weight:560; color:var(--amb); }
+  .et-nom[contenteditable="true"] { border-bottom:1px dashed var(--amb); outline:none; padding:0 2px; }
+  .info-fila { display:flex; align-items:center; gap:9px; padding:7px 0; border-bottom:1px solid var(--n3); font-size:12.5px; }
+  .info-fila:last-child { border-bottom:none; }
+  .info-fila .crece { flex:1; min-width:0; }
+  .info-fila small { color:var(--n11); display:block; font-size:11.5px; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .vista.activa > * { animation: sube .3s cubic-bezier(.2,.7,.2,1) both; }
+    @keyframes sube { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
+  }
+  .toast { position:fixed; left:50%; bottom:26px; transform:translateX(-50%) translateY(6px); background:var(--n12); color:var(--n1); font-size:12.5px; font-weight:500; padding:9px 15px; border-radius:9px; opacity:0; pointer-events:none; transition:all .2s; z-index:99; box-shadow:var(--flot); white-space:nowrap; max-width:90%; overflow:hidden; text-overflow:ellipsis; }
+  .toast.ver { opacity:1; transform:translateX(-50%); }
+  [data-tip] { position:relative; }
+  [data-tip]:hover::after { content:attr(data-tip); position:absolute; bottom:calc(100% + 6px); left:50%; transform:translateX(-50%); background:var(--n12); color:var(--n1); font-size:11px; font-weight:500; padding:4px 8px; border-radius:6px; white-space:nowrap; z-index:60; pointer-events:none; }
+  @media (prefers-reduced-motion: reduce) { * { transition:none !important; animation:none !important; } }
+  @media (max-width: 900px) {
+    aside { width:56px; }
+    aside .marca b, aside .marca span, .navi span:not(.cnt), .navi .cnt, .grupo, aside footer div { display:none; }
+    .ctx, .peek { display:none !important; }
+    .lista-conv { width:260px; }
+    .specs { grid-template-columns:1fr; }
+  }
+  :focus-visible { outline:2px solid var(--ac); outline-offset:2px; border-radius:6px; }
+</style>
+
+<div class="shell">
+  <aside>
+    <div class="marca"><span class="punto" data-tip="Todo funcionando"></span><b>dixdybot</b><span>beta</span></div>
+    <button class="navi on" data-v="hoy" onclick="ir('hoy')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-7 9 7"/><path d="M5 10v9h14v-9"/></svg><span>Hoy</span><span class="cnt vivo num" id="cnt-hoy">2</span></button>
+    <button class="navi" data-v="chats" onclick="ir('chats')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a8 8 0 0 1-8 8H4l2-3a8 8 0 1 1 15-5z"/></svg><span>Chats</span><span class="cnt num">7</span></button>
+    <button class="navi" data-v="caminos" onclick="ir('caminos')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 21V9a4 4 0 0 1 4-4h1"/><path d="M19 3v12a4 4 0 0 1-4 4h-1"/><circle cx="5" cy="21" r="1.6"/><circle cx="19" cy="3" r="1.6"/></svg><span>Caminos</span><span class="cnt num">46</span></button>
+    <button class="navi" data-v="modulos" onclick="ir('modulos')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/><path d="M17 14v6m-3-3h6"/></svg><span>Módulos</span></button>
+    <button class="navi" data-v="agentes" onclick="ir('agentes')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/><circle cx="17.5" cy="9.5" r="2.5"/><path d="M15.5 20a4.6 4.6 0 0 1 6.5-4.2"/></svg><span>Agentes</span></button>
+    <div class="grupo">Sistema</div>
+    <button class="navi" data-v="diseno" onclick="ir('diseno')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="8.5" cy="10" r="1.2"/><circle cx="15.5" cy="10" r="1.2"/><circle cx="12" cy="15.5" r="1.2"/></svg><span>Diseño</span></button>
+    <button class="navi" id="nav-notas" onclick="toggleNotas()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5.5"/><circle cx="12" cy="16.5" r=".8" fill="currentColor"/></svg><span>Notas</span><span class="cnt num">12</span></button>
+    <div class="grupo">Pronto</div>
+    <button class="navi" onclick="toast('Con la conexión oficial de Meta')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg><span>Instagram</span></button>
+    <footer style="cursor:pointer" onclick="nuevoNegocio()" data-tip="+ Nuevo negocio"><span class="estado"></span><div>destaperapido ▾</div></footer>
+  </aside>
+
+  <main>
+    <!-- HOY -->
+    <section class="vista vcol activa" id="v-hoy">
+      <div class="vheader">Hoy<div class="fin num">jue 24 jul</div></div>
+      <div class="contenido"><div class="col-centro">
+        <div class="heroline">
+          <div><div class="hero num">$450<span style="font-size:18px">mil</span></div><div class="hero-l">en juego hoy</div></div>
+          <div class="sec-met num">7<small>chats</small></div>
+          <div class="sec-met num">3<small>cotizaciones</small></div>
+          <div class="sec-met num">1<small>entrega</small></div>
+        </div>
+        <div class="seccion">Esperan tu decisión</div>
+        <div class="decision pausa" id="dec-pausa">
+          <div class="ava" style="background:var(--ac-sub);color:var(--ac-txt)">S</div>
+          <div class="cuerpo" id="pausa-cuerpo">
+            <div class="q"><em>Carolina · Melipilla</em> quiere <em>5 baños mensuales</em> para una obra — buen negocio, sobre $1M al mes. No tengo camino para 5 baños en zona lejana: ¿qué precio le doy?</div>
+            <div class="origen">resumen de Sofía — no necesitas leer el chat · mientras tanto ella junta dirección y fechas</div>
+            <div class="resp">
+              <input id="in-pausa" type="text" placeholder="ej: 150 cada uno y cerramos" aria-label="Respuesta">
+              <button class="btn p" onclick="pausaResponder()">Responder</button>
+            </div>
+          </div>
+        </div>
+        <div class="decision" id="dec-ranco">
+          <div class="ava">C</div>
+          <div class="cuerpo">
+            <div class="q">Constructora Ranco confirmó <em>30 baños + 1 accesible</em> · Estación Mapocho, 14-16 ago</div>
+            <div class="origen">cotización lista · $2.480.000 neto</div>
+          </div>
+          <button class="btn s" onclick="ir('chats');abrirChat('ranco')">Ver</button>
+          <button class="btn p" onclick="aprobarRanco()">Aprobar</button>
+        </div>
+        <div class="seccion">Cambios en borrador</div>
+        <div class="panelcard" id="card-diff">
+          <div class="fila" onclick="ir('caminos'); verBorrador()">
+            <span class="chip draft">borrador</span>
+            <div class="crece"><div class="titulo-f">Precios céntricos +10%</div><div class="meta-f">4 caminos · pruebas OK · lo pediste anoche</div></div>
+            <span class="meta-f">revisar ›</span>
+          </div>
+        </div>
+        <div class="seccion sec-toggle" id="sec-resueltas" style="display:none" onclick="this.classList.toggle('abierta');document.getElementById('resueltas').classList.toggle('ver')"><span class="flecha">▶</span>Resueltas hoy · <span class="num" id="n-resueltas">0</span></div>
+        <div class="resueltas-lista" id="resueltas"></div>
+      </div></div>
+    </section>
+
+    <!-- CHATS -->
+    <section class="vista vcol" id="v-chats">
+      <div class="chats-head">
+        <select class="sel-head" id="sel-agente" onchange="filtrarAgente()">
+          <option value="todos">Chats · todos</option>
+          <option value="sofia">Sofía — baños químicos</option>
+          <option value="destapes">Destapes — destapes y fosas</option>
+        </select>
+        <div class="vistasw">
+          <button class="on" id="sw-lista" onclick="vistaChats('lista')">Lista</button>
+          <button id="sw-tablero" onclick="vistaChats('tablero')">Tablero</button>
+        </div>
+        <button class="btn s" id="btn-etapas" style="display:none;margin-left:8px" onclick="verEtapas()">Etapas</button>
+      </div>
+      <div class="board" id="board">
+        <div class="colk"><h5>Cotizando <span class="tot num">3 · ~$1,6M</span></h5>
+          <div class="tarjk" onclick="vistaChats('lista');abrirChat('jorge')"><div class="t1">Jorge · Buin <span class="m num">$200</span></div><div class="t2">mensual · Sofía</div></div>
+          <div class="tarjk" onclick="vistaChats('lista');abrirChat('elmonte')"><div class="t1">Agrícola El Monte <span class="m num">$400</span></div><div class="t2">2 baños rural · Sofía</div></div>
+          <div class="tarjk" onclick="vistaChats('lista');abrirChat('carolina')"><div class="t1">Carolina · Melipilla <span class="m num">~$1M</span></div><div class="t2">5 baños · tema en pausa ⏸</div></div>
+        </div>
+        <div class="colk"><h5>Por confirmar <span class="tot num">1 · $2,48M</span></h5>
+          <div class="tarjk" onclick="vistaChats('lista');abrirChat('ranco')"><div class="t1"><span class="pto ok"></span>Constructora Ranco <span class="m num">$2.480</span></div><div class="t2">30+1 · espera tu OK</div></div>
+        </div>
+        <div class="colk"><h5>Por entregar <span class="tot num">2 · $360mil</span></h5>
+          <div class="tarjk" onclick="vistaChats('lista');abrirChat('rodrigo')"><div class="t1">Rodrigo · Ñuñoa <span class="m num">$160</span></div><div class="t2">mañana 9-13 · repartidor avisado</div></div>
+          <div class="tarjk" onclick="toast('Estado del repartidor en vivo (Supabase)')"><div class="t1">Tecnoterra <span class="m num">$200</span></div><div class="t2">viernes · confirmado</div></div>
+        </div>
+        <div class="colk"><h5>Cobrado · julio <span class="tot num">6 · $1,1M</span></h5>
+          <div class="tarjk" onclick="toast('Marcado por el repartidor en su panel')"><div class="t1">Buin · obra <span class="m num">$200</span></div><div class="t2">lun · efectivo</div></div>
+          <div class="tarjk" onclick="toast('Marcado por el repartidor en su panel')"><div class="t1">Peñalolén <span class="m num">$160</span></div><div class="t2">vie · transferencia</div></div>
+        </div>
+      </div>
+      <div class="sublay" id="chats-lista">
+        <div class="lista-conv">
+          <div class="buscador"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg><input id="in-buscar" placeholder="Buscar nombre, comuna, pedido…" oninput="renderLista()"></div>
+          <div id="lista-conv"></div>
+          <div class="dormidos-f" id="dormidos-f" onclick="toggleDormidos()">💤 Dormidos · 4 <span style="margin-left:auto;font-size:11px" id="dormidos-hint">ver</span></div>
+          <div id="dormidos-lista" style="display:none"></div>
+        </div>
+        <div class="hilo-col">
+          <div class="hilo-head" id="hilo-head"></div>
+          <div class="hilo" id="hilo"></div>
+          <div class="composer">
+            <textarea id="in-composer" rows="1" placeholder="Escribe y Sofía se calla… (Shift+Enter = salto)" oninput="autoGrow(this)" onkeydown="composerKey(event)"></textarea>
+            <button class="btn s" onclick="enviarTu()">Enviar</button>
+            <button class="btn p" id="btn-accion-chat" onclick="aprobarRanco()">Aprobar cotización</button>
+          </div>
+        </div>
+        <div class="ctx" id="ctx"></div>
+      </div>
+    </section>
+
+    <!-- CAMINOS -->
+    <section class="vista flexh" id="v-caminos">
+      <div style="flex:1;min-width:0;display:flex;flex-direction:column">
+        <div class="vheader" style="border-bottom:1px solid var(--n3)">Caminos
+          <div class="tabs">
+            <button class="tabchip on">Sofía · 34</button>
+            <button class="tabchip" onclick="toast('Agente Destapes · 12 caminos — misma vista, otra mochila')">Destapes · 12</button>
+          </div>
+          <div class="fin">
+            <button class="btn s" id="chip-borrador" onclick="verBorrador()" style="border-color:var(--amb);color:var(--amb)">1 borrador</button>
+            <button class="btn s" onclick="guia('nuevo')">+ Camino</button>
+          </div>
+        </div>
+        <div class="caminos-izq">
+          <div class="guia" id="guia">
+            <div class="g-dialogo" id="g-dialogo"></div>
+            <div class="g-input">
+              <input id="in-guia" placeholder="Pregúntale a la guía o pídele cambios…" onkeydown="if(event.key==='Enter')guia('libre')">
+              <button class="btn p" onclick="guia('libre')">Preguntar</button>
+            </div>
+            <div class="g-chips">
+              <button class="gchip" onclick="guia('contexto')">¿Qué haces si piden 4 baños?</button>
+              <button class="gchip" onclick="guia('rendimiento')">¿Cómo van los caminos?</button>
+              <button class="gchip" onclick="guia('precios')">Sube los precios 10%</button>
+              <button class="gchip" onclick="guia('nuevo')">Nuevo camino</button>
+            </div>
+          </div>
+          <div class="cascada-grid">
+            <div class="grupo-c"><h4>Precios céntricos <span class="n num">4</span></h4>
+              <div class="bloque" data-c="mensual" onclick="seleccionar(this)"><div class="cuando">mensual · 1 baño</div><div class="accion" id="precio-mensual">$160.000 neto · limpieza semanal</div><div class="b-stats num"><b>34</b> usos · <b>52%</b> cierre · <b>$960 mil</b> jul</div></div>
+              <div class="bloque" data-c="mensual2" onclick="seleccionar(this)"><div class="cuando">mensual · 2+ baños</div><div class="accion">$150.000 c/u</div><div class="b-stats num"><b>11</b> usos · <b>64%</b> · <b>$450 mil</b></div></div>
+              <div class="bloque" data-c="evento" onclick="seleccionar(this)"><div class="cuando">evento · hasta 1 semana</div><div class="accion">$100.000 neto</div><div class="b-stats num"><b>19</b> usos · <b>47%</b> · <b>$700 mil</b></div></div>
+            </div>
+            <div class="grupo-c"><h4>Zonas lejanas <span class="n num">5</span></h4>
+              <div class="bloque" id="b-nuevo" data-c="nuevo" style="display:none" onclick="seleccionar(this)"><div class="cuando" id="b-nuevo-cuando">tramo Melipilla · 5+ baños <span class="chip vivo" style="margin-left:4px">nuevo</span></div><div class="accion" id="b-nuevo-txt"></div><div class="b-stats"><b>0</b> usos · nació de la pausa de hoy</div></div>
+              <div class="bloque" data-c="buin" onclick="seleccionar(this)"><div class="cuando">Buin · Paine · Talagante</div><div class="accion">mensual $200.000 · evento $150.000</div><div class="b-stats num"><b>8</b> usos · <b>50%</b> · <b>$400 mil</b></div></div>
+              <div class="bloque" data-c="curacavi" onclick="seleccionar(this)"><div class="cuando">Curacaví · Melipilla · Til Til</div><div class="accion">mensual $220.000 · evento $180.000</div><div class="b-stats num"><b>3</b> usos · <b>33%</b></div></div>
+              <div class="bloque" data-c="recinto" onclick="seleccionar(this)"><div class="cuando">recinto especial (fundo, faena)</div><div class="accion">sin precio de tabla — equipo confirma hoy</div><div class="b-stats num"><b>2</b> usos · nuevo lun</div></div>
+            </div>
+            <div class="grupo-c"><h4>Cierre y objeciones <span class="n num">7</span></h4>
+              <div class="bloque" data-c="regateo" onclick="seleccionar(this)"><div class="cuando">"me lo dejan más barato"</div><div class="accion">defender valor · piso $150.000 solo por cerrar</div><div class="b-stats num"><b>6</b> usos · <b>67%</b> rescatados</div></div>
+              <div class="bloque" data-c="urgencia" onclick="seleccionar(this)"><div class="cuando">urgencia de horas</div><div class="accion">no prometer hora exacta — equipo confirma en 10 min</div><div class="b-stats num"><b>5</b> usos · <b>20%</b> ⚠ revisar</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="peek" id="peek"></div>
+    </section>
+
+    <!-- MÓDULOS -->
+    <section class="vista vcol" id="v-modulos">
+      <div class="vheader">Qué hace tu bot</div>
+      <div class="contenido"><div class="mod-col">
+
+        <div class="guia" style="margin-bottom:20px">
+          <div class="g-dialogo" id="m-dialogo"></div>
+          <div class="g-input">
+            <input id="in-mod" placeholder="Cuéntale cómo trabaja tu negocio y la IA lo configura…" onkeydown="if(event.key==='Enter')modIA('libre')">
+            <button class="btn p" onclick="modIA('libre')">Configurar</button>
+          </div>
+          <div class="g-chips">
+            <button class="gchip" onclick="modIA('barberia')">Soy barbería, solo agendo horas</button>
+            <button class="gchip" onclick="modIA('catalogo')">Vendo por catálogo con despacho</button>
+            <button class="gchip" onclick="modIA('webpay')">Necesito cobrar señas por Webpay</button>
+          </div>
+        </div>
+        <div class="banner-preset" id="banner-preset" style="display:none">Vista previa: <b>Barbería</b> — así quedaría otro negocio<button class="btn s" style="margin-left:auto" onclick="volverPreset()">Volver a destaperapido</button></div>
+
+        <div class="seccion">Venta</div>
+        <div class="panelcard">
+          <div class="mod" id="mod-cotiza">
+            <div class="fila" style="cursor:default">
+              <div class="crece"><div class="titulo-f">Cotiza</div><div class="meta-f">precios por zona · PDF · tu OK — si lo apagas, se van el hero de plata y la etapa Cotizando</div></div>
+              <span class="sw"><input type="checkbox" checked onchange="mod(this)"><span class="p1"></span><span class="p2"></span></span>
+            </div>
+            <div class="mod-conf">
+              <div class="kv"><span>Último click</span><select><option>Siempre yo</option><option>Solo si no calza</option><option>Automático</option></select></div>
+              <div class="kv"><span>Mostrar "neto"</span><input type="checkbox" class="mini" checked></div>
+            </div>
+          </div>
+          <div class="mod">
+            <div class="fila" style="cursor:default">
+              <div class="crece"><div class="titulo-f">Hace seguimiento</div><div class="meta-f">rescata cotizaciones que quedaron en nada</div></div>
+              <span class="sw"><input type="checkbox" onchange="mod(this)"><span class="p1"></span><span class="p2"></span></span>
+            </div>
+            <div class="mod-conf"><div class="kv"><span>Esperar</span><select><option>2 días</option><option>5 días</option></select></div></div>
+          </div>
+        </div>
+        <div class="seccion">Operación</div>
+        <div class="panelcard">
+          <div class="mod abierto">
+            <div class="fila" style="cursor:default">
+              <div class="crece"><div class="titulo-f">Ve fotos y oye audios</div><div class="meta-f">describe fotos · transcribe voz · lee PDF — todo queda en el hilo</div></div>
+              <span class="sw"><input type="checkbox" checked onchange="mod(this)"><span class="p1"></span><span class="p2"></span></span>
+            </div>
+            <div class="mod-conf">
+              <div class="kv"><span>Notas de voz</span><input type="checkbox" class="mini" checked></div>
+              <div class="kv"><span>Fotos</span><input type="checkbox" class="mini" checked></div>
+              <div class="kv"><span>Videos</span><input type="checkbox" class="mini"></div>
+            </div>
+          </div>
+          <div class="mod" id="mod-entregas">
+            <div class="fila" style="cursor:default">
+              <div class="crece"><div class="titulo-f">Coordina entregas</div><div class="meta-f">repartidor · pin de Maps — si lo apagas, se van la columna Por entregar y el campo Fechas</div></div>
+              <span class="sw"><input type="checkbox" checked onchange="mod(this)"><span class="p1"></span><span class="p2"></span></span>
+            </div>
+            <div class="mod-conf"><div class="kv"><span>Despachar</span><select><option>Con mi OK</option><option>Automático</option></select></div></div>
+          </div>
+          <div class="mod">
+            <div class="fila" style="cursor:default">
+              <div class="crece"><div class="titulo-f">Te pide ayuda cuando no sabe</div><div class="meta-f">resumen del caso · te discute con argumentos · 2 checks</div></div>
+              <span class="sw"><input type="checkbox" checked onchange="mod(this)"><span class="p1"></span><span class="p2"></span></span>
+            </div>
+            <div class="mod-conf">
+              <div class="kv"><span>Avisar también por WhatsApp</span><input type="checkbox" class="mini" checked></div>
+              <div class="kv"><span>Insistir si no respondes</span><select><option>a los 30 min</option><option>a la hora</option><option>nunca</option></select></div>
+            </div>
+          </div>
+        </div>
+        <div class="seccion">Canales</div>
+        <div class="panelcard">
+          <div class="fila" style="cursor:default">
+            <div class="crece"><div class="titulo-f">WhatsApp</div><div class="meta-f">conectado · número del negocio</div></div>
+            <span class="pto ok"></span>
+          </div>
+          <div class="fila" onclick="verCorreoConfig()">
+            <div class="crece"><div class="titulo-f">Correo</div><div class="meta-f">cotizaciones@destaperapido.cl · PDF y confirmaciones en el mismo hilo</div></div>
+            <span class="pto ok"></span>
+          </div>
+          <div class="fila" style="cursor:default">
+            <div class="crece"><div class="titulo-f">Instagram</div><div class="meta-f">requiere conexión Meta</div></div>
+            <button class="btn s" onclick="toast('Te guío cuando toque — son 45 min')">Conectar</button>
+          </div>
+          <div class="fila" style="cursor:default">
+            <div class="crece"><div class="titulo-f">Voz</div><div class="meta-f">llamadas perdidas → WhatsApp</div></div>
+            <span class="meta-f">pronto</span>
+          </div>
+        </div>
+
+        <div class="seccion">Conexiones</div>
+        <div class="panelcard">
+          <div class="fila" onclick="verConexion('repartidor')">
+            <div class="crece"><div class="titulo-f">API del repartidor</div><div class="meta-f">aporta crear_entrega · avisar_repartidor — la usa Coordina entregas</div></div>
+            <span class="pto ok" data-tip="Última llamada: hoy 10:42 ✓"></span>
+          </div>
+          <div class="fila" onclick="verConexion('supabase')">
+            <div class="crece"><div class="titulo-f">Supabase</div><div class="meta-f">estado de entregas en vivo — alimenta el tablero</div></div>
+            <span class="pto ok"></span>
+          </div>
+          <div class="fila" onclick="nuevaConexion()">
+            <div class="crece"><div class="titulo-f" style="color:var(--n11)">+ Conexión</div><div class="meta-f">catálogo · pegar un MCP · o descríbele tu API a la IA</div></div>
+          </div>
+        </div>
+      </div></div>
+    </section>
+
+    <!-- AGENTES -->
+    <section class="vista flexh" id="v-agentes">
+      <div class="ag-lista">
+        <div class="seccion" style="margin-top:4px">Recepción</div>
+        <div class="ag-item" onclick="verMadre()" data-tip="¿Cómo decide?">
+          <div class="pto ok"></div>
+          <div class="d"><div class="nm">Derivación silenciosa</div><div class="dm num">7 hoy · 0 dudas</div></div>
+        </div>
+        <div class="seccion">Especialistas</div>
+        <div class="ag-item on" id="ai-sofia" onclick="verAgente('sofia')">
+          <div class="ava" style="background:var(--ac-sub);color:var(--ac-txt)">S</div>
+          <div class="d"><div class="nm">Sofía</div><div class="dm">baños químicos</div></div>
+          <div class="pto ok"></div>
+        </div>
+        <div class="ag-item" id="ai-destapes" onclick="verAgente('destapes')">
+          <div class="ava">D</div>
+          <div class="d"><div class="nm">Destapes</div><div class="dm">destapes y fosas</div></div>
+          <div class="pto esp" data-tip="En entrenamiento"></div>
+        </div>
+        <button class="navi" style="margin-top:8px" onclick="toast('Un rubro nuevo = un agente nuevo con sus caminos')"><span style="color:var(--n9)">+ Agente</span></button>
+      </div>
+      <div class="ag-det" id="ag-det"></div>
+    </section>
+
+    <!-- DISEÑO -->
+    <section class="vista vcol" id="v-diseno">
+      <div class="vheader">Diseño<div class="fin">todo componente nuevo nace aquí</div></div>
+      <div class="contenido"><div class="col-centro">
+        <div class="seccion">Color</div>
+        <div class="sw-grid">
+          <div class="swc"><div class="c" style="background:var(--n1)"></div><div class="l"><b>n1</b><span>fondo</span></div></div>
+          <div class="swc"><div class="c" style="background:var(--n2)"></div><div class="l"><b>n2</b><span>elemento</span></div></div>
+          <div class="swc"><div class="c" style="background:var(--n3)"></div><div class="l"><b>n3</b><span>hairline</span></div></div>
+          <div class="swc"><div class="c" style="background:var(--n6)"></div><div class="l"><b>n6</b><span>borde</span></div></div>
+          <div class="swc"><div class="c" style="background:var(--n11)"></div><div class="l"><b>n11</b><span>secundario</span></div></div>
+          <div class="swc"><div class="c" style="background:var(--n12)"></div><div class="l"><b>n12</b><span>texto</span></div></div>
+          <div class="swc"><div class="c" style="background:var(--ac)"></div><div class="l"><b>acento</b><span>una acción por vista</span></div></div>
+          <div class="swc"><div class="c" style="background:var(--amb)"></div><div class="l"><b>ámbar</b><span>espera tu decisión</span></div></div>
+          <div class="swc"><div class="c" style="background:var(--rojo)"></div><div class="l"><b>rojo</b><span>error · quitar</span></div></div>
+          <div class="swc"><div class="c" style="background:var(--azul)"></div><div class="l"><b>azul</b><span>habló un humano</span></div></div>
+        </div>
+        <div class="seccion">Tipografía</div>
+        <div class="tipo-fila"><small>hero · 32/560</small><span class="num" style="font-size:32px;font-weight:560;letter-spacing:-.02em">$450mil</span></div>
+        <div class="tipo-fila"><small>título · 16/560</small><span style="font-size:16px;font-weight:560">Sofía</span></div>
+        <div class="tipo-fila"><small>base · 13/450-560</small><span>El mensual en Maipú queda en 160mil (neto)</span></div>
+        <div class="tipo-fila"><small>meta · 12/450 n11</small><span style="font-size:12px;color:var(--n11)">34 usos · 52% cierre · hace 4 min</span></div>
+        <div class="tipo-fila"><small>mínimo · 11/500</small><span style="font-size:11px;font-weight:500;color:var(--n9)">ETIQUETA DE GRUPO</span></div>
+        <div class="seccion">Componentes</div>
+        <div class="specs">
+          <div class="spec"><div class="spec-l">punto de estado</div><div class="demo"><span class="pto ok"></span><span class="pto esp"></span><span class="pto mal"></span><span class="meta-f">bien · espera · error</span></div></div>
+          <div class="spec"><div class="spec-l">chip de ciclo</div><div class="demo"><span class="chip vivo">vivo</span><span class="chip draft">borrador</span></div></div>
+          <div class="spec"><div class="spec-l">botones</div><div class="demo"><button class="btn p">Aprobar</button><button class="btn s">Descartar</button></div></div>
+          <div class="spec"><div class="spec-l">switch</div><div class="demo"><span class="sw"><input type="checkbox" checked><span class="p1"></span><span class="p2"></span></span><span class="sw"><input type="checkbox"><span class="p1"></span><span class="p2"></span></span></div></div>
+          <div class="spec" style="grid-column:1/-1"><div class="spec-l">fila de dato · 48px · máx 6 átomos</div>
+            <div class="panelcard"><div class="fila"><span class="pto ok"></span><div class="crece"><div class="titulo-f">Mensual céntrico</div><div class="meta-f">$160.000 neto · 34 usos</div></div><span class="chip vivo">vivo</span><span class="meta-f num">52%</span></div></div>
+          </div>
+          <div class="spec"><div class="spec-l">burbujas · rol por color, sin etiquetas</div>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <span class="bur cli" style="max-width:100%">cliente</span>
+              <span class="bur bot" style="max-width:100%;align-self:flex-end;cursor:default">Sofía</span>
+              <span class="bur tu" style="max-width:100%;align-self:flex-end">tú</span>
+            </div>
+          </div>
+          <div class="spec"><div class="spec-l">diff · borrador sobre vivo</div>
+            <div class="diff"><div class="m num">$160.000</div><div class="p num">$176.000</div></div>
+          </div>
+          <div class="spec"><div class="spec-l">traza · el porqué de cada turno</div>
+            <div class="traza">
+              <div class="paso ok"><div class="p-t">Recepción → Sofía</div></div>
+              <div class="paso ok"><div class="p-t">2 caminos aplicados</div></div>
+              <div class="paso esp"><div class="p-t">1 tema en pausa</div></div>
+            </div>
+          </div>
+          <div class="spec"><div class="spec-l">vacío · ≤8 palabras + 1 acción</div>
+            <div class="vacio" style="padding:8px 0">Sin decisiones pendientes</div><button class="btn s">Ver chats</button>
+          </div>
+        </div>
+        <div class="seccion">Reglas</div>
+        <div class="panelcard">
+          <div class="fila" style="cursor:default"><div class="crece meta-f">El acento aparece en una sola acción por vista</div></div>
+          <div class="fila" style="cursor:default"><div class="crece meta-f">≤40 palabras de interfaz por vista · labels de 2 palabras · botones de 1 verbo</div></div>
+          <div class="fila" style="cursor:default"><div class="crece meta-f">Ningún componente nuevo fuera de esta página — se crea aquí, después se usa</div></div>
+        </div>
+      </div></div>
+    </section>
+  </main>
+</div>
+
+<div class="flotante" id="pop-nota">
+  <button class="cerrar" onclick="cerrarPop()">✕</button>
+  <h4><span id="pn-t"></span><span id="pn-e" class="chip" style="margin-left:auto;margin-right:18px"></span></h4>
+  <div class="cuerpo-n" id="pn-c"></div>
+  <div class="preg" id="pn-p"></div>
+</div>
+
+<div class="flotante" id="pop-info" style="width:360px">
+  <button class="cerrar" onclick="cerrarPop()">✕</button>
+  <h4 id="pi-t"></h4>
+  <div id="pi-c"></div>
+</div>
+
+<div class="flotante" id="pop-ens" style="width:340px">
+  <button class="cerrar" onclick="cerrarPop()">✕</button>
+  <h4>Enseñar sobre este mensaje</h4>
+  <div class="cuerpo-n" id="ens-msg" style="margin-bottom:8px"></div>
+  <div class="resp" style="margin-top:0">
+    <input id="in-ens" placeholder="ej: no ofrezcas la ficha dos veces">
+    <button class="btn p" onclick="ensGuardar()">Enseñar</button>
+  </div>
+  <div class="cuerpo-n" style="margin-top:9px;font-size:11.5px">se destila en una regla al instante · reversible · si choca con un camino, te aviso</div>
+</div>
+
+<div class="flotante" id="pop-borrador" style="width:380px">
+  <button class="cerrar" onclick="cerrarPop()">✕</button>
+  <h4>Borrador · precios céntricos +10%</h4>
+  <div class="cuerpo-n" style="margin-bottom:8px">Toca <b>4 caminos</b>, redondeado a miles. Pasó las 12 conversaciones de prueba, sin choques:</div>
+  <div class="diff"><div class="m num">mensual 1 baño — $160.000</div><div class="p num">mensual 1 baño — $176.000</div></div>
+  <div class="diff"><div class="m num">mensual 2+ — $150.000 c/u</div><div class="p num">mensual 2+ — $165.000 c/u</div></div>
+  <div class="diff"><div class="m num">evento — $100.000</div><div class="p num">evento — $110.000</div></div>
+  <div class="diff"><div class="m num">2 semanas — $130.000</div><div class="p num">2 semanas — $143.000</div></div>
+  <div style="display:flex;gap:8px;margin-top:12px">
+    <button class="btn p" onclick="publicarBorrador()">Publicar</button>
+    <button class="btn s" onclick="descartarBorrador()">Descartar</button>
+  </div>
+  <div class="cuerpo-n" style="margin-top:9px;font-size:11.5px">queda en el historial · deshacer restaura como borrador</div>
+</div>
+
+<div class="flotante" id="pop-madre" style="width:360px">
+  <button class="cerrar" onclick="cerrarPop()">✕</button>
+  <h4>Cómo deriva la recepción</h4>
+  <div class="traza" style="margin-top:8px">
+    <div class="paso ok"><div class="p-t">Obvio → directo, sin pensar</div><div class="p-d">"necesito un baño químico" → <b>Sofía</b> al tiro · "tengo el desagüe tapado" → <b>Destapes</b>. Por señales, gratis, en 0 segundos.</div></div>
+    <div class="paso ok"><div class="p-t">"Hola" pelado → saluda neutra</div><div class="p-d">"Hola, ¿en qué le podemos ayudar?" — y deriva con la <b>primera señal</b> que suelte el cliente</div></div>
+    <div class="paso esp"><div class="p-t">Ambiguo → UNA aclaración</div><div class="p-d">"tengo un problema con el baño" → "¿es por arriendo de baño químico o por un destape?"</div></div>
+    <div class="paso ok"><div class="p-t">El cliente nunca lo nota</div><div class="p-d">mismo número, mismo hilo — solo cambia la mochila de caminos por debajo, y queda en la traza</div></div>
+  </div>
+</div>
+
+<div class="flotante" id="pop-etapas" style="width:360px">
+  <button class="cerrar" onclick="cerrarPop()">✕</button>
+  <h4>Módulo Embudo · etapas de destaperapido</h4>
+  <div id="etapas-lista">
+    <div class="etapa-def"><div class="e1">1 · <span class="et-nom">Cotizando</span> <span class="origen-chip cam">camino</span></div><div class="e2">entra cuando el camino <b>Ofrecer formal</b> envía la cotización</div></div>
+    <div class="etapa-def"><div class="e1">2 · <span class="et-nom">Por confirmar</span> <span class="origen-chip cam">camino</span></div><div class="e2">el camino <b>Detectar confirmación</b> emite la señal · queda esperando <b>tu OK</b></div></div>
+    <div class="etapa-def"><div class="e1">3 · <span class="et-nom">Por entregar</span> <span class="origen-chip tu">tú</span></div><div class="e2">entra con tu OK de despacho · el repartidor recibe el aviso</div></div>
+    <div class="etapa-def"><div class="e1">4 · <span class="et-nom">Cobrado</span> <span class="origen-chip ext">repartidor</span></div><div class="e2">el repartidor lo marca en su panel (Supabase) y el tablero se actualiza</div></div>
+  </div>
+  <div class="preg">Las etapas son <b>datos de este módulo</b>, no código: cada negocio define las suyas — nombre, regla de avance y quién emite la señal (un camino, tú, o alguien externo como el repartidor). Un camino nunca mueve directo: emite la señal, el módulo la valida y queda en la traza.</div>
+  <div style="margin-top:10px;display:flex;gap:8px" id="etapas-btns"><button class="btn s" onclick="editarEtapas()">Editar etapas</button></div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+  /* ═══════ DATA SIMULADA — al construir el backend, solo cambia esta fuente ═══════ */
+  const CHATS = {
+    ranco: { nom:'Constructora Ranco', ini:'C', sub:'WhatsApp · Estación Central · Sofía', chip:['vivo','confirmó'], noleido:true, hra:'10:42', accion:'Aprobar cotización',
+      prev:'🎤 0:41 · "…serían 30 baños y uno de discapacitados…"', pto:'ok', ptip:'Confirmó',
+      msgs:[
+        {de:'cli', t:'Hola, necesito cotizar baños químicos para un evento masivo en Estación Mapocho'},
+        {de:'bot', t:'Buenos días, encantada de ayudarle / ¿Cuántos baños y para qué fechas?'},
+        {de:'cli', t:'🎤 Nota de voz · 0:41', anota:'<b>Transcrita:</b> "…serían 30 baños normales y uno de discapacitados, del 14 al 16 de agosto, instalados el 13 en la mañana…"'},
+        {de:'bot', t:'Le confirmo: 30 estándar + 1 accesible, 14-16 ago, instalación el 13 / Evento queda en $80.000 (neto) por baño / ¿A qué correo le envío la cotización?', traza:'precio'},
+        {de:'cli', t:'📷 Foto del recinto', anota:'<b>Vista:</b> explanada techada, acceso vehicular ancho, hormigón — sin obstáculos de descarga'},
+        {de:'sys', t:'tema "precio baño accesible" en pausa — Sofía te preguntó, el chat siguió', tema:true},
+        {de:'cli', t:'Ya, mándala a obras@ranco.cl y avanzamos'},
+        {de:'bot', t:'Listo, se la envío hoy mismo / Quedo atenta <span class="num" style="font-size:10px;color:var(--ac-txt)">✓✓</span>'},
+      ],
+      ficha:[['Ficha',[['Comuna','Estación Central'],['Pedido','30 + 1 accesible'],['Fechas','14-16 ago'],['Correo','obras@ranco.cl']]],
+             ['Cotización',[['Estándar ×30','$2.400.000'],['Accesible ×1','<span style="color:var(--amb)">esperando tu precio</span>'],['Estado','lista para tu OK']]],
+             ['Historial',[['Primer contacto','hoy 10:31'],['Atendió','Sofía · 6 mensajes']]]] },
+    carolina: { nom:'Carolina · Melipilla', ini:'C', sub:'WhatsApp · Melipilla · Sofía', chip:['draft','tema en pausa'], hra:'10:51', accion:'Ir a la pausa',
+      prev:'Sofía junta dirección y fechas · precio 5 baños en pausa', pto:'esp', ptip:'Resuélvelo en Hoy',
+      msgs:[
+        {de:'cli', t:'Hola, necesito baños químicos para una obra en Melipilla, serían 5'},
+        {de:'bot', t:'Buenos días / Perfecto, 5 baños para obra en Melipilla / ¿Por cuánto tiempo los necesitaría?'},
+        {de:'cli', t:'Mensual, la obra dura como un año'},
+        {de:'sys', pausaWidget:true},
+        {de:'bot', t:'Excelente / Mientras le confirmo el valor exacto por cantidad, ¿me indica la dirección de la obra?'},
+        {de:'cli', t:'Camino a Pomaire km 3, entrada del fundo'},
+      ],
+      ficha:[['Ficha',[['Comuna','Melipilla'],['Pedido','5 baños mensual'],['Plazo','~12 meses'],['Dirección','Cno. Pomaire km 3']]],
+             ['Potencial',[['Mensual','~$1.000.000'],['Año','~$12M'],['Estado','precio en pausa — Hoy']]]] },
+    jorge: { nom:'Jorge', ini:'J', sub:'WhatsApp · Buin · Sofía', chip:['draft','cotizando'], hra:'09:58', accion:'Ofrecer cotización',
+      prev:'⏰ seguimiento vie 10:00 · lo conversa con su socio', pto:'',
+      msgs:[
+        {de:'cli', t:'Precio de baño químico en Buin?'},
+        {de:'bot', t:'Buenos días / ¿Lo necesita mensual o para un evento?'},
+        {de:'cli', t:'Mensual, para un taller'},
+        {de:'bot', t:'El mensual en Buin queda en $200.000 (neto), incluye traslados y limpieza semanal / ¿Para cuándo lo necesitaría?', traza:'buin'},
+        {de:'cli', t:'Me tinca, pero lo converso con mi socio y le aviso el viernes'},
+        {de:'bot', t:'Perfecto, quedo atenta / Que le vaya bien en la reunión'},
+        {prog:true, cuando:'viernes 26 · 10:00', t:'Hola Jorge, ¿alcanzaron a revisarlo con su socio? Cualquier duda quedo atenta'},
+      ],
+      ficha:[['Ficha',[['Comuna','Buin'],['Pedido','1 baño mensual'],['Correo','—']]],
+             ['Cotización',[['Mensual','$200.000 neto'],['Estado','esperando al socio']]],
+             ['Seguimiento',[['Programado','vie 26 · 10:00'],['Origen','el cliente dijo "el viernes"']]]] },
+    pia: { nom:'Pía · Peñalolén', ini:'P', sub:'WhatsApp · Peñalolén · cerrado', chip:['vivo','cerrado'], hra:'lun', accion:'Reabrir',
+      prev:'Gracias, cualquier cosa les escribo 🙏', pto:'',
+      msgs:[
+        {de:'bot', t:'Su retiro quedó coordinado para el lunes / Gracias por preferirnos'},
+        {de:'cli', t:'Muchas gracias, cualquier cosa les escribo 🙏'},
+        {de:'sys', t:'el bot no respondió — un gracias de cierre no necesita párrafo'},
+      ],
+      ficha:[['Ficha',[['Comuna','Peñalolén'],['Estado','cerrado · cobrado']]]] },
+    elmonte: { nom:'Agrícola El Monte', ini:'A', sub:'WhatsApp · El Monte · Sofía', chip:['draft','cotizando'], hra:'09:12', accion:'Ofrecer cotización',
+      prev:'📷 · Sofía respondió con la ficha de la válvula', pto:'',
+      msgs:[
+        {de:'cli', t:'Hola, tenemos 2 estanques en el campo y queremos saber si sus baños sirven con nuestra conexión'},
+        {de:'cli', t:'📷 Foto de los estanques', anota:'<b>Vista:</b> dos estanques con válvula de bola de 2", conexión con abrazadera — compatible con el acople estándar'},
+        {de:'bot', t:'Sí, sin problema — nuestros equipos traen acople compatible con esa válvula de 2" / En El Monte el mensual queda en $200.000 (neto) por baño / ¿Serían los 2?', traza:'foto'},
+      ],
+      ficha:[['Ficha',[['Comuna','El Monte'],['Pedido','2 baños mensual'],['Detalle','válvula 2" verificada por foto']]],
+             ['Cotización',[['Mensual ×2','$400.000 neto'],['Estado','esperando respuesta']]]] },
+    rodrigo: { nom:'Rodrigo', ini:'R', sub:'WhatsApp · Ñuñoa · entrega mañana', chip:['vivo','por entregar'], hra:'ayer', accion:'Ver entrega',
+      prev:'Entrega mañana 9-13 · repartidor avisado', pto:'ok', ptip:'Confirmado',
+      msgs:[
+        {de:'bot', t:'Le confirmo su entrega para mañana entre 9:00 y 13:00 / El equipo le avisa cuando vaya en camino'},
+        {de:'sys', t:'entrega creada · repartidor avisado con pin de Maps 🗺️ · estado en vivo en el tablero'},
+        {de:'cli', t:'Perfecto, gracias'},
+      ],
+      ficha:[['Entrega',[['Comuna','Ñuñoa'],['Fecha','mañana 9-13'],['Monto','$160.000'],['Repartidor','avisado ✓']]]] },
+  };
+  const ORDEN = ['ranco','carolina','jorge','elmonte','rodrigo','pia'];
+
+  const CAMINOS = {
+    mensual: { t:'Mensual céntrico · 1 baño', estado:'vivo', kv:[['Cuando','piden baño mensual en comuna céntrica'],['Entonces','cotizar $160.000 neto, limpieza incluida'],['Requiere','comuna confirmada'],['Cifra','del tarifario, nunca del modelo'],['Uso','34 veces · 52% cierre · $960 mil en julio']], pruebas:5, hist:[['8 jul','creado — destilado de tus 68 reglas'],['15 jul','editado: + "limpieza incluida" (tuyo)'],['hoy','borrador +10% pendiente']] },
+    mensual2: { t:'Mensual céntrico · 2+ baños', estado:'vivo', kv:[['Cuando','piden 2 o más baños mensuales céntricos'],['Entonces','$150.000 c/u — descuento por cantidad'],['Conectado','no puede contradecir al mensual de 1'],['Uso','11 veces · 64% cierre · $450 mil']], pruebas:4, hist:[['8 jul','creado']] },
+    evento: { t:'Evento céntrico · hasta 1 semana', estado:'vivo', kv:[['Cuando','evento o pocos días, zona céntrica'],['Entonces','$100.000 neto — traslados e instalación incluidos'],['Uso','19 veces · 47% · $700 mil']], pruebas:5, hist:[['8 jul','creado']] },
+    buin: { t:'Tramo Buin · Paine · Talagante', estado:'vivo', kv:[['Cuando','piden baño en Buin, Paine o Talagante'],['Entonces','mensual $200.000 · evento $150.000 — valor directo, con confianza'],['Regla tuya','no justificar la distancia'],['Uso','8 veces · 50% · $400 mil']], pruebas:3, hist:[['9 jul','creado de tus cierres reales (Buin 200 aceptado sin regateo)']] },
+    curacavi: { t:'Tramo Curacaví · Melipilla · Til Til', estado:'vivo', kv:[['Cuando','piden baño en ese tramo'],['Entonces','mensual $220.000 · evento $180.000'],['Uso','3 veces · 33%']], pruebas:3, hist:[['9 jul','creado']] },
+    recinto: { t:'Recinto especial', estado:'vivo', kv:[['Cuando','aeródromo, fundo o faena'],['Entonces','sin precio de tabla — el equipo revisa y confirma hoy mismo'],['Gana sobre','la tabla de la comuna'],['Nació de','tu manejo real de Peldehue (15 jul)']], pruebas:2, hist:[['lun','creado de una corrección tuya']] },
+    regateo: { t:'"Me lo dejan más barato"', estado:'vivo', kv:[['Cuando','el cliente regatea con la competencia'],['Entonces','defender el valor (traslados + limpieza incluidos) · piso $150.000 SOLO por cerrar'],['Nunca','bajar del piso ni inventar descuentos'],['Uso','6 veces · 67% rescatados']], pruebas:5, hist:[['10 jul','creado de tu regateo real con Baños King']] },
+    urgencia: { t:'Urgencia de horas', estado:'vivo', kv:[['Cuando','lo necesitan en horas'],['Entonces','cotizar con confianza, NO prometer hora exacta — "el equipo confirma en 10 min" + aviso a ti'],['Uso','5 veces · 20% ⚠'],['Sugerencia','revisarlo en el gimnasio — cierra bajo']], pruebas:4, hist:[['12 jul','creado tras la simulación H5 (prometía llegar en 2h sin saber)']] },
+    nuevo: { t:'Tramo Melipilla · 5+ baños', estado:'nuevo', kv:[['Cuando','5 o más baños mensuales en el tramo Melipilla'],['Entonces','precio por cantidad definido contigo · flete incluido'],['Nació de','la pausa de hoy — conversación contigo'],['Uso','0 — recién creado']], pruebas:3, hist:[['hoy','creado desde la pausa junior→senior']] },
+  };
+
+  const AGENTES = {
+    sofia: { nom:'Sofía', ini:'S', avaStyle:'background:var(--ac-sub);color:var(--ac-txt)', dom:'arriendo de baños químicos · desde el 6 jul', chip:['vivo','activa'],
+      mets:[['34','caminos'],['4,0','nota juez'],['52%','cierre'],['$0','costo hoy']],
+      presets:[['Cercana','sin emojis, trato de usted'],['Precio con confianza','valor directo, sin justificar distancia'],['Nunca inventa','cifras solo del tarifario']],
+      ejemplo:'"El mensual en Maipú queda en 160mil (neto), incluye limpieza semanal / ¿Para cuándo lo necesita?"',
+      practica:[['ok','Regateo duro · urgencia · monosílabos','5/6 ✓','replay-ok'],['esp','Presupuesto bajo','revisar','replay-malo']] },
+    destapes: { nom:'Destapes', ini:'D', avaStyle:'', dom:'destapes y limpieza de fosas · en entrenamiento', chip:['draft','practicando'],
+      mets:[['12','caminos'],['3,2','nota juez'],['—','sin clientes aún'],['gate','4,0 para activar']],
+      presets:[['Directo','urgencias: al grano, sin vueltas'],['Nunca inventa','precios solo del tarifario de destapes']],
+      ejemplo:'"El destape de alcantarillado en Maipú parte en $45.000 según el largo / ¿El problema es en la cocina o el baño?"',
+      practica:[['esp','Ronda de anoche: 6 escenarios','3,2 — practicando','replay-destapes']] },
+  };
+
+  const REPLAYS = {
+    'replay-ok': { t:'Replay · regateo duro', c:'<div class="bwrap"><span class="bur cli">En Baños King me lo dejan en 120, ¿me igualan?</span></div><div class="bwrap der"><span class="bur bot" style="cursor:default">No llego a 120, quedaría regalando el servicio / Si cierra ahora se lo dejo en 150, ese es mi piso</span></div><div class="bwrap"><span class="bur cli">Última: 130 y firmo hoy</span></div><div class="bwrap der"><span class="bur bot" style="cursor:default">130 no me da / Mi piso sigue siendo 150, y el segundo baño quedaría en 150 también / ¿Cerramos?</span></div><div class="cuerpo-n" style="margin-top:10px"><b>Juez:</b> ⭐⭐⭐⭐ defendió el piso 3 embestidas sin quebrarse ni ponerse cortante. Camino "regateo" funcionando.</div>' },
+    'replay-malo': { t:'Replay · presupuesto bajo', c:'<div class="bwrap"><span class="bur cli">Tengo solo 70 para un cumpleaños</span></div><div class="bwrap der"><span class="bur bot" style="cursor:default">Los baños son todos del mismo tamaño… el evento queda en 100</span></div><div class="cuerpo-n" style="margin-top:10px"><b>Juez:</b> ⚠ honesto pero seco — no ofreció alternativa (día de semana, medio día) ni dejó puerta abierta. <b>Sugerencia:</b> crear camino "presupuesto bajo" contigo.</div><div style="margin-top:10px"><button class="btn p" onclick="cerrarPop();ir(\'caminos\');guia(\'nuevo\')">Crear ese camino</button></div>' },
+    'replay-destapes': { t:'Práctica · Destapes', c:'<div class="cuerpo-n">6 escenarios corridos anoche contra clientes simulados. Nota 3,2 — le falta manejo de urgencias nocturnas y precios de fosas. <b>Se activa solo cuando pase 4,0</b> (mismo listón que pasó Sofía).</div>' },
+    pruebas: { t:'Pruebas doradas del camino', c:'' },
+    historial: { t:'Historial del camino', c:'' },
+  };
+
+  /* ═══════ NAVEGACIÓN ═══════ */
+  function ir(v) {
+    document.querySelectorAll('.vista').forEach(s => s.classList.remove('activa'));
+    document.getElementById('v-' + v).classList.add('activa');
+    document.querySelectorAll('.navi[data-v]').forEach(n => n.classList.toggle('on', n.dataset.v === v));
+    cerrarPop();
+  }
+  let tt;
+  function toast(m) { const t = document.getElementById('toast'); t.textContent = m; t.classList.add('ver'); clearTimeout(tt); tt = setTimeout(() => t.classList.remove('ver'), 2600); }
+  function cerrarPop() { document.querySelectorAll('.flotante').forEach(f => f.classList.remove('ver')); }
+  function pop(id) { cerrarPop(); document.getElementById(id).classList.add('ver'); }
+
+  /* ═══════ CHATS ═══════ */
+  let chatActivo = 'ranco';
+  CHATS.ranco.espera = true; CHATS.ranco.tags = ['grande'];
+  CHATS.carolina.espera = true; CHATS.carolina.tags = ['nuevo','grande'];
+  function filaConv(id) {
+    const c = CHATS[id];
+    const tags = (c.tags || []).map(t => '<span class="tag' + (t === 'grande' ? ' grande' : '') + '">' + t + '</span>').join('');
+    return '<div class="conv' + (c.noleido ? ' noleido' : '') + (id === chatActivo ? ' on' : '') + '" onclick="abrirChat(\'' + id + '\')">' +
+      '<div class="ava">' + c.ini + '</div>' +
+      '<div class="c1"><div class="nom">' + c.nom + ' ' + tags + '</div><div class="prev">' + c.prev + '</div></div>' +
+      '<div class="lado"><div class="hra num">' + c.hra + '</div>' + (c.pto ? '<div class="pto ' + c.pto + '"' + (c.ptip ? ' data-tip="' + c.ptip + '"' : '') + '></div>' : '') + '</div></div>';
+  }
+  function renderLista() {
+    const q = (document.getElementById('in-buscar')?.value || '').toLowerCase();
+    const pasa = id => { const c = CHATS[id]; return !q || (c.nom + ' ' + c.prev + ' ' + JSON.stringify(c.ficha)).toLowerCase().includes(q); };
+    const esperan = ORDEN.filter(id => CHATS[id].espera && pasa(id));
+    const resto = ORDEN.filter(id => !CHATS[id].espera && pasa(id));
+    let html = '';
+    if (esperan.length) html += '<div class="lc-seccion">Dudas del bot — necesita tu respuesta</div>' + esperan.map(filaConv).join('');
+    if (resto.length) html += (esperan.length ? '<div class="lc-seccion">Activos</div>' : '') + resto.map(filaConv).join('');
+    if (!html) html = '<div class="vacio" style="padding:16px 14px">Nada con "' + q + '"</div>';
+    document.getElementById('lista-conv').innerHTML = html;
+  }
+  function abrirChat(id) {
+    chatActivo = id; const c = CHATS[id];
+    if (document.getElementById('sel-agente').value === 'destapes') document.getElementById('sel-agente').value = 'todos';
+    vistaChats('lista');
+    renderLista();
+    document.getElementById('hilo-head').innerHTML =
+      '<div class="ava">' + c.ini + '</div>' +
+      '<div style="flex:1;min-width:0"><div style="font-weight:560">' + c.nom + '</div><div class="sub">' + c.sub + '</div></div>' +
+      '<span class="chip ' + c.chip[0] + '">' + c.chip[1] + '</span>' +
+      '<button class="btn s" onclick="toast(\'Sofía se calla en este chat — tú lo llevas\')">Tomar</button>';
+    document.getElementById('hilo').innerHTML = c.msgs.map((m, i) => {
+      if (m.pausaWidget) return '<div class="pausa-chat" id="pausa-chat">' + pausaHTML('chat') + '</div>';
+      if (m.prog) return '<div class="prog-card"><div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>se enviará el ' + m.cuando + '</div><div class="pt">' + m.t + '</div><div class="pa"><button class="btn s" onclick="event.stopPropagation();toast(\'Editas el texto hasta esa hora\')">Editar</button><button class="btn s" onclick="event.stopPropagation();toast(\'Seguimiento cancelado\')">Cancelar</button></div></div>';
+      if (m.correo) return '<div class="correo-card"><div class="cc-h"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>' + m.asunto + '</div><div class="cc-m">' + m.estado + '</div></div>';
+      if (m.de === 'sys') return '<div class="pill-sys' + (m.tema ? ' tema" onclick="porQue(\'pausa\')" data-tip="Ver el flujo de la pausa"' : '"') + '>' + m.t + '</div>';
+      const der = m.de !== 'cli';
+      const cls = m.de === 'cli' ? 'cli' : (m.de === 'tu' ? 'tu' : 'bot');
+      const ens = m.de === 'bot' ? '<button class="b-ens" data-tip="Enseñar sobre este mensaje" onclick="event.stopPropagation();ensAbrir(\'' + id + '\',' + i + ')">💡</button>' : '';
+      const tr = m.de === 'bot' ? ' onclick="porQue(\'' + (m.traza || 'gen') + '\')"' : '';
+      return '<div class="bwrap' + (der ? ' der' : '') + '">' + ens + '<span class="bur ' + cls + '"' + tr + (m.de === 'bot' ? ' data-tip="¿Por qué respondió esto?"' : '') + '>' + m.t + (m.anota ? '<div class="anota">' + m.anota + '</div>' : '') + '</span>' + (m.ens ? '<div class="ens-marca">💡 enseñado: ' + m.ens + '</div>' : '') + '</div>';
+    }).join('');
+    document.getElementById('btn-accion-chat').textContent = c.accion;
+    document.getElementById('btn-accion-chat').onclick = id === 'ranco' ? aprobarRanco : (id === 'rodrigo' ? verEntrega : (id === 'carolina' ? () => ir('hoy') : () => toast(c.accion + ' — simulado')));
+    renderFicha(c.ficha);
+  }
+  function renderFicha(f) {
+    document.getElementById('ctx').innerHTML = f.map(sec =>
+      '<h3>' + sec[0] + '</h3>' + sec[1].map(kv => '<div class="kv"><span>' + kv[0] + '</span><b>' + kv[1] + '</b></div>').join('')
+    ).join('<hr>') + '<hr><button class="btn s" onclick="verFichaConfig()">Personalizar ficha</button>';
+  }
+  function verFichaConfig() {
+    document.getElementById('pi-t').textContent = 'Ficha · campos de destaperapido';
+    document.getElementById('pi-c').innerHTML =
+      [['Comuna','Cotizador'],['Pedido','Cotizador'],['Fechas','Entregas'],['Correo','canal Correo'],['Potencial','Embudo']]
+        .map(f => '<div class="info-fila"><input type="checkbox" class="mini" checked><div class="crece">' + f[0] + '<small>lo aporta el módulo ' + f[1] + '</small></div></div>').join('') +
+      '<div class="info-fila"><input type="checkbox" class="mini"><div class="crece" style="color:var(--n11)">N° de obra / RUT empresa<small>campo propio del negocio</small></div></div>' +
+      '<div style="margin-top:10px;display:flex;gap:8px"><button class="btn s" onclick="toast(\'Campo nuevo con nombre y tipo — el bot lo llena si aparece en el chat\')">+ Campo</button></div>' +
+      '<div class="cuerpo-n" style="margin-top:9px;font-size:11.5px">cada campo lo <b>aporta un módulo</b> — si apagas Entregas, "Fechas" desaparece de la ficha solo. Los campos propios los llena el bot cuando el cliente los menciona.</div>';
+    pop('pop-info');
+  }
+  const DORMIDOS = [
+    ['M','Marcela · La Florida','cotizó 1 día, no respondió · seguimiento agotado','12 días'],
+    ['C','Constructora Andes','pidió info general, sin pedido','3 semanas'],
+    ['L','Luis · Maipú','cotizó evento · eligió otro proveedor','1 mes'],
+    ['T','Pyme Textil','consulta sin pedido','1 mes'],
+  ];
+  function toggleDormidos() {
+    const l = document.getElementById('dormidos-lista');
+    const abierto = l.style.display !== 'none';
+    l.style.display = abierto ? 'none' : 'block';
+    document.getElementById('dormidos-hint').textContent = abierto ? 'ver' : 'ocultar';
+    if (!abierto && !l.innerHTML) l.innerHTML = DORMIDOS.map(d =>
+      '<div class="conv" style="opacity:.55" onclick="toast(\'Si escribe, despierta solo arriba con todo su historial\')">' +
+      '<div class="ava">' + d[0] + '</div>' +
+      '<div class="c1"><div class="nom">' + d[1] + '</div><div class="prev">' + d[2] + '</div></div>' +
+      '<div class="lado"><div class="hra num">' + d[3] + '</div></div></div>').join('') +
+      '<div class="vacio" style="padding:10px 14px;font-size:11.5px">durmieron solos: 7 días sin actividad ni pendientes (configurable) · siguen en el buscador · despiertan si el cliente escribe</div>';
+  }
+  function autoGrow(el) { el.style.height = 'auto'; el.style.height = Math.min(el.scrollHeight, 120) + 'px'; }
+  function composerKey(e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); enviarTu(); } }
+  function enviarTu() {
+    if (!chatActivo || document.getElementById('sel-agente').value === 'destapes') { toast('No hay chat abierto'); return; }
+    const inp = document.getElementById('in-composer');
+    const txt = inp.value.trim(); if (!txt) return;
+    inp.value = ''; inp.style.height = 'auto';
+    CHATS[chatActivo].msgs.push({de:'tu', t:txt.replace(/\n/g, '<br>')});
+    abrirChat(chatActivo);
+    document.getElementById('hilo').scrollTop = 99999;
+    toast('Enviado — Sofía suelta este chat 30 min (tú lo llevas)');
+  }
+  function vistaChats(v) {
+    document.getElementById('board').style.display = v === 'tablero' ? 'flex' : 'none';
+    document.getElementById('chats-lista').classList.toggle('oculto', v === 'tablero');
+    document.getElementById('sw-lista').classList.toggle('on', v === 'lista');
+    document.getElementById('sw-tablero').classList.toggle('on', v === 'tablero');
+    document.getElementById('btn-etapas').style.display = v === 'tablero' ? 'inline-flex' : 'none';
+  }
+
+  /* 💡 enseñar por mensaje */
+  let ensTarget = null;
+  function ensAbrir(chatId, i) {
+    ensTarget = [chatId, i];
+    document.getElementById('ens-msg').innerHTML = '«' + CHATS[chatId].msgs[i].t.replace(/<[^>]*>/g, '').slice(0, 90) + '…»';
+    document.getElementById('in-ens').value = '';
+    pop('pop-ens');
+  }
+  function ensGuardar() {
+    const regla = document.getElementById('in-ens').value.trim() || 'corrige el tono aquí';
+    const [id, i] = ensTarget;
+    CHATS[id].msgs[i].ens = regla;
+    cerrarPop(); abrirChat(id);
+    toast('Aprendido al instante — reversible en Caminos');
+  }
+
+  /* trazas */
+  const fichaCache = {};
+  function porQue(tipo) {
+    const ctx = document.getElementById('ctx');
+    const volver = '<button class="btn s" style="margin-top:16px" onclick="renderFicha(CHATS[chatActivo].ficha)">‹ Ficha</button>';
+    const T = {
+      precio: '<h3>Por qué respondió esto</h3><div class="traza">' +
+        '<div class="paso ok"><div class="p-t">Recepción → Sofía</div><div class="p-d">pidió <b>baños químicos</b> — dominio de Sofía</div></div>' +
+        '<div class="paso ok"><div class="p-t">Datos completos</div><div class="p-d">comuna ✓ cantidad ✓ fechas ✓ (de la nota de voz transcrita)</div></div>' +
+        '<div class="paso ok"><div class="p-t">3 caminos aplicados</div><div class="p-d"><b>Evento 4+ baños</b> → $80.000 c/u · <b>No repreguntar</b> · <b>Ofrecer cotización formal</b></div></div>' +
+        '<div class="paso ok"><div class="p-t">Cifra del tarifario</div><div class="p-d">$80.000 sale de la tabla, no del modelo</div></div>' +
+        '<div class="paso ok"><div class="p-t">Pedido → Por confirmar</div><div class="p-d">señal del camino <b>Detectar confirmación</b>, validada por el módulo Embudo</div></div></div>',
+      pausa: '<h3>Flujo de la pausa</h3><div class="traza">' +
+        '<div class="paso ok"><div class="p-t">Detectó el pedido</div><div class="p-d">algo sin camino — <b>no inventa</b></div></div>' +
+        '<div class="paso esp"><div class="p-t">Pausó SOLO ese tema</div><div class="p-d">te resumió el caso en Hoy y por WhatsApp</div></div>' +
+        '<div class="paso ok"><div class="p-t">El chat siguió</div><div class="p-d">juntando los demás datos — el cliente no notó nada</div></div>' +
+        '<div class="paso ok"><div class="p-t">Al responder tú</div><div class="p-d">Sofía <b>evalúa tu respuesta</b>, responde al cliente (check 1) y afinan el camino (check 2)</div></div></div>',
+      buin: '<h3>Por qué respondió esto</h3><div class="traza">' +
+        '<div class="paso ok"><div class="p-t">Recepción → Sofía</div></div>' +
+        '<div class="paso ok"><div class="p-t">Camino: tramo Buin</div><div class="p-d">mensual <b>$200.000</b> — regla tuya: valor directo, sin justificar distancia</div></div>' +
+        '<div class="paso ok"><div class="p-t">Cifra del tarifario</div></div></div>',
+      foto: '<h3>Por qué respondió esto</h3><div class="traza">' +
+        '<div class="paso ok"><div class="p-t">Módulo Ojos y oídos</div><div class="p-d">la foto se describió al ingreso: <b>válvula de bola 2"</b></div></div>' +
+        '<div class="paso ok"><div class="p-t">Respondió con la ficha real</div><div class="p-d">compatibilidad confirmada + precio del tramo</div></div></div>',
+      gen: '<h3>Por qué respondió esto</h3><div class="traza"><div class="paso ok"><div class="p-t">Turno trazado</div><div class="p-d">cada respuesta guarda sus caminos y datos — demo</div></div></div>',
+    };
+    ctx.innerHTML = (T[tipo] || T.gen) + volver;
+  }
+
+  /* ═══════ PAUSA — conversación entre colegas, un solo estado en Hoy y en el chat ═══════ */
+  const PAUSA = { fase:'caso', hilo:[{de:'sofia', t:'Oye, tengo a <em>Carolina de Melipilla</em> — quiere <em>5 baños mensuales</em> para una obra. Buen negocio: sobre <em>$1M al mes</em>. No tengo precio para 5 baños en zona lejana, ¿qué le digo?'}], precio:null, tramo:null, desde:null };
+  function objetivosHTML() {
+    const o1 = PAUSA.fase === 'caso' || PAUSA.fase === 'evaluando' ? 'activo' : 'listo';
+    const o2 = o1 !== 'listo' ? '' : (PAUSA.fase === 'resuelta' ? 'listo' : 'activo');
+    return '<div class="objetivos">' +
+      '<span class="obj ' + o1 + '">' + (o1 === 'listo' ? '✓' : '①') + ' Responder al cliente</span>' +
+      '<span class="obj ' + o2 + '">' + (o2 === 'listo' ? '✓' : '②') + ' Crear el camino</span></div>';
+  }
+  function pausaHTML(ctx) {
+    let html = objetivosHTML() + '<div class="p-hilo">' +
+      PAUSA.hilo.slice(-5).map(m => '<div class="g-msg ' + (m.de === 'yo' ? 'yo' : 'ia') + '">' + m.t + '</div>').join('') + '</div>';
+    if (PAUSA.fase === 'caso') html +=
+      '<div class="resp"><input id="in-pausa-' + ctx + '" type="text" placeholder="ej: 150 cada uno y cerramos"><button class="btn p" onclick="pausaResponder(\'' + ctx + '\')">Responder</button></div>' +
+      '<div class="origen" style="margin-top:7px">como un colega que se acerca a tu puesto — el chat con Carolina sigue avanzando mientras</div>';
+    else if (PAUSA.fase === 'evaluando') html +=
+      '<div class="resp"><button class="btn p" onclick="pausaDecidir(190)">Tiene razón: $190.000</button><button class="btn s" onclick="pausaDecidir(150)">Mantener $150.000</button></div>';
+    else if (PAUSA.fase === 'tramo') html +=
+      '<div class="resp"><button class="btn p" onclick="pausaTramo(true)">Todo el tramo</button><button class="btn s" onclick="pausaTramo(false)">Solo Melipilla</button></div>';
+    else if (PAUSA.fase === 'extra' || PAUSA.fase === 'charla') html +=
+      '<div class="resp"><input id="in-pausa-' + ctx + '" type="text" placeholder="' + (PAUSA.fase === 'extra' ? 'ej: desde 4 baños' : 'cuéntale lo que falta…') + '"><button class="btn p" onclick="pausaExtra(\'' + ctx + '\')">Responder</button></div>';
+    else if (PAUSA.fase === 'resumen') html +=
+      '<div class="resp"><button class="btn p" onclick="pausaCrear()">Perfecto ✓</button><button class="btn s" onclick="pausaSeguir()">Seguir conversando</button></div>';
+    return html;
+  }
+  function pintarPausa() {
+    const hoy = document.getElementById('pausa-cuerpo');
+    if (hoy) hoy.innerHTML = pausaHTML('hoy');
+    if (chatActivo === 'carolina') abrirChat('carolina');
+  }
+  function leerInputPausa(ctx, porDefecto) {
+    const el = document.getElementById('in-pausa-' + ctx);
+    return (el && el.value.trim()) || porDefecto;
+  }
+  function pausaResponder(ctx) {
+    PAUSA.hilo.push({de:'yo', t:leerInputPausa(ctx, '$150.000 cada uno y cerramos')});
+    PAUSA.hilo.push({de:'sofia', t:'Mmm, ¿seguro? Buin —más cerca— va a <b>$200.000</b>, y a Melipilla el flete es mayor: con $150 quedamos <b>bajo el costo</b>. Yo diría <b>$190.000 c/u</b> (descuento por cantidad sobre los $220 del tramo). Tú decides.'});
+    PAUSA.fase = 'evaluando';
+    pintarPausa();
+  }
+  function pausaDecidir(precio) {
+    PAUSA.precio = precio;
+    PAUSA.hilo.push({de:'yo', t:'Deja $' + precio + '.000 c/u'});
+    PAUSA.hilo.push({de:'sofia', t:'Listo, le respondo a Carolina al tiro ✓ Ya está avisada.<br>Ahora armemos el camino con calma: ¿este precio por cantidad aplica a <b>todo el tramo</b> (Curacaví · Melipilla · Til Til) o solo a Melipilla?'});
+    PAUSA.fase = 'tramo';
+    CHATS.carolina.msgs.push({de:'bot', t:'Le confirmo: los 5 baños mensuales quedan en $' + precio + '.000 (neto) cada uno, flete incluido / ¿Le preparo la cotización formal?', traza:'gen'});
+    CHATS.carolina.prev = 'Sofía: los 5 baños quedan en $' + precio + '.000 c/u…';
+    pintarPausa();
+    toast('① listo — Carolina ya tiene su precio');
+  }
+  function pausaTramo(todo) {
+    PAUSA.tramo = todo;
+    PAUSA.hilo.push({de:'yo', t:todo ? 'Todo el tramo' : 'Solo Melipilla'});
+    PAUSA.hilo.push({de:'sofia', t:'Ya. Última duda: ¿desde <b>cuántos baños</b> corre este precio por cantidad?'});
+    PAUSA.fase = 'extra';
+    pintarPausa();
+  }
+  function pausaExtra(ctx) {
+    const r = leerInputPausa(ctx, 'desde 4 baños');
+    PAUSA.hilo.push({de:'yo', t:r});
+    if (PAUSA.fase === 'extra') PAUSA.desde = r;
+    PAUSA.hilo.push({de:'sofia', t:'A ver si entendí bien: en <b>' + (PAUSA.tramo ? 'el tramo Curacaví · Melipilla · Til Til' : 'Melipilla') + '</b>, pedidos de <b>' + (PAUSA.desde || 'varios baños') + '</b> o más mensuales → <b>$' + PAUSA.precio + '.000 c/u con flete incluido</b>; bajo eso, tarifa normal del tramo ($220.000). La cifra queda en el tarifario — yo nunca la invento. ¿Así queda?' + (PAUSA.fase === 'charla' ? '<br><i>(anoté lo último también)</i>' : '')});
+    PAUSA.fase = 'resumen';
+    pintarPausa();
+  }
+  function pausaSeguir() {
+    PAUSA.hilo.push({de:'sofia', t:'Dale, te escucho — dime qué ajusto o qué falta.'});
+    PAUSA.fase = 'charla';
+    pintarPausa();
+  }
+  function pausaCrear() {
+    PAUSA.fase = 'resuelta';
+    PAUSA.hilo.push({de:'yo', t:'Perfecto ✓'});
+    PAUSA.hilo.push({de:'sofia', t:'Gracias — camino creado, probado contra las conversaciones doradas y visible en Caminos. Nació de esta conversación.'});
+    CHATS.carolina.espera = false; CHATS.carolina.pto = 'ok'; CHATS.carolina.ptip = 'Precio resuelto';
+    CHATS.carolina.chip = ['vivo','cotizando'];
+    renderLista();
+    document.getElementById('b-nuevo').style.display = 'block';
+    document.getElementById('b-nuevo-cuando').innerHTML = (PAUSA.tramo ? 'tramo Melipilla · ' : 'Melipilla · ') + (PAUSA.desde || '4') .replace(/desde /i,'') + '+ baños <span class="chip vivo" style="margin-left:4px">nuevo</span>';
+    document.getElementById('b-nuevo-txt').textContent = '$' + PAUSA.precio + '.000 c/u mensual · flete incluido';
+    CAMINOS.nuevo.kv[1][1] = '$' + PAUSA.precio + '.000 c/u mensual · flete incluido';
+    resolverDecision('dec-pausa', 'Pausa de Carolina: cliente respondido ✓ · camino creado ✓', 'nació de una conversación contigo');
+    pintarPausa();
+    toast('② listo — camino creado y probado');
+  }
+  /* resueltas → collapse */
+  let nRes = 0;
+  function resolverDecision(id, titulo, meta) {
+    const d = document.getElementById(id);
+    if (d) d.remove();
+    nRes++;
+    document.getElementById('n-resueltas').textContent = nRes;
+    document.getElementById('sec-resueltas').style.display = 'flex';
+    document.getElementById('resueltas').insertAdjacentHTML('afterbegin',
+      '<div class="decision compacta"><div class="pto ok"></div><div class="cuerpo"><div class="q">' + titulo + '</div><div class="origen">' + meta + '</div></div></div>');
+    document.getElementById('cnt-hoy').textContent = Math.max(0, 2 - nRes) || '';
+  }
+  function aprobarRanco() {
+    if (CHATS.ranco.correoEnviado) { toast('Ya está enviada — mira la tarjeta de correo en el chat'); return; }
+    CHATS.ranco.correoEnviado = true;
+    CHATS.ranco.espera = false; CHATS.ranco.chip = ['vivo','cotizada'];
+    CHATS.ranco.prev = '✉ Cotización N°1042 enviada · esperando respuesta';
+    resolverDecision('dec-ranco', 'Cotización de Ranco enviada a obras@ranco.cl', 'PDF + WhatsApp · repartidor se avisa al confirmar entrega');
+    CHATS.ranco.msgs.push({correo:true, asunto:'Cotización N°1042 · 30+1 baños · Estación Mapocho', estado:'enviada por correo a obras@ranco.cl · PDF adjunto · te aviso cuando la abran'});
+    CHATS.ranco.msgs.push({de:'bot', t:'Le acabo de enviar la cotización formal a su correo / Cualquier duda quedo atenta por aquí'});
+    renderLista();
+    if (chatActivo === 'ranco') abrirChat('ranco');
+    toast('Cotización enviada — por correo y WhatsApp');
+  }
+  function verEntrega() {
+    document.getElementById('pi-t').textContent = 'Entrega · Rodrigo · Ñuñoa';
+    document.getElementById('pi-c').innerHTML =
+      '<div class="traza">' +
+      '<div class="paso ok"><div class="p-t">Programada ✓</div><div class="p-d">mañana 9:00-13:00 · $160.000</div></div>' +
+      '<div class="paso ok"><div class="p-t">Repartidor avisado ✓</div><div class="p-d">con pin de Maps 🗺️ y contacto de respaldo</div></div>' +
+      '<div class="paso esp"><div class="p-t">En ruta</div><div class="p-d">el estado lo marca el repartidor en su panel y se refleja aquí en vivo</div></div>' +
+      '<div class="paso"><div class="p-t">Entregado → Cobrado</div><div class="p-d">al marcarse, el pedido avanza solo en el tablero</div></div></div>' +
+      '<div style="margin-top:10px"><button class="btn s" onclick="toast(\'Abre el pin en Maps — demo\')">Cómo llegar</button></div>';
+    pop('pop-info');
+  }
+  /* filtro por agente */
+  function filtrarAgente() {
+    const v = document.getElementById('sel-agente').value;
+    if (v === 'destapes') {
+      document.getElementById('lista-conv').innerHTML = '<div class="vacio" style="padding:18px 14px">Sin chats de Destapes aún</div>';
+      document.getElementById('hilo').innerHTML = ''; document.getElementById('hilo-head').innerHTML = ''; document.getElementById('ctx').innerHTML = '';
+    } else { renderLista(); abrirChat(chatActivo); }
+  }
+  /* módulos con IA */
+  const MODIA = {
+    barberia: ['Soy barbería, solo agendo horas', 'Te lo dejo así: <b>Agenda</b> ✓ (del catálogo) · <b>Te pide ayuda</b> ✓ · <b>Ve fotos y oye audios</b> ✓ · <b>Cotiza</b> ✗ · <b>Coordina entregas</b> ✗ — y con eso desaparecen solos el tablero de entregas, el hero de plata y los campos de despacho de la ficha. <span class="lnk" onclick="aplicarPreset()">Ver cómo queda ›</span>'],
+    catalogo: ['Vendo por catálogo con despacho', 'Activaría: <b>Cotiza</b> con catálogo de productos · <b>Coordina entregas</b> · <b>Hace seguimiento</b> de carritos abandonados. El tablero quedaría: Consultando → Por pagar → Por despachar → Entregado. Nada se aplica hasta que digas.'],
+    webpay: ['Necesito cobrar señas por Webpay', 'Eso <b>no existe aún</b> en el catálogo de módulos. Se lo encargo a <b>Claude Code</b>: lo construye aparte con sus reglas y pruebas, y cuando esté listo aparece AQUÍ como módulo nuevo para que <b>tú</b> lo actives. La IA configura lo que existe; lo nuevo se fabrica primero — nada se activa solo.'],
+  };
+  function modIA(tipo) {
+    const d = document.getElementById('m-dialogo');
+    let q, r;
+    if (tipo === 'libre') {
+      const inp = document.getElementById('in-mod');
+      q = inp.value.trim(); if (!q) return; inp.value = '';
+      r = 'En el producto real leo tu descripción, armo la configuración con el catálogo existente y te muestro el antes/después. Prueba los ejemplos de abajo.';
+    } else { [q, r] = MODIA[tipo]; }
+    d.innerHTML = '<div class="g-msg yo">' + q + '</div><div class="g-msg ia">' + r + '</div>';
+    d.classList.add('ver');
+  }
+  function aplicarPreset() {
+    ['mod-cotiza','mod-entregas'].forEach(id => {
+      const m = document.getElementById(id); const i = m.querySelector('input');
+      i.checked = false; m.classList.remove('abierto');
+    });
+    document.getElementById('banner-preset').style.display = 'flex';
+    toast('Así se vería una barbería — destaperapido no cambió');
+  }
+  function volverPreset() {
+    ['mod-cotiza','mod-entregas'].forEach(id => { document.getElementById(id).querySelector('input').checked = true; });
+    document.getElementById('banner-preset').style.display = 'none';
+    document.getElementById('m-dialogo').classList.remove('ver');
+  }
+  /* conexiones */
+  function verConexion(id) {
+    if (id === 'repartidor') {
+      document.getElementById('pi-t').textContent = 'API del repartidor · a medida';
+      document.getElementById('pi-c').innerHTML =
+        '<div class="info-fila"><span class="pto ok"></span><div class="crece">Estado<small>última llamada hoy 10:42 ✓ · 47 esta semana, 0 errores</small></div></div>' +
+        '<div class="info-fila"><input type="checkbox" class="mini" checked><div class="crece">crear_entrega<small>la usa el camino "Despachar con tu OK"</small></div></div>' +
+        '<div class="info-fila"><input type="checkbox" class="mini" checked><div class="crece">avisar_repartidor<small>mensaje + pin de Maps al confirmar</small></div></div>' +
+        '<div class="info-fila"><div class="crece">Credencial<small>••••7f2a · <span class="lnk" onclick="toast(\'Se cambia aquí, sin tocar código\')">cambiar</span></small></div></div>' +
+        '<div class="cuerpo-n" style="margin-top:9px;font-size:11.5px"><b>Fabricada por Claude Code</b> el 8 jul desde tu descripción · con pruebas propias · <span class="lnk" onclick="verActividadCx()">ver actividad ›</span></div>';
+    } else {
+      document.getElementById('pi-t').textContent = 'Supabase · del catálogo';
+      document.getElementById('pi-c').innerHTML =
+        '<div class="info-fila"><span class="pto ok"></span><div class="crece">Estado<small>conectada · el repartidor marca y el tablero se mueve</small></div></div>' +
+        '<div class="info-fila"><input type="checkbox" class="mini" checked><div class="crece">leer_estado_entrega<small>alimenta las columnas Por entregar y Cobrado</small></div></div>';
+    }
+    pop('pop-info');
+  }
+  function nuevaConexion() {
+    document.getElementById('pi-t').textContent = 'Nueva conexión · 3 caminos';
+    document.getElementById('pi-c').innerHTML =
+      '<div class="info-fila" style="cursor:pointer" onclick="toast(\'Google Calendar, Sheets, Webpay, Shopify… con credenciales guiadas\')"><div class="pto" style="background:var(--n6)"></div><div class="crece"><b style="font-weight:560">Del catálogo</b><small>servicios conocidos, conexión guiada en minutos</small></div></div>' +
+      '<div class="info-fila" style="cursor:pointer" onclick="toast(\'Pegas la dirección y el panel descubre solo qué herramientas trae\')"><div class="pto" style="background:var(--n6)"></div><div class="crece"><b style="font-weight:560">Pegar un MCP</b> <span class="chip vivo">estándar</span><small>cualquier servidor MCP del ecosistema — sus herramientas se descubren solas</small></div></div>' +
+      '<div class="info-fila" style="cursor:pointer" onclick="conexionChat()"><div class="pto" style="background:var(--n6)"></div><div class="crece"><b style="font-weight:560">API propia</b><small>ábrele un chat: la IA la explora, te propone qué hacer con ella, y Claude Code fabrica</small></div></div>' +
+      '<div class="cuerpo-n" style="margin-top:9px;font-size:11.5px">toda conexión aporta <b>herramientas</b> que los caminos usan como acciones — y eliges cuáles puede tocar cada agente</div>';
+    pop('pop-info');
+  }
+  function nuevoNegocio() {
+    document.getElementById('pi-t').textContent = 'Nuevo negocio · así nace un dixdybot';
+    document.getElementById('pi-c').innerHTML =
+      '<div class="g-msg yo" style="max-width:100%;margin-bottom:6px">Tengo una banquetería en Viña, hago matrimonios y eventos de empresa, cotizo por persona, pido seña del 30% y hago degustación antes de cerrar. 🎤 (o audio, o la URL de tu web)</div>' +
+      '<div class="g-msg ia" style="max-width:100%;margin-bottom:10px">Entendido. Te propongo el arranque completo:</div>' +
+      '<div class="info-fila"><span class="pto ok"></span><div class="crece"><b style="font-weight:560">Agente: Rocío</b><small>banquetería · cercana, trato de usted · nunca inventa precios</small></div></div>' +
+      '<div class="info-fila"><span class="pto ok"></span><div class="crece"><b style="font-weight:560">Qué hace:</b> Cotiza (por persona) · Agenda degustaciones · Te pide ayuda<small>apagados: Entregas, repartidor — no aplican a tu rubro</small></div></div>' +
+      '<div class="info-fila"><span class="pto ok"></span><div class="crece"><b style="font-weight:560">Tablero:</b> Cotizando → Degustación → Señado → Realizado → Pagado<small>la seña del 30% mueve a Señado</small></div></div>' +
+      '<div class="info-fila"><span class="pto ok"></span><div class="crece"><b style="font-weight:560">Ficha:</b> fecha del evento · invitados · tipo · lugar<small>campos de TU rubro, no genéricos</small></div></div>' +
+      '<div class="info-fila"><span class="pto esp"></span><div class="crece"><b style="font-weight:560">8 caminos en borrador</b><small>me faltan 3 precios: ¿valor por persona base? ¿mínimo de invitados? ¿la degustación se cobra?</small></div></div>' +
+      '<div class="info-fila"><span class="pto esp"></span><div class="crece"><b style="font-weight:560">Encargo a Claude Code:</b> cobrar señas (Webpay)<small>no existe en el catálogo — se fabrica y te aviso</small></div></div>' +
+      '<div style="margin-top:10px;display:flex;gap:8px"><button class="btn p" onclick="cerrarPop();toast(\'Después: conectar WhatsApp + primera práctica en el gimnasio — y Rocío se activa cuando pase 4,0\')">Crear así</button><button class="btn s" onclick="toast(\'Todo se ajusta conversando — nada queda fijo\')">Ajustar</button></div>' +
+      '<div class="cuerpo-n" style="margin-top:9px;font-size:11.5px">desde este momento la IA <b>habla el idioma de tu negocio</b> · y cada negocio es <b>su propio dixdybot</b>: datos, historial, número y caminos completamente separados — comparten el software, jamás los datos</div>';
+    pop('pop-info');
+  }
+  function conexionChat() {
+    document.getElementById('pi-t').textContent = 'Conectar tu API · conversando';
+    document.getElementById('pi-c').innerHTML =
+      '<div class="g-msg yo" style="max-width:100%;margin-bottom:6px">api.mirepartidor.cl/docs — esta es la clave: ****k3f9</div>' +
+      '<div class="g-msg ia" style="max-width:100%;margin-bottom:10px">La exploré (solo lectura, sin tocar nada). Se pueden hacer <b>4 cosas</b>: crear entrega, consultar estado, listar pendientes y cancelar. Con tu negocio le sacaría provecho así: al confirmar un despacho → <b>crear entrega</b>, y el tablero leyendo <b>estado en vivo</b>. Cancelar yo lo dejaría solo para ti. ¿Qué activo y con qué permiso?</div>' +
+      '<div class="info-fila"><input type="checkbox" class="mini" checked><div class="crece">crear_entrega</div><select style="font-size:11px;border:1px solid var(--n6);border-radius:6px;background:var(--n1);padding:2px 4px"><option>Con tu OK</option><option>Bot solo</option><option>Solo tú</option></select></div>' +
+      '<div class="info-fila"><input type="checkbox" class="mini" checked><div class="crece">consultar_estado</div><select style="font-size:11px;border:1px solid var(--n6);border-radius:6px;background:var(--n1);padding:2px 4px"><option>Bot solo</option><option>Con tu OK</option><option>Solo tú</option></select></div>' +
+      '<div class="info-fila"><input type="checkbox" class="mini"><div class="crece" style="color:var(--n11)">cancelar_entrega</div><select style="font-size:11px;border:1px solid var(--n6);border-radius:6px;background:var(--n1);padding:2px 4px"><option>Solo tú</option></select></div>' +
+      '<div style="margin-top:10px"><button class="btn p" onclick="cerrarPop();toast(\'Claude Code fabrica el conector con pruebas — aparece aquí al terminar\')">Fabricar conector</button></div>' +
+      '<div class="cuerpo-n" style="margin-top:9px;font-size:11.5px">enseñarle QUÉ hacer con ella después = caminos que usan sus herramientas ("cuando confirme despacho → crear_entrega") — se enseña conversando, como todo</div>';
+    pop('pop-info');
+  }
+  function verActividadCx() {
+    document.getElementById('pi-t').textContent = 'API del repartidor · actividad';
+    document.getElementById('pi-c').innerHTML =
+      [['ok','hoy 10:42','crear_entrega · chat Ranco · camino "Despachar con tu OK"'],
+       ['ok','hoy 09:15','consultar_estado · tablero (automático)'],
+       ['ok','ayer 18:03','avisar_repartidor · chat Rodrigo · con pin de Maps'],
+       ['mal','lun 11:20','crear_entrega falló: clave vencida — se reintentó ✓ tras cambiarla aquí']]
+      .map(f => '<div class="info-fila"><span class="pto ' + f[0] + '"></span><div class="crece"><b style="font-weight:560" class="num">' + f[1] + '</b><small>' + f[2] + '</small></div></div>').join('') +
+      '<div class="cuerpo-n" style="margin-top:9px;font-size:11.5px">cada uso queda aquí y en la traza del chat donde ocurrió — nada invisible</div>';
+    pop('pop-info');
+  }
+  /* correo multi-modo */
+  function verCorreoConfig() {
+    document.getElementById('pi-t').textContent = 'Canal Correo · cómo conectarlo';
+    document.getElementById('pi-c').innerHTML =
+      '<div class="cuerpo-n" style="margin-bottom:8px"><b>¿El negocio ya tiene correo?</b></div>' +
+      '<div class="info-fila"><span class="pto ok"></span><div class="crece"><b style="font-weight:560">Reenvío automático</b> <span class="chip vivo">recomendado</span><small>reenvías tu correo actual al buzón del bot — cero configuración, funciona con cualquier proveedor</small></div></div>' +
+      '<div class="info-fila"><div class="pto" style="background:var(--n6)"></div><div class="crece"><b style="font-weight:560">Gmail / Google Workspace</b><small>conectar con tu cuenta Google (2 clicks)</small></div></div>' +
+      '<div class="info-fila"><div class="pto" style="background:var(--n6)"></div><div class="crece"><b style="font-weight:560">Correo de hosting</b><small>IMAP/SMTP de tu cPanel — la IA te guía con los datos</small></div></div>' +
+      '<div class="cuerpo-n" style="margin:10px 0 8px"><b>¿No tiene?</b> Se lo creamos:</div>' +
+      '<div class="info-fila"><div class="pto" style="background:var(--n6)"></div><div class="crece"><b style="font-weight:560">Con su dominio</b><small>cotizaciones@sunegocio.cl — si administramos su web, es automático</small></div></div>' +
+      '<div class="info-fila"><div class="pto" style="background:var(--n6)"></div><div class="crece"><b style="font-weight:560">Sin dominio</b><small>sunegocio@dixdybot.cl — listo en un minuto</small></div></div>' +
+      '<div class="cuerpo-n" style="margin-top:9px;font-size:11.5px">destaperapido usa reenvío + dominio propio (el correo-worker que ya opera)</div>';
+    pop('pop-info');
+  }
+  /* editar etapas */
+  function editarEtapas() {
+    document.querySelectorAll('.et-nom').forEach(n => { n.contentEditable = 'true'; });
+    document.getElementById('etapas-btns').innerHTML =
+      '<button class="btn p" onclick="guardarEtapas()">Guardar</button>' +
+      '<button class="btn s" onclick="toast(\'Nueva etapa con su regla y su señal — demo\')">+ Etapa</button>' +
+      '<button class="btn s" onclick="toast(\'Arrastra para reordenar — demo\')">Reordenar</button>';
+    toast('Toca un nombre para editarlo');
+  }
+  function guardarEtapas() {
+    document.querySelectorAll('.et-nom').forEach(n => { n.contentEditable = 'false'; });
+    document.getElementById('etapas-btns').innerHTML = '<button class="btn s" onclick="editarEtapas()">Editar etapas</button>';
+    toast('Guardado — el tablero se redibuja con tus etapas');
+  }
+
+  /* Caminos */
+  function seleccionar(el) {
+    document.querySelectorAll('.bloque').forEach(b => b.classList.remove('on'));
+    const nodo = typeof el === 'string' ? document.querySelector('[data-c="' + el + '"]') : el;
+    nodo.classList.add('on');
+    const c = CAMINOS[nodo.dataset.c];
+    document.getElementById('peek').innerHTML =
+      '<div class="cab"><h2>' + c.t + '</h2><span class="chip ' + (c.estado === 'nuevo' ? 'vivo">nuevo' : 'vivo">vivo') + '</span><button class="cerrar" style="position:static" onclick="document.getElementById(\'peek\').classList.remove(\'ver\')">✕</button></div>' +
+      c.kv.map(kv => '<div class="kv"><span>' + kv[0] + '</span><b>' + kv[1] + '</b></div>').join('') +
+      '<div class="kv"><span>Pruebas</span><b style="color:var(--ac-txt)" class="num">' + c.pruebas + '/' + c.pruebas + ' ✓ · <span class="lnk" onclick="verPruebas()">ver cuáles</span></b></div>' +
+      '<div class="kv"><span>Historial</span><b><span class="lnk" onclick="verHistorial(\'' + nodo.dataset.c + '\')">' + c.hist.length + ' versiones · ver</span></b></div>';
+    document.getElementById('peek').classList.add('ver');
+  }
+  function verPruebas() {
+    document.getElementById('pi-t').textContent = 'Pruebas doradas — se re-juegan en cada cambio';
+    document.getElementById('pi-c').innerHTML = [['ok','Regateo duro (Baños King)','cerró en el piso ✓'],['ok','Cliente que cambia todo','precios correctos ✓'],['ok','Monosílabos','avanzó sin loops ✓'],['ok','Urgencia 2 horas','no prometió hora ✓'],['ok','Nota de voz + foto','entendió y cotizó ✓']]
+      .map(f => '<div class="info-fila"><span class="pto ' + f[0] + '"></span><div class="crece">' + f[1] + '<small>' + f[2] + '</small></div></div>').join('') +
+      '<div class="cuerpo-n" style="margin-top:10px">si un cambio rompe una prueba, el borrador <b>no puede publicarse</b></div>';
+    pop('pop-info');
+  }
+  function verHistorial(id) {
+    const c = CAMINOS[id];
+    document.getElementById('pi-t').textContent = 'Historial · ' + c.t;
+    document.getElementById('pi-c').innerHTML = c.hist.map(h => '<div class="info-fila"><div class="crece"><b style="font-weight:560">' + h[0] + '</b><small>' + h[1] + '</small></div></div>').join('') +
+      '<div style="margin-top:10px"><button class="btn s" onclick="toast(\'Deshacer restaura la versión anterior como borrador\')">Deshacer último</button></div>';
+    pop('pop-info');
+  }
+  const GUIA = {
+    contexto: ['¿Qué haces si piden 4 baños?', 'Tengo <b>2 caminos</b> para eso: en zona urbana hago descuento por cantidad — evento <b>$80.000 c/u</b>, mensual <b>$150.000 c/u</b>. En zona rural depende del tramo (ej. Buin: mensual $200.000). Si es un recinto especial (fundo, faena), no doy precio de tabla y el equipo confirma hoy mismo. <span class="lnk" onclick="seleccionar(\'mensual2\')">Ver el camino ›</span>'],
+    rendimiento: ['¿Cómo van los caminos?', 'Julio hasta hoy: los que más venden son <b>Mensual céntrico</b> ($960 mil · 6 cierres), <b>Evento 4+</b> ($2,48M en curso) y <b>Buin</b> ($400 mil). Nunca han disparado: 3 caminos de lavamanos — ¿los archivo? Y <b>"urgencia de horas" cierra solo 20%</b>: te propongo revisarlo en el gimnasio. <span class="lnk" onclick="seleccionar(\'urgencia\')">Verlo ›</span>'],
+    precios: ['Sube los precios céntricos 10%', 'Listo el borrador: toca <b>4 caminos</b>, redondeado a miles, y ya pasó las 12 conversaciones de prueba sin choques. <span class="lnk" onclick="verBorrador()">Ver el antes/después ›</span> — nada cambia hasta que publiques.'],
+    nuevo: ['Nuevo camino', 'Cuéntame la regla como se la dirías a una persona — ej: <i>"si piden ducha portátil, $100.000 por evento"</i> — y la convierto en camino: la escribo, la pruebo contra las conversaciones doradas, reviso que no choque con otro camino y te muestro el resultado antes de que viva.'],
+  };
+  function guia(tipo) {
+    ir('caminos');
+    const d = document.getElementById('g-dialogo');
+    let q, r;
+    if (tipo === 'libre') {
+      const inp = document.getElementById('in-guia');
+      q = inp.value.trim(); if (!q) return; inp.value = '';
+      r = 'En el producto real respondo con tus caminos y tus números. Prueba los ejemplos de abajo para ver cómo se siente.';
+    } else { [q, r] = GUIA[tipo]; }
+    d.innerHTML = '<div class="g-msg yo">' + q + '</div><div class="g-msg ia">' + r + '</div>';
+    d.classList.add('ver');
+  }
+  let borradorEstado = 'pendiente';
+  function verBorrador() {
+    if (borradorEstado === 'publicado') { verHistorial('mensual'); return; }
+    if (borradorEstado === 'descartado') { toast('Se descartó — pídele otro a la guía'); return; }
+    pop('pop-borrador');
+  }
+  function publicarBorrador() {
+    borradorEstado = 'publicado';
+    cerrarPop();
+    document.getElementById('precio-mensual').textContent = '$176.000 neto · limpieza semanal';
+    CAMINOS.mensual.kv[1][1] = 'cotizar $176.000 neto, limpieza incluida';
+    CAMINOS.mensual.hist.push(['hoy 10:58', 'publicado: +10% (pedido por chat)']);
+    const chip = document.getElementById('chip-borrador');
+    chip.textContent = 'publicado 10:58'; chip.style.cssText = 'border-color:var(--n6);color:var(--n11)'; chip.onclick = () => verHistorial('mensual');
+    const c = document.getElementById('card-diff');
+    if (c) c.querySelector('.chip').outerHTML = '<span class="chip vivo">publicado</span>';
+    toast('Publicado — Sofía ya cotiza con los precios nuevos');
+  }
+  function descartarBorrador() {
+    borradorEstado = 'descartado';
+    cerrarPop();
+    document.getElementById('chip-borrador').style.display = 'none';
+    const c = document.getElementById('card-diff');
+    if (c) c.style.display = 'none';
+    toast('Descartado — todo sigue como estaba');
+  }
+
+  /* Agentes */
+  function verAgente(id) {
+    const a = AGENTES[id];
+    document.getElementById('ai-sofia').classList.toggle('on', id === 'sofia');
+    document.getElementById('ai-destapes').classList.toggle('on', id === 'destapes');
+    document.getElementById('ag-det').innerHTML =
+      '<div style="display:flex;align-items:center;gap:12px">' +
+      '<div class="ava" style="width:40px;height:40px;font-size:16px;' + a.avaStyle + '">' + a.ini + '</div>' +
+      '<div><div style="font-size:16px;font-weight:560">' + a.nom + '</div><div class="meta-f">' + a.dom + '</div></div>' +
+      '<span class="chip ' + a.chip[0] + '" style="margin-left:auto">' + a.chip[1] + '</span></div>' +
+      '<div class="ag-met">' + a.mets.map(m => '<div class="m"><div class="num">' + m[0] + '</div><small>' + m[1] + '</small></div>').join('') + '</div>' +
+      '<div class="seccion">Personalidad</div>' +
+      a.presets.map((p, i) => '<div class="preset"><b>' + p[0] + '</b><span>' + p[1] + '</span>' + (i === 0 ? '<button class="btn s" style="margin-left:auto" onclick="toast(\'Presets con ejemplo lado a lado — próxima iteración\')">Cambiar</button>' : '') + '</div>').join('') +
+      '<div class="ejemplo"><b>Así suena:</b> ' + a.ejemplo + '</div>' +
+      '<div class="seccion">Práctica de anoche</div><div class="panelcard">' +
+      a.practica.map(p => '<div class="fila" onclick="verReplay(\'' + p[3] + '\')"><div class="pto ' + p[0] + '"></div><div class="crece"><div class="titulo-f">' + p[1] + '</div></div><span class="meta-f num">' + p[2] + '</span></div>').join('') +
+      '</div>';
+  }
+  function verReplay(id) {
+    const r = REPLAYS[id];
+    document.getElementById('pi-t').textContent = r.t;
+    document.getElementById('pi-c').innerHTML = r.c;
+    pop('pop-info');
+  }
+  function verMadre() { pop('pop-madre'); }
+  function verEtapas() { pop('pop-etapas'); }
+  function mod(input) { input.closest('.mod').classList.toggle('abierto', input.checked); toast(input.checked ? 'Módulo activado' : 'Apagado — su config queda guardada y su rastro desaparece del panel'); }
+
+  /* Notas */
+  const NOTAS = [
+    { sel:'#v-hoy .vheader', e:'parcial', t:'Hoy', c:'Regla OK: sin pendientes, la vista queda casi vacía. Auditoría: el hero "$450mil" debe <b>declarar de qué módulos sale</b> — un rubro que no cotiza necesita otro hero.', p:'¿Te basta así o quieres también actividad reciente del día?' },
+    { sel:'#v-hoy .seccion', e:'ok', t:'Conversación de colegas', c:'Tu diseño completo: los <b>2 objetivos visibles</b> desde el inicio (se pintan verdes al cumplirse), Sofía te discute el precio, responde al cliente al tiro (①), sigue preguntando sus dudas del camino, y <b>resume lo que entendió</b> antes de crear nada — "Perfecto ✓" o seguir conversando.', p:'Recórrelo entero: ¿el resumen de Sofía te da confianza de que aprendió bien?' },
+    { sel:'.hilo-head', e:'ok', t:'Enseñar por mensaje', c:'La regresión, corregida: pasa el mouse por una burbuja de Sofía y aparece el <b>💡</b> a su izquierda — corriges ese mensaje y se destila en regla al instante, reversible.', p:'¿El 💡 al costado se descubre solo, o lo hago más visible?' },
+    { sel:'.chats-head', e:'parcial', t:'Chats + Tablero', c:'Rol por color OK. El tablero es del <b>pedido</b> (botón Etapas). Auditoría: falta módulo <b>Cobros</b> separado, columna <b>Perdido</b>, y el embudo con <b>tasas</b> semana/mes — hoy es solo la foto del día.', p:'¿Columna Perdido sí o no? ¿Las tasas van aquí o en Hoy?' },
+    { sel:'#v-caminos .vheader', e:'parcial', t:'Caminos', c:'Ya dibujado: <b>uso · % cierre · plata</b> por camino, detalle al tocar, pruebas doradas e historial navegables. Falta aún: un camino <b>multi-paso</b> de ejemplo.', p:'¿Las métricas por bloque te dicen lo que necesitas, o sobran en la cascada?' },
+    { sel:'#guia', e:'ok', t:'La Guía', c:'Tu pedido, dibujado: pregúntale en contexto, pídele el resumen de rendimiento, cambios de precio (antes/después de 4 caminos antes de publicar) o un camino nuevo contándoselo como a una persona.', p:'¿Los 4 ejemplos de los chips son los correctos, o cambiarías alguno?' },
+    { sel:'.g-input', e:'parcial', t:'Borrador → vivo', c:'Diff de 4 caminos OK, con el candado: si un cambio rompe una prueba dorada, <b>no puede publicarse</b>. Falta: cambios programados con fecha.', p:'¿Quieres "sube precios el 1 de sep" en la primera versión?' },
+    { sel:'#v-modulos .vheader', e:'ok', t:'Qué hace tu bot', c:'Rediseñada: <b>le cuentas a la IA cómo trabaja tu negocio</b> y ella arma la configuración con el catálogo existente (prueba "barbería"). El límite que pediste: lo que no existe <b>se le encarga a Claude Code</b>, que lo fabrica con pruebas y aparece aquí para que TÚ lo actives (prueba "Webpay"). Cada fila dice su consecuencia al apagarse.', p:'¿Los 3 ejemplos capturan bien la idea? Aún faltan filas: Precios, Cobros, Gimnasio.' },
+    { sel:'#v-agentes .vheader', e:'parcial', t:'Agentes', c:'Sofía y Destapes ya tienen data propia (toca cada uno). La madre explica sus 3 casos (tócala). Falta: separar Reglas de Personalidad, y el flujo del gate 4,0 dibujado.', p:'¿Te muestro el flujo de un mensaje ambiguo en vivo?' },
+    { sel:'#v-agentes .seccion', i:1, e:'parcial', t:'Gimnasio', c:'Mejoró: replays navegables con veredicto del juez y el botón "crear ese camino" desde un fallo. Falta aún: <b>Probar ▸</b> (tú haces de cliente en vivo).', p:'¿El gimnasio merece vista propia en el menú?' },
+    { sel:'#v-diseno .vheader', e:'ok', t:'Diseño', c:'La biblioteca viviente cumple: ningún componente nace fuera de aquí. Se sincronizará con <b>Claude Design</b>.', p:'¿La quieres editable en vivo — cambias el verde y todo el panel cambia?' },
+    { sel:'#v-modulos .seccion', i:2, e:'parcial', t:'Multi-canal', c:'Hoy es promesa. Para que la visión se vea: <b>icono de canal en cada fila</b> de chat y un chat de Instagram de ejemplo con el mismo cerebro.', p:'¿Lo dibujo ya o esperamos a E5?' },
+  ];
+  let notasOn = false;
+  function toggleNotas() {
+    notasOn = !notasOn;
+    document.body.classList.toggle('notas', notasOn);
+    document.getElementById('nav-notas').classList.toggle('on', notasOn);
+    if (notasOn && !document.querySelector('.nb')) {
+      NOTAS.forEach((n, i) => {
+        const host = document.querySelectorAll(n.sel)[n.i || 0];
+        if (!host) return;
+        const b = document.createElement('button');
+        b.className = 'nb'; b.textContent = '!';
+        b.onclick = (e) => { e.stopPropagation(); verNota(i); };
+        host.appendChild(b);
+      });
+    }
+    if (!notasOn) cerrarPop(); else toast('Notas de la fase de creación — tócalas en cada sección');
+  }
+  function verNota(i) {
+    cerrarPop();
+    const n = NOTAS[i];
+    document.getElementById('pn-t').textContent = n.t;
+    const e = document.getElementById('pn-e');
+    if (n.e === 'ok') { e.className = 'chip vivo'; e.style.cssText = 'margin-left:auto;margin-right:18px'; e.textContent = '✓ cumple'; }
+    else if (n.e === 'falta') { e.className = 'chip'; e.style.cssText = 'margin-left:auto;margin-right:18px;background:var(--rojo-sub);color:var(--rojo)'; e.textContent = '✗ falta'; }
+    else { e.className = 'chip draft'; e.style.cssText = 'margin-left:auto;margin-right:18px'; e.textContent = '⚠ parcial'; }
+    document.getElementById('pn-c').innerHTML = n.c;
+    document.getElementById('pn-p').innerHTML = n.p;
+    document.getElementById('pop-nota').classList.add('ver');
+  }
+
+  /* init */
+  renderLista(); abrirChat('ranco'); verAgente('sofia'); pintarPausa();
+</script>
