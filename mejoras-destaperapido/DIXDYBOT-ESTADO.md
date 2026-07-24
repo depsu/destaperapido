@@ -1,12 +1,21 @@
 # DIXDYBOT — Estado del proyecto y mapa de documentos
 
-**Última actualización:** 24-jul-2026 (post-ronda 8) · **Estado: investigación COMPLETA
-(8 rondas, ~70 agentes + 2 deep research externos arbitrados) + DISEÑO CONGELADO
-(prototipo v5, 18 iteraciones con Alejandro: `dixdybot-prototipo-v5-congelado.html`,
-artifact 555843ca) + esqueleto/contrato/plan de arranque listos
-(`investigacion-dixdybot/ronda8/`). Construcción NO iniciada.**
-Próximo paso: **Semana 0 en doble carril** (E0 cinturón sobre el bot vivo + pre-etapa Meta
-+ esqueleto D1 compilable) cuando Alejandro dé el vamos — ver
+**Última actualización:** 24-jul-2026 (post S3-4) · **Estado: CONSTRUCCIÓN EN MARCHA.**
+Investigación completa (8 rondas, ~70 agentes + 2 deep research externos arbitrados) +
+DISEÑO CONGELADO (prototipo v5, 18 iteraciones con Alejandro:
+`dixdybot-prototipo-v5-congelado.html`, artifact 555843ca) + **molde vivo en
+`SaSS/DIXDY/dixdybot/`** (12 módulos, 379 tests verdes, tsc limpio) + **instancia de
+destaperapido en `SaSS/destaperapido/dixdybot-data/`** (184 conversaciones, 3.820 mensajes,
+20 pedidos migrados; panel en `127.0.0.1:8793`).
+
+**Hecho:** S1 shim del cerebro (el bot vivo ya consulta `llm.ts` del molde con doble red) ·
+S2 módulos embudo+cotizador + migrador + panel real · S3-4 caminos v1, gimnasio
+(personas/juez/sombra), la Duda junior→senior, el **orquestador del turno** (H-A atómica,
+candado sin puerta de atrás) y las **vistas Caminos y Agentes** del panel con aprobación en
+lote. Solo la vista *Diseño* sigue en construcción.
+
+**Próximo paso:** que Alejandro **apruebe en lote los 30 caminos destilados** (panel →
+Caminos → borradores) y luego **S5 cutover** (25-31 ago) — ver
 `ronda8/plan-arranque-backend.md` (el plan rector del backend, semana a semana hasta dic).
 Decisiones nuevas de producto (prototipo + memorias): pausa junior→senior multi-fase,
 caminos con guía conversacional, módulos con APORTES, conexiones con chat+permisos,
