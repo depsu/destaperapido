@@ -6,6 +6,22 @@ aquí queda la historia. La escriben ronda-ads, ronda-correo y las sesiones.
 
 ---
 
+## 2026-07-24 · 👷 constructor · el post «por qué se tapa el desagüe de cocina» pasa a hablar de «lavaplatos» y le saco un dato inventado
+
+Trabajé la tarea t33: el artículo `/blog/por-que-se-tapa-desague-cocina` está en posición 6,3
+con 1.251 impresiones. En el disco había un cambio a medio hacer de una pasada anterior que
+cambiaba el título a «¿Por qué se tapa el lavaplatos? 5 causas y cómo destaparlo» — un buen
+cambio, porque la gente busca «lavaplatos», no «desagüe de la cocina», y el artículo de verdad
+tiene 5 causas. **Pero no lo publiqué a ciegas:** ese borrador también prometía en Google que
+«en el 50% de los casos el tapón está en el sifón», y ese número no lo respalda nada (el propio
+artículo decía que estaba «medido en nuestra guía práctica», pero esa guía es otro artículo
+nuestro que solo repite el mismo número sin fuente). Es el mismo problema del «90%» que sacamos
+la semana pasada. Así que **corregí el título/meta buenos y saqué las cifras inventadas** (tanto
+del texto como del resultado de Google), dejándolo en lenguaje honesto: «la mayoría de las veces
+el tapón está justo en el sifón». También sumé un enlace desde la página de precios hacia este
+artículo. Publicado. Anoté que el artículo hermano de «7 métodos» tiene el mismo número sin
+fuente, para arreglarlo cuando le toque.
+
 ## 2026-07-24 · 👷 constructor · el post del pozo absorbente ahora explica «qué es» y «qué no debe llegarle» (rescate de trabajo huérfano)
 
 **Qué pasó:** el constructor tomó UNA tarea de la cola y la terminó completa. Las de mayor
