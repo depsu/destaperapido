@@ -6,6 +6,27 @@ aquí queda la historia. La escriben ronda-ads, ronda-correo y las sesiones.
 
 ---
 
+## 2026-07-24 · 👷 constructor · el post del pozo absorbente ahora explica «qué es» y «qué no debe llegarle» (rescate de trabajo huérfano)
+
+**Qué pasó:** el constructor tomó UNA tarea de la cola y la terminó completa. Las de mayor
+puntaje (los títulos con CTR bajo de la home y los blogs) todavía están «en observación»:
+se reescribieron hace pocos días y Google aún no mide el cambio, así que re-tocarlas sería
+dar vueltas en falso. Bajó entonces a la mejor tarea con la palanca libre: **subir en Google
+el artículo del pozo absorbente saturado** (posición 5,8 con 1.288 impresiones al mes).
+
+**Qué se hizo:** una pasada anterior (21-jul, interrumpida) había dejado este contenido
+escrito en el disco pero sin revisar ni publicar. Esta pasada lo verificó frase por frase
+contra lo que el propio artículo ya dice y lo publicó: una sección nueva **«Qué es un pozo
+absorbente (y en qué se diferencia de la fosa)»** —con el recorrido del agua de la casa— y
+**«Qué NO debería llegar nunca al pozo»** (aguas lluvias, riego del jardín y la grasa de una
+fosa mal mantenida). Responde justo lo que la gente busca antes de llamar. No se inventó ni
+un dato ni un precio; los títulos y el snippet quedaron intactos.
+
+**Publicado** a `depsu/destaperapido` (push → Vercel). El resto del trabajo huérfano en el
+disco (otro título de blog + dos enlaces) quedó intacto para las próximas pasadas.
+
+---
+
 ## 2026-07-23 · 👷 constructor · el artículo estrella ahora responde «¿y por qué vuelve el olor?» (rescate de trabajo huérfano)
 
 **Qué pasó:** una pasada anterior (21-jul, interrumpida) dejó trabajo hecho en el disco pero
