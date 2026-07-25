@@ -31,12 +31,12 @@ no chocan. Solo chocan si tocan las 6 tablas núcleo (`esquema.sql`).
 
 | # | Pieza | Carpeta propia | Archivos puente que toca |
 |---|---|---|---|
-| P1 | adaptador `wa-baileys` | `src/canales/wa-baileys/` | factory, indice |
-| P2 | trasplante legado del emisor (Bad MAC, outbox) | ídem P1 | — (va con P1) |
-| P4 | `cli/vincular.ts` | `cli/` | — |
-| P5 | corrida final del migrador | `src/modulos/migrador/` | — |
+| ~~P1~~ | ~~adaptador `wa-baileys`~~ ✅ | `src/canales/wa-baileys/` | factory, indice |
+| ~~P2~~ | ~~trasplante legado del emisor (Bad MAC, outbox)~~ ✅ | ídem P1 | — (va con P1) |
+| ~~P4~~ | ~~`cli/vincular.ts`~~ ✅ | `cli/` | — |
+| ~~P5~~ | ~~huecos del migrador (dudas del vivo)~~ ✅ | `src/modulos/migrador/` | — |
 | P6 | MANUAL.md + cutover launchd | raíz | — (va al final) |
-| P3 | órgano `gating` | `src/organos/` | **index.ts**, orquestador |
+| ~~P3~~ | ~~compuerta `gating`~~ ✅ | `src/core/` + `src/modulos/gating/` | index.ts, api, consultas-reg |
 | P7 | módulo `ficha` (bautizo + etiquetas, G3+G4) | `src/modulos/ficha/` | esquema, escritor, indice, index |
 | P8 | módulo `seguimiento` (G6) | `src/modulos/seguimiento/` | indice, consultas-reg, api, escritor |
 | P9 | módulo `cobros` (separar de embudo) | `src/modulos/cobros/` | escritor, indice, consultas-reg |
@@ -81,9 +81,30 @@ vende hoy, solo lectura) y meter datos de cliente en el molde.
 | Pieza | Sesión | Desde | Estado |
 |---|---|---|---|
 | **P1+P2+P4** (adaptador wa-baileys, legado del emisor, `cli/vincular.ts`) | sesión del 25-jul | 25-jul | ✅ **hecha** (commit `201b208`) |
-| **P5** (corrida final del migrador) | sesión del 25-jul | 25-jul | 🔨 tomada |
-| **P3** (órgano `gating`) | sesión del 25-jul | 25-jul | 🔨 tomada — bloquea `src/index.ts` y el orquestador |
+| **P5** (huecos del migrador: dudas del vivo + clases de huérfanos) | sesión del 25-jul | 25-jul | ✅ **hecha** (commit `86615eb`) |
+| **P3** (compuerta `gating`) | sesión del 25-jul | 25-jul | ✅ **hecha** (commit `6de0907`) |
 | resto | — | — | libre |
+
+> **P1** liberó `src/canales/factory.ts` y `src/modulos/indice.ts`. **Ojo para P14
+> (Instagram):** el `switch` de `factory.ts` ya tiene su `case 'wa-baileys'` como molde a
+> copiar, y `OpcionesFabrica` ganó `rutaDatos` (lo usan los canales que guardan sesión).
+>
+> **P3** liberó `src/index.ts`, `src/panel/api.ts` y `src/panel/consultas-registradas.ts`.
+> Lo que dejó cambiado y hay que saber antes de tocar esos archivos:
+> - **El pipeline ya NO es lineal.** `atenderMensaje` persiste, pasa por la compuerta y
+>   **agenda**; el turno corre después, dentro de `gating.agendar(...)` y serializado por
+>   chat con `colaDeTurnos`. Cualquier pieza que quiera meterse "después del cerebro" va
+>   DENTRO de ese callback, no debajo de `atenderMensaje`.
+> - **`MensajeEntrante` ganó `propio`** (`src/schemas/canal.ts`): el mensaje lo escribió el
+>   dueño desde la cuenta del negocio. Todo canal nuevo (P14) debe marcarlo — y descartar
+>   siempre el eco de sus propios envíos, que es otra cosa.
+> - **`Canal.contactoEscribiendo?()`** es opcional: si el canal no expone presencia, la
+>   compuerta no espera. No lo inventes.
+> - **`ContextoConsulta` ganó `ahora`** (epoch ms) para métricas de ESTADO, no de día.
+> - **Nace la tabla `pausas`** (migración del módulo gating). Es la única verdad sobre qué
+>   chats están tomados a mano; `conversaciones.asignado` la refleja y ya no es una columna
+>   huérfana. P7/P8/P12 no deberían escribirla por su cuenta.
+> - **`wa-baileys.ignorar_propios` ya no existe:** es `escuchar_al_dueno` (sentido inverso).
 
 > P1 liberó `src/canales/factory.ts` y `src/modulos/indice.ts`. **Ojo para P14
 > (Instagram):** el `switch` de `factory.ts` ya tiene su `case 'wa-baileys'` como molde a

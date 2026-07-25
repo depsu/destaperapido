@@ -33,8 +33,34 @@ ENTRADA) · **Estado: CONSTRUCCIÓN EN MARCHA.**
 > libsignal. `cli/vincular.ts` es proceso APARTE (vincular desde el bot dejaba la sesión
 > en 440); marcador de enlace = `me`, no `registered`. Baileys pineado en 6.7.23 (la
 > versión probada en producción); es la dep #6 del molde y con diferencia la más pesada.
-> **Falta de S5:** el órgano `gating` (P3), la corrida final del migrador (P5), el
-> `MANUAL.md` + launchd del cutover (P6) y el gate de corte de 5 condiciones.
+> **Falta de S5:** el `MANUAL.md` + launchd del cutover (P6), el gate de corte de 5
+> condiciones y **la primera conexión real a WhatsApp** (todo lo de canal está probado
+> contra un WhatsApp simulado; nunca se ha vinculado un número de verdad — conviene hacerlo
+> con un número secundario, no con el que vende).
+>
+> **Hecho el 25-jul (además del adaptador):**
+> - **P5 · el migrador ya no pierde tus preguntas** (commit `86615eb`). El plan pedía que la
+>   corrida final trajera las dudas pendientes de `dudas.js` y `espejo.ts` no abría ese
+>   archivo: 8 decisiones tuyas en pausa se habrían perdido en el corte. `dudas.jsonl` es un
+>   LOG PLEGABLE (alta + líneas de respuesta con el mismo id), así que se pliega por id antes
+>   de mirar nada; ningún campo del schema lleva `.default()` porque un default rellena la
+>   clave ausente y al plegar borraría las opciones del alta. Solo cruzan las PENDIENTES.
+>   Se avisa dentro de cada una que contestarla **no** dispara el envío que allá disparaba
+>   (`/api/cotizar` no existe acá). `migrar-huerfanos.jsonl` ganó `clase`: `no-corresponde`
+>   (ruido esperado) vs `falta-dato` (trabajo real) — mezclados, 2 problemas dentro de 8
+>   líneas se veían como 8.
+> - **P3 · la compuerta** (commit `6de0907`). Debounce con presencia real, handoff al dueño
+>   (30 min por un toque, indefinido si insiste 3 veces), **topes contados desde la base**
+>   —la deuda D5: en el vivo cada reinicio de launchd regalaba cupo y el tope era una
+>   lotería—, horario que cruza la medianoche, interruptor general del bot y aviso al topar
+>   (el vivo se quedaba mudo sin avisar). Nace la tabla `pausas` y `conversaciones.asignado`
+>   deja de ser una columna que nadie leía.
+>   Destapó dos huecos que quedaron cerrados: el adaptador de P1 descartaba **todos** los
+>   mensajes propios (el core nunca habría visto al dueño entrar al chat), y un takeover
+>   indefinido sin endpoint de devolución dejaba el chat mudo para siempre.
+>   **Cambio estructural:** `atenderMensaje` agenda y vuelve; el turno corre dentro del
+>   agendador, serializado por chat. Lo que el cerebro aún no vio se acumula, así que la
+>   foto que llegó antes de "mira esto" no se pierde con el turno cancelado.
 >
 > **⚠️ Si vas a trabajar el backend en varias sesiones a la vez: lee primero
 > `REPARTO-SESIONES.md`** (mapa de las 16 piezas pendientes P1-P16, qué archivo puente toca
