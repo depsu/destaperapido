@@ -17,8 +17,24 @@ ENTRADA) · **Estado: CONSTRUCCIÓN EN MARCHA.**
 > SIN transcripción (es plata nueva): el bot pide que se lo escriban en vez de inventar.
 > Probado con el cerebro real: foto → describió los colores exactos en 28,1 s; audio →
 > "no puedo escucharlo, ¿me lo escribes?" en 16,8 s, sin cifras inventadas.
-> **Falta de S5:** el adaptador `wa-baileys` (la carpeta no existe), `cli/vincular.ts` y
-> el gate de corte de 5 condiciones.
+> **(3) El adaptador `wa-baileys`** (25-jul, tarde — `src/canales/wa-baileys/` +
+> `cli/vincular.ts`, 706 tests verdes): el molde ya puede hablar por el número propio.
+> Construido leyendo el bot vivo en SOLO-LECTURA y trasplantando sus **28 cicatrices**
+> documentadas, no reinventándolas. **Reparto núcleo/adaptador:** lo genérico (ritmo,
+> topes desde la base, reintentos, escalera de acuses) se queda en `core/mensajero.ts`;
+> lo que solo existe en WhatsApp no oficial (reconexión + circuit breaker 8/5min→10min,
+> candado cifrado corrupto y su sanación, jid canónico literal incl. `@lid`, presencia
+> real) vive en el adaptador — el core nunca ve un vendor. **Decisión que se apartó del
+> plan:** el legado del emisor se REESCRIBIÓ en TS conservando cada número y su razón, en
+> vez de copiar los `.js` (aceptar JS mezclado abre una excepción permanente en tsconfig).
+> Cerrado con test que MUERDE (verificado por mutación deliberada): eco de envíos propios,
+> los DOS canales de acuses, 401 sin reintento, sanación con 3 min + 1 reintento + guarda
+> de presencia, acuse del reenvío reportado con el id ORIGINAL, filtro del ruido de
+> libsignal. `cli/vincular.ts` es proceso APARTE (vincular desde el bot dejaba la sesión
+> en 440); marcador de enlace = `me`, no `registered`. Baileys pineado en 6.7.23 (la
+> versión probada en producción); es la dep #6 del molde y con diferencia la más pesada.
+> **Falta de S5:** el órgano `gating` (P3), la corrida final del migrador (P5), el
+> `MANUAL.md` + launchd del cutover (P6) y el gate de corte de 5 condiciones.
 >
 > **⚠️ Si vas a trabajar el backend en varias sesiones a la vez: lee primero
 > `REPARTO-SESIONES.md`** (mapa de las 16 piezas pendientes P1-P16, qué archivo puente toca

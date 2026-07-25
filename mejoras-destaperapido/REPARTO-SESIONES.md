@@ -80,4 +80,9 @@ vende hoy, solo lectura) y meter datos de cliente en el molde.
 
 | Pieza | Sesión | Desde | Estado |
 |---|---|---|---|
-| — | — | — | libre |
+| **P1+P2+P4** (adaptador wa-baileys, legado del emisor, `cli/vincular.ts`) | sesión del 25-jul | 25-jul | ✅ **hecha** (commit `201b208`) |
+| resto | — | — | libre |
+
+> P1 liberó `src/canales/factory.ts` y `src/modulos/indice.ts`. **Ojo para P14
+> (Instagram):** el `switch` de `factory.ts` ya tiene su `case 'wa-baileys'` como molde a
+> copiar, y `OpcionesFabrica` ganó `rutaDatos` (lo usan los canales que guardan sesión).
