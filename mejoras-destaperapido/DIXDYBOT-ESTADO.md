@@ -1,10 +1,10 @@
 # DIXDYBOT — Estado del proyecto y mapa de documentos
 
-**Última actualización:** 24-jul-2026 (post S3-4) · **Estado: CONSTRUCCIÓN EN MARCHA.**
+**Última actualización:** 25-jul-2026 (S4 cerrado) · **Estado: CONSTRUCCIÓN EN MARCHA.**
 Investigación completa (8 rondas, ~70 agentes + 2 deep research externos arbitrados) +
 DISEÑO CONGELADO (prototipo v5, 18 iteraciones con Alejandro:
 `dixdybot-prototipo-v5-congelado.html`, artifact 555843ca) + **molde vivo en
-`SaSS/DIXDY/dixdybot/`** (12 módulos, 379 tests verdes, tsc limpio) + **instancia de
+`SaSS/DIXDY/dixdybot/`** (12 módulos, 474 tests verdes, tsc limpio) + **instancia de
 destaperapido en `SaSS/destaperapido/dixdybot-data/`** (184 conversaciones, 3.820 mensajes,
 20 pedidos migrados; panel en `127.0.0.1:8793`).
 
@@ -12,10 +12,17 @@ destaperapido en `SaSS/destaperapido/dixdybot-data/`** (184 conversaciones, 3.82
 S2 módulos embudo+cotizador + migrador + panel real · S3-4 caminos v1, gimnasio
 (personas/juez/sombra), la Duda junior→senior, el **orquestador del turno** (H-A atómica,
 candado sin puerta de atrás) y las **vistas Caminos y Agentes** del panel con aprobación en
-lote. Solo la vista *Diseño* sigue en construcción.
+lote · **cierre de S4 (25-jul):** vista *Diseño* real (cero "En construcción" en el panel),
+el **veredicto del candado visible ANTES de aprobar** (el mismo `verificarParaActivar` en el
+panel, en el CLI `revisar-caminos.ts` y en la aprobación real) y la **sombra diaria** como
+servicio, con gate por días de calendario. Dos agujeros graves tapados: el gate se pintaba
+verde con el cerebro caído (la enlatada de emergencia puntuaba "mejora") y el lint de cifras
+no miraba la plantilla que ve el cliente — ver `HALLAZGOS-25-JUL.md` §4.
 
 **Próximo paso:** que Alejandro **apruebe en lote los 30 caminos destilados** (panel →
-Caminos → borradores) y luego **S5 cutover** (25-31 ago) — ver
+Caminos → borradores; informe en `caminos-veredicto.md`: 24 ✅ / 6 ⚠️ / 0 ❌ — **ojo:** el
+"0 rechazados" NO significa que no se pisen entre ellos, ver `HALLAZGOS-25-JUL.md` §2 bis)
+y luego **S5 cutover** (25-31 ago) — ver
 `ronda8/plan-arranque-backend.md` (el plan rector del backend, semana a semana hasta dic).
 Decisiones nuevas de producto (prototipo + memorias): pausa junior→senior multi-fase,
 caminos con guía conversacional, módulos con APORTES, conexiones con chat+permisos,
