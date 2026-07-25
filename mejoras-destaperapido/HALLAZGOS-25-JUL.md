@@ -6,7 +6,26 @@ No salió de ningún agente: salió de mirar los números uno por uno.
 
 ---
 
-## 1. El titular del panel esconde plata (≈$390.000, un 16%)
+## 1. El titular del panel esconde plata (≈$1.900.000, casi la mitad)
+
+> **CORRECCIÓN del 25-jul, tarde.** Cuando escribí esto puse "≈$390.000, un 16%" y me quedé
+> corto por un factor de cinco. Solo miré los dos pedidos sin monto y el del $1, y **di por
+> buenos los otros 18**. No lo eran. Al contrastar cada monto guardado contra la fórmula del
+> propio bot que vende hoy aparecieron **8 pedidos que guardan el precio de UN baño en pedidos
+> de 2 a 5 baños** — el peor, 5 baños a $80.000, figura como $80.000 en vez de $400.000.
+> El total honesto ronda los **$4,2 millones**, no los $2,37 que muestra el panel.
+>
+> Y hay una segunda corrección, que además me contradice: aquí abajo escribí que "en un pedido
+> el `precio_clp` es el valor por unidad y en otro es el total". **Es falso.** El extractor del
+> bot vivo lo documenta sin ambigüedad — *"el valor NETO POR UNIDAD (por baño)... si se pactó
+> un TOTAL por varios baños, divídelo por la cantidad"* — y `integracion.js:463` multiplica por
+> la cantidad. Siempre es por unidad. Lo que sí es un total es el `precio` del libro de envíos,
+> que es otro campo: por confundirlos casi bloqueo el arreglo correcto.
+>
+> Lo que sí se sostiene de lo de abajo: los dos casos concretos (Fluintek y el $1) y la regla
+> de no adivinar. El resto de esta sección quedó chico.
+
+### Lo que había visto al principio (≈$390.000)
 
 El panel abre con **"$2.370.001 en juego (20 pedidos abiertos)"**. Ese número está mal por dos
 motivos distintos:
