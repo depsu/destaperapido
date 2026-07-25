@@ -81,6 +81,8 @@ vende hoy, solo lectura) y meter datos de cliente en el molde.
 | Pieza | Sesión | Desde | Estado |
 |---|---|---|---|
 | **P1+P2+P4** (adaptador wa-baileys, legado del emisor, `cli/vincular.ts`) | sesión del 25-jul | 25-jul | ✅ **hecha** (commit `201b208`) |
+| **P5** (corrida final del migrador) | sesión del 25-jul | 25-jul | 🔨 tomada |
+| **P3** (órgano `gating`) | sesión del 25-jul | 25-jul | 🔨 tomada — bloquea `src/index.ts` y el orquestador |
 | resto | — | — | libre |
 
 > P1 liberó `src/canales/factory.ts` y `src/modulos/indice.ts`. **Ojo para P14
