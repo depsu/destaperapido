@@ -1,6 +1,24 @@
 # DIXDYBOT — Estado del proyecto y mapa de documentos
 
-**Última actualización:** 25-jul-2026 (S4 cerrado) · **Estado: CONSTRUCCIÓN EN MARCHA.**
+**Última actualización:** 25-jul-2026 (S4 cerrado + arranque de S5: la SALIDA y la
+ENTRADA) · **Estado: CONSTRUCCIÓN EN MARCHA.**
+
+> **Arranque de S5 (25-jul, tarde) — dos agujeros de fondo tapados, 647 tests verdes:**
+> **(1) El mensajero** (`core/mensajero.ts` + `modulos/mensajero`, núcleo): el pipeline
+> hacía `await canal.enviarTexto(...)` y TIRABA el resultado — un envío fallido dejaba al
+> cliente esperando para siempre y al dueño sin enterarse; y los acuses que los canales ya
+> emitían al bus no los escuchaba nadie (las 3.979 filas de la instancia tenían `estado`
+> vacío). Ahora: ritmo humano por ajuste, topes anti-bloqueo **leídos de la base** (un
+> reinicio ya no regala cupo, a diferencia del bot vivo), reintentos solo de lo
+> reintentable (`auth` NO se reintenta), acuses **monótonos en el UPDATE**, y nada en
+> silencio. **(2) La ingesta** (`modulos/ingesta`, apagable): fotos y documentos se
+> guardan y **el cerebro los MIRA por su ruta en el mismo turno** — 1 llamada, $0 de API
+> extra, verificado con `claude -p` antes de construir sobre el supuesto. El audio nace
+> SIN transcripción (es plata nueva): el bot pide que se lo escriban en vez de inventar.
+> Probado con el cerebro real: foto → describió los colores exactos en 28,1 s; audio →
+> "no puedo escucharlo, ¿me lo escribes?" en 16,8 s, sin cifras inventadas.
+> **Falta de S5:** el adaptador `wa-baileys` (la carpeta no existe), `cli/vincular.ts` y
+> el gate de corte de 5 condiciones.
 Investigación completa (8 rondas, ~70 agentes + 2 deep research externos arbitrados) +
 DISEÑO CONGELADO (prototipo v5, 18 iteraciones con Alejandro:
 `dixdybot-prototipo-v5-congelado.html`, artifact 555843ca) + **molde vivo en
