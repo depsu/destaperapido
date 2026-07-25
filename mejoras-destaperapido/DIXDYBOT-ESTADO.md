@@ -19,6 +19,13 @@ ENTRADA) · **Estado: CONSTRUCCIÓN EN MARCHA.**
 > "no puedo escucharlo, ¿me lo escribes?" en 16,8 s, sin cifras inventadas.
 > **Falta de S5:** el adaptador `wa-baileys` (la carpeta no existe), `cli/vincular.ts` y
 > el gate de corte de 5 condiciones.
+>
+> **⚠️ Si vas a trabajar el backend en varias sesiones a la vez: lee primero
+> `REPARTO-SESIONES.md`** (mapa de las 16 piezas pendientes P1-P16, qué archivo puente toca
+> cada una, qué combinaciones se pisan y el tablero de piezas tomadas). El reparto es por
+> ARCHIVOS, no por tema: dos sesiones sobre `escritor.ts` o `index.ts` se borran entre sí.
+> Nota de calendario: el plan rector fecha S5 en 25-31 ago y el código ya va en S5 el 25-jul
+> — vamos ~4 semanas adelantados respecto al documento.
 Investigación completa (8 rondas, ~70 agentes + 2 deep research externos arbitrados) +
 DISEÑO CONGELADO (prototipo v5, 18 iteraciones con Alejandro:
 `dixdybot-prototipo-v5-congelado.html`, artifact 555843ca) + **molde vivo en
