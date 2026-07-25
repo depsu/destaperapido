@@ -86,8 +86,10 @@ commits van al maestro.
 | P5 huecos del migrador | `86615eb` | las 8 preguntas pendientes del bot viejo cruzan el corte; huérfanos clasificados |
 | P3 compuerta `gating` | `6de0907` | el bot sabe cuándo callarse; nace la tabla `pausas`; topes desde la base |
 | PS la salida del panel | 25-jul | enviar al cliente, contestar la Duda, entrada de prueba: el panel deja de ser un espejo |
+| PC canales conectables | `79a8189` | los dos WhatsApp se prenden y se vinculan DESDE el panel; el ajuste manda, `CANALES` pasa a ser atajo |
+| PG genericidad del molde | `f2ab260` | fuera lo de destaperapido cableado (sofia, comuna, $160.000) y el test guardián deja de tener agujeros |
 
-**765 tests verdes, tsc limpio.**
+**787 tests verdes, tsc limpio.**
 
 ---
 
@@ -100,7 +102,15 @@ reconocimiento del 25-jul cambió".** Trae una regla que evita romper la base en
 (🚨 nunca agregar una columna a `esquema.sql`: pasa tsc, pasa los tests y NO llega a la base
 viva), corrige el orden de P12 y desarma dos trampas del cutover.
 
-Candidatas, por valor:
+**Además, el FRONT dejó pedidos en `dixdybot/TODO-BACKEND.md`** (lo escribieron ellos, para
+esta sesión). Lo de ahí manda sobre esta lista cuando se vayan a conectar las dos mitades.
+Lo más barato y desbloqueante de esa lista: `.describe()` en los configSchema de Zod (hoy el
+panel traduce 97 campos con un diccionario propio que es un PUENTE, y cada `.describe()`
+borra una entrada) y declarar en `src/panel/diseno.ts` los componentes nuevos del rediseño
+(`.plegable`, `.ic`, `.barra-tog` y sus tokens) — no lo pudieron hacer ellos porque
+`diseno.ts` es del servidor.
+
+Candidatas propias, por valor:
 
 1. **El pushName perdido** — todo chat NUEVO se va a ver como un número. Ojo: pide agregarle
    un campo a `MensajeEntrante` (`src/schemas/canal.ts`), del que depende P14.
@@ -109,6 +119,12 @@ Candidatas, por valor:
 3. **P12 reducida:** "visto por el dueño" como tabla lateral (patrón `pausas`). G5 ya está
    cerrado por P3; G8 sale de la lista hasta decidir instantáneo-vs-candado.
 4. **P6 recortado:** la sección del corte del MANUAL + el rollback de dos comandos.
+5. **Cambiar de número** (quedó fuera de PC): hoy se puede conectar y desconectar desde el
+   panel, pero no *desvincular* — para cambiar de número hay que borrar la carpeta de sesión
+   a mano. Falta `POST /api/canales/:id/olvidar-numero` con su confirmación.
+6. **El poller de `wa-cloud`** (P13): `procesarWebhook()` está escrito y probado pero **no lo
+   llama nadie**. El canal oficial, aunque se prenda, puede hablar y no oye. Es lo que hay
+   que cerrar antes de que Meta sirva de algo.
 
 <details><summary>Lo que se estaba mapeando el 25-jul (ya cerrado)</summary>
 
@@ -125,7 +141,9 @@ conexión de la noche. Sus conclusiones están arriba y en `REPARTO-SESIONES.md`
 2. **Decidir si se carga el servicio de sombra diaria** — consume cuota de suscripción.
 3. **La primera conexión real a WhatsApp.** Nunca se ha vinculado un número de verdad: todo
    lo de canal está probado contra un WhatsApp simulado. **Conviene hacerlo con un número
-   secundario, no con el que vende.**
+   secundario, no con el que vende.** Desde el 25-jul ya no hace falta la terminal: se
+   escribe el número en los ajustes del canal y se toca Conectar; el panel muestra el código
+   de 8 letras. Lo único que no puede hacer el panel es escribirlo en el teléfono.
 4. **Transcripción de audio** — es plata nueva, hoy el bot pide que le escriban.
 5. Fechas duras que no se mueven: **30-sep** decisión Coexistence · **1-oct** Meta cobra
    todos los service/utility · **1-dic** Ley 21.719 (ARCO+P en el panel).

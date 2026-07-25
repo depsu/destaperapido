@@ -160,7 +160,90 @@ cuesta cuota → es una **decisión de plata de Alejandro**, no de código.
 | **P5** (huecos del migrador: dudas del vivo + clases de huérfanos) | sesión del 25-jul | 25-jul | ✅ **hecha** (commit `86615eb`) |
 | **P3** (compuerta `gating`) | sesión del 25-jul | 25-jul | ✅ **hecha** (commit `6de0907`) |
 | **PS** (la salida del panel: enviar, contestar la Duda, entrada de prueba) | sesión del 25-jul | 25-jul | ✅ **hecha** — pieza NUEVA, no estaba en P1-P16 |
+| **PC** (canales conectables desde el panel: los dos WhatsApp, un interruptor) | sesión del 25-jul | 25-jul | ✅ **hecha** (commit `79a8189`) — pieza NUEVA |
+| **PG** (limpieza de genericidad: sacar del molde lo de destaperapido) | sesión del 25-jul | 25-jul | ✅ **hecha** (commit `f2ab260`) |
 | resto | — | — | libre |
+
+> **PC · los canales se conectan desde el panel** (25-jul). El nudo no era que faltara un
+> botón: era que **había dos interruptores para la misma luz y el que mandaba no estaba a
+> la vista**. La variable de entorno `CANALES` decidía qué se fabricaba, leída UNA vez al
+> arrancar; el `activo` que el panel escribía no podía prender nada. Y vincular un WhatsApp
+> era un comando de terminal, cosa que un dueño no hace nunca.
+>
+> **Lo estructural (esto es lo que hay que respetar al sumar un canal):**
+> - **`CapacidadCanal` en el contrato de `Modulo`** (`src/schemas/modulo.ts`): un módulo de
+>   categoría `canales` declara `vinculacion` (`'codigo'` | `'cuenta'` | `'ninguna'`) y
+>   `requisitos(config, ctx)` → lista de `{id, etiqueta, listo, comoSeArregla, fueraDelPanel}`.
+>   **El panel no sabe qué es WhatsApp**: dibuja lo que el canal declara. Instagram o correo
+>   aparecen solos con declararlo — cero código de panel, igual que los `aportes`.
+>   `fueraDelPanel: true` = lo hace una persona (tomar el teléfono, dar de alta en Meta);
+>   esos **no bloquean** el botón de conectar, porque conectar es justo lo que los resuelve.
+> - **`Canal.estado?()` opcional** (`src/schemas/canal.ts`) → `{conectado, intentos, enVuelo,
+>   codigoPairing}`. El panel PREGUNTA en vez de deducir: `activo: true` en un archivo nunca
+>   significó que WhatsApp estuviera del otro lado. Ausente = el panel dice "no sabe".
+> - **`canalesDeclarados(ajustes)`** (`src/index.ts`, exportada y testeada): manda el ajuste;
+>   `CANALES` queda como **atajo para tests y gimnasio**. El canal `sim` lo prende el mismo
+>   ajuste `panel.entrada_de_prueba` — un interruptor, un significado.
+> - **`montarCanal`/`desmontarCanal`** en `Sistema`: prender y apagar SIN reiniciar.
+>   `Sistema.canales` pasó a ser un **array mutable compartido por referencia** con el panel
+>   (una copia le mostraría una foto vieja). Ojo con esto al tocar `src/index.ts`.
+>
+> **Contrato para el front (forma exacta):**
+> - `GET /api/canales` → `{canales: Ficha[], puedeConectar: boolean}`.
+>   `Ficha = {id, nombre, descripcion, consecuenciaApagar, vinculacion, quiereEstar,
+>   montado, conectado (bool|null), intentos, enVuelo, codigoPairing (string|null),
+>   requisitos[], listoParaAtender, resumen}`.
+>   **`resumen` es UNA frase ya redactada en simple** ("apagado", "le falta el número que
+>   atiende", "esperando que escribas el código en el teléfono", "reconectando (intento 3)",
+>   "conectado"): úsala tal cual en la tarjeta, no la recompongas — el orden de precedencia
+>   tiene una decisión metida (**el código de vinculación va ANTES que la lista de lo que
+>   falta**, porque si no el panel reclamaría por la autorización teniendo las 8 letras en
+>   la mano).
+> - `POST /api/canales/:id/conectar` → `200 {ok, canal}` · `400` si falta un requisito que
+>   sí depende del panel (trae `requisitos` con los que faltan) · `404` canal inexistente ·
+>   `502` si no logró conectarse — **y en ese caso el ajuste vuelve a apagado**, así que el
+>   front debe repintar desde la ficha que llega, no asumir que quedó encendido ·
+>   `503` si el panel corre sin el bot detrás (`puedeConectar: false`).
+> - `POST /api/canales/:id/desconectar` → `200 {ok, enVuelo, canal}`. **`enVuelo` > 0 = se
+>   apagó con mensajes a medio salir**: vale decirlo en pantalla.
+> - **El código de 8 letras NO viene en la respuesta de `conectar`**: el canal lo pide al
+>   conectarse y tarda unos segundos. Aparece en `GET /api/canales` → `codigoPairing`, que
+>   el panel ya relee. (Antes moría en un `console.log`.)
+>
+> **La cicatriz que hay que respetar:** vincular desde el bot andando, con su reconexión
+> encima, dejaba la sesión peleando consigo misma (error 440). El adaptador ya se protege
+> solo (`canal.ts:411`: no pide código sobre una sesión con `me`). No lo desactives.
+>
+> 31 tests nuevos (787 en total) · 5 mutaciones deliberadas, las 5 cazadas · verificado
+> contra la instancia viva.
+
+> **PG · el molde no es el clon de nadie** (25-jul). Auditoría de genericidad. Salieron del
+> molde: `migrador.agente` con `default('sofia')` (el asistente de un clon como default de
+> fábrica), los demos de `src/panel/diseno.ts` con "Sofía"/"comuna"/"Melipilla"/"$160.000"
+> (ese monto **es el precio real** del mensual céntrico), y una persona del gimnasio que
+> decía "se me tapó todo".
+> **Lo importante no es la limpieza, es el guardián:** `src/panel/pwa.test.ts` era el test
+> que declaraba "cero datos de cliente" y (a) no tenía en su lista negra ni `destaperapido`
+> ni `sofia` —los dos que más se filtran, por ser los que tenemos delante— y (b) solo miraba
+> `index.html`, `app.js` y `tokens.css`, **no `diseno.ts`, que es donde estaba la fuga**.
+> Un guardián que mira donde no pasa nada da permiso. Ahora cubre los cinco archivos.
+> Peor aún: `migrador.test.ts` **exigía** que el default fuera `'sofia'` — el test amarraba
+> la fuga, y quien la limpiara vería romperse una prueba y creería estar equivocado.
+>
+> **Lo que la auditoría dejó ABIERTO** (no se tocó, es decisión de producto):
+> - **No existe "crear negocio nuevo".** `plantillas/onboarding.md` está referenciado en
+>   `SETUP.md` y **no existe**; no hay `cli/nuevo-negocio.ts`. Y los tres CLI de arranque en
+>   frío (`destilar-caminos`, `migrar`, `sombra`) **exigen `--vivo /ruta/al/bot/legacy`**:
+>   asumen un bot anterior corriendo. Un cliente nuevo no tiene eso → hoy un negocio ajeno
+>   no puede arrancar sin editar JSON a mano.
+> - **El rubro vive en la FORMA del tarifario, no en los valores.** `Tarifario` = zonas con
+>   comunas + `mensual`/`evento`/`dos_semanas` + flete rural. Los valores por defecto son
+>   genéricos y hay tests que lo custodian, pero una peluquería o un dentista **no pueden
+>   expresar su precio ahí sin tocar código**. Falta un segundo modelo (por hora / por ítem
+>   / por m²) o un schema que no presuponga geografía y plazo de arriendo.
+> - **4 archivos `.fixture.ts`** llevan datos comerciales reales (el tarifario con 40 comunas
+>   y sus precios, 4 personas del rubro). Son fixtures de regresión, no defaults — pero son
+>   datos de cliente versionados en el repo maestro.
 
 > **PS · el panel dejó de ser un espejo** (25-jul). No figuraba en el reparto y era lo único
 > que impedía probar el sistema con las manos. `DepsPanel` no recibía el mensajero: había
