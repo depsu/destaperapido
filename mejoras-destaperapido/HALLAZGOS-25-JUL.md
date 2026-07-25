@@ -85,9 +85,25 @@ que dependa de uno que no está activo, o que quedó aplicado.
 Después conté: **0 de los 30 caminos declara ninguna relación.** Es decir, la revisión de
 conflictos no tenía nada que mirar. El "0 rechazados" estaba garantizado antes de correr.
 
-Mientras tanto, midiendo el parecido de los disparadores, hay **13 pares de caminos que se
-disparan con lo mismo** en más de un 45%, y el más alto (56%) es justamente el par que ya había
-detectado leyendo: *cotizar-kit-completo* y *precio-exacto-neto*.
+Mientras tanto sí hay caminos que se disparan con lo mismo. **Corrección de mi propia cifra:**
+anoche escribí "13 pares por encima del 45%, el mayor 56%". Al re-medirlo con cuatro formas
+distintas de comparar, ese número se mueve muchísimo — de **0 pares** a **10 pares** por encima
+del 45%, según cómo se defina "parecido". Presenté como hecho algo que depende del método:
+
+| Cómo se mide el parecido | Máximo | Pares sobre 45% |
+|---|---|---|
+| Jaccard, sin palabras vacías | 0,30 | 0 |
+| Jaccard, con palabras vacías | 0,32 | 0 |
+| Contención, sin palabras vacías | 0,60 | 7 |
+| Contención, con palabras vacías | 0,69 | 10 |
+
+Lo que **sí resiste las cuatro mediciones**, y por eso vale: el par más parecido es siempre el
+mismo — ***cotizar-kit-completo*** y ***precio-exacto-neto***, justo el que ya había detectado
+leyéndolos. Y los tres caminos del trío duplicado aparecen todos arriba en las cuatro.
+
+La lección práctica es para el arreglo, no para el diagnóstico: **el umbral del detector no se
+puede elegir a ojo**, porque un mismo 45% significa "nada" o "diez pares" según la fórmula. Hay
+que fijar fórmula y umbral juntos, y contra estos 30 caminos reales.
 
 Y hay un segundo matiz que el informe declara con honestidad: la exigencia a las pruebas está en
 modo **"declarada"** — se revisa que el ejemplo esté completo, pero **nadie lo jugó todavía contra
