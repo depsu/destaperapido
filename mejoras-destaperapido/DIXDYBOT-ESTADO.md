@@ -1,7 +1,131 @@
 # DIXDYBOT — Estado del proyecto y mapa de documentos
 
-**Última actualización:** 25-jul-2026 (S4 cerrado + arranque de S5: la SALIDA y la
-ENTRADA) · **Estado: CONSTRUCCIÓN EN MARCHA.**
+**Última actualización:** 26-jul-2026 (S5: el negocio en el panel + el cerebro
+reparado) · **Estado: CONSTRUCCIÓN EN MARCHA.**
+
+---
+
+## 🚦 EMPIEZA POR AQUÍ (26-jul-2026) — 840 tests verdes, tsc limpio
+
+**Lo más importante que hay que saber antes de tocar nada:**
+
+> ### 🚨 EL PEDIDO NUNCA NACE — bloqueante del cutover del 25-ago
+>
+> `escritor.crearPedido` tiene **un solo llamador en producción**:
+> `src/modulos/migrador/espejo.ts:703` (el migrador). Los 23 pedidos de la base viva son
+> todos `p-mig-*`. **El sistema nuevo jamás ha creado un pedido.** Cuando la instancia
+> tome el número, los clientes conversarán bien y el tablero quedará congelado en esos 23
+> para siempre. No se nota el día uno: se nota la semana siguiente.
+>
+> Medido en la base viva: **75 chats vivos sin pedido**, 73 escribieron esta semana, 62
+> con 7+ mensajes. No es basura — es negocio sin ficha. (Otros 88 sin pedido están
+> dormidos.)
+>
+> **La cadena está rota en tres puntos, verificados uno por uno:**
+> 1. `Efecto` con `crear_pedido`/`mover_pedido` **existe** (`src/schemas/camino.ts:8-16`),
+>    y `Paso.efectos` también (`:23`).
+> 2. `motor/efectos.ts`, al que apunta el comentario de `camino.ts:77`, **no existe**.
+> 3. Los 30 caminos publicados declaran **cero efectos** (24 pasos, todos `mensaje`).
+>
+> Y hay un cuarto punto, el más caro: `orquestador.ts:145` **le pide `paso_completado` al
+> modelo y nunca lee la respuesta** (`pathSiguiente:218-240` solo usa `sigue` y
+> `transicion_elegida`).
+>
+> **Pieza previa que falta y nadie había visto:** `SalidaTurno` (`src/schemas/turno.ts`)
+> NO trae campos extraídos. **Hoy nada saca la dirección, la fecha o la cantidad de lo que
+> el cliente escribe** — eso lo hacía `extraer.js` del bot viejo, y el migrador solo copió
+> su resultado. Sin extracción, los checks del despacho (abajo) tampoco se llenarían solos.
+>
+> **Decisión de Alejandro (26-jul):** el pedido nace **al primer dato duro** (aparece una
+> dirección, una fecha, una cantidad o un precio → nace la ficha; antes es conversación).
+> Genérico: sirve a cualquier rubro y atrapa al cliente aunque no entre en ningún camino.
+
+### Lo que se hizo el 26-jul
+
+- **`fea6c39` · los 4 checks del despacho.** Regla de Alejandro: no sale a terreno sin
+  dirección, día, cantidad y valor. Los tres primeros son campos de ficha (`requiere` del
+  embudo); el VALOR no se podía exigir porque `montoNeto` es COLUMNA del pedido, no ficha
+  → `Etapa.requiere_monto` (default `false`, retrocompatible). El rechazo devuelve el
+  porqué guardado en `CAMPO_SIN_MONTO`: es una instrucción, no un no. Verificado contra la
+  base viva: los 6 pedidos ya despachados pasan los cuatro.
+- **`f2d2a56` · módulo `entregas`.** El commit anterior dejó una TRAMPA: exigía `direccion`
+  y `cantidad_banos` y **ningún módulo declaraba esos campos** (los únicos del molde eran
+  `comuna`/`pedido`/`correo` del cotizador) → el panel no los dibujaba y el dueño no podía
+  completarlos a mano. `entregas` declara dirección y fecha, aporta la etapa `por-entregar`
+  y trae **`campos_extra`**: la vía para que un CLON declare campos de su rubro sin que el
+  molde sepa del rubro (destaperapido suma `cantidad_banos` en
+  `dixdybot-data/ajustes/entregas.json`). **Ojo:** los ids de ficha son snake_case, a
+  diferencia de los ids de etapa/módulo, que son kebab estricto.
+  Incluye **dedup de etapas en `componerAportes`** — embudo y entregas nombran ambos
+  `por-entregar` y el tablero la pintaba dos veces; gana la primera (= la del dueño,
+  porque `embudo` va antes en `MODULOS`) y hay test que fija ese orden.
+- **`3869b2c` · el cerebro volvió a pensar.** Primera prueba de punta a punta contra la
+  instancia viva: el bot contestaba la plantilla de emergencia. La sospecha obvia (el
+  envoltorio del CLI 2.1.220 cambió) era **FALSA** — se verificó campo por campo. La causa:
+  pidiéndole `camino: { sigue, paso_completado }`, el modelo leyó `sigue` como
+  "¿CUÁL sigue?" y devolvió el **id del camino** donde iba un booleano; JSON perfecto, con
+  la respuesta al cliente ya escrita, tumbado entero por Zod. Arreglo en dos capas: el
+  prompt declara los tipos (plan A) y `booleanoTolerante()` endereza (red). **Los negativos
+  incluyen los del castellano** (`ninguno`/`ninguna`/`nada`/`no aplica`): el prompt está en
+  español y sin eso un `"sigue": "ninguno"` se leía como SÍ — invertir la respuesta es peor
+  que perderla. El aviso al dueño ya adjunta el texto que llegó.
+
+### Cómo probar HOY (sin WhatsApp, sin cuenta Meta, sin gastar)
+
+1. El servicio corre por launchd: `launchctl kickstart -k gui/501/com.dixdy.dixdybot-panel`.
+   Panel en **http://127.0.0.1:8793**. Datos en `~/SaSS/destaperapido/dixdybot-data/`.
+2. `panel.entrada_de_prueba` quedó **prendido** en `ajustes/panel.json`. Escribirle al bot
+   como si fueras cliente:
+   `curl -s -X POST http://127.0.0.1:8793/api/simular/entrante -H 'Content-Type: application/json' -d '{"texto":"...","de":"quien-sea"}'`
+   El mismo `de` continúa la MISMA conversación. El canal `sim` se monta solo.
+3. Leer el hilo: `GET /api/chats/sim%3A<de>`. El cerebro tarda ~12-30 s (motor `cli`, la
+   suscripción de Alejandro; **no hay `ANTHROPIC_API_KEY`** — el motor `api` siempre da
+   `no_disponible` y eso NO es un bug).
+4. Si sale *"Dame un momento, ya te confirmo."* el cerebro NO pensó: mirar la última línea
+   de `dixdybot-data/panel.log`, que ahora dice la causa con el texto recibido.
+
+### Estado de los canales (26-jul)
+
+`wa-baileys`: **apagado**, sin número — nunca se ha vinculado un WhatsApp real.
+`wa-cloud`: apagado, le faltan los 4 requisitos de Meta. Único canal vivo: `sim`.
+
+### Decisiones de Alejandro del 26-jul (ya tomadas, no volver a preguntar)
+
+| Tema | Decisión |
+|---|---|
+| Los chats sin pedido | Se llaman **"cotizando"** — van en esa pestaña (⚠️ **sin implementar**) |
+| Checks del despacho | **Los cuatro**: dirección, día, cantidad, valor ✅ hecho |
+| Comprobante de pago | **Mueve solo a Cobrado** (eligió el automático sobre avisar-y-confirmar) ⚠️ sin implementar |
+| Cuándo nace el pedido | **Al primer dato duro** ⚠️ sin implementar |
+
+**Sobre el comprobante automático — advertencias que Alejandro ya escuchó y aceptó:**
+(1) la transición `por-entregar→cobrado` **no acepta origen `camino`**, solo `dueno`/`externo`;
+(2) quien paga por adelantado está en `por-confirmar` y **no existe transición** desde ahí a
+`cobrado`; (3) `cobrado_cuando: 'total'` y una foto no prueba el monto. Las dos primeras son
+cambios en SU embudo que aún no ha autorizado explícitamente — **pídeselos antes de tocar**.
+
+### Lo que necesita a Alejandro
+
+- **Llave de API de respaldo** (cuesta plata): sin ella, si su suscripción falla el bot
+  queda mudo. Hoy la cadena es `cli → api → plantilla` y el eslabón del medio no existe.
+- **Vincular un WhatsApp de pruebas** (2 min, con un número secundario, NUNCA el que vende).
+- **Aprobar los 30 caminos** en lote (tarea #9) — y ahí se declara en qué paso nace el pedido.
+- Expediente Meta (tope **30-sep**) y la decisión del servicio de sombra (cuesta cuota).
+
+### Reglas de esta obra que no se negocian
+
+- **NO tocar el bot vivo** de `~/SaSS/destaperapido/whatsapp-bot/` — es lo que vende hoy.
+  Solo lectura. Nada de `kill`, `restart`, `npm`, `launchctl unload`.
+- **NUNCA agregar una columna a `src/db/esquema.sql`**: todo es `CREATE TABLE IF NOT
+  EXISTS` y SQLite ignora en silencio una columna nueva si la tabla ya existe. Los tests
+  usan `:memory:` (verde), tsc verde, commit verde — y la base viva no la recibe. Salida
+  probada: tabla lateral en las `migraciones` del módulo. Un `CREATE INDEX IF NOT EXISTS`
+  **sí** se aplica en cada arranque.
+- **Reparto por ARCHIVOS, no por tema.** El FRONT edita `dixdybot/panel/pwa/*`; el backend
+  no los toca. Ver `REPARTO-SESIONES.md`.
+- `pnpm exec tsc --noEmit` **y** `pnpm exec vitest run` en verde, o no hay commit.
+
+---
 
 > **Arranque de S5 (25-jul, tarde) — dos agujeros de fondo tapados, 647 tests verdes:**
 > **(1) El mensajero** (`core/mensajero.ts` + `modulos/mensajero`, núcleo): el pipeline
