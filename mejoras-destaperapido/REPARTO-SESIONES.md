@@ -162,7 +162,65 @@ cuesta cuota → es una **decisión de plata de Alejandro**, no de código.
 | **PS** (la salida del panel: enviar, contestar la Duda, entrada de prueba) | sesión del 25-jul | 25-jul | ✅ **hecha** — pieza NUEVA, no estaba en P1-P16 |
 | **PC** (canales conectables desde el panel: los dos WhatsApp, un interruptor) | sesión del 25-jul | 25-jul | ✅ **hecha** (commit `79a8189`) — pieza NUEVA |
 | **PG** (limpieza de genericidad: sacar del molde lo de destaperapido) | sesión del 25-jul | 25-jul | ✅ **hecha** (commit `f2ab260`) |
+| **PN** (el panel muestra el NEGOCIO: pestañas del Kanban, mover pedidos, hilo incremental, los puntitos) | sesión del 26-jul | 26-jul | ✅ **hecha** (commit `25e6a6a`) — pieza NUEVA |
 | resto | — | — | libre |
+
+> **PN · el panel muestra el negocio** (26-jul). Ocho lectores + un árbitro fueron al código
+> y a la base VIVA antes de escribir una línea. Lo que encontraron cambió el plan tres veces.
+>
+> **Lo estructural (respétalo al tocar estos archivos):**
+> - **`estadoNegocio` NO se inventó: ya existía.** Es `pedidos.etapa`, escrita por UNA puerta
+>   validada (`escritor.moverPedido`). El listado la traduce, no la adivina. El bot anterior sí
+>   adivinaba (60 líneas de regex sobre el texto del cliente) y Alejandro lleva **22
+>   correcciones a mano** en `data/etapas.json`: se equivoca en ~1 de cada 3 tratos activos.
+>   No portes eso al molde.
+> - **Las pestañas salen de `ConfigEmbudo.etapas`, no de un enum.** El TODO del front pedía
+>   `cotizando|por_confirmar|…` en snake_case y **esos ids no existen** (el regex de `Etapa.id`
+>   no acepta guión bajo). Cablearlos ata el molde al rubro de destaperapido.
+> - **163 de 186 chats (88%) no tienen pedido.** Por eso `sinPedido` viaja como número aparte:
+>   con las pestañas como único filtro, la lista mostraría 23 chats y escondería el resto.
+> - **Los contadores se cuentan ANTES de los `slice()` de página.** `listaChats` trae todas las
+>   filas y recorta al final: contar después daría pestañas que dicen lo que cabe en la página.
+> - **Las etapas que ya nadie declara siguen apareciendo** (`declarada: false`). Sin ese
+>   apéndice, editar el embudo hace desaparecer chats de la lista sin decir una palabra.
+> - **`POST /api/pedidos/:id/mover`**: `moverPedido()` llevaba desde S2 escrita, probada y
+>   **sin un solo caller vivo** (solo el migrador). «Cobrado» iba a mostrar 0 para siempre.
+> - **`core/pensando.ts`**: Map en memoria con vencimiento. La marca va DESPUÉS del segundo
+>   `puedeResponder()` (`gating.ts`), nunca en `agendar` — ahí se reproducen exactamente las
+>   dos mentiras de la muleta del front. Y se suelta en `finally`, **jamás en `catch`**: un
+>   `catch` se traga el rechazo que sube al `.catch` del agendador y se pierde el aviso «el bot
+>   NO pudo atender a X». **No lo persistas**: el turno vive en un closure y no sobrevive al
+>   reinicio; con launchd+KeepAlive una marca guardada daría puntitos eternos.
+> - **El cursor de `?desde=` es la TUPLA (ts, id).** En la base viva hay **16.675 pares** dentro
+>   de un mismo chat donde el id sube y el ts baja, y 64 `(conversacion_id, ts)` duplicados. Un
+>   `WHERE id > ?` pierde mensajes en silencio. Los acuses ✓✓ viajan aparte: suben sin cambiar
+>   ni ts ni id, y un delta puro los congelaría en «salió» para siempre.
+>
+> **La bomba que nadie había visto:** `escritor.ts` declaraba `check2_afinando: ['resuelta']`,
+> pero `duda-motor.ts` devuelve esa MISMA fase desde `resumir()` y `seguirConversando()` («misma
+> fase», dice su propio comentario). El afinamiento es una conversación, no un paso. Los tests
+> del motor son PUROS y el de integración salta el afinamiento: el defecto era invisible con el
+> suite en verde y habría dado 409 en producción el día que se escribieran esos endpoints.
+>
+> **Lo que se REVIRTIÓ a propósito:** el resolver de agentes (id→dominio, paso 7 del árbitro).
+> Su verificador adversario encontró que cambia la clave de dedup de `una_duda_por_tema`, y la
+> trampa **se dispara justo al hacer el arreglo de datos que la pieza existe para habilitar**:
+> declarar el alias en el clon le abriría a Alejandro una SEGUNDA tarjeta por una duda que está
+> esperando respuesta. Encontró además que `alias` puede tapar el dominio de otro especialista
+> sin aviso, y que la rama «módulo apagado» de `/api/agentes` devolvía un objeto sin `sinFicha`
+> (TypeError en el front). Se conservaron solo `funcion` y `avatar` del `Especialista`, que el
+> front pidió y no tocan conducta. **Quien lo retome: el hallazgo bueno es que `vistaAgentes`
+> cuenta con `WHERE agente_id = e.id`, así que arreglar solo el orquestador deja el síntoma
+> («0 chats» junto a «derivados: 186») intacto en pantalla.**
+>
+> **Trampa de reparto descubierta:** `diseno.test.ts` lee `panel/pwa/tokens.css`, que es de la
+> sesión del FRONT y cambia varias veces al día. A media ronda `--hoja-sombra` pasó de un
+> literal a `var(--shadow-1)` y perdió su bloque oscuro: los tests que afirmaban valores exactos
+> se pusieron rojos sin que nadie se equivocara. **Nunca afirmes valores de tokens.css**: afirma
+> que el token existe y que el catálogo calza con el CSS.
+>
+> 15 mutaciones deliberadas, las 15 cazadas · 819 tests (47 archivos) · verificado contra los
+> 186 chats de la instancia viva · bot vivo intacto.
 
 > **PC · los canales se conectan desde el panel** (25-jul). El nudo no era que faltara un
 > botón: era que **había dos interruptores para la misma luz y el que mandaba no estaba a
