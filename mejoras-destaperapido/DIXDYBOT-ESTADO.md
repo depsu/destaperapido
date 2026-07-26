@@ -41,7 +41,7 @@ al ajuste del clon (`ajustes/entregas.json`), por la puerta `campos_extra` que e
 
 ---
 
-## 🚦 EMPIEZA POR AQUÍ (26-jul-2026) — 885 tests verdes, tsc limpio
+## 🚦 EMPIEZA POR AQUÍ (26-jul-2026) — 895 tests verdes, tsc limpio
 
 **Lo más importante que hay que saber antes de tocar nada:**
 
@@ -158,6 +158,25 @@ Verificado en vivo: *«un baño por un mes en Maipú»* → **160mil neto** (su 
 ⚠️ **Lo aceptado a sabiendas:** el total de N unidades lo multiplica el modelo (una tabla
 por cantidad inflaba el prompt). Acotado porque `montoNeto` del pedido nunca sale del
 modelo: un total mal sumado se ve en el chat, no entra al tablero.
+
+### 🗣️ EL CARRIL DEL AGENTE ya responde (26-jul, `1a9b44a`)
+
+Era la única puerta que el panel llamaba y no existía. Módulo `agente-chat` (tabla propia,
+config en Ajustes, apagable): `POST /api/chats/:id/agente` + `GET .../agente/sesion`.
+
+- **Lee y responde; NO ejecuta acciones.** Sin las tarjetas de aprobación no se manda un
+  WhatsApp ni se fija un precio — y el prompt se lo dice al modelo, así que si le piden
+  actuar contesta que todavía no puede.
+- **Los chips mandan de verdad:** `contextoDe` devuelve el texto del prompt y las piezas en
+  el mismo objeto, así que el número del chip no puede divergir del prompt. Las piezas son
+  el chat, la ficha y **una por módulo que aporte su fragmento** (hoy `cotizador`): en otro
+  rubro serán otras sin tocar código.
+- **La señal de vida** (`pensamiento` escrito ANTES de llamar al cerebro) y `viejo`
+  calculado al leer, no guardado (sin crons nuevos; un turno muerto se ve viejo solo).
+- Probado con un chat real de 35 mensajes: resumió el caso y **avisó solo** que faltaba la
+  comuna para poder contrastar los precios con el tarifario.
+- **Sigue faltando de §3/§7:** las tarjetas de aprobación con el deshacer de 8 s, la
+  bitácora del chat y el resumen que vive en la ficha.
 
 ### ⚠️ Lo que la auditoría de configurabilidad dejó abierto (VERIFICADO en código)
 
