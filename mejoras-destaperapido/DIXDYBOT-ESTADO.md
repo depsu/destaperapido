@@ -41,7 +41,7 @@ al ajuste del clon (`ajustes/entregas.json`), por la puerta `campos_extra` que e
 
 ---
 
-## 🚦 EMPIEZA POR AQUÍ (26-jul-2026) — 868 tests verdes, tsc limpio
+## 🚦 EMPIEZA POR AQUÍ (26-jul-2026) — 880 tests verdes, tsc limpio
 
 **Lo más importante que hay que saber antes de tocar nada:**
 
@@ -115,6 +115,45 @@ al ajuste del clon (`ajustes/entregas.json`), por la puerta `campos_extra` que e
   incluyen los del castellano** (`ninguno`/`ninguna`/`nada`/`no aplica`): el prompt está en
   español y sin eso un `"sigue": "ninguno"` se leía como SÍ — invertir la respuesta es peor
   que perderla. El aviso al dueño ya adjunta el texto que llegó.
+
+### 🧪 EL SIMULADOR (26-jul, `8034aba`) — la forma corta de probar
+
+**http://127.0.0.1:8793/simulador.html**, en una ventana aparte. Varios clientes de
+mentira a la vez, cada uno su columna; se les escribe como cliente y se ve llegar la
+respuesta. Botón ✕ para borrar un ensayo entero (chat + ficha + preguntas al dueño).
+
+- **Qué es un ensayo:** lo que entra por el CANAL de pruebas (`sim`). No hay marca que
+  poner: los 3 ensayos que ya existían quedaron cubiertos solos.
+- **Dónde dejaron de ensuciar:** lista de chats, contadores, decisiones de Hoy, resueltas,
+  mensajes del día, **el tablero y el hero de plata**. Los dos últimos aparecieron
+  probando en vivo: como el pedido nace al primer dato duro, un ensayo con dirección
+  abría ficha y se metía en «Cotizando» (pasó con p-1 y p-2).
+- **Se ven cuando quieras:** ajuste `panel.ver_chats_de_prueba` (apagado por defecto).
+  Esconder NO es borrar: siguen en la base como histórico.
+- **Los contadores del día** no se filtran después (la tabla no guarda de qué chat vino
+  cada uno): se decide ANTES, con `EntradaTurno.esPrueba`. Todo lo demás del turno corre
+  idéntico — si el ensayo no se comportara como un cliente, no probaría nada.
+- **Borrar** exige que el chat sea del canal de pruebas (409 si no): es la única defensa
+  contra llevarse el chat de un cliente que paga, y está probada.
+- **`7a93780`:** el id de un pedido ya no se reusa (tabla `correlativos`, solo sube).
+  Con el MAX() de antes, borrar un ensayo liberaba su id y el próximo cliente real lo
+  heredaba — con el ledger inmutable, dos historias bajo el mismo nombre.
+
+### ⚠️ Lo que la auditoría de configurabilidad encontró (26-jul, VERIFICADO en código)
+
+Tres cosas que parecen configuradas y **no llegan al bot**. No son urgentes para el
+simulador, pero mandan sobre qué tan real es una prueba:
+
+1. **La voz del bot no existe en este clon.** `data/persona/base.md` NO está
+   (comprobado con `ls`), así que corre con la plantilla genérica del molde. Además la
+   persona se lee UNA vez al arrancar y no es un módulo: no se puede editar del panel.
+2. **El tarifario no llega al cerebro.** `cotizador.json` tiene 4,3 KB de precios reales
+   y `precioPara()` tiene **cero llamadores en producción**; `fragmentoPersona` está
+   declarado en el contrato de módulo y **nadie lo llama**. Por eso una prueba real
+   terminó en una duda que decía *"no hay herramienta de tarifario disponible"*: el bot
+   no puede cotizar, solo preguntarte. **Decisión pendiente de Alejandro.**
+3. **Los caminos no se crean ni se editan desde el panel** (solo aprobar/rechazar), y los
+   especialistas de `agentes.json` son decorado: el turno no los usa para elegir caminos.
 
 ### Cómo probar HOY (sin WhatsApp, sin cuenta Meta, sin gastar)
 
