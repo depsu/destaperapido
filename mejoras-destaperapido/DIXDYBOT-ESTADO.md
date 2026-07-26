@@ -41,7 +41,7 @@ al ajuste del clon (`ajustes/entregas.json`), por la puerta `campos_extra` que e
 
 ---
 
-## 🚦 EMPIEZA POR AQUÍ (26-jul-2026) — 880 tests verdes, tsc limpio
+## 🚦 EMPIEZA POR AQUÍ (26-jul-2026) — 885 tests verdes, tsc limpio
 
 **Lo más importante que hay que saber antes de tocar nada:**
 
@@ -139,21 +139,38 @@ respuesta. Botón ✕ para borrar un ensayo entero (chat + ficha + preguntas al 
   Con el MAX() de antes, borrar un ensayo liberaba su id y el próximo cliente real lo
   heredaba — con el ledger inmutable, dos historias bajo el mismo nombre.
 
-### ⚠️ Lo que la auditoría de configurabilidad encontró (26-jul, VERIFICADO en código)
+### 💰 EL BOT YA COTIZA (26-jul, `0ea0a8b`) — decisión: «cotiza solo, con tope»
 
-Tres cosas que parecen configuradas y **no llegan al bot**. No son urgentes para el
-simulador, pero mandan sobre qué tan real es una prueba:
+El agujero estaba escondido: el clon tenía 4,3 KB de precios cargados y **ninguno llegaba
+al bot** (`precioPara()` sin llamadores; `fragmentoPersona`, declarado en el contrato de
+módulo desde r8, sin que nadie lo llamara). Una prueba real terminó en una duda que decía
+*«no hay herramienta de tarifario disponible»*.
 
-1. **La voz del bot no existe en este clon.** `data/persona/base.md` NO está
-   (comprobado con `ls`), así que corre con la plantilla genérica del molde. Además la
-   persona se lee UNA vez al arrancar y no es un módulo: no se puede editar del panel.
-2. **El tarifario no llega al cerebro.** `cotizador.json` tiene 4,3 KB de precios reales
-   y `precioPara()` tiene **cero llamadores en producción**; `fragmentoPersona` está
-   declarado en el contrato de módulo y **nadie lo llama**. Por eso una prueba real
-   terminó en una duda que decía *"no hay herramienta de tarifario disponible"*: el bot
-   no puede cotizar, solo preguntarte. **Decisión pendiente de Alejandro.**
-3. **Los caminos no se crean ni se editan desde el panel** (solo aprobar/rechazar), y los
+Ahora la **voz del bot** = persona del clon + lo que aporta cada módulo ACTIVO
+(`Modulo.fragmentoPersona`), compuesta POR TURNO. El cotizador rinde su tabla con el
+con-IVA ya calculado, los huecos dichos («NO tiene valor de lista») y el TOPE: comuna
+fuera de zona, combinación sin valor, rebaja bajo el piso → `falta_camino`, decide el
+dueño. Apagar el módulo borra la tabla de la voz y el bot vuelve a preguntar todo.
+
+Verificado en vivo: *«un baño por un mes en Maipú»* → **160mil neto** (su fila exacta);
+*«lo mismo en Valparaíso»* → no inventa, espera honesta y la pregunta queda para él.
+
+⚠️ **Lo aceptado a sabiendas:** el total de N unidades lo multiplica el modelo (una tabla
+por cantidad inflaba el prompt). Acotado porque `montoNeto` del pedido nunca sale del
+modelo: un total mal sumado se ve en el chat, no entra al tablero.
+
+### ⚠️ Lo que la auditoría de configurabilidad dejó abierto (VERIFICADO en código)
+
+1. **La voz del clon no existe como archivo.** `data/persona/base.md` NO está, así que la
+   base es la plantilla genérica del molde. **Ojo:** eso NO significa que el bot no sepa
+   del negocio — lo que sabe le llega por los CAMINOS (verificado: «aseo semanal, papel
+   higiénico» sale de un camino publicado, no lo inventó) y ahora por el tarifario. Falta
+   igual: la persona se lee UNA vez al arrancar y no es un módulo, así que no se edita
+   desde el panel.
+2. **Los caminos no se crean ni se editan desde el panel** (solo aprobar/rechazar), y los
    especialistas de `agentes.json` son decorado: el turno no los usa para elegir caminos.
+3. **El bautizo de chats sigue pendiente** (P7): la lista muestra números en vez de
+   «Carolina · Melipilla». Ahora es barato — los datos ya se extraen en cada turno.
 
 ### Cómo probar HOY (sin WhatsApp, sin cuenta Meta, sin gastar)
 
