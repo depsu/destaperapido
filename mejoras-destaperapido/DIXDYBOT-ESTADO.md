@@ -1,7 +1,7 @@
 # DIXDYBOT — Estado del proyecto y mapa de documentos
 
-**Última actualización:** 26-jul-2026 (S5: el negocio en el panel + el cerebro
-reparado) · **Estado: CONSTRUCCIÓN EN MARCHA.**
+**Última actualización:** 26-jul-2026 (S5: el negocio en el panel, el cerebro reparado y
+**el pedido que ya nace solo**) · **Estado: CONSTRUCCIÓN EN MARCHA.**
 
 ---
 
@@ -41,40 +41,50 @@ al ajuste del clon (`ajustes/entregas.json`), por la puerta `campos_extra` que e
 
 ---
 
-## 🚦 EMPIEZA POR AQUÍ (26-jul-2026) — 840 tests verdes, tsc limpio
+## 🚦 EMPIEZA POR AQUÍ (26-jul-2026) — 868 tests verdes, tsc limpio
 
 **Lo más importante que hay que saber antes de tocar nada:**
 
-> ### 🚨 EL PEDIDO NUNCA NACE — bloqueante del cutover del 25-ago
+> ### ✅ EL PEDIDO YA NACE SOLO — bloqueante del cutover RESUELTO (26-jul, `008d8b3`)
 >
-> `escritor.crearPedido` tiene **un solo llamador en producción**:
-> `src/modulos/migrador/espejo.ts:703` (el migrador). Los 23 pedidos de la base viva son
-> todos `p-mig-*`. **El sistema nuevo jamás ha creado un pedido.** Cuando la instancia
-> tome el número, los clientes conversarán bien y el tablero quedará congelado en esos 23
-> para siempre. No se nota el día uno: se nota la semana siguiente.
+> Era esto: `crearPedido` tenía **un solo llamador en producción** (el migrador), los 23
+> pedidos de la base viva eran todos `p-mig-*` y el sistema nuevo jamás había abierto una
+> ficha. Con el número tomado, los clientes iban a conversar bien y el tablero a quedarse
+> congelado. Medido entonces en la base viva: **75 chats vivos sin pedido**, 73 de esa
+> semana, 62 con 7+ mensajes — negocio sin ficha.
 >
-> Medido en la base viva: **75 chats vivos sin pedido**, 73 escribieron esta semana, 62
-> con 7+ mensajes. No es basura — es negocio sin ficha. (Otros 88 sin pedido están
-> dormidos.)
+> **Cómo quedó** (`src/core/nacimiento.ts`, motor puro + cableado en el orquestador):
+> el pedido nace **al primer dato duro**, y la extracción de esos datos viaja en la
+> **misma llamada** del turno (`SalidaTurno.datos`) — cero llamadas nuevas, cero plata
+> extra. Qué campo es "duro" lo declara el módulo dueño del campo (`AporteCampoFicha.duro`:
+> entregas → dirección y fecha; cotizador → pedido) y el clon suma los suyos por
+> `campos_extra` (destaperapido: `cantidad_banos`). El ajuste del dueño es
+> `embudo.nacimiento` (`modo`, `con_monto`, `campos`) y su lista MANDA.
 >
-> **La cadena está rota en tres puntos, verificados uno por uno:**
-> 1. `Efecto` con `crear_pedido`/`mover_pedido` **existe** (`src/schemas/camino.ts:8-16`),
->    y `Paso.efectos` también (`:23`).
-> 2. `motor/efectos.ts`, al que apunta el comentario de `camino.ts:77`, **no existe**.
-> 3. Los 30 caminos publicados declaran **cero efectos** (24 pasos, todos `mensaje`).
+> **Tres decisiones que conviene no revertir sin leer por qué:**
+> 1. **La cifra conversada NO es el valor del pedido.** Abre ficha y queda a la vista en
+>    `monto_conversado`, pero `montoNeto` sigue en null: las cifras salen del tarifario,
+>    jamás del modelo. Un precio inventado pasaría el check de `requiere_monto` y saldría
+>    un camión. ⚠️ **Si Alejandro quiere que el precio acordado entre como valor real, es
+>    una decisión suya — hoy está deliberadamente frenado.**
+> 2. **El bot no pisa al dueño.** `datos_del_bot` (campo reservado) marca qué escribió él:
+>    corrige lo suyo cuando el cliente se desdice, nunca lo que el dueño arregló a mano.
+> 3. **Abrir sí, mover no.** Nace el origen `bot` y `moverPedido` lo rechaza; no está en el
+>    enum de `origenes`, así que tampoco se le puede conceder desde el embudo.json.
 >
-> Y hay un cuarto punto, el más caro: `orquestador.ts:145` **le pide `paso_completado` al
-> modelo y nunca lee la respuesta** (`pathSiguiente:218-240` solo usa `sigue` y
-> `transicion_elegida`).
+> **Lo que NO hizo falta, contra lo que decía este documento:** `motor/efectos.ts`. Al
+> nacer del DATO y no del paso de un camino, la ficha se abre también fuera de todo camino
+> — que es justo donde se perdía el cliente. La cadena de efectos sigue sin existir
+> (`Efecto` y `Paso.efectos` están en `schemas/camino.ts`, los caminos declaran cero
+> efectos) y ahora es una mejora, no un bloqueante.
 >
-> **Pieza previa que falta y nadie había visto:** `SalidaTurno` (`src/schemas/turno.ts`)
-> NO trae campos extraídos. **Hoy nada saca la dirección, la fecha o la cantidad de lo que
-> el cliente escribe** — eso lo hacía `extraer.js` del bot viejo, y el migrador solo copió
-> su resultado. Sin extracción, los checks del despacho (abajo) tampoco se llenarían solos.
+> **Sigue abierto:** `orquestador.ts` **le pide `paso_completado` al modelo y nunca lee la
+> respuesta** (`pathSiguiente` solo usa `sigue` y `transicion_elegida`). Cuesta tokens en
+> cada turno y no hace nada: o se usa (con efectos) o se deja de pedir.
 >
-> **Decisión de Alejandro (26-jul):** el pedido nace **al primer dato duro** (aparece una
-> dirección, una fecha, una cantidad o un precio → nace la ficha; antes es conversación).
-> Genérico: sirve a cualquier rubro y atrapa al cliente aunque no entre en ningún camino.
+> **Efecto colateral querido:** un negocio con embudo activo pide salida estructurada en
+> TODOS los turnos (ahí viaja la extracción). La prosa simple quedó para el negocio sin
+> tablero: apagar el módulo `embudo` ES ese interruptor.
 
 ### Lo que se hizo el 26-jul
 
@@ -132,7 +142,7 @@ al ajuste del clon (`ajustes/entregas.json`), por la puerta `campos_extra` que e
 | Los chats sin pedido | Se llaman **"cotizando"** — van en esa pestaña (⚠️ **sin implementar**) |
 | Checks del despacho | **Los cuatro**: dirección, día, cantidad, valor ✅ hecho |
 | Comprobante de pago | **Mueve solo a Cobrado** (eligió el automático sobre avisar-y-confirmar) ⚠️ sin implementar |
-| Cuándo nace el pedido | **Al primer dato duro** ⚠️ sin implementar |
+| Cuándo nace el pedido | **Al primer dato duro** ✅ hecho (`008d8b3`) — ver el bloque de arriba |
 
 **Sobre el comprobante automático — advertencias que Alejandro ya escuchó y aceptó:**
 (1) la transición `por-entregar→cobrado` **no acepta origen `camino`**, solo `dueno`/`externo`;
