@@ -6,6 +6,65 @@ aquí queda la historia. La escriben ronda-ads, ronda-correo y las sesiones.
 
 ---
 
+## 2026-07-26 · 👷 constructor · el post del líquido azul deja de hablar de «riesgos» y pasa a hablar como busca la gente
+
+Trabajé la tarea t34: el artículo del líquido azul está en posición 5,8 con **912 apariciones
+en Google y solo 6 clics**. Fui a mirar QUÉ escribe la gente para llegar ahí y el artículo
+estaba contestando otra pregunta:
+
+- «que es el liquido azul de los baños portatiles» — 63 apariciones, **posición 4, cero clics**
+- «líquido azul **para** baños portátiles» — 57 apariciones
+- y varias más con «para»: para baños, para baño portátil, para limpiar baños
+
+Dos cosas: la gente dice **baños portátiles**, no «baños químicos», y pregunta **qué es y para
+qué sirve**, no «qué riesgo tiene». El título decía «Qué tiene, mitos y riesgo real». Quedó:
+**«Líquido azul para baños portátiles: qué es y qué tiene hoy»**.
+
+Y le agregué arriba una guía chica de cuatro caminos («¿arriendas baños?, ¿lo quieres comprar?,
+¿es para un motorhome?, ¿te preocupa si hace mal?») que manda a cada quien a la parte que le
+sirve. Eso es lo que faltaba: el artículo entero estaba escrito desde el ángulo del susto y
+la mitad de la gente llega buscando comprar o entender.
+
+También le puse un enlace desde el post de «cuántos baños necesita un evento», que es fuerte,
+y le saqué un «100% biodegradables» que estaba sin respaldo (ya no digo el número).
+
+Publicado en la web. En 2-3 semanas se re-mide: la apuesta es que suba de esos 6 clics.
+
+**Cierre (01:56).** Esta parte quedó a medias: el cambio estaba escrito en los archivos y
+anotado acá, pero **nunca se subió** — la web seguía mostrando el título viejo. La pasada
+siguiente lo revisó de nuevo (que nada de lo nuevo fuera inventado, que los enlaces internos
+llegaran a alguna parte, teléfono correcto) y **ahora sí está publicado y verificado en la
+web**. Aprendizaje para adentro: no anotar «publicado» hasta que la página en vivo lo muestre.
+
+## 2026-07-26 · 📣 ronda-ads · tu mejor negocio es el que tiene menos plata
+
+Tres cosas de esta semana:
+
+**1) Baños químicos es tu joya y está apretada.** 40 contactos a **1.303 pesos cada uno** — el
+más barato de tus seis frentes, casi 5 veces mejor que las grúas. Y es justo **la campaña con
+menos presupuesto de todas** (8.000 al día, cuando destapando tiene 19.000). Por eso pierde
+**más de la mitad de las búsquedas**: se le acaba la plata, no le falta calidad. Esta decisión
+es tuya y está esperándote en el tablero.
+
+**2) Destapes urbanos cambió de problema.** Antes le faltaba presupuesto; ahora le pesa más
+quedar abajo en el resultado. Eso se puede mejorar gratis antes de pedirte plata.
+
+**3) Tus negocios se están peleando entre ellos y esta semana empeoró.** El lado de las fosas
+subió un 35% en un día: entre destaperapido y fullfosas van **70 mil pesos** pujando por las
+mismas búsquedas. Ejemplo concreto: por «limpia fosas calera de tango», fullfosas pagó **8.663
+por UN clic** y tú 1.395 por lo mismo. Es plata que se van entre ustedes.
+
+## 2026-07-25 · 📣 ronda-ads · «baños químicos» es tu mejor negocio y está a media máquina
+
+Los números: baños químicos trajo **40 contactos por 50 mil pesos (1.263 cada uno)** — el
+más barato de todas tus campañas — y aun así **se queda fuera de la mitad de las búsquedas
+por falta de presupuesto**. Es la propuesta más clara del mes: subir de 8.000 a 12.000 al día.
+Eso es plata tuya, así que queda encolada esperando tu OK.
+
+Lo otro, importante: tus propios negocios se están peleando las mismas búsquedas. Destapes
+urbanos choca con destapando y Rural choca con fullfosas — juntos, unos **135 mil pesos por
+semana** subiéndose el precio entre ellos. Necesita una decisión tuya de cómo repartir.
+
 ## 2026-07-24 · 👷 constructor · el post «por qué se tapa el desagüe de cocina» pasa a hablar de «lavaplatos» y le saco un dato inventado
 
 Trabajé la tarea t33: el artículo `/blog/por-que-se-tapa-desague-cocina` está en posición 6,3
