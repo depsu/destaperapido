@@ -5,6 +5,42 @@ reparado) · **Estado: CONSTRUCCIÓN EN MARCHA.**
 
 ---
 
+## 🎯 QUÉ ES ESTO (léelo antes que cualquier otra cosa)
+
+**dixdybot es un PRODUCTO que se le vende a muchos negocios distintos.** No es el bot de
+destaperapido. Una peluquería, un taller, un dentista y un arriendo de baños químicos
+tienen que poder usar el mismo software: lo que cambia entre ellos son sus *datos*
+(etapas del embudo, tarifario, campos de la ficha, persona del bot), nunca el código.
+
+**destaperapido es el primer cliente y el conejillo de indias.** Paga, usa el bot de
+verdad todos los días, y por eso es el que descubre los problemas primero. Que un
+requisito venga de él NO lo hace genérico.
+
+**La regla que decide dónde va cada cosa:**
+
+> Si sirve **solo a los baños químicos** → va en los datos del cliente
+> (`~/SaSS/destaperapido/dixdybot-data/ajustes/*.json`).
+> Si sirve **a cualquier negocio** → va en el molde (`SaSS/DIXDY/dixdybot/src/`).
+> Si el molde necesita saber algo del rubro para funcionar, **el diseño está mal**.
+
+Ejemplo real del 26-jul: los checks del despacho. "No despachar sin saber cuánto vale"
+sirve a cualquiera → al molde (`Etapa.requiere_monto`). "Cantidad de baños" es del rubro →
+al ajuste del clon (`ajustes/entregas.json`), por la puerta `campos_extra` que el módulo
+`entregas` abre justo para eso.
+
+### ⚠️ Dos cosas incómodas que hay que saber
+
+1. **Hoy el molde ES el programa que corre en producción.** El servicio launchd arranca
+   `SaSS/DIXDY/dixdybot/src/index.ts --datos ~/SaSS/destaperapido/dixdybot-data`. No hay
+   copia por cliente todavía, aunque `dixdybot/CLAUDE.md` la describa. **Cada cambio al
+   molde es un cambio en vivo al cliente que paga.**
+2. **No existe camino para montar el segundo negocio.** Las herramientas de arranque
+   (migrador, destilador de caminos) exigen un bot anterior del cual copiar, y el
+   tarifario del cotizador solo sabe expresar precios con la forma de destaperapido. Antes
+   de vender esto a otro rubro hay que resolver eso — y no es un bug, es trabajo por hacer.
+
+---
+
 ## 🚦 EMPIEZA POR AQUÍ (26-jul-2026) — 840 tests verdes, tsc limpio
 
 **Lo más importante que hay que saber antes de tocar nada:**
