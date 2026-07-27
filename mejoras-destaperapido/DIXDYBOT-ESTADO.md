@@ -41,9 +41,40 @@ al ajuste del clon (`ajustes/entregas.json`), por la puerta `campos_extra` que e
 
 ---
 
-## 🚦 EMPIEZA POR AQUÍ (26-jul-2026) — 895 tests verdes, tsc limpio
+## 🚦 EMPIEZA POR AQUÍ (26-jul-2026, noche) — 924 tests verdes, tsc limpio
 
 **Lo más importante que hay que saber antes de tocar nada:**
+
+> ### ✅ EL TO-DO DEL BACKEND QUEDÓ CERRADO (26-jul noche, `3586604`..`69f6fe8`)
+>
+> La ronda que faltaba antes de la ronda de pruebas. TODO verificado contra el panel
+> vivo (8793, reiniciado). Detalle completo para el front:
+> `dixdybot/PARA-EL-FRONT-simulador.md` (ANEXO 2). En corto:
+>
+> 1. **El paso ② de la Duda tiene puerta** (`/api/dudas/:id/{afinar,resumir,seguir,
+>    confirmar}`): el motor existía sin endpoints. Confirmar corre el MISMO candado del
+>    orquestador y, al activarse, **la tarifa acordada queda escrita en el tarifario**
+>    (`cotizador.tarifas_especiales` → bloque «TARIFAS ACORDADAS» que ve el cerebro).
+> 2. **La contra-argumentación discute con datos**: `responder` arma la `ReferenciaPrecio`
+>    desde el tarifario del clon (`referenciaTarifario`); se acabó el «sin datos duros
+>    para objetar» perpetuo. `DecisionPendiente` expone `turnos/evaluacion/decisionFinal/
+>    urgente` y el contador de Hoy solo cuenta lo urgente.
+> 3. **Bitácora del chat** (`GET /api/chats/:id → bitacora`): consulta sobre el ledger
+>    que ya existía, en castellano de persona. Solo en el fetch completo.
+> 4. **El resumen vive en la ficha** (`chat_resumenes`, tabla nueva): GET genera solo si
+>    hay algo nuevo, regenerar con tope 2/hora, citas validadas contra el hilo, cifra de
+>    Plata solo si aparece textual. Probado con el cerebro real: 16 s primera vez, 19 ms
+>    después. Lo conversado con el agente también lo desactualiza.
+> 5. **Se acabó el slug «sofia»**: `Especialista.alias` (dato del clon) — los 186 chats
+>    migrados se PRESENTAN como Sofía sin reescribir la base (el resolver de agente_id
+>    NO se volvió a intentar).
+> 6. **185 campos con `.describe()`** (el diccionario puente del panel ya puede morir) y
+>    el catálogo de Diseño **lee la escala de tokens.css** (etiquetas verdaderas + las 13
+>    variables --t*/--p*/--m* servidas).
+>
+> **Lo que sigue SIN existir, a propósito:** las tarjetas de aprobación y las
+> herramientas del agente (`/api/acciones`, deshacer 8 s server-side, voto 👍👎). El
+> agente lee y responde; actuar espera las tarjetas.
 
 > ### ✅ EL PEDIDO YA NACE SOLO — bloqueante del cutover RESUELTO (26-jul, `008d8b3`)
 >
