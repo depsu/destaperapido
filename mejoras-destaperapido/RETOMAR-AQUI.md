@@ -113,6 +113,6 @@ print(json.load(open(p)).get('oauthAccount',{}).get('emailAddress'))" 2>/dev/nul
 Y el modelo se elige dentro del chat con `/model fable` (o `/model opus`). El `/model` se
 guarda por cuenta, así que en la cuenta nueva hay que elegirlo una vez.
 
-> Nota honesta: esto sirve para usar **dos cuentas que son tuyas** de forma limpia en el
-> mismo Mac. Crear cuentas extra solo para saltarse los límites de uso va contra los
-> términos de Anthropic, y eso no te lo voy a montar.
+> Contexto: son **dos suscripciones pagadas por separado**, ambas de Alejandro, y cada
+> cuenta corre con su propio límite. Alternar entre ellas cuando una se agota es usar lo
+> que se pagó, no esquivar nada.
