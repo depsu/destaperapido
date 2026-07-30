@@ -70,17 +70,20 @@ pone en pantalla el estado VIVO (cuenta, paneles, dudas esperando, últimos comm
 
 ### Carril BACKEND — plan en `auditoria-backend-2026-07-30.md`
 
-1. **E1 · Historial + volver atrás** — hoy un cambio de ajuste PISA el anterior sin dejar
-   rastro (ni qué, ni cuándo, ni si fue el dueño o la IA). Diseño ya hecho en §5 de la
-   auditoría: tabla nueva `puntos_restauracion` + hook `alGuardar` en `core/config.ts` +
-   eventos al ledger + vista «Cambios» con botón *volver a este punto*.
-   **Trampa documentada:** los caminos viven en DOS almacenes y `caminos_publicados` le gana
-   al ajuste — la foto debe llevar los dos juntos o el camino restaurado queda mudo.
-2. **💲 Precios** (idea de Alejandro, diseño en §12): sección propia en el menú; subir
-   Excel/PDF/foto → propuesta con tarjeta de aprobación; variaciones por fecha como capa
-   aparte; recomendar marcando qué es dato y qué es criterio.
-3. **E2 un solo candado** → **E3 IA en Caminos** → **E4 agentes de verdad** → **E5 tableros
-   por flujo**. Detalle en §10.
+**HECHO (noche 30-jul, ver `diario-noche.md`):** ✅ E1 Cambios+volver atrás · ✅ P1 vista
+Precios · ✅ P2 traer-mi-lista con propuesta IA · ✅ E2 candado único (lint + puerta
+trasera cerrada + refine embudo) · ✅ §8 perillas muertas fuera · ✅ E3 la guía de Caminos
+viva (explica + propone borradores, probada con el cerebro real).
+
+**Lo que sigue:**
+1. **E4 · Agentes de verdad** — la personalidad del Especialista al prompt según dominio;
+   derivación real (persistir `dominio_detectado` → `agente_id` vía escritor;
+   `Recepcion.activa`); corregir el contador «derivados»; endpoint POST del gimnasio
+   («practicar») para que la vista Agentes viva; y arreglar el doble conteo de dominio en
+   el puntaje ANTES de encender la derivación (§3 de la auditoría).
+2. **E5 · Tableros por flujo** (grande) — multi-tablero, pedido↔tablero por tabla nueva.
+3. **Precios P3/P4** — variaciones por fecha como capa; recomendar valores marcando qué es
+   dato y qué criterio. Y la foto-con-visión para «Traer mi lista».
 
 ### Pendientes que necesitan a Alejandro
 - **Plata:** `ANTHROPIC_API_KEY` como respaldo del cerebro (2 de 2 veces que falló el

@@ -113,6 +113,23 @@ WhatsApp» seguía prometiendo responder por WhatsApp con un código — ahora d
 
 ---
 
+## ✅ Pieza 6 (extra, tras tu OK de la mañana) · E3: la guía de Caminos VIVE
+
+**Qué quedó funcionando:** la caja de la vista Caminos que decía «la guía llega con el
+asistente» ahora ES el asistente. Le preguntas por tus caminos en simple («¿qué hace
+cam-fuera-de-cobertura?») y te contesta con el catálogo real; le pides un camino nuevo
+(«crea un camino para cuando preguntan por el horario») y **lo deja como BORRADOR en tu
+cascada, con su prueba de calidad ya escrita en el pool**. Activarlo sigue siendo tuyo,
+desde la ficha, pasando el candado — nada que la IA escriba cambia la conducta viva.
+Un camino ACTIVO se niega a editarlo («páusalo primero o pídeme una copia»). Todo pasa
+por el lint de E2 y deja su punto en «Cambios» como *la IA*.
+
+**Probado en vivo con el cerebro real:** le pregunté por `cam-fuera-de-cobertura` en tu
+panel y lo explicó perfecto en 9 segundos, sin tocar nada. 1009 tests en verde.
+**Commit:** `7b9072a`.
+
+---
+
 # 🌅 Resumen de la noche (léeme primero)
 
 **Las 5 piezas del encargo quedaron terminadas, probadas y corriendo en los dos paneles:**
