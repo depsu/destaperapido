@@ -96,9 +96,26 @@ pasan las reglas nuevas — nada se rompió en vivo. **Commit:** `4920292`.
 
 ---
 
+## ✅ Pieza 5 · Lo que se ve, funciona (§8) — TERMINADA y en vivo
+
+**Qué quedó funcionando:** se retiraron del panel las tres perillas que prometían cosas
+que ningún código hacía — «Cuándo cuentas la plata», «Proponer darlo por perdido tras» y
+«Cada cuánto te insiste». Estaban a la vista en Ajustes y eran mentiras chicas: tocarlas
+no cambiaba nada. Donde estaban quedó escrito el porqué, y cada una vuelve el día que
+exista su cable. De paso se sinceró el último texto mentiroso: la ayuda de «Avisarte por
+WhatsApp» seguía prometiendo responder por WhatsApp con un código — ahora dice lo que es
+(una notificación; se responde en el panel).
+
+**Sin sustos:** tus archivos de ajustes viejos traen esas claves y siguen leyéndose igual
+(lo desconocido se descarta). Verificado en vivo: el panel ya no sirve esas perillas.
+
+**Commit:** `90e3d1a`.
+
+---
+
 # 🌅 Resumen de la noche (léeme primero)
 
-**Las 4 piezas del encargo quedaron terminadas, probadas y corriendo en los dos paneles:**
+**Las 5 piezas del encargo quedaron terminadas, probadas y corriendo en los dos paneles:**
 
 1. **«Cambios»** — cada ajuste deja una foto de cómo estaba todo antes; botón «Volver
    aquí» con doble toque; volver también tiene vuelta atrás. *(commit `cd09671`)*
@@ -108,14 +125,17 @@ pasan las reglas nuevas — nada se rompió en vivo. **Commit:** `4920292`.
    propuesta; nada se escribe sin tu doble OK. *(`edf289f`)*
 4. **Un solo candado** — el lint de caminos existe, las tres vías lo comparten, la puerta
    trasera cerrada, y el embudo ya no se puede guardar roto. *(`4920292`)*
+5. **Lo que se ve, funciona** — fuera las 3 perillas muertas del panel y el último texto
+   que mentía sobre el aviso por WhatsApp. *(`90e3d1a`)*
 
 **Números:** 1005 pruebas en verde (eran 990 al empezar la noche) · tipos limpios · 6
 verificadores del panel OK · ambos paneles reiniciados y sanos tras cada pieza · repo
 limpio, cada pieza en su commit.
 
-**Lo que NO hice y por qué:** el punto 5 («enchufes sin cable», opcional si sobraba
-noche) — preferí cerrar las 4 piezas completas y verificadas antes que empezar una quinta
-a medias. La foto-con-visión de Precios quedó anotada como siguiente paso.
+**Lo que quedó anotado como siguiente paso (no a medias, simplemente siguiente):** subir
+la FOTO de un papel a Precios (necesita conectar la visión del cerebro); y del inventario
+§8 quedan los enchufes NO visibles en el panel (efectos de pasos, pausa-dueno,
+herramientas por paso) — esos son cableado grande, no limpieza de una noche.
 
 **Nada necesita tu decisión urgente.** Siguen pendientes de otras noches: la API key de
 respaldo del cerebro (plata, tuya) y publicar el panel 8793 en el túnel para los avisos
