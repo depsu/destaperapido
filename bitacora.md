@@ -6,6 +6,42 @@ aquí queda la historia. La escriben ronda-ads, ronda-correo y las sesiones.
 
 ---
 
+## 2026-07-30 · 👷 constructor · el artículo que más gente ve por fin cambia de gancho (y lo publicamos de verdad)
+
+La página de **olor a alcantarilla** es la que más gente ve en Google de todo tu sitio: 5.001
+veces apareció en el último mes. El problema es que de cada 100 personas que la ven, solo 1,6
+entran — deberían entrar unas 4. Le habíamos cambiado el gancho tres veces con la misma
+fórmula («8 causas y cómo eliminarlo») y las tres rindieron casi igual de mal: ya está probado
+que por ahí no es.
+
+Así que esta vez cambiamos **la promesa, no el número**: ahora dice «**8 causas según dónde
+huele**». Es lo único que tu artículo tiene y ningún competidor ofrece — una tabla que te
+manda directo a tu caso según si el olor está en el baño, la cocina, el patio o en toda la
+casa. Además el resumen que sale en Google ahora menciona *por qué el olor vuelve a los pocos
+días*, que es justo lo que la gente pregunta y nadie responde.
+
+De paso arreglamos un hueco real: la causa 4 (una fisura en una cañería dentro del muro) te
+decía cómo **encontrarla** pero nunca qué **hacer** después. Ahora también lo dice.
+
+Dos cosas honestas: (1) el intento de anoche había quedado escrito pero **sin publicar** — se
+cortó a mitad de camino; esta pasada lo revisó de nuevo y ahora sí está en vivo. (2) Si en una
+semana el porcentaje sigue igual, dejamos de tocar el título de esta página: el problema estará
+en la posición, no en el gancho.
+
+## 2026-07-30 · 📣 ronda-ads · los baños son tu mejor negocio y llevan 7 días con la plata agotada
+
+Un contacto de **baños químicos te cuesta 1.402 pesos**. El de destapes urbanos, 4.277; el de
+fosas de tu socio, 6.020. Es **cuatro veces más barato** y esta semana se quedó sin plata **los
+siete días** (tope 8.000, gastó entre 8.190 y 9.278 cada día). Por eso **la mitad de la gente
+que busca baños químicos no te ve**.
+
+Hay una salida sin gastar un peso más: mover parte del tope desde «03 Urbano», que esta semana
+pasó de 2.534 a 4.277 pesos por contacto, hacia los baños. **Esa decisión es tuya, es plata.**
+
+Lo bueno de la semana: las fosas rurales mejoraron (de 4.616 a 3.606 por contacto) y no se
+quemó nada en búsquedas basura. Una duda para ti: **¿arriendas duchas portátiles o lavamanos?**
+Hay gente buscándolo; si los tienes, es plata sobre la mesa.
+
 ## 2026-07-29 · 📣 ronda-ads · los baños siguen siendo tu mejor negocio, y siguen apretados
 
 Un contacto de **baños químicos te cuesta 1.316 pesos**. Uno de destapes urbanos, 5.032. Es
