@@ -1,5 +1,11 @@
 # DIXDYBOT — Estado del proyecto y mapa de documentos
 
+> 🆕 **30-jul-2026 · ¿Chat nuevo? Empieza por [`RETOMAR-AQUI.md`](RETOMAR-AQUI.md)** — el
+> traspaso corto (dónde quedamos, qué sigue, las leyes de la casa y las dos cuentas de
+> Claude Code del Mac). El detalle técnico de lo encontrado y el plan por etapas está en
+> [`auditoria-backend-2026-07-30.md`](auditoria-backend-2026-07-30.md); **E0 (Cinturón) ya
+> está cerrada y en vivo**. Este documento sigue siendo el mapa largo del proyecto.
+
 **Última actualización:** 26-jul-2026 (S5: el negocio en el panel, el cerebro reparado y
 **el pedido que ya nace solo**) · **Estado: CONSTRUCCIÓN EN MARCHA.**
 
