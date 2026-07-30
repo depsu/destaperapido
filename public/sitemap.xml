@@ -2,22 +2,18 @@
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
     <loc>https://www.destaperapido.cl/sitemap-pages.xml</loc>
-    <lastmod>2026-05-23</lastmod>
+    <lastmod>2026-07-24</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://www.destaperapido.cl/sitemap-blog.xml</loc>
-    <lastmod>2026-05-23</lastmod>
+    <lastmod>2026-07-30</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://www.destaperapido.cl/sitemap-zonas.xml</loc>
-    <lastmod>2026-05-23</lastmod>
+    <lastmod>2026-07-17</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://www.destaperapido.cl/sitemap-servicios.xml</loc>
-    <lastmod>2026-05-23</lastmod>
-  </sitemap>
-  <sitemap>
-    <loc>https://www.destaperapido.cl/sitemap-landing.xml</loc>
-    <lastmod>2026-05-23</lastmod>
+    <lastmod>2026-07-30</lastmod>
   </sitemap>
 </sitemapindex>

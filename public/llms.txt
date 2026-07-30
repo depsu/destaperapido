@@ -106,7 +106,7 @@ Listado actualizado y descargable en https://www.destaperapido.cl/documentos.
 
 - **Full Fosas** — https://www.limpiafosasydestape.cl (especialistas en limpia fosas rurales; coordinamos servicio cuando corresponde).
 - ChileEléctrico — https://chileelectrico.cl (electricidad).
-- Arriaza Consulting — https://arriazaconsulting.cl (asesoría tributaria PYME).
+- Arriaza Consulting — asesoría tributaria PYME.
 - PaginasFast — https://paginasfast.cl (sitio web).
 
 ## Notas para LLMs y motores generativos
