@@ -1,5 +1,9 @@
 # Auditoría backend dixdybot — 30-jul-2026
 
+> **ESTADO: E0 (Cinturón) HECHA y en vivo el 30-jul.** Lo que cerró y cómo se verificó está
+> al final, en §11. Lo de arriba queda como el retrato del problema. Siguiente: E1
+> (historial + volver atrás) y la **Tabla de precios** (§12, idea de Alejandro 30-jul).
+
 Cuatro revisores en paralelo: motor de caminos, historial/versionado, módulos/tablero/agentes,
 e instancias vivas (8793 destaperapido · 8794 DIXDY). Cada hallazgo trae archivo:línea del
 molde (`~/SaSS/DIXDY/dixdybot/`). Este doc es la lista de implementación: las etapas E0-E5
@@ -295,3 +299,82 @@ Docs que mienten: `esquema.sql:110-118` (eventos inexistentes), `TODO-BACKEND.md
 Transversal: inventario §8 (cablear o esconder, empezando por lo visible en panel);
 `razones` al 100%; sincerar docs que mienten. Pendiente decisión Alejandro: API key de
 respaldo del cerebro (plata).
+
+---
+
+## 11 · E0 CINTURÓN — cerrada el 30-jul (977 tests verdes, en vivo en las 2 instancias)
+
+| # | Qué se hizo | Dónde | Verificado con |
+|---|---|---|---|
+| 1 | Guard de media con contenido `null` (ya existía en el código; le faltaba el test que lo congela) | `src/canales/wa-baileys/normalizar.ts:156-163` | test de regresión de las 3 caídas (`normalizar.test.ts`) |
+| 2 | Respaldo cubre dixdybot: glob `$SASS/*/dixdybot-data` + FOTO consistente por instancia (`VACUUM INTO` a `~/Backups/dixdybot-fotos`, nunca copiar bot.db caliente) | `scripts/respaldo.sh` | corrida real: snapshot trae `destaperapido/dixdybot-data/{bot.db,ledgers,auth}` y `DIXDY/dixdybot-data/…`; las 2 fotos con `integrity_check ok` (187 y 1 conversaciones) |
+| 3 | Expiración PEREZOSA de dudas, sin cron: en cada turno del bot y en cada carga de Hoy. Solo expira `pendiente` (una `evaluando` es conversación a medias contigo). No borra ni libera cupo: la tarjeta sigue y revive al responder | nuevo `src/modulos/dudas/expirar.ts`; llamada en `orquestador.atender` y en `GET /api/hoy` | **en vivo**: `prjst` (pendiente desde 28-jul 17:44, timeout 4 h) → `expirada` + evento `duda.expirada` en el ledger; `ockbe`/`baffe` (evaluando) intactas |
+| 4 | Aviso sincero: se quitó el `Responde "si <código>"` que prometía un relay por WhatsApp inexistente; ahora lleva al panel. El knob `avisar_por_wa` se re-describe como «Avisarte con una notificación» | `orquestador.ts` (rama duda), `modulos/dudas/modulo.ts` | test del aviso (`not.toContain('Responde "si')`) |
+| 5 | La prueba dorada `duda-<id>` se PERSISTE al pool al confirmar (`pruebaGuardada` en la respuesta) → el camino aprendido se puede apagar y volver a encender | `POST /api/dudas/:id/confirmar` | test: el pool en disco contiene `duda-abcde`, se suma a las de fábrica y no se duplica al re-confirmar |
+| 6 | **Cerco del turno** en `caminosAplicados`: solo aplica un camino cuyas reglas se le OFRECIERON al cerebro (id pelado de candidato real sigue aceptado) | `caminos-motor.ts` | test del cerco + test en vivo del turno: camino retirado con `prioridad_sobre` ya NO secuestra ni el turno ni el path |
+| 7 | `implica` solo arrastra caminos ACTIVOS (antes podía resucitar un borrador/retirado del catálogo) | `caminos-motor.ts` resolver (3) | suite de caminos |
+| 8 | Salto validado: `transicion_elegida` se obedece solo si el camino existe, está activo y el paso existe; si no, se ignora (antes: camino inventado se persistía; paso inventado reiniciaba el camino en silencio) | `pathSiguiente` en `orquestador.ts` | test de los dos casos: el path queda en el camino real y no reinicia |
+| 9 | Negaciones EN PROSA se leen como `false` (`"no corresponde"`, `"descartado: …"`, `"irrelevante"`, `"no se completó"`) — antes un NO del cerebro se leía como SÍ | `schemas/turno.ts` `enderezarBooleano` | test con los 5 casos que invertían la decisión |
+| 10 | `caminos.json` ilegible ya no deja MUDO al bot (cae a defaults de fábrica; los aprendidos de la base siguen) | `caminosEfectivos` | test con JSON roto: el cliente igual recibe respuesta |
+| 11 | Con caminos publicados el turno es SIEMPRE estructurado → `falta_camino` alcanzable aunque el embudo esté apagado (si no, prosa libre podía inventar precio) | `orquestador.ts` | test con embudo apagado y ningún candidato: la Duda igual se abre |
+
+**Hallazgo NUEVO durante E0 (no estaba en la auditoría) — datos vivos en el repo maestro:**
+`~/SaSS/dixdy/dixdybot-data` **ES** `~/SaSS/DIXDY/dixdybot-data` (el disco del Mac no
+distingue mayúsculas), o sea la instancia DIXDY del panel público vive DENTRO del repo
+maestro, y sus 14 archivos estaban **trackeados en git**: `bot.db`, ledgers, logs,
+`sesiones.json` y `push-vapid.json` — una **llave privada**. Contradice la ley del repo
+(«el maestro NO contiene datos de ningún cliente»). Se cerró así:
+1. `/dixdybot-data/` a `.gitignore` con el porqué escrito.
+2. `git rm -r --cached dixdybot-data` (los archivos siguen en disco; la instancia no se tocó).
+3. La llave se **rotó** igual (`BJWD1U7i…` → `BKNH1dOj…`, la vieja guardada aparte como
+   comprometida): gratis, porque había 0 teléfonos suscritos en ambas instancias.
+No hubo filtración: el maestro está **97 commits sin subir** a GitHub, así que la llave
+nunca salió del Mac. **La historia local sí la contiene** — por eso se rotó en vez de
+reescribir la historia (reescribir es destructivo y no hacía falta).
+
+**Nota operativa:** los avisos push no llegan a ningún teléfono todavía (0 suscripciones en
+ambas instancias). El aviso de duda vencida está cableado; falta instalar la PWA y activar
+avisos — para destaperapido eso pide publicar 8793 en el túnel (§docs/29, 5 min).
+
+## 12 · Tabla de precios como pieza propia (idea de Alejandro, 30-jul) — diseño
+
+Pedido: subir un Excel/PDF/foto y que la IA lo deje «bonito» como **Tabla de precios**
+editable; que entienda variaciones (temporada alta, la semana del 18, rangos por cantidad) y
+**recomiende** valores; y decidir DÓNDE vive (sección propia · vista del agente · Caminos) y
+si se entrena conversando al crear el agente.
+
+**Lo que ya existe y no hay que reinventar:** el `cotizador` es exactamente esa tabla como
+datos (`ConfigCotizador.tarifario` + `tarifas_especiales`, editable por JSON Schema desde el
+panel, inyectada al prompt por `fragmentoPersona`, y con `referenciaTarifario` que ya sabe
+comparar un precio contra la fila más barata de una zona — es lo que usa la Duda para
+discutirle al dueño). La ingesta ya guarda y hace mirar fotos/PDF/audio
+(`src/modulos/ingesta/`, con Whisper local). El agente del panel ya tiene el patrón de
+«manos» con tarjeta de aprobación. Falta: (a) importar un archivo → propuesta de tabla,
+(b) variaciones por fecha, (c) una vista propia.
+
+**Decisión de UX (dónde va):** sección propia en el menú izquierdo, **💲 Precios**. Razón:
+un precio no es una regla de conversación (Caminos) ni una persona (Agentes) — es el dato que
+el negocio consulta y corrige más seguido, y hoy vive escondido en Ajustes → cotizador, que
+es el peor lugar para lo que más se mira. La vista del agente ENLAZA a Precios («este agente
+cotiza con esta tabla»), no la duplica.
+
+**Etapas propuestas** (después de E1, que le da el «volver atrás» que hace seguro editar
+precios):
+- **P1 · La tabla como vista.** `💲 Precios` con la tabla en grande (filas legibles, no
+  formulario de JSON), edición en línea, y el historial de E1 por fila («quién cambió qué»).
+- **P2 · Importar un archivo.** Subir Excel/PDF/foto → el LLM propone la tabla estructurada →
+  **tarjeta de aprobación** lado a lado (lo que leyó vs lo que hay) → se aplica solo si el
+  dueño acepta. Reusa ingesta + el patrón de manos. Nada se escribe sin OK, porque un precio
+  mal leído es plata.
+- **P3 · Variaciones por fecha/temporada.** Tabla nueva de reglas de precio con vigencia
+  (`desde`/`hasta`, recargo % o monto, motivo) — «la semana del 18 sube 20%». El cotizador
+  las aplica al cotizar y el bot DICE por qué («esa semana tiene recargo de temporada»).
+  Sin tocar la tabla base: la variación es una capa, así se enciende y apaga sin miedo.
+- **P4 · Recomendar.** El agente propone valores con datos que ya están en casa (historial de
+  cierres, margen por fila, comparables de zona) y marca en pantalla qué es dato y qué es
+  criterio suyo — la misma honestidad que ya usa en la Duda («esto es criterio mío, NO sale
+  de la tabla»).
+- **P5 · Entrenar conversando.** Al crear un agente, un chat estilo Claude Code que arma su
+  tabla y sus caminos preguntando; todo lo que se acuerde queda reflejado en Precios y en
+  Caminos (con el historial de E1 detrás). Va al final porque es la punta del embudo: exige
+  P1-P4 + E3 (IA en Caminos) funcionando.
