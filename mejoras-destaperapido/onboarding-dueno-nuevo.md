@@ -80,9 +80,18 @@ partir con la rápida.
   tu bot», Módulos sin duplicar canales (enlace a Conexiones), Diseño oculto por
   defecto (prendido en la instancia de Alejandro), banner honesto del simulador,
   fotos sin 404, sello de versión al pie, Guardar-nombre solo al editar.
-- **Fase B — celular**: barra inferior con nombres, cara Agente en la ficha móvil,
-  estreno/hero visible en pantalla chica, robot adaptado (ya es bottom-sheet), pegado
-  al fondo del hilo.
+- **Fase B — celular: HECHA (30-jul, verificada con navegador real a 390×844).**
+  Barra inferior tipo app con NOMBRE en cada botón (adiós jeroglífico de iconos); la
+  cara del agente vive en el teléfono (el carril se MUDA dentro de la capa de la ficha
+  — un solo DOM, la duda se resuelve desde el celular); el estreno/hero abre solo en
+  pantalla chica; el hilo abre pegado al último mensaje. De pasada cayeron 3 bugs de
+  arranque que la verificación real destapó (vista pedida por URL moría muda; la
+  ventana del robot nacía abierta).
+- **Fase C — EMPEZADA (30-jul)**: ✔ el asistente de conexión abre explicando las DOS
+  formas (rápida gratis vs oficial de Meta y cuándo conviene); ✔ confeti sobrio una
+  vez al cumplir una misión. FALTAN: conversación «cuéntame de tu negocio» que escribe
+  ajustes, misiones tomando Hoy con negocio vacío, novedades ✨ portadas del maestro
+  con voz del personaje, primera prueba guiada del simulador.
 - **Fase C — la conversación inicial**: «cuéntame de tu negocio» que personaliza dixdy
   escribiendo los ajustes (negocio, agente, tono) sin nada técnico; misiones tomando
   Hoy cuando el negocio está vacío; celebraciones; novedades contadas por el robot;
