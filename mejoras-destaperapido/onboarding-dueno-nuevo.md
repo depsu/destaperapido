@@ -87,11 +87,19 @@ partir con la rápida.
   pantalla chica; el hilo abre pegado al último mensaje. De pasada cayeron 3 bugs de
   arranque que la verificación real destapó (vista pedida por URL moría muda; la
   ventana del robot nacía abierta).
-- **Fase C — EMPEZADA (30-jul)**: ✔ el asistente de conexión abre explicando las DOS
-  formas (rápida gratis vs oficial de Meta y cuándo conviene); ✔ confeti sobrio una
-  vez al cumplir una misión. FALTAN: conversación «cuéntame de tu negocio» que escribe
-  ajustes, misiones tomando Hoy con negocio vacío, novedades ✨ portadas del maestro
-  con voz del personaje, primera prueba guiada del simulador.
+- **Fase C — HECHA (30-jul), todas sus piezas verificadas con navegador real**:
+  ✔ el asistente de conexión abre explicando las DOS formas (rápida gratis vs oficial
+  de Meta y cuándo conviene cada una);
+  ✔ confeti sobrio una vez al cumplir una misión;
+  ✔ «cuéntame de tu negocio»: el robot BAUTIZA el negocio y CONTRATA al primer agente
+  escribiendo los ajustes con el validador del módulo (manos nombrar_negocio y
+  contratar_agente, guion de estreno en su prompt);
+  ✔ Hoy recibe al dueño nuevo: sin equipo, el guía toma el centro con las 3 misiones;
+  ✔ la primera prueba del simulador se guía sola (3 mensajes de cliente listos);
+  ✔ novedades ✨ con la voz del robot (patrón portado de panel-cliente: id +
+  visto-una-vez; anunciar una mejora = agregar una entrada a NOVEDADES_PANEL).
+  El onboarding completo del plan original quedó construido: robot acompañante,
+  misiones con progreso real, personalización conversando y novedades como personaje.
 - **Fase C — la conversación inicial**: «cuéntame de tu negocio» que personaliza dixdy
   escribiendo los ajustes (negocio, agente, tono) sin nada técnico; misiones tomando
   Hoy cuando el negocio está vacío; celebraciones; novedades contadas por el robot;
