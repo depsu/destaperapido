@@ -1,0 +1,39 @@
+- generic [active] [ref=f2e1]:
+  - generic [ref=f2e2]:
+    - generic [ref=f2e3]:
+      - heading "Simulador" [level=1] [ref=f2e4]
+      - paragraph [ref=f2e5]: Escríbele al bot como si fueras un cliente. Nada de esto sale a WhatsApp.
+    - generic [ref=f2e6]:
+      - generic [ref=f2e7]: 1 ensayo(s) guardados · VISIBLES en el panel
+      - link "volver al panel" [ref=f2e8] [cursor=pointer]:
+        - /url: /
+  - generic [ref=f2e9]: "Listo para probar. El bot contesta igual que a un cliente real: mismo cerebro, mismos precios. Estos chats no se ven en tu panel."
+  - generic [ref=f2e11]:
+    - generic [ref=f2e12]:
+      - generic [ref=f2e13]:
+        - generic [ref=f2e14]: A
+        - generic [ref=f2e15]: alejandro-test
+        - button "Borrar" [ref=f2e16] [cursor=pointer]
+      - generic [ref=f2e17]:
+        - generic [ref=f2e18]:
+          - text: holaa necesito un baño
+          - generic [ref=f2e19]: 05:42 p. m.
+        - generic [ref=f2e20]:
+          - text: ¡Hola! Sí, te ayudo al tiro con el arriendo 🙌 ¿Para qué comuna sería?
+          - generic [ref=f2e21]: 05:42 p. m.
+        - generic [ref=f2e22]:
+          - text: necesito 200 baños para mañana cuanto vale?
+          - generic [ref=f2e23]: 05:44 p. m.
+        - generic [ref=f2e24]:
+          - text: Déjame confirmarlo bien y te escribo al tiro.
+          - generic [ref=f2e25]: 05:44 p. m.
+        - generic [ref=f2e26]:
+          - text: "📝 28-07-2026 — El cliente además llamó por teléfono al dueño hoy (fuera del chat). El contenido de la llamada no está registrado acá. Pendiente por WhatsApp: comuna/dirección, cantidad de días y confirmación de disponibilidad de las 200 unidades para mañana."
+          - generic [ref=f2e27]: 06:46 p. m.
+      - generic [ref=f2e29]:
+        - textbox "Escribe como cliente…" [ref=f2e30]
+        - button "Enviar" [ref=f2e31] [cursor=pointer]
+    - generic [ref=f2e32]:
+      - generic [ref=f2e33]: Abre otro cliente de prueba para conversar en paralelo.
+      - 'textbox "nombre (ej: carolina)" [ref=f2e34]'
+      - button "Abrir cliente" [ref=f2e35] [cursor=pointer]

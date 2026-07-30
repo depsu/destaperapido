@@ -1,0 +1,462 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e4]:
+    - banner "Panel de navegación superior" [ref=e6]:
+      - status
+      - generic [ref=e7]:
+        - button [expanded] [ref=e71] [cursor=pointer]:
+          - img [ref=e74]: menu
+        - heading [level=1] [ref=e13]:
+          - button "Google Ads – Ir a la página de inicio" [ref=e14]
+      - generic [ref=e82]:
+        - button "Buscar" [ref=e85] [cursor=pointer]:
+          - generic [ref=e87]:
+            - img [ref=e88]: search
+            - text: Buscar
+        - generic [ref=e90]:
+          - button "Diseño" [ref=e93] [cursor=pointer]:
+            - generic [ref=e95]:
+              - img [ref=e96]: responsive_layout
+              - text: Diseño
+          - button "Actualizar" [ref=e100] [cursor=pointer]:
+            - generic [ref=e102]:
+              - img [ref=e103]: refresh
+              - text: Actualizar
+          - button "Abrir el panel de ayuda rápida" [ref=e106] [cursor=pointer]:
+            - generic [ref=e107]:
+              - text: Ayuda
+              - generic [ref=e108]:
+                - img [ref=e109]: help_outline
+                - text: Ayuda
+          - generic [ref=e113]:
+            - button "Notificaciones" [ref=e116] [cursor=pointer]:
+              - generic [ref=e118]:
+                - img [ref=e121]: notifications
+                - generic [ref=e123]: Notificaciones
+            - dialog "Notificaciones" [ref=e528]:
+              - generic [ref=e532]:
+                - generic [ref=e533]:
+                  - img "Icono de notificación de advertencia" [ref=e535]: error_outline
+                  - button "Añadir un método de pago alternativo Solucionar" [ref=e536] [cursor=pointer]:
+                    - text: Añadir un método de pago alternativo
+                    - generic [ref=e537]: Solucionar
+                - generic [ref=e538]:
+                  - img "Icono de notificación informativa" [ref=e540]: info_outline
+                  - 'button "Te presentamos a tu nuevo partner creativo: Nano Banana Pro Inicio" [ref=e541] [cursor=pointer]':
+                    - text: "Te presentamos a tu nuevo partner creativo: Nano Banana Pro"
+                    - generic [ref=e542]: Inicio
+                - button "Cerrar notificaciones" [ref=e543] [cursor=pointer]:
+                  - img [ref=e546]: clear
+      - button "Cuenta de Google" [ref=e128] [cursor=pointer]:
+        - img "Cuenta de Google (rivera.ale982@gmail.com)" [ref=e129]
+    - generic [ref=e46]:
+      - generic [ref=e155]:
+        - generic [ref=e156]:
+          - generic [ref=e157]:
+            - button "Crear" [ref=e159] [cursor=pointer]
+            - generic [ref=e164]: Crear
+          - menu [ref=e165]:
+            - menu [ref=e166]:
+              - menuitem "Campañas" [ref=e169] [cursor=pointer]:
+                - generic [ref=e170]:
+                  - img [ref=e172]: campaign
+                  - generic [ref=e173]: Campañas
+              - menuitem "Objetivos" [ref=e176] [cursor=pointer]:
+                - generic [ref=e177]:
+                  - img [ref=e179]: rewarded_ads
+                  - generic [ref=e180]: Objetivos
+              - menuitem "Herramientas" [ref=e183] [cursor=pointer]:
+                - generic [ref=e184]:
+                  - img [ref=e186]: construction
+                  - generic [ref=e187]: Herramientas
+              - menuitem "Facturación" [ref=e190] [cursor=pointer]:
+                - generic [ref=e191]:
+                  - img [ref=e193]: credit_card
+                  - generic [ref=e194]: Facturación
+              - menuitem "Administrador" [ref=e197] [cursor=pointer]:
+                - generic [ref=e198]:
+                  - img [ref=e200]: settings
+                  - generic [ref=e201]: Administrador
+        - navigation [ref=e202]:
+          - menu [ref=e203]:
+            - generic [ref=e204]:
+              - menuitem "Estudio creativo" [ref=e207] [cursor=pointer]
+              - menuitem "Planificación" [expanded] [ref=e213] [cursor=pointer]:
+                - generic [ref=e214]:
+                  - generic [ref=e215]: Planificación
+                  - img [ref=e218]: expand_more
+              - generic [ref=e219]:
+                - menuitem "Planificador de palabras clave" [ref=e222] [cursor=pointer]
+                - menuitem "Planificador de rendimiento" [ref=e228] [cursor=pointer]
+                - menuitem "Planificador de cobertura" [ref=e234] [cursor=pointer]
+              - menuitem "Centro de publicidad de aplicaciones" [ref=e240] [cursor=pointer]
+              - menuitem "Biblioteca compartida" [ref=e246] [cursor=pointer]:
+                - generic [ref=e247]:
+                  - generic [ref=e248]: Biblioteca compartida
+                  - img [ref=e251]: expand_more
+              - menuitem "Colaboraciones con creadores de YouTube Beta" [ref=e254] [cursor=pointer]:
+                - generic [ref=e255]:
+                  - generic [ref=e256]: Colaboraciones con creadores de YouTube
+                  - generic [ref=e257]: Beta
+              - menuitem "Idoneidad del contenido" [ref=e261] [cursor=pointer]
+              - menuitem "Gestor de datos" [ref=e267] [cursor=pointer]
+              - menuitem "Solución de problemas" [ref=e273] [cursor=pointer]:
+                - generic [ref=e274]:
+                  - generic [ref=e275]: Solución de problemas
+                  - img [ref=e278]: expand_more
+              - menuitem "Acciones en bloque" [ref=e281] [cursor=pointer]:
+                - generic [ref=e282]:
+                  - generic [ref=e283]: Acciones en bloque
+                  - img [ref=e286]: expand_more
+              - menuitem "Presupuestos y puja" [ref=e289] [cursor=pointer]:
+                - generic [ref=e290]:
+                  - generic [ref=e291]: Presupuestos y puja
+                  - img [ref=e294]: expand_more
+              - menuitem "Datos empresariales" [ref=e297] [cursor=pointer]
+      - generic [ref=e49]:
+        - generic [ref=e301]:
+          - generic [ref=e303]:
+            - generic [ref=e548]:
+              - link "Planificador de palabras clave" [ref=e549] [cursor=pointer]:
+                - /url: /aw/keywordplanner/home?ocid=7664871348&ascid=7664871348&authuser=0&__u=8064001799&__c=3227013511
+              - img [ref=e551]: chevron_right
+            - heading "Plan del jul 16, 2026, 5 p. m., GMT-04:00" [level=2] [ref=e552]
+          - tablist [ref=e556]:
+            - tab "Ideas para palabras clave" [selected] [ref=e557] [cursor=pointer]
+            - tab "Previsión" [ref=e560] [cursor=pointer]
+            - tab "Palabras clave guardadas" [ref=e563] [cursor=pointer]
+            - tab "Palabras clave negativas" [ref=e566] [cursor=pointer]
+        - main [ref=e306]:
+          - generic [ref=e308]:
+            - region "Barra de búsqueda de ideas para palabras clave" [ref=e574]:
+              - generic [ref=e579]:
+                - generic [ref=e581]:
+                  - 'button "Cambiar el sitio web o las palabras clave existentes: destape de cañerías, limpieza de fosas sépticas, arriendo baños químicos" [ref=e584] [cursor=pointer]':
+                    - img [ref=e586]: search
+                    - generic [ref=e587]: destape de cañerías, limpieza de fosas sépticas, arriendo baños químicos
+                  - region "Configuración de segmentación" [ref=e589]:
+                    - button "Chile" [ref=e590] [cursor=pointer]:
+                      - img [ref=e592]: location_on
+                    - button "Español" [ref=e595] [cursor=pointer]:
+                      - generic [ref=e596]:
+                        - img [ref=e598]: translate
+                        - generic [ref=e599]: Español
+                    - button "Google" [ref=e603] [cursor=pointer]:
+                      - generic [ref=e604]:
+                        - img [ref=e606]: manage_search
+                        - generic [ref=e607]: Google
+                    - 'button "Editar periodo: Los últimos 12 meses" [ref=e612] [cursor=pointer]':
+                      - img [ref=e614]: calendar_today
+                      - generic [ref=e617]:
+                        - generic [ref=e618]: jul 2025 – jun 2026
+                        - img [ref=e620]: arrow_drop_down
+                - group "Amplía tu búsqueda:" [ref=e622]:
+                  - text: "Amplía tu búsqueda:"
+                  - grid [ref=e623]:
+                    - row [ref=e624]:
+                      - gridcell "Añadir fosas sépticas" [ref=e625] [cursor=pointer]:
+                        - img [ref=e628]: add
+                        - generic [ref=e629]: fosas sépticas
+                      - gridcell "Añadir baños químicos" [ref=e631] [cursor=pointer]:
+                        - img [ref=e634]: add
+                        - generic [ref=e635]: baños químicos
+                      - gridcell "Añadir limpieza fosas sépticas" [ref=e637] [cursor=pointer]:
+                        - img [ref=e640]: add
+                        - generic [ref=e641]: limpieza fosas sépticas
+                      - gridcell "Añadir destape" [ref=e643] [cursor=pointer]:
+                        - img [ref=e646]: add
+                        - generic [ref=e647]: destape
+                      - gridcell "Añadir limpieza" [ref=e649] [cursor=pointer]:
+                        - img [ref=e652]: add
+                        - generic [ref=e653]: limpieza
+                      - gridcell "Añadir baños" [ref=e655] [cursor=pointer]:
+                        - img [ref=e658]: add
+                        - generic [ref=e659]: baños
+                      - gridcell "Añadir cañerías" [ref=e661] [cursor=pointer]:
+                        - img [ref=e664]: add
+                        - generic [ref=e665]: cañerías
+                - button [ref=e670] [cursor=pointer]:
+                  - generic [ref=e671]:
+                    - img [ref=e673]: file_download
+                    - region "Ideas para palabras clave"
+            - generic [ref=e677]:
+              - generic [ref=e678]:
+                - region "Gráficos de volúmenes de búsqueda" [ref=e680]:
+                  - button [ref=e685] [cursor=pointer]:
+                    - generic "Tendencia del volumen de búsqueda" [ref=e686]:
+                      - generic [ref=e687]:
+                        - img [ref=e688]: show_charts
+                        - text: Gráficos
+                  - generic [ref=e695]:
+                    - table [ref=e697]:
+                      - rowgroup [ref=e698]:
+                        - row [ref=e699]:
+                          - cell [ref=e700]:
+                            - button "Total" [pressed] [ref=e703] [cursor=pointer]
+                          - cell [ref=e704]:
+                            - button "Móvil" [pressed] [ref=e707] [cursor=pointer]
+                    - generic: Gráfico de líneas de tendencias de búsqueda mensuales
+                - region "Tabla de resultados de búsqueda" [ref=e710]:
+                  - region "Menú de herramientas principal de Ideas para palabras clave" [ref=e715]:
+                    - generic [ref=e716]:
+                      - generic [ref=e719] [cursor=pointer]:
+                        - group:
+                          - generic [ref=e720]:
+                            - button "Mostrar 1 filtros activos" [ref=e723]:
+                              - generic [ref=e725]:
+                                - img [ref=e727]: filter_alt
+                                - generic [ref=e728]: "1"
+                            - generic: "Filtros aplicados:"
+                            - grid "Filtros aplicados:"
+                        - generic [ref=e730]:
+                          - generic [ref=e731]: y 1 más
+                          - button "Añadir filtro" [ref=e732]
+                      - generic [ref=e736]: 496 ideas para palabras clave disponibles
+                    - generic [ref=e739]:
+                      - button "Columnas" [ref=e744] [cursor=pointer]:
+                        - generic [ref=e745]:
+                          - img [ref=e747]: view_column
+                          - generic [ref=e748]: Columnas
+                      - button [ref=e754] [cursor=pointer]:
+                        - generic [ref=e756]:
+                          - text: Vista de palabra clave
+                          - img [ref=e758]: arrow_drop_down
+                      - button "Ocultar gráfico" [ref=e768] [cursor=pointer]:
+                        - img [ref=e771]: keyboard_arrow_up
+                  - generic [ref=e773]:
+                    - grid "Ideas para palabras clave" [ref=e776]:
+                      - row [ref=e777]:
+                        - gridcell [ref=e778]:
+                          - checkbox "Seleccionar todas las filas" [ref=e780] [cursor=pointer]
+                        - columnheader "Palabra clave (por relevancia)" [ref=e783] [cursor=pointer]
+                        - columnheader "Promedio de búsquedas mensuales" [ref=e784] [cursor=pointer]:
+                          - text: Promedio de búsquedas mensuales
+                          - img [ref=e786]: help_outline
+                        - columnheader "Cambio en tres meses" [ref=e787] [cursor=pointer]:
+                          - text: Cambio en tres meses
+                          - img [ref=e789]: help_outline
+                        - columnheader "Cambio interanual" [ref=e790] [cursor=pointer]:
+                          - text: Cambio interanual
+                          - img [ref=e792]: help_outline
+                        - columnheader "Competitividad" [ref=e793] [cursor=pointer]:
+                          - text: Competitividad
+                          - img [ref=e795]: help_outline
+                        - columnheader "Cuota de impresiones de anuncio" [ref=e796] [cursor=pointer]:
+                          - text: Cuota de impresiones de anuncio
+                          - img [ref=e798]: help_outline
+                        - columnheader "Puja por la parte superior de la página (intervalo bajo)" [ref=e799] [cursor=pointer]:
+                          - text: Puja por la parte superior de la página (intervalo bajo)
+                          - img [ref=e801]: help_outline
+                        - columnheader "Puja por la parte superior de la página (intervalo alto)" [ref=e802] [cursor=pointer]:
+                          - text: Puja por la parte superior de la página (intervalo alto)
+                          - img [ref=e804]: help_outline
+                        - columnheader "Estado de la cuenta" [ref=e805]:
+                          - text: Estado de la cuenta
+                          - img [ref=e807]: help_outline
+                      - generic [ref=e808]: Palabras clave proporcionadas
+                      - row [ref=e810]:
+                        - gridcell [ref=e811]:
+                          - checkbox "Seleccionar fila \"destape de cañerías\"" [ref=e813] [cursor=pointer]
+                        - gridcell [ref=e816]:
+                          - generic "destape de cañerías. Esta es la palabra clave que has proporcionado." [ref=e818]: destape de cañerías
+                        - gridcell "590 Imagen de gráfico" [ref=e820]:
+                          - generic [ref=e821]:
+                            - generic [ref=e822]: "590"
+                            - button "Imagen de gráfico" [ref=e823]
+                        - gridcell "0 %" [ref=e824]
+                        - gridcell "0 %" [ref=e826]
+                        - gridcell "Alta" [ref=e828]
+                        - gridcell "4 %" [ref=e830]
+                        - gridcell "652 CLP" [ref=e832]
+                        - gridcell "3.082 CLP" [ref=e834]
+                        - gridcell [ref=e836]
+                      - row [ref=e837]:
+                        - gridcell [ref=e838]:
+                          - checkbox "Seleccionar fila \"limpieza de fosas sépticas\"" [ref=e840] [cursor=pointer]
+                        - gridcell [ref=e843]:
+                          - generic "limpieza de fosas sépticas. Esta es la palabra clave que has proporcionado." [ref=e845]: limpieza de fosas sépticas
+                        - gridcell "390 Imagen de gráfico" [ref=e847]:
+                          - generic [ref=e848]:
+                            - generic [ref=e849]: "390"
+                            - button "Imagen de gráfico" [ref=e850]
+                        - gridcell "-18 %" [ref=e851]
+                        - gridcell "0 %" [ref=e853]
+                        - gridcell "Alta" [ref=e855]
+                        - gridcell "10 %" [ref=e857]
+                        - gridcell "420 CLP" [ref=e859]
+                        - gridcell "1.743 CLP" [ref=e861]
+                        - gridcell [ref=e863]
+                      - row [ref=e864]:
+                        - gridcell [ref=e865]:
+                          - checkbox "Seleccionar fila \"arriendo baños químicos\"" [ref=e867] [cursor=pointer]
+                        - gridcell [ref=e870]:
+                          - generic "arriendo baños químicos. Esta es la palabra clave que has proporcionado." [ref=e872]: arriendo baños químicos
+                        - gridcell "390 Imagen de gráfico" [ref=e874]:
+                          - generic [ref=e875]:
+                            - generic [ref=e876]: "390"
+                            - button "Imagen de gráfico" [ref=e877]
+                        - gridcell "-34 %" [ref=e878]
+                        - gridcell "-19 %" [ref=e880]
+                        - gridcell "Alta" [ref=e882]
+                        - gridcell "33 %" [ref=e884]
+                        - gridcell "342 CLP" [ref=e886]
+                        - gridcell "1.069 CLP" [ref=e888]
+                        - gridcell [ref=e890]
+                      - row [ref=e893]:
+                        - gridcell [ref=e894]:
+                          - checkbox "Seleccionar fila \"destapa cañerias\"" [ref=e896] [cursor=pointer]
+                        - gridcell "destapa cañerias" [ref=e899]
+                        - gridcell "2.400 Imagen de gráfico" [ref=e903]:
+                          - generic [ref=e904]:
+                            - generic [ref=e905]: "2.400"
+                            - button "Imagen de gráfico" [ref=e906]
+                        - gridcell "+21 %" [ref=e907]
+                        - gridcell "+21 %" [ref=e909]
+                        - gridcell "Alta" [ref=e911]
+                        - gridcell "3 %" [ref=e913]
+                        - gridcell "377 CLP" [ref=e915]
+                        - gridcell "2.042 CLP" [ref=e917]
+                        - gridcell [ref=e919]
+                      - row [ref=e920]:
+                        - gridcell [ref=e921]:
+                          - checkbox "Seleccionar fila \"destapacaños\"" [ref=e923] [cursor=pointer]
+                        - gridcell "destapacaños" [ref=e926]
+                        - gridcell "590 Imagen de gráfico" [ref=e930]:
+                          - generic [ref=e931]:
+                            - generic [ref=e932]: "590"
+                            - button "Imagen de gráfico" [ref=e933]
+                        - gridcell "+22 %" [ref=e934]
+                        - gridcell "+22 %" [ref=e936]
+                        - gridcell "Alta" [ref=e938]
+                        - gridcell "< 1%" [ref=e940]
+                        - gridcell "222 CLP" [ref=e942]
+                        - gridcell "2.044 CLP" [ref=e944]
+                        - gridcell [ref=e946]
+                      - row [ref=e947]:
+                        - gridcell [ref=e948]:
+                          - checkbox "Seleccionar fila \"destapa drenajes\"" [ref=e950] [cursor=pointer]
+                        - gridcell "destapa drenajes" [ref=e953]
+                        - gridcell "40 Imagen de gráfico" [ref=e957]:
+                          - generic [ref=e958]:
+                            - generic [ref=e959]: "40"
+                            - button "Imagen de gráfico" [ref=e960]
+                        - gridcell "-25 %" [ref=e961]
+                        - gridcell "-25 %" [ref=e963]
+                        - gridcell "Alta" [ref=e965]
+                        - gridcell "—" [ref=e967]
+                        - gridcell "391 CLP" [ref=e969]
+                        - gridcell "2.398 CLP" [ref=e971]
+                        - gridcell [ref=e973]
+                      - row [ref=e974]:
+                        - gridcell [ref=e975]:
+                          - checkbox "Seleccionar fila \"limpieza fosa septica\"" [ref=e977] [cursor=pointer]
+                        - gridcell "limpieza fosa septica" [ref=e980]
+                        - gridcell "390 Imagen de gráfico" [ref=e984]:
+                          - generic [ref=e985]:
+                            - generic [ref=e986]: "390"
+                            - button "Imagen de gráfico" [ref=e987]
+                        - gridcell "0 %" [ref=e988]
+                        - gridcell "+22 %" [ref=e990]
+                        - gridcell "Alta" [ref=e992]
+                        - gridcell "6 %" [ref=e994]
+                        - gridcell "433 CLP" [ref=e996]
+                        - gridcell "2.071 CLP" [ref=e998]
+                        - gridcell [ref=e1000]
+                      - row [ref=e1001]:
+                        - gridcell [ref=e1002]:
+                          - checkbox "Seleccionar fila \"limpieza de fosas sépticas precios\"" [ref=e1004] [cursor=pointer]
+                        - gridcell "limpieza de fosas sépticas precios" [ref=e1007]
+                        - gridcell "70 Imagen de gráfico" [ref=e1011]:
+                          - generic [ref=e1012]:
+                            - generic [ref=e1013]: "70"
+                            - button "Imagen de gráfico" [ref=e1014]
+                        - gridcell "-29 %" [ref=e1015]
+                        - gridcell "-44 %" [ref=e1017]
+                        - gridcell "Alta" [ref=e1019]
+                        - gridcell "4 %" [ref=e1021]
+                        - gridcell "364 CLP" [ref=e1023]
+                        - gridcell "931 CLP" [ref=e1025]
+                        - gridcell [ref=e1027]
+                      - row [ref=e1028]:
+                        - gridcell [ref=e1029]:
+                          - checkbox "Seleccionar fila \"destapa caños\"" [ref=e1031] [cursor=pointer]
+                        - gridcell "destapa caños" [ref=e1034]
+                        - gridcell "590 Imagen de gráfico" [ref=e1038]:
+                          - generic [ref=e1039]:
+                            - generic [ref=e1040]: "590"
+                            - button "Imagen de gráfico" [ref=e1041]
+                        - gridcell "+22 %" [ref=e1042]
+                        - gridcell "+22 %" [ref=e1044]
+                        - gridcell "Alta" [ref=e1046]
+                        - gridcell "< 1%" [ref=e1048]
+                        - gridcell "222 CLP" [ref=e1050]
+                        - gridcell "2.044 CLP" [ref=e1052]
+                        - gridcell [ref=e1054]
+                    - generic [ref=e1062]:
+                      - generic [ref=e1063]:
+                        - generic [ref=e1064]: "Mostrar filas:"
+                        - 'button "Mostrar filas: 10 seleccionadas." [ref=e1067] [cursor=pointer]':
+                          - generic [ref=e1068]: "10"
+                          - img [ref=e1070]: arrow_drop_down
+                      - generic [ref=e1071]:
+                        - generic [ref=e1072]: 1 - 10 de 496
+                        - generic [ref=e1074]:
+                          - button "Ir a la primera página" [disabled] [ref=e1075]:
+                            - generic:
+                              - generic:
+                                - img: first_page
+                          - button "Ir a la página anterior" [disabled] [ref=e1076]:
+                            - generic:
+                              - generic:
+                                - img: chevron_left
+                          - button "Ir a la página siguiente" [ref=e1077] [cursor=pointer]:
+                            - img [ref=e1080]: chevron_right
+                          - button "Ir a la última página" [ref=e1082] [cursor=pointer]:
+                            - img [ref=e1085]: last_page
+                - generic [ref=e1087]: El Planificador de Palabras Clave se puede utilizar para generar ideas de palabras clave, aunque no garantiza un mejor rendimiento. Tú eres el responsable de las palabras clave que elijas, y de cumplir con nuestras políticas publicitarias y con las leyes pertinentes.
+              - region "Afinar palabras clave" [ref=e1092]:
+                - generic [ref=e1093]:
+                  - generic [ref=e1094]:
+                    - heading "Afinar palabras clave" [level=2] [ref=e1095]
+                    - button "Cerrar" [ref=e1096] [cursor=pointer]:
+                      - img [ref=e1099]: close
+                  - button "Mostrar todo" [ref=e1111] [cursor=pointer]
+                - generic [ref=e1115]:
+                  - button [ref=e1120] [cursor=pointer]:
+                    - generic [ref=e1121]:
+                      - paragraph [ref=e1122]: Con marca o sin ella
+                      - paragraph [ref=e1123]: Non-Brands, sodimac, easy, homecenter, coca cola
+                    - img [ref=e1124]: expand_less
+                  - button [ref=e1129] [cursor=pointer]:
+                    - generic [ref=e1130]:
+                      - paragraph [ref=e1131]: Servicio
+                      - paragraph [ref=e1132]: tuberias, fosa septica, desatascos
+                    - img [ref=e1133]: expand_less
+                  - button [ref=e1138] [cursor=pointer]:
+                    - generic [ref=e1139]:
+                      - paragraph [ref=e1140]: Lugar
+                      - paragraph [ref=e1141]: cocina, bano, inodoro, ducha
+                    - img [ref=e1142]: expand_less
+                  - button [ref=e1147] [cursor=pointer]:
+                    - generic [ref=e1148]:
+                      - paragraph [ref=e1149]: Otros
+                      - paragraph [ref=e1150]: precios, cano, casero, zona
+                    - img [ref=e1151]: expand_less
+                - button [ref=e1153] [cursor=pointer]:
+                  - generic [ref=e1154]:
+                    - img [ref=e1156]: feedback
+                    - text: Enviar comentarios
+  - generic:
+    - dialog:
+      - generic:
+        - generic:
+          - heading [level=1]: Turn off ad blockers
+          - paragraph: Google Ads can't work when you're using an ad blocker. To use Google Ads, please turn off any ad blockers for now.
+  - generic:
+    - generic:
+      - generic:
+        - dialog "cuadro de diálogo"
+  - generic:
+    - generic:
+      - generic:
+        - dialog "cuadro de diálogo"
+    - text: info *

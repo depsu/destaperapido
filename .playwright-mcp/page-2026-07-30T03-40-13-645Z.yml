@@ -1,0 +1,21 @@
+- generic [ref=e2]:
+  - complementary [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e6]: dixdybot
+      - generic [ref=e7]: 27-07 11:45
+    - button "Hoy" [ref=e8] [cursor=pointer]
+    - button "Chats" [ref=e12] [cursor=pointer]
+    - button "Caminos" [ref=e16] [cursor=pointer]
+    - button "Módulos" [ref=e20] [cursor=pointer]
+    - button "Agentes" [ref=e24] [cursor=pointer]
+    - button "Conexiones" [ref=e28] [cursor=pointer]
+    - generic [ref=e32]: Sistema
+    - link "Simulador" [ref=e33] [cursor=pointer]:
+      - /url: /simulador.html
+    - button "Diseño" [ref=e37] [cursor=pointer]
+    - button "Achicar o agrandar la barra lateral" [ref=e41] [cursor=pointer]
+    - generic [ref=e44]: destaperapido
+  - main [ref=e47]:
+    - generic [ref=e50]:
+      - generic [ref=e51]: Hoy
+      - generic [ref=e52]: Te preguntan

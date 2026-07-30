@@ -1,0 +1,5 @@
+# destaperapido — tanda 3: las de trámite (poco valor SEO, al final)
+# NOTA: /landing/* NO va — llevan noindex a propósito (Ads). Contradicción pendiente:
+# están en sitemap-landing.xml con noindex; conviene sacarlas del índice de sitemaps.
+https://www.destaperapido.cl/privacidad
+https://www.destaperapido.cl/terminos

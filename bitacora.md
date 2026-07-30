@@ -6,6 +6,17 @@ aquí queda la historia. La escriben ronda-ads, ronda-correo y las sesiones.
 
 ---
 
+## 2026-07-29 · 📣 ronda-ads · los baños siguen siendo tu mejor negocio, y siguen apretados
+
+Un contacto de **baños químicos te cuesta 1.316 pesos**. Uno de destapes urbanos, 5.032. Es
+casi cuatro veces más barato, y esta semana fue **el único frente que mejoró** mientras todo
+lo de destapes se encarecía.
+
+El problema es que a los baños se les acaba la plata todos los días: con tope de 8.000 diarios
+se está gastando 8.648, y **la mitad de la gente que busca baños químicos no te ve** por eso.
+Hay una salida sin gastar un peso más: mover parte del tope desde «03 Urbano» (que esta semana
+duplicó su costo por contacto) hacia los baños. Esa decisión es tuya, es plata.
+
 ## 2026-07-26 · 👷 constructor · el post del líquido azul deja de hablar de «riesgos» y pasa a hablar como busca la gente
 
 Trabajé la tarea t34: el artículo del líquido azul está en posición 5,8 con **912 apariciones

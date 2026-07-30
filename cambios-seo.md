@@ -90,3 +90,9 @@ de alcantarillado precio», 280 impr., pos. 4,2; «valor destape alcantarillado�
 pos. 3,3** contra el 1,53% de la home. El precio en el título es la palanca obvia para la
 home, pero está bloqueada hasta que el dato sea único y verdadero.
 
+
+**Ronda SEO 2026-07-27:** indexación **88/110** (+1 vs 24-jul). Pendientes: 9 «Crawled - not
+indexed», 8 «Discovered», 5 «unknown». IndexNow re-avisó 22 y la Indexing API 5. Los quick-wins
+subieron de **18 a 20**: destacan «pozo absorbente» 117imp/pos7.2/CTR0%, «limpia fosas» 103/pos5.1,
+«camiones limpia fosas» 83/pos4.6/CTR0%. Patrón nuevo: varias en pos 4-6 con CTR 0% — ahí el
+ranking ya está y lo que falla es el título, no el contenido. Tarea `seo-destaperapido-quickwins`.

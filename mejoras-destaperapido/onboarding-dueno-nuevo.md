@@ -69,3 +69,22 @@ partir con la rápida.
 3. Motor de misiones (3 misiones, estado en un ajuste, ✓ al completar).
 4. Personaje de novedades (portar novedades ✨ + tono de juego).
 5. Conversación inicial «cuéntame de tu negocio» que precarga ajustes.
+
+## Fases regeneradas con la visión de Alejandro (30-jul) — estado
+
+- **Fase A — el robot llega al panel: HECHA (30-jul).** Burbuja 🤖 flotante en todas
+  las vistas; chat con backlog EN EL SERVIDOR (tabla guia_mensajes); mano llevar_a que
+  navega y destaca la vista (verificado en vivo: «¿dónde veo mis precios?» → explicó y
+  llevó a Caminos); globito de bienvenida la primera vez en cada vista; y la limpieza:
+  nombres humanos en Hoy (Sofía / tu asistente), Examen en vez de gate, menú «Qué hace
+  tu bot», Módulos sin duplicar canales (enlace a Conexiones), Diseño oculto por
+  defecto (prendido en la instancia de Alejandro), banner honesto del simulador,
+  fotos sin 404, sello de versión al pie, Guardar-nombre solo al editar.
+- **Fase B — celular**: barra inferior con nombres, cara Agente en la ficha móvil,
+  estreno/hero visible en pantalla chica, robot adaptado (ya es bottom-sheet), pegado
+  al fondo del hilo.
+- **Fase C — la conversación inicial**: «cuéntame de tu negocio» que personaliza dixdy
+  escribiendo los ajustes (negocio, agente, tono) sin nada técnico; misiones tomando
+  Hoy cuando el negocio está vacío; celebraciones; novedades contadas por el robot;
+  texto 2-conexiones y primera prueba guiada del simulador. El robot flotante de la
+  Fase A es el MISMO personaje que conduce todo esto.

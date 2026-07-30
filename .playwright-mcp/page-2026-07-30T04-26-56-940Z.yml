@@ -1,0 +1,33 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - complementary [ref=e3]:
+      - generic [ref=e4]: dixdybot
+      - button "Hoy" [ref=e7] [cursor=pointer]
+      - button "Chats" [ref=e11] [cursor=pointer]
+      - button "Caminos" [ref=e15] [cursor=pointer]
+      - button "Qué hace tu bot" [ref=e19] [cursor=pointer]
+      - button "Agentes" [ref=e23] [cursor=pointer]
+      - button "Conexiones" [ref=e27] [cursor=pointer]
+      - generic [ref=e31]: Sistema
+      - link "Simulador" [ref=e32] [cursor=pointer]:
+        - /url: /simulador.html
+      - button "Diseño" [ref=e36] [cursor=pointer]
+      - button "Achicar o agrandar la barra lateral" [ref=e40] [cursor=pointer]
+      - generic [ref=e43]:
+        - generic [ref=e45]: …
+        - generic [ref=e46]: 27-07 11:45
+    - main [ref=e47]:
+      - generic [ref=e50]:
+        - generic [ref=e51]: Hoy
+        - generic [ref=e52]: Te preguntan
+  - button "Hablar con tu guía" [ref=e58] [cursor=pointer]: 🤖
+  - generic [ref=e59]:
+    - generic [ref=e60]:
+      - generic [ref=e61]: 🤖
+      - generic [ref=e62]:
+        - text: Tu guía
+        - generic [ref=e63]: te acompaña por todo el panel
+      - button "Cerrar la guía" [ref=e64] [cursor=pointer]
+    - generic [ref=e68]:
+      - textbox "Pregúntame lo que quieras…" [ref=e69]
+      - button "Enviar" [ref=e70] [cursor=pointer]

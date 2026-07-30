@@ -1,0 +1,12 @@
+- generic [ref=f4e2]:
+  - complementary [ref=f4e3]:
+    - button "Hoy" [ref=f4e6] [cursor=pointer]
+    - button "Chats" [ref=f4e9] [cursor=pointer]
+    - button "Caminos" [ref=f4e12] [cursor=pointer]
+    - button "Módulos" [ref=f4e15] [cursor=pointer]
+    - button "Agentes" [ref=f4e18] [cursor=pointer]
+    - button "Conexiones" [ref=f4e21] [cursor=pointer]
+    - link "Simulador" [ref=f4e24] [cursor=pointer]:
+      - /url: /simulador.html
+    - button "Diseño" [ref=f4e27] [cursor=pointer]
+  - main [ref=f4e32]

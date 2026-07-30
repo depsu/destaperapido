@@ -1,0 +1,18 @@
+- generic [ref=e2]:
+  - complementary [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e6]: dixdybot
+      - generic [ref=e7]: 27-07 00:37
+    - button "Hoy" [ref=e8] [cursor=pointer]
+    - button "Chats" [ref=e12] [cursor=pointer]
+    - button "Caminos" [ref=e16] [cursor=pointer]
+    - button "Módulos" [ref=e20] [cursor=pointer]
+    - button "Agentes" [ref=e24] [cursor=pointer]
+    - generic [ref=e28]: Sistema
+    - button "Diseño" [ref=e29] [cursor=pointer]
+    - button "Achicar o agrandar la barra lateral" [ref=e33] [cursor=pointer]
+    - generic [ref=e36]: destaperapido
+  - main [ref=e39]:
+    - generic [ref=e42]:
+      - generic [ref=e43]: Hoy
+      - generic [ref=e44]: Te preguntan

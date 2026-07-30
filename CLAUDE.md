@@ -11,6 +11,16 @@ complétalo al trabajar aquí.
 > `python3 /Users/alejandroriveracarrasco/SaSS/DIXDY/scripts/actividad.py` y promueve al
 > maestro toda mejora reutilizable.
 
+## 🛣️ Proyecto dixdybot (rediseño del whatsapp-bot) — LEER ANTES de tocar el bot
+
+Investigación completa (34 agentes, jul-2026) y plan por etapas E0-E7 para evolucionar el
+bot vivo (que corre en `~/SaSS/destaperapido/whatsapp-bot/`, fuera de este clon) a un
+producto genérico multi-rubro. **Empieza por `mejoras-destaperapido/DIXDYBOT-ESTADO.md`**
+(estado, requisitos no negociables de Alejandro — genérico-modular, design system único,
+IA madre multi-agente, escepticismo de fuentes — mapa de documentos y fechas duras; el plan
+vigente completo está en `mejoras-destaperapido/investigacion-dixdybot/ronda2/plan-revisado.md`).
+No agregues features al bot fuera de ese plan sin revisarlo primero.
+
 ## Mapa de aplicaciones de este cliente (por completar)
 
 - `api/` — API del cotizador (genera cotizaciones; revisar endpoints antes de tocar).

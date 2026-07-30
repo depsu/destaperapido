@@ -1,0 +1,634 @@
+- generic [ref=e2]:
+  - complementary [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e6]: dixdybot
+      - generic [ref=e7]: 26-07 23:19
+    - button "Hoy" [ref=e8] [cursor=pointer]:
+      - generic [ref=e50]: "1"
+    - button "Chats" [active] [ref=e12] [cursor=pointer]:
+      - generic [ref=e51]: "98"
+      - text: Chats
+    - button "Caminos" [ref=e16] [cursor=pointer]
+    - button "Módulos" [ref=e20] [cursor=pointer]
+    - button "Agentes" [ref=e24] [cursor=pointer]
+    - generic [ref=e28]: Sistema
+    - button "Diseño" [ref=e29] [cursor=pointer]
+    - button "Achicar o agrandar la barra lateral" [ref=e33] [cursor=pointer]
+    - generic [ref=e36]: destaperapido
+  - main [ref=e39]:
+    - generic [ref=e88]:
+      - generic [ref=e89]:
+        - combobox "Filtrar por bot" [ref=e90] [cursor=pointer]:
+          - option "Todos los bots" [selected]
+          - option "sofia"
+          - option "Soporte"
+          - option "Sofía"
+        - generic [ref=e91]:
+          - button "Lista" [ref=e92] [cursor=pointer]
+          - button "Tablero" [ref=e93] [cursor=pointer]
+      - generic [ref=e94]:
+        - generic [ref=e95]:
+          - textbox "Buscar nombre, comuna, pedido…" [ref=e99]
+          - generic [ref=e100]:
+            - generic [ref=e101]: Te preguntaron
+            - button "Oscar Pontigo me confirma la visita porfa, será para hoy? jue" [ref=e102] [cursor=pointer]:
+              - generic [ref=e103]: O
+              - generic [ref=e106]:
+                - generic [ref=e107]: Oscar Pontigo
+                - generic [ref=e108]: me confirma la visita porfa, será para hoy?
+              - generic [ref=e109]: jue
+            - generic [ref=e111]: Activos
+            - button "Cyri Muchissima gracias por tu comprehension vie" [ref=e112] [cursor=pointer]:
+              - generic [ref=e113]: C
+              - generic [ref=e116]:
+                - generic [ref=e117]: Cyri
+                - generic [ref=e118]: Muchissima gracias por tu comprehension
+              - generic [ref=e119]: vie
+            - 'button "JB Montaje Industrial tú: 40mil la limpieza extra vie" [ref=e121] [cursor=pointer]':
+              - generic [ref=e122]: J
+              - generic [ref=e125]:
+                - generic [ref=e126]: JB Montaje Industrial
+                - generic [ref=e127]: "tú: 40mil la limpieza extra"
+              - generic [ref=e128]: vie
+            - button "Paz · Colina gracias vie" [ref=e130] [cursor=pointer]:
+              - generic [ref=e131]: P
+              - generic [ref=e134]:
+                - generic [ref=e135]: Paz · Colina
+                - generic [ref=e136]: gracias
+              - generic [ref=e137]: vie
+            - 'button "Franciscoenoc 🎵 tú: Le confirmo la entrega ✅ 🚽 Arriendo de baño químico x2 📅 sábado 25 de julio 📍 , Quinta Normal https://www.google.co vie" [ref=e139] [cursor=pointer]':
+              - generic [ref=e140]: F
+              - generic [ref=e143]:
+                - generic [ref=e144]: Franciscoenoc 🎵
+                - generic [ref=e145]: "tú: Le confirmo la entrega ✅ 🚽 Arriendo de baño químico x2 📅 sábado 25 de julio 📍 , Quinta Normal https://www.google.co"
+              - generic [ref=e146]: vie
+            - 'button "186659815583868 tú: Jajaja vie" [ref=e148] [cursor=pointer]':
+              - generic [ref=e149]: "1"
+              - generic [ref=e152]:
+                - generic [ref=e153]: "186659815583868"
+                - generic [ref=e154]: "tú: Jajaja"
+              - generic [ref=e155]: vie
+            - button "☺️😉😁😊 Igual muchas gracias vie" [ref=e157] [cursor=pointer]:
+              - generic [ref=e158]: ☺️
+              - generic [ref=e161]:
+                - generic [ref=e162]: ☺️😉😁😊
+                - generic [ref=e163]: Igual muchas gracias
+              - generic [ref=e164]: vie
+            - button "Marcelo · San José de Maipo gracias vie" [ref=e166] [cursor=pointer]:
+              - generic [ref=e167]: M
+              - generic [ref=e169]:
+                - generic [ref=e170]: Marcelo · San José de Maipo
+                - generic [ref=e171]: gracias
+              - generic [ref=e172]: vie
+            - button "Michelle Ok, gracias vie" [ref=e174] [cursor=pointer]:
+              - generic [ref=e175]: M
+              - generic [ref=e178]:
+                - generic [ref=e179]: Michelle
+                - generic [ref=e180]: Ok, gracias
+              - generic [ref=e181]: vie
+            - button "Samu ✓ Y para el del 8, ¿me pasa la dirección así lo coordino con el repartidor? vie" [ref=e183] [cursor=pointer]:
+              - generic [ref=e184]: S
+              - generic [ref=e186]:
+                - generic [ref=e187]: Samu
+                - generic [ref=e188]: ✓ Y para el del 8, ¿me pasa la dirección así lo coordino con el repartidor?
+              - generic [ref=e189]: vie
+            - 'button "Ale tú: Descanse, mañana hablamos vie" [ref=e191] [cursor=pointer]':
+              - generic [ref=e192]: A
+              - generic [ref=e195]:
+                - generic [ref=e196]: Ale
+                - generic [ref=e197]: "tú: Descanse, mañana hablamos"
+              - generic [ref=e198]: vie
+            - button "Caro Igualmente vie" [ref=e200] [cursor=pointer]:
+              - generic [ref=e201]: C
+              - generic [ref=e204]:
+                - generic [ref=e205]: Caro
+                - generic [ref=e206]: Igualmente
+              - generic [ref=e207]: vie
+            - button "🏋️ Práctica libre ✓ Buenas noches, en qué comuna necesitaría el baño jue" [ref=e209] [cursor=pointer]:
+              - generic [ref=e210]: P
+              - generic [ref=e212]:
+                - generic [ref=e213]: 🏋️ Práctica libre
+                - generic [ref=e214]: ✓ Buenas noches, en qué comuna necesitaría el baño
+              - generic [ref=e215]: jue
+            - 'button "Perfumes tú: No vendemos jue" [ref=e217] [cursor=pointer]':
+              - generic [ref=e218]: P
+              - generic [ref=e221]:
+                - generic [ref=e222]: Perfumes
+                - generic [ref=e223]: "tú: No vendemos"
+              - generic [ref=e224]: jue
+            - button "Sebastian 🐧🐧 Ok jue" [ref=e226] [cursor=pointer]:
+              - generic [ref=e227]: S
+              - generic [ref=e229]:
+                - generic [ref=e230]: Sebastian 🐧🐧
+                - generic [ref=e231]: Ok
+              - generic [ref=e232]: jue
+            - button "Alejandro 🔒 (llegó un mensaje que no se pudo leer) jue" [ref=e234] [cursor=pointer]:
+              - generic [ref=e235]: A
+              - generic [ref=e238]:
+                - generic [ref=e239]: Alejandro
+                - generic [ref=e240]: 🔒 (llegó un mensaje que no se pudo leer)
+              - generic [ref=e241]: jue
+            - 'button "Benja · Huechuraba tú: Vale jue" [ref=e243] [cursor=pointer]':
+              - generic [ref=e244]: B
+              - generic [ref=e247]:
+                - generic [ref=e248]: Benja · Huechuraba
+                - generic [ref=e249]: "tú: Vale"
+              - generic [ref=e250]: jue
+            - button "Fabiii Hola buenas tardes ya no los necesitan muchas gracias jue" [ref=e252] [cursor=pointer]:
+              - generic [ref=e253]: F
+              - generic [ref=e256]:
+                - generic [ref=e257]: Fabiii
+                - generic [ref=e258]: Hola buenas tardes ya no los necesitan muchas gracias
+              - generic [ref=e259]: jue
+            - 'button "Claudio tú: hola buenas jue" [ref=e261] [cursor=pointer]':
+              - generic [ref=e262]: C
+              - generic [ref=e265]:
+                - generic [ref=e266]: Claudio
+                - generic [ref=e267]: "tú: hola buenas"
+              - generic [ref=e268]: jue
+            - 'button "Cristian Santiago tú: hola buenas jue" [ref=e270] [cursor=pointer]':
+              - generic [ref=e271]: C
+              - generic [ref=e274]:
+                - generic [ref=e275]: Cristian Santiago
+                - generic [ref=e276]: "tú: hola buenas"
+              - generic [ref=e277]: jue
+            - 'button "CRISTIAN SEGUEL VALDES tú: Le confirmo la entrega ✅ 🚽 Arriendo de baño químico + Aseo cada 7 días (frecuencia acordada) 📅 martes 28 de julio 📍 jue" [ref=e279] [cursor=pointer]':
+              - generic [ref=e280]: C
+              - generic [ref=e283]:
+                - generic [ref=e284]: CRISTIAN SEGUEL VALDES
+                - generic [ref=e285]: "tú: Le confirmo la entrega ✅ 🚽 Arriendo de baño químico + Aseo cada 7 días (frecuencia acordada) 📅 martes 28 de julio 📍"
+              - generic [ref=e286]: jue
+            - button "Seba Mi jefe no me ha respondido nada jue" [ref=e288] [cursor=pointer]:
+              - generic [ref=e289]: S
+              - generic [ref=e292]:
+                - generic [ref=e293]: Seba
+                - generic [ref=e294]: Mi jefe no me ha respondido nada
+              - generic [ref=e295]: jue
+            - button "Pintando · Las Condes Okey le confirmo durante el día jue" [ref=e297] [cursor=pointer]:
+              - generic [ref=e298]: P
+              - generic [ref=e300]:
+                - generic [ref=e301]: Pintando · Las Condes
+                - generic [ref=e302]: Okey le confirmo durante el día
+              - generic [ref=e303]: jue
+            - 'button "Lety tú: Perfecto, quedó atento para la próxima semana jue" [ref=e305] [cursor=pointer]':
+              - generic [ref=e306]: L
+              - generic [ref=e309]:
+                - generic [ref=e310]: Lety
+                - generic [ref=e311]: "tú: Perfecto, quedó atento para la próxima semana"
+              - generic [ref=e312]: jue
+            - 'button "Miguel Solis tú: Se paga al entregar jue" [ref=e314] [cursor=pointer]':
+              - generic [ref=e315]: M
+              - generic [ref=e318]:
+                - generic [ref=e319]: Miguel Solis
+                - generic [ref=e320]: "tú: Se paga al entregar"
+              - generic [ref=e321]: jue
+            - button "JANDY No por ahora gracias por tu apoyo jue" [ref=e323] [cursor=pointer]:
+              - generic [ref=e324]: J
+              - generic [ref=e327]:
+                - generic [ref=e328]: JANDY
+                - generic [ref=e329]: No por ahora gracias por tu apoyo
+              - generic [ref=e330]: jue
+            - button "Montserrat Martorell Entiendo 🙌🏻 jue" [ref=e332] [cursor=pointer]:
+              - generic [ref=e333]: M
+              - generic [ref=e336]:
+                - generic [ref=e337]: Montserrat Martorell
+                - generic [ref=e338]: Entiendo 🙌🏻
+              - generic [ref=e339]: jue
+            - 'button "Mary tú: Me confirma la comuna jue" [ref=e341] [cursor=pointer]':
+              - generic [ref=e342]: M
+              - generic [ref=e344]:
+                - generic [ref=e345]: Mary
+                - generic [ref=e346]: "tú: Me confirma la comuna"
+              - generic [ref=e347]: jue
+            - 'button "Katy Cordero tú: Viene incluído todo jue" [ref=e349] [cursor=pointer]':
+              - generic [ref=e350]: K
+              - generic [ref=e353]:
+                - generic [ref=e354]: Katy Cordero
+                - generic [ref=e355]: "tú: Viene incluído todo"
+              - generic [ref=e356]: jue
+            - 'button "nicolas jimenezc1994 tú: El valor es 160mil neto mensual, incluye aseo semanal 7 a 10 días jue" [ref=e358] [cursor=pointer]':
+              - generic [ref=e359]: "N"
+              - generic [ref=e361]:
+                - generic [ref=e362]: nicolas jimenezc1994
+                - generic [ref=e363]: "tú: El valor es 160mil neto mensual, incluye aseo semanal 7 a 10 días"
+              - generic [ref=e364]: jue
+            - 'button "Mauricio Espinoza tú: Y por cuánto tiempo lo necesita? jue" [ref=e366] [cursor=pointer]':
+              - generic [ref=e367]: M
+              - generic [ref=e369]:
+                - generic [ref=e370]: Mauricio Espinoza
+                - generic [ref=e371]: "tú: Y por cuánto tiempo lo necesita?"
+              - generic [ref=e372]: jue
+            - 'button "Gustavo · Buin tú: Está en su correo jue" [ref=e374] [cursor=pointer]':
+              - generic [ref=e375]: G
+              - generic [ref=e378]:
+                - generic [ref=e379]: Gustavo · Buin
+                - generic [ref=e380]: "tú: Está en su correo"
+              - generic [ref=e381]: jue
+            - button "Mary💖 Gracias ahí lo llamé mié" [ref=e383] [cursor=pointer]:
+              - generic [ref=e384]: M
+              - generic [ref=e387]:
+                - generic [ref=e388]: Mary💖
+                - generic [ref=e389]: Gracias ahí lo llamé
+              - generic [ref=e390]: mié
+            - 'button "Adm Meetingplan tú: Tiene un costo de 200mil extra mié" [ref=e392] [cursor=pointer]':
+              - generic [ref=e393]: A
+              - generic [ref=e396]:
+                - generic [ref=e397]: Adm Meetingplan
+                - generic [ref=e398]: "tú: Tiene un costo de 200mil extra"
+              - generic [ref=e399]: mié
+            - 'button "Cpl tú: Confiamos en nuestros clientes mié" [ref=e401] [cursor=pointer]':
+              - generic [ref=e402]: C
+              - generic [ref=e405]:
+                - generic [ref=e406]: Cpl
+                - generic [ref=e407]: "tú: Confiamos en nuestros clientes"
+              - generic [ref=e408]: mié
+            - 'button "Constructora Bravo tú: a usted, me avisa si desea continuar mar" [ref=e410] [cursor=pointer]':
+              - generic [ref=e411]: C
+              - generic [ref=e414]:
+                - generic [ref=e415]: Constructora Bravo
+                - generic [ref=e416]: "tú: a usted, me avisa si desea continuar"
+              - generic [ref=e417]: mar
+            - 'button "A. Luján tú: Te acabo de enviar la cotización formal a tu correo, y acá te la dejo también en PDF mar" [ref=e419] [cursor=pointer]':
+              - generic [ref=e420]: A
+              - generic [ref=e423]:
+                - generic [ref=e424]: A. Luján
+                - generic [ref=e425]: "tú: Te acabo de enviar la cotización formal a tu correo, y acá te la dejo también en PDF"
+              - generic [ref=e426]: mar
+            - 'button "Sofi🍒 tú: El valor es desde los 90mil pesos mar" [ref=e428] [cursor=pointer]':
+              - generic [ref=e429]: S
+              - generic [ref=e431]:
+                - generic [ref=e432]: Sofi🍒
+                - generic [ref=e433]: "tú: El valor es desde los 90mil pesos"
+              - generic [ref=e434]: mar
+            - button "Manu Ok gracias ahy coordinamo el dia de entrega mar" [ref=e436] [cursor=pointer]:
+              - generic [ref=e437]: M
+              - generic [ref=e440]:
+                - generic [ref=e441]: Manu
+                - generic [ref=e442]: Ok gracias ahy coordinamo el dia de entrega
+              - generic [ref=e443]: mar
+            - 'button "Raul · Puente Alto tú: perfecto, quedamos pendientes entonces a la confirmación, que tenga linda tarde mar" [ref=e445] [cursor=pointer]':
+              - generic [ref=e446]: R
+              - generic [ref=e449]:
+                - generic [ref=e450]: Raul · Puente Alto
+                - generic [ref=e451]: "tú: perfecto, quedamos pendientes entonces a la confirmación, que tenga linda tarde"
+              - generic [ref=e452]: mar
+            - 'button "56921964789 tú: 🚚 ENTREGA — Sábado 01 de agosto de 2026 👤 Cliente: Manu 📍 Dirección: Camino linderos 4345 parcela 22, Alto Jahuel, B mar" [ref=e454] [cursor=pointer]':
+              - generic [ref=e455]: "5"
+              - generic [ref=e457]:
+                - generic [ref=e458]: "56921964789"
+                - generic [ref=e459]: "tú: 🚚 ENTREGA — Sábado 01 de agosto de 2026 👤 Cliente: Manu 📍 Dirección: Camino linderos 4345 parcela 22, Alto Jahuel, B"
+              - generic [ref=e460]: mar
+            - 'button "Juan Soto tú: lo más probable sea porque estan manejando o haciendo limpieza, pero ya está confirmado para mañana mar" [ref=e462] [cursor=pointer]':
+              - generic [ref=e463]: J
+              - generic [ref=e466]:
+                - generic [ref=e467]: Juan Soto
+                - generic [ref=e468]: "tú: lo más probable sea porque estan manejando o haciendo limpieza, pero ya está confirmado para mañana"
+              - generic [ref=e469]: mar
+            - button "Luis Saavedra · Santiago 🎤 Mensaje de voz mar" [ref=e471] [cursor=pointer]:
+              - generic [ref=e472]: L
+              - generic [ref=e474]:
+                - generic [ref=e475]: Luis Saavedra · Santiago
+                - generic [ref=e476]: 🎤 Mensaje de voz
+              - generic [ref=e477]: mar
+            - 'button "Andrés Osorio tú: Buenos días mar" [ref=e479] [cursor=pointer]':
+              - generic [ref=e480]: A
+              - generic [ref=e483]:
+                - generic [ref=e484]: Andrés Osorio
+                - generic [ref=e485]: "tú: Buenos días"
+              - generic [ref=e486]: mar
+            - 'button "constructora de servicios en containers spa tú: 🎤 Mensaje de voz mar" [ref=e488] [cursor=pointer]':
+              - generic [ref=e489]: C
+              - generic [ref=e491]:
+                - generic [ref=e492]: constructora de servicios en containers spa
+                - generic [ref=e493]: "tú: 🎤 Mensaje de voz"
+              - generic [ref=e494]: mar
+            - button "🏋️ Urgente para hoy ✓ No, eso no lo manejo yo, ¿le dejamos el baño hoy en Renca? mar" [ref=e496] [cursor=pointer]:
+              - generic [ref=e497]: U
+              - generic [ref=e499]:
+                - generic [ref=e500]: 🏋️ Urgente para hoy
+                - generic [ref=e501]: ✓ No, eso no lo manejo yo, ¿le dejamos el baño hoy en Renca?
+              - generic [ref=e502]: mar
+            - button "🏋️ 🔥 El monosílabo ✓ Perfecto, entonces me confirma la dirección exacta y para cuándo lo necesita, y se lo dejamos agendado lun" [ref=e504] [cursor=pointer]:
+              - generic [ref=e505]: E
+              - generic [ref=e507]:
+                - generic [ref=e508]: 🏋️ 🔥 El monosílabo
+                - generic [ref=e509]: ✓ Perfecto, entonces me confirma la dirección exacta y para cuándo lo necesita, y se lo dejamos agendado
+              - generic [ref=e510]: lun
+            - button "🏋️ 🔥 Presupuesto bajo el piso (70mil) ✓ ¿Y cuántos baños serían para el cumpleaños? lun" [ref=e512] [cursor=pointer]:
+              - generic [ref=e513]: P
+              - generic [ref=e515]:
+                - generic [ref=e516]: 🏋️ 🔥 Presupuesto bajo el piso (70mil)
+                - generic [ref=e517]: ✓ ¿Y cuántos baños serían para el cumpleaños?
+              - generic [ref=e518]: lun
+            - button "🏋️ 🔥 Urgencia extrema (2 horas) ✓ Me pasa la dirección y salgo con el repartidor ahora lun" [ref=e520] [cursor=pointer]:
+              - generic [ref=e521]: U
+              - generic [ref=e523]:
+                - generic [ref=e524]: 🏋️ 🔥 Urgencia extrema (2 horas)
+                - generic [ref=e525]: ✓ Me pasa la dirección y salgo con el repartidor ahora
+              - generic [ref=e526]: lun
+            - button "🏋️ 🔥 Cliente que cambia todo a mitad ✓ para cuándo lo necesitaría? lun" [ref=e528] [cursor=pointer]:
+              - generic [ref=e529]: C
+              - generic [ref=e531]:
+                - generic [ref=e532]: 🏋️ 🔥 Cliente que cambia todo a mitad
+                - generic [ref=e533]: ✓ para cuándo lo necesitaría?
+              - generic [ref=e534]: lun
+            - button "🏋️ 🔥 Pedido mixto multi-servicio con factu ✓ El lavamanos y la ducha te los confirmo apenas el equipo me pase el valor mañana, y ahí te mando la cotización completa lun" [ref=e536] [cursor=pointer]:
+              - generic [ref=e537]: P
+              - generic [ref=e539]:
+                - generic [ref=e540]: 🏋️ 🔥 Pedido mixto multi-servicio con factu
+                - generic [ref=e541]: ✓ El lavamanos y la ducha te los confirmo apenas el equipo me pase el valor mañana, y ahí te mando la cotización completa
+              - generic [ref=e542]: lun
+            - button "🏋️ 🔥 Regateo duro con competencia ✓ ¿Cerramos en 150 y le reservo el baño? lun" [ref=e544] [cursor=pointer]:
+              - generic [ref=e545]: R
+              - generic [ref=e547]:
+                - generic [ref=e548]: 🏋️ 🔥 Regateo duro con competencia
+                - generic [ref=e549]: ✓ ¿Cerramos en 150 y le reservo el baño?
+              - generic [ref=e550]: lun
+            - 'button "Beaa tú: Le confirmo la entrega ✅ 🚽 Arriendo de baño químico x2 📅 sábado 1 de agosto 📍 AVENIDA POLO DE MANQUEHUE 53, COLINA \ud83d lun" [ref=e552] [cursor=pointer]':
+              - generic [ref=e553]: B
+              - generic [ref=e555]:
+                - generic [ref=e556]: Beaa
+                - generic [ref=e557]: "tú: Le confirmo la entrega ✅ 🚽 Arriendo de baño químico x2 📅 sábado 1 de agosto 📍 AVENIDA POLO DE MANQUEHUE 53, COLINA �"
+              - generic [ref=e558]: lun
+            - 'button "🎬 Replay: Claudio ✓ Dale, y si le dejo los dos en 160mil por los 2 días le sirve? Con eso queda cubierto y no se queda corto el fin de seman lun" [ref=e560] [cursor=pointer]':
+              - generic [ref=e561]: R
+              - generic [ref=e563]:
+                - generic [ref=e564]: "🎬 Replay: Claudio"
+                - generic [ref=e565]: ✓ Dale, y si le dejo los dos en 160mil por los 2 días le sirve? Con eso queda cubierto y no se queda corto el fin de seman
+              - generic [ref=e566]: lun
+            - 'button "🎬 Replay: Juan Cadin ✓ Perfecto, cualquier cosa me escribe y se lo dejamos listo para fines de mes lun" [ref=e568] [cursor=pointer]':
+              - generic [ref=e569]: R
+              - generic [ref=e571]:
+                - generic [ref=e572]: "🎬 Replay: Juan Cadin"
+                - generic [ref=e573]: ✓ Perfecto, cualquier cosa me escribe y se lo dejamos listo para fines de mes
+              - generic [ref=e574]: lun
+            - 'button "🎬 Replay: Cristian ✓ Le paso la ficha del baño con las medidas y detalles lun" [ref=e576] [cursor=pointer]':
+              - generic [ref=e577]: R
+              - generic [ref=e579]:
+                - generic [ref=e580]: "🎬 Replay: Cristian"
+                - generic [ref=e581]: ✓ Le paso la ficha del baño con las medidas y detalles
+              - generic [ref=e582]: lun
+            - 'button "🎬 Replay: Bernardita Valenzuela P Perfecto, quedo atento entonces. Muchas gracias lun" [ref=e584] [cursor=pointer]':
+              - generic [ref=e585]: R
+              - generic [ref=e587]:
+                - generic [ref=e588]: "🎬 Replay: Bernardita Valenzuela P"
+                - generic [ref=e589]: Perfecto, quedo atento entonces. Muchas gracias
+              - generic [ref=e590]: lun
+            - 'button "🎬 Replay: Miguel Solis ✓ Aún lo estoy viendo con el equipo, apenas me confirmen el valor de la segunda limpieza se lo paso hoy mismo lun" [ref=e592] [cursor=pointer]':
+              - generic [ref=e593]: R
+              - generic [ref=e595]:
+                - generic [ref=e596]: "🎬 Replay: Miguel Solis"
+                - generic [ref=e597]: ✓ Aún lo estoy viendo con el equipo, apenas me confirmen el valor de la segunda limpieza se lo paso hoy mismo
+              - generic [ref=e598]: lun
+            - 'button "🎬 Replay: Cristian tú: 📧 [ENSAYO] Correo que saldría a rivera.ale98@gmail.com: Estimado/a 🎬 Replay: Cristian, Junto con saludar, le adjunto lun" [ref=e600] [cursor=pointer]':
+              - generic [ref=e601]: R
+              - generic [ref=e603]:
+                - generic [ref=e604]: "🎬 Replay: Cristian"
+                - generic [ref=e605]: "tú: 📧 [ENSAYO] Correo que saldría a rivera.ale98@gmail.com: Estimado/a 🎬 Replay: Cristian, Junto con saludar, le adjunto"
+              - generic [ref=e606]: lun
+            - 'button "🎬 Replay: Claudio Ya, quedo atento entonces 🙏 lun" [ref=e608] [cursor=pointer]':
+              - generic [ref=e609]: R
+              - generic [ref=e611]:
+                - generic [ref=e612]: "🎬 Replay: Claudio"
+                - generic [ref=e613]: Ya, quedo atento entonces 🙏
+              - generic [ref=e614]: lun
+            - 'button "🎬 Replay: Juan Cadin ✓ Perfecto, le mantengo el valor y el cupo reservado, ¿le mando la cotización formal al correo mientras confirma la direcc lun" [ref=e616] [cursor=pointer]':
+              - generic [ref=e617]: R
+              - generic [ref=e619]:
+                - generic [ref=e620]: "🎬 Replay: Juan Cadin"
+                - generic [ref=e621]: ✓ Perfecto, le mantengo el valor y el cupo reservado, ¿le mando la cotización formal al correo mientras confirma la direcc
+              - generic [ref=e622]: lun
+            - 'button "🎬 Replay: Miguel Solis ✓ Le confirmo, ya me llegó el detalle del equipo, permítame diez minutos más y le paso el valor cerrado por acá lun" [ref=e624] [cursor=pointer]':
+              - generic [ref=e625]: R
+              - generic [ref=e627]:
+                - generic [ref=e628]: "🎬 Replay: Miguel Solis"
+                - generic [ref=e629]: ✓ Le confirmo, ya me llegó el detalle del equipo, permítame diez minutos más y le paso el valor cerrado por acá
+              - generic [ref=e630]: lun
+            - 'button "🎬 Replay: Bernardita Valenzuela P ✓ Perfecto, se la mando de inmediato lun" [ref=e632] [cursor=pointer]':
+              - generic [ref=e633]: R
+              - generic [ref=e635]:
+                - generic [ref=e636]: "🎬 Replay: Bernardita Valenzuela P"
+                - generic [ref=e637]: ✓ Perfecto, se la mando de inmediato
+              - generic [ref=e638]: lun
+            - button "🏋️ V3 sin comuna (candado anti-invento) ✓ Buenas noches, el valor cambia harto según la comuna y por cuánto tiempo lo necesita, ¿dónde estaría ubicado? lun" [ref=e640] [cursor=pointer]:
+              - generic [ref=e641]: V
+              - generic [ref=e643]:
+                - generic [ref=e644]: 🏋️ V3 sin comuna (candado anti-invento)
+                - generic [ref=e645]: ✓ Buenas noches, el valor cambia harto según la comuna y por cuánto tiempo lo necesita, ¿dónde estaría ubicado?
+              - generic [ref=e646]: lun
+            - button "🏋️ V2 La Florida mensual (antes inventó 105 ✓ ¿Y para cuándo lo necesitaría? lun" [ref=e648] [cursor=pointer]:
+              - generic [ref=e649]: V
+              - generic [ref=e651]:
+                - generic [ref=e652]: 🏋️ V2 La Florida mensual (antes inventó 105
+                - generic [ref=e653]: ✓ ¿Y para cuándo lo necesitaría?
+              - generic [ref=e654]: lun
+            - button "🏋️ V1 Colina 2 meses (antes inventó 85mil) ✓ Perfecto, quedan en 150mil (neto) cada uno al mes, incluye los traslados y la limpieza gratis semanal (7 a 10 días) lun" [ref=e656] [cursor=pointer]:
+              - generic [ref=e657]: V
+              - generic [ref=e659]:
+                - generic [ref=e660]: 🏋️ V1 Colina 2 meses (antes inventó 85mil)
+                - generic [ref=e661]: ✓ Perfecto, quedan en 150mil (neto) cada uno al mes, incluye los traslados y la limpieza gratis semanal (7 a 10 días)
+              - generic [ref=e662]: lun
+            - 'button "🎬 Replay: Jimena ✓ Por los mismos 180mil (neto) le puedo dejar el baño hasta 10 días en vez de una semana, así le rinde más lun" [ref=e664] [cursor=pointer]':
+              - generic [ref=e665]: R
+              - generic [ref=e667]:
+                - generic [ref=e668]: "🎬 Replay: Jimena"
+                - generic [ref=e669]: ✓ Por los mismos 180mil (neto) le puedo dejar el baño hasta 10 días en vez de una semana, así le rinde más
+              - generic [ref=e670]: lun
+            - 'button "🎬 Replay: BENJA ✓ Perfecto, se la mando de inmediato lun" [ref=e672] [cursor=pointer]':
+              - generic [ref=e673]: R
+              - generic [ref=e675]:
+                - generic [ref=e676]: "🎬 Replay: BENJA"
+                - generic [ref=e677]: ✓ Perfecto, se la mando de inmediato
+              - generic [ref=e678]: lun
+            - 'button "🎬 Replay: Bárbara Ramírez Arellano ~ Di ✓ No, solo baños químicos, duchas no manejamos lun" [ref=e680] [cursor=pointer]':
+              - generic [ref=e681]: R
+              - generic [ref=e683]:
+                - generic [ref=e684]: "🎬 Replay: Bárbara Ramírez Arellano ~ Di"
+                - generic [ref=e685]: ✓ No, solo baños químicos, duchas no manejamos
+              - generic [ref=e686]: lun
+            - 'button "🎬 Replay: Sd Ya, dale, quedamos así. Le confirmo la dirección exacta apenas la tenga. lun" [ref=e688] [cursor=pointer]':
+              - generic [ref=e689]: R
+              - generic [ref=e691]:
+                - generic [ref=e692]: "🎬 Replay: Sd"
+                - generic [ref=e693]: Ya, dale, quedamos así. Le confirmo la dirección exacta apenas la tenga.
+              - generic [ref=e694]: lun
+            - 'button "🎬 Replay: Sojusaurus ✓ Perfecto, me confirma el lunes y le dejo los 4 baños reservados para el 20 lun" [ref=e696] [cursor=pointer]':
+              - generic [ref=e697]: R
+              - generic [ref=e699]:
+                - generic [ref=e700]: "🎬 Replay: Sojusaurus"
+                - generic [ref=e701]: ✓ Perfecto, me confirma el lunes y le dejo los 4 baños reservados para el 20
+              - generic [ref=e702]: lun
+            - 'button "🎬 Replay: Oscar Pontigo ✓ Es mensual, ese valor cubre el mes completo con las limpiezas incluidas lun" [ref=e704] [cursor=pointer]':
+              - generic [ref=e705]: R
+              - generic [ref=e707]:
+                - generic [ref=e708]: "🎬 Replay: Oscar Pontigo"
+                - generic [ref=e709]: ✓ Es mensual, ese valor cubre el mes completo con las limpiezas incluidas
+              - generic [ref=e710]: lun
+            - 'button "🎬 Replay: Miguel Solis ✓ Perfecto, quedo atenta lun" [ref=e712] [cursor=pointer]':
+              - generic [ref=e713]: R
+              - generic [ref=e715]:
+                - generic [ref=e716]: "🎬 Replay: Miguel Solis"
+                - generic [ref=e717]: ✓ Perfecto, quedo atenta
+              - generic [ref=e718]: lun
+            - 'button "🎬 Replay: Bernardita Valenzuela P Bueno, deje que hable con el maestro y le confirmo mañana entonces. Gracias lun" [ref=e720] [cursor=pointer]':
+              - generic [ref=e721]: R
+              - generic [ref=e723]:
+                - generic [ref=e724]: "🎬 Replay: Bernardita Valenzuela P"
+                - generic [ref=e725]: Bueno, deje que hable con el maestro y le confirmo mañana entonces. Gracias
+              - generic [ref=e726]: lun
+            - 'button "🏋️ Libre tú: 🔔 [ENSAYO] Aviso que te llegaría al celular: \"📄 Cotización lista para 🏋️ Libre. Dale el visto bueno en el panel.\" (en lun" [ref=e728] [cursor=pointer]':
+              - generic [ref=e729]: L
+              - generic [ref=e731]:
+                - generic [ref=e732]: 🏋️ Libre
+                - generic [ref=e733]: "tú: 🔔 [ENSAYO] Aviso que te llegaría al celular: \"📄 Cotización lista para 🏋️ Libre. Dale el visto bueno en el panel.\" (en"
+              - generic [ref=e734]: lun
+            - button "🏋️ Sojusaurus evento Ñuñoa ✓ Se la puedo dejar en 40mil por la visita ya que va con 4 baños, ¿se la agrego a la cotización formal? lun" [ref=e736] [cursor=pointer]:
+              - generic [ref=e737]: S
+              - generic [ref=e739]:
+                - generic [ref=e740]: 🏋️ Sojusaurus evento Ñuñoa
+                - generic [ref=e741]: ✓ Se la puedo dejar en 40mil por la visita ya que va con 4 baños, ¿se la agrego a la cotización formal?
+              - generic [ref=e742]: lun
+            - button "🏋️ Libre ✓ Cualquier cosa que pase en el evento la resolvemos al tiro lun" [ref=e744] [cursor=pointer]:
+              - generic [ref=e745]: L
+              - generic [ref=e747]:
+                - generic [ref=e748]: 🏋️ Libre
+                - generic [ref=e749]: ✓ Cualquier cosa que pase en el evento la resolvemos al tiro
+              - generic [ref=e750]: lun
+            - button "🏋️ Práctica libre ✓ Le confirmo el valor por unidad en un momento lun" [ref=e752] [cursor=pointer]:
+              - generic [ref=e753]: P
+              - generic [ref=e755]:
+                - generic [ref=e756]: 🏋️ Práctica libre
+                - generic [ref=e757]: ✓ Le confirmo el valor por unidad en un momento
+              - generic [ref=e758]: lun
+            - 'button "🎬 Replay: Fabiii ✓ Dale, cualquier cosa me escribe lun" [ref=e760] [cursor=pointer]':
+              - generic [ref=e761]: R
+              - generic [ref=e763]:
+                - generic [ref=e764]: "🎬 Replay: Fabiii"
+                - generic [ref=e765]: ✓ Dale, cualquier cosa me escribe
+              - generic [ref=e766]: lun
+            - 'button "🎬 Replay: Miguel Solis ✓ Ya la tiene en camino, y en cuanto me confirme el montaje en Peldehue le reservamos los baños lun" [ref=e768] [cursor=pointer]':
+              - generic [ref=e769]: R
+              - generic [ref=e771]:
+                - generic [ref=e772]: "🎬 Replay: Miguel Solis"
+                - generic [ref=e773]: ✓ Ya la tiene en camino, y en cuanto me confirme el montaje en Peldehue le reservamos los baños
+              - generic [ref=e774]: lun
+            - button "Lyanno Adelyne Muchos gracias se lo agradezco lun" [ref=e776] [cursor=pointer]:
+              - generic [ref=e777]: L
+              - generic [ref=e780]:
+                - generic [ref=e781]: Lyanno Adelyne
+                - generic [ref=e782]: Muchos gracias se lo agradezco
+              - generic [ref=e783]: lun
+            - 'button "Sojusaurus tú: perfecto, queda pendiente solo la confirmación lun" [ref=e785] [cursor=pointer]':
+              - generic [ref=e786]: S
+              - generic [ref=e789]:
+                - generic [ref=e790]: Sojusaurus
+                - generic [ref=e791]: "tú: perfecto, queda pendiente solo la confirmación"
+              - generic [ref=e792]: lun
+            - button "🏋️ Particular sin factura ✓ Incluye traslados y limpieza gratis semanal, sin costo escondido lun" [ref=e794] [cursor=pointer]:
+              - generic [ref=e795]: P
+              - generic [ref=e797]:
+                - generic [ref=e798]: 🏋️ Particular sin factura
+                - generic [ref=e799]: ✓ Incluye traslados y limpieza gratis semanal, sin costo escondido
+              - generic [ref=e800]: lun
+            - button "🏋️ No suelta el plazo ✓ ¿cuál de las dos se acerca más a lo que busca lun" [ref=e802] [cursor=pointer]:
+              - generic [ref=e803]: "N"
+              - generic [ref=e805]:
+                - generic [ref=e806]: 🏋️ No suelta el plazo
+                - generic [ref=e807]: ✓ ¿cuál de las dos se acerca más a lo que busca
+              - generic [ref=e808]: lun
+            - 'button "Juan tú: o deme el número del caballero y yo lo contacto lun" [ref=e810] [cursor=pointer]':
+              - generic [ref=e811]: J
+              - generic [ref=e814]:
+                - generic [ref=e815]: Juan
+                - generic [ref=e816]: "tú: o deme el número del caballero y yo lo contacto"
+              - generic [ref=e817]: lun
+            - 'button "Bernardita Valenzuela P tú: le interesa? lun" [ref=e819] [cursor=pointer]':
+              - generic [ref=e820]: B
+              - generic [ref=e823]:
+                - generic [ref=e824]: Bernardita Valenzuela P
+                - generic [ref=e825]: "tú: le interesa?"
+              - generic [ref=e826]: lun
+            - 'button "Ceci tú: Hola buenas, necesita los baños? lun" [ref=e828] [cursor=pointer]':
+              - generic [ref=e829]: C
+              - generic [ref=e832]:
+                - generic [ref=e833]: Ceci
+                - generic [ref=e834]: "tú: Hola buenas, necesita los baños?"
+              - generic [ref=e835]: lun
+            - button "Bárbara Ramírez Arellano ~ Directora General FDPUS ✓ Súper, quedo pendiente entonces lun" [ref=e837] [cursor=pointer]:
+              - generic [ref=e838]: B
+              - generic [ref=e840]:
+                - generic [ref=e841]: Bárbara Ramírez Arellano ~ Directora General FDPUS
+                - generic [ref=e842]: ✓ Súper, quedo pendiente entonces
+              - generic [ref=e843]: lun
+            - 'button "German Sanchez · Colina tú: Recibido lun" [ref=e845] [cursor=pointer]':
+              - generic [ref=e846]: G
+              - generic [ref=e849]:
+                - generic [ref=e850]: German Sanchez · Colina
+                - generic [ref=e851]: "tú: Recibido"
+              - generic [ref=e852]: lun
+            - 'button "Sd tú: Ahí mismo comunique la urgencia lun" [ref=e854] [cursor=pointer]':
+              - generic [ref=e855]: S
+              - generic [ref=e858]:
+                - generic [ref=e859]: Sd
+                - generic [ref=e860]: "tú: Ahí mismo comunique la urgencia"
+              - generic [ref=e861]: lun
+            - button "Richard Wang-AMJET 🎥 Video lun" [ref=e863] [cursor=pointer]:
+              - generic [ref=e864]: R
+              - generic [ref=e866]:
+                - generic [ref=e867]: Richard Wang-AMJET
+                - generic [ref=e868]: 🎥 Video
+              - generic [ref=e869]: lun
+            - button "Rodrigo Borquez, Área de Proyectos BorkGroup ok 19-07" [ref=e871] [cursor=pointer]:
+              - generic [ref=e872]: R
+              - generic [ref=e874]:
+                - generic [ref=e875]: Rodrigo Borquez, Área de Proyectos BorkGroup
+                - generic [ref=e876]: ok
+              - generic [ref=e877]: 19-07
+            - button "Jimena Gracias!! 19-07" [ref=e879] [cursor=pointer]:
+              - generic [ref=e880]: J
+              - generic [ref=e882]:
+                - generic [ref=e883]: Jimena
+                - generic [ref=e884]: Gracias!!
+              - generic [ref=e885]: 19-07
+            - button "Maria Ok 18-07" [ref=e887] [cursor=pointer]:
+              - generic [ref=e888]: M
+              - generic [ref=e890]:
+                - generic [ref=e891]: Maria
+                - generic [ref=e892]: Ok
+              - generic [ref=e893]: 18-07
+            - button "Kineartro Gracias 18-07" [ref=e895] [cursor=pointer]:
+              - generic [ref=e896]: K
+              - generic [ref=e898]:
+                - generic [ref=e899]: Kineartro
+                - generic [ref=e900]: Gracias
+              - generic [ref=e901]: 18-07
+            - 'button "Yurimar Marchán tú: Perfecto, espero que le vaya bien entonces y guarde mi número 17-07" [ref=e903] [cursor=pointer]':
+              - generic [ref=e904]: "Y"
+              - generic [ref=e907]:
+                - generic [ref=e908]: Yurimar Marchán
+                - generic [ref=e909]: "tú: Perfecto, espero que le vaya bien entonces y guarde mi número"
+              - generic [ref=e910]: 17-07
+            - 'button "Gonzalo Ceruti tú: si, entiendo 15-07" [ref=e912] [cursor=pointer]':
+              - generic [ref=e913]: G
+              - generic [ref=e915]:
+                - generic [ref=e916]: Gonzalo Ceruti
+                - generic [ref=e917]: "tú: si, entiendo"
+              - generic [ref=e918]: 15-07
+            - 'button "Alejandro tú: me pasa la dirección exacta donde lo instalamos 15-07" [ref=e920] [cursor=pointer]':
+              - generic [ref=e921]: A
+              - generic [ref=e923]:
+                - generic [ref=e924]: Alejandro
+                - generic [ref=e925]: "tú: me pasa la dirección exacta donde lo instalamos"
+              - generic [ref=e926]: 15-07
+          - button "Dormidos · 88 ver" [ref=e928] [cursor=pointer]:
+            - text: Dormidos ·
+            - generic [ref=e931]: "88"
+            - generic [ref=e932]: ver
+        - generic [ref=e933]:
+          - generic [ref=e935]: Elige un chat
+          - generic [ref=e937]:
+            - textbox "Elige un chat para escribirle" [disabled] [ref=e938]
+            - button "Enviar" [disabled] [ref=e939]
+        - generic [ref=e941]:
+          - button "Cliente" [ref=e942] [cursor=pointer]
+          - button "Agente" [ref=e943] [cursor=pointer]
