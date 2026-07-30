@@ -127,6 +127,26 @@ Keychain, con una entrada por cuenta (`Claude Code-credentials-<hash de la carpe
 eso las dos quedan recordadas al mismo tiempo y cambiar de cuenta **no pide login de nuevo**:
 abres otra terminal, escribes el otro alias y ya estás dentro con la otra cuenta.
 
+### Pasarle a la otra cuenta la conversación ENTERA (no un resumen)
+
+Las conversaciones son archivos sueltos por cuenta
+(`<config>/projects/<carpeta-del-proyecto>/<id>.jsonl`), así que se pueden mudar:
+
+```bash
+bash mejoras-destaperapido/pasar-sesion.sh          # la última de esta cuenta
+bash mejoras-destaperapido/pasar-sesion.sh <id>     # una en particular
+# imprime el comando listo, del estilo:
+#   claude982 --resume <id> --fork-session
+```
+
+`--fork-session` le da un id nuevo: **la original queda intacta** y las dos siguen por su
+lado sin pisarse. Copia lo que hay hasta ese segundo; si la conversación de origen sigue
+viva, vuelve a correrlo al terminar.
+
+**Cuál usar:** el fork para seguir la MISMA tarea a medio hacer (despierta sabiendo todo lo
+hablado, pero llega con el contexto medio gastado); el briefing de §6 para empezar un
+trabajo nuevo (arranca limpio y ve el estado real, no el recuerdo). No compiten.
+
 Cada carpeta lleva su propia memoria y su propio historial de chats, así que **la memoria del
 proyecto NO se comparte entre cuentas**. Por eso existe este documento: es lo que hace que la
 otra cuenta arranque sabiendo lo mismo. Si quieres compartir la memoria de verdad:
