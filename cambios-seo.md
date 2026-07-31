@@ -99,3 +99,17 @@ indexed», 8 «Discovered», 5 «unknown». IndexNow re-avisó 22 y la Indexing 
 subieron de **18 a 20**: destacan «pozo absorbente» 117imp/pos7.2/CTR0%, «limpia fosas» 103/pos5.1,
 «camiones limpia fosas» 83/pos4.6/CTR0%. Patrón nuevo: varias en pos 4-6 con CTR 0% — ahí el
 ranking ya está y lo que falla es el título, no el contenido. Tarea `seo-destaperapido-quickwins`.
+
+**Landing del 18 de septiembre (2026-07-31):** se publicó
+`/servicios/banos-quimicos-fiestas-patrias-18-septiembre`. Hueco que existía: la landing de
+eventos vende "todo el año" y ninguna página respondía a quien busca literalmente *baños
+químicos para el 18* / *fondas* / *ramadas*, que es la semana de mayor demanda del rubro.
+Base: la landing de eventos (mismo diseño), con lo propio de la fecha — calendario del fin de
+semana largo (el 18 de 2026 cae **viernes**: 18-19-20 feriado corrido), cuenta de días que
+faltan, tarjetas de fonda/ramada/asado en parcela/rodeo y FAQ del 18 (cuántas unidades con
+alcohol y 6+ horas, cuántos días arrendar, si sirve en plaza o medialuna sin agua ni
+alcantarillado). Sin precios inventados: se mantiene el criterio de la madre (1 cada 50-75
+hasta 4 h, 1 cada 40 con alcohol o 6+ h). Enlazada desde las 5 páginas de baños químicos y en
+`sitemap-servicios.xml`. Indexación solicitada en Search Console + IndexNow el mismo día.
+La misma página existe en `limpiafosasydestape.cl` y `destapando.cl` con **textos propios**
+(título, H1, entrada y H2 distintos) para no competir con contenido duplicado entre dominios.
