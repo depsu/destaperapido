@@ -6,6 +6,32 @@ aquí queda la historia. La escriben ronda-ads, ronda-correo y las sesiones.
 
 ---
 
+## 2026-07-31 · 👷 constructor · «huele a alcantarilla, pero solo de madrugada»: esa pregunta ya tiene respuesta
+
+Ayer le cambiamos el gancho al artículo de **olor a alcantarilla** (el que más gente ve de tu
+sitio). Hoy tocaba lo otro: el gancho ya se probó cuatro veces y siempre rinde parecido, así
+que la palanca que queda no es el titular sino **el contenido**. Le sumamos dos cosas que la
+gente pregunta de verdad y el artículo no respondía:
+
+**1. Por qué el olor aparece de noche.** Mucha gente cuenta lo mismo: durante el día nada, y a
+las tres de la mañana la casa huele a drenaje. No es que el problema aparezca de noche — es que
+de noche se junta todo: pasan diez horas sin que corra agua (y los sifones terminan de secarse),
+la casa está cerrada sin ventilación, y en el dormitorio uno huele mucho más. Le dejamos una
+prueba casera de tres noches para que la persona misma sepa si es solo eso o si hay algo más
+abajo — y si es algo más abajo, ahí sí aparece tu inspección con cámara.
+
+**2. «¿Esto es alcantarilla o una fuga de gas?»** Es la duda que asusta, y nadie la responde.
+Ahora se explica cómo distinguirlas (de dónde sale el olor y a qué huele cada una) y, si hay
+cualquier duda, se le dice que lo trate como fuga de gas: no tocar interruptores, ventilar,
+cortar la llave, salir y llamar desde afuera a Bomberos. Le decimos claramente cuándo **no** es
+un problema tuyo. Eso no te quita trabajo: te da credibilidad con quien después sí te va a
+llamar.
+
+**Detalle de oficio:** el trabajo estaba a medio hacer en el computador desde ayer (la pasada se
+cortó antes de guardar). No lo publicamos a ciegas: lo revisamos entero de nuevo y encontramos
+que una de las dos preguntas estaba declarada para Google pero no se veía en la página. La
+agregamos, y recién ahí lo publicamos. Verificado en la web en vivo, y avisado a Bing.
+
 ## 2026-07-30 · 👷 constructor · el artículo que más gente ve por fin cambia de gancho (y lo publicamos de verdad)
 
 La página de **olor a alcantarilla** es la que más gente ve en Google de todo tu sitio: 5.001
