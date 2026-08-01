@@ -13,3 +13,7 @@ public/css/critical-home.css
 .env*.local
 **/.env.local
 scripts/.env.local
+
+# Datos VIVOS de la instancia dixdybot (mudanza Etapa B, docs/30 del maestro):
+# base, sesión de WhatsApp, ledgers y llaves — JAMÁS a git.
+/dixdybot-data/
