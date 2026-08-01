@@ -25,8 +25,8 @@ pone en pantalla el estado VIVO (cuenta, paneles, dudas esperando, últimos comm
 | Cosa | Ruta |
 |---|---|
 | Molde (código, ES producción) | `~/SaSS/DIXDY/dixdybot/` |
-| Datos del cliente destaperapido | `~/SaSS/destaperapido/dixdybot-data/` · panel **8793** · launchd `com.dixdy.dixdybot-panel` |
-| Datos de la instancia DIXDY (panel público) | `~/SaSS/dixdy/dixdybot-data/` = **la misma carpeta** que `~/SaSS/DIXDY/dixdybot-data` (el disco no distingue mayúsculas) · panel **8794** · launchd `com.dixdy.dixdybot-panel-dixdy` · https://panel.dixdy.cl |
+| Datos del cliente destaperapido | `~/SaSS/DIXDY/clientes/destaperapido/dixdybot-data/` · panel **8793** · launchd `com.dixdy.dixdybot-panel` (mudado 1-ago, docs/30) |
+| Datos de la agencia (panel público) | `~/SaSS/DIXDY/clientes/dixdy-agencia/dixdybot-data/` · panel **8794** · launchd `com.dixdy.dixdybot-panel-dixdy` · https://panel.dixdy.cl (la trampa dixdy/DIXDY quedó desarmada el 1-ago) |
 | Auditoría + plan por etapas | `mejoras-destaperapido/auditoria-backend-2026-07-30.md` |
 | Mapa largo del proyecto | `mejoras-destaperapido/DIXDYBOT-ESTADO.md` |
 | Bot VIEJO que aún vende | `~/SaSS/destaperapido/whatsapp-bot/` — **solo lectura, no tocar** |

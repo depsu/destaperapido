@@ -13,7 +13,7 @@ set -u
 
 MOLDE="$HOME/SaSS/DIXDY/dixdybot"
 CLON="$HOME/SaSS/DIXDY/clientes/destaperapido"
-DATOS="$HOME/SaSS/destaperapido/dixdybot-data"
+DATOS="$HOME/SaSS/DIXDY/clientes/destaperapido/dixdybot-data"
 
 echo "═══ dixdybot · briefing $(date '+%d-%m-%Y %H:%M') ═══"
 
