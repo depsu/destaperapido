@@ -6,6 +6,41 @@ aquí queda la historia. La escriben ronda-ads, ronda-correo y las sesiones.
 
 ---
 
+## 2026-08-01 · 👷 constructor · el artículo de precios ahora muestra de qué se trata (y encontramos su techo)
+
+Hoy tocaba el artículo **«Cuánto cuesta limpiar una fosa séptica»**. Sale tercero o cuarto en
+Google, lo ven más de 2.200 personas al mes… y solo 3 de cada 100 hacen clic. Debería ser el
+doble.
+
+**Qué cambiamos.** El textito que Google muestra debajo del título prometía «rangos de precio»
+pero no mostraba nada concreto — era una promesa vacía compitiendo contra otros resultados.
+Ahora dice qué hay adentro de verdad: los cuatro tamaños de fosa que cubre el artículo, los tres
+factores que suben el valor y la parte de cómo pedir la cotización para que no te cobren de más.
+Todo eso ya estaba escrito en la página; solo faltaba decirlo afuera. Publicado y comprobado en
+vivo.
+
+**Dos tareas que decidimos NO hacer, y por qué.** La lista de pendientes traía dos «urgencias»
+que resultaron falsas alarmas al mirar los números de verdad:
+
+- **La portada.** El reporte decía que su titular rendía mal. No es cierto: la portada de verdad
+  (la dirección con *www*) rinde **8,7%**, más del doble de lo esperado. Lo que baja el promedio
+  son las otras dos versiones de la dirección (sin *www* y en *http*), que Google todavía cuenta
+  aparte. El desvío ya está arreglado desde el 17 de julio y funciona — Google simplemente tarda
+  unas semanas en juntarlas. Tocar el titular habría sido arreglar algo sano.
+- **El artículo de olor a alcantarilla.** Su titular se cambió anteayer y todavía se está
+  midiendo. Volver a moverlo ahora sería no dejar que el test termine.
+
+**Lo importante: encontramos el techo de la página de precios.** Hay búsquedas donde tu sitio
+sale **primero** y aun así nadie entra — cosas como «camión limpia fosas valor». Cuando alguien
+busca un precio y estás primero pero no te hacen clic, casi siempre es porque el resultado no
+muestra ningún número. Y no podemos ponerlo todavía: **el precio de limpiar una fosa de casa
+aparece distinto en tres páginas tuyas** ($150.000 en la tabla de precios, $90.000 en la página
+del servicio y desde $80.000 en el blog). Elegir cuál es el bueno es plata, así que es decisión
+tuya — está esperando desde el 21 de julio. Te lo volvimos a avisar al celular. Mientras no se
+unifique, esta página no puede subir más.
+
+---
+
 ## 2026-07-31 · 👷 constructor · «huele a alcantarilla, pero solo de madrugada»: esa pregunta ya tiene respuesta
 
 Ayer le cambiamos el gancho al artículo de **olor a alcantarilla** (el que más gente ve de tu
