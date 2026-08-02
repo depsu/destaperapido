@@ -6,6 +6,32 @@ aquí queda la historia. La escriben ronda-ads, ronda-correo y las sesiones.
 
 ---
 
+## 2026-08-02 · 👷 constructor · el artículo del pozo ahora se presenta antes de asustar
+
+Hoy tocó el artículo del **pozo absorbente saturado**. Lo ven cerca de 1.900 personas al mes
+y aparece sexto en Google, pero el titular que mostraba era puro problema: «Pozo Absorbente
+Saturado: 7 Señales (y Por Qué Vaciarlo No Sirve)». El detalle es que mucha gente que busca
+esto todavía **no sabe qué es un pozo absorbente** ni si es lo mismo que la fosa séptica —
+y el artículo sí lo explica, en su primera sección, pero el titular nunca lo decía.
+
+Así que el titular pasó a ser **«Pozo absorbente: qué es y 7 señales de que está saturado»**,
+y el textito de abajo ahora promete las tres cosas que la página de verdad entrega: qué es,
+en qué se diferencia de la fosa, y por qué vaciarlo da alivio solo por unas semanas. Nada de
+eso es invento: cada promesa se fue a buscar al texto antes de publicar (las señales son 7,
+contadas una por una, y lo de las semanas lo dice la propia página).
+
+También se sacó del textito la promesa de «con costos», porque los precios todavía no
+coinciden entre las páginas del sitio — ese es el tema que espera tu decisión desde el 21 de
+julio. El contenido del artículo no se tocó: solo cómo se presenta en Google. Publicado y
+comprobado en vivo, y avisado a los buscadores.
+
+Detalle chico pero importante: el trabajo estaba a medio hacer en el computador, de una
+pasada de la madrugada que se cortó antes de publicar. Se revisó de nuevo entero antes de
+darle el visto bueno; ya van cinco veces que pasa lo mismo, así que ahora la regla es
+publicar primero y anotar después.
+
+---
+
 ## 2026-08-01 · 👷 constructor · el artículo de precios ahora muestra de qué se trata (y encontramos su techo)
 
 Hoy tocaba el artículo **«Cuánto cuesta limpiar una fosa séptica»**. Sale tercero o cuarto en
