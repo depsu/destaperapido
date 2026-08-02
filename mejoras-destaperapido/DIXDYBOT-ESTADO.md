@@ -475,3 +475,11 @@ información veraz; y presentarse como asistente virtual anticipa la ley de IA e
   pitch: "el agente que OPERA el negocio".
 - Pendiente externo: resultados del deep research de Alejandro en Gemini/ChatGPT
   (prompt entregado 23-jul) — verificar antes de integrar.
+
+## 2026-08-02 · LA IA MADRE quedó viva (commit 046f894 del maestro)
+
+Alejandro pidió «un Claude Code con interfaz web» y ya existe: la vista «Lo que sabe tu
+equipo» es ahora UNA IA global con memoria real (sesión panel:madre), mini-skills de
+lectura (chats, tablero, tarifario, caminos, pendientes) con los pasos visibles, y manos
+con red (caminos en borrador, mensajes con tarjeta de aprobación). El carril por chat
+usa el mismo loop. Probada en vivo con datos reales. Detalle: memoria ia-madre-panel.
