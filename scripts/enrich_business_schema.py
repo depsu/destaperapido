@@ -19,8 +19,10 @@ Edita en sitio (in-place) los archivos en TARGETS conservando indent=2 estable.
 
 from __future__ import annotations
 
+import datetime
 import json
 import re
+import subprocess
 import sys
 from pathlib import Path
 
@@ -56,7 +58,23 @@ KNOWS_ABOUT = [
 SAME_AS = [
     "https://www.limpiafosasydestape.cl",
 ]
-DATE_MODIFIED = "2026-05-08"
+# ⚠️ NO pongas aquí una fecha fija. Antes había una constante ("2026-05-08") y cada página
+# nueva nacía declarando esa fecha, aunque se hubiera creado meses después: le mentíamos a
+# Google sobre lo fresco del contenido. Ahora la fecha se calcula POR ARCHIVO, desde su
+# último commit real (y si el archivo aún no está en git, desde su fecha de modificación).
+def date_modified_for(path: Path) -> str:
+    """Fecha real de última modificación del archivo, en formato YYYY-MM-DD."""
+    try:
+        out = subprocess.run(
+            ["git", "log", "-1", "--format=%cs", "--", str(path)],
+            cwd=str(ROOT), capture_output=True, text=True, timeout=15,
+        )
+        fecha = out.stdout.strip()
+        if fecha:
+            return fecha
+    except (OSError, subprocess.SubprocessError):
+        pass
+    return datetime.date.fromtimestamp(path.stat().st_mtime).isoformat()
 
 # Comunas reales atendidas (derivadas de public/zonas/{urbano,rural})
 AREA_SERVED = [
@@ -163,7 +181,7 @@ def is_business(item: dict) -> bool:
     return any(x in types for x in ("LocalBusiness", "Plumber", "Organization"))
 
 
-def enrich_business(item: dict) -> bool:
+def enrich_business(item: dict, date_modified: str) -> bool:
     """Aplica los campos GEO al bloque business. Devuelve True si cambió algo."""
     changed = False
 
@@ -181,7 +199,7 @@ def enrich_business(item: dict) -> bool:
         "knowsAbout": KNOWS_ABOUT,
         "sameAs": SAME_AS,
         "areaServed": AREA_SERVED,
-        "dateModified": DATE_MODIFIED,
+        "dateModified": date_modified,
     }
 
     for key, value in target.items():
@@ -192,7 +210,7 @@ def enrich_business(item: dict) -> bool:
     return changed
 
 
-def patch_jsonld(content: str) -> tuple[str, int]:
+def patch_jsonld(content: str, date_modified: str) -> tuple[str, int]:
     """Recorre todos los bloques JSON-LD del archivo y enriquece los business."""
     modifications = 0
 
@@ -210,7 +228,7 @@ def patch_jsonld(content: str) -> tuple[str, int]:
         block_changed = False
         for item in items:
             if isinstance(item, dict) and is_business(item):
-                if enrich_business(item):
+                if enrich_business(item, date_modified):
                     block_changed = True
 
         if not block_changed:
@@ -248,7 +266,7 @@ def main() -> None:
             skipped.append(rel)
             continue
         raw = path.read_text(encoding="utf-8")
-        new, n = patch_jsonld(raw)
+        new, n = patch_jsonld(raw, date_modified_for(path))
         if n > 0 and new != raw:
             path.write_text(new, encoding="utf-8")
             total_files += 1
