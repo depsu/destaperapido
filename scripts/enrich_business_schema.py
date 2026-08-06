@@ -31,7 +31,10 @@ PUBLIC = ROOT / "public"
 
 # Datos verificados por el dueño (ver plan SEO en ~/.claude/plans/)
 RATING = "5.0"
-REVIEW_COUNT = "16"
+# ⚠️ El sitio vivo ya declara 30 reseñas (commit 7494359, sincronizado con Google).
+# Esta constante decía 16: correr el script con ese valor HABRÍA RETROCEDIDO el conteo
+# real en todo el sitio. Si vuelves a correrlo, confirma antes el número en la ficha.
+REVIEW_COUNT = "30"
 FOUNDING_DATE = "2014"  # 10+ años (confirmado)
 SLOGAN = "Destape y saneamiento profesional 24/7 en la Región Metropolitana"
 
