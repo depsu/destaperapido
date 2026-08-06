@@ -19,6 +19,30 @@ auditoría de todos los textos del panel.
 | 4 | **Precio «130.000» se leía como $130** en el formulario de la cotización formal | Cualquier chileno escribe así. Habría salido una cotización de ciento treinta pesos |
 | 5 | La lista «sin monto» de Hoy mostraba ids de máquina («p-15») | Ilegible para el dueño |
 
+## Verificación del arreglo del loro (mismo caso, antes y después)
+
+**ANTES** — el cliente da plazo, condominio, dirección y cantidad:
+```
+· Hola, claro que sí. ¿En qué comuna lo necesita?
+· Dame un momento, ya te confirmo.
+· Déjame confirmarlo bien y te escribo al tiro.
+· Déjame confirmarlo bien y te escribo al tiro.
+· Déjame confirmarlo bien y te escribo al tiro.
+· Déjame confirmarlo bien y te escribo al tiro.
+```
+
+**DESPUÉS** — mismo guion, mismo tarifario sin Pirque:
+```
+· Hola, con gusto te ayudo. ¿En qué comuna sería?
+· Déjame confirmarlo bien y te escribo al tiro.      ← una vez, al abrir la duda
+· Ya, mensual entonces. Lo de Pirque lo estoy viendo con el equipo para…
+· Ah, dentro de un condominio. ¿Cuántos baños necesitarías?
+· Anotada la dirección. ¿Sería un baño solo o más de uno?
+· Un baño por el mes, anotado. ¿Para qué fecha lo necesitarías?
+```
+El tema del precio queda pausado y el resto de la venta AVANZA: cuando Alejandro
+responde la duda, el bot ya tiene el kit completo para cerrar.
+
 ## 🟡 Hallazgos de configuración (decisión de Alejandro)
 
 - **3 comunas sin tarifa** que el bot viejo SÍ atendió: **Pirque** (3 clientes, cobró
@@ -29,6 +53,13 @@ auditoría de todos los textos del panel.
   ganarse 3 aprobaciones seguidas sin corrección.
 - **`ver_chats_de_prueba` en true**: apagar tras el cutover para que los ensayos no
   ensucien el tablero real.
+- **El bot no sabe de FORMAS DE PAGO** (6% de los mensajes reales): «me puedes enviar la
+  factura y datos de transferencia?» y «¿se paga a 30 días o mes adelantado?» terminaban
+  en pregunta al dueño. Sus propias conversaciones tienen la respuesta establecida: *pago
+  contra entrega, efectivo o transferencia, sin adelanto, no se trabaja a 30 días,
+  factura electrónica*. Quedó una propuesta **«Cómo se paga y cómo se factura» esperando
+  su OK** en «Lo que sabe tu equipo» — con los datos bancarios FUERA a propósito (que los
+  dé el PDF de la cotización formal, no el chat).
 
 ## ✅ Lo que funcionó bien (verificado con clientes reales)
 
