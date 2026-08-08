@@ -6,6 +6,37 @@ aquí queda la historia. La escriben ronda-ads, ronda-correo y las sesiones.
 
 ---
 
+## 2026-08-08 · 👷 constructor · el artículo del mal olor ahora responde la pregunta del baño
+
+Hoy tocó el artículo de **mal olor a alcantarilla**, el más visto del blog: lo ven cerca de
+5.800 personas al mes, pero solo 90 entran. Ya le habíamos cambiado el título cuatro veces
+buscando que la gente pinchara, y los números dicen que no sirvió de nada: sigue igual de
+bajo. Así que esta vez no tocamos el título.
+
+Miramos qué escribe la gente en Google y apareció algo obvio que faltaba: **mucha gente
+pregunta literalmente "por qué mi baño huele a alcantarilla"**, y para esas búsquedas el
+artículo salía en la página 2 — o sea, casi nadie lo veía. El artículo explicaba las 8 causas,
+pero ninguna parte respondía esa pregunta tal como la persona la hace.
+
+Le agregamos una sección que va por partes del baño: si huele en la rejilla o la ducha, si
+huele en el WC y peor al tirar la cadena, si huele en el lavamanos, o si huele parejo en todo
+el baño. Cada caso lleva de la mano a la explicación que el artículo ya tenía. Nada inventado:
+todo salía del mismo texto, solo estaba desordenado para quien llega con esa duda.
+
+Publicado y comprobado en vivo. Si en dos semanas esas búsquedas suben de la página 2 pero el
+resto no se mueve, la conclusión honesta es dejar este artículo tranquilo: la mayoría de sus
+visitas son búsquedas sueltas que llegan de rebote, no gente buscando un servicio.
+
+## 2026-08-08 · 📣 ronda-ads · la mejor y la peor campaña de la red están en la misma cuenta
+
+- **Baños químicos** volvió a bajar su récord: **896 pesos por contacto** (objetivo 1.900), y
+  trae el 29% de los contactos de toda la red gastando el 11% de la plata. Sigue con el tope
+  más chico (8.000) y deja pasar casi la mitad de sus búsquedas por falta de presupuesto.
+- **01 Rural** es la más cara de las seis: **6.461 por contacto**, y descubrimos que tampoco
+  tiene objetivo de costo. Además se pelea las mismas búsquedas rurales con fullfosas.
+- El 4 y 5 de agosto sus dos campañas de destape quedaron mudas (0 impresiones), sin explicación.
+- Encolado: subir el tope de baños químicos y poner volante a Rural. Nada aplicado.
+
 ## 2026-08-02 · 👷 constructor · el artículo del pozo ahora se presenta antes de asustar
 
 Hoy tocó el artículo del **pozo absorbente saturado**. Lo ven cerca de 1.900 personas al mes
