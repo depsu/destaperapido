@@ -6,6 +6,18 @@ aquí queda la historia. La escriben ronda-ads, ronda-correo y las sesiones.
 
 ---
 
+## 2026-08-11 · 📣 ronda-ads · el mejor y el peor negocio de la red viven en la misma cuenta
+
+- **Baños químicos sigue siendo el campeón**: 68 contactos a **864 CLP** cuando se le pide 1.900.
+  Lleva siete días seguidos pegado a su tope y ya deja fuera al **52,8%** de sus búsquedas (era 50,2%).
+  Con el 10% de la plata de toda la red trae el 30% de los contactos. Subirle el tope es plata: tú decides.
+- **«03 Urbano» se soltó**: su contacto pasó de 3.957 a **5.301 CLP**, un 51% sobre el objetivo que ya tiene
+  puesto. Como el techo de precio existe y no se cumple, lo que toca es mejorar anuncio y landing, no la puja.
+- Los dos días sin gasto de «01 Rural» y «03 Urbano» **no fueron una caída**: las pausaste tú el 3-ago y las
+  reactivaste el 6-ago. Queda anotado para que ninguna ronda lo lea como alarma.
+- Casi te reporto que esas campañas habían perdido su objetivo de costo. Era un error mío de consulta
+  (Google no devuelve ese dato cuando se pide junto con las fechas). Verificado de nuevo: los objetivos están.
+
 ## 2026-08-08 · 👷 constructor · el artículo del mal olor ahora responde la pregunta del baño
 
 Hoy tocó el artículo de **mal olor a alcantarilla**, el más visto del blog: lo ven cerca de
