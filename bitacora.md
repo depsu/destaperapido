@@ -6,6 +6,46 @@ aquí queda la historia. La escriben ronda-ads, ronda-correo y las sesiones.
 
 ---
 
+## 2026-08-13 · 👷 constructor · Puente Alto salía en Google sin decir la palabra que la gente busca
+
+- **Lo que pasaba:** la página de Puente Alto aparece 37 veces al mes cuando alguien busca
+  «destape de alcantarillado puente alto», en el puesto 9… y en un mes se llevó **un solo
+  clic**. El motivo, mirado de cerca, era tonto: el título que muestra Google decía «Destape
+  de Cañerías en Puente Alto». La palabra **alcantarillado** estaba en el titular de la
+  página, en las preguntas frecuentes y en el texto — en todos lados menos en la vitrina.
+- **Lo que se hizo:** título y descripción nuevos con la palabra que la gente escribe, sin
+  perder «cañerías» ni el 24/7, y nombrando los sectores que la página ya atiende (Bajos de
+  Mena, Andes Cordillera, Eyzaguirre, Las Vizcachas). No se inventó ningún dato: el «llegada
+  45-75 min» lo declara la propia página. **Publicado y comprobado en vivo**, y avisado a
+  los buscadores.
+- **Por qué esta página y no otra:** las tres que la tarea nombraba primero ya estaban
+  arregladas en pasadas de la semana pasada y todavía se están midiendo — retocar un título
+  dos veces seguidas borra la medición. Y Puente Alto rinde poco para lo que es: Melipilla,
+  una comuna cinco veces más chica, trae **16 clics al mes** porque su página sí aparece
+  arriba.
+- **Para ti (no se tocó):** el sitio responde **tres precios distintos** a la misma pregunta
+  según por dónde entre el cliente — la página de precios dice alcantarillado desde $75.000,
+  pero las preguntas frecuentes de 7 comunas dicen $60.000-$150.000 y WC desde $35.000
+  (la oficial dice $45.000). Google puede mostrar cualquiera de los tres. Con que me digas
+  los dos números reales (WC y alcantarillado), lo dejo parejo en todo el sitio de una vez.
+
+## 2026-08-12 · 📣 ronda-ads · las tres campañas se quedaron sin techo de precio
+
+- **Lo que hay que mirar:** las tres campañas activas están en «maximizar conversiones» **sin objetivo
+  de costo**. La semana pasada registré 1.900 en baños químicos y 3.500 en urbano. O alguien los quitó,
+  o mi lectura anterior estaba mal — hay que averiguar cuál de las dos. Sin techo de precio, Google
+  compra el contacto al precio que sea, que es justo lo que se ve en «03 Urbano».
+- La foto del cliente: **110 contactos a 2.303 pesos**. Pero adentro conviven lo mejor y lo peor de toda
+  la red: **baños químicos a 872** el contacto y **«03 Urbano» a 4.723**.
+- **«03 Urbano» es el punto flojo:** se lleva el 16% de la plata de la red y devuelve el 9,5% de los
+  contactos, y es la única campaña que pierde fuerte por las dos causas a la vez (se le acaba el
+  presupuesto **y** pierde subastas). Antes de tocar plata, toca higiene.
+- **Baños químicos:** con el 10% de la plata hace el 31% de los contactos. Sigue pegado al techo los
+  siete días. **Ya no te propongo subirlo** — me dijiste el 11 de agosto que no querías gastar más por
+  conversión, así que queda como dato, no como propuesta.
+- Encolé **8 negativas** de bricolaje para «03 Urbano» (cinta, manguera, máquina, hidrolavadora…):
+  gente que quiere comprar la herramienta, no contratar el servicio. Nada aplicado.
+
 ## 2026-08-11 · 📣 ronda-ads · el mejor y el peor negocio de la red viven en la misma cuenta
 
 - **Baños químicos sigue siendo el campeón**: 68 contactos a **864 CLP** cuando se le pide 1.900.
