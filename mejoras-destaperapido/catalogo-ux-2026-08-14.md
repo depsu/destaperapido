@@ -164,6 +164,14 @@ preexistente de conexiones), sello 202608140938, ambas instancias reiniciadas
 - **Importador de precios para la forma catálogo** (tipo_tarifario de la sesión
   paralela dixdy-0b): cuando el cotizador esté en 'catalogo', el importador debe pedir
   servicios {nombre, precio, …} en vez de zonas. Espec de 0b recibida; próxima tanda.
+- **Asistente de ALTA en el panel** (entrevista → borrador aprobable): el motor ya
+  existe (0b, commit b2ff1d1): `generarAjustes(perfil: PerfilNegocio): AjustesGenerados`
+  en `src/onboarding/generar.ts` — perfil validable con `PerfilNegocio.parse`, salida
+  `{porModulo (overrides parciales: parse({...configDefault, ...override}) y escribir
+  ajustes/<id>.json), persona (borrador base.md), notas (lo que la IA no supo ubicar)}`;
+  referencia de aplicación en `cli/nuevo-negocio.ts` (`escribirClon`). El asistente del
+  panel = entrevista LLM encima + diff aprobable con el patrón del importador de
+  precios (nada se escribe solo, las notas se pintan junto al diff).
 - ~~Cartel de chats abandonados~~ → **HECHO (eb7595a)**: Hoy muestra «Los tomaste tú y
   el cliente sigue esperando» (query takeoversAbandonados de la sesión 0b + nombre
   bautizado + «Devolver al bot» vía despausar). 20 detectados en vivo al estrenar.
