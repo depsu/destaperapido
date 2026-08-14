@@ -164,8 +164,9 @@ preexistente de conexiones), sello 202608140938, ambas instancias reiniciadas
 - **Importador de precios para la forma catálogo** (tipo_tarifario de la sesión
   paralela dixdy-0b): cuando el cotizador esté en 'catalogo', el importador debe pedir
   servicios {nombre, precio, …} en vez de zonas. Espec de 0b recibida; próxima tanda.
-- **Cartel de chats abandonados** (pendiente_bot + asignado sin pausa): 0b prepara la
-  query en barrido/consultas.ts; el cartel del panel se pinta cuando pase el shape.
+- ~~Cartel de chats abandonados~~ → **HECHO (eb7595a)**: Hoy muestra «Los tomaste tú y
+  el cliente sigue esperando» (query takeoversAbandonados de la sesión 0b + nombre
+  bautizado + «Devolver al bot» vía despausar). 20 detectados en vivo al estrenar.
 
 ## Verificación
 - Suite: 57 archivos, 1143 tests verdes (incluye administrabilidad de los ajustes
