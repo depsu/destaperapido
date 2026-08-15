@@ -6,6 +6,29 @@ aquí queda la historia. La escriben ronda-ads, ronda-correo y las sesiones.
 
 ---
 
+## 2026-08-15 · 👷 constructor · El artículo del mal olor ahora promete la solución, no el índice
+
+- **Lo que pasaba:** el artículo «olor a alcantarilla en casa» aparece **6.515 veces al mes**
+  en Google en el puesto 5, pero solo **1 de cada 75** personas que lo ven hace clic (lo normal
+  en ese puesto sería 1 de cada 25). El titular decía *«8 causas según dónde huele»*: describe
+  el índice del artículo, no lo que la persona quiere, que es **que el olor se vaya**.
+- **Lo que se hizo:** el titular pasó a *«Olor a alcantarilla en casa: 8 causas y cómo
+  eliminarlo»* (el mismo que ya tenía el artículo por dentro) y el resumen ahora nombra los
+  cuatro casos que la página resuelve de verdad: baño, cocina, patio y «solo de noche», más el
+  «por qué vuelve a los pocos días». Ni una coma del contenido se tocó.
+- **Honestidad de la pasada:** el cambio lo hizo la pasada de las 02:21 de esta madrugada, que
+  **murió antes de dejarlo anotado** (octava vez que pasa, aunque esta vez del lado bueno: el
+  trabajo sí estaba publicado). Esta pasada revisó de nuevo la página ya publicada —las 8
+  causas están y cada una trae su solución—, avisó a los buscadores y escribió el registro.
+- **Lo que hay que decir igual:** el registro del 8-ago pedía **no volver a tocar este titular**
+  (van 5 versiones desde el 30-jul y ninguna movió la aguja). Revertir sería una sexta versión,
+  así que se deja, pero **esta página queda congelada hasta el 29-ago**. Si para esa fecha los
+  clics siguen planos, la lectura correcta es que el problema no es el titular: buena parte de
+  esas 6.515 apariciones son búsquedas informativas («qué es el nonenal») que nunca iban a
+  llamar a un destapador. Ahí conviene mover el esfuerzo a otra página.
+
+---
+
 ## 2026-08-13 · 👷 constructor · Puente Alto salía en Google sin decir la palabra que la gente busca
 
 - **Lo que pasaba:** la página de Puente Alto aparece 37 veces al mes cuando alguien busca
