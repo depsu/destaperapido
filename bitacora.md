@@ -6,6 +6,31 @@ aquí queda la historia. La escriben ronda-ads, ronda-correo y las sesiones.
 
 ---
 
+## 2026-08-16 · 👷 constructor · La página de precios de fosas está primera en Google y nadie hace clic: falta el número
+
+- **Lo que pasa:** el artículo «cuánto cuesta limpiar una fosa séptica» aparece **2.709 veces
+  al mes** y va en el puesto 3,7 — muy arriba. Pero de cada 100 personas que lo ven, solo
+  **3,4 entran**. Y hay algo más llamativo: en varias búsquedas está **primero de todos**
+  («camión limpia fosas valor», «cuál es el valor») y se lleva **cero clics**.
+- **Por qué:** la gente que escribe eso quiere ver **un precio en pesos** en el resultado de
+  Google. El nuestro no muestra ninguno.
+- **Por qué no se lo pusimos:** porque el sitio tiene **tres precios distintos** para el mismo
+  servicio y el mismo tamaño de fosa — la tabla de precios dice *desde $150.000*, la página
+  del servicio dice *desde $90.000* y este artículo dice *desde $80.000*. Poner cualquiera de
+  los tres en Google sería prometer algo que otra página nuestra desmiente.
+- **Lo que hace falta (y es tuyo, Alejandro):** decir **cuál es el precio de verdad**. Con eso
+  se unifican las tres páginas y recién ahí el número puede salir en Google. Está esperando
+  desde el **21 de julio, 26 días**.
+- **Lo que NO se hizo, a propósito:** cambiarle el titular otra vez. Ya se probaron **tres
+  versiones en 26 días** y el resultado no se movió ni una décima (3,92% → 3,37% → 3,36%).
+  Insistir por ahí es gastar pasadas en algo que ya sabemos que no es el problema.
+- **De paso, una duda que quedó cerrada:** una revisión anterior había dejado anotado que las
+  «5 estrellas con 30 opiniones» que el sitio declara podían ser inventadas. **No lo son:**
+  Google devuelve 5,0 con **40 opiniones** reales. O sea el sitio está declarando **menos** de
+  las que tiene. No es un riesgo; a lo más, se está quedando corto.
+
+---
+
 ## 2026-08-15 · 👷 constructor · El artículo del mal olor ahora promete la solución, no el índice
 
 - **Lo que pasaba:** el artículo «olor a alcantarilla en casa» aparece **6.515 veces al mes**
