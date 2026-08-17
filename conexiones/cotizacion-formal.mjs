@@ -58,6 +58,12 @@ const precioNeto = pesosDe(args.precio_neto);
 // EL FLETE SEPARADO (17-ago, «el bot anterior podía separarlo»): $30.000 de flete
 // mezclados en el unitario hacían que el PDF dijera $170.000 el baño — mentira cara.
 const flete = pesosDe(args.flete);
+// EL ÍTEM EXTRA (17-ago, caso La Cisterna: baño + CABINA DE DUCHA en una misma
+// cotización): una segunda línea genérica con su propio valor — sirve para la ducha,
+// una limpieza extra de evento, lo que sea. Mensual como el resto, salvo que el
+// título diga otra cosa.
+const itemExtra = texto(args.item_extra);
+const precioExtra = pesosDe(args.precio_extra);
 const conFactura = texto(args.factura).toLowerCase() !== 'no';   // con IVA por defecto
 // QUÉ se cotiza (16-ago): antes siempre decía «baño químico»; ahora el panel puede
 // mandar el ítem elegido (ducha portátil, baño sin lavamanos, flete, limpieza extra).
@@ -117,7 +123,14 @@ const config = {
     cantidad,
     valor_unitario_neto: precioNeto,
   },
-  // la SEGUNDA línea: el flete por única vez, aparte y a la vista (como el bot viejo)
+  // el ÍTEM EXTRA acordado (una ducha, una limpieza extra…), con su propia línea
+  ...(itemExtra !== '' && precioExtra > 0 ? [{
+    descripcion_titulo: itemExtra.charAt(0).toUpperCase() + itemExtra.slice(1),
+    descripcion_bullets: [],
+    cantidad: 1,
+    valor_unitario_neto: precioExtra,
+  }] : []),
+  // la línea del flete por única vez, aparte y a la vista (como el bot viejo)
   ...(flete > 0 ? [{
     descripcion_titulo: 'Flete por única vez',
     descripcion_bullets: ['Traslado por la ubicación; se cobra una sola vez.'],
@@ -170,6 +183,8 @@ const cuerpo = [
   `Junto con saludar, le adjunto la cotización formal por el arriendo de ${unidad}${donde}.`,
   '',
   lineaValor,
+  ...(itemExtra !== '' && precioExtra > 0
+    ? [`- ${itemExtra.charAt(0).toUpperCase() + itemExtra.slice(1)}: ${clp(precioExtra)} neto.`] : []),
   ...(flete > 0 ? [`- Flete por única vez: ${clp(flete)}${conFactura ? ' neto' : ''}.`] : []),
   ...(plazo !== '' ? [`- Período: ${plazo}.`] : []),
   esEvento
