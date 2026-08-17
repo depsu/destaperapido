@@ -108,6 +108,25 @@ const d = {
   requiere_factura: conFactura,
 };
 
+// LOS DATOS DE LA FACTURA (17-ago, foto de Alfredo): llegan en UNA línea de la ficha
+// («razón social · RUT · giro · domicilio») y el resumen del repartidor los pinta en su
+// bloque 🧾 — antes decía «datos pendientes» aunque el cliente ya los había mandado.
+const datosFactura = texto(args.datos_factura);
+if (conFactura && datosFactura !== '') {
+  const rut = (/\b\d{1,2}\.?\d{3}\.?\d{3}-[\dkK]\b/.exec(datosFactura) || [''])[0];
+  const partes = datosFactura.split('·').map((p) => p.trim()).filter((p) => p !== '');
+  const sinRut = partes.filter((p) => !rut || !p.includes(rut));
+  const giroIdx = sinRut.findIndex((p) => /^giro/i.test(p));
+  const giro = giroIdx >= 0 ? sinRut[giroIdx].replace(/^giro:?\s*/i, '') : '';
+  const resto = sinRut.filter((_, i) => i !== giroIdx);
+  d.factura = {
+    ...(resto[0] ? { razon_social: resto[0].replace(/^raz[oó]n social:?\s*/i, '') } : {}),
+    ...(rut ? { rut } : {}),
+    ...(giro ? { giro } : {}),
+    ...(resto[1] ? { direccion: resto.slice(1).join(' · ') } : {}),
+  };
+}
+
 // La CONFIRMACIÓN AL CLIENTE (12-ago, pedido del dueño: el flujo viejo también se la
 // mandaba). Editable vía `mensaje_cliente`; 'no' = no mandarle nada; vacío = la de
 // siempre, calcada del panel del CRM viejo (mensajeClienteDefault).
@@ -116,9 +135,12 @@ const confirmacionCliente = (() => {
   const pedido = texto(args.mensaje_cliente);
   if (pedido.toLowerCase() === 'no') return '';
   if (pedido !== '') return pedido;
+  // «a las 10:00» pero «en la tarde» sin el «a las» (una franja no es una hora exacta)
+  const hora = texto(args.hora);
+  const horaTxt = hora === '' ? '' : (/^\d{1,2}:\d{2}$/.test(hora) ? ` a las ${hora}` : `, ${hora}`);
   return ['Le confirmo la entrega ✅', '',
     `🚽 ${n} baño${n === 1 ? '' : 's'} químico${n === 1 ? '' : 's'}`,
-    `📅 ${fecha}${texto(args.hora) !== '' ? ` a las ${texto(args.hora)}` : ''}`,
+    `📅 ${fecha}${horaTxt}`,
     `📍 ${direccion}${texto(args.comuna) !== '' ? `, ${texto(args.comuna)}` : ''}`, '',
     'Cualquier cambio o duda me avisa por acá. ¡Gracias! 🙌'].join('\n');
 })();
