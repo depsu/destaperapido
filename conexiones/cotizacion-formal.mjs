@@ -63,6 +63,10 @@ const conFactura = texto(args.factura).toLowerCase() !== 'no';   // con IVA por 
 // mandar el ítem elegido (ducha portátil, baño sin lavamanos, flete, limpieza extra).
 // Singular/plural sin diccionario: «2 ducha portátil x2» sería feo → «x2» al final.
 const tipoItem = texto(args.tipo_item) || 'baño químico';
+// EL ASEO ACORDADO (17-ago, caso JR Montajes: se negociaron 3 limpiezas semanales y el
+// PDF salió con el texto fijo «cada 7 a 10 días» — un documento formal contradiciendo
+// el trato). Si la ficha trae un aseo negociado, ESE va; vacío = el estándar de siempre.
+const aseo = texto(args.aseo);
 const dry = texto(args.dry).toLowerCase() === 'si';
 
 if (nombre === '' || email === '' || precioNeto <= 0) {
@@ -86,11 +90,14 @@ campos.push(['Email', email]);
    que no se hace. El plazo manda: si dice evento/fiesta/matrimonio/un día, lo incluido es
    traslado, instalación y retiro. */
 const esEvento = /event|fiesta|matrimonio|cumplea|un d[ií]a|1 d[ií]a|fin de semana/i.test(plazo);
+const lineaAseo = aseo !== '' ? `Aseo incluido: ${aseo}.` : 'Limpieza semanal (cada 7 a 10 días) incluida.';
 const incluido = esEvento
   ? ['Traslado, instalación y retiro incluidos.',
+    // en un evento la limpieza solo se nombra si se ACORDÓ una (limpieza extra, etc.)
+    ...(aseo !== '' ? [`Aseo incluido: ${aseo}.`] : []),
     'Papel higiénico y desodorizante incluidos.']
   : ['Despacho, instalación y retiro incluidos.',
-    'Limpieza semanal (cada 7 a 10 días) incluida.',
+    lineaAseo,
     'Papel higiénico y desodorizante incluidos.'];
 // mayúscula inicial para el PDF («Ducha portátil»); el default queda como siempre
 const itemTitulo = tipoItem === 'baño químico'
@@ -166,8 +173,8 @@ const cuerpo = [
   ...(flete > 0 ? [`- Flete por única vez: ${clp(flete)}${conFactura ? ' neto' : ''}.`] : []),
   ...(plazo !== '' ? [`- Período: ${plazo}.`] : []),
   esEvento
-    ? '- Incluye traslado, instalación, retiro, papel higiénico y desodorizante.'
-    : '- Incluye traslado, instalación, retiro, aseo semanal (cada 7 a 10 días), papel higiénico y desodorizante.',
+    ? `- Incluye traslado, instalación, retiro${aseo !== '' ? `, aseo (${aseo})` : ''}, papel higiénico y desodorizante.`
+    : `- Incluye traslado, instalación, retiro, ${aseo !== '' ? `aseo (${aseo})` : 'aseo semanal (cada 7 a 10 días)'}, papel higiénico y desodorizante.`,
   '',
   'El detalle completo está en el PDF adjunto. Para confirmar basta con responder este correo o coordinarlo por WhatsApp, y agendamos la entrega.',
   '',
