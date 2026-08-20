@@ -6,6 +6,36 @@ aquí queda la historia. La escriben ronda-ads, ronda-correo y las sesiones.
 
 ---
 
+## 2026-08-20 · 🚨 sesión · El WhatsApp de fosas y destapes parece no existir como cuenta
+
+Revisando las 100 grabaciones de Clarity del 19 de agosto (se descartaron 33 de
+limpiafosasydestape y 16 de baños químicos: quedaron **51 sesiones de destapes y fosas**)
+apareció algo más grande que las grabaciones.
+
+- **Lo que muestran las grabaciones del 19:** de las **9 visitas que llegaron por Google Ads**,
+  **6 no tocaron nada** y varias duraron 4 a 8 segundos. Solo 3 hicieron algún clic. En el
+  total de las 51, **el 66% no hizo ni un clic** y 38 vieron una sola página.
+- **La pista que lo cambia todo:** el enlace de WhatsApp de baños químicos
+  (`wa.me/56936470112`) devuelve **«Business Account»** y el nombre del negocio,
+  **«Limpia Fosas y Destape»**. El de fosas y destapes (`wa.me/56965889226`) devuelve
+  **exactamente la misma respuesta que un número inventado**: descripción genérica de
+  WhatsApp, sin nombre de cuenta.
+- **Ese número está en las 7 landings de los anuncios de fosas y destape y en 421 enlaces del
+  sitio.** Y no aparece en ninguna configuración del sistema —ni bot, ni correo, ni canales—:
+  solo como texto en las páginas.
+- **Encaja con todo:** en agosto Google Ads contó **58 clics de WhatsApp** de fosas y destape
+  (6 el 19) y el dueño dice que no le llegó ninguno. **El clic se cuenta en el sitio, ANTES de
+  que WhatsApp abra.** Si al abrir sale «este número no está en WhatsApp», la conversión queda
+  registrada igual y el cliente nunca escribe.
+- **Lo que falta y es tuyo, Alejandro (10 segundos):** abrir `https://wa.me/56965889226` en un
+  teléfono con WhatsApp. Si dice que el número no está en WhatsApp, está confirmado. Hay que
+  decirlo honesto: una cuenta personal (no Business) tampoco muestra nombre en esa
+  comprobación, así que la prueba del teléfono es la que zanja.
+- **Mientras tanto**, cada peso de Ads que compra un clic de WhatsApp de destape se está
+  perdiendo. Encolado como `critico-destaperapido-whatsapp-6588-9226`.
+
+---
+
 ## 2026-08-20 · 💬 sesión · Ahora el WhatsApp llega diciendo qué necesita el cliente
 
 - **Lo que pasaba:** de los 560 botones de WhatsApp del sitio, **344 abrían el chat en blanco
