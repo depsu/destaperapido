@@ -6,7 +6,40 @@ aquí queda la historia. La escriben ronda-ads, ronda-correo y las sesiones.
 
 ---
 
-## 2026-08-20 · 🚨 sesión · El WhatsApp de fosas y destapes parece no existir como cuenta
+## 2026-08-20 · 📵 sesión · Tres teléfonos, y el que recibe los destapes es el que nadie mira
+
+Con el dato correcto (el +56 9 6588 9226 sí tiene WhatsApp, cuenta «Alcantarillados Chavez
+Spa»), el mapa del negocio queda así:
+
+| Número | Cuenta de WhatsApp | Quién lo usa |
+|---|---|---|
+| **+56 9 6588 9226** | «Alcantarillados Chavez Spa» | **421 botones en 111 páginas de fosas y destapes + las 7 landings de Google Ads** |
+| **+56 9 3647 0112** | «Limpia Fosas y Destape» | El bot, la ficha de Google Maps, la portada y /contacto |
+| **+56 9 9794 6463** | — | limpiafosasvaldes.cl |
+
+- **El que recibe los destapes es el único que el sistema no ve.** El 6588 9226 no tiene bot,
+  no está en la ficha de Maps y no aparece en ninguna configuración del ecosistema. No hay
+  forma de saber si esos mensajes se leen, se responden o se pierden.
+- **El que sí está conectado recibe otra cosa.** El 3647 0112 tiene el bot y es el número que
+  Google Maps muestra, pero por ahí entran casi solo consultas de baños químicos (el 19 de
+  agosto, sus 8 chats nuevos eran todos de baños).
+- **En agosto Ads compró 58 clics de WhatsApp de fosas y destape.** Todos se fueron por la
+  línea ciega.
+- **La pregunta que falta, y es para la persona:** ¿cuál de los tres números mira? Si mira el
+  6588 9226, los mensajes le están llegando y el asunto es de volumen o de revisión. Si mira
+  otro, hay que reapuntar los 421 enlaces o poner el bot también en esa línea. **No se toca
+  nada hasta saberlo:** con 421 enlaces en juego, equivocarse desvía todo el negocio.
+
+---
+
+## 2026-08-20 · ⚠️ sesión · [CORREGIDA] El WhatsApp de fosas y destapes SÍ existe — es de «Alcantarillados Chavez Spa»
+
+> **Corrección del mismo día:** lo de abajo estaba MAL. Alejandro abrió el enlace en su
+> teléfono y el chat abre normal: la cuenta se llama **«Alcantarillados Chavez Spa»**. El
+> método que usé —leer lo que devuelve `wa.me`— no distingue una cuenta personal de un número
+> que no existe, así que nunca sirvió para concluir eso. Se retiró la tarea que decía que el
+> número no existía. Lo que sí queda, y es el hecho útil, va en la entrada siguiente.
+
 
 Revisando las 100 grabaciones de Clarity del 19 de agosto (se descartaron 33 de
 limpiafosasydestape y 16 de baños químicos: quedaron **51 sesiones de destapes y fosas**)
