@@ -6,6 +6,34 @@ aquí queda la historia. La escriben ronda-ads, ronda-correo y las sesiones.
 
 ---
 
+## 2026-08-20 · 🔌 sesión · Fosas y destape estuvo sin publicidad 15 de los últimos 50 días
+
+Mirando **solo fosas y destape** (sin baños químicos, que es otro negocio y tapa el problema
+cuando se suman):
+
+- **Las campañas se apagan en bloques.** Cero apariciones y cero gasto el 1-3 de julio, el
+  10-15 de julio, el 4-5 de agosto y el **13-16 de agosto**. En total **15 días de 50: casi un
+  tercio del tiempo sin publicidad**.
+- **No fue una falla ni un problema de pago.** El historial de la cuenta muestra que las pausó
+  y las devolvió a mano la cuenta de Alejandro: pausadas el **12 de agosto a las 22:55** y
+  reactivadas el **17 a las 09:31**. La campaña de baños químicos siguió corriendo esos mismos
+  días con toda normalidad.
+- **Esto es lo que hay detrás del «no me llega nadie».** Cuando las campañas corren, el negocio
+  recibe **unos 7 contactos al día** (93 contactos en los 13 días activos de agosto: 32
+  llamadas y 58 mensajes de WhatsApp). Cuando están apagadas, recibe cero de publicidad.
+- **El 19 en particular:** las campañas ya estaban de vuelta y trajeron **6 contactos**, todos
+  por WhatsApp y **ninguna llamada**. Ese día no es raro por sí solo — más de la mitad de los
+  días del mes no entra ni una llamada telefónica.
+- **Corrección de la entrada de ayer:** ahí dije que en el bache del 14-16 «el negocio no
+  perdió nada» porque hubo 5, 6 y 5 contactos. Esos contactos eran **de baños químicos**. Por
+  el lado de fosas y destape esos días fueron cero, porque las campañas estaban apagadas.
+- **Queda para Alejandro** (`ads-destaperapido-apagones-fosas-destape`): decir si los apagones
+  son a propósito. Si son para controlar el gasto, conviene **bajar el tope diario** en vez de
+  apagar y prender, porque cada encendido reinicia el aprendizaje de Google. Tocar presupuesto
+  es plata: no se aplica nada sin su OK.
+
+---
+
 ## 2026-08-20 · 🔎 sesión · «No recibí ningún llamado el 19»: llegaron 8 clientes nuevos, pero ninguno llamó por teléfono
 
 - **Lo que sí pasó el 19 de agosto:** fue uno de los mejores días del mes. **32 visitas desde
@@ -55,8 +83,10 @@ aquí queda la historia. La escriben ronda-ads, ronda-correo y las sesiones.
   y se recuperó el mismo lunes. Dos sitios distintos cayendo el mismo día = fue el buscador
   (fin de semana largo con el feriado del 15 y un reacomodo pasajero de los resultados), no
   nosotros.
-- **Y lo mejor: el negocio no perdió nada.** Esos tres días dejaron **5, 6 y 5 contactos**,
-  cuando el 12 y el 13 habían sido 1 y 2. Menos clics, más clientes. El mes sigue creciendo:
+- **Los contactos de esos días** fueron 5, 6 y 5, contra 1 y 2 del 12 y 13. ⚠️ **Corrección
+  del 20-ago:** esos contactos eran de **baños químicos**. Las campañas de **fosas y destape
+  estuvieron apagadas del 13 al 16**, así que por ese lado el negocio sí perdió esos días
+  (ver la entrada del 20-ago). El mes orgánico sigue creciendo:
   **803 visitas en 28 días contra 695 del período anterior (+16%)**.
 - **Qué se hizo:** nada en la web, a propósito. Cambiar títulos por un bache de fin de semana
   es justo lo que arruina lo que ya funciona. Quedó encolado en la cola única
