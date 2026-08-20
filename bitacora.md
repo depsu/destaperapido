@@ -6,6 +6,32 @@ aquí queda la historia. La escriben ronda-ads, ronda-correo y las sesiones.
 
 ---
 
+## 2026-08-20 · 💬 sesión · Ahora el WhatsApp llega diciendo qué necesita el cliente
+
+- **Lo que pasaba:** de los 560 botones de WhatsApp del sitio, **344 abrían el chat en blanco
+  o con un «Hola, necesito ayuda»**. Quien atiende recibía un mensaje que no dice nada: ni de
+  qué comuna, ni qué servicio, ni si venía de un anuncio pagado o de un artículo del blog.
+- **Por qué importa más de lo que parece:** la línea de destapes **no tiene bot** y Analytics
+  **no está midiendo los contactos**. Ese texto es hoy lo único que identifica de dónde viene
+  cada cliente.
+- **Lo que se hizo:** cada página abre ahora el chat con su propio mensaje. Las de comuna dicen
+  la comuna («necesito limpieza de fosa séptica en Melipilla», «necesito un destape en Ñuñoa»),
+  las de servicio dicen el servicio, y los 30 artículos del blog dicen el problema del que
+  hablan («tengo raíces en las cañerías», «tengo el baño inundado»). **344 enlaces en 87
+  páginas.** Quedan **cero** en blanco y **cero** genéricos.
+- **Los números quedaron auditados** contra la regla de Alejandro: todo lo de fosas y destapes
+  al **+56 9 6588 9226** (421 enlaces) y baños químicos junto con la portada al
+  **+56 9 3647 0112** (139). Ninguna de las 120 páginas mezcla números.
+- **Un detalle honesto:** como la portada va a la línea de baños químicos por decisión tuya,
+  su botón ahora dice «necesito un destape o limpieza de fosa» y ese mensaje llega al bot de
+  baños. Es mejor que el «necesito ayuda» de antes —al menos se sabe qué pide— pero conviene
+  que el bot sepa derivarlo.
+- **Comprobado:** el cambio se midió con `auditar-web.mjs` **antes y después** sobre la misma
+  página: 79 fallas en los dos casos, o sea no se rompió nada. Esas 79 son deuda vieja del
+  sitio (botones chicos para el dedo y un contraste flojo) y quedaron encoladas aparte.
+
+---
+
 ## 2026-08-20 · 🔌 sesión · Fosas y destape estuvo sin publicidad 15 de los últimos 50 días
 
 Mirando **solo fosas y destape** (sin baños químicos, que es otro negocio y tapa el problema
