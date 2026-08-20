@@ -14,9 +14,12 @@
   // Número principal vs línea de baños químicos
   function pickPhone() {
     var path = (location.pathname || "").toLowerCase();
+    // Baños químicos tiene línea propia (la que atiende el bot); el resto del sitio
+    // —destapes y fosas— va al número principal del negocio.
     if (path.indexOf("/servicios/banos-quimicos") === 0 ||
-        path.indexOf("/banos-quimicos") === 0) {
-      return "56965889226";
+        path.indexOf("/banos-quimicos") === 0 ||
+        path.indexOf("banos-quimicos") !== -1) {
+      return "56936470112";
     }
     return "56965889226";
   }
