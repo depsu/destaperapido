@@ -6,6 +6,38 @@ aquí queda la historia. La escriben ronda-ads, ronda-correo y las sesiones.
 
 ---
 
+## 2026-08-20 · 🔎 sesión · «No recibí ningún llamado el 19»: llegaron 8 clientes nuevos, pero ninguno llamó por teléfono
+
+- **Lo que sí pasó el 19 de agosto:** fue uno de los mejores días del mes. **32 visitas desde
+  Google** (1.563 apariciones, el récord de agosto), **31 clics de los anuncios** con 29.700
+  pesos gastados, y en el WhatsApp entraron **8 conversaciones nuevas** que abrieron
+  **9 cotizaciones**. De día muerto, nada.
+- **Lo que es verdad:** ese día **nadie apretó el botón de llamar**. Cero, en las tres
+  campañas. Pero eso no es una falla nueva: también fue cero el 13, el 14 y el 16 de agosto.
+  El botón de llamar se usa entre 0 y 8 veces al día, mientras el de WhatsApp se usa
+  **13 a 17 veces todos los días**. En simple: **este negocio ya no recibe llamadas, recibe
+  mensajes.**
+- **Dónde fue a parar cada contacto del 19:** los **8 de baños químicos** entraron al número
+  que atiende el bot y quedaron atendidos con cotización abierta. Los **6 de destape** que
+  vinieron de los anuncios se fueron al otro número (el 6588 9226), que no tiene bot: los
+  atiende una persona. Si el reclamo viene de ese lado, ahí hay que mirar.
+- **Hallazgo 1 — el panel le está mintiendo.** Google Analytics **no está midiendo ni un solo
+  contacto**: en toda la semana solo registró visitas y scroll, ningún clic a WhatsApp ni a
+  llamar. Por eso el panel muestra **0 contactos en 28 días** con 2.130 visitas. Google Ads sí
+  los mide (por eso sabemos los números de arriba), pero esa medición vive solo dentro del
+  GTM y no llega a Analytics. **Si el cliente mira su panel, ve un cero y concluye que no
+  llegó nada.** Encolado como `tracking-destaperapido-ga4-sin-leads`. Ojo: para arreglarlo por
+  programa falta habilitar la API de Tag Manager en la consola de Google — un clic de Alejandro.
+- **Hallazgo 2 — la portada manda los destapes al bot de baños.** 111 páginas del sitio llevan
+  al número de destapes y 10 al de baños químicos: las 8 de baños (correcto) **más la portada
+  y la página de contacto**, desde un cambio hecho a mano el 11 de agosto. Quien busca
+  «destape», entra por la portada y escribe, le está escribiendo al bot de baños. El 19 no se
+  coló ninguno, así que por ahora es una gotera y no una inundación. Como el cambio fue
+  deliberado, no se revierte solo: queda como decisión en
+  `decision-destaperapido-numero-portada`.
+
+---
+
 ## 2026-08-19 · 🚨 sensor + sesión · La caída de Google fue un bache de tres días y ya se arregló sola
 
 - **Qué avisó el panel:** el 15 de agosto llegaron 12 visitas desde Google cuando lo normal
