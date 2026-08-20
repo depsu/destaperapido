@@ -27,8 +27,8 @@ aquí queda la historia. La escriben ronda-ads, ronda-correo y las sesiones.
   cuando el 12 y el 13 habían sido 1 y 2. Menos clics, más clientes. El mes sigue creciendo:
   **803 visitas en 28 días contra 695 del período anterior (+16%)**.
 - **Qué se hizo:** nada en la web, a propósito. Cambiar títulos por un bache de fin de semana
-  es justo lo que arruina lo que ya funciona. Se le avisó a la sesión que está afinando el
-  sensor dos cosas: que este mismo bache hizo sonar la alarma **dos veces** (el 17 por el día
+  es justo lo que arruina lo que ya funciona. Quedó encolado en la cola única
+  (`mejora-sensor-trafico-episodio-y-red`) el arreglo del sensor, con dos cosas: que este mismo bache hizo sonar la alarma **dos veces** (el 17 por el día
   14 y el 18 por el día 15), y que cuando **dos clientes caen el mismo día** corresponde un
   solo aviso «esto fue Google», no una emergencia por cliente.
 - **Lo único que sigue esperando es tuyo:** los tres precios que se contradicen entre páginas
