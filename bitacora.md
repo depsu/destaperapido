@@ -6,6 +6,78 @@ aquí queda la historia. La escriben ronda-ads, ronda-correo y las sesiones.
 
 ---
 
+## 2026-08-19 · 🚨 sensor + sesión · La caída de Google fue un bache de tres días y ya se arregló sola
+
+- **Qué avisó el panel:** el 15 de agosto llegaron 12 visitas desde Google cuando lo normal
+  son unas 28. El cliente quedó en rojo.
+- **Qué pasó de verdad:** fueron **tres días malos seguidos y nada más** — viernes 14, sábado
+  15 (feriado) y domingo 16: 12, 12 y 16 visitas. El **lunes 17 volvió con 34**, el mejor día
+  en dos semanas, y el martes 18 con 21. El puesto promedio en Google también volvió a su
+  lugar (había pasado de 5,7 a 7,0 y ya está en 5,8).
+- **No fue culpa del sitio.** La web responde en menos de un segundo, no tiene ningún bloqueo
+  para Google, el mapa del sitio está bien y **esos días no se publicó ni un cambio en la web**
+  (lo del 14 fueron papeles internos, no páginas).
+- **La prueba que lo cierra:** Google siguió **mostrando** el sitio exactamente igual (unas
+  1.050 apariciones al día, sin caer). Lo que bajó fue cuánta gente hizo clic. Y el sitio
+  hermano **limpiafosasydestape.cl** —otro dominio, otro servidor— cayó **los mismos tres días**
+  y se recuperó el mismo lunes. Dos sitios distintos cayendo el mismo día = fue el buscador
+  (fin de semana largo con el feriado del 15 y un reacomodo pasajero de los resultados), no
+  nosotros.
+- **Y lo mejor: el negocio no perdió nada.** Esos tres días dejaron **5, 6 y 5 contactos**,
+  cuando el 12 y el 13 habían sido 1 y 2. Menos clics, más clientes. El mes sigue creciendo:
+  **803 visitas en 28 días contra 695 del período anterior (+16%)**.
+- **Qué se hizo:** nada en la web, a propósito. Cambiar títulos por un bache de fin de semana
+  es justo lo que arruina lo que ya funciona. Se le avisó a la sesión que está afinando el
+  sensor dos cosas: que este mismo bache hizo sonar la alarma **dos veces** (el 17 por el día
+  14 y el 18 por el día 15), y que cuando **dos clientes caen el mismo día** corresponde un
+  solo aviso «esto fue Google», no una emergencia por cliente.
+- **Lo único que sigue esperando es tuyo:** los tres precios que se contradicen entre páginas
+  (WC, alcantarillado y fosa séptica). Sigue en la cola desde el 21 de julio.
+
+---
+
+## 2026-08-19 · 🔎 investigación · La «caída de tráfico» era un sábado — pero Google sí movió el ranking
+
+- **La alarma:** el sensor marcó rojo por los **12 clics del 15-ago** contra un promedio de ~27/día.
+  El 15 de agosto de 2026 fue **sábado y feriado en Chile** (Asunción), y en este sitio los findes
+  rinden la mitad que un lunes (sáb 8-ago: 23, dom 9-ago: 24, lunes 10-ago: 40). Esa parte era ruido.
+- **Lo que SÍ pasó, y no era el sitio:** desde el **12-ago** la posición media empeoró de **5,7 a 7,0**,
+  y con ella el CTR. Pero las **impresiones no cayeron: subieron** (1.048 el 15-ago; 1.559 el 17-ago,
+  récord). O sea Google no dejó de mostrar el sitio: lo bajó un escalón.
+- **La prueba de que es Google y no nosotros:** los **cuatro** sitios de la red pierden posición el
+  MISMO día 12-ago — destaperapido 5,9→6,8, destapando 8,0→12,3, limpiafosasydestape 6,6→8,0,
+  asvrgruas 12,0→14,7. Un cambio nuestro no puede mover cuatro dominios distintos a la vez.
+- **Ya está rebotando:** el lunes **17-ago volvió a 34 clics** con posición 6,3. La caída duró el fin
+  de semana largo del ajuste.
+- **Falsa alarma de la página de fosas:** `/servicios/limpieza-fosas-septicas` figura cayendo de la
+  posición 13,6 a la 33,0, pero es un espejismo: empezó a **aparecer en búsquedas nuevas y muy
+  competidas** («limpia fosas», «limpia fosas copiapó») donde va en el puesto 60-80, y eso arrastra el
+  promedio. En sus búsquedas de siempre subió, y de hecho **ganó un clic**.
+- **Revisión técnica:** las 4 páginas de más tráfico responden 200, sin `noindex`, con el canonical
+  correcto. Nada roto.
+- **Lo que se arregló (en el maestro):** `scripts/sensor-trafico.py` comparaba un día suelto contra el
+  promedio de todos los días revueltos, así que **gritaba casi cada fin de semana**. Ahora compara
+  sábado con sábado y día hábil con día hábil (28 días de muestra), y mira las impresiones: si Google
+  sigue mostrando el sitio igual, exige un desplome mucho mayor para hablar y avisa que el problema es
+  de CTR/posición, no de visibilidad. Probado contra los días reales del 14 y 15-ago (ya no grita por
+  el sábado) y contra tres casos de avería de verdad (desindexación, cero impresiones, pérdida de top):
+  esos siguen alertando.
+- **Para ti, Alejandro (encolado):** lo único que hoy frena los clics de verdad es que el sitio da
+  **tres precios distintos** al mismo servicio, y por eso no se puede poner el número en Google. Van
+  **29 días** esperando esa definición.
+
+---
+
+## 2026-08-19 · 📣 ronda-ads · baños químicos manda; «03 Urbano» se dio vuelta
+
+- La cuenta completa: **85 contactos a 1.814 pesos**. Baños químicos es el mejor negocio de toda la red:
+  **1.002 el contacto**, y aun así se queda fuera de la mitad de las búsquedas por el tope diario.
+- **«03 Urbano» retrocedió**: de casi respetar su techo (+2,3%) a **+39%** (4.858 contra 3.500). No es la
+  plata: pierde 4 de cada 10 apariciones porque el anuncio no gana la subasta.
+- Sigue pagando por gente que busca la **máquina** (hidrojet, camión) y no el servicio: negativas listas
+  para aplicar en la cola, en modo prueba.
+- La gente pregunta el precio del baño químico ~30 veces por semana y no hay página que le responda.
+
 ## 2026-08-16 · 👷 constructor · La página de precios de fosas está primera en Google y nadie hace clic: falta el número
 
 - **Lo que pasa:** el artículo «cuánto cuesta limpiar una fosa séptica» aparece **2.709 veces
