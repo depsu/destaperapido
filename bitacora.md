@@ -4,6 +4,35 @@ Relato en simple de lo que las rondas y sesiones de la IA hacen por este cliente
 (lo nuevo ARRIBA). Las propuestas accionables viven en la cola del dashboard (🎯 Tareas);
 aquí queda la historia. La escriben ronda-ads, ronda-correo y las sesiones.
 
+## 2026-08-23 · 👷 Constructor — el precio de los baños químicos ya está en la web, y es el de verdad
+
+**Lo que pasaba:** hace meses que la gente le pregunta a Google cuánto cuesta arrendar un baño
+químico, y Destape Rápido venía **pagando** por esas visitas en Google Ads: en 30 días, 17 clics
+por 6.709 pesos, que trajeron 4,5 contactos. Buen negocio (cada contacto salió 1.491, bajo el
+techo de 1.900), pero además había **19 personas más** preguntando lo mismo que ni siquiera
+pinchan el anuncio. Esa pregunta no tenía respuesta gratis en el sitio.
+
+**Lo grave que apareció en el camino:** las tres páginas de baños químicos decían
+**«desde $45.000 + IVA»**. Ese número **no existe en el tarifario**. El valor real de un baño
+para un evento en el Gran Santiago es **$100.000 + IVA**. O sea, la web prometía menos de la
+mitad de lo que se cobra: la gente llegaba con una expectativa imposible y la conversación
+empezaba con una decepción.
+
+**Lo que se hizo:** se pusieron los precios reales, sacados del tarifario del cotizador —
+$100.000 el evento (y baja a $90.000, $85.000 y $80.000 desde 2, 3 y 4 baños), $160.000 al mes
+en obra ($150.000 cuando son varios, con aseo semanal) — y se explicó en simple la regla de la
+distancia: en el Gran Santiago el traslado va incluido; Buin, Paine, Talagante, Melipilla,
+Curacaví y el Cajón del Maipo recargan por lo lejos. Se corrigió también el texto oculto que lee
+Google (el schema), que repetía el precio falso.
+
+**Estado:** publicado y comprobado en la web en vivo (commit `b4aaf6d`). Se mide en Search
+Console en unas semanas si «precio baño químico» empieza a traer visitas gratis.
+
+**Nota de método:** este trabajo estaba a medias sin guardar, huérfano de la pasada de la
+01:45 que murió antes de publicar. Se re-revisó cifra por cifra contra el tarifario antes de
+adoptarlo, tal como manda la skill.
+
+
 ---
 
 ## 2026-08-20 · 📵 sesión · Tres teléfonos, y el que recibe los destapes es el que nadie mira
@@ -1104,3 +1133,45 @@ push→Vercel bajo el permiso «publicar-mejoras-seo» (libre poder con gates, 2
   t18/t19 sigue intacto en disco) → git push → Vercel. IndexNow: ping a la home con la
   clave de indexnow.md.
 - Verificación: CTR de esas consultas y clics de las 2 páginas de servicio en 2-3 semanas.
+
+## 2026-08-21 · 🚨 Alerta de tráfico (clics 12 el 15-ago) — CERRADA: falsa alarma, verificada dos veces
+- Datos frescos de Search Console (`gsc-comparar.py --fresco`): el bache fue 14-16 ago
+  (12, 12, 16 clics) y YA PASÓ — 17, 18 y 19-ago dieron 34, 22 y 32 clics, de vuelta al
+  promedio (~27-30/día). Ventana de 10 días posterior: 21,7 clics/día con impresiones +14%.
+- No fue indexación ni el sitio: las impresiones NUNCA cayeron (~1.050/día constantes), el
+  sitio responde 200 en <1 s, y la caída fue transversal (todas las páginas un poco, ninguna
+  sola). Lo que se movió fue la posición media (5,5 → 7,0) y el CTR, y ya volvió (5,8-6,3).
+- Causa externa: fin de semana con feriado (15-ago) + reordenamiento temporal del buscador.
+  El hermano limpiafosasydestape.cl cayó -58% los MISMOS 3 días y también se recuperó el 17
+  (investigación headless del 19-ago, investigaciones.json, coincide punto por punto).
+  destapando.cl no cayó (+40% esos días), o sea no fue nada de la red DIXDY.
+- Las campañas de Ads (motivo aparte del rojo) también volvieron: estuvieron sin servir
+  13-16 ago pero desde el 17 las 3 están ENABLED con gasto y conversiones (18-ago: 22 conv).
+- Acción: nada que arreglar. La alerta del sensor se limpia sola cuando seo.json traiga los
+  días buenos. Sigue pendiente (de antes, no de esto): decisión de precios contradictorios
+  (`decision-destaperapido-precios-unicos` en la cola) y el wa.me/56965889226 de las landings.
+
+## 2026-08-22 · 🙋 Duda del Gerente: «ayer no me ha llegado ningún cliente» — RESPUESTA: sí llegaron (playbook A)
+- Día D = viernes 21-ago-2026. Las tres puertas del negocio, medidas:
+  - **Baños químicos (bot, +56 9 3647 0112):** 10 conversaciones NUEVAS y 105 mensajes
+    entrantes. Las 10 son reales (texto pre-llenado de las landings: «quiero cotizar
+    arriendo de baños químicos»), las 10 quedaron con cotización, ninguna sin responder.
+    La mayor: 12 baños para un evento en Recoleta, $960.000 neto, con PDF enviado al
+    correo del cliente (conv 462, 13:07). Promedio de la semana: ~12/día → día normal.
+  - **Destapes y fosas (línea humana, +56 9 6588 9226):** Ads registró 10 clics de
+    contacto ese día (Rural 2 teléfono + 4 WhatsApp; Urbano 4 WhatsApp). Qué pasó después
+    NO lo ve ningún sistema → punto ciego, no cero.
+  - **Ads en total:** 17 conversiones el 21-ago (2 llamadas + 15 WhatsApp), 33 clics,
+    ~$35.500 gastados, las 3 campañas ENABLED y sirviendo (31/56/147 impresiones). Serie:
+    17-ago 20 · 18-ago 22 · 19-ago 14 · 20-ago 20 · **21-ago 17** · 22-ago (parcial) 5.
+  - **Orgánico:** sin caída — impresiones ~150-230/día y posición media 5,6-6,0 estables.
+- Descartado: campañas apagadas (no), bot mudo o en takeover (no: 10/10 respondidas, cero
+  degradaciones del cerebro en el ledger), caída del sitio o del buscador (no).
+- **Por qué se ve como cero:** (1) GA4 marca 0 leads siempre en este cliente (el GTM solo
+  reporta a Ads); (2) el tablero de pedidos deja todo en «cotizando» porque avanzar de
+  etapa es acción manual del dueño — los 160 pedidos del bot siguen ahí y los 26
+  «por entregar» son migrados del bot viejo. Ambas cosas quedaron escritas en el CLAUDE.md
+  del clon para que ninguna IA vuelva a leerlas como falta de clientes.
+- Pendiente (de Alejandro, no técnico): decidir si quiere que el tablero refleje los
+  cierres (hoy nadie mueve las tarjetas) y saber de la línea humana si esos ~10 contactos
+  diarios de destapes/fosas están llegando.
