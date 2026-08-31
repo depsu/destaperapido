@@ -243,7 +243,10 @@ const equipamiento = texto(args.equipamiento);
 // EL ÍTEM EXTRA (30-ago, caso Carlos Argomedo): pidió baño + DUCHA plástica y el
 // despacho subió solo el baño — el ítem extra de la ficha jamás viajaba. Va por el
 // MISMO canal de notas: el repartidor tiene que cargar la ducha en el camión.
-const itemExtra = texto(args.item_extra);
+const itemExtraCrudo = texto(args.item_extra);
+// «no», «ninguno», «sin extras»… no son un ítem: nada que cargar al camión
+const itemExtra = /^(no|ninguno|nada|sin( extras?| ítems?| items?)?|n\/a|-+)$/i
+  .test(itemExtraCrudo) ? '' : itemExtraCrudo;
 const valorItem = pesosDe(args.valor_item_extra);
 const notasEquipo = [
   equipamiento !== '' ? `EQUIPO: ${equipamiento.toUpperCase()}` : '',
