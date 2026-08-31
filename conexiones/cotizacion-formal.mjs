@@ -74,12 +74,17 @@ const tipoItem = texto(args.tipo_item) || 'baño químico';
 // el trato). Si la ficha trae un aseo negociado, ESE va; vacío = el estándar de siempre.
 const aseo = texto(args.aseo);
 const dry = texto(args.dry).toLowerCase() === 'si';
+/* SOLO POR WHATSAPP (18-ago, «dar la opción de solo enviar por wsp si se insiste en el
+   correo»): cuando el cliente NO quiere dar su correo, se genera el PDF igual y sale por
+   WhatsApp (adjuntar_al_chat lo lee de la ruta). Se activa con el flag, o simplemente
+   cuando no viene correo. El correo deja de ser obligatorio; todo lo demás igual. */
+const soloWhatsapp = texto(args.solo_whatsapp).toLowerCase() === 'si' || email === '';
 
-if (nombre === '' || email === '' || precioNeto <= 0) {
-  console.error('faltan datos: nombre, email y precio neto por baño son obligatorios');
+if (nombre === '' || precioNeto <= 0) {
+  console.error('faltan datos: nombre y precio neto por baño son obligatorios');
   process.exit(1);
 }
-if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+if (!soloWhatsapp && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
   console.error(`ese correo no se ve válido: ${email}`);
   process.exit(1);
 }
@@ -90,29 +95,35 @@ const clp = (n) => '$' + String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, 
 const campos = [['Nombre', nombre]];
 if (comuna !== '') campos.push(['Comuna', `${comuna}, RM`]);
 if (plazo !== '') campos.push(['Período de arriendo', plazo]);
-campos.push(['Email', email]);
+if (email !== '') campos.push(['Email', email]);
 /* EVENTO NO ES ARRIENDO MENSUAL (regla del bot viejo, 14-ago): en un evento de un día
    la limpieza semanal NO aplica, y prometerla por escrito en la cotización es vender algo
    que no se hace. El plazo manda: si dice evento/fiesta/matrimonio/un día, lo incluido es
    traslado, instalación y retiro. */
 const esEvento = /event|fiesta|matrimonio|cumplea|un d[ií]a|1 d[ií]a|fin de semana/i.test(plazo);
-const lineaAseo = aseo !== '' ? `Aseo incluido: ${aseo}.` : 'Limpieza semanal (cada 7 a 10 días) incluida.';
+// si lo acordado EMPIEZA negando («no incluida…»), decir «Aseo incluido: no incluida»
+// era una contradicción impresa (31-ago, PDF de Carlos Castro) — la etiqueta se adapta
+const rotuloAseo = /^\s*(no|sin)\b/i.test(aseo) ? 'Aseo' : 'Aseo incluido';
+const lineaAseo = aseo !== '' ? `${rotuloAseo}: ${aseo}.` : 'Limpieza semanal (cada 7 a 10 días) incluida.';
 const incluido = esEvento
   ? ['Traslado, instalación y retiro incluidos.',
     // en un evento la limpieza solo se nombra si se ACORDÓ una (limpieza extra, etc.)
-    ...(aseo !== '' ? [`Aseo incluido: ${aseo}.`] : []),
+    ...(aseo !== '' ? [`${rotuloAseo}: ${aseo}.`] : []),
     'Papel higiénico y desodorizante incluidos.']
   : ['Despacho, instalación y retiro incluidos.',
     lineaAseo,
     'Papel higiénico y desodorizante incluidos.'];
 // mayúscula inicial para el PDF («Ducha portátil»); el default queda como siempre
+// si el texto YA dice «arriendo de…» no se antepone otra vez (31-ago, PDF de Carlos
+// Castro: «Arriendo de Arriendo de baño químico»)
+const conArriendo = (t) => (/^arriendos?\s+de/i.test(t) ? t : `Arriendo de ${t}`);
 const itemTitulo = tipoItem === 'baño químico'
   ? 'Arriendo de baño químico'
-  : `Arriendo de ${tipoItem}`;
+  : conArriendo(tipoItem);
 const config = {
   subtitulo: tipoItem === 'baño químico'
     ? 'Arriendo de baños químicos'
-    : `Arriendo de ${tipoItem}`,
+    : conArriendo(tipoItem),
   cliente: { titulo: 'Datos del cliente', campos },
   items: [{
     descripcion_titulo: itemTitulo,
@@ -163,6 +174,14 @@ if (gen.status !== 0 || !existsSync(pdfPath)) {
 if (dry) {
   console.log(`PDF generado (SIN enviar): ${pdfPath}`);
   console.log(`✓ Prueba en seco lista — ${cantidad} baño(s) · ${clp(precioNeto)} neto c/u${flete > 0 ? ` + flete ${clp(flete)}` : ''}${plazo ? ` (${plazo})` : ''}`);
+  process.exit(0);
+}
+
+// SOLO POR WHATSAPP: no hay correo que enviar. El PDF ya está generado; la ruta de abajo la
+// lee `adjuntar_al_chat` y se lo manda al cliente por WhatsApp. Cero Resend.
+if (soloWhatsapp) {
+  console.log(`PDF: ${pdfPath}`);
+  console.log(`✓ Cotización lista para WhatsApp (sin correo) — ${cantidad} baño(s) · ${clp(precioNeto)} neto c/u${flete > 0 ? ` + flete ${clp(flete)}` : ''}${plazo ? ` (${plazo})` : ''}`);
   process.exit(0);
 }
 
