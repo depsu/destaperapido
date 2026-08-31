@@ -248,10 +248,7 @@ const itemExtraCrudo = texto(args.item_extra);
 const itemExtra = /^(no|ninguno|nada|sin( extras?| ítems?| items?)?|n\/a|-+)$/i
   .test(itemExtraCrudo) ? '' : itemExtraCrudo;
 const valorItem = pesosDe(args.valor_item_extra);
-const notasEquipo = [
-  equipamiento !== '' ? `EQUIPO: ${equipamiento.toUpperCase()}` : '',
-  itemExtra !== '' ? `ADEMÁS LLEVA: ${itemExtra.toUpperCase()}${valorItem > 0 ? ` ($${valorItem.toLocaleString('es-CL')} neto)` : ''}` : '',
-].filter(Boolean).join(' · ');
+const notasEquipo = equipamiento !== '' ? `EQUIPO: ${equipamiento.toUpperCase()}` : '';
 const d = {
   direccion,
   fecha_entrega: fecha,
@@ -263,6 +260,10 @@ const d = {
   maps_url: texto(args.maps_url) || undefined,
   aseo: texto(args.aseo) || undefined,
   ...(notasEquipo !== '' ? { tipo_uso: notasEquipo } : {}),
+  // el ítem extra como EXTRA de verdad (31-ago, caso Carlos Castro: el COBRAR salía
+  // sin la limpieza y el repartidor habría cobrado $154.700 en vez de $196.350):
+  // integracion.js lo suma al monto, lo desglosa y lo nombra en el servicio
+  ...(itemExtra !== '' ? { extras: [{ descripcion: itemExtra, precio_clp: valorItem }] } : {}),
   ...(precioNeto > 0 ? { precio_clp: precioNeto } : {}),
   ...(flete > 0 ? { flete_clp: flete } : {}),
   requiere_factura: conFactura,
