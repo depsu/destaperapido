@@ -264,6 +264,13 @@ const d = {
   // sin la limpieza y el repartidor habría cobrado $154.700 en vez de $196.350):
   // integracion.js lo suma al monto, lo desglosa y lo nombra en el servicio
   ...(itemExtra !== '' ? { extras: [{ descripcion: itemExtra, precio_clp: valorItem }] } : {}),
+  // …y si es una LIMPIEZA CON FECHA, además entra a la agenda de limpiezas de la
+  // tarjeta (1-sep, caso colegio Colina): el repartidor la ve ese día, con su valor y
+  // la nota de que ya se cobró junto con la entrega — para que no la cobre de nuevo
+  ...(texto(args.fecha_limpieza) !== '' && itemExtra !== '' && /limpieza|aseo/i.test(itemExtra)
+    ? { limpiezas: [{ fecha: texto(args.fecha_limpieza).slice(0, 10), etiqueta: itemExtra,
+      tipo: 'extra', ...(valorItem > 0 ? { valor: valorItem } : {}),
+      nota: 'se cobra junto con la entrega — no cobrar aparte' }] } : {}),
   ...(precioNeto > 0 ? { precio_clp: precioNeto } : {}),
   ...(flete > 0 ? { flete_clp: flete } : {}),
   requiere_factura: conFactura,
