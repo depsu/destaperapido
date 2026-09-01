@@ -16,7 +16,8 @@
     <meta name="author" content="Alejandro Rivera Carrasco">
 
     <link rel="stylesheet" href="/output.css">
-    <link rel="preload" as="image" href="/images/banos-quimicos/banos-quimicos-en-region-metropolitana.webp" fetchpriority="high">
+    <link rel="preload" as="image" href="/images/banos-quimicos/hero-18-patio-quincho-1600.webp" media="(min-width: 769px)" fetchpriority="high">
+    <link rel="preload" as="image" href="/images/banos-quimicos/bano-quimico-18-septiembre-patio-quincho.webp" media="(max-width: 768px)" fetchpriority="high">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
@@ -31,8 +32,8 @@
         /* ── HERO ── */
         .hero-banos {
             background-image:
-                linear-gradient(to right, rgba(15, 23, 42, 0.92) 0%, rgba(15, 23, 42, 0.65) 100%),
-                url('/images/banos-quimicos/banos-quimicos-en-region-metropolitana.webp');
+                linear-gradient(to right, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.90) 46%, rgba(15, 23, 42, 0.30) 64%, rgba(15, 23, 42, 0.12) 100%),
+                url('/images/banos-quimicos/hero-18-patio-quincho-1600.webp');
             background-size: cover;
             background-position: center;
             background-attachment: local;
@@ -42,8 +43,8 @@
             .hero-banos {
                 background-attachment: local;
                 background-image:
-                    linear-gradient(to bottom, rgba(15, 23, 42, 0.88) 0%, rgba(15, 23, 42, 0.75) 100%),
-                    url('/images/banos-quimicos/banos-quimicos-en-region-metropolitana.webp');
+                    linear-gradient(to bottom, rgba(15, 23, 42, 0.90) 0%, rgba(15, 23, 42, 0.78) 100%),
+                    url('/images/banos-quimicos/bano-quimico-18-septiembre-patio-quincho.webp');
             }
         }
 
@@ -1119,9 +1120,9 @@
          HERO
     ══════════════════════════════════════ -->
     <main id="main-content">
-    <header class="hero-banos min-h-[90vh] flex items-center px-4 relative pt-28 pb-16">
+    <header class="hero-banos min-h-[90vh] flex items-center px-4 relative pt-24 pb-12">
         <div class="max-w-6xl mx-auto w-full relative z-10">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
+            <div class="grid lg:grid-cols-[minmax(0,640px)_1fr] gap-12 items-center">
 
                 <!-- Columna izquierda: texto -->
                 <div class="text-white fade-up">
@@ -1135,28 +1136,49 @@
                         <span><span id="dias-hero">Septiembre 2026</span> · Reserva tu fecha</span>
                     </div>
 
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight tracking-tight">
+                    <h1 class="text-4xl sm:text-5xl font-extrabold mb-4 leading-tight tracking-tight">
                         Arriendo de baños químicos<br>
                         <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">para el 18 de septiembre</span>
                     </h1>
 
-                    <p class="text-lg text-slate-300 mb-8 max-w-xl leading-relaxed">
-                        Fondas, ramadas, asados en parcela y actividades municipales en toda la RM. Nos dices cuánta gente y qué días: te decimos <strong>cuántas unidades necesitas</strong>, las instalamos antes del feriado y las retiramos el lunes.
+                    <p class="text-lg text-slate-300 mb-5 max-w-xl leading-relaxed">
+                        Te decimos <strong>cuántas unidades necesitas</strong>, las instalamos antes del feriado y las retiramos el lunes.
                     </p>
 
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="https://wa.me/56936470112?text=Hola,%20quiero%20precios%20de%20ba%C3%B1os%20qu%C3%ADmicos%20para%20el%2018%20de%20septiembre"
-                            class="bg-green-700 hover:bg-green-800 text-white text-base font-bold py-4 px-8 rounded-xl shadow-xl shadow-green-500/20 transition transform hover:-translate-y-1 flex items-center justify-center gap-2">
-                            <i class="fa-brands fa-whatsapp text-lg" aria-hidden="true"></i> Cotizar por WhatsApp
-                        </a>
-                        <a href="tel:+56936470112"
-                            class="bg-white text-slate-900 text-base font-bold py-4 px-8 rounded-xl hover:bg-slate-100 transition flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-phone text-brand-600" aria-hidden="true"></i> +56 9 3647 0112
-                        </a>
+                    <!-- Columna derecha: calculadora de unidades (mínima) -->
+                <div class="glass-panel rounded-3xl p-6 md:p-8 mt-8 shadow-2xl text-white mt-2" id="calculadora" data-ratio="40"
+                    data-msg-base="Hola, quiero cotizar baños químicos para el 18 de septiembre">
+                    <h2 class="text-xl md:text-2xl font-extrabold mb-4">¿Para cuánta gente?</h2>
+                    <div class="grid grid-cols-4 gap-2" id="gente-group" role="group" aria-label="Cantidad de personas">
+                            <button type="button" data-gente="50" data-label="unas 50 personas" aria-pressed="false"
+                                class="qty-btn py-3 px-1 rounded-xl bg-white/10 border border-white/20 hover:bg-white/20 transition font-extrabold text-base leading-tight">
+                                50<span class="block text-[11px] font-medium text-slate-300 mt-0.5">personas</span>
+                            </button>
+                            <button type="button" data-gente="100" data-label="unas 100 personas" aria-pressed="false"
+                                class="qty-btn py-3 px-1 rounded-xl bg-white/10 border border-white/20 hover:bg-white/20 transition font-extrabold text-base leading-tight">
+                                100<span class="block text-[11px] font-medium text-slate-300 mt-0.5">personas</span>
+                            </button>
+                            <button type="button" data-gente="200" data-label="unas 200 personas" aria-pressed="false"
+                                class="qty-btn py-3 px-1 rounded-xl bg-white/10 border border-white/20 hover:bg-white/20 transition font-extrabold text-base leading-tight">
+                                200<span class="block text-[11px] font-medium text-slate-300 mt-0.5">personas</span>
+                            </button>
+                            <button type="button" data-gente="300" data-label="más de 300 personas" aria-pressed="false"
+                                class="qty-btn py-3 px-1 rounded-xl bg-white/10 border border-white/20 hover:bg-white/20 transition font-extrabold text-base leading-tight">
+                                +300<span class="block text-[11px] font-medium text-slate-300 mt-0.5">personas</span>
+                            </button>
                     </div>
+                    <p id="calc-result" class="mt-5 text-center text-2xl font-extrabold min-h-[2rem]" aria-live="polite"></p>
+                    <a id="quick-wa-btn"
+                        href="https://wa.me/56936470112?text=Hola%2C%20quiero%20cotizar%20ba%C3%B1os%20qu%C3%ADmicos%20para%20el%2018%20de%20septiembre.%20%C2%BFMe%20pueden%20dar%20el%20valor%3F"
+                        target="_blank"
+                        class="mt-4 w-full bg-green-700 hover:bg-green-800 text-white text-base font-extrabold py-4 rounded-xl shadow-lg shadow-green-500/30 transition-all hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-2xl" aria-hidden="true"></i>
+                        <span id="quick-wa-label">Cotizar por WhatsApp</span>
+                    </a>
+                </div>
 
                     <!-- Trust pills -->
-                    <div class="flex flex-wrap gap-3 mt-8 text-sm">
+                    <div class="flex flex-wrap gap-2 mt-5 text-xs">
                         <span
                             class="bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-2 rounded-full font-semibold flex items-center gap-2">
                             <i class="fa-solid fa-people-group text-blue-400" aria-hidden="true"></i> Cálculo por asistentes
@@ -1172,91 +1194,7 @@
                     </div>
                 </div>
 
-                <!-- Columna derecha: calculadora de unidades -->
-                <div class="glass-panel rounded-3xl p-6 md:p-8 shadow-2xl text-white" id="calculadora" data-ratio="40"
-                    data-msg-base="Hola, quiero cotizar baños químicos para el 18 de septiembre" data-accesible="1">
-                    <div class="flex items-center gap-2 mb-1">
-                        <span class="text-2xl" aria-hidden="true">&#9889;</span>
-                        <h2 class="text-xl font-extrabold">Calcula tus baños en 10 segundos</h2>
-                    </div>
-                    <p class="text-sm text-slate-300 mb-6">Elige cuánta gente esperas y qué días: te decimos cuántas unidades y te abrimos el WhatsApp con todo listo.</p>
-
-                    <div class="space-y-5">
-                        <!-- Gente -->
-                        <div role="group" aria-labelledby="lbl-gente">
-                            <span id="lbl-gente" class="block text-sm font-bold mb-2 text-slate-200">¿Cuánta gente esperas?</span>
-                            <div class="grid grid-cols-4 gap-2" id="gente-group">
-                                <button type="button" data-gente="50" data-label="unas 50 personas" aria-pressed="false"
-                                    class="qty-btn py-3 px-1 rounded-xl bg-white/10 border border-white/20 hover:bg-white/20 transition font-bold text-sm">
-                                    ≈ 50
-                                </button>
-                                <button type="button" data-gente="100" data-label="unas 100 personas" aria-pressed="false"
-                                    class="qty-btn py-3 px-1 rounded-xl bg-white/10 border border-white/20 hover:bg-white/20 transition font-bold text-sm">
-                                    ≈ 100
-                                </button>
-                                <button type="button" data-gente="200" data-label="unas 200 personas" aria-pressed="false"
-                                    class="qty-btn py-3 px-1 rounded-xl bg-white/10 border border-white/20 hover:bg-white/20 transition font-bold text-sm">
-                                    ≈ 200
-                                </button>
-                                <button type="button" data-gente="300" data-label="más de 300 personas" aria-pressed="false"
-                                    class="qty-btn py-3 px-1 rounded-xl bg-white/10 border border-white/20 hover:bg-white/20 transition font-bold text-sm">
-                                    +300
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- Días -->
-                        <div role="group" aria-labelledby="lbl-dias">
-                            <span id="lbl-dias" class="block text-sm font-bold mb-2 text-slate-200">¿Qué días?</span>
-                            <div class="grid grid-cols-3 gap-2" id="dias-group">
-                                <button type="button" data-dias="1" data-label="solo el viernes 18" aria-pressed="false"
-                                    class="qty-btn py-3 px-1 rounded-xl bg-white/10 border border-white/20 hover:bg-white/20 transition font-bold text-sm">
-                                    Solo el 18
-                                </button>
-                                <button type="button" data-dias="2" data-label="el 18 y el 19" aria-pressed="false"
-                                    class="qty-btn py-3 px-1 rounded-xl bg-white/10 border border-white/20 hover:bg-white/20 transition font-bold text-sm">
-                                    18 y 19
-                                </button>
-                                <button type="button" data-dias="3" data-label="los 3 días (18, 19 y 20)" aria-pressed="false"
-                                    class="qty-btn py-3 px-1 rounded-xl bg-white/10 border border-white/20 hover:bg-white/20 transition font-bold text-sm">
-                                    18, 19 y 20
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- Tipo de uso -->
-                        <div>
-                            <label for="quick-uso" class="block text-sm font-bold mb-2 text-slate-200">Tipo de celebración</label>
-                            <select id="quick-uso"
-                                class="w-full py-3 px-4 rounded-xl bg-white/10 border border-white/20 text-white focus:outline-none focus:border-blue-400 font-medium">
-                                <option value="" disabled selected class="text-slate-900 bg-white">Selecciona tu caso…</option>
-                                <option value="una fonda o ramada" class="text-slate-900 bg-white">Fonda o ramada</option>
-                                <option value="un asado en parcela" class="text-slate-900 bg-white">Asado en parcela</option>
-                                <option value="una actividad municipal" class="text-slate-900 bg-white">Actividad municipal</option>
-                                <option value="una feria costumbrista" class="text-slate-900 bg-white">Feria costumbrista</option>
-                                <option value="una peña o noche de cueca" class="text-slate-900 bg-white">Peña / noche de cueca</option>
-                                <option value="un rodeo o campeonato de rayuela" class="text-slate-900 bg-white">Rodeo o rayuela</option>
-                            </select>
-                        </div>
-
-                        <!-- Resultado -->
-                        <div id="calc-result" class="rounded-xl bg-white/10 border border-white/15 px-4 py-3 text-sm flex items-start gap-3" aria-live="polite">
-                            <i class="fa-solid fa-restroom text-blue-300 text-lg mt-0.5" aria-hidden="true"></i>
-                            <p class="leading-snug"><span class="text-slate-300">Elige cuánta gente y cuántos días:</span> <strong id="calc-unidades" class="text-white">te decimos cuántas unidades necesitas</strong></p>
-                        </div>
-
-                        <!-- Botón WA -->
-                        <a id="quick-wa-btn"
-                            href="https://wa.me/56936470112?text=Hola%2C%20quiero%20cotizar%20ba%C3%B1os%20qu%C3%ADmicos%20para%20el%2018%20de%20septiembre.%20%C2%BFMe%20pueden%20dar%20el%20valor%3F"
-                            target="_blank"
-                            class="mt-2 w-full bg-green-700 hover:bg-green-800 text-white text-base font-extrabold py-4 rounded-xl shadow-lg shadow-green-500/30 transition-all hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2">
-                            <i class="fa-brands fa-whatsapp text-2xl" aria-hidden="true"></i>
-                            <span id="quick-wa-label">Cotizar por WhatsApp</span>
-                        </a>
-
-                        <p class="text-center text-xs text-slate-300"><i class="fa-solid fa-lock mr-1" aria-hidden="true"></i>Respuesta en minutos. Sin spam ni anticipo.</p>
-                    </div>
-                </div>
+                
 
             </div>
         </div>
@@ -1311,63 +1249,64 @@
     <!-- ══════════════════════════════════════
          ASÍ LLEGA TU BAÑO (galería)
     ══════════════════════════════════════ -->
-    <section id="asi-llega" class="py-16 md:py-20 bg-white">
+    <section id="asi-llega" class="py-16 md:py-20 bg-slate-50 border-b border-slate-100">
         <div class="container mx-auto px-4 max-w-6xl">
-            <div class="text-center mb-10">
-                <span class="text-brand-600 font-bold uppercase tracking-widest text-xs mb-2 block">Así llega tu baño</span>
-                <h2 class="text-3xl font-extrabold text-slate-900 mb-3">Así llega tu baño para el 18</h2>
-                <p class="text-slate-500 max-w-2xl mx-auto">Caseta azul estándar, limpia y con papel, instalada donde tú nos digas: patio, parcela, plaza o medialuna.</p>
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-extrabold text-slate-900">Así llega tu baño para el 18</h2>
             </div>
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
-                <figure class="group relative rounded-2xl overflow-hidden bg-slate-100 aspect-[4/5] shadow-sm">
-                    <img src="/images/banos-quimicos/bano-quimico-18-septiembre-patio-quincho.webp" srcset="/images/banos-quimicos/bano-quimico-18-septiembre-patio-quincho-400.webp 400w, /images/banos-quimicos/bano-quimico-18-septiembre-patio-quincho.webp 800w"
-                        sizes="(min-width: 1024px) 280px, 45vw" width="800" height="1000"
-                        alt="Baño químico azul instalado en un patio con quincho y banderines chilenos para el 18 de septiembre" loading="lazy" decoding="async"
-                        class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
-                    <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4 pt-12 text-white">
-                        <p class="font-bold text-sm md:text-base leading-tight">Instalado en tu patio para el 18</p>
-                        <p class="text-xs text-slate-200 mt-1 hidden sm:block">Puerta abierta, listo para la fiesta</p>
+                <figure class="rounded-2xl overflow-hidden bg-white border border-slate-100 shadow-sm">
+                    <div class="aspect-[4/5] bg-slate-100">
+                        <img src="/images/banos-quimicos/bano-quimico-18-septiembre-patio-quincho.webp" srcset="/images/banos-quimicos/bano-quimico-18-septiembre-patio-quincho-400.webp 400w, /images/banos-quimicos/bano-quimico-18-septiembre-patio-quincho.webp 800w"
+                            sizes="(min-width: 1024px) 280px, 45vw" width="800" height="1000"
+                            alt="Baño químico azul instalado en un patio con quincho y banderines chilenos para el 18 de septiembre" loading="lazy" decoding="async" class="w-full h-full object-cover">
+                    </div>
+                    <figcaption class="p-3 md:p-4">
+                        <p class="font-bold text-slate-900 text-sm md:text-base leading-tight">Instalado en tu patio para el 18</p>
+                        <p class="text-xs text-slate-500 mt-1">Puerta abierta, listo para la fiesta</p>
                     </figcaption>
                 </figure>
-                <figure class="group relative rounded-2xl overflow-hidden bg-slate-100 aspect-[4/5] shadow-sm">
-                    <img src="/images/banos-quimicos/bano-quimico-interior-limpio-con-papel.webp" srcset="/images/banos-quimicos/bano-quimico-interior-limpio-con-papel-400.webp 400w, /images/banos-quimicos/bano-quimico-interior-limpio-con-papel.webp 800w"
-                        sizes="(min-width: 1024px) 280px, 45vw" width="800" height="1000"
-                        alt="Interior de baño químico limpio, con papel y estanque cerrado" loading="lazy" decoding="async"
-                        class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
-                    <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4 pt-12 text-white">
-                        <p class="font-bold text-sm md:text-base leading-tight">Así es por dentro</p>
-                        <p class="text-xs text-slate-200 mt-1 hidden sm:block">Limpio, con papel y químico sanitizante</p>
+                <figure class="rounded-2xl overflow-hidden bg-white border border-slate-100 shadow-sm">
+                    <div class="aspect-[4/5] bg-slate-100">
+                        <img src="/images/banos-quimicos/bano-quimico-interior-limpio-con-papel.webp" srcset="/images/banos-quimicos/bano-quimico-interior-limpio-con-papel-400.webp 400w, /images/banos-quimicos/bano-quimico-interior-limpio-con-papel.webp 800w"
+                            sizes="(min-width: 1024px) 280px, 45vw" width="800" height="1000"
+                            alt="Interior de baño químico limpio, con papel y estanque cerrado" loading="lazy" decoding="async" class="w-full h-full object-cover">
+                    </div>
+                    <figcaption class="p-3 md:p-4">
+                        <p class="font-bold text-slate-900 text-sm md:text-base leading-tight">Así es por dentro</p>
+                        <p class="text-xs text-slate-500 mt-1">Limpio, con papel y químico sanitizante</p>
                     </figcaption>
                 </figure>
-                <figure class="group relative rounded-2xl overflow-hidden bg-slate-100 aspect-[4/5] shadow-sm">
-                    <img src="/images/banos-quimicos/bano-quimico-asado-en-parcela.webp" srcset="/images/banos-quimicos/bano-quimico-asado-en-parcela-400.webp 400w, /images/banos-quimicos/bano-quimico-asado-en-parcela.webp 800w"
-                        sizes="(min-width: 1024px) 280px, 45vw" width="800" height="1000"
-                        alt="Baño químico en una parcela al atardecer, sin conexión de agua ni alcantarillado" loading="lazy" decoding="async"
-                        class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
-                    <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4 pt-12 text-white">
-                        <p class="font-bold text-sm md:text-base leading-tight">También en parcelas</p>
-                        <p class="text-xs text-slate-200 mt-1 hidden sm:block">Solo necesita piso firme; no usa agua ni alcantarillado</p>
+                <figure class="rounded-2xl overflow-hidden bg-white border border-slate-100 shadow-sm">
+                    <div class="aspect-[4/5] bg-slate-100">
+                        <img src="/images/banos-quimicos/bano-quimico-asado-en-parcela.webp" srcset="/images/banos-quimicos/bano-quimico-asado-en-parcela-400.webp 400w, /images/banos-quimicos/bano-quimico-asado-en-parcela.webp 800w"
+                            sizes="(min-width: 1024px) 280px, 45vw" width="800" height="1000"
+                            alt="Baño químico en una parcela al atardecer, sin conexión de agua ni alcantarillado" loading="lazy" decoding="async" class="w-full h-full object-cover">
+                    </div>
+                    <figcaption class="p-3 md:p-4">
+                        <p class="font-bold text-slate-900 text-sm md:text-base leading-tight">También en parcelas</p>
+                        <p class="text-xs text-slate-500 mt-1">Solo necesita piso firme; no usa agua ni alcantarillado</p>
                     </figcaption>
                 </figure>
-                <figure class="group relative rounded-2xl overflow-hidden bg-slate-100 aspect-[4/5] shadow-sm">
-                    <img src="/images/banos-quimicos/bano-quimico-con-lavamanos-portatil.webp" srcset="/images/banos-quimicos/bano-quimico-con-lavamanos-portatil-400.webp 400w, /images/banos-quimicos/bano-quimico-con-lavamanos-portatil.webp 800w"
-                        sizes="(min-width: 1024px) 280px, 45vw" width="800" height="1000"
-                        alt="Baño químico junto a lavamanos portátil con dispensador de jabón" loading="lazy" decoding="async"
-                        class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
-                    <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4 pt-12 text-white">
-                        <p class="font-bold text-sm md:text-base leading-tight">Con lavamanos si hay comida</p>
-                        <p class="text-xs text-slate-200 mt-1 hidden sm:block">Se reserva aparte</p>
+                <figure class="rounded-2xl overflow-hidden bg-white border border-slate-100 shadow-sm">
+                    <div class="aspect-[4/5] bg-slate-100">
+                        <img src="/images/banos-quimicos/bano-quimico-con-lavamanos-portatil.webp" srcset="/images/banos-quimicos/bano-quimico-con-lavamanos-portatil-400.webp 400w, /images/banos-quimicos/bano-quimico-con-lavamanos-portatil.webp 800w"
+                            sizes="(min-width: 1024px) 280px, 45vw" width="800" height="1000"
+                            alt="Baño químico junto a lavamanos portátil con dispensador de jabón" loading="lazy" decoding="async" class="w-full h-full object-cover">
+                    </div>
+                    <figcaption class="p-3 md:p-4">
+                        <p class="font-bold text-slate-900 text-sm md:text-base leading-tight">Con lavamanos si hay comida</p>
+                        <p class="text-xs text-slate-500 mt-1">Se reserva aparte</p>
                     </figcaption>
                 </figure>
             </div>
-            <ul class="mt-8 grid sm:grid-cols-2 lg:grid-cols-5 gap-3 text-sm">
-                <li class="flex items-center gap-2 bg-slate-50 border border-slate-100 rounded-xl px-3 py-2.5 text-slate-700 font-semibold"><i class="fa-solid fa-truck-fast text-brand-600 w-4 text-center" aria-hidden="true"></i> Traslado e instalación</li>
-                <li class="flex items-center gap-2 bg-slate-50 border border-slate-100 rounded-xl px-3 py-2.5 text-slate-700 font-semibold"><i class="fa-solid fa-pump-soap text-brand-600 w-4 text-center" aria-hidden="true"></i> Químico sanitizante y papel</li>
-                <li class="flex items-center gap-2 bg-slate-50 border border-slate-100 rounded-xl px-3 py-2.5 text-slate-700 font-semibold"><i class="fa-solid fa-recycle text-brand-600 w-4 text-center" aria-hidden="true"></i> Retiro y descarga en planta autorizada</li>
-                <li class="flex items-center gap-2 bg-slate-50 border border-slate-100 rounded-xl px-3 py-2.5 text-slate-700 font-semibold"><i class="fa-solid fa-file-invoice text-brand-600 w-4 text-center" aria-hidden="true"></i> Factura electrónica si la necesitas</li>
-                <li class="flex items-center gap-2 bg-slate-50 border border-slate-100 rounded-xl px-3 py-2.5 text-slate-700 font-semibold"><i class="fa-solid fa-hand-holding-dollar text-brand-600 w-4 text-center" aria-hidden="true"></i> Pagas al recibir, sin anticipo</li>
+            <ul class="mt-6 flex flex-wrap justify-center gap-2 text-sm">
+                <li class="flex items-center gap-2 bg-white border border-slate-200 rounded-full px-3 py-2 text-slate-700 font-semibold"><i class="fa-solid fa-truck-fast text-brand-600" aria-hidden="true"></i> Traslado e instalación</li>
+                <li class="flex items-center gap-2 bg-white border border-slate-200 rounded-full px-3 py-2 text-slate-700 font-semibold"><i class="fa-solid fa-pump-soap text-brand-600" aria-hidden="true"></i> Químico y papel</li>
+                <li class="flex items-center gap-2 bg-white border border-slate-200 rounded-full px-3 py-2 text-slate-700 font-semibold"><i class="fa-solid fa-recycle text-brand-600" aria-hidden="true"></i> Retiro incluido</li>
+                <li class="flex items-center gap-2 bg-white border border-slate-200 rounded-full px-3 py-2 text-slate-700 font-semibold"><i class="fa-solid fa-file-invoice text-brand-600" aria-hidden="true"></i> Factura si la necesitas</li>
+                <li class="flex items-center gap-2 bg-white border border-slate-200 rounded-full px-3 py-2 text-slate-700 font-semibold"><i class="fa-solid fa-hand-holding-dollar text-brand-600" aria-hidden="true"></i> Pagas al recibir</li>
             </ul>
-            <p class="text-xs text-slate-500 text-center mt-4">Imágenes de referencia del modelo que instalamos: caseta azul estándar, puerta negra y techo blanco.</p>
         </div>
     </section>
 
@@ -1611,7 +1550,7 @@
                     <div class="aspect-[4/5] bg-slate-200 rounded-3xl overflow-hidden shadow-2xl relative group">
                         <img height="1000" width="800" src="/images/banos-quimicos/bano-quimico-fiestas-patrias-patio-dieciochero.webp" srcset="/images/banos-quimicos/bano-quimico-fiestas-patrias-patio-dieciochero-400.webp 400w, /images/banos-quimicos/bano-quimico-fiestas-patrias-patio-dieciochero.webp 800w" sizes="(min-width: 1024px) 560px, 100vw" alt="Baño químico azul junto a un quincho con banderines chilenos, listo para un asado del 18"
                             class="object-cover w-full h-full group-hover:scale-105 transition duration-700" loading="lazy" decoding="async">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-8">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-transparent flex items-end p-8">
                             <div class="text-white">
                                 <div class="bg-brand-600 text-xs font-bold px-2 py-1 rounded inline-block mb-2">Eventos</div>
                                 <p class="font-bold text-xl">Instalación el día anterior</p>
@@ -2426,73 +2365,46 @@
                 });
             }
 
-            // ── Calculadora de unidades (gente + días → unidades + WhatsApp prellenado) ──
+            // ── Calculadora mínima: gente → baños → WhatsApp prellenado ──
             const panel = document.getElementById('calculadora');
             const waBtn = document.getElementById('quick-wa-btn');
             const waLabel = document.getElementById('quick-wa-label');
-            const usoEl = document.getElementById('quick-uso');
-            const resEl = document.getElementById('calc-unidades');
+            const resEl = document.getElementById('calc-result');
             const ratio = panel ? parseInt(panel.dataset.ratio, 10) || 40 : 40;
             const msgBase = panel ? panel.dataset.msgBase : 'Hola, quiero cotizar baños químicos';
-            const sugiereAccesible = panel ? panel.dataset.accesible === '1' : false;
-            let gente = 0, genteLabel = '', diasLabel = '';
+            let gente = 0, genteLabel = '';
 
-            function unidades() {
-                if (!gente) return 0;
-                return Math.max(1, Math.ceil(gente / ratio));
-            }
+            function unidades() { return gente ? Math.max(1, Math.ceil(gente / ratio)) : 0; }
 
             function render() {
                 const u = unidades();
                 if (!resEl) return;
-                if (!gente) {
-                    resEl.textContent = 'te decimos cuántas unidades necesitas';
-                } else if (gente >= 300) {
-                    resEl.textContent = '8 unidades o más: lo calculamos contigo por WhatsApp';
-                } else {
-                    resEl.textContent = 'te recomendamos ' + u + (u === 1 ? ' unidad' : ' unidades')
-                        + (sugiereAccesible && gente >= 100 ? ' (+1 accesible si es abierta al público)' : '');
-                }
+                if (!gente) { resEl.textContent = ''; }
+                else if (gente >= 300) { resEl.textContent = 'Lo calculamos contigo'; }
+                else { resEl.textContent = '≈ ' + u + (u === 1 ? ' baño' : ' baños'); }
                 if (waLabel) {
                     waLabel.textContent = (gente && gente < 300)
-                        ? 'Cotizar ' + u + (u === 1 ? ' unidad' : ' unidades') + ' por WhatsApp'
+                        ? 'Cotizar ' + u + (u === 1 ? ' baño' : ' baños') + ' por WhatsApp'
                         : 'Cotizar por WhatsApp';
                 }
-                updateWaLink();
-            }
-
-            function updateWaLink() {
-                const uso = usoEl ? usoEl.value : '';
-                let msg = msgBase;
-                const datos = [];
-                if (genteLabel) datos.push(genteLabel);
-                if (diasLabel) datos.push(diasLabel);
-                if (datos.length) msg += ': ' + datos.join(', ');
-                if (uso) msg += (datos.length ? ', ' : ': ') + 'para ' + uso;
-                msg += '.';
-                const u = unidades();
+                let msg = msgBase + (genteLabel ? ' para ' + genteLabel : '') + '.';
                 if (gente >= 300) msg += ' Necesito que me ayuden a calcular las unidades.';
-                else if (gente) msg += ' Según su calculadora ' + (u === 1 ? 'sería 1 unidad' : 'serían ' + u + ' unidades') + '.';
+                else if (gente) msg += ' Según su calculadora ' + (u === 1 ? 'sería 1 baño' : 'serían ' + u + ' baños') + '.';
                 msg += ' ¿Me pueden dar el valor?';
                 if (waBtn) waBtn.href = 'https://wa.me/56936470112?text=' + encodeURIComponent(msg);
             }
 
-            function activarChips(selector, onPick) {
-                const chips = document.querySelectorAll(selector);
-                chips.forEach(btn => {
-                    btn.addEventListener('click', () => {
-                        chips.forEach(b => { b.classList.remove('selected'); b.setAttribute('aria-pressed', 'false'); });
-                        btn.classList.add('selected');
-                        btn.setAttribute('aria-pressed', 'true');
-                        onPick(btn);
-                        render();
-                    });
+            const chips = document.querySelectorAll('#gente-group .qty-btn');
+            chips.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    chips.forEach(b => { b.classList.remove('selected'); b.setAttribute('aria-pressed', 'false'); });
+                    btn.classList.add('selected');
+                    btn.setAttribute('aria-pressed', 'true');
+                    gente = parseInt(btn.dataset.gente, 10) || 0;
+                    genteLabel = btn.dataset.label || '';
+                    render();
                 });
-            }
-
-            activarChips('#gente-group .qty-btn', btn => { gente = parseInt(btn.dataset.gente, 10) || 0; genteLabel = btn.dataset.label || ''; });
-            activarChips('#dias-group .qty-btn', btn => { diasLabel = btn.dataset.label || ''; });
-            if (usoEl) usoEl.addEventListener('change', updateWaLink);
+            });
         });
     </script>
 
