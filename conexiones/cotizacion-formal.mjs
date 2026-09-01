@@ -69,6 +69,12 @@ const conFactura = texto(args.factura).toLowerCase() !== 'no';   // con IVA por 
 // mandar el ítem elegido (ducha portátil, baño sin lavamanos, flete, limpieza extra).
 // Singular/plural sin diccionario: «2 ducha portátil x2» sería feo → «x2» al final.
 const tipoItem = texto(args.tipo_item) || 'baño químico';
+/* EL EQUIPAMIENTO EN EL TÍTULO (1-sep, caso Felipe Casajuana: pidió expresamente CON
+   LAVAMANOS y el PDF para su jefatura decía «baño químico» a secas — lo pactado tiene
+   que leerse en el documento). «cualquiera» o vacío = no se imprime nada. */
+const equipamiento = texto(args.equipamiento).toLowerCase();
+const equipoVisible = equipamiento !== '' && !/cualquiera|da igual|indistinto/.test(equipamiento)
+  ? equipamiento : '';
 // EL ASEO ACORDADO (17-ago, caso JR Montajes: se negociaron 3 limpiezas semanales y el
 // PDF salió con el texto fijo «cada 7 a 10 días» — un documento formal contradiciendo
 // el trato). Si la ficha trae un aseo negociado, ESE va; vacío = el estándar de siempre.
@@ -96,14 +102,22 @@ const campos = [['Nombre', nombre]];
 if (comuna !== '') campos.push(['Comuna', `${comuna}, RM`]);
 if (plazo !== '') campos.push(['Período de arriendo', plazo]);
 if (email !== '') campos.push(['Email', email]);
+/* LOS DATOS DE FACTURA IMPRESOS (1-sep, Felipe Casajuana: dio su RUT para que la
+   jefatura aprobara — si el PDF no lo muestra, el documento queda a medias). Una sola
+   línea; si la ficha trae varias (razón social + RUT + giro), se aplanan. */
+const datosFactura = texto(args.datos_factura).replace(/\s*\n\s*/g, ' · ');
+if (datosFactura !== '') campos.push(['Facturación', datosFactura]);
 /* EVENTO NO ES ARRIENDO MENSUAL (regla del bot viejo, 14-ago): en un evento de un día
    la limpieza semanal NO aplica, y prometerla por escrito en la cotización es vender algo
    que no se hace. El plazo manda: si dice evento/fiesta/matrimonio/un día, lo incluido es
    traslado, instalación y retiro. */
 const esEvento = /event|fiesta|matrimonio|cumplea|un d[ií]a|1 d[ií]a|fin de semana/i.test(plazo);
 // si lo acordado EMPIEZA negando («no incluida…»), decir «Aseo incluido: no incluida»
-// era una contradicción impresa (31-ago, PDF de Carlos Castro) — la etiqueta se adapta
-const rotuloAseo = /^\s*(no|sin)\b/i.test(aseo) ? 'Aseo' : 'Aseo incluido';
+// era una contradicción impresa (31-ago, PDF de Carlos Castro) — la etiqueta se adapta.
+// Y si el texto trae un PRECIO (1-sep, Felipe Casajuana: «2 limpiezas, $60.000 cada
+// una» cobradas en su propio ítem), «incluido» también mentiría: precio = no incluido.
+const rotuloAseo = /^\s*(no|sin)\b/i.test(aseo) || /\$\s*\d|\d+\s*(mil|lucas?)\b/i.test(aseo)
+  ? 'Aseo' : 'Aseo incluido';
 const lineaAseo = aseo !== '' ? `${rotuloAseo}: ${aseo}.` : 'Limpieza semanal (cada 7 a 10 días) incluida.';
 const incluido = esEvento
   ? ['Traslado, instalación y retiro incluidos.',
@@ -117,9 +131,12 @@ const incluido = esEvento
 // si el texto YA dice «arriendo de…» no se antepone otra vez (31-ago, PDF de Carlos
 // Castro: «Arriendo de Arriendo de baño químico»)
 const conArriendo = (t) => (/^arriendos?\s+de/i.test(t) ? t : `Arriendo de ${t}`);
-const itemTitulo = tipoItem === 'baño químico'
+// el equipamiento pactado va pegado al título, salvo que el tipo ya lo nombre
+const conEquipo = (t) => (equipoVisible !== '' && !t.toLowerCase().includes(equipoVisible)
+  ? `${t} ${equipoVisible}` : t);
+const itemTitulo = conEquipo(tipoItem === 'baño químico'
   ? 'Arriendo de baño químico'
-  : conArriendo(tipoItem);
+  : conArriendo(tipoItem));
 const config = {
   subtitulo: tipoItem === 'baño químico'
     ? 'Arriendo de baños químicos'
