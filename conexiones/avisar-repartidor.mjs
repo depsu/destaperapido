@@ -257,6 +257,10 @@ const d = {
   cantidad_banos: Math.max(1, Math.round(Number(args.cantidad) || 1)),
   duracion: texto(args.duracion) || undefined,
   telefono_contacto: telefonoCliente || undefined,
+  // quién recibe en terreno (1-sep, colegio de Colina: el director recepcionaba y el
+  // aviso al repartidor no lo llevaba) — construirEntrega ya sabe pintarlos
+  contacto_respaldo: texto(args.contacto_respaldo) || undefined,
+  telefono_respaldo: texto(args.telefono_respaldo) || undefined,
   maps_url: texto(args.maps_url) || undefined,
   aseo: texto(args.aseo) || undefined,
   ...(notasEquipo !== '' ? { tipo_uso: notasEquipo } : {}),

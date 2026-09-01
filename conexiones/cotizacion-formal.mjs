@@ -62,8 +62,14 @@ const flete = pesosDe(args.flete);
 // cotización): una segunda línea genérica con su propio valor — sirve para la ducha,
 // una limpieza extra de evento, lo que sea. Mensual como el resto, salvo que el
 // título diga otra cosa.
-const itemExtra = texto(args.item_extra);
-const precioExtra = pesosDe(args.precio_extra);
+/* «ninguno» NO es un ítem (1-sep, colegio de Colina): el agente anotó item_extra
+   «ninguno» para decir «ya no lleva», el valor viejo de la limpieza seguía en la ficha,
+   y el PDF salió con la línea «Ninguno — $140.000». Un texto que niega apaga el ítem
+   Y su precio, igual que en avisar-repartidor. */
+const itemCrudo = texto(args.item_extra);
+const itemNegado = /^(no|ninguno|ninguna|nada|sin\s+\S*|0|-)$/i.test(itemCrudo);
+const itemExtra = itemNegado ? '' : itemCrudo;
+const precioExtra = itemNegado ? 0 : pesosDe(args.precio_extra);
 const conFactura = texto(args.factura).toLowerCase() !== 'no';   // con IVA por defecto
 // QUÉ se cotiza (16-ago): antes siempre decía «baño químico»; ahora el panel puede
 // mandar el ítem elegido (ducha portátil, baño sin lavamanos, flete, limpieza extra).
