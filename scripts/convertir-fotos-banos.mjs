@@ -16,6 +16,8 @@ const fotos = [
   ["evento/bano-jardin-evento.png", "bano-quimico-evento-jardin", false],
   ["colegio/bano-patio-colegio-pena.png", "bano-quimico-patio-colegio-pena", true],
   ["fonda/bano-fonda-ramada.png", "bano-quimico-fonda-ramada", true],
+  ["galpon/lavamanos-detalle.png", "lavamanos-portatil-detalle", false],
+  ["galpon/fila-banos-galpon-vertical.png", "fila-banos-quimicos-galpon", false],
 ];
 for (const [rel, name, og] of fotos) {
   const inp = `${SRC}/${rel}`;
