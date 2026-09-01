@@ -375,7 +375,7 @@
         }
 
         .wa-start-chat-btn {
-            background-color: var(--wa-green);
+            background-color: #15803d;
             color: white;
             text-decoration: none;
             padding: 12px 24px;
@@ -394,7 +394,7 @@
         }
 
         .wa-start-chat-btn:hover {
-            background-color: #1da851;
+            background-color: #166534;
         }
 
         .wa-notification-dot.on-icon {
@@ -441,13 +441,15 @@
     <meta property="og:description" content="Arriendo de baños químicos para peñas folclóricas, kermesses y fiestas de colegio en la Región Metropolitana. Cálculo por asistentes, instalación antes de la jornada y factura para el centro de padres.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.destaperapido.cl/servicios/banos-quimicos-para-penas-y-colegios">
-    <meta property="og:image" content="https://www.destaperapido.cl/assets/og-image-1200x630.jpg">
+    <meta property="og:image" content="https://www.destaperapido.cl/images/banos-quimicos/og-bano-quimico-patio-colegio-pena.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:locale" content="es_CL">
     <meta property="og:site_name" content="Destape Rápido">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Baños químicos para peñas y fiestas de colegio · RM">
     <meta name="twitter:description" content="Arriendo de baños químicos para peñas folclóricas, kermesses y fiestas de colegio en la Región Metropolitana. Cálculo por asistentes, instalación antes de la jornada y factura para el centro de padres.">
-    <meta name="twitter:image" content="https://www.destaperapido.cl/assets/og-image-1200x630.jpg">
+    <meta name="twitter:image" content="https://www.destaperapido.cl/images/banos-quimicos/og-bano-quimico-patio-colegio-pena.jpg">
     <script type="application/ld+json">
 [
   {
@@ -706,6 +708,14 @@
   "mainEntity": [
     {
       "@type": "Question",
+      "name": "¿Cuánto cuesta arrendar baños químicos para la peña del colegio?",
+      "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Depende de tres cosas: la comuna, los días de arriendo y la cantidad de unidades. Por eso te lo decimos por WhatsApp en minutos, con el valor por unidad y todo incluido: traslado, instalación, químico sanitizante, papel y retiro. Con 2 o más unidades el valor por unidad baja. No pedimos anticipo: se paga al recibir los baños, en efectivo o transferencia, y con factura electrónica a nombre del centro de padres o del colegio si la necesitas."
+      }
+},
+    {
+      "@type": "Question",
       "name": "¿Cuántos baños químicos necesito para la peña del colegio?",
       "acceptedAnswer": {
         "@type": "Answer",
@@ -908,7 +918,7 @@
                             <i class="fa-solid fa-phone mr-1" aria-hidden="true"></i> +56 9 3647 0112
                         </a>
                         <a href="https://wa.me/56936470112?text=Hola,%20quiero%20cotizar%20ba%C3%B1os%20qu%C3%ADmicos%20para%20el%2018%20de%20septiembre"
-                            class="bg-green-600 hover:bg-green-700 text-white px-5 py-2.5 rounded-full font-bold shadow-lg shadow-green-600/20 transition hover:-translate-y-0.5 flex items-center gap-2">
+                            class="bg-green-700 hover:bg-green-800 text-white px-5 py-2.5 rounded-full font-bold shadow-lg shadow-green-600/20 transition hover:-translate-y-0.5 flex items-center gap-2">
                             <i class="fa-brands fa-whatsapp text-lg" aria-hidden="true"></i> Urgencia
                         </a>
                     </div>
@@ -1090,14 +1100,14 @@
     ══════════════════════════════════════ -->
     <header id="landing-header" class="absolute top-0 left-0 w-full z-50 py-4">
         <div class="max-w-6xl mx-auto px-4 flex items-center justify-between">
-            <a href="/servicios/banos-quimicos" class="flex items-center gap-2" aria-label="Destape Rápido - Baños Químicos">
+            <a href="/servicios/banos-quimicos" class="flex items-center gap-2 min-h-[44px]" aria-label="Destape Rápido - Baños Químicos">
                 <div class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center bg-white/10 backdrop-blur-md rounded-full p-1.5">
                     <img src="/logo-nav.webp" alt="Logo Destape Rápido" width="48" height="48" class="w-full h-full object-contain" loading="lazy" decoding="async">
                 </div>
                 <span class="font-extrabold text-white text-base leading-none tracking-tight drop-shadow">DESTAPE<span class="text-blue-300">RÁPIDO</span></span>
             </a>
             <a href="tel:+56936470112"
-                class="flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-white font-bold px-4 py-2.5 rounded-full hover:bg-white/20 transition text-sm">
+                class="flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-white font-bold px-4 py-3 rounded-full hover:bg-white/20 transition text-sm min-h-[44px]">
                 <i class="fa-solid fa-phone text-green-400 text-xs" aria-hidden="true"></i>
                 <span class="hidden sm:inline">+56 9 3647 0112</span>
                 <span class="sm:hidden">Llamar</span>
@@ -1122,7 +1132,7 @@
                             <span class="ping-dot w-2 h-2 rounded-full bg-blue-400 animate-pulse absolute"></span>
                             <span class="static-dot w-2 h-2 rounded-full bg-blue-500 relative"></span>
                         </span>
-                        <span>Peñas y kermesses · Reserva tu fecha</span>
+                        <span><span id="dias-hero">Peñas y kermesses</span> · Reserva tu fecha</span>
                     </div>
 
                     <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight tracking-tight">
@@ -1131,13 +1141,13 @@
                     </h1>
 
                     <p class="text-lg text-slate-300 mb-8 max-w-xl leading-relaxed">
-                        Peña folclórica, kermesse o aniversario: cuando el colegio abre sus puertas a las familias, los baños del recinto <strong>quedan chicos</strong>. Te decimos <strong>cuántas unidades necesitas según los asistentes</strong>, las instalamos en el patio antes de la jornada y las retiramos después.
+                        Peña folclórica, kermesse o aniversario: cuando el colegio abre sus puertas a las familias, los baños del recinto quedan chicos. Te decimos <strong>cuántas unidades necesitas</strong>, las instalamos en el patio la tarde anterior y las retiramos antes de clases.
                     </p>
 
                     <div class="flex flex-col sm:flex-row gap-4">
                         <a href="https://wa.me/56936470112?text=Hola,%20quiero%20cotizar%20ba%C3%B1os%20qu%C3%ADmicos%20para%20una%20pe%C3%B1a%20de%20colegio"
-                            class="bg-[#25D366] hover:bg-[#20bd5a] text-white text-base font-bold py-4 px-8 rounded-xl shadow-xl shadow-green-500/20 transition transform hover:-translate-y-1 flex items-center justify-center gap-2">
-                            <i class="fa-brands fa-whatsapp text-lg" aria-hidden="true"></i> Cotiza gratis en Whatsapp
+                            class="bg-green-700 hover:bg-green-800 text-white text-base font-bold py-4 px-8 rounded-xl shadow-xl shadow-green-500/20 transition transform hover:-translate-y-1 flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-lg" aria-hidden="true"></i> Cotizar por WhatsApp
                         </a>
                         <a href="tel:+56936470112"
                             class="bg-white text-slate-900 text-base font-bold py-4 px-8 rounded-xl hover:bg-slate-100 transition flex items-center justify-center gap-2">
@@ -1149,48 +1159,72 @@
                     <div class="flex flex-wrap gap-3 mt-8 text-sm">
                         <span
                             class="bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-2 rounded-full font-semibold flex items-center gap-2">
-                            <i class="fa-solid fa-calculator text-blue-400" aria-hidden="true"></i> Cálculo por asistentes
-                        </span>
-                        <span
-                            class="bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-2 rounded-full font-semibold flex items-center gap-2">
-                            <i class="fa-solid fa-wheelchair text-blue-400" aria-hidden="true"></i> Unidad accesible disponible
+                            <i class="fa-solid fa-people-group text-blue-400" aria-hidden="true"></i> Cálculo por asistentes
                         </span>
                         <span
                             class="bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-2 rounded-full font-semibold flex items-center gap-2">
                             <i class="fa-solid fa-file-invoice text-blue-400" aria-hidden="true"></i> Factura al centro de padres
                         </span>
+                        <span
+                            class="bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-2 rounded-full font-semibold flex items-center gap-2">
+                            <i class="fa-solid fa-hand-holding-dollar text-blue-400" aria-hidden="true"></i> Pagas al recibir, sin anticipo
+                        </span>
                     </div>
                 </div>
 
-                <!-- Columna derecha: panel cotizá rápido -->
-                <div class="glass-panel rounded-3xl p-6 md:p-8 shadow-2xl text-white">
+                <!-- Columna derecha: calculadora de unidades -->
+                <div class="glass-panel rounded-3xl p-6 md:p-8 shadow-2xl text-white" id="calculadora" data-ratio="50"
+                    data-msg-base="Hola, quiero cotizar baños químicos para una actividad de colegio" data-accesible="0">
                     <div class="flex items-center gap-2 mb-1">
-                        <span class="text-2xl">&#9889;</span>
-                        <h2 class="text-xl font-extrabold">Cotiza en 10 segundos</h2>
+                        <span class="text-2xl" aria-hidden="true">&#9889;</span>
+                        <h2 class="text-xl font-extrabold">Calcula los baños de tu peña</h2>
                     </div>
-                    <p class="text-sm text-slate-300 mb-6">Dinos cuántos asistentes esperas y el horario de la actividad: te decimos cuántos baños.</p>
+                    <p class="text-sm text-slate-300 mb-6">Elige los asistentes y la duración: te decimos cuántas unidades y te abrimos el WhatsApp con todo listo.</p>
 
                     <div class="space-y-5">
-                        <!-- Cantidad -->
-                        <div>
-                            <label class="block text-sm font-bold mb-2 text-slate-200">¿Cuántos baños necesitas?</label>
-                            <div class="flex gap-2" id="qty-group">
-                                <button type="button" data-qty="1–2 baños"
-                                    class="qty-btn flex-1 py-3 rounded-xl bg-white/10 border border-white/20 hover:bg-white/20 transition font-bold text-sm">
-                                    1 – 2
+                        <!-- Gente -->
+                        <div role="group" aria-labelledby="lbl-gente">
+                            <span id="lbl-gente" class="block text-sm font-bold mb-2 text-slate-200">¿Cuántos asistentes?</span>
+                            <div class="grid grid-cols-4 gap-2" id="gente-group">
+                                <button type="button" data-gente="50" data-label="unas 50 personas" aria-pressed="false"
+                                    class="qty-btn py-3 px-1 rounded-xl bg-white/10 border border-white/20 hover:bg-white/20 transition font-bold text-sm">
+                                    ≈ 50
                                 </button>
-                                <button type="button" data-qty="3–5 baños"
-                                    class="qty-btn flex-1 py-3 rounded-xl bg-white/10 border border-white/20 hover:bg-white/20 transition font-bold text-sm">
-                                    3 – 5
+                                <button type="button" data-gente="100" data-label="unas 100 personas" aria-pressed="false"
+                                    class="qty-btn py-3 px-1 rounded-xl bg-white/10 border border-white/20 hover:bg-white/20 transition font-bold text-sm">
+                                    ≈ 100
                                 </button>
-                                <button type="button" data-qty="más de 5 baños"
-                                    class="qty-btn flex-1 py-3 rounded-xl bg-white/10 border border-white/20 hover:bg-white/20 transition font-bold text-sm">
-                                    +5
+                                <button type="button" data-gente="200" data-label="unas 200 personas" aria-pressed="false"
+                                    class="qty-btn py-3 px-1 rounded-xl bg-white/10 border border-white/20 hover:bg-white/20 transition font-bold text-sm">
+                                    ≈ 200
+                                </button>
+                                <button type="button" data-gente="300" data-label="más de 300 personas" aria-pressed="false"
+                                    class="qty-btn py-3 px-1 rounded-xl bg-white/10 border border-white/20 hover:bg-white/20 transition font-bold text-sm">
+                                    +300
                                 </button>
                             </div>
                         </div>
 
-                        <!-- Tipo de actividad -->
+                        <!-- Días -->
+                        <div role="group" aria-labelledby="lbl-dias">
+                            <span id="lbl-dias" class="block text-sm font-bold mb-2 text-slate-200">¿Cuánto dura la actividad?</span>
+                            <div class="grid grid-cols-3 gap-2" id="dias-group">
+                                <button type="button" data-dias="1" data-label="una tarde" aria-pressed="false"
+                                    class="qty-btn py-3 px-1 rounded-xl bg-white/10 border border-white/20 hover:bg-white/20 transition font-bold text-sm">
+                                    Una tarde
+                                </button>
+                                <button type="button" data-dias="1" data-label="el día completo" aria-pressed="false"
+                                    class="qty-btn py-3 px-1 rounded-xl bg-white/10 border border-white/20 hover:bg-white/20 transition font-bold text-sm">
+                                    Día completo
+                                </button>
+                                <button type="button" data-dias="2" data-label="2 días" aria-pressed="false"
+                                    class="qty-btn py-3 px-1 rounded-xl bg-white/10 border border-white/20 hover:bg-white/20 transition font-bold text-sm">
+                                    2 días
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Tipo de uso -->
                         <div>
                             <label for="quick-uso" class="block text-sm font-bold mb-2 text-slate-200">Tipo de actividad</label>
                             <select id="quick-uso"
@@ -1205,16 +1239,22 @@
                             </select>
                         </div>
 
+                        <!-- Resultado -->
+                        <div id="calc-result" class="rounded-xl bg-white/10 border border-white/15 px-4 py-3 text-sm flex items-start gap-3" aria-live="polite">
+                            <i class="fa-solid fa-restroom text-blue-300 text-lg mt-0.5" aria-hidden="true"></i>
+                            <p class="leading-snug"><span class="text-slate-300">Elige cuánta gente y cuántos días:</span> <strong id="calc-unidades" class="text-white">te decimos cuántas unidades necesitas</strong></p>
+                        </div>
+
                         <!-- Botón WA -->
                         <a id="quick-wa-btn"
-                            href="https://wa.me/56936470112?text=Hola%2C%20quiero%20cotizar%20ba%C3%B1os%20qu%C3%ADmicos%20para%20una%20pe%C3%B1a%20de%20colegio"
+                            href="https://wa.me/56936470112?text=Hola%2C%20quiero%20cotizar%20ba%C3%B1os%20qu%C3%ADmicos%20para%20una%20actividad%20de%20colegio.%20%C2%BFMe%20pueden%20dar%20el%20valor%3F"
                             target="_blank"
-                            class="mt-2 w-full bg-[#25D366] hover:bg-[#1da851] text-white text-base font-extrabold py-4 rounded-xl shadow-lg shadow-green-500/30 transition-all hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2">
+                            class="mt-2 w-full bg-green-700 hover:bg-green-800 text-white text-base font-extrabold py-4 rounded-xl shadow-lg shadow-green-500/30 transition-all hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2">
                             <i class="fa-brands fa-whatsapp text-2xl" aria-hidden="true"></i>
-                            Ver Precio por WhatsApp
+                            <span id="quick-wa-label">Cotizar por WhatsApp</span>
                         </a>
 
-                        <p class="text-center text-xs text-slate-400"><i class="fa-solid fa-lock mr-1" aria-hidden="true"></i>Sin spam. Solo te contactamos para cotizar.</p>
+                        <p class="text-center text-xs text-slate-300"><i class="fa-solid fa-lock mr-1" aria-hidden="true"></i>Respuesta en minutos. Sin spam ni anticipo.</p>
                     </div>
                 </div>
 
@@ -1269,6 +1309,69 @@
     </section>
 
     <!-- ══════════════════════════════════════
+         ASÍ LLEGA TU BAÑO (galería)
+    ══════════════════════════════════════ -->
+    <section id="asi-llega" class="py-16 md:py-20 bg-white">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <div class="text-center mb-10">
+                <span class="text-brand-600 font-bold uppercase tracking-widest text-xs mb-2 block">Así llega tu baño</span>
+                <h2 class="text-3xl font-extrabold text-slate-900 mb-3">Así llegan los baños al colegio</h2>
+                <p class="text-slate-500 max-w-2xl mx-auto">Caseta azul estándar, limpia y con papel, instalada en el patio o la cancha, lejos de los puestos de comida.</p>
+            </div>
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
+                <figure class="group relative rounded-2xl overflow-hidden bg-slate-100 aspect-[4/5] shadow-sm">
+                    <img src="/images/banos-quimicos/bano-quimico-patio-colegio-pena.webp" srcset="/images/banos-quimicos/bano-quimico-patio-colegio-pena-400.webp 400w, /images/banos-quimicos/bano-quimico-patio-colegio-pena.webp 800w"
+                        sizes="(min-width: 1024px) 280px, 45vw" width="800" height="1000"
+                        alt="Baño químico azul instalado en el patio de un colegio con banderines chilenos para una peña folclórica" loading="lazy" decoding="async"
+                        class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                    <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4 pt-12 text-white">
+                        <p class="font-bold text-sm md:text-base leading-tight">En el patio del colegio</p>
+                        <p class="text-xs text-slate-200 mt-1 hidden sm:block">Lejos de los puestos de comida</p>
+                    </figcaption>
+                </figure>
+                <figure class="group relative rounded-2xl overflow-hidden bg-slate-100 aspect-[4/5] shadow-sm">
+                    <img src="/images/banos-quimicos/bano-quimico-interior-limpio-con-papel.webp" srcset="/images/banos-quimicos/bano-quimico-interior-limpio-con-papel-400.webp 400w, /images/banos-quimicos/bano-quimico-interior-limpio-con-papel.webp 800w"
+                        sizes="(min-width: 1024px) 280px, 45vw" width="800" height="1000"
+                        alt="Interior de baño químico limpio, con papel y estanque cerrado" loading="lazy" decoding="async"
+                        class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                    <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4 pt-12 text-white">
+                        <p class="font-bold text-sm md:text-base leading-tight">Así es por dentro</p>
+                        <p class="text-xs text-slate-200 mt-1 hidden sm:block">Limpio, con papel y químico sanitizante</p>
+                    </figcaption>
+                </figure>
+                <figure class="group relative rounded-2xl overflow-hidden bg-slate-100 aspect-[4/5] shadow-sm">
+                    <img src="/images/banos-quimicos/camion-entrega-bano-quimico-santiago.webp" srcset="/images/banos-quimicos/camion-entrega-bano-quimico-santiago-400.webp 400w, /images/banos-quimicos/camion-entrega-bano-quimico-santiago.webp 800w"
+                        sizes="(min-width: 1024px) 280px, 45vw" width="800" height="1000"
+                        alt="Camión entregando un baño químico, entra por el portón del colegio" loading="lazy" decoding="async"
+                        class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                    <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4 pt-12 text-white">
+                        <p class="font-bold text-sm md:text-base leading-tight">Entramos por el portón la tarde anterior</p>
+                        <p class="text-xs text-slate-200 mt-1 hidden sm:block">En horario sin alumnos</p>
+                    </figcaption>
+                </figure>
+                <figure class="group relative rounded-2xl overflow-hidden bg-slate-100 aspect-[4/5] shadow-sm">
+                    <img src="/images/banos-quimicos/bano-quimico-con-lavamanos-portatil.webp" srcset="/images/banos-quimicos/bano-quimico-con-lavamanos-portatil-400.webp 400w, /images/banos-quimicos/bano-quimico-con-lavamanos-portatil.webp 800w"
+                        sizes="(min-width: 1024px) 280px, 45vw" width="800" height="1000"
+                        alt="Baño químico junto a lavamanos portátil con dispensador de jabón" loading="lazy" decoding="async"
+                        class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                    <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4 pt-12 text-white">
+                        <p class="font-bold text-sm md:text-base leading-tight">Con lavamanos para la kermesse</p>
+                        <p class="text-xs text-slate-200 mt-1 hidden sm:block">Se reserva aparte</p>
+                    </figcaption>
+                </figure>
+            </div>
+            <ul class="mt-8 grid sm:grid-cols-2 lg:grid-cols-5 gap-3 text-sm">
+                <li class="flex items-center gap-2 bg-slate-50 border border-slate-100 rounded-xl px-3 py-2.5 text-slate-700 font-semibold"><i class="fa-solid fa-truck-fast text-brand-600 w-4 text-center" aria-hidden="true"></i> Traslado e instalación</li>
+                <li class="flex items-center gap-2 bg-slate-50 border border-slate-100 rounded-xl px-3 py-2.5 text-slate-700 font-semibold"><i class="fa-solid fa-pump-soap text-brand-600 w-4 text-center" aria-hidden="true"></i> Químico sanitizante y papel</li>
+                <li class="flex items-center gap-2 bg-slate-50 border border-slate-100 rounded-xl px-3 py-2.5 text-slate-700 font-semibold"><i class="fa-solid fa-recycle text-brand-600 w-4 text-center" aria-hidden="true"></i> Retiro y descarga en planta autorizada</li>
+                <li class="flex items-center gap-2 bg-slate-50 border border-slate-100 rounded-xl px-3 py-2.5 text-slate-700 font-semibold"><i class="fa-solid fa-file-invoice text-brand-600 w-4 text-center" aria-hidden="true"></i> Factura electrónica si la necesitas</li>
+                <li class="flex items-center gap-2 bg-slate-50 border border-slate-100 rounded-xl px-3 py-2.5 text-slate-700 font-semibold"><i class="fa-solid fa-hand-holding-dollar text-brand-600 w-4 text-center" aria-hidden="true"></i> Pagas al recibir, sin anticipo</li>
+            </ul>
+            <p class="text-xs text-slate-500 text-center mt-4">Imágenes de referencia del modelo que instalamos: caseta azul estándar, puerta negra y techo blanco.</p>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
          FECHAS CLAVE DEL 18 (exclusivo de esta página)
     ══════════════════════════════════════ -->
     <section id="fechas" class="py-20 bg-slate-900 text-white">
@@ -1291,9 +1394,9 @@
                     <p class="text-sm text-slate-400">Coordinamos con portería y entramos el camión por el portón cuando no hay alumnos. Las unidades quedan listas en el patio o la cancha.</p>
                 </div>
                 <div class="bg-blue-600 border border-blue-500 rounded-2xl p-6 shadow-xl">
-                    <div class="text-blue-100 text-xs font-bold uppercase tracking-widest mb-2">El día de la peña</div>
+                    <div class="text-white text-xs font-bold uppercase tracking-widest mb-2">El día de la peña</div>
                     <p class="text-2xl font-extrabold mb-1">La jornada</p>
-                    <p class="text-sm text-blue-100">Unidades limpias, con sanitizante nuevo y papel. Si la actividad dura todo el día o se repite, coordinamos mantención intermedia.</p>
+                    <p class="text-sm text-white">Unidades limpias, con sanitizante nuevo y papel. Si la actividad dura todo el día o se repite, puedes sumar una mantención intermedia (se cotiza por visita).</p>
                 </div>
                 <div class="bg-white/5 border border-white/10 rounded-2xl p-6">
                     <div class="text-blue-400 text-xs font-bold uppercase tracking-widest mb-2">Al día siguiente</div>
@@ -1311,7 +1414,7 @@
                 </div>
                 <a href="https://wa.me/56936470112?text=Hola%2C%20quiero%20reservar%20ba%C3%B1os%20qu%C3%ADmicos%20para%20una%20pe%C3%B1a%20de%20colegio"
                     target="_blank"
-                    class="shrink-0 bg-[#25D366] hover:bg-[#20bd5a] text-white font-extrabold py-4 px-8 rounded-xl shadow-xl shadow-green-500/20 transition transform hover:-translate-y-1 flex items-center gap-2">
+                    class="shrink-0 bg-green-700 hover:bg-green-800 text-white font-extrabold py-4 px-8 rounded-xl shadow-xl shadow-green-500/20 transition transform hover:-translate-y-1 flex items-center gap-2">
                     <i class="fa-brands fa-whatsapp text-xl" aria-hidden="true"></i> Reservar mi fecha
                 </a>
             </div>
@@ -1319,19 +1422,22 @@
     </section>
 
     <script>
-        // Cuenta simple de días que faltan para el 18 de septiembre más próximo
+        // Cuenta simple de días que faltan para el 18 de septiembre más próximo (badge del hero + bloque calendario)
         (function () {
             var destino = document.getElementById('dias-para-el-18');
-            if (!destino) return;
+            var badge = document.getElementById('dias-hero');
+            if (!destino && !badge) return;
             var hoy = new Date();
             var anio = hoy.getMonth() > 8 || (hoy.getMonth() === 8 && hoy.getDate() > 18)
                 ? hoy.getFullYear() + 1 : hoy.getFullYear();
             var dieciocho = new Date(anio, 8, 18);
             var dias = Math.ceil((dieciocho - hoy) / 86400000);
             if (dias > 0) {
-                destino.textContent = dias + (dias === 1 ? ' día' : ' días');
+                if (destino) destino.textContent = dias + (dias === 1 ? ' día' : ' días');
+                if (badge) badge.textContent = (dias === 1 ? 'Falta 1 día' : 'Faltan ' + dias + ' días') + ' para el 18';
             } else {
-                destino.parentElement.textContent = '¡Es hoy! Escríbenos y vemos qué queda disponible';
+                if (destino) destino.parentElement.textContent = '¡Es hoy! Escríbenos y vemos qué queda disponible';
+                if (badge) badge.textContent = 'Es hoy: consulta disponibilidad';
             }
         })();
     </script>
@@ -1356,7 +1462,7 @@
                         <i class="fa-solid fa-guitar" aria-hidden="true"></i>
                     </div>
                     <h3 class="font-bold text-slate-800 group-hover:text-blue-700 text-sm">Peñas folclóricas</h3>
-                    <span class="text-xs text-slate-400 block mt-1 group-hover:text-blue-500">La clásica de septiembre</span>
+                    <span class="text-xs text-slate-500 block mt-1 group-hover:text-blue-600">La clásica de septiembre</span>
                 </a>
 
                 <a href="https://wa.me/56936470112?text=Hola%2C%20necesito%20ba%C3%B1os%20qu%C3%ADmicos%20para%20una%20kermesse" target="_blank"
@@ -1366,7 +1472,7 @@
                         <i class="fa-solid fa-store" aria-hidden="true"></i>
                     </div>
                     <h3 class="font-bold text-slate-800 group-hover:text-blue-700 text-sm">Kermesses y bingos</h3>
-                    <span class="text-xs text-slate-400 block mt-1 group-hover:text-blue-500">Centro de padres</span>
+                    <span class="text-xs text-slate-500 block mt-1 group-hover:text-blue-600">Centro de padres</span>
                 </a>
 
                 <a href="https://wa.me/56936470112?text=Hola%2C%20necesito%20ba%C3%B1os%20qu%C3%ADmicos%20para%20una%20fiesta%20de%20la%20primavera" target="_blank"
@@ -1376,7 +1482,7 @@
                         <i class="fa-solid fa-sun" aria-hidden="true"></i>
                     </div>
                     <h3 class="font-bold text-slate-800 group-hover:text-blue-700 text-sm">Fiestas de la primavera</h3>
-                    <span class="text-xs text-slate-400 block mt-1 group-hover:text-blue-500">Octubre y noviembre</span>
+                    <span class="text-xs text-slate-500 block mt-1 group-hover:text-blue-600">Octubre y noviembre</span>
                 </a>
 
                 <a href="https://wa.me/56936470112?text=Hola%2C%20necesito%20ba%C3%B1os%20qu%C3%ADmicos%20para%20el%20aniversario%20de%20un%20colegio" target="_blank"
@@ -1386,7 +1492,7 @@
                         <i class="fa-solid fa-cake-candles" aria-hidden="true"></i>
                     </div>
                     <h3 class="font-bold text-slate-800 group-hover:text-blue-700 text-sm">Aniversarios</h3>
-                    <span class="text-xs text-slate-400 block mt-1 group-hover:text-blue-500">Alianzas y jornadas</span>
+                    <span class="text-xs text-slate-500 block mt-1 group-hover:text-blue-600">Alianzas y jornadas</span>
                 </a>
 
                 <a href="https://wa.me/56936470112?text=Hola%2C%20necesito%20ba%C3%B1os%20qu%C3%ADmicos%20para%20una%20graduaci%C3%B3n" target="_blank"
@@ -1396,7 +1502,7 @@
                         <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
                     </div>
                     <h3 class="font-bold text-slate-800 group-hover:text-blue-700 text-sm">Graduaciones</h3>
-                    <span class="text-xs text-slate-400 block mt-1 group-hover:text-blue-500">Licenciaturas, fin de año</span>
+                    <span class="text-xs text-slate-500 block mt-1 group-hover:text-blue-600">Licenciaturas, fin de año</span>
                 </a>
 
                 <a href="https://wa.me/56936470112?text=Hola%2C%20necesito%20ba%C3%B1os%20qu%C3%ADmicos%20para%20un%20campeonato%20escolar" target="_blank"
@@ -1406,7 +1512,7 @@
                         <i class="fa-solid fa-futbol" aria-hidden="true"></i>
                     </div>
                     <h3 class="font-bold text-slate-800 group-hover:text-blue-700 text-sm">Campeonatos</h3>
-                    <span class="text-xs text-slate-400 block mt-1 group-hover:text-blue-500">Canchas y gimnasios</span>
+                    <span class="text-xs text-slate-500 block mt-1 group-hover:text-blue-600">Canchas y gimnasios</span>
                 </a>
 
             </div>
@@ -1494,7 +1600,7 @@
                     </ul>
 
                     <div class="mt-10">
-                        <a href="https://wa.me/56936470112?text=Hola,%20quiero%20cotizar%20ba%C3%B1os%20qu%C3%ADmicos%20para%20una%20pe%C3%B1a%20de%20colegio" class="text-brand-600 font-bold hover:underline flex items-center gap-1">
+                        <a href="https://wa.me/56936470112?text=Hola,%20quiero%20cotizar%20ba%C3%B1os%20qu%C3%ADmicos%20para%20una%20pe%C3%B1a%20de%20colegio" class="text-brand-600 font-bold hover:underline inline-flex items-center gap-1 min-h-[44px]">
                             <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Calcular los baños de mi peña
                             &rarr;
                         </a>
@@ -1502,8 +1608,8 @@
                 </div>
 
                 <div class="relative">
-                    <div class="aspect-[4/3] bg-slate-200 rounded-3xl overflow-hidden shadow-2xl relative group">
-                        <img height="400" width="1000" src="/images/banos-quimicos/banos-quimicos-Region-metropolitana.webp" alt="Baños químicos instalados por Destape Rápido para una peña de colegio en la Región Metropolitana"
+                    <div class="aspect-[4/5] bg-slate-200 rounded-3xl overflow-hidden shadow-2xl relative group">
+                        <img height="1000" width="800" src="/images/banos-quimicos/bano-quimico-kermesse-fiesta-jardin.webp" srcset="/images/banos-quimicos/bano-quimico-kermesse-fiesta-jardin-400.webp 400w, /images/banos-quimicos/bano-quimico-kermesse-fiesta-jardin.webp 800w" sizes="(min-width: 1024px) 560px, 100vw" alt="Baño químico azul instalado en un jardín decorado con globos y banderines para una kermesse"
                             class="object-cover w-full h-full group-hover:scale-105 transition duration-700" loading="lazy" decoding="async">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-8">
                             <div class="text-white">
@@ -1643,7 +1749,7 @@
                     <ul class="space-y-3 text-sm text-slate-600 mb-8">
                         <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500" aria-hidden="true"></i> Cálculo por peak de asistencia</li>
                         <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500" aria-hidden="true"></i> Varias unidades y puntos de instalación</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500" aria-hidden="true"></i> Mantención durante la jornada</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500" aria-hidden="true"></i> Mantención opcional durante la jornada</li>
                         <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500" aria-hidden="true"></i> Factura para el colegio, la corporación o el centro de padres</li>
                     </ul>
                     <a href="https://wa.me/56936470112?text=Hola%2C%20necesito%20ba%C3%B1os%20qu%C3%ADmicos%20para%20una%20kermesse%20de%20m%C3%A1s%20de%20300%20personas"
@@ -1766,6 +1872,18 @@
                     <button type="button"
                         class="w-full flex items-center justify-between px-6 py-5 font-bold text-slate-800 text-left"
                         onclick="toggleFaq(this)">
+                        ¿Cuánto cuesta arrendar baños químicos para la peña del colegio?
+                        <i class="fa-solid fa-chevron-down text-brand-600 transition-transform flex-shrink-0 ml-4" aria-hidden="true"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-5 text-slate-500 text-sm leading-relaxed">
+                        Depende de tres cosas: la <strong>comuna</strong>, los <strong>días de arriendo</strong> y la <strong>cantidad de unidades</strong>. Por eso te lo decimos por WhatsApp en minutos, con el valor por unidad y todo incluido: traslado, instalación, químico sanitizante, papel y retiro. Con 2 o más unidades el valor por unidad baja. No pedimos anticipo: se paga al recibir los baños, en efectivo o transferencia, y con factura electrónica a nombre del centro de padres o del colegio si la necesitas.
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm">
+                    <button type="button"
+                        class="w-full flex items-center justify-between px-6 py-5 font-bold text-slate-800 text-left"
+                        onclick="toggleFaq(this)">
                         ¿Cuántos baños químicos necesito para la peña del colegio?
                         <i class="fa-solid fa-chevron-down text-brand-600 transition-transform flex-shrink-0 ml-4" aria-hidden="true"></i>
                     </button>
@@ -1880,13 +1998,14 @@
                                 <select id="fc-uso" name="uso" required
                                     class="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition bg-white appearance-none">
                                     <option value="" disabled selected>Selecciona una opción</option>
-                                    <option value="Obra de construcción">Obra de construcción</option>
-                                    <option value="Evento o fiesta">Evento o fiesta (matrimonio, cumpleaños, etc.)</option>
-                                    <option value="Camping o parcela">Camping o parcela</option>
-                                    <option value="Feria o mercado">Feria o mercado</option>
-                                    <option value="Municipio o espacio público">Municipio / espacio público</option>
-                                    <option value="Industria o campamento">Industria o campamento minero</option>
+                                    <option value="Peña folclórica">Peña folclórica</option>
+                                    <option value="Kermesse o bingo">Kermesse o bingo</option>
+                                    <option value="Fiesta de la primavera">Fiesta de la primavera</option>
+                                    <option value="Aniversario del colegio">Aniversario del colegio</option>
+                                    <option value="Graduación o licenciatura">Graduación o licenciatura</option>
+                                    <option value="Campeonato escolar">Campeonato escolar</option>
                                     <option value="Otro">Otro</option>
+
                                 </select>
                             </div>
                             <div>
@@ -1928,7 +2047,7 @@
                         <div>
                             <label for="fc-mensaje" class="block text-sm font-bold text-slate-700 mb-2">
                                 <i class="fa-solid fa-comment text-brand-600 mr-1.5 text-xs" aria-hidden="true"></i> Información adicional
-                                <span class="text-slate-400 font-normal">(opcional)</span>
+                                <span class="text-slate-500 font-normal">(opcional)</span>
                             </label>
                             <textarea id="fc-mensaje" name="mensaje" rows="3" placeholder="Duración del arriendo, acceso al lugar, necesitan factura, etc."
                                 class="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition resize-none"></textarea>
@@ -1936,12 +2055,12 @@
 
                         <!-- Submit -->
                         <button type="submit" id="fc-submit"
-                            class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-4 rounded-xl transition transform hover:-translate-y-0.5 shadow-lg shadow-green-600/20 flex items-center justify-center gap-3 text-base">
+                            class="w-full bg-green-700 hover:bg-green-800 text-white font-bold py-4 rounded-xl transition transform hover:-translate-y-0.5 shadow-lg shadow-green-600/20 flex items-center justify-center gap-3 text-base">
                             <i class="fa-brands fa-whatsapp text-xl" aria-hidden="true"></i>
                             Enviar Cotización por WhatsApp
                         </button>
 
-                        <p class="text-center text-xs text-slate-400">
+                        <p class="text-center text-xs text-slate-500">
                             <i class="fa-solid fa-lock mr-1" aria-hidden="true"></i> Tus datos son usados solo para contactarte. Sin spam.
                         </p>
 
@@ -2103,7 +2222,7 @@
                 <i class="fa-solid fa-phone animate-pulse" aria-hidden="true"></i> Llamar
             </a>
             <a href="https://wa.me/56936470112?text=Hola,%20quiero%20cotizar%20ba%C3%B1os%20qu%C3%ADmicos%20para%20una%20actividad%20de%20colegio"
-                class="flex-1 bg-green-600 text-white font-bold rounded-xl py-3 flex items-center justify-center gap-2 active:scale-95 transition shadow-lg shadow-green-500/20"
+                class="flex-1 bg-green-700 text-white font-bold rounded-xl py-3 flex items-center justify-center gap-2 active:scale-95 transition shadow-lg shadow-green-500/20"
                 aria-label="Cotizar por WhatsApp">
                 <div class="relative flex items-center justify-center">
                     <span class="wa-notification-dot on-icon" id="wa-dot-mobile">1</span>
@@ -2242,7 +2361,7 @@
             const msg      = document.getElementById('fc-mensaje').value.trim();
 
             // Mensaje para WhatsApp
-            let texto = `Hola, quiero cotizar arriendo de baños químicos 🚽\n\n`;
+            let texto = `Hola, quiero cotizar baños químicos para una actividad de colegio 🚽\n\n`;
             texto += `👤 Nombre: ${nombre}\n`;
             texto += `📱 Teléfono: ${telefono}\n`;
             texto += `🔧 Uso: ${uso}\n`;
@@ -2278,14 +2397,14 @@
                 // 2. Abrir WhatsApp siempre
                 window.open('https://wa.me/56936470112?text=' + encodeURIComponent(texto), '_blank');
                 btn.innerHTML = '<i class="fa-solid fa-circle-check text-lg" aria-hidden="true"></i> ¡Enviado! Revisa WhatsApp';
-                btn.classList.remove('bg-green-600', 'hover:bg-green-700');
+                btn.classList.remove('bg-green-700', 'hover:bg-green-800');
                 btn.classList.add('bg-slate-700');
                 document.getElementById('form-cotizacion').reset();
 
                 // Restaurar botón después de 4 seg
                 setTimeout(() => {
                     btn.innerHTML = '<i class="fa-brands fa-whatsapp text-xl" aria-hidden="true"></i> Enviar Cotización por WhatsApp';
-                    btn.classList.add('bg-green-600', 'hover:bg-green-700');
+                    btn.classList.add('bg-green-700', 'hover:bg-green-800');
                     btn.classList.remove('bg-slate-700');
                     btn.disabled = false;
                 }, 4000);
@@ -2307,30 +2426,72 @@
                 });
             }
 
-            // ── Panel cotiza rápido ──
-            let selectedQty = '';
+            // ── Calculadora de unidades (gente + días → unidades + WhatsApp prellenado) ──
+            const panel = document.getElementById('calculadora');
             const waBtn = document.getElementById('quick-wa-btn');
+            const waLabel = document.getElementById('quick-wa-label');
             const usoEl = document.getElementById('quick-uso');
-            const qtyBtns = document.querySelectorAll('.qty-btn');
+            const resEl = document.getElementById('calc-unidades');
+            const ratio = panel ? parseInt(panel.dataset.ratio, 10) || 40 : 40;
+            const msgBase = panel ? panel.dataset.msgBase : 'Hola, quiero cotizar baños químicos';
+            const sugiereAccesible = panel ? panel.dataset.accesible === '1' : false;
+            let gente = 0, genteLabel = '', diasLabel = '';
+
+            function unidades() {
+                if (!gente) return 0;
+                return Math.max(1, Math.ceil(gente / ratio));
+            }
+
+            function render() {
+                const u = unidades();
+                if (!resEl) return;
+                if (!gente) {
+                    resEl.textContent = 'te decimos cuántas unidades necesitas';
+                } else if (gente >= 300) {
+                    resEl.textContent = '8 unidades o más: lo calculamos contigo por WhatsApp';
+                } else {
+                    resEl.textContent = 'te recomendamos ' + u + (u === 1 ? ' unidad' : ' unidades')
+                        + (sugiereAccesible && gente >= 100 ? ' (+1 accesible si es abierta al público)' : '');
+                }
+                if (waLabel) {
+                    waLabel.textContent = (gente && gente < 300)
+                        ? 'Cotizar ' + u + (u === 1 ? ' unidad' : ' unidades') + ' por WhatsApp'
+                        : 'Cotizar por WhatsApp';
+                }
+                updateWaLink();
+            }
 
             function updateWaLink() {
                 const uso = usoEl ? usoEl.value : '';
-                let msg = 'Hola, quiero cotizar baños químicos para una actividad de colegio';
-                if (selectedQty) msg += ` (${selectedQty})`;
-                if (uso) msg += ` para ${uso}`;
-                msg += '. ¿Me pueden dar un precio?';
+                let msg = msgBase;
+                const datos = [];
+                if (genteLabel) datos.push(genteLabel);
+                if (diasLabel) datos.push(diasLabel);
+                if (datos.length) msg += ': ' + datos.join(', ');
+                if (uso) msg += (datos.length ? ', ' : ': ') + 'para ' + uso;
+                msg += '.';
+                const u = unidades();
+                if (gente >= 300) msg += ' Necesito que me ayuden a calcular las unidades.';
+                else if (gente) msg += ' Según su calculadora ' + (u === 1 ? 'sería 1 unidad' : 'serían ' + u + ' unidades') + '.';
+                msg += ' ¿Me pueden dar el valor?';
                 if (waBtn) waBtn.href = 'https://wa.me/56936470112?text=' + encodeURIComponent(msg);
             }
 
-            qtyBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    qtyBtns.forEach(b => b.classList.remove('selected'));
-                    btn.classList.add('selected');
-                    selectedQty = btn.dataset.qty || '';
-                    updateWaLink();
+            function activarChips(selector, onPick) {
+                const chips = document.querySelectorAll(selector);
+                chips.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        chips.forEach(b => { b.classList.remove('selected'); b.setAttribute('aria-pressed', 'false'); });
+                        btn.classList.add('selected');
+                        btn.setAttribute('aria-pressed', 'true');
+                        onPick(btn);
+                        render();
+                    });
                 });
-            });
+            }
 
+            activarChips('#gente-group .qty-btn', btn => { gente = parseInt(btn.dataset.gente, 10) || 0; genteLabel = btn.dataset.label || ''; });
+            activarChips('#dias-group .qty-btn', btn => { diasLabel = btn.dataset.label || ''; });
             if (usoEl) usoEl.addEventListener('change', updateWaLink);
         });
     </script>
