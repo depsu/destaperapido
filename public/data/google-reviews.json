@@ -1,48 +1,50 @@
 {
-  "placeName": "Destape Rápido",
-  "rating": 5,
-  "total": 30,
-  "mapsUrl": "https://maps.google.com/?cid=6979963907347696266&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
-  "reviews": [
-    {
-      "author": "Eduardo Gonzalez V.",
-      "photo": "https://lh3.googleusercontent.com/a-/ALV-UjWJaDEviYYu9xiJPQdzAwxR_P0H1znUjNtZiLyxAhpRgzq0gMy6=s128-c0x00000000-cc-rp-mo",
-      "rating": 5,
-      "text": "Excelente servicio muy profesional. Rápido.",
-      "relativeTime": "Hace 2 meses",
-      "publishTime": "2026-05-02T22:04:28.017994587Z"
-    },
-    {
-      "author": "MANUEL MORALES",
-      "photo": "https://lh3.googleusercontent.com/a/ACg8ocJqzRZGNUiyiVFKvL_1GiZ6gLARCLRGVRAMzzmHoFevu4LV-w=s128-c0x00000000-cc-rp-mo",
-      "rating": 5,
-      "text": "Un gran servicio , llegaron súper rápidos , con mucha disposición respetuosos , la verdad son muy buenos en el servicio lo recomiendo al 100 %",
-      "relativeTime": "Hace 1 mes",
-      "publishTime": "2026-06-11T14:00:26.691575046Z"
-    },
-    {
-      "author": "Catalina Acevedo",
-      "photo": "https://lh3.googleusercontent.com/a-/ALV-UjUDmLakppcMzUivikww01KfjQopOaguxwul3RE82fLFStk3SCLG=s128-c0x00000000-cc-rp-mo",
-      "rating": 5,
-      "text": "Excelente servicio de lavado de fosas. Trabajo rápido, limpio y muy profesional. Cumplieron con los tiempos acordados y dejaron todo en perfecto estado. 100% recomendado",
-      "relativeTime": "Hace 5 meses",
-      "publishTime": "2026-01-23T21:26:12.773864861Z"
-    },
-    {
-      "author": "Sebastian Andres Poblete Tapia",
-      "photo": "https://lh3.googleusercontent.com/a-/ALV-UjUQDmCu1dGCftlKDOMSQZo8OQawObssJEi2WwHDqH2fUXCvNA=s128-c0x00000000-cc-rp-mo",
-      "rating": 5,
-      "text": "Muye buen servicio",
-      "relativeTime": "Hace 5 meses",
-      "publishTime": "2026-01-22T13:13:00.157186221Z"
-    },
-    {
-      "author": "Felipe Reyes",
-      "photo": "https://lh3.googleusercontent.com/a/ACg8ocLyJugzO-7ao2l_jpYJ5KmH0yAoadvXYQs5lOzhDZIZzYXYJw=s128-c0x00000000-cc-rp-mo",
-      "rating": 5,
-      "text": "Excelente servicio",
-      "relativeTime": "Hace 2 meses",
-      "publishTime": "2026-05-06T13:33:02.341115971Z"
-    }
-  ]
+ "placeName": "Destape Rápido",
+ "rating": 5,
+ "total": 41,
+ "mapsUrl": "https://maps.google.com/?cid=6979963907347696266&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+ "reviews": [
+  {
+   "author": "Alejandro Rebolledo",
+   "photo": "https://lh3.googleusercontent.com/a-/ALV-UjXHYC51t4ZACFryfd33yWM7bn8VNljAHRqORIY7Sd4VaRZkJhG1=w72-h72-p-rp-mo-br100",
+   "rating": 5,
+   "text": "Excelente servicio. Muy amable y completo el servicio",
+   "relativeTime": "Hace un mes"
+  },
+  {
+   "author": "Daniel Chamorro",
+   "photo": "https://lh3.googleusercontent.com/a-/ALV-UjXWMT3xQKf204BheXNwA7b578c7x94nihPhhxGsOrcIOXbEIy97=w72-h72-p-rp-mo-br100",
+   "rating": 5,
+   "text": "Excelente servicio! Muy amable y confiable. Nos ayudó a descargar la cámara de nuestra casa y nos recomendó una solución adecuada a nuestro presupuesto.",
+   "relativeTime": "Hace un mes"
+  },
+  {
+   "author": "Cristian riquelme riquelme",
+   "photo": "https://lh3.googleusercontent.com/a/ACg8ocIBty-j9Csn9GWfuAY3Zq0NOjt8UCf5JKFDnJCBl8qmpFJH6A=w72-h72-p-rp-mo-br100",
+   "rating": 5,
+   "text": "Un gran servicio, excelentes profesionales y el factor humano siempre presente. 👏🏼👏🏼👏🏼",
+   "relativeTime": "Hace un mes"
+  },
+  {
+   "author": "MANUEL MORALES",
+   "photo": "https://lh3.googleusercontent.com/a/ACg8ocJqzRZGNUiyiVFKvL_1GiZ6gLARCLRGVRAMzzmHoFevu4LV-w=w72-h72-p-rp-mo-br100",
+   "rating": 5,
+   "text": "Un gran servicio , llegaron súper rápidos , con mucha disposición respetuosos , la verdad son muy buenos en el servicio lo recomiendo al 100 %",
+   "relativeTime": "Hace 2 meses"
+  },
+  {
+   "author": "Claudio Córdova",
+   "photo": "https://lh3.googleusercontent.com/a/ACg8ocJe7fy48Fv2jtXXPufADjzosguTfmVCWEJoFhanA3skOZWb5w=w72-h72-p-rp-mo-br100",
+   "rating": 5,
+   "text": "Excelente servicio! Rápida respuesta con muy buen equipamiento, totalmente recomendable!",
+   "relativeTime": "Hace 2 meses"
+  },
+  {
+   "author": "Oscar Rodriguez",
+   "photo": "https://lh3.googleusercontent.com/a-/ALV-UjUR7BKcYuJfgrEDFwRrPzuuOsQ25hf_aCAR1NBMHlPHL3zf0gTvBQ=w72-h72-p-rp-mo-br100",
+   "rating": 5,
+   "text": "Buena comunicación. Respuesta rápida, presupuesto inmediato y entrega puntual. Precio muy conveniente.",
+   "relativeTime": "Hace 3 meses"
+  }
+ ]
 }
