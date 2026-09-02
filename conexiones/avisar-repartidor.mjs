@@ -25,11 +25,12 @@ import { logEnvio } from '/Users/alejandroriveracarrasco/SaSS/destaperapido/what
 // migrada por el espejo, y la del cliente existe porque el despacho nace de su chat.
 const PANEL_URL = process.env.DIXDYBOT_PANEL_URL || 'http://127.0.0.1:8793';
 
-async function enviarPorDixdybot(convId, textoMensaje) {
+async function enviarPorDixdybot(convId, textoMensaje, citaDe) {
   const res = await fetch(`${PANEL_URL}/api/chats/${encodeURIComponent(convId)}/enviar`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ texto: textoMensaje }),
+    body: JSON.stringify({ texto: textoMensaje,
+      ...(citaDe === undefined ? {} : { citaDe }) }),
   }).catch((e) => { throw new Error(`el panel dixdybot no contesta (${e.message})`); });
   const cuerpo = await res.json().catch(() => ({}));
   if (!res.ok || cuerpo.ok !== true) {
@@ -45,6 +46,37 @@ async function enviarPorDixdybot(convId, textoMensaje) {
   }
   return cuerpo;
 }
+
+/* RESPONDER CITANDO EL AVISO ORIGINAL (2-sep, pedido de Alejandro: «auto responder a
+   nuestros mensajes, así él tiene el contexto entero»): un ajuste sobre una entrega sale
+   como RESPUESTA de WhatsApp al aviso 🚚/🔄 de ESA entrega — el repartidor toca la cajita
+   y ve de cuál se habla. Se busca en el hilo el último mensaje nuestro que nombre al
+   cliente o la cola del id. La cita es un extra: si algo falla, el aviso sale igual. */
+async function idAvisoOriginal(convIdRep, pistas) {
+  try {
+    const res = await fetch(`${PANEL_URL}/api/chats/${encodeURIComponent(convIdRep)}`);
+    if (!res.ok) return undefined;
+    const { mensajes } = await res.json();
+    if (!Array.isArray(mensajes)) return undefined;
+    const limpias = pistas.map((p) => String(p || '').trim().toLowerCase()).filter((p) => p.length >= 4);
+    if (limpias.length === 0) return undefined;
+    for (let i = mensajes.length - 1; i >= 0; i--) {
+      const m = mensajes[i];
+      if (m.de !== 'tu' || m.id === undefined || m.id === null) continue;
+      const t = String(m.texto || '').toLowerCase();
+      if (!/entrega|🚚|🔄/.test(t)) continue;
+      if (limpias.some((p) => t.includes(p))) return Number(m.id);
+    }
+  } catch { /* sin cita no se cae nada */ }
+  return undefined;
+}
+
+/* EL LINK CORTO CON ANCLA (2-sep): destaperapido.cl/entregas redirige a la página del
+   repartidor, y #<cola del id> hace que SU tarjeta se centre y pulse unos segundos. */
+const linkEntrega = (entregaId) => {
+  const cola = String(entregaId || '').replace(/[^0-9a-z]/gi, '').slice(-4);
+  return cola === '' ? 'destaperapido.cl/entregas' : `destaperapido.cl/entregas#${cola}`;
+};
 
 const crudo = process.argv[process.argv.length - 1] ?? '{}';
 let args;
@@ -139,7 +171,8 @@ if (notaCambio !== '' && !esCancelacion) {
     ? `🔄 CAMBIO en una entrega ya agendada${quien ? ` (${quien}` + (donde ? ` — ${donde}` : '') + ')' : ''}:`
     : `📣 Aviso${quien ? ` sobre ${quien}` + (donde ? ` (${donde})` : '') : ''}:`;
   const avisoNota = `${cabeza}
-${notaCambio}`;
+${notaCambio}`
+    + (entregaId !== null ? `\n\n📋 Su tarjeta: ${linkEntrega(entregaId)}` : '');
   if (dry) {
     console.log('— ASÍ SALDRÍA LA NOTA AL REPARTIDOR (prueba en seco) —');
     console.log(avisoNota);
@@ -152,10 +185,13 @@ ${notaCambio}`;
   const mNota = /^REPARTIDOR_NUMERO=([0-9+ ]+)/m.exec(envNota);
   const repTelNota = mNota ? mNota[1].replace(/\D/g, '') : '';
   if (!repTelNota) { console.error('no hay número de repartidor configurado'); process.exit(1); }
-  await enviarPorDixdybot(`wa-baileys:${repTelNota}@s.whatsapp.net`, avisoNota);
+  const convRepNota = `wa-baileys:${repTelNota}@s.whatsapp.net`;
+  const citaNota = await idAvisoOriginal(convRepNota,
+    [quien, String(entregaId || '').slice(-4)]);
+  await enviarPorDixdybot(convRepNota, avisoNota, citaNota);
   logEnvio({ jid: jid || 'panel-dixdybot', tipo: 'entrega',
     detalle: { repartidor: repTelNota, nota_cambio: notaCambio,
-      entrega_id: entregaId || null, origen: 'dixdybot-nota' } });
+      entrega_id: entregaId || null, cita: citaNota ?? null, origen: 'dixdybot-nota' } });
   console.log(`✓ Nota avisada al repartidor (+${repTelNota})`
     + (entregaId !== null ? ' sobre su entrega ya agendada'
       : ' — ojo: este chat no tiene entrega en el sistema todavía')
@@ -373,8 +409,10 @@ try {
 
   const prep = await prepararEntrega(d, jid, nombre, texto(args.telefono_cliente), { dry });
   const avisoOverride = texto(args.mensaje_repartidor);
-  const aviso = avisoOverride !== '' ? avisoOverride
-    : (esCorreccion ? mensajeDeCambio() : prep.resumen);
+  const idParaLink = prep.entrega?.id || d.entrega_id || null;
+  const aviso = (avisoOverride !== '' ? avisoOverride
+    : (esCorreccion ? mensajeDeCambio() : prep.resumen))
+    + (idParaLink !== null ? `\n\n📋 Su tarjeta: ${linkEntrega(idParaLink)}` : '');
 
   if (dry) {
     console.log('— ASÍ SALDRÍA EL AVISO AL REPARTIDOR (prueba en seco, nada subió) —');
@@ -397,7 +435,11 @@ try {
     process.exit(1);
   }
   const convRepartidor = `wa-baileys:${prep.repTel.replace(/\D/g, '')}@s.whatsapp.net`;
-  await enviarPorDixdybot(convRepartidor, aviso);
+  // un CAMBIO sale citando el aviso original de esa entrega (contexto entero de un toque)
+  const citaCambio = esCorreccion
+    ? await idAvisoOriginal(convRepartidor, [nombre, String(idParaLink || '').slice(-4)])
+    : undefined;
+  await enviarPorDixdybot(convRepartidor, aviso, citaCambio);
   // la confirmación al cliente sale por el mismo canal; si falla, el aviso al
   // repartidor YA salió — se dice claro en vez de fingir que falló todo
   let confirmacionOk = false;

@@ -17,6 +17,11 @@
       "permanent": true
     },
     {
+      "source": "/entregas",
+      "destination": "https://depsu.github.io/cotizaciones-destape-rapido/resumen-repartidor/listado.html",
+      "permanent": false
+    },
+    {
       "source": "/Archivo/:path*",
       "destination": "/",
       "permanent": true
