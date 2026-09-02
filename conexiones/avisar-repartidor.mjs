@@ -163,6 +163,65 @@ function guardarEnlace(jidCliente, entregaId) {
 // aviso por WhatsApp al repartidor con el contexto de la entrega enlazada (si existe)
 // y termina. No edita la tarjeta del sistema — eso sigue siendo del despacho-corrección.
 const notaCambio = texto(args.nota_cambio);
+/* RESPUESTA CITADA → NOTA EN LA TARJETA (2-sep, pedido de Alejandro: «responder al
+   mensaje del repartidor y dejarlo como nota en el sistema… que seleccione el mensaje
+   donde sale la ficha»). El gancho `al_citar` del panel nos llama con `cita_texto` (el
+   aviso 🚚/🔄 citado) y `nota_cambio` (lo que el dueño escribió). El WhatsApp YA salió
+   como respuesta citada — acá solo queda escribir la nota en la tarjeta del sistema.
+   La entrega se ubica por la cola del link «entregas#xxxx» del aviso citado; los avisos
+   viejos sin link caen al nombre del cliente. */
+const citaTexto = texto(args.cita_texto);
+if (citaTexto !== '' && notaCambio !== '' && !esCancelacion) {
+  const { execFileSync } = await import('node:child_process');
+  // tres pistas, en orden: el link «entregas#xxxx» (avisos nuevos) · el teléfono del
+  // cliente en la ficha (el id de la entrega termina en su cola) · el nombre del cliente
+  const mTel = /Tel[eé]fono cliente:\s*\+?([\d\s]{8,15})/i.exec(citaTexto);
+  const colaTel = mTel ? mTel[1].replace(/\D/g, '').slice(-4) : '';
+  const cola = (/entregas#([a-z0-9]{4})/i.exec(citaTexto) || [])[1] || colaTel;
+  const mNombre = /(?:ENTREGA|CAMBIO en la entrega)\s*—\s*([^\n(]+)/i.exec(citaTexto);
+  const nombreCita = mNombre ? mNombre[1].trim() : '';
+  if (cola === '' && nombreCita === '') {
+    console.log('El mensaje citado no trae ni el link de la tarjeta ni el nombre del '
+      + 'cliente: la nota salió por WhatsApp pero no supe a qué tarjeta anotarla.');
+    process.exit(0);
+  }
+  try {
+    const salida = execFileSync('python3', ['-c', [
+      'import sys, json, urllib.request, urllib.parse',
+      'from datetime import datetime',
+      `sys.path.insert(0, '/Users/alejandroriveracarrasco/SaSS/destaperapido/cotizaciones-destape-rapido/resumen-repartidor/scripts')`,
+      'import sync_entregas_supabase as sync',
+      'import generar_listado as gl',
+      `cola = ${JSON.stringify(cola)}`,
+      `nombre = ${JSON.stringify(nombreCita)}`,
+      `nota = ${JSON.stringify(notaCambio)}`,
+      'q = f"id=like.*{cola}" if cola else f"id=like.*{urllib.parse.quote(nombre.lower().replace(chr(32), chr(45)))}*"',
+      'url = f"{gl.SUPABASE_URL}/rest/v1/entrega?{q}&eliminado=eq.false&select=id,informado_at,data&order=informado_at.desc&limit=1"',
+      'req = urllib.request.Request(url, headers={"apikey": gl.SUPABASE_ANON_KEY, "authorization": "Bearer " + gl.SUPABASE_ANON_KEY})',
+      'filas = json.load(urllib.request.urlopen(req, timeout=20))',
+      'if not filas:',
+      '    print("SIN-TARJETA"); raise SystemExit',
+      'e = filas[0]["data"]',
+      'sello = datetime.now().strftime("%d-%b %H:%M")',
+      'previa = str(e.get("notas") or "").strip()',
+      'e["notas"] = (previa + " · " if previa else "") + f"📝 {nota} ({sello})"',
+      'sync.upsert([sync.fila_de(e, filas[0]["informado_at"])])',
+      'print("ANOTADA:" + filas[0]["id"])',
+    ].join('\n')], { encoding: 'utf8', timeout: 30_000 }).trim();
+    if (salida.includes('SIN-TARJETA')) {
+      console.log('No encontré la tarjeta de esa entrega en el sistema — la nota salió '
+        + 'por WhatsApp igual, pero anótala a mano si debe quedar en la página.');
+    } else {
+      const idAnotada = (salida.split('ANOTADA:')[1] || '').trim();
+      console.log(`✓ Nota escrita en la tarjeta del sistema (${idAnotada}) — el repartidor `
+        + `la ve en destaperapido.cl/entregas#${idAnotada.replace(/[^0-9a-z]/gi, '').slice(-4)}`);
+    }
+  } catch (e) {
+    console.log(`⚠️ La nota salió por WhatsApp, pero no pude escribirla en la tarjeta: `
+      + String(e.message || e).slice(0, 180));
+  }
+  process.exit(0);
+}
 if (notaCambio !== '' && !esCancelacion) {
   const entregaId = enlaceDe(jid);
   const quien = texto(args.nombre);
