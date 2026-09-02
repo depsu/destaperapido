@@ -2365,7 +2365,7 @@
                 if (selectedQty) msg += ` (${selectedQty})`;
                 if (uso) msg += ` para ${uso}`;
                 msg += '. ¿Me pueden dar un precio?';
-                if (waBtn) waBtn.href = 'https://wa.me/56936470112?text=Hola,%20quiero%20cotizar%20arriendo%20de%20ba%C3%B1os%20qu%C3%ADmicos' + encodeURIComponent(msg);
+                if (waBtn) waBtn.href = 'https://wa.me/56936470112?text=' + encodeURIComponent(msg);
             }
 
             qtyBtns.forEach(btn => {
