@@ -134,6 +134,18 @@ def hallazgos(db: sqlite3.Connection) -> list[tuple[str, str]]:
                         f'«{v("item_extra")}» pero el valor o la fecha de limpieza siguen '
                         f'vivos — un PDF podría imprimir «Ninguno — $X». Vaciar los campos.'))
 
+        # 6 · FECHA DE ENTREGA VENCIDA en pedido vivo (3-sep, caso Joel: el cliente movió
+        # la entrega al lunes, el anotador no escribió el cambio y la coletilla del bot
+        # dijo «nos vemos HOY» — el cliente tuvo que corregir). Una fecha en el pasado en
+        # un pedido activo = ficha desactualizada o entrega no cerrada: alguien debe mirar.
+        hoy_iso = time.strftime('%Y-%m-%d')
+        fe = v('fecha_entrega')
+        if re.match(r'^\d{4}-\d{2}-\d{2}$', fe) and fe < hoy_iso:
+            out.append((f'fechavencida-{pid}-{fe}',
+                        f'🕳️ FECHA VENCIDA: {pid} tiene la entrega anotada para {fe} (ya '
+                        f'pasó) y sigue en etapa activa — o la ficha quedó desactualizada '
+                        f'tras un cambio del cliente, o la entrega no se cerró. Revisar el chat.'))
+
         try:
             conversado = float(re.sub(r'\D', '', v('monto_conversado')) or 0)
         except Exception:
