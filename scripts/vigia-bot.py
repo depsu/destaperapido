@@ -36,6 +36,11 @@ PROMESA_MIN = 30        # minutos de gracia antes de acusar una promesa sin cump
 # Solo la promesa FIRME («de inmediato/al tiro»): la oferta condicionada («le mando la
 # cotización, ¿a qué correo?») no cuenta — el cliente aún debe algo (1ª corrida: Humberto).
 RE_PROMESA = re.compile(r'se l[ao] (?:mando|env[ií]o) (?:de inmediato|al tiro)', re.I)
+# 5 · PLANTILLA DE DEGRADACIÓN sin respuesta real después (3-sep, caso Miguel: el cerebro
+# tuvo 20 min de timeouts, 3 clientes recibieron «Dame un momento, ya te confirmo» y
+# nadie volvió a escribirles). El texto vive en cerebro/ajustes; se cazan las conocidas.
+RE_PLANTILLA = re.compile(r'^Dame un momento, ya te confirmo\.?$'
+                          r'|^D[eé]jame confirmarlo bien y te escribo al tiro\.?$', re.I)
 RE_CUMPLIDA = re.compile(r'Cotizaci[oó]n formal|Cotizaci[oó]n enviada|cotizaci[oó]n en PDF', re.I)
 RE_NEGADO = re.compile(r'^(no|ninguno|ninguna|nada|sin\s+\S*|0|-)$', re.I)
 
@@ -80,6 +85,27 @@ def hallazgos(db: sqlite3.Connection) -> list[tuple[str, str]]:
                         f'cotización «de inmediato» hace más de {PROMESA_MIN} min y no hay '
                         f'rastro del envío. Revisar el chat y mandarla.'))
         _ = despues  # (conteo disponible si se quiere afinar el criterio)
+
+    # 5 · plantilla de degradación sin respuesta real después (el cliente quedó colgado)
+    for mid, ts, conv_num, conv_id, nombre in filas:
+        texto = db.execute('SELECT texto FROM mensajes WHERE id = ?', (mid,)).fetchone()[0]
+        if not RE_PLANTILLA.match(texto.strip()):
+            continue
+        real_despues = db.execute(
+            """SELECT count(*) FROM mensajes WHERE conversacion_id = ? AND ts > ?
+                AND tipo = 'saliente'""", (conv_num, ts)).fetchone()[0]
+        # una DUDA abierta cubre el caso: el «te confirmo» de las dudas tiene dueño
+        duda_viva = db.execute(
+            """SELECT count(*) FROM dudas WHERE conversacion_id = ?
+                AND fase != 'resuelta' AND creada_ts > ?""",
+            (conv_num, ts - 300_000)).fetchone()[0]
+        if real_despues == 0 and duda_viva == 0:
+            quien = nombre or conv_id[-12:]
+            out.append((f'colgado-{mid}',
+                        f'🕳️ CLIENTE COLGADO: a {quien} se le dijo «{texto.strip()[:45]}» '
+                        f'hace más de {PROMESA_MIN} min y nadie volvió a escribirle (ni hay '
+                        f'duda abierta) — típico de una caída del cerebro. Forzar el turno '
+                        f'con «que el bot responda ahora» o contestarle a mano.'))
 
     # 2-3-4 · invariantes de ficha en pedidos activos
     pedidos = db.execute(
