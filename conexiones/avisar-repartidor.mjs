@@ -499,6 +499,34 @@ try {
     ? await idAvisoOriginal(convRepartidor, [nombre, String(idParaLink || '').slice(-4)])
     : undefined;
   await enviarPorDixdybot(convRepartidor, aviso, citaCambio);
+  /* EL OVERRIDE SIGUE AL RE-DESPACHO (3-sep, caso Joel): la vista del repartidor pinta
+     la fecha de `entrega_estado` (la movida manual del panel) POR ENCIMA de la tarjeta.
+     Un re-despacho con fecha nueva dejaba ese override viejo mandando para siempre: la
+     tarjeta decía lunes 7 y la vista seguía en jueves 3 (o al revés). El despacho es la
+     palabra más fresca del negocio: si hay override con OTRA fecha, se alinea. */
+  if (esCorreccion && idParaLink !== null && fecha !== '' && !dry) {
+    try {
+      const { execFileSync } = await import('node:child_process');
+      execFileSync('python3', ['-c', [
+        'import sys, json, urllib.request',
+        `sys.path.insert(0, '/Users/alejandroriveracarrasco/SaSS/destaperapido/cotizaciones-destape-rapido/resumen-repartidor/scripts')`,
+        'import generar_listado as gl',
+        `eid = ${JSON.stringify(idParaLink)}`,
+        `fnueva = ${JSON.stringify(fecha)}`,
+        'h = {"apikey": gl.SUPABASE_ANON_KEY, "authorization": "Bearer " + gl.SUPABASE_ANON_KEY}',
+        'req = urllib.request.Request(f"{gl.SUPABASE_URL}/rest/v1/entrega_estado?id=eq.{eid}&select=fecha", headers=h)',
+        'filas = json.load(urllib.request.urlopen(req, timeout=20))',
+        'if filas and filas[0].get("fecha") and filas[0]["fecha"] != fnueva:',
+        '    cuerpo = json.dumps({"fecha": fnueva}).encode()',
+        '    p = urllib.request.Request(f"{gl.SUPABASE_URL}/rest/v1/entrega_estado?id=eq.{eid}", data=cuerpo, method="PATCH", headers={**h, "content-type": "application/json", "prefer": "return=minimal"})',
+        '    urllib.request.urlopen(p, timeout=20)',
+        '    print("override " + filas[0]["fecha"] + " -> " + fnueva)',
+      ].join('\n')], { timeout: 30_000 });
+    } catch (e) {
+      console.log(`⚠️ no pude alinear la fecha manual de la vista del repartidor: `
+        + String(e.message || e).slice(0, 150) + ' — revísala en la página');
+    }
+  }
   // la confirmación al cliente sale por el mismo canal; si falla, el aviso al
   // repartidor YA salió — se dice claro en vez de fingir que falló todo
   let confirmacionOk = false;
