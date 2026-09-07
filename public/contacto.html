@@ -1142,6 +1142,7 @@
                                     fb.textContent = '';
                                     var data = Object.fromEntries(new FormData(form).entries());
                                     if (data.website) return; // honeypot
+                                    data.page = location.href; // página de origen, va en el asunto del correo
                                     if (!data.name || !data.phone) {
                                         fb.className = 'text-sm font-bold p-3 rounded-lg bg-red-50 text-red-700';
                                         fb.textContent = 'Nombre y teléfono son obligatorios.';

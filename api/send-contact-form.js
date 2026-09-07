@@ -3,6 +3,23 @@ import { Resend } from 'resend';
 const resend = new Resend(process.env.RESEND_API_KEY);
 const ownerEmailsString = process.env.OWNER_EMAILS;
 
+// Página desde la que se envió el formulario: lo que declara el propio formulario
+// (body.page = location.href) o, si falta, el Referer del navegador (mismo origen → URL completa).
+export function paginaOrigen(headers, body) {
+  const declarada = body && typeof body.page === 'string' ? body.page : '';
+  const referer = (headers && (headers.referer || headers.referrer)) || '';
+  const raw = (declarada || referer).trim();
+  if (!raw) return { url: '', etiqueta: '' };
+  try {
+    const u = new URL(raw);
+    const ruta = u.pathname.replace(/\.html$/, '').replace(/\/$/, '');
+    const host = u.host.replace(/^www\./, '');
+    return { url: u.href, etiqueta: ruta ? host + ruta : host + ' (portada)' };
+  } catch {
+    return { url: '', etiqueta: '' };
+  }
+}
+
 function sanitize(v) {
   if (typeof v !== 'string') return '';
   return v
@@ -18,7 +35,8 @@ export default async function handler(request, response) {
   }
 
   try {
-    const { name, email, phone, service, comuna, message, website } = request.body || {};
+    const body = request.body || {};
+    const { name, email, phone, service, comuna, message, website } = body;
 
     // Honeypot anti-spam
     if (website) {
@@ -45,7 +63,9 @@ export default async function handler(request, response) {
       message: sanitize(message)
     };
 
+    const pagina = paginaOrigen(request.headers, body);
     const rows = [
+      ['Página', pagina.url ? `<a href="${sanitize(pagina.url)}">${sanitize(pagina.etiqueta)}</a>` : 'no informada'],
       ['Nombre', safe.name],
       ['Teléfono', safe.phone || 'No proporcionado'],
       ['Email', safe.email || 'No proporcionado'],
@@ -62,12 +82,18 @@ export default async function handler(request, response) {
       <p style="margin-top:16px">Por favor, ponte en contacto a la brevedad.</p>
     `;
 
-    await resend.emails.send({
+    // Resend NO lanza excepción cuando rechaza: devuelve { error }. Sin mirarlo, el
+    // formulario decía "enviado" y el lead se perdía en silencio.
+    const { error } = await resend.emails.send({
       from: 'Formulario Web <onboarding@resend.dev>',
       to: recipientList,
-      subject: `Nuevo lead web: ${safe.name}${safe.comuna ? ' · ' + safe.comuna : ''}`,
+      subject: `${pagina.etiqueta ? '[' + pagina.etiqueta + '] ' : ''}Nuevo lead web: ${safe.name}${safe.comuna ? ' · ' + safe.comuna : ''}`,
       html,
     });
+    if (error) {
+      console.error('[send-contact-form] Resend rechazó el envío:', error);
+      return response.status(502).json({ message: 'El proveedor de email rechazó el envío.' });
+    }
 
     return response.status(200).json({ message: 'Correo enviado exitosamente.' });
 
