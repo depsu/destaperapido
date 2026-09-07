@@ -2215,7 +2215,7 @@
             formData.append('direccion', dir || '—');
             formData.append('fecha', fecha || '—');
             formData.append('informacion_adicional', msg || '—');
-            formData.append('_subject', `Nueva cotización baños químicos – ${nombre}`);
+            formData.append('_subject', `[${location.host.replace(/^www\./, '') + location.pathname.replace(/\.html$/, '')}] Nueva cotización baños químicos – ${nombre}`); formData.append('pagina', location.href);
             formData.append('_template', 'table');
             formData.append('_captcha', 'false');
 
