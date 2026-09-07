@@ -107,6 +107,27 @@ def hallazgos(db: sqlite3.Connection) -> list[tuple[str, str]]:
                         f'duda abierta) — típico de una caída del cerebro. Forzar el turno '
                         f'con «que el bot responda ahora» o contestarle a mano.'))
 
+    # 7 · VENTA GRANDE ESTANCADA (7-sep, pedido de Alejandro: «que me diga: ha costado
+    # cerrar, o proponga cómo concretar»): pedido con precio dado ≥ $400k y cliente mudo
+    # entre 3 y 14 días — la ventana donde un empujón con juicio aún revive la venta.
+    grandes = db.execute(
+        """SELECT p.id, p.monto_neto, ct.nombre,
+                  (SELECT max(m.ts) FROM mensajes m
+                    WHERE m.conversacion_id = c.id AND m.tipo = 'entrante')
+             FROM pedidos p
+             JOIN conversaciones c ON c.id = p.conversacion_id OR c.conv_id = p.conversacion_id
+             JOIN contactos ct ON ct.id = c.contacto_id
+            WHERE p.etapa IN ('cotizando', 'por-confirmar') AND p.monto_neto >= 400000""").fetchall()
+    for pid, monto, nombre, ult in grandes:
+        if ult is None: continue
+        dias = (ahora - ult) / 86_400_000
+        if 3 <= dias <= 14:
+            out.append((f'grande-{pid}',
+                        f'💰 VENTA GRANDE ESTANCADA: {pid} ({nombre}, '
+                        f'${monto:,.0f}) lleva {dias:.0f} días mudo con precio dado. '
+                        f'Vale un cierre con juicio: llamada, oferta con plazo, o pedirle '
+                        f'a la sesión de turno una propuesta de cierre.'))
+
     # 2-3-4 · invariantes de ficha en pedidos activos
     pedidos = db.execute(
         """SELECT id, monto_neto, datos, actualizado_ts FROM pedidos
