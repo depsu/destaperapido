@@ -7,7 +7,16 @@
 // El rastro sigue quedando en envios.jsonl (yaDespachado lo consulta).
 //
 // Uso: node avisar-repartidor.mjs '{"nombre":"...","direccion":"...","fecha":"...",...}'
-//   args: nombre* · direccion* · fecha* (de entrega; entiende español) · hora ·
+//   args: nombre* · direccion* · fecha* (de entrega; entiende español) ·
+//         hora (franja o hora confirmada, TAL CUAL la dijo el cliente: «entre 10 y 12»,
+//         «viernes en la tarde», «10:00») · hora_tope (límite: «09:30» → «antes de las
+//         09:30»; franja, tope y hora confirmada son TRES cosas distintas y viajan
+//         separadas) ·
+//         acceso (referencia o link del portón) · recibe + telefono_recibe (quién
+//         recepciona en terreno) · paga + telefono_paga (quién paga, si es otra
+//         persona) · forma_pago («efectivo contra entrega», «transferencia») ·
+//         retiro_acordado (fecha o franja de retiro YA acordada; sin esto el retiro
+//         se avisa como pendiente de coordinar, nunca inferido) ·
 //         comuna · cantidad (default 1) · duracion (texto: «mensual», «2 semanas») ·
 //         telefono_cliente · maps_url · aseo (frecuencia acordada; en plazos de
 //         hasta 7 días el aseo periódico no se promete: ver «EL ASEO SEGÚN EL PLAZO») ·
@@ -108,7 +117,10 @@ function fechaLegible(iso) {
   if (m === null) return String(iso || '');        // ya venía en palabras: se respeta
   const d = new Date(Number(m[1]), Number(m[2]) - 1, Number(m[3]));
   if (Number.isNaN(d.getTime())) return String(iso);
-  return `${DIAS_ES[d.getDay()]} ${d.getDate()} de ${MESES_ES[d.getMonth()]}`;
+  // El AÑO solo cuando no es el actual (9-sep): «jueves 11 de septiembre» para una
+  // entrega de noviembre del año que viene no identifica nada.
+  const anio = d.getFullYear() === new Date().getFullYear() ? '' : ` de ${d.getFullYear()}`;
+  return `${DIAS_ES[d.getDay()]} ${d.getDate()} de ${MESES_ES[d.getMonth()]}${anio}`;
 }
 const dry = texto(args.dry).toLowerCase() === 'si';
 /* CANCELACIÓN (23-ago, caso Paola: «me cancelaron la cuestión» y la tarjeta siguió en el
@@ -147,6 +159,22 @@ function enlaceDe(jidCliente) {
   return (e.links && e.links[jidCliente]) || null;
 }
 
+/* SOLTAR EL ENLACE AL CANCELAR (9-sep, A21/T19): `enlaces.json` conservaba el link
+   aunque la entrega se hubiera cancelado y la tarjeta ya no existiera. Consecuencia: el
+   cliente que volvía a arrendar recibía «Le corrijo la entrega» de un pedido muerto, y
+   el re-despacho escribía encima de una tarjeta borrada en vez de crear la nueva. */
+function borrarEnlace(jidCliente) {
+  if (!jidCliente) return;
+  try {
+    const e = leerEnlaces();
+    if (!e.links || e.links[jidCliente] === undefined) return;
+    delete e.links[jidCliente];
+    writeFileSync(ENLACES_FILE, JSON.stringify(e, null, 2));
+  } catch (err) {
+    console.error(`⚠️ no pude soltar el enlace de la entrega cancelada: ${err.message}`);
+  }
+}
+
 function guardarEnlace(jidCliente, entregaId) {
   if (!jidCliente || !entregaId) return;
   try {
@@ -179,7 +207,9 @@ if (citaTexto !== '' && notaCambio !== '' && !esCancelacion) {
   const mTel = /Tel[eé]fono cliente:\s*\+?([\d\s]{8,15})/i.exec(citaTexto);
   const colaTel = mTel ? mTel[1].replace(/\D/g, '').slice(-4) : '';
   const cola = (/entregas#([a-z0-9]{4})/i.exec(citaTexto) || [])[1] || colaTel;
-  const mNombre = /(?:ENTREGA|CAMBIO en la entrega)\s*—\s*([^\n(]+)/i.exec(citaTexto);
+  // el separador de la cabecera pasó de «—» a «·» (9-sep): los avisos viejos del hilo
+  // siguen trayendo la raya, así que el buscador entiende los dos
+  const mNombre = /(?:ENTREGA|CAMBIO en la entrega)\s*[—·]\s*([^\n(]+)/i.exec(citaTexto);
   const nombreCita = mNombre ? mNombre[1].trim() : '';
   if (cola === '' && nombreCita === '') {
     console.log('El mensaje citado no trae ni el link de la tarjeta ni el nombre del '
@@ -228,11 +258,19 @@ if (notaCambio !== '' && !esCancelacion) {
   const quien = texto(args.nombre);
   const donde = [texto(args.direccion), texto(args.comuna)].filter(Boolean).join(', ');
   const cabeza = entregaId !== null
-    ? `🔄 CAMBIO en una entrega ya agendada${quien ? ` (${quien}` + (donde ? ` — ${donde}` : '') + ')' : ''}:`
+    ? `🔄 CAMBIO en una entrega ya agendada${quien ? ` (${quien}` + (donde ? ` · ${donde}` : '') + ')' : ''}:`
     : `📣 Aviso${quien ? ` sobre ${quien}` + (donde ? ` (${donde})` : '') : ''}:`;
+  /* DÓNDE QUEDÓ LA CORRECCIÓN (9-sep, B9/T22): esta rama manda el WhatsApp y NO toca la
+     tarjeta del sistema. Antes el texto terminaba con «📋 Su tarjeta: …», que se lee como
+     «ahí está el cambio»: el repartidor abría la tarjeta y veía el dato viejo. Y si el
+     chat no tiene entrega enlazada, se dice: es un aviso suelto, no hay nada que buscar. */
+  const pieNota = entregaId !== null
+    ? `\n\nEsta nota NO cambia la tarjeta: para esta entrega manda lo que dice acá.`
+      + `\n📋 Su tarjeta (con los datos anteriores): ${linkEntrega(entregaId)}`
+    : '\n\nEste cliente todavía no tiene tarjeta en tu lista: es un aviso suelto, '
+      + 'no hay entrega que buscar.';
   const avisoNota = `${cabeza}
-${notaCambio}`
-    + (entregaId !== null ? `\n\n📋 Su tarjeta: ${linkEntrega(entregaId)}` : '');
+${notaCambio}` + pieNota;
   if (dry) {
     console.log('— ASÍ SALDRÍA LA NOTA AL REPARTIDOR (prueba en seco) —');
     console.log(avisoNota);
@@ -283,16 +321,24 @@ if (esCancelacion) {
   const envViejo = readFileSync('/Users/alejandroriveracarrasco/SaSS/destaperapido/whatsapp-bot/.env', 'utf8');
   const mRep = /^REPARTIDOR_NUMERO=([0-9+ ]+)/m.exec(envViejo);
   const repTel = mRep ? mRep[1].replace(/\D/g, '') : '';
-  const partes = [`🚫 CANCELADA — ${nombre || 'una entrega'}${texto(args.comuna) ? ` (${texto(args.comuna)})` : ''}`];
-  if (fecha !== '') partes.push(`📅 Era para: ${fechaLegible(fecha)}`);
+  /* IDENTIFICAR CUÁL Y QUÉ HACER (9-sep, B10/T20): «🚫 CANCELADA — Benja» sin fecha ni
+     dirección no le dice al repartidor cuál de sus tarjetas se cayó, y «no hay que ir» no
+     cubre las otras dos etapas posibles (el camión ya salió, o el baño ya está puesto). */
+  const partes = [`🚫 CANCELADA · ${nombre || 'una entrega'}${texto(args.comuna) ? ` (${texto(args.comuna)})` : ''}`];
+  partes.push(fecha !== '' ? `📅 Era para: ${fechaLegible(fecha)}`
+    : '📅 Era para: fecha no registrada en el aviso');
+  if (direccion !== '') partes.push(`📍 ${direccion}`);
+  if (entregaId) partes.push(`📋 Tarjeta: ${linkEntrega(entregaId)}`);
   if (cita !== '') partes.push(`💬 El cliente: «${cita}»`);
   partes.push('');
   partes.push(tarjetaFuera
-    ? 'La tarjeta ya fue retirada de tu lista — no hay que ir.'
-    : (dry && entregaId ? 'La tarjeta se retiraría del sistema (prueba en seco).'
+    ? 'La tarjeta ya salió de tu lista. No despachar.'
+    : (dry && entregaId ? 'La tarjeta se retiraría del sistema (prueba en seco). No despachar.'
       : (entregaId
-        ? 'OJO: no pude retirar la tarjeta del sistema — bórrala tú de la lista. No hay que ir.'
-        : 'No encontré tarjeta enlazada de este chat — si la ves en tu lista, bórrala. No hay que ir.')));
+        ? 'OJO: no pude retirar la tarjeta del sistema, bórrala tú de la lista. No despachar.'
+        : 'No encontré tarjeta enlazada de este chat: si la ves en tu lista, bórrala. No despachar.')));
+  partes.push('Si el equipo ya salió, avísame antes de llegar. Si ya está instalado, '
+    + 'el retiro se coordina aparte.');
   const avisoCancel = partes.join('\n');
   if (dry) {
     console.log('— ASÍ SALDRÍA EL 🚫 AL REPARTIDOR (prueba en seco, nada salió) —');
@@ -302,6 +348,9 @@ if (esCancelacion) {
   }
   if (repTel === '') { console.error('no hay número de repartidor configurado'); process.exit(1); }
   await enviarPorDixdybot(`wa-baileys:${repTel}@s.whatsapp.net`, avisoCancel);
+  // el chat deja de tener entrega vigente: si este cliente vuelve a arrendar, es un
+  // arriendo NUEVO y no «una corrección» de lo que se canceló (A21)
+  borrarEnlace(jid);
   logEnvio({ jid: jid || 'panel-dixdybot', tipo: 'entrega',
     detalle: { repartidor: repTel, cancelacion: true, entrega_id: entregaId || null,
       tarjeta_retirada: tarjetaFuera, cita, origen: 'dixdybot-cancelacion' } });
@@ -344,7 +393,49 @@ const itemExtraCrudo = texto(args.item_extra);
 const itemExtra = /^(no|ninguno|nada|sin( extras?| ítems?| items?)?|n\/a|-+)$/i
   .test(itemExtraCrudo) ? '' : itemExtraCrudo;
 const valorItem = pesosDe(args.valor_item_extra);
-const notasEquipo = equipamiento !== '' ? `EQUIPO: ${equipamiento.toUpperCase()}` : '';
+
+/* ── LAS MARCAS DE LA FICHA (9-sep, B2/B3/B4/B6/A18) ──────────────────────────────
+   El objeto `entrega` del sistema de siempre no tiene campo propio para «quién recibe
+   en terreno», «quién paga», «cómo se entra», «forma de pago» ni «retiro acordado»: los
+   trae el conector y hasta hoy se perdían (o el equipamiento caía al final, dentro de
+   «📝 Notas», que es el peor lugar para el dato que decide qué unidad sube al camión).
+   Viajan como marcas «CLAVE: valor» dentro de `tipo_uso` → `notas`, y el resumen del
+   repartidor (`resumen_repartidor.separar_notas`) las saca de ahí y las pinta en su
+   lugar. Cero cambios al sistema viejo, y la tarjeta web las conserva en sus notas. */
+const telLegible = (v) => {
+  const d = texto(v).replace(/\D/g, '');
+  if (d === '') return '';
+  return `+${d.length === 9 && d.startsWith('9') ? `56${d}` : d}`;
+};
+// un « · » dentro de un valor partiría la marca en dos: se neutraliza al armarla
+const marca = (clave, valor) => {
+  const v = texto(valor).replace(/·/g, '-').replace(/\s+/g, ' ').trim();
+  return v === '' ? '' : `${clave}: ${v}`;
+};
+const quienRecibe = [texto(args.recibe), telLegible(args.telefono_recibe)]
+  .filter((t) => t !== '').join(' ');
+const quienPaga = [texto(args.paga), telLegible(args.telefono_paga)]
+  .filter((t) => t !== '').join(' ');
+const marcasFicha = [
+  marca('EQUIPO', equipamiento.toUpperCase()),
+  marca('ACCESO', args.acceso ?? args.referencia),
+  marca('RECIBE', quienRecibe),
+  marca('PAGA', quienPaga),
+  marca('PAGO', args.forma_pago),
+  marca('RETIRO', args.retiro_acordado),
+].filter((t) => t !== '').join(' · ');
+
+/* ── FRANJA, HORA TOPE Y HORA CONFIRMADA SON TRES COSAS (9-sep, A17) ──────────────
+   «entre 10 y 12» no es una cita a las 10, y «antes de las 9:30» no es «a las 9:30».
+   El conector NO convierte nada: pasa el texto tal cual lo dijo el cliente, y el tope
+   viaja como su propia parte de la línea. `resumen_repartidor.lineas_horario` los
+   separa en «⏰ INSTALAR antes de…», «🕐 Franja solicitada…» y «🕐 Hora confirmada…». */
+const horaTope = texto(args.hora_tope);
+const horaFicha = [
+  texto(args.hora),
+  horaTope === '' ? ''
+    : (/antes de|m[aá]s tardar/i.test(horaTope) ? horaTope : `antes de las ${horaTope}`),
+].filter((t) => t !== '').join(' · ');
 
 /* ── EL ASEO SEGÚN EL PLAZO (9-sep, Alejandro: «si el mensaje es diario, al repartidor a
    veces dice limpieza incluida de 7 a 10 días, lo cual no tiene lógica») ───────────────
@@ -412,7 +503,7 @@ const aseoLinea = !plazoCorto ? aseoAcordado
 const d = {
   direccion,
   fecha_entrega: fecha,
-  hora: texto(args.hora) || undefined,
+  hora: horaFicha || undefined,
   comuna: texto(args.comuna) || undefined,
   cantidad_banos: Math.max(1, Math.round(Number(args.cantidad) || 1)),
   duracion: texto(args.duracion) || undefined,
@@ -423,7 +514,7 @@ const d = {
   telefono_respaldo: texto(args.telefono_respaldo) || undefined,
   maps_url: texto(args.maps_url) || undefined,
   aseo: aseoLinea || undefined,
-  ...(notasEquipo !== '' ? { tipo_uso: notasEquipo } : {}),
+  ...(marcasFicha !== '' ? { tipo_uso: marcasFicha } : {}),
   // el ítem extra como EXTRA de verdad (31-ago, caso Carlos Castro: el COBRAR salía
   // sin la limpieza y el repartidor habría cobrado $154.700 en vez de $196.350):
   // integracion.js lo suma al monto, lo desglosa y lo nombra en el servicio
@@ -434,7 +525,7 @@ const d = {
   ...(texto(args.fecha_limpieza) !== '' && itemExtra !== '' && /limpieza|aseo/i.test(itemExtra)
     ? { limpiezas: [{ fecha: texto(args.fecha_limpieza).slice(0, 10), etiqueta: itemExtra,
       tipo: 'extra', ...(valorItem > 0 ? { valor: valorItem } : {}),
-      nota: 'se cobra junto con la entrega — no cobrar aparte' }] } : {}),
+      nota: 'ya se cobró junto con la entrega, no cobrar aparte' }] } : {}),
   ...(precioNeto > 0 ? { precio_clp: precioNeto } : {}),
   ...(flete > 0 ? { flete_clp: flete } : {}),
   requiere_factura: conFactura,
@@ -469,61 +560,164 @@ if (conFactura && datosFactura !== '') {
    Dominga tiene dos tarjetas para el mismo trabajo (30-jul y 19-ago).
    Se reusa el MISMO enlaces.json del sistema de siempre: una sola fuente para los dos. */
 
+/** Plata como se lee: 154700 → «$154.700». */
+const clpTxt = (v) => '$' + String(Math.round(Number(v) || 0))
+  .replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+
+/* LA VERSIÓN ANTERIOR DE LA TARJETA (9-sep, B8/T21): para decir QUÉ cambió hay que
+   tener con qué comparar. Se lee la fila de Supabase que el re-despacho está por pisar.
+   Es best-effort: si Supabase no contesta, el aviso sale igual, diciendo que no se pudo
+   comparar (mentir sobre el cambio es peor que reconocer el hueco). */
+async function datosEntregaPrevia(entregaId) {
+  if (!entregaId) return null;
+  try {
+    const { execFileSync } = await import('node:child_process');
+    const salida = execFileSync('python3', ['-c', [
+      'import sys, json, urllib.request',
+      `sys.path.insert(0, '/Users/alejandroriveracarrasco/SaSS/destaperapido/cotizaciones-destape-rapido/resumen-repartidor/scripts')`,
+      'import generar_listado as gl',
+      `eid = ${JSON.stringify(entregaId)}`,
+      'h = {"apikey": gl.SUPABASE_ANON_KEY, "authorization": "Bearer " + gl.SUPABASE_ANON_KEY}',
+      'req = urllib.request.Request(f"{gl.SUPABASE_URL}/rest/v1/entrega?id=eq.{eid}&select=data", headers=h)',
+      'filas = json.load(urllib.request.urlopen(req, timeout=15))',
+      'print(json.dumps(filas[0]["data"] if filas else None, ensure_ascii=False))',
+    ].join('\n')], { encoding: 'utf8', timeout: 25_000 }).trim();
+    const previa = JSON.parse(salida);
+    return previa && typeof previa === 'object' ? previa : null;
+  } catch { return null; }
+}
+
 /** El aviso de CAMBIO: corto y solo con lo que importa. El repartidor ya tiene la tarjeta;
- *  lo que necesita saber es QUÉ cambió, no releer todo. */
-function mensajeDeCambio() {
-  const partes = [`🔄 CAMBIO en la entrega — ${nombre}`];
-  const comuna = texto(args.comuna);
-  if (comuna !== '') partes.push(comuna);
+ *  lo que necesita saber es QUÉ cambió, no releer todo.
+ *
+ *  Hasta el 9-sep repetía fecha, cantidad y dirección sin marcar ninguna diferencia, se
+ *  saltaba el precio y el aseo, y cerraba afirmando que la tarjeta «ya quedó actualizada»
+ *  aunque la subida hubiera fallado. Ahora compara contra la versión anterior y dice la
+ *  verdad sobre dónde quedó el cambio. */
+function mensajeDeCambio(nueva, previa, subida) {
+  const partes = [`🔄 CAMBIO en la entrega · ${nombre}`
+    + (texto(args.comuna) !== '' ? ` (${texto(args.comuna)})` : '')];
+  const pagoNuevo = (nueva || {}).pago || {};
+  const pagoPrevio = (previa || {}).pago || {};
+  const dirNueva = [direccion, texto(args.comuna)].filter((t) => t !== ''
+    && !direccion.toLowerCase().includes(texto(args.comuna).toLowerCase())).join(', ');
+  const cantidadNueva = Math.max(1, Math.round(Number(args.cantidad) || 1));
+  const campos = [
+    ['Fecha', previa ? fechaLegible(previa.fecha || '') : '', fechaLegible(fecha)],
+    ['Horario', previa ? String(previa.hora || '') : '', horaFicha],
+    ['Cantidad', previa ? String((previa.cantidad || '')) : '', String(cantidadNueva)],
+    ['Dirección', previa ? String(previa.direccion || '') : '', dirNueva || direccion],
+    ['Qué se carga', previa ? String(previa.servicio || '') : '', String((nueva || {}).servicio || '')],
+    ['Aseo', previa ? String(previa.aseo || '') : '', String((nueva || {}).aseo || '')],
+    ['A cobrar', pagoPrevio.monto == null ? '' : clpTxt(pagoPrevio.monto),
+      pagoNuevo.monto == null ? '' : clpTxt(pagoNuevo.monto)],
+  ];
+  const cambios = campos
+    .filter(([, antes, ahora]) => ahora !== '' && antes !== ahora)
+    .map(([etq, antes, ahora]) => `· ${etq}: ${antes === '' ? 'sin dato' : antes} → ${ahora}`);
   partes.push('');
-  partes.push(`📅 Ahora: ${fechaLegible(fecha)}${texto(args.hora) === '' ? '' : ` · ${texto(args.hora)}`}`);
-  const n2 = Math.max(1, Math.round(Number(args.cantidad) || 1));
-  partes.push(`🚽 ${n2} baño${n2 === 1 ? '' : 's'} químico${n2 === 1 ? '' : 's'}${itemExtra !== '' ? ` + ${itemExtra}` : ''}`);
-  if (direccion !== '') partes.push(`📍 ${direccion}`);
+  if (previa === null) {
+    partes.push('No pude leer la versión anterior de la tarjeta, así que no puedo marcar '
+      + 'qué cambió. Vale ESTA versión:');
+    partes.push(`· Fecha: ${fechaLegible(fecha)}`);
+    if (horaFicha !== '') partes.push(`· Horario: ${horaFicha}`);
+    partes.push(`· Qué se carga: ${(nueva || {}).servicio || `${cantidadNueva} baño(s)`}`);
+    partes.push(`· Dirección: ${dirNueva || direccion}`);
+    if (pagoNuevo.monto != null) partes.push(`· A cobrar: ${clpTxt(pagoNuevo.monto)}`);
+  } else if (cambios.length === 0) {
+    partes.push('Se re-despachó la misma entrega: no cambió ningún dato de la tarjeta.');
+  } else {
+    partes.push('Cambió esto:');
+    partes.push(...cambios);
+    partes.push('');
+    partes.push('El resto sigue igual que en la tarjeta.');
+  }
   const maps = texto(args.maps_url);
   if (maps !== '') partes.push(`🗺️ ${maps}`);
   partes.push('');
-  partes.push('La tarjeta del sistema ya quedó actualizada con este cambio.');
+  // A20: el puente puede devolver ok con `subida:false` y la tarjeta quedar en lo viejo.
+  partes.push(dry ? 'Prueba en seco: la tarjeta del sistema no se tocó.'
+    : (subida === true ? 'Tarjeta del sistema actualizada con este cambio.'
+      : 'OJO: la tarjeta del sistema NO se pudo actualizar y sigue mostrando lo anterior. '
+        + 'Para esta entrega manda lo que dice este mensaje.'));
   return partes.join('\n');
 }
 
 // La CONFIRMACIÓN AL CLIENTE (12-ago, pedido del dueño: el flujo viejo también se la
 // mandaba). Editable vía `mensaje_cliente`; 'no' = no mandarle nada; vacío = la de
 // siempre, calcada del panel del CRM viejo (mensajeClienteDefault).
+//
+// REESCRITA EL 9-SEP (T18-T22). Lo que tenía mal:
+//   · «⏱ Por mensual» y «⏱ Por hasta fin de mes» no son español;
+//   · emojis y «¡Gracias! 🙌», los dos prohibidos por las reglas de estilo del negocio;
+//   · decía «baño químico» aunque fuera una ducha, y NUNCA el equipamiento acordado
+//     (con o sin lavamanos), que es justo lo que se reclama en la puerta;
+//   · no decía el monto ni la forma de pago, mientras el repartidor sí llegaba con un
+//     «COBRAR» con IVA: los dos lados del mismo trato leían cosas distintas.
+// El monto sale del MISMO objeto que se le manda al repartidor, no de una cuenta paralela.
 const n = Math.max(1, Math.round(Number(args.cantidad) || 1));
-/* La confirmación al cliente se arma ANTES del try, así que pregunta por su cuenta si esto
-   es una corrección: «le confirmo» y «le corrijo» no dicen lo mismo, y el cliente que ya
-   recibió una confirmación se merece saber que esta la reemplaza. */
+/* «Le confirmo» y «le actualizo» no dicen lo mismo, y el cliente que ya recibió una
+   confirmación se merece saber que esta la reemplaza. Ojo (A21): una entrega CANCELADA
+   suelta su enlace (ver borrarEnlace), así que un cliente antiguo que vuelve a arrendar
+   recibe una confirmación NUEVA y no la «actualización» de un pedido muerto. */
 const esCorreccionCliente = () => enlaceDe(jid) !== null || texto(args._yaSalio) === 'si';
-const confirmacionCliente = (() => {
+
+/** «mensual» → «Arriendo mensual»; «3 días» → «Por 3 días»; el resto, «Plazo: …». */
+function fraseDuracion(bruto) {
+  let t = texto(bruto);
+  if (t === '') return '';
+  // el detalle largo entre paréntesis o tras dos puntos ya viaja en la línea de la fecha
+  const corte = t.search(/[:(]/);
+  if (corte > 0) t = t.slice(0, corte).trim();
+  if (t === '') return '';
+  if (/^(arriendo\s+)?mensual|^mes a mes$/i.test(t)) return 'Arriendo mensual';
+  if (/^(\d|una?\b|dos\b|tres\b|cuatro\b|cinco\b|seis\b|siete\b)/i.test(t)) {
+    return `Por ${t.charAt(0).toLowerCase()}${t.slice(1)}`;
+  }
+  return `Plazo: ${t.charAt(0).toUpperCase()}${t.slice(1)}`;
+}
+
+/** El horario en palabras del cliente: franja, tope y hora confirmada, cada uno como es. */
+function fraseHorario() {
+  const partesHora = horaFicha.split('·').map((h) => h.trim()).filter((h) => h !== '');
+  const frases = partesHora.map((h) => {
+    if (/antes de|m[aá]s tardar/i.test(h)) return `instalado ${h}`;
+    if (/^\d{1,2}:\d{2}$/.test(h)) return `a las ${h}`;
+    return h;
+  });
+  const hayExacta = partesHora.some((h) => /^\d{1,2}:\d{2}$/.test(h));
+  return { sufijo: frases.length === 0 ? '' : `, ${frases.join(', ')}`, hayExacta };
+}
+
+function armarConfirmacionCliente(entregaNueva) {
   const pedido = texto(args.mensaje_cliente);
   if (pedido.toLowerCase() === 'no') return '';
   if (pedido !== '') return pedido;
-  // «a las 10:00» pero «en la tarde» sin el «a las» (una franja no es una hora exacta)
-  const hora = texto(args.hora);
-  const horaTxt = hora === '' ? '' : (/^\d{1,2}:\d{2}$/.test(hora) ? ` a las ${hora}` : `, ${hora}`);
-  // EL TIEMPO DE USO en la confirmación (28-ago, pedido de Alejandro con el caso de los
-  // 7 baños de Peñalolén): «me gustaría agregar el tiempo de uso... 1 día... 1 mes» —
-  // el cliente confirma mejor cuando ve TODO el trato junto, plazo incluido.
-  // ⏱ en minúscula y sin re-nombrar fechas que ya van en la línea 📅 (caso Pilar: decía
-  // «Por Una noche: sábado 5... 04:00» — el detalle largo queda mejor solo hasta 60 chars)
-  let duracionTxt = texto(args.duracion);
-  if (duracionTxt !== '') {
-    duracionTxt = duracionTxt.charAt(0).toLowerCase() + duracionTxt.slice(1);
-    const corte = duracionTxt.search(/[:(]/);
-    if (corte > 0) duracionTxt = duracionTxt.slice(0, corte).trim();
-  }
   // la comuna solo si la dirección no la trae ya (salía «Providencia, Providencia»)
   const comunaTxt = texto(args.comuna);
   const conComuna = comunaTxt !== ''
     && !direccion.toLowerCase().includes(comunaTxt.toLowerCase());
-  return [esCorreccionCliente() ? 'Le corrijo la entrega ✅' : 'Le confirmo la entrega ✅', '',
-    `🚽 ${n} baño${n === 1 ? '' : 's'} químico${n === 1 ? '' : 's'}${itemExtra !== '' ? ` + ${itemExtra}` : ''}`,
-    ...(duracionTxt !== '' ? [`⏱ Por ${duracionTxt}`] : []),
-    `📅 ${fechaLegible(fecha)}${horaTxt}`,
-    `📍 ${direccion}${conComuna ? `, ${comunaTxt}` : ''}`, '',
-    'Cualquier cambio o duda me avisa por acá. ¡Gracias! 🙌'].join('\n');
-})();
+  // QUÉ RECIBE: cantidad, equipamiento acordado y el ítem extra, con su nombre real
+  let queRecibe = `${n} baño${n === 1 ? '' : 's'} químico${n === 1 ? '' : 's'}`;
+  if (equipamiento !== '') queRecibe += ` ${equipamiento.toLowerCase()}`;
+  if (itemExtra !== '') queRecibe += `, más ${itemExtra.toLowerCase()}`;
+  const { sufijo, hayExacta } = fraseHorario();
+  const plazo = fraseDuracion(args.duracion);
+  const monto = (entregaNueva || {}).pago ? (entregaNueva.pago.monto ?? null) : null;
+  const formaPago = texto(args.forma_pago);
+  return [
+    esCorreccionCliente() ? 'Le actualizo la entrega.' : 'Le confirmo la entrega.', '',
+    `Servicio: ${queRecibe}`,
+    ...(plazo !== '' ? [plazo] : []),
+    `Entrega: ${fechaLegible(fecha)}${sufijo}`,
+    ...(hayExacta ? [] : ['Hora exacta: pendiente de confirmar']),
+    `Dirección: ${direccion}${conComuna ? `, ${comunaTxt}` : ''}`,
+    ...(monto === null || monto === 0 ? []
+      : [`Total a pagar: ${clpTxt(monto)}${conFactura ? ' con IVA' : ' (sin factura)'}`
+        + (formaPago !== '' ? `, ${formaPago}` : '')]), '',
+    'Cualquier cambio o duda me avisa por acá.',
+  ].join('\n');
+}
 
 try {
   // si este chat YA tiene una entrega en el sistema, se CORRIGE esa (no se crea otra)
@@ -531,11 +725,16 @@ try {
   const esCorreccion = entregaPrevia !== null || texto(args._yaSalio) === 'si';
   if (entregaPrevia !== null) d.entrega_id = entregaPrevia;
 
+  // la versión ANTERIOR se lee ANTES de que el re-despacho la pise (para el diff del 🔄)
+  const previa = esCorreccion ? await datosEntregaPrevia(entregaPrevia) : null;
+
   const prep = await prepararEntrega(d, jid, nombre, texto(args.telefono_cliente), { dry });
+  // el monto que ve el cliente sale del MISMO objeto que ve el repartidor
+  const confirmacionCliente = armarConfirmacionCliente(prep.entrega);
   const avisoOverride = texto(args.mensaje_repartidor);
   const idParaLink = prep.entrega?.id || d.entrega_id || null;
   const aviso = (avisoOverride !== '' ? avisoOverride
-    : (esCorreccion ? mensajeDeCambio() : prep.resumen))
+    : (esCorreccion ? mensajeDeCambio(prep.entrega, previa, prep.subida) : prep.resumen))
     + (idParaLink !== null ? `\n\n📋 Su tarjeta: ${linkEntrega(idParaLink)}` : '');
 
   if (dry) {

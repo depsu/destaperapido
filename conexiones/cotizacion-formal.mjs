@@ -11,7 +11,8 @@
 //   args: nombre* · email* · comuna · cantidad (default 1) · plazo (texto) ·
 //         precio_neto* (POR BAÑO, en pesos — SIN el flete) · flete (pesos, por única
 //         vez: va como SEGUNDA LÍNEA del PDF, jamás mezclado en el unitario) ·
-//         factura ("si" default → +IVA en el PDF) ·
+//         factura ("si" = +IVA · "no" = neto · vacío = PENDIENTE, neto y dicho) ·
+//         asunto (texto libre para el asunto del correo, si el cliente lo pidió) ·
 //         dry ("si" = genera el PDF y NO envía — para probar)
 import { mkdirSync, writeFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
@@ -80,11 +81,33 @@ const itemCrudo = texto(args.item_extra);
 const itemNegado = /^(no|ninguno|ninguna|nada|sin\s+\S*|0|-)$/i.test(itemCrudo);
 const itemExtra = itemNegado ? '' : itemCrudo;
 const precioExtra = itemNegado ? 0 : pesosDe(args.precio_extra);
-const conFactura = texto(args.factura).toLowerCase() !== 'no';   // con IVA por defecto
+/* LA FACTURA NO SE INFIERE (9-sep, A10 y T24): el campo venía con defecto «si», así que
+   una ficha SIN decisión (el 69% de las fichas reales) salía con IVA en el PDF mientras el
+   repartidor cobraba el neto — 19% de diferencia discutido en la puerta. Ahora son TRES
+   estados: sí (IVA), no (neto) y PENDIENTE (neto, y el PDF lo dice con todas sus letras).
+   Único dato que sí decide: que el cliente YA haya entregado sus datos de facturación. */
+const facturaCruda = texto(args.factura).toLowerCase();
+const datosFactura = texto(args.datos_factura).replace(/\s*\n\s*/g, ' · ');
+const facturaDecidida = /^(s[ií]|true|con\b|requiere)/.test(facturaCruda) ? 'si'
+  : (/^(no|false|sin\b)/.test(facturaCruda) || /exent/.test(facturaCruda) ? 'no'
+    : (datosFactura !== '' ? 'si' : ''));
+const conFactura = facturaDecidida === 'si';
+const facturaPendiente = facturaDecidida === '';
 // QUÉ se cotiza (16-ago): antes siempre decía «baño químico»; ahora el panel puede
 // mandar el ítem elegido (ducha portátil, baño sin lavamanos, flete, limpieza extra).
 // Singular/plural sin diccionario: «2 ducha portátil x2» sería feo → «x2» al final.
 const tipoItem = texto(args.tipo_item) || 'baño químico';
+// mayúscula inicial para el PDF («Ducha portátil»); el default queda como siempre
+// si el texto YA dice «arriendo de…» no se antepone otra vez (31-ago, PDF de Carlos
+// Castro: «Arriendo de Arriendo de baño químico»)
+const conArriendoTxt = (t) => (/^arriendos?\s+de/i.test(t) ? t : `Arriendo de ${t}`);
+/* QUÉ CLASE DE SERVICIO ES (9-sep, A13): el formulario permite cotizar «flete» o
+   «limpieza extra», y el molde los envolvía igual: «Arriendo de limpieza extra», con
+   traslado, retiro, papel higiénico y desodorizante incluidos. Un servicio suelto no es
+   un arriendo y no incluye nada de eso. */
+const esArriendo = !/^(flete|traslado)|limpieza|aseo|^retiro/i.test(tipoItem);
+const nombreServicio = (t) => (/^(flete|traslado)/i.test(t) ? 'Servicio de traslado'
+  : (/limpieza|aseo/i.test(t) ? 'Servicio de limpieza' : conArriendoTxt(t)));
 /* EL EQUIPAMIENTO EN EL TÍTULO (1-sep, caso Felipe Casajuana: pidió expresamente CON
    LAVAMANOS y el PDF para su jefatura decía «baño químico» a secas — lo pactado tiene
    que leerse en el documento). «cualquiera» o vacío = no se imprime nada. */
@@ -112,16 +135,21 @@ if (!soloWhatsapp && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
 }
 
 const clp = (n) => '$' + String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+// el resumen que lee el DUEÑO en la traza 🔧: decía «1 baño» aunque se cotizara un flete
+const unidadResumen = !esArriendo ? (cantidad === 1 ? 'servicio' : 'servicios')
+  : (cantidad === 1 ? 'baño' : 'baños');
 
 // ── el config del PDF (contrato de generar_cotizacion.py) ─────────────────────
 const campos = [['Nombre', nombre]];
-if (comuna !== '') campos.push(['Comuna', `${comuna}, RM`]);
-if (plazo !== '') campos.push(['Período de arriendo', plazo]);
+/* «, RM» NO SE REGALA (9-sep, A14): la línea añadía «RM» a cualquier ubicación, y el
+   negocio ya cotizó San Antonio (CONV 624) — el documento declaraba una región falsa.
+   Sin región verificada se imprime la comuna sola. */
+if (comuna !== '') campos.push(['Lugar del servicio', comuna]);
+if (plazo !== '') campos.push([esArriendo ? 'Período de arriendo' : 'Fecha del servicio', plazo]);
 if (email !== '') campos.push(['Email', email]);
 /* LOS DATOS DE FACTURA IMPRESOS (1-sep, Felipe Casajuana: dio su RUT para que la
    jefatura aprobara — si el PDF no lo muestra, el documento queda a medias). Una sola
    línea; si la ficha trae varias (razón social + RUT + giro), se aplanan. */
-const datosFactura = texto(args.datos_factura).replace(/\s*\n\s*/g, ' · ');
 if (datosFactura !== '') campos.push(['Facturación', datosFactura]);
 /* EVENTO NO ES ARRIENDO MENSUAL (regla del bot viejo, 14-ago): en un evento de un día
    la limpieza semanal NO aplica, y prometerla por escrito en la cotización es vender algo
@@ -157,7 +185,11 @@ function diasDePlazo(txt) {
   /* RANGOS DE FECHAS: «20 al 22 de noviembre», «del 17 de septiembre 11:00 al 20 de
      septiembre 03:00 AM». El segundo extremo tiene que traer su mes, si no «de 8 a 17»
      se leería como diez días. */
-  const rango = /(?<![:.\d])(\d{1,2})(?![:.\d])(?:\s*de\s+[a-zá-ú]+)?(?:\s+\d{1,2}[:.]\d{2}(?:\s*(?:am|pm|hrs?|horas?))?)?\s*(?:al|a|-|hasta(?:\s+el)?)\s*(?:el\s+)?(?<![:.\d])(\d{1,2})(?![:.\d])\s*de\s+[a-zá-ú]+/.exec(t);
+  /* EL DÍA DE LA SEMANA EN MEDIO (9-sep, A01): «del viernes 4 de septiembre al jueves
+     10 de septiembre» y «miércoles 2 al sábado 5 de septiembre» caían en 0 = mensual, y
+     esos dos PDF salieron prometiendo «limpieza cada 7 a 10 días» para 7 y 4 días. Son
+     casos REALES de la base. El nombre del día se salta; el resto del rango no cambia. */
+  const rango = /(?<![:.\d])(\d{1,2})(?![:.\d])(?:\s*de\s+[a-zá-ú]+)?(?:\s+\d{1,2}[:.]\d{2}(?:\s*(?:am|pm|hrs?|horas?))?)?\s*(?:al|a|-|hasta(?:\s+el)?)\s*(?:el\s+)?(?:(?:lunes|martes|mi[eé]rcoles|jueves|viernes|s[aá]bado|domingo)\s+)?(?<![:.\d])(\d{1,2})(?![:.\d])\s*de\s+[a-zá-ú]+/.exec(t);
   if (rango !== null) {
     const dias = Number(rango[2]) - Number(rango[1]) + 1;
     if (dias > 0 && dias <= 31) return dias;
@@ -182,37 +214,50 @@ const conFlete = flete > 0;
 // una» cobradas en su propio ítem), «incluido» también mentiría: precio = no incluido.
 const rotuloAseo = /^\s*(no|sin)\b/i.test(aseo) || /\$\s*\d|\d+\s*(mil|lucas?)\b/i.test(aseo)
   ? 'Aseo' : 'Aseo incluido';
-const lineaAseo = aseo !== '' ? `${rotuloAseo}: ${aseo}.` : 'Limpieza semanal (cada 7 a 10 días) incluida.';
+const lineaAseo = aseo !== '' ? `${rotuloAseo}: ${aseo}.` : 'Limpieza cada 7 a 10 días incluida.';
+/* EL TRASLADO NO SE COBRA Y SE «INCLUYE» A LA VEZ (9-sep, A04): decir «Traslado,
+   instalación y retiro incluidos» y más abajo cobrar «Flete por única vez» es un
+   documento contradiciéndose solo. Sin flete se dice expresamente que no hay cargo. */
+const lineaTraslado = conFlete
+  ? 'Instalación y retiro incluidos; el traslado va cobrado aparte, en la línea de flete.'
+  : 'Entrega, instalación y retiro incluidos, sin cargo adicional de traslado.';
 const incluido = esEvento
-  ? [conFlete ? 'Instalación y retiro incluidos; el traslado se cobra aparte.'
-    : 'Traslado, instalación y retiro incluidos.',
+  ? [lineaTraslado,
     // en un plazo corto la limpieza solo se nombra si se ACORDÓ una (limpieza extra, etc.)
     ...(aseoAcordado !== '' ? [`${rotuloAseo}: ${aseoAcordado}.`] : []),
     'Papel higiénico y desodorizante incluidos.']
-  : [conFlete ? 'Instalación y retiro incluidos; el traslado se cobra aparte.'
-    : 'Despacho, instalación y retiro incluidos.',
+  : [lineaTraslado,
     lineaAseo,
     'Papel higiénico y desodorizante incluidos.'];
-// mayúscula inicial para el PDF («Ducha portátil»); el default queda como siempre
-// si el texto YA dice «arriendo de…» no se antepone otra vez (31-ago, PDF de Carlos
-// Castro: «Arriendo de Arriendo de baño químico»)
-const conArriendo = (t) => (/^arriendos?\s+de/i.test(t) ? t : `Arriendo de ${t}`);
+/* LA UNIDAD COMERCIAL DEL PRECIO, ESCRITA (9-sep, A06): «Período de arriendo: 3 meses»
+   al lado de un valor unitario mensual hacía leer que ese valor cubría los tres meses.
+   El valor NO se multiplica (regla sagrada): lo que se explicita es a qué corresponde. */
+const sustantivoUnidad = /ba[ñn]o/i.test(tipoItem) ? 'baño'
+  : (/ducha/i.test(tipoItem) ? 'ducha' : 'unidad');
+const lineaUnidad = !esArriendo ? ''
+  : (esEvento
+    ? `Valor por ${sustantivoUnidad} por todo el período cotizado: ${clp(precioNeto)} neto.`
+    : (diasPlazo >= 8 && diasPlazo <= 29 && plazo !== ''
+      ? `Valor por ${sustantivoUnidad} por el período de ${plazo}: ${clp(precioNeto)} neto.`
+      : `Valor por ${sustantivoUnidad} y por mes: ${clp(precioNeto)} neto.`));
 // el equipamiento pactado va pegado al título, salvo que el tipo ya lo nombre
 const conEquipo = (t) => (equipoVisible !== '' && !t.toLowerCase().includes(equipoVisible)
   ? `${t} ${equipoVisible}` : t);
-const itemTitulo = conEquipo(tipoItem === 'baño químico'
-  ? 'Arriendo de baño químico'
-  : conArriendo(tipoItem));
+const itemTitulo = conEquipo(nombreServicio(tipoItem));
 const config = {
-  subtitulo: tipoItem === 'baño químico'
-    ? 'Arriendo de baños químicos'
-    : conArriendo(tipoItem),
+  subtitulo: esArriendo
+    ? (tipoItem === 'baño químico' ? 'Arriendo de baños químicos' : conArriendoTxt(tipoItem))
+    : nombreServicio(tipoItem),
   cliente: { titulo: 'Datos del cliente', campos },
   items: [{
     descripcion_titulo: itemTitulo,
     descripcion_bullets: [
-      ...(plazo !== '' ? [`Período de arriendo: ${plazo}.`] : []),
-      ...incluido,
+      ...(plazo !== ''
+        ? [esArriendo ? `Período de arriendo: ${plazo}.` : `Fecha o período del servicio: ${plazo}.`]
+        : []),
+      ...(lineaUnidad !== '' ? [lineaUnidad] : []),
+      // un servicio suelto (flete, limpieza) NO lleva lo que incluye un arriendo
+      ...(esArriendo ? incluido : []),
     ],
     cantidad,
     valor_unitario_neto: precioNeto,
@@ -227,11 +272,37 @@ const config = {
   // la línea del flete por única vez, aparte y a la vista (como el bot viejo)
   ...(flete > 0 ? [{
     descripcion_titulo: 'Flete por única vez',
-    descripcion_bullets: ['Traslado por la ubicación; se cobra una sola vez.'],
+    descripcion_bullets: ['Cubre la entrega y el retiro por la ubicación; se cobra una sola vez.'],
     cantidad: 1,
     valor_unitario_neto: flete,
   }] : [])],
   solo_neto: !conFactura,
+  /* LAS CONDICIONES QUE EL PDF TRAÍA FIJAS (9-sep, A08 · A09 · A10). Antes iban en el
+     generador para TODA cotización, dijeran lo que dijeran el chat y el pedido:
+       · «Coordinada dentro de 24 a 48 horas hábiles tras la aceptación» — contradecía
+         una entrega para hoy y hacía creer que un evento de octubre se despacha en
+         septiembre. Sin fecha acordada, lo honesto es decir que está por coordinar.
+       · «Transferencia electrónica o depósito bancario» — el negocio cobra CONTRA
+         ENTREGA, en efectivo o transferencia, sin adelanto (persona/base.md). El PDF
+         omitía el efectivo y no decía cuándo se paga; CONV 659 terminó preguntando si
+         había que transferir primero.
+       · «Facturación: Electrónica» aparecía incluso en una cotización SIN factura.
+     Estos textos viajan desde acá, que es donde se sabe lo del pedido. */
+  condiciones_textos: {
+    pago: 'Pago contra entrega, en efectivo o transferencia. No se solicita adelanto para reservar.',
+    facturacion: conFactura
+      ? 'Electrónica, a la razón social que indique el cliente.'
+      : (facturaPendiente
+        ? 'Documento tributario pendiente de confirmar. Si se emite factura, se agrega IVA (19%) al total.'
+        : 'Sin factura: los valores indicados son netos, sin IVA.'),
+    entrega: 'Fecha y horario de entrega pendientes de coordinación.',
+  },
+  /* A22: el mismo PDF se manda a veces SOLO por WhatsApp, y el recuadro de aceptación
+     mandaba a «responder este correo» — una instrucción sobre un correo que no existe. */
+  ...(soloWhatsapp ? { aceptacion_texto:
+    'Para confirmar el servicio basta con <b>responder por este WhatsApp</b> indicando su '
+    + 'conformidad. No es necesario firmar ni imprimir el documento. Apenas tengamos su '
+    + 'confirmación, coordinamos la entrega.' } : {}),
 };
 
 /* EL NOMBRE DEL ARCHIVO LO LEE EL CLIENTE (14-ago): al mandarse por WhatsApp, el PDF
@@ -256,7 +327,7 @@ if (gen.status !== 0 || !existsSync(pdfPath)) {
 
 if (dry) {
   console.log(`PDF generado (SIN enviar): ${pdfPath}`);
-  console.log(`✓ Prueba en seco lista — ${cantidad} ${cantidad === 1 ? 'baño' : 'baños'} · ${clp(precioNeto)} neto c/u${flete > 0 ? ` + flete ${clp(flete)}` : ''}${plazo ? ` (${plazo})` : ''}`);
+  console.log(`✓ Prueba en seco lista — ${cantidad} ${unidadResumen} · ${clp(precioNeto)} neto c/u${flete > 0 ? ` + flete ${clp(flete)}` : ''}${plazo ? ` (${plazo})` : ''}`);
   process.exit(0);
 }
 
@@ -264,34 +335,65 @@ if (dry) {
 // lee `adjuntar_al_chat` y se lo manda al cliente por WhatsApp. Cero Resend.
 if (soloWhatsapp) {
   console.log(`PDF: ${pdfPath}`);
-  console.log(`✓ Cotización lista para WhatsApp (sin correo) — ${cantidad} ${cantidad === 1 ? 'baño' : 'baños'} · ${clp(precioNeto)} neto c/u${flete > 0 ? ` + flete ${clp(flete)}` : ''}${plazo ? ` (${plazo})` : ''}`);
+  console.log(`✓ Cotización lista para WhatsApp (sin correo) — ${cantidad} ${unidadResumen} · ${clp(precioNeto)} neto c/u${flete > 0 ? ` + flete ${clp(flete)}` : ''}${plazo ? ` (${plazo})` : ''}`);
   process.exit(0);
 }
 
 // ── el correo (mismo canal de siempre: enviar_cotizacion.py → Resend) ─────────
 const unidad = tipoItem === 'baño químico'
   ? (cantidad > 1 ? `${cantidad} baños químicos` : 'un baño químico')
-  : (cantidad > 1 ? `${tipoItem} x${cantidad}` : tipoItem);
+  // un servicio suelto se nombra por su nombre, no por la etiqueta del formulario
+  : (!esArriendo ? (cantidad > 1 ? `${nombreServicio(tipoItem)} x${cantidad}` : nombreServicio(tipoItem))
+    : (cantidad > 1 ? `${tipoItem} x${cantidad}` : tipoItem));
 const donde = comuna !== '' ? ` para su proyecto en ${comuna}` : '';
-const totalNeto = precioNeto * cantidad;
+/* EL «TOTAL» QUE NO ERA EL TOTAL (9-sep, A07): la línea decía «total con IVA» sobre el
+   puro arriendo, y la ducha, la limpieza extra y el flete aparecían más abajo — el
+   cliente tenía que sumar solo, y el número grande del correo no coincidía con el del
+   PDF ni con lo que cobra el repartidor. Ahora el correo desglosa igual que el PDF. */
+const subtotalArriendo = precioNeto * cantidad;
+const montoExtra = itemExtra !== '' && precioExtra > 0 ? precioExtra : 0;
+const netoPedido = subtotalArriendo + montoExtra + flete;
+const ivaPedido = Math.round(netoPedido * 0.19);
 const lineaValor = cantidad > 1
-  ? `- ${unidad}: ${clp(precioNeto)} neto c/u · total ${clp(totalNeto)}${conFactura ? ', más IVA 19% (ver PDF)' : ''}`
-  : (conFactura
-    ? `- ${unidad}: ${clp(precioNeto)} neto (total con IVA: ${clp(Math.round(precioNeto * 1.19))})`
-    : `- ${unidad}: ${clp(precioNeto)}`);
+  ? `- ${unidad}: ${clp(precioNeto)} neto c/u · subtotal ${clp(subtotalArriendo)}`
+  : `- ${unidad}: ${clp(precioNeto)} neto`;
+// A05: «Incluye … aseo (no incluido)» era una contradicción impresa; el rótulo se adapta
+// igual que en el PDF, y lo que no está incluido se dice fuera de la lista de incluidos.
+const aseoDelCorreo = esEvento ? aseoAcordado : aseo;
+const hayAseoAcordado = aseoDelCorreo !== '';
+const aseoDentroDeIncluye = hayAseoAcordado && rotuloAseo === 'Aseo incluido';
+// el estándar «cada 7 a 10 días» SOLO cuando no hay nada acordado y el plazo lo justifica:
+// nombrarlo además del acuerdo dejaba el correo diciendo dos cosas distintas del mismo aseo
+const textoAseoIncluye = aseoDentroDeIncluye ? `, aseo (${aseoDelCorreo})`
+  : (hayAseoAcordado || esEvento ? '' : ', aseo cada 7 a 10 días');
+const lineaIncluye = esArriendo
+  ? `- Incluye ${conFlete ? '' : 'traslado, '}instalación, retiro${textoAseoIncluye}, papel higiénico y desodorizante.`
+  : '';
+const lineaAseoAparte = esArriendo && hayAseoAcordado && !aseoDentroDeIncluye
+  ? `- ${rotuloAseo}: ${aseoDelCorreo}.` : '';
+const cierreTotal = conFactura
+  ? [`- Neto del pedido: ${clp(netoPedido)}`, `- IVA (19%): ${clp(ivaPedido)}`,
+    `- Total a pagar con factura: ${clp(netoPedido + ivaPedido)}`]
+  : (facturaPendiente
+    ? [`- Total a pagar: ${clp(netoPedido)} neto`,
+      '- El documento tributario queda pendiente de confirmar: si se emite factura, se agrega IVA (19%).']
+    : [`- Total a pagar: ${clp(netoPedido)}, valores netos sin factura`]);
 const cuerpo = [
   `Estimado/a ${nombre}:`,
   '',
-  `Junto con saludar, le adjunto la cotización formal por el arriendo de ${unidad}${donde}.`,
+  `Junto con saludar, le adjunto la cotización formal por ${esArriendo ? `el arriendo de ${unidad}` : nombreServicio(tipoItem).toLowerCase().replace(/^servicio/, 'el servicio')}${donde}.`,
   '',
   lineaValor,
-  ...(itemExtra !== '' && precioExtra > 0
+  ...(montoExtra > 0
     ? [`- ${itemExtra.charAt(0).toUpperCase() + itemExtra.slice(1)}: ${clp(precioExtra)} neto.`] : []),
-  ...(flete > 0 ? [`- Flete por única vez: ${clp(flete)}${conFactura ? ' neto' : ''}.`] : []),
-  ...(plazo !== '' ? [`- Período: ${plazo}.`] : []),
-  esEvento
-    ? `- Incluye ${conFlete ? '' : 'traslado, '}instalación, retiro${aseoAcordado !== '' ? `, aseo (${aseoAcordado})` : ''}, papel higiénico y desodorizante.`
-    : `- Incluye ${conFlete ? '' : 'traslado, '}instalación, retiro, ${aseo !== '' ? `aseo (${aseo})` : 'aseo semanal (cada 7 a 10 días)'}, papel higiénico y desodorizante.`,
+  ...(flete > 0 ? [`- Flete por única vez, entrega y retiro: ${clp(flete)} neto.`] : []),
+  ...(plazo !== '' ? [`- ${esArriendo ? 'Período' : 'Fecha del servicio'}: ${plazo}.`] : []),
+  ...(lineaIncluye !== '' ? [lineaIncluye] : []),
+  ...(lineaAseoAparte !== '' ? [lineaAseoAparte] : []),
+  '',
+  ...cierreTotal,
+  '',
+  'El pago es contra entrega, en efectivo o transferencia, sin adelanto.',
   '',
   'El detalle completo está en el PDF adjunto. Para confirmar basta con responder este correo o coordinarlo por WhatsApp, y agendamos la entrega.',
   '',
@@ -301,11 +403,17 @@ const cuerpo = [
   'Destape Rápido',
   '+56 9 3647 0112 · destaperapido.cl',
 ].join('\n');
+/* EL ASUNTO (9-sep, A13 y A15): era fijo, «Arriendo de baño químico», aunque se cotizara
+   una ducha, un flete o una limpieza; y traía raya larga, que en esta casa no se usa.
+   Además el cliente puede pedir un asunto suyo («PMGD San Antonio Malvilla», CONV 624):
+   el bot prometió mandarlo así y el conector ni siquiera recibía el dato. */
+const asuntoPedido = texto(args.asunto);
+const asunto = `Cotización Destape Rápido: ${asuntoPedido !== '' ? asuntoPedido : nombreServicio(tipoItem)}`;
 
 const envio = spawnSync(PYTHON, [
   join(COTIZACIONES_DIR, 'scripts', 'enviar_cotizacion.py'), pdfPath, email,
   '--cliente', nombre,
-  '--asunto', 'Cotización Destape Rápido — Arriendo de baño químico',
+  '--asunto', asunto,
   '--mensaje', cuerpo,
 ], { encoding: 'utf8' });
 if (envio.status !== 0) {
@@ -317,4 +425,4 @@ console.log((envio.stdout || '').trim().split('\n').slice(-2).join(' · '));
 // `adjuntar_al_chat`, el panel la lee de aquí y le manda el mismo PDF al cliente por
 // WhatsApp, como hacía el bot antiguo (correo + WhatsApp).
 console.log(`PDF: ${pdfPath}`);
-console.log(`✓ Cotización enviada a ${email} — ${cantidad} ${cantidad === 1 ? 'baño' : 'baños'} · ${clp(precioNeto)} neto c/u${plazo ? ` (${plazo})` : ''}`);
+console.log(`✓ Cotización enviada a ${email} — ${cantidad} ${unidadResumen} · ${clp(precioNeto)} neto c/u${plazo ? ` (${plazo})` : ''}`);
