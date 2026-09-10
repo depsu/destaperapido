@@ -147,7 +147,21 @@ function diasDePlazo(txt) {
     return n * 15;
   }
   if (/quincen/.test(t)) return 15;
-  if (/fin de semana/.test(t)) return 2;
+  if (/fin de semana|s[aá]bado y domingo/.test(t)) return 2;
+  /* PLAZOS QUE NO SE ESCRIBEN EN DÍAS (9-sep, revisión): «8 horas», «por el día», «una
+     tarde noche», «jornadas salteadas». Son el 7% de las duraciones reales de la base y
+     caían en 0, o sea «mensual», y al repartidor le llegaba «Aseo: cada 7 a 10 días»
+     para un arriendo de una tarde. Va ANTES del rango de fechas: «de 8 a 17 horas» son
+     horas, no del 8 al 17. */
+  if (/\bhoras?\b|\bhrs?\b|jornada|por el d[ií]a|\btarde\b|\bnoche\b/.test(t)) return 1;
+  /* RANGOS DE FECHAS: «20 al 22 de noviembre», «del 17 de septiembre 11:00 al 20 de
+     septiembre 03:00 AM». El segundo extremo tiene que traer su mes, si no «de 8 a 17»
+     se leería como diez días. */
+  const rango = /(?<![:.\d])(\d{1,2})(?![:.\d])(?:\s*de\s+[a-zá-ú]+)?(?:\s+\d{1,2}[:.]\d{2}(?:\s*(?:am|pm|hrs?|horas?))?)?\s*(?:al|a|-|hasta(?:\s+el)?)\s*(?:el\s+)?(?<![:.\d])(\d{1,2})(?![:.\d])\s*de\s+[a-zá-ú]+/.exec(t);
+  if (rango !== null) {
+    const dias = Number(rango[2]) - Number(rango[1]) + 1;
+    if (dias > 0 && dias <= 31) return dias;
+  }
   if (/un[ao]?\s*(?:d[ií]a|noche)|event|fiesta|matrimonio|cumplea|bautizo/.test(t)) return 1;
   if (/semana/.test(t)) return 7;
   return 0;
