@@ -705,17 +705,19 @@ function armarConfirmacionCliente(entregaNueva) {
   const plazo = fraseDuracion(args.duracion);
   const monto = (entregaNueva || {}).pago ? (entregaNueva.pago.monto ?? null) : null;
   const formaPago = texto(args.forma_pago);
+  // formato con iconos: es el que Alejandro prefiere (10-sep); el contenido nuevo se queda
+  // (franja en las palabras del cliente, equipo, total con su condición)
   return [
-    esCorreccionCliente() ? 'Le actualizo la entrega.' : 'Le confirmo la entrega.', '',
-    `Servicio: ${queRecibe}`,
-    ...(plazo !== '' ? [plazo] : []),
-    `Entrega: ${fechaLegible(fecha)}${sufijo}`,
-    ...(hayExacta ? [] : ['Hora exacta: pendiente de confirmar']),
-    `Dirección: ${direccion}${conComuna ? `, ${comunaTxt}` : ''}`,
+    esCorreccionCliente() ? 'Le actualizo la entrega ✅' : 'Le confirmo la entrega ✅', '',
+    `🚽 ${queRecibe}`,
+    ...(plazo !== '' ? [`⏱ ${plazo}`] : []),
+    `📅 ${fechaLegible(fecha)}${sufijo}`,
+    ...(hayExacta ? [] : ['🕐 Hora exacta: pendiente de confirmar']),
+    `📍 ${direccion}${conComuna ? `, ${comunaTxt}` : ''}`,
     ...(monto === null || monto === 0 ? []
-      : [`Total a pagar: ${clpTxt(monto)}${conFactura ? ' con IVA' : ' (sin factura)'}`
+      : [`💵 Total a pagar: ${clpTxt(monto)}${conFactura ? ' con IVA' : ' neto'}`
         + (formaPago !== '' ? `, ${formaPago}` : '')]), '',
-    'Cualquier cambio o duda me avisa por acá.',
+    'Cualquier cambio o duda me avisa por acá. ¡Gracias! 🙌',
   ].join('\n');
 }
 
