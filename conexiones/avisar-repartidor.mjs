@@ -9,7 +9,8 @@
 // Uso: node avisar-repartidor.mjs '{"nombre":"...","direccion":"...","fecha":"...",...}'
 //   args: nombre* · direccion* · fecha* (de entrega; entiende español) · hora ·
 //         comuna · cantidad (default 1) · duracion (texto: «mensual», «2 semanas») ·
-//         telefono_cliente · maps_url · aseo (frecuencia acordada) ·
+//         telefono_cliente · maps_url · aseo (frecuencia acordada; en plazos de
+//         hasta 7 días el aseo periódico no se promete: ver «EL ASEO SEGÚN EL PLAZO») ·
 //         precio_neto (POR BAÑO, SIN flete) · flete (por única vez) · factura ("si"
 //         default → el COBRAR va con IVA; "no" = solo neto) — con ellos el aviso trae
 //         el 💵 COBRAR con su desglose, como el bot antiguo (17-ago) ·
@@ -344,6 +345,56 @@ const itemExtra = /^(no|ninguno|nada|sin( extras?| ítems?| items?)?|n\/a|-+)$/i
   .test(itemExtraCrudo) ? '' : itemExtraCrudo;
 const valorItem = pesosDe(args.valor_item_extra);
 const notasEquipo = equipamiento !== '' ? `EQUIPO: ${equipamiento.toUpperCase()}` : '';
+
+/* ── EL ASEO SEGÚN EL PLAZO (9-sep, Alejandro: «si el mensaje es diario, al repartidor a
+   veces dice limpieza incluida de 7 a 10 días, lo cual no tiene lógica») ───────────────
+   El resumen del repartidor pinta «🧽 Aseo:» con lo que venga y, si viene vacío, cae al
+   estándar «Aseo semanal (cada 7 a 10 días)» (resumen_repartidor.py). Un ciclo semanal
+   en una entrega de uno o tres días es una promesa que nadie va a cumplir: el baño ya se
+   retiró. Con un plazo CORTO (hasta 7 días) el aseo periódico NO corre — se dice lo que
+   de verdad incluye el servicio — y una frecuencia solo se nombra si la ficha trae una
+   ACORDADA de verdad (una limpieza pactada, un extra de evento). Con mensual, todo sigue
+   igual que siempre. */
+
+/** Cuántos días dura el arriendo, leído como lo escribe una persona. 0 = no se pudo
+ *  saber (ahí manda el estándar de siempre, que es el mensual). */
+function diasDePlazo(txt) {
+  const t = String(txt || '').toLowerCase().trim();
+  if (t === '') return 0;
+  // «mensual», «1 mes», «3 meses», «indefinido»: largo, sin más análisis
+  if (/mensual|permanente|indefinid|\bmes(?:es)?\b/.test(t)) return 30;
+  const m = /(\d+)\s*(d[ií]as?|noches?|semanas?|quincenas?)/.exec(t);
+  if (m !== null) {
+    const n = Number(m[1]);
+    if (/^d/.test(m[2]) || /^n/.test(m[2])) return n;
+    if (/^s/.test(m[2])) return n * 7;
+    return n * 15;
+  }
+  if (/quincen/.test(t)) return 15;
+  if (/fin de semana/.test(t)) return 2;
+  if (/un[ao]?\s*(?:d[ií]a|noche)|evento|fiesta|matrimonio|cumplea|bautizo/.test(t)) return 1;
+  if (/semana/.test(t)) return 7;
+  return 0;
+}
+
+// «semanal», «cada 7 días», «cada 7 a 10 días»: una cadencia, no un acuerdo puntual
+const aseoEsPeriodico = (t) => /semanal|cada\s*\d+\s*(?:a\s*\d+\s*)?d[ií]as?|cada\s*semana|7\s*a\s*10/i.test(t);
+
+const diasPlazo = diasDePlazo(texto(args.duracion));
+const plazoCorto = diasPlazo > 0 && diasPlazo <= 7;
+const aseoFicha = texto(args.aseo);
+// en plazo corto solo sobrevive un aseo ACORDADO: ni la cadencia estándar ni un «no»
+const aseoAcordado = plazoCorto
+  && (aseoFicha === '' || aseoEsPeriodico(aseoFicha) || /^\s*(?:no|sin)\b/i.test(aseoFicha))
+  ? '' : aseoFicha;
+// con flete cobrado el traslado NO va «incluido»: se dice que se cobra aparte (ya viaja
+// desglosado en el 💵 COBRAR, así el repartidor no promete gratis lo que va en la boleta)
+const aseoLinea = !plazoCorto ? aseoAcordado
+  : (aseoAcordado !== '' ? aseoAcordado
+    : `Sin aseo programado (${diasPlazo} día${diasPlazo === 1 ? '' : 's'}): incluye `
+      + (flete > 0 ? 'instalación y retiro, el traslado se cobra aparte'
+        : 'traslado, instalación y retiro'));
+
 const d = {
   direccion,
   fecha_entrega: fecha,
@@ -357,7 +408,7 @@ const d = {
   contacto_respaldo: texto(args.contacto_respaldo) || undefined,
   telefono_respaldo: texto(args.telefono_respaldo) || undefined,
   maps_url: texto(args.maps_url) || undefined,
-  aseo: texto(args.aseo) || undefined,
+  aseo: aseoLinea || undefined,
   ...(notasEquipo !== '' ? { tipo_uso: notasEquipo } : {}),
   // el ítem extra como EXTRA de verdad (31-ago, caso Carlos Castro: el COBRAR salía
   // sin la limpieza y el repartidor habría cobrado $154.700 en vez de $196.350):

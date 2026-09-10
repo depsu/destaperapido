@@ -29,6 +29,16 @@ if (args === null || typeof args !== 'object') {
   process.exit(1);
 }
 
+/* EL CINTURÓN DE LA CANCELACIÓN (8-sep, CONV 397 y 513): si llega la marca de que el
+   cliente canceló, acá NO se genera ni se envía nada. Este conector EMITE (PDF +
+   correo); retirar es cosa del aviso al repartidor. Le mandamos la cotización a quien
+   acababa de decir «no, ya no, gracias» y el dueño tuvo que disculparse. Salida en 0,
+   sin tocar nada. */
+if (String(args._cancelacion ?? '').trim().toLowerCase() === 'si') {
+  console.log('cancelación del cliente: no se generó ni se envió ninguna cotización');
+  process.exit(0);
+}
+
 const texto = (v) => (v === undefined || v === null ? '' : String(v).trim());
 const nombre = texto(args.nombre);
 const email = texto(args.email);
@@ -116,8 +126,42 @@ if (datosFactura !== '') campos.push(['Facturación', datosFactura]);
 /* EVENTO NO ES ARRIENDO MENSUAL (regla del bot viejo, 14-ago): en un evento de un día
    la limpieza semanal NO aplica, y prometerla por escrito en la cotización es vender algo
    que no se hace. El plazo manda: si dice evento/fiesta/matrimonio/un día, lo incluido es
-   traslado, instalación y retiro. */
-const esEvento = /event|fiesta|matrimonio|cumplea|un d[ií]a|1 d[ií]a|fin de semana/i.test(plazo);
+   traslado, instalación y retiro.
+   POR DÍAS, NO POR PALABRAS (9-sep, Alejandro: «si el mensaje es diario… dice limpieza
+   incluida de 7 a 10 días, lo cual no tiene lógica»): la lista de palabras dejaba fuera
+   «3 días», «5 días» o «una semana», y esos PDF salían prometiendo un ciclo semanal que
+   termina después de que el baño ya se retiró. Ahora se mide el plazo: hasta 7 días es
+   corto, y ahí el aseo periódico no se nombra. */
+
+/** Cuántos días dura el arriendo, leído como lo escribe una persona. 0 = no se pudo
+ *  saber (ahí manda el estándar de siempre, que es el mensual). */
+function diasDePlazo(txt) {
+  const t = String(txt || '').toLowerCase().trim();
+  if (t === '') return 0;
+  if (/mensual|permanente|indefinid|\bmes(?:es)?\b/.test(t)) return 30;
+  const m = /(\d+)\s*(d[ií]as?|noches?|semanas?|quincenas?)/.exec(t);
+  if (m !== null) {
+    const n = Number(m[1]);
+    if (/^d/.test(m[2]) || /^n/.test(m[2])) return n;
+    if (/^s/.test(m[2])) return n * 7;
+    return n * 15;
+  }
+  if (/quincen/.test(t)) return 15;
+  if (/fin de semana/.test(t)) return 2;
+  if (/un[ao]?\s*(?:d[ií]a|noche)|event|fiesta|matrimonio|cumplea|bautizo/.test(t)) return 1;
+  if (/semana/.test(t)) return 7;
+  return 0;
+}
+const diasPlazo = diasDePlazo(plazo);
+const esEvento = diasPlazo > 0 && diasPlazo <= 7;
+// «semanal», «cada 7 días», «cada 7 a 10 días»: una cadencia, no un acuerdo puntual
+const aseoEsPeriodico = (t) => /semanal|cada\s*\d+\s*(?:a\s*\d+\s*)?d[ií]as?|cada\s*semana|7\s*a\s*10/i.test(t);
+// en un plazo corto solo sobrevive el aseo ACORDADO (una limpieza pactada, un extra):
+// la cadencia estándar heredada de la ficha se descarta en vez de imprimirse
+const aseoAcordado = esEvento && aseoEsPeriodico(aseo) ? '' : aseo;
+// CON FLETE COBRADO EL TRASLADO NO VA «INCLUIDO» (9-sep): el PDF ya trae su línea propia
+// «Flete por única vez», así que decir «Traslado incluido» arriba se contradice solo.
+const conFlete = flete > 0;
 // si lo acordado EMPIEZA negando («no incluida…»), decir «Aseo incluido: no incluida»
 // era una contradicción impresa (31-ago, PDF de Carlos Castro) — la etiqueta se adapta.
 // Y si el texto trae un PRECIO (1-sep, Felipe Casajuana: «2 limpiezas, $60.000 cada
@@ -126,11 +170,13 @@ const rotuloAseo = /^\s*(no|sin)\b/i.test(aseo) || /\$\s*\d|\d+\s*(mil|lucas?)\b
   ? 'Aseo' : 'Aseo incluido';
 const lineaAseo = aseo !== '' ? `${rotuloAseo}: ${aseo}.` : 'Limpieza semanal (cada 7 a 10 días) incluida.';
 const incluido = esEvento
-  ? ['Traslado, instalación y retiro incluidos.',
-    // en un evento la limpieza solo se nombra si se ACORDÓ una (limpieza extra, etc.)
-    ...(aseo !== '' ? [`${rotuloAseo}: ${aseo}.`] : []),
+  ? [conFlete ? 'Instalación y retiro incluidos; el traslado se cobra aparte.'
+    : 'Traslado, instalación y retiro incluidos.',
+    // en un plazo corto la limpieza solo se nombra si se ACORDÓ una (limpieza extra, etc.)
+    ...(aseoAcordado !== '' ? [`${rotuloAseo}: ${aseoAcordado}.`] : []),
     'Papel higiénico y desodorizante incluidos.']
-  : ['Despacho, instalación y retiro incluidos.',
+  : [conFlete ? 'Instalación y retiro incluidos; el traslado se cobra aparte.'
+    : 'Despacho, instalación y retiro incluidos.',
     lineaAseo,
     'Papel higiénico y desodorizante incluidos.'];
 // mayúscula inicial para el PDF («Ducha portátil»); el default queda como siempre
@@ -196,7 +242,7 @@ if (gen.status !== 0 || !existsSync(pdfPath)) {
 
 if (dry) {
   console.log(`PDF generado (SIN enviar): ${pdfPath}`);
-  console.log(`✓ Prueba en seco lista — ${cantidad} baño(s) · ${clp(precioNeto)} neto c/u${flete > 0 ? ` + flete ${clp(flete)}` : ''}${plazo ? ` (${plazo})` : ''}`);
+  console.log(`✓ Prueba en seco lista — ${cantidad} ${cantidad === 1 ? 'baño' : 'baños'} · ${clp(precioNeto)} neto c/u${flete > 0 ? ` + flete ${clp(flete)}` : ''}${plazo ? ` (${plazo})` : ''}`);
   process.exit(0);
 }
 
@@ -204,7 +250,7 @@ if (dry) {
 // lee `adjuntar_al_chat` y se lo manda al cliente por WhatsApp. Cero Resend.
 if (soloWhatsapp) {
   console.log(`PDF: ${pdfPath}`);
-  console.log(`✓ Cotización lista para WhatsApp (sin correo) — ${cantidad} baño(s) · ${clp(precioNeto)} neto c/u${flete > 0 ? ` + flete ${clp(flete)}` : ''}${plazo ? ` (${plazo})` : ''}`);
+  console.log(`✓ Cotización lista para WhatsApp (sin correo) — ${cantidad} ${cantidad === 1 ? 'baño' : 'baños'} · ${clp(precioNeto)} neto c/u${flete > 0 ? ` + flete ${clp(flete)}` : ''}${plazo ? ` (${plazo})` : ''}`);
   process.exit(0);
 }
 
@@ -230,8 +276,8 @@ const cuerpo = [
   ...(flete > 0 ? [`- Flete por única vez: ${clp(flete)}${conFactura ? ' neto' : ''}.`] : []),
   ...(plazo !== '' ? [`- Período: ${plazo}.`] : []),
   esEvento
-    ? `- Incluye traslado, instalación, retiro${aseo !== '' ? `, aseo (${aseo})` : ''}, papel higiénico y desodorizante.`
-    : `- Incluye traslado, instalación, retiro, ${aseo !== '' ? `aseo (${aseo})` : 'aseo semanal (cada 7 a 10 días)'}, papel higiénico y desodorizante.`,
+    ? `- Incluye ${conFlete ? '' : 'traslado, '}instalación, retiro${aseoAcordado !== '' ? `, aseo (${aseoAcordado})` : ''}, papel higiénico y desodorizante.`
+    : `- Incluye ${conFlete ? '' : 'traslado, '}instalación, retiro, ${aseo !== '' ? `aseo (${aseo})` : 'aseo semanal (cada 7 a 10 días)'}, papel higiénico y desodorizante.`,
   '',
   'El detalle completo está en el PDF adjunto. Para confirmar basta con responder este correo o coordinarlo por WhatsApp, y agendamos la entrega.',
   '',
@@ -257,4 +303,4 @@ console.log((envio.stdout || '').trim().split('\n').slice(-2).join(' · '));
 // `adjuntar_al_chat`, el panel la lee de aquí y le manda el mismo PDF al cliente por
 // WhatsApp, como hacía el bot antiguo (correo + WhatsApp).
 console.log(`PDF: ${pdfPath}`);
-console.log(`✓ Cotización enviada a ${email} — ${cantidad} baño(s) · ${clp(precioNeto)} neto c/u${plazo ? ` (${plazo})` : ''}`);
+console.log(`✓ Cotización enviada a ${email} — ${cantidad} ${cantidad === 1 ? 'baño' : 'baños'} · ${clp(precioNeto)} neto c/u${plazo ? ` (${plazo})` : ''}`);
