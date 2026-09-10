@@ -12,7 +12,9 @@
 //         «viernes en la tarde», «10:00») · hora_tope (límite: «09:30» → «antes de las
 //         09:30»; franja, tope y hora confirmada son TRES cosas distintas y viajan
 //         separadas) ·
-//         acceso (referencia o link del portón) · recibe + telefono_recibe (quién
+//         acceso (referencia o link del portón; la ficha lo busca en `acceso` y, si no,
+//         en `referencia` — ver `de_ficha` del campo en conexiones.json) ·
+//         recibe + telefono_recibe (quién
 //         recepciona en terreno) · paga + telefono_paga (quién paga, si es otra
 //         persona) · forma_pago («efectivo contra entrega», «transferencia») ·
 //         retiro_acordado (fecha o franja de retiro YA acordada; sin esto el retiro
@@ -20,8 +22,9 @@
 //         comuna · cantidad (default 1) · duracion (texto: «mensual», «2 semanas») ·
 //         telefono_cliente · maps_url · aseo (frecuencia acordada; en plazos de
 //         hasta 7 días el aseo periódico no se promete: ver «EL ASEO SEGÚN EL PLAZO») ·
-//         precio_neto (POR BAÑO, SIN flete) · flete (por única vez) · factura ("si"
-//         default → el COBRAR va con IVA; "no" = solo neto) — con ellos el aviso trae
+//         precio_neto (POR BAÑO, SIN flete) · flete (por única vez) · factura ("si" →
+//         el COBRAR va con IVA; cualquier otra cosa, incluido el vacío, = NETO, que es
+//         el `defecto` del formulario en conexiones.json) — con ellos el aviso trae
 //         el 💵 COBRAR con su desglose, como el bot antiguo (17-ago) ·
 //         mensaje (reemplaza el aviso automático) ·
 //         dry ("si" = arma y muestra TODO sin subir ni avisar) ·
@@ -98,11 +101,45 @@ if (args === null || typeof args !== 'object') {
 const texto = (v) => (v === undefined || v === null ? '' : String(v).trim());
 
 const nombre = texto(args.nombre);
-// la dirección EXACTA o el LINK del mapa (16-ago): al repartidor le sirve cualquiera de
-// las dos — un cliente que manda su ubicación por Maps/Waze/WhatsApp no puede frenar el
-// despacho por no dictar la calle. Si solo hay link, el link ES la dirección.
-const mapsUrl = texto(args.maps_url);
-const direccion = texto(args.direccion) || mapsUrl;
+/* la dirección EXACTA o el LINK del mapa (16-ago): al repartidor le sirve cualquiera de
+   las dos — un cliente que manda su ubicación por Maps/Waze/WhatsApp no puede frenar el
+   despacho por no dictar la calle. Si solo hay link, el link ES la dirección.
+
+   Y LA ETIQUETA NO ES UNA CALLE (10-sep, ficha real de Ricardo Leiva): su campo dirección
+   decía «🗺️ Ubicación exacta: https://maps…». Al sacarle el link quedaba «🗺️ Ubicación
+   exacta:» y eso viajaba como su domicilio: el repartidor veía esa frase en la tarjeta y
+   el cliente la recibía en su confirmación como si fuera su calle. Si lo que queda tras
+   quitar el link y la etiqueta no alcanza para ser una dirección, no hay calle: hay pin. */
+const RE_LINK = /https?:\/\/\S+/;
+const linkEnDireccion = (RE_LINK.exec(texto(args.direccion)) || [])[0] || '';
+const mapsUrl = texto(args.maps_url) || linkEnDireccion;
+const calleEscrita = texto(args.direccion)
+  .replace(/https?:\/\/\S+/g, ' ')
+  // la etiqueta se saca SOLO si viene con sus dos puntos («Ubicación exacta: …»): sin esa
+  // exigencia, una calle que empiece con esas letras (Pinto, Linares) perdería su nombre
+  .replace(/^[^\p{L}\d]*(?:ubicaci[oó]n(?:\s+exacta)?|mapa|maps|waze|pin|link)\b\s*:\s*/iu, ' ')
+  .replace(/[\s,;:·—–-]+$/u, '')
+  .trim();
+// «4 letras o números» es el mínimo para que eso sea un lugar y no un residuo de etiqueta
+const hayCalle = (calleEscrita.match(/[\p{L}\d]/gu) || []).length >= 4;
+// sin calle legible y sin pin, se manda lo que haya: perder el dato es peor que llevarlo corto
+const direccion = hayCalle ? calleEscrita : (mapsUrl || calleEscrita);
+/** «calle, comuna» sin repetir la comuna («Providencia, Providencia»); sin calle, la
+ *  comuna sola: un link de Maps no es un lugar que se pueda leer en un mensaje. */
+const lugarDe = (calle, com) => {
+  const c = texto(calle);
+  const k = texto(com);
+  if (c === '' || RE_LINK.test(c)) return k;
+  if (k === '') return c;
+  /* la comuna se escribe de varias formas y la dirección puede traer cualquiera de ellas:
+     «Chicureo (Colina)» con una calle que termina «…, Colina» salía «…, Colina, Chicureo
+     (Colina)». Se prueba la comuna entera, la de adentro del paréntesis y la de afuera;
+     nunca palabras sueltas, o «Bernardo Leighton» se comería «San Bernardo». */
+  const formas = [k, k.replace(/\s*\([^)]*\)/g, '').trim(),
+    ...(k.match(/\(([^)]+)\)/g) ?? []).map((s) => s.slice(1, -1).trim())];
+  const yaEsta = formas.some((f) => f.length >= 4 && c.toLowerCase().includes(f.toLowerCase()));
+  return yaEsta ? c : `${c}, ${k}`;
+};
 const fecha = texto(args.fecha);
 
 /* La fecha COMO SE DICE, no como se guarda (19-ago). Al cliente le llegaba «📅 2026-08-24»
@@ -256,7 +293,8 @@ if (citaTexto !== '' && notaCambio !== '' && !esCancelacion) {
 if (notaCambio !== '' && !esCancelacion) {
   const entregaId = enlaceDe(jid);
   const quien = texto(args.nombre);
-  const donde = [texto(args.direccion), texto(args.comuna)].filter(Boolean).join(', ');
+  // el lugar en palabras, sin el link pegado: el encabezado es para reconocer la entrega
+  const donde = lugarDe(direccion, args.comuna);
   const cabeza = entregaId !== null
     ? `🔄 CAMBIO en una entrega ya agendada${quien ? ` (${quien}` + (donde ? ` · ${donde}` : '') + ')' : ''}:`
     : `📣 Aviso${quien ? ` sobre ${quien}` + (donde ? ` (${donde})` : '') : ''}:`;
@@ -327,7 +365,11 @@ if (esCancelacion) {
   const partes = [`🚫 CANCELADA · ${nombre || 'una entrega'}${texto(args.comuna) ? ` (${texto(args.comuna)})` : ''}`];
   partes.push(fecha !== '' ? `📅 Era para: ${fechaLegible(fecha)}`
     : '📅 Era para: fecha no registrada en el aviso');
-  if (direccion !== '') partes.push(`📍 ${direccion}`);
+  // la calle si la hay; si el cliente solo mandó su pin, se muestra como pin (un link
+  // detrás de un 📍 se lee como una dirección que nadie escribió)
+  if (hayCalle) partes.push(`📍 ${lugarDe(direccion, args.comuna)}`);
+  else if (mapsUrl !== '') partes.push(`🗺️ ${mapsUrl}`);
+  else if (direccion !== '') partes.push(`📍 ${direccion}`);
   if (entregaId) partes.push(`📋 Tarjeta: ${linkEntrega(entregaId)}`);
   if (cita !== '') partes.push(`💬 El cliente: «${cita}»`);
   partes.push('');
@@ -348,15 +390,23 @@ if (esCancelacion) {
   }
   if (repTel === '') { console.error('no hay número de repartidor configurado'); process.exit(1); }
   await enviarPorDixdybot(`wa-baileys:${repTel}@s.whatsapp.net`, avisoCancel);
-  // el chat deja de tener entrega vigente: si este cliente vuelve a arrendar, es un
-  // arriendo NUEVO y no «una corrección» de lo que se canceló (A21)
-  borrarEnlace(jid);
+  /* EL ENLACE SE SUELTA SOLO SI LA TARJETA SE RETIRÓ DE VERDAD (10-sep).
+     El chat deja de tener entrega vigente: si este cliente vuelve a arrendar, es un
+     arriendo NUEVO y no «una corrección» de lo que se canceló (A21). PERO si la tarjeta
+     NO se pudo retirar (Supabase caído, id que no existe), soltar el enlace deja al
+     cliente con una tarjeta viva que ya nadie puede corregir: el próximo despacho crea
+     una SEGUNDA y el repartidor ve dos entregas del mismo trabajo sin saber cuál vale.
+     Es exactamente el bug Dominga (dos tarjetas, 30-jul y 19-ago) por otra puerta.
+     Sin tarjeta enlazada no hay nada que soltar, y el borrado ya es idempotente. */
+  if (tarjetaFuera || !entregaId) borrarEnlace(jid);
   logEnvio({ jid: jid || 'panel-dixdybot', tipo: 'entrega',
     detalle: { repartidor: repTel, cancelacion: true, entrega_id: entregaId || null,
       tarjeta_retirada: tarjetaFuera, cita, origen: 'dixdybot-cancelacion' } });
   console.log(`✓ Cancelación avisada al repartidor (+${repTel})`
     + (tarjetaFuera ? ' y tarjeta retirada del sistema'
-      : (entregaId ? ' — la tarjeta NO se pudo retirar: que la borre del panel' : ' (sin tarjeta enlazada)')));
+      : (entregaId ? ' — la tarjeta NO se pudo retirar: que la borre del panel (dejo el chat '
+        + 'enlazado a ella para que un re-despacho la corrija y no cree una segunda)'
+        : ' (sin tarjeta enlazada)')));
   process.exit(0);
 }
 
@@ -379,7 +429,14 @@ function pesosDe(v) {
 // resumen del repartidor; sin ellos el aviso salía sin precio (17-ago).
 const precioNeto = pesosDe(args.precio_neto);
 const flete = pesosDe(args.flete);
-const conFactura = texto(args.factura).toLowerCase() !== 'no';   // con IVA por defecto
+/* EL DEFECTO DEL FORMULARIO MANDA (10-sep, T24): este archivo asumía IVA cuando el arg
+   venía vacío, mientras conexiones.json declara `defecto: "no"` para «¿Con factura?».
+   Hoy cuadraban porque el molde aplica ese defecto antes de llamar, pero era un cuadre
+   prestado: bastaba vaciar el defecto en el panel para que el repartidor cobrara 19% más
+   de lo que dice el PDF, en silencio. Sin dato explícito de factura, NETO. */
+// el «sí» tiene que estar solo: «sin factura» empieza igual que «si» y «con boleta»
+// empieza con «con». El molde ya normaliza este campo a «si»/«no» antes de llamar.
+const conFactura = /^(s[ií]|true|1)(?![a-záéíóúñ\d])/i.test(texto(args.factura));
 // EL EQUIPAMIENTO ACORDADO (27-ago, política del lavamanos): si el cliente lo exigió con
 // lavamanos (o aceptó la versión sin), viaja como tipo_uso → notas → «📝 Notas:» del
 // resumen del repartidor y la tarjeta — para que no llegue con la unidad equivocada y
@@ -389,9 +446,15 @@ const equipamiento = texto(args.equipamiento);
 // despacho subió solo el baño — el ítem extra de la ficha jamás viajaba. Va por el
 // MISMO canal de notas: el repartidor tiene que cargar la ducha en el camión.
 const itemExtraCrudo = texto(args.item_extra);
-// «no», «ninguno», «sin extras»… no son un ítem: nada que cargar al camión
-const itemExtra = /^(no|ninguno|nada|sin( extras?| ítems?| items?)?|n\/a|-+)$/i
-  .test(itemExtraCrudo) ? '' : itemExtraCrudo;
+/* «no», «ninguno», «sin extras»… no son un ítem: nada que cargar al camión. Y tampoco lo
+   es una PREGUNTA del cliente anotada en ese campo (10-sep, ficha p-319: item_extra decía
+   «consulta por baño premium con espejo (no tan caro)» y salía al repartidor como carga y
+   al cliente como «más consulta por baño premium…», o sea prometiéndole algo que nadie
+   cotizó). Lo que empieza con un verbo de preguntar es una nota, no una cosa. */
+const NO_ES_ITEM = /^(no|ninguno|nada|sin( extras?| ítems?| items?)?|n\/a|-+)$/i;
+const ES_PREGUNTA = /^\s*(consulta|pregunta|duda|cotiza|averigu|quiere saber|pidi[oó] precio)/i;
+const itemExtra = NO_ES_ITEM.test(itemExtraCrudo) || ES_PREGUNTA.test(itemExtraCrudo)
+  ? '' : itemExtraCrudo;
 const valorItem = pesosDe(args.valor_item_extra);
 
 /* ── LAS MARCAS DE LA FICHA (9-sep, B2/B3/B4/B6/A18) ──────────────────────────────
@@ -418,7 +481,10 @@ const quienPaga = [texto(args.paga), telLegible(args.telefono_paga)]
   .filter((t) => t !== '').join(' ');
 const marcasFicha = [
   marca('EQUIPO', equipamiento.toUpperCase()),
-  marca('ACCESO', args.acceso ?? args.referencia),
+  // `referencia` NO es un arg de esta herramienta: el campo declarado es `acceso`, y su
+  // `de_ficha` ya dice «acceso, referencia», así que la ficha con referencia llega igual.
+  // El viejo `?? args.referencia` era código muerto (runtime.soloArgsDeclarados lo botaba).
+  marca('ACCESO', args.acceso),
   marca('RECIBE', quienRecibe),
   marca('PAGA', quienPaga),
   marca('PAGO', args.forma_pago),
@@ -599,14 +665,26 @@ function mensajeDeCambio(nueva, previa, subida) {
     + (texto(args.comuna) !== '' ? ` (${texto(args.comuna)})` : '')];
   const pagoNuevo = (nueva || {}).pago || {};
   const pagoPrevio = (previa || {}).pago || {};
-  const dirNueva = [direccion, texto(args.comuna)].filter((t) => t !== ''
-    && !direccion.toLowerCase().includes(texto(args.comuna).toLowerCase())).join(', ');
-  const cantidadNueva = Math.max(1, Math.round(Number(args.cantidad) || 1));
+  /* SE COMPARA TARJETA CONTRA TARJETA (10-sep, bug de la dirección falsa).
+     Antes el lado «ahora» salía de los args CRUDOS y el lado «antes» de la fila de
+     Supabase: dos formas distintas del mismo dato, así que el aviso inventaba cambios
+     que no existían. Caso real (ficha de Ricardo Leiva, 26285535416435@lid): la ficha
+     traía «🗺️ Ubicación exacta: https://maps…» en el campo dirección, construirEntrega
+     le saca el link y guarda la calle limpia, y el 🔄 anunciaba «Dirección: sin dato →
+     🗺️ Ubicación exacta: https://maps…, San Bernardo» — una dirección que la tarjeta
+     nunca tuvo ni iba a tener. Ahora los dos lados salen del objeto `entrega`, que es
+     EXACTAMENTE lo que se sube y lo que el repartidor va a ver. */
+  const conComuna = (e) => lugarDe((e || {}).direccion, (e || {}).comuna)
+    || String((e || {}).maps_url || '');
   const campos = [
-    ['Fecha', previa ? fechaLegible(previa.fecha || '') : '', fechaLegible(fecha)],
-    ['Horario', previa ? String(previa.hora || '') : '', horaFicha],
-    ['Cantidad', previa ? String((previa.cantidad || '')) : '', String(cantidadNueva)],
-    ['Dirección', previa ? String(previa.direccion || '') : '', dirNueva || direccion],
+    ['Fecha', previa ? fechaLegible(previa.fecha || '') : '',
+      fechaLegible((nueva || {}).fecha || fecha)],
+    ['Horario', previa ? String(previa.hora || '') : '', String((nueva || {}).hora || '')],
+    ['Cantidad', previa ? String((previa.cantidad || '')) : '',
+      String((nueva || {}).cantidad || '')],
+    ['Dirección', previa ? conComuna(previa) : '', conComuna(nueva)],
+    ['Ubicación exacta', previa ? String(previa.maps_url || '') : '',
+      String((nueva || {}).maps_url || '')],
     ['Qué se carga', previa ? String(previa.servicio || '') : '', String((nueva || {}).servicio || '')],
     ['Aseo', previa ? String(previa.aseo || '') : '', String((nueva || {}).aseo || '')],
     ['A cobrar', pagoPrevio.monto == null ? '' : clpTxt(pagoPrevio.monto),
@@ -619,10 +697,12 @@ function mensajeDeCambio(nueva, previa, subida) {
   if (previa === null) {
     partes.push('No pude leer la versión anterior de la tarjeta, así que no puedo marcar '
       + 'qué cambió. Vale ESTA versión:');
-    partes.push(`· Fecha: ${fechaLegible(fecha)}`);
-    if (horaFicha !== '') partes.push(`· Horario: ${horaFicha}`);
-    partes.push(`· Qué se carga: ${(nueva || {}).servicio || `${cantidadNueva} baño(s)`}`);
-    partes.push(`· Dirección: ${dirNueva || direccion}`);
+    partes.push(`· Fecha: ${fechaLegible((nueva || {}).fecha || fecha)}`);
+    const horaNueva = String((nueva || {}).hora || '');
+    if (horaNueva !== '') partes.push(`· Horario: ${horaNueva}`);
+    partes.push(`· Qué se carga: ${(nueva || {}).servicio
+      || `${Math.max(1, Math.round(Number(args.cantidad) || 1))} baño(s)`}`);
+    partes.push(`· Dirección: ${conComuna(nueva) || direccion}`);
     if (pagoNuevo.monto != null) partes.push(`· A cobrar: ${clpTxt(pagoNuevo.monto)}`);
   } else if (cambios.length === 0) {
     partes.push('Se re-despachó la misma entrega: no cambió ningún dato de la tarjeta.');
@@ -632,8 +712,10 @@ function mensajeDeCambio(nueva, previa, subida) {
     partes.push('');
     partes.push('El resto sigue igual que en la tarjeta.');
   }
-  const maps = texto(args.maps_url);
-  if (maps !== '') partes.push(`🗺️ ${maps}`);
+  // el pin: el de la entrega que se está subiendo (puede venir dentro de la dirección,
+  // no solo del campo maps_url), y solo si no se dijo ya como cambio
+  const maps = String((nueva || {}).maps_url || texto(args.maps_url));
+  if (maps !== '' && !cambios.some((c) => c.includes(maps))) partes.push(`🗺️ ${maps}`);
   partes.push('');
   // A20: el puente puede devolver ok con `subida:false` y la tarjeta quedar en lo viejo.
   partes.push(dry ? 'Prueba en seco: la tarjeta del sistema no se tocó.'
@@ -693,14 +775,31 @@ function armarConfirmacionCliente(entregaNueva) {
   const pedido = texto(args.mensaje_cliente);
   if (pedido.toLowerCase() === 'no') return '';
   if (pedido !== '') return pedido;
-  // la comuna solo si la dirección no la trae ya (salía «Providencia, Providencia»)
-  const comunaTxt = texto(args.comuna);
-  const conComuna = comunaTxt !== ''
-    && !direccion.toLowerCase().includes(comunaTxt.toLowerCase());
-  // QUÉ RECIBE: cantidad, equipamiento acordado y el ítem extra, con su nombre real
+  /* LO QUE LEE EL CLIENTE ES LO QUE DICE LA TARJETA (10-sep): dirección, comuna, pin y
+     fecha salen del objeto `entrega` —el mismo que ve el repartidor— y no de los args
+     crudos. Con el arg crudo, la ficha que traía el link de Maps pegado en la dirección
+     le mandaba al cliente «📍 🗺️ Ubicación exacta: https://maps…, San Bernardo» como si
+     fuera su calle, y una fecha en palabras se le escapaba sin día de la semana. */
+  // el lugar con la MISMA regla del aviso al repartidor (comuna sin repetir; sin calle,
+  // la comuna sola y el pin manda, porque el cliente mandó su ubicación y nunca la calle)
+  const lugar = lugarDe((entregaNueva || {}).direccion,
+    (entregaNueva || {}).comuna || args.comuna);
+  const pin = String((entregaNueva || {}).maps_url || mapsUrl).trim();
+  // QUÉ RECIBE: cantidad, equipamiento acordado y el ítem extra, con su nombre real.
+  // El equipamiento entre paréntesis salvo que ya empiece con «con»/«sin»: pegado quedaba
+  // «3 baños químicos unidades independientes con wc y lavamanos», que no es una frase.
   let queRecibe = `${n} baño${n === 1 ? '' : 's'} químico${n === 1 ? '' : 's'}`;
-  if (equipamiento !== '') queRecibe += ` ${equipamiento.toLowerCase()}`;
-  if (itemExtra !== '') queRecibe += `, más ${itemExtra.toLowerCase()}`;
+  if (equipamiento !== '') {
+    const eq = equipamiento.toLowerCase();
+    queRecibe += /^(con|sin)\b/.test(eq) ? ` ${eq}` : ` (${eq})`;
+  }
+  /* el extra se le NOMBRA al cliente si es una cosa («ducha», «1 limpieza extra») o si la
+     está pagando. Un texto largo en ese campo es una anotación del trato («retiro el mismo
+     16 al finalizar el evento, exigido por la parcela», ficha real p-288) y pegado detrás
+     de «más …» se lee como algo que además recibe. El repartidor sí lo ve entero. */
+  if (itemExtra !== '' && (valorItem > 0 || itemExtra.length <= 40)) {
+    queRecibe += `, más ${itemExtra.toLowerCase()}`;
+  }
   const { sufijo, hayExacta } = fraseHorario();
   const plazo = fraseDuracion(args.duracion);
   const monto = (entregaNueva || {}).pago ? (entregaNueva.pago.monto ?? null) : null;
@@ -711,9 +810,10 @@ function armarConfirmacionCliente(entregaNueva) {
     esCorreccionCliente() ? 'Le actualizo la entrega ✅' : 'Le confirmo la entrega ✅', '',
     `🚽 ${queRecibe}`,
     ...(plazo !== '' ? [`⏱ ${plazo}`] : []),
-    `📅 ${fechaLegible(fecha)}${sufijo}`,
+    `📅 ${fechaLegible((entregaNueva || {}).fecha || fecha)}${sufijo}`,
     ...(hayExacta ? [] : ['🕐 Hora exacta: pendiente de confirmar']),
-    `📍 ${direccion}${conComuna ? `, ${comunaTxt}` : ''}`,
+    ...(lugar !== '' ? [`📍 ${lugar}`] : []),
+    ...(pin !== '' && !lugar.includes(pin) ? [`🗺️ ${pin}`] : []),
     ...(monto === null || monto === 0 ? []
       : [`💵 Total a pagar: ${clpTxt(monto)}${conFactura ? ' con IVA' : ' neto'}`
         + (formaPago !== '' ? `, ${formaPago}` : '')]), '',
@@ -770,7 +870,12 @@ try {
      Un re-despacho con fecha nueva dejaba ese override viejo mandando para siempre: la
      tarjeta decía lunes 7 y la vista seguía en jueves 3 (o al revés). El despacho es la
      palabra más fresca del negocio: si hay override con OTRA fecha, se alinea. */
-  if (esCorreccion && idParaLink !== null && fecha !== '' && !dry) {
+  /* La fecha que se escribe es la NORMALIZADA de la entrega (10-sep), nunca el arg crudo:
+     `entrega_estado.fecha` es la palabra final sobre el día para la vista del repartidor
+     (aprendizaje «el repartidor manda»), y meterle «viernes 18» en vez de 2026-09-18 la
+     deja sin poder ordenar ni agrupar. construirEntrega ya la dejó en ISO. */
+  const fechaISOEntrega = String(prep.entrega?.fecha || '').trim();
+  if (esCorreccion && idParaLink !== null && /^\d{4}-\d{2}-\d{2}$/.test(fechaISOEntrega) && !dry) {
     try {
       const { execFileSync } = await import('node:child_process');
       execFileSync('python3', ['-c', [
@@ -778,7 +883,7 @@ try {
         `sys.path.insert(0, '/Users/alejandroriveracarrasco/SaSS/destaperapido/cotizaciones-destape-rapido/resumen-repartidor/scripts')`,
         'import generar_listado as gl',
         `eid = ${JSON.stringify(idParaLink)}`,
-        `fnueva = ${JSON.stringify(fecha)}`,
+        `fnueva = ${JSON.stringify(fechaISOEntrega)}`,
         'h = {"apikey": gl.SUPABASE_ANON_KEY, "authorization": "Bearer " + gl.SUPABASE_ANON_KEY}',
         'req = urllib.request.Request(f"{gl.SUPABASE_URL}/rest/v1/entrega_estado?id=eq.{eid}&select=fecha", headers=h)',
         'filas = json.load(urllib.request.urlopen(req, timeout=20))',
