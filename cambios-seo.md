@@ -1,5 +1,140 @@
 # Backlog de cambios SEO — destaperapido.cl
 
+**Ronda SEO 2026-09-10:** **la caída se acabó y la página madre del 18 por fin entró.** Semana del 1 al 7 de septiembre: **196 a 212 clics**, vistas 9.885 a 10.274, posición media 5,6 (igual). Revisado URL por URL, **/servicios/banos-quimicos ya está indexada** (llevaba semanas afuera y era lo que pedía la tarea del 18); también entraron eventos y mensual-obras. Siguen fuera solo dos: arriendo-por-dia y peñas-y-colegios. El hallazgo nuevo es de red: en las búsquedas de "arriendo baño químico precio" **Full Fosas está en el puesto 2,8 con clics y destaperapido en el 48**. Quedan 8 días para el 18 y la marca que arrienda con el bot es esta. Contactos orgánicos 43 a 39, y /zonas/rural/melipilla apareció más (78 a 102 vistas) y bajó de 5 a 1 clic. Indexación 95 de 116 (una menos que ayer).
+
+**Ronda SEO 2026-09-08:** **la caída ya no es un misterio: no es el ranking, es el clic.** 237 → **192 clics**
+(30-ago al 5-sep). Medido página por página: el artículo del mal olor perdió **15 clics con MÁS vistas** (2.836 →
+2.973) y **en la misma posición** (5,6 → 5,5), y el de "cuánto cuesta limpiar una fosa" perdió 6 **subiendo** del
+puesto 4,1 al 3,3. Aparece igual de arriba y le hacen menos clic. **El número que manda:** en 28 días el blog juntó
+**7.303 vistas y 10 contactos**; las páginas comerciales, **2.923 vistas y 153 contactos**. El blog es el 70% de lo
+que se ve y el 6% de lo que llega. **Baños químicos para el 18 (quedan 10 días):** /servicios/banos-quimicos avanzó
+un escalón (de "Google no la conoce" a "descubierta, no indexada"), pero apareció
+**/servicios/arriendo-banos-quimicos-por-dia como desconocida** y nunca se le ha avisado. Las cuatro hermanas del 18
+siguen indexadas. Indexación 96/116 (−1). Rotación sana en comunas: Curacaví entró de golpe (puesto 21 → 5, +7 clics)
+y Lampa +4; Pirque cedió 7.
+
+**Ronda SEO 2026-09-07:** **la madre de baños químicos empeoró y quedan 11 días para el 18.**
+Medida hoy URL por URL: `/servicios/banos-quimicos` pasó de "descubierta, no indexada" (ayer) a
+**"Google no conoce esta URL"**. Y la receta de ayer ya estaba aplicada: verificado en el sitio vivo,
+responde 200, tiene canónica propia, está en `sitemap-servicios.xml` (Google lo descargó el 2-sep, 0 errores)
+y **44 páginas del sitio la enlazan, 3 desde la portada**. No es enlazado interno ni técnica del sitio.
+Se la empujó hoy por la Indexing API (2/2 aceptadas, junto con peñas-y-colegios, la otra que sigue afuera).
+**Las del 18 sí están dentro:** fiestas-patrias, fondas-y-ramadas, arriendo-eventos y precio-arriendo. ✅
+**Comunas, todo sano:** las 36 páginas de zona existen, están publicadas y en el sitemap; melipilla rankea 5,7
+(26 vistas), talagante 2,8, calera-de-tango 2,8. Indexación 97/116, delta 0.
+
+**Ronda SEO 2026-09-06:** **quinta semana a la baja: 263 → 183 clics**, vistas 10.472 → 9.757, posición media
+5,9 → **5,8** (mejorando). **Corrección del diagnóstico de ayer:** la caída NO es pareja. Medida página por página,
+**61 de los 80 clics perdidos salen de cinco artículos del blog**, y ninguno bajó de puesto: "mal olor alcantarilla"
+48 → **22** clics (puesto 5,6 → 5,5, CTR 1,63% → **0,78%**), "cuánto cuesta limpiar fosa" 23 → **11** (puesto 4,1 → **3,3**,
+o sea subió, CTR 3,44% → **2,03%**), "cada cuánto limpiar fosa" 13 → **5** (puesto igual, CTR 2,26% → **0,91%**),
+"pozo absorbente saturado" 14 → **6**, "inspección con cámara" 7 → **0**. Mismo puesto, mismas vistas, la mitad de los
+clics: es la respuesta automática de Google contestando arriba. **La que vende hace lo contrario:** /precios-orientativos
+47 → **53 clics** con menos vistas (948 → 869), CTR 4,96% → **6,10%** y **14 contactos**. Contactos orgánicos del sitio
+52 → **41**: ese es el número a vigilar, no los clics. **18 de septiembre (quedan 12 días):** las dos páginas del
+dieciocho están indexadas (fiestas-patrias puesto 10, fondas-y-ramadas 9,5) pero la **madre /servicios/banos-quimicos
+sigue "descubierta, no indexada"**, igual que /arriendo-banos-quimicos-por-dia y /banos-quimicos-para-penas-y-colegios.
+Todavía no hay ni una búsqueda de "fondas", "ramadas" o "18" en los datos: la ola no llegó, la ventana está abierta.
+Indexación 97/116.
+
+**Ronda SEO 2026-09-05:** **cuarta semana a la baja: 261 → 178 clics (-32%)**, vistas 10.484 → 9.811, posición media quieta
+en 5,8. La caída es **pareja**: bajan nueve páginas distintas a la vez y no se salva ninguna (el artículo de cuánto cuesta
+limpiar una fosa -5, /precios-orientativos -4 con vistas 112 → 86, buin-paine -3, /servicios/destape-alcantarillado -2,
+melipilla -1). **Descartado hoy con curl:** se sospechó de la versión sin www, que aparece en Search Console como página
+aparte y también cae; **destaperapido.cl redirige 308 a www**, correctamente, no hay sitio duplicado. Cuando bajan todas en el
+mismo puesto no hay nada roto en el sitio: es demanda o es el buscador. Indexación 97/116.
+
+**Ronda SEO 2026-09-04:** **el hallazgo del día cambia el diagnóstico de la caída.** Tercera semana bajando
+(249 → **196 clics, -21%**) con vistas casi iguales (10.598 → 9.757) y posición media mejorando (5,9 → **5,8**).
+Fuimos página por página: **38 de los 53 clics perdidos son cuatro artículos del blog que NO se movieron de puesto** —
+mal olor 47→28 (posición 5,6 → **5,6**, CTR 1,56% → **1,01%**), cada cuánto 14→6 (4,7 → **4,7**, CTR 2,46% → **1,10%**),
+cuánto cuesta 23→16 (3,8 → **3,8**), desagüe cocina 9→5. Mismo puesto, casi las mismas vistas, la mitad de los clics:
+es la firma de una respuesta automática arriba del resultado, no de un problema del sitio. **Y la que vende hace lo
+contrario:** `/precios-orientativos` con **menos** vistas (976 → 859) y **más** clics (45 → **50**), puesto 5,3 → **4,8**,
+CTR 4,61% → **5,82%**. **Indexación 97/116, undécimo día sin moverse**, y el diagnóstico página por página terminó hoy (01:50)
+y parte las 19 en dos grupos: **13 «en la fila»** a las que no les falta nada — el caso que lo demuestra es
+`/servicios/banos-quimicos`, con **1.491 palabras, 72 enlaces internos y a UN clic de la portada**, y aun así fuera del
+índice (también `/zonas/urbano`, con **259 enlaces internos**) — y **6 «poco valor único»** que Google leyó y descartó por
+parecerse a otra página del sitio (`/blog` 1.628p, `/cobertura` 534p, `/zonas/parcelas-y-condominios-cerrados` 505p,
+`/blog/destape-cocina-restaurante-sushi`, `/blog/senales-fosa-septica-al-limite`, `/terminos`). **El largo alcanza en las
+seis**, así que el arreglo NO es escribir más: es diferenciarlas o fusionarlas. Las 13 primeras son autoridad pura.
+**El sitemap está sano** (el índice declara las 116 y Google lo descargó el 2-sep); el diagnóstico marcó los cuatro
+sub-sitemaps como «viejos», pero 26+37+36+17 = 116 exactas: es un falso positivo de la herramienta, ya encolado su arreglo. `/servicios/banos-quimicos-para-fondas-y-ramadas`
+**confirmada indexada**; la de peñas y colegios sigue en «Discovered». **Buin-Paine tocó fondo:** 7 → **0 clics**, puesto
+5,6 → 7,6 y las vistas a la mitad (106 → **48**); «limpia fosas paine» se cayó del 5,9 al **11,0**. Quedan **14 días para el 18**.
+
+**Ronda SEO 2026-09-03:** **funcionó el reenvío de ayer.** `/servicios/banos-quimicos-para-fondas-y-ramadas`
+pasó de "URL is unknown to Google" a **indexada**, y `/servicios/banos-quimicos-para-penas-y-colegios` de
+"unknown" a **"Discovered"** (Google ya la conoce). Quedan **15 días** para el 18. **Hallazgo nuevo al leer el
+detalle URL por URL:** las que no entran no son relleno, son las que venden — `/servicios/banos-quimicos`
+(la madre del rubro), `/servicios/arriendo-banos-quimicos-por-dia` y `/servicios/camion-limpia-fosas-valor`
+siguen sin indexar en plena temporada. Y **tres páginas madre** (`/cobertura`, `/blog`,
+`/zonas/parcelas-y-condominios-cerrados`) están como "Crawled - currently not indexed": Google las leyó y
+decidió no publicarlas, que es lo típico de un listado sin texto propio. **Tráfico:** 238 → **196 clics
+(-18%)**, segunda semana a la baja, con vistas casi iguales (10.430 → 9.885) y posición media mejorando una
+décima (5,9 → 5,8). **El matiz que faltaba, ya medido:** de los 42 clics perdidos, **31 son de cuatro
+artículos del blog** (mal olor 40→30, cuánto cuesta 23→15, cada cuánto 15→7, desagüe cocina 9→4), mientras
+`/precios-orientativos` **subió de 44 a 48 clics** y del puesto 5,3 al **4,7**. Se pierde lectores, no
+clientes. **Buin-Paine se aceleró:** 7 → **0 clics**, puesto 5,2 → 8,0, y «limpia fosas paine» se cayó de la
+primera página (puesto 11,0); la hermana `/zonas/rural/paine` sigue clavada en 2 clics. Indexación **97/116**,
+décimo día sin moverse.
+
+**Ronda SEO 2026-09-02:** hallazgo del día y ya arreglado a medias. Las **dos páginas del 18 de
+septiembre** (`/servicios/banos-quimicos-para-fondas-y-ramadas` y `/servicios/banos-quimicos-para-penas-y-colegios`)
+estaban como **"URL is unknown to Google"**: ni las conocía, a 16 días de la fecha. **Causa encontrada:**
+el aviso de sitemap de la ronda (Google leía 114 URLs, el sitio tiene 116) apuntaba justo a esas dos —
+el sub-sitemap de servicios en vivo trae 26 y la copia de Google traía 24. **Hecho hoy:** sitemap índice
+reenviado con `--con-hijos` + IndexNow 200 para ambas. La hermana `/banos-quimicos-fiestas-patrias-18-septiembre`
+sí está indexada, así que el molde funciona. **Tráfico:** 241 → **207 clics (-14%)** con vistas casi iguales
+(10.352 → 10.087) y posición media **idéntica (5,9)**; la caída está repartida en TODAS las páginas sin perder
+posición → CTR de la SERP, no algo roto. **Corrección de ayer:** buin-paine NO desapareció (responde 200);
+cayó de 5,0 a 7,1 y de 5 a 2 clics. Nota multimarca: en «limpia fosas paine» ocupamos dos casillas
+(destaperapido 6,6 + limpiafosasvaldes 6,8). Indexación **97/116**, octavo día sin moverse.
+
+**Ronda SEO 2026-08-30:** semana grande — clics **179 → 263 (+47%)**, 10.472 vistas, el mayor de la red.
+**Segunda canibalización detectada (nueva):** «limpia fosas paine» sale con DOS páginas suyas —
+/zonas/rural/buin-paine **6,1** (17 vistas, 2 clics) y /zonas/rural/paine **10,7** (16 vistas, 1 clic) —
+33 vistas de la misma búsqueda partidas al medio. La de «destape de alcantarillado» sigue igual:
+/servicios/destape-alcantarillado **9,6** vs /precios-orientativos **24,7**. **Falsa alarma descartada:**
+destaperapido.cl sin www aparece en GSC como URL aparte, pero responde 308 → www y la canónica del home
+es correcta (curl) — no hay nada que arreglar ahí. Indexación **97/114**, 17 accionables (12 descubiertas
++ 5 rastreadas-y-descartadas), sexto día sin moverse.
+
+**Ronda SEO 2026-08-29:** semana grande en tráfico y mala en la búsqueda madre. **Los clics
+subieron de 24 a 40 (+67%)** con 312 vistas — de lejos el que más tráfico trae de la red. Pero
+**«destape de alcantarillado» siguió cayendo hasta el 9,5** (serie: 4,2 → 4,9 → 7,7 → 8,8 → 8,6 →
+9,5) y `/precios-orientativos` se derrumbó de 4,2 a 24,7 perdiendo público (48 → 13 vistas): las
+dos páginas siguen compitiendo por la misma búsqueda. Indexación clavada en **97/114** quinto día;
+las 10 re-avisadas cinco días seguidos **no movieron ni una** → ya está probado que no es falta de
+aviso, son las 5 «rastreadas y descartadas» las que hay que mejorar o fusionar.
+
+**Ronda SEO 2026-08-28:** la caída de **«destape de alcantarillado» se frenó pero no se revirtió**:
+4,2 (19-ago) → 4,2 → 4,9 → 7,7 → 8,8 → **8,6** (25-ago), con 33 vistas y 2 clics. La página que se
+le cruzó, `/precios-orientativos`, se despegó apenas (26,6 → 24,6) — Google fijó el reparto y no lo
+deshará solo; hay que separarles el tema. Ojo que esa página **es excelente en lo suyo**: «destape
+de alcantarillado precio» va en el **puesto 2** con 62 vistas y 3 clics. Indexación **97/114**
+cuarto día sin moverse, y hoy apareció **1 URL que Google no conoce** (ayer 0). Quick-wins sanos:
+«limpia fosas melipilla» 5,2 (19 vistas), «limpia fosas paine» 5,9 (15 vistas, 3 clics). Tareas
+`seo-destaperapido-canibalizacion-alcantarillado` y `seo-destaperapido-paginas-madre` actualizadas.
+
+**Ronda SEO 2026-08-26:** hallazgo del día y **no es bueno**: la búsqueda madre **«destape de
+alcantarillado» se partió en dos páginas del propio sitio**. `/servicios/destape-alcantarillado`
+venía clavada entre **4,2 y 4,9 desde el 9-ago** (ocho fotos seguidas) y hoy **cayó al 7,7**;
+en la misma foto aparece `/precios-orientativos` rankeando la MISMA consulta genérica en el
+**26,6** (12 vistas) y «destape alcantarillado» en el **35**. Es canibalización interna, no un
+competidor. Ojo: `/precios-orientativos` **no se toca** — va 2,0 en «destape de alcantarillado
+precio» con 56 vistas. Se separan los temas por title/H1 y enlace interno. Indexación **97/114**
+sin moverse (los 3 `unknown` de ayer ya pasaron a «Discovered»: ahora 12 + 5 «Crawled»).
+Tarea nueva: `seo-destaperapido-canibalizacion-alcantarillado`.
+
+**Ronda SEO 2026-08-25:** avance a medias y **medido**: las **3 URLs que Google ni conocía ya están
+descubiertas** (`unknown` 3 → 0) pero **ninguna se indexó**: pasaron a la sala de espera y ahora son
+**12 en «Discovered»** + 5 «Crawled». Total **97/114**, tercer día sin moverse. Sirve como prueba
+para toda la red: **avisar sirve para que Google encuentre, no para que indexe**. El sitio, en
+cambio, va muy bien: **10.121 imp / 220 clics** en 7 días (anterior: 8.258 / 185) y **33.339 / 835**
+en 28 días — el que más trae de la red. Quick-wins de la semana: «limpia fosas paine» 5,6 ·
+«limpieza fosa septica» 12,7 · «cada cuanto se limpia una fosa septica» 5,0.
+
 **Ronda SEO 2026-08-22:** indexación **97/114** (+3; era 94). «Crawled - currently not indexed»
 bajó de 6 a **5**; quedan 10 en «Discovered». Tráfico 28d: **31.878 impresiones / 813 clics** — el
 que más trae de toda la red. Confirmado hoy por API: sigue registrado el **sitemap fantasma** con
@@ -13,6 +148,14 @@ Search Essentials antes de publicar.
 
 | fecha | URL | acción | qué se hizo | gate Google |
 |---|---|---|---|---|
+| 2026-09-11 | `/servicios/destape-alcantarillado` | modificado | El precio de partida entra al **título** y a la **primera pantalla**: title y meta (más twitter:*) pasan a «Destape de Alcantarillado desde $75.000 \| Sin Romper, 24/7» (58 y 159 caracteres) y el hero suma una línea con «Desde $75.000.» + enlace a los precios de destape (anchor «precios de destape»), aclarando que el valor final depende de la obstrucción y del diámetro y que el técnico lo confirma en terreno. Motivo: «destape de alcantarillado» (240 vistas/28 días) cae en el puesto 10 con 6 clics mientras su hermana «…precio» rinde 13 desde /precios-orientativos en el puesto 2; en esta familia gana la página que muestra el valor. El enlazado que pedía la tarea **ya estaba en vivo** (el anchor principal desde /precios-orientativos ya era «destape de alcantarillado»), así que no se tocó. El cambio venía escrito en disco por una pasada previa que murió antes del commit — el sitio vivo servía el título viejo, comprobado con curl —, así que se re-corrieron los dos gates antes de adoptarlo y se compactó el hero (mb-8 → mb-6 en los dos párrafos) para que los botones de llamada no cayeran bajo el pliegue en móvil. **Publicado y verificado en vivo con curl** (título, meta y hero) + IndexNow 200 + anotado en la cuarentena de títulos. Commit `8cd5edf`. | gate Google ✓ — el precio **no es nuevo**: $75.000 es el que ya publica /precios-orientativos (verificado en vivo) y el que la propia página venía diciendo en su FAQ y en su FAQPage schema; cero cifras inventadas. Keyword natural (sin stuffing), anchor descriptivo, sin texto oculto, sin página nueva. **Se midió el título antes de tocarlo, como manda la skill:** el vigente desde el 12-ago venía MEJOR que el anterior (CTR 1,96% → 2,27% a igual posición 11,5), o sea esto no revierte nada que estuviera subiendo. ⚠️ **Agrava la contradicción abierta desde julio:** la home sigue respondiendo «desde $45.000 con equipo manual y desde $90.000 con hidrojet» a «¿Cuánto cuesta un destape de alcantarillado en Santiago?» (verificado hoy en vivo, y está dentro de su FAQPage schema). Con esto ya son TRES cifras públicas para la misma pregunta: 45.000 / 75.000 / 90.000. Es decisión de plata de Alejandro → **propuesto, no ejecutado**. |
+| 2026-09-08 | `/servicios/banos-quimicos-fiestas-patrias-18-septiembre` | modificado (agregado) | Nota al pie: quien arma la ramada necesita varas de coligüe y nosotros solo ponemos los baños, con enlace a la portada de aguswer.cl (anchor «venta de coligüe en varas para armar la ramada»). Enlace de red para la temporada del 18: aguswer depende de la búsqueda «coligues» y está en el puesto 9,9 a 10 días del 18. El bloque venía escrito en disco por una pasada previa que murió antes del commit — el sitio vivo servía la página sin él, comprobado con curl —, así que se re-corrieron los dos gates antes de adoptarlo: texto honesto (aclara que no vendemos el material), anchor descriptivo y distinto del que usan los otros hermanos de la red, sin cifras nuevas. **Publicado y verificado en vivo con curl** + IndexNow 200. Commit `73fdf37`. | gate Google ✓ |
+| 2026-09-07 | / | modificado (rescate publicado y verificado en vivo) | La tarjeta de alcantarillado gana un enlace interno al servicio con anchor descriptivo ("destape de alcantarillado") dentro de una frase real ("cuando el atasco viene de la matriz"), y el "Ver detalles" genérico pasa a "Ver el servicio de alcantarillado". `dateModified` al 2026-09-02, la fecha en que se escribió el cambio. | ✓ anchors descriptivos y distintos entre sí, sin repetir el mismo texto exacto; cero cifras nuevas; sin texto oculto. **Queda abierta la contradicción de julio:** el FAQ de la home sigue respondiendo "desde $45.000 con equipo manual y desde $90.000 con hidrojet" a "¿cuánto cuesta un destape de alcantarillado?", mientras la tabla oficial dice $75.000. Es decisión de plata de Alejandro (fila del 2026-07-17), no se tocó. |
+| 2026-09-07 | /precios-orientativos | modificado (rescate publicado y verificado en vivo) | La tarjeta "Alcantarillado y cámaras" enlaza al servicio ("Cómo trabajamos el destape de alcantarillado, paso a paso"), y el `AggregateRating` del schema sube de 30 a 41 reseñas, igual que el bloque visible "Google · 41 reseñas reales". | ✓ la cifra 41 NO es nueva ni inventada: es la que ya servían las otras 36 páginas del sitio desde el commit `8d3aba5`, con respaldo real en el endpoint `/api/google-reviews` (rating 5, 41 reseñas de Google, CID 6979963907347696266). Estas 2 páginas eran las rezagadas en 30. Schema y texto visible dicen lo mismo. |
+| 2026-09-07 | /servicios/destape-alcantarillado | modificado (rescate publicado y verificado en vivo) | El FAQ "¿Cuánto cuesta un servicio de destape?" deja de ser puro humo ("valores competitivos para el sector") y responde con la cifra de la tabla oficial: "en alcantarillado partimos desde $75.000", enlazando a /precios-orientativos. Mismo texto en el FAQPage del schema. `AggregateRating` 30 a 41. | ✓ el $75.000 no se inventó aquí: es exactamente el "desde" que ya publica la tarjeta de alcantarillado en /precios-orientativos, la tabla oficial. Visible y schema idénticos, sin cloaking. Con esto la fuente oficial queda dicha en 2 páginas y la única que discrepa es la home (ver fila de arriba). |
+| 2026-09-07 | (las 3 de arriba) | nota de método | **Esto era trabajo huérfano del 2-sep**: los tres archivos llevaban 5 días modificados en disco y sin commitear, así que producción seguía sirviendo `reviewCount` 30 en 2 de 3 páginas y el FAQ sin precio. Lo cazó el `git status` de apertura que manda la skill. Se re-corrieron los dos gates sobre el archivo en disco ANTES de adoptarlo (de ahí la auditoría del 41 y del $75.000). Orden respetado: commit `f55b911` y push primero, `curl` a las 3 URLs después (FAQ nuevo, 41 reseñas y el enlace de la home confirmados en el sitio vivo), y recién entonces esta fila. IndexNow: 200, 3 URLs avisadas. | ✓ |
+| 2026-09-01 | /servicios/banos-quimicos-fiestas-patrias-18-septiembre · /banos-quimicos-para-fondas-y-ramadas · /banos-quimicos-para-penas-y-colegios (+ galería en /banos-quimicos) | modificado — **segunda vuelta de conversión** (pedido de Alejandro tras revisar en Chrome, publicado) | **Calculadora mínima**: un solo paso (4 opciones de gente → «≈ N baños» → WhatsApp con el mensaje armado), sin días ni tipo ni notas; va en la columna del texto y queda **sobre el pliegue** en móvil y escritorio, con las pastillas debajo. **Hero**: H1 compacto, párrafo de una frase, y **fondo propio por página** (patio del 18, ramada, patio de colegio) generado con Codex desde el baño real con la puerta abierta (su interior favorito como referencia), espejado para que la caseta quede en la mitad derecha, visible bajo un degradado más suave. **Galería**: leyendas en texto oscuro DEBAJO de la foto (en blanco encima no se leían). Formulario de cotización: copia a **contacto@destaperapido.cl** en las 8 páginas de baños (formsubmit; falta el clic de activación en ese buzón). | ✓ — H1/title/meta/canónica intactos; calculadora probada en las 3 páginas (100 personas → 3 baños / 2 en colegios, WhatsApp correcto, sin errores de consola); auditar-web sigue en 64 (línea base del pie/reseñas, nada nuevo) |
+| 2026-09-01 | /servicios/banos-quimicos-fiestas-patrias-18-septiembre · /servicios/banos-quimicos-para-fondas-y-ramadas · /servicios/banos-quimicos-para-penas-y-colegios (+ galería en /servicios/banos-quimicos) | modificado — **conversión** (landings de los grupos F1/F2/F3 de la campaña «baños quimicos», publicado) | **Calculadora de unidades** en el hero (gente + días → unidades con la regla 1:40 / 1:50 de la propia página, y WhatsApp prellenado con cantidad, días y tipo → el bot recibe el kit casi completo); galería **«Así llega tu baño»** con 4 fotos WebP del modelo (exterior en contexto, interior, parcela/flota, lavamanos) + lista «incluido» (traslado, químico y papel, retiro en planta, factura, **pago al recibir sin anticipo** — política viva del bot); foto contextual en beneficios; FAQ **«¿Cuánto cuesta?» sin cifras** (comuna + días + cantidad; baja desde 2 unidades); badge con **cuenta regresiva al 18**; hero más corto; formulario con opciones del caso y prefijo propio; og:image propia por página. **Coherencia con el tarifario del bot** (`dixdybot-data/ajustes/cotizador.json`): en la semana del 14 al 20 el arriendo se cobra POR DÍA → se quitó «el precio del traslado es el mismo… conviene el bloque completo»; la mantención entre jornadas ahora se dice «opcional, cotizada por visita» (el bot la cobra 30-35 mil/visita). Botones WhatsApp a `green-700` (5:1) porque `#25D366` con texto blanco da 1,98:1 (auditar-web). Fotos: 12 generadas con Codex a partir de la foto real del baño, **sin personas** (`marketing/fotos-banos/`, sin commitear por peso) → `public/images/banos-quimicos/` vía `scripts/convertir-fotos-banos.mjs` (800/400 px + OG 1200×630). | ✓ — title/meta/H1/canónica intactos; contenido real y sin cifras nuevas; `auditar-web.mjs` de 102 → 64 fallas/página, y las 64 que quedan son del pie de página y el widget de reseñas compartidos por todo el sitio (enlaces de 18 px, fechas grises) + falsos positivos del hero sobre foto — pendiente de una pasada global, no de estas páginas |
 | 2026-08-23 | /servicios/precio-arriendo-bano-quimico | modificado — **publicado y verificado en vivo** | Tarea `ads-destaperapido-seo` (crear-contenido, score 34). La página respondía la pregunta del precio con **«desde $45.000 + IVA»**, una cifra **sin respaldo en el tarifario del cliente**. Reemplazada por los valores reales de `dixdybot-data/ajustes/cotizador.json`: evento **$100.000 + IVA** en el Gran Santiago con escalera **$90.000 desde 2 / $85.000 desde 3 / $80.000 desde 4**, mensual de obra **$160.000** (**$150.000** cuando son varios) con mantención semanal, y la regla honesta de la distancia (céntrico incluye traslado; Buin, Paine, Talagante, El Monte, Isla de Maipo, Melipilla, Curacaví y Cajón del Maipo recargan; el flete rural se cobra una sola vez). Tocado también el FAQ del JSON-LD para que el schema diga **lo mismo que muestra la página**, y `dateModified` al día. Commit `b4aaf6d`, push a Vercel; **verificado en vivo con curl a los 30 s**: las 6 cifras reales presentes y **0 ocurrencias de 45.000**. | ✓ contenido útil, cifras contrastadas una a una contra el tarifario real, schema honesto, sin stuffing ni datos inventados |
 | 2026-08-23 | /servicios/banos-quimicos | modificado — **publicado y verificado en vivo** | Misma tarea. El FAQ visible y el `FAQPage` del schema afirmaban «desde $45.000 por evento de 1 día». Se quita la cifra sin respaldo y se explica que el valor se cotiza por comuna y cantidad, invitando a escribir con los datos. Commit `b4aaf6d`. | ✓ se elimina un dato inventado; el schema vuelve a coincidir con lo que la página muestra |
 | 2026-08-23 | /servicios/arriendo-banos-quimicos-por-dia | modificado — **publicado y verificado en vivo** | Misma tarea. La tarjeta «Un día» decía «desde $45.000 + IVA por unidad»; ahora trae el dato real del tarifario (**$100.000 + IVA** un baño en el Gran Santiago y la escalera 90/85/80), que es justamente lo que viene a buscar quien entra a esta URL. Commit `b4aaf6d`. | ✓ dato real y verificable, redacción natural |
@@ -197,3 +340,40 @@ Verificado en vivo con curl tras el deploy de Vercel. Medir CTR en Search Consol
 - Tráfico 28 días: **31.330 vistas / 784 clics**; esta semana 8.321/164 contra 8.052/191 la
   anterior (bajaron los clics, no las vistas).
 - Actualizado `seo-destaperapido-paginas-madre` con la evidencia concreta.
+
+## 2026-08-27 — cuarto día de caída en la búsqueda madre: del 4,2 al 8,8 (ronda-seo)
+
+- **«destape de alcantarillado»** —la búsqueda más comercial del sitio— lleva **cuatro fotos
+  seguidas cayendo**: 4,2 (20-ago) → 4,9 (22) → 7,7 (23) → **8,8 (24)**, con las vistas
+  bajando en paralelo (44 → 39 → 34 → 33). Antes venía dos semanas clavada entre 4,2 y 5,5.
+- La causa medida no se movió: `/precios-orientativos` sigue en el **26,6 con 12 vistas** para
+  esa misma búsqueda, congelada hace tres fotos. Google fijó el reparto entre las dos páginas
+  y no lo va a deshacer solo.
+- Indexación **97/114**, delta 0 (quinto día igual). 12 en «Discovered» + 5 «Crawled».
+- Actualizada `seo-destaperapido-canibalizacion-alcantarillado` (score 34 → 38).
+
+## 2026-09-01 — Paine se perdió; alcantarillado se recuperó (ronda-seo)
+
+- **Paine, mala**: `/zonas/rural/buin-paine` **desapareció** de «limpia fosas paine»
+  (venía 5,9 con 16 vistas y 2 clics). Quedó solo `/zonas/rural/paine` en 11,1 con 9
+  vistas y 1 clic → se perdieron **22 vistas y 2 clics**. El duplicado no se repartió:
+  Google descartó entera la mejor posicionada.
+- **Alcantarillado, buena**: la búsqueda madre dejó de caer, 29,3 → 26,6. Y
+  `/precios-orientativos` domina todas las variantes con precio: 2,0 · 2,4 · 1,6 · 1,4 · 1,4.
+- Dos búsquedas **nuevas** con clic: «destapar alcantarillado precio» (1,4) y «valor
+  destape alcantarillado» (1,4). También nueva «limpia fosas talagante» en 2,8 — página
+  única, sin duplicado, y rankea alto: el contraejemplo de Paine.
+- Indexación 97/114, delta 0, séptimo día. 7 días: 220 → 237 clics, posición 5,8.
+
+## 2026-09-11 — la genérica de alcantarillado es la bolsa grande que falta
+
+- Familia partida en dos (28 días): «destape de alcantarillado **precio**» 203 vistas,
+  puesto **2,1**, 13 clics (`/precios-orientativos`); «destape de alcantarillado» a secas,
+  la más buscada con **240 vistas**, puesto **10,2** y solo 6 clics.
+- Query×página en GSC: en la genérica sale `/servicios/destape-alcantarillado` en el puesto
+  **8** (138 vistas, 4 clics) y `/precios-orientativos` recién en el 22.
+- Verificado en el repo: la página de servicio tiene **929 palabras**, buen title y la
+  enlazan **103 páginas** (11 enlaces desde `/precios-orientativos`). No es enlazado.
+- Descartado el dominio duplicado: la fila de `destaperapido.cl` sin www (puesto 2,2) es
+  residuo; el sitio **redirige 308** a www (comprobado con curl hoy).
+- Indexación 95/116, delta 0. Encolado `seo-destaperapido-destape-alcantarillado`.

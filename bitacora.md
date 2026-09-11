@@ -4,6 +4,135 @@ Relato en simple de lo que las rondas y sesiones de la IA hacen por este cliente
 (lo nuevo ARRIBA). Las propuestas accionables viven en la cola del dashboard (🎯 Tareas);
 aquí queda la historia. La escriben ronda-ads, ronda-correo y las sesiones.
 
+## 2026-09-11 · 👷 Constructor · la página de alcantarillado por fin dice cuánto cuesta
+
+La búsqueda más grande del tema, "destape de alcantarillado", junta **240 vistas en 28 días
+y solo 6 clics**: sale en el puesto 10. Su hermana, la misma búsqueda pero con la palabra
+"precio", saca **13 clics desde el puesto 2**. Mismo tema, resultado muy distinto. Mirando
+las dos, el patrón salta: en estas búsquedas **le hacen clic a la página que muestra el
+valor**, y la de servicio lo tenía escondido dentro del acordeón de preguntas.
+
+Así que el precio subió a la vista: ahora el título en Google dice **"Destape de
+Alcantarillado desde $75.000"** y la primera pantalla lo repite, aclarando que el valor
+final depende de la obstrucción y del diámetro y que el técnico lo confirma en terreno.
+**No es un precio nuevo**: es el mismo que la web ya publica en la tabla de precios y el
+que esa misma página venía diciendo más abajo.
+
+Antes de tocar el título lo medí, porque cambiarlo a ciegas ya nos costó caro antes: el que
+estaba puesto desde el 12 de agosto venía **mejor** que el anterior (de 1,96% a 2,27% de
+clics, en la misma posición), así que esto no borra nada que estuviera subiendo, le suma el
+ángulo que sí convierte. El bloque de texto se dejó corto a propósito para que los botones
+de llamar y WhatsApp no quedaran empujados fuera de la primera pantalla en el celular.
+
+Publicado y comprobado en el sitio en vivo, avisado a los buscadores. **En 21 días se
+revisa:** la meta es quedar bajo el puesto 6 o pasar de 15 clics.
+
+⚠️ **Algo que necesita tu decisión, Alejandro:** la portada del sitio responde a la pregunta
+"¿cuánto cuesta un destape de alcantarillado en Santiago?" con *"desde $45.000 con equipo
+manual y desde $90.000 con hidrojet"*, mientras la tabla de precios y ahora el título dicen
+**$75.000**. Son tres cifras distintas para la misma pregunta, y la de la portada es de las
+que Google puede mostrar directamente en el buscador. No la toqué porque los precios los
+decides tú: dime cuál es la buena y la dejo pareja en todas partes.
+
+
+## 2026-09-11 · 📣 Ronda de Ads · quedan 7 días para el 18 y la puerta sigue cerrada igual que ayer
+
+La semana (4 al 10 de septiembre) cerró con **373.153 pesos y 140 contactos**, o sea **2.665 cada
+uno**. Buen número: es la cuenta que más gasta de la red y no es la más cara.
+
+Lo del 18 no se movió ni un milímetro. Volví a leer palabra por palabra: **las 11 negativas que
+tapan fondas, ramadas, peñas y colegios siguen puestas**, y los tres grupos que deberían recoger
+esas búsquedas (F1, F2 y F3) siguen sin entrar a la subasta: **cero impresiones en siete días**.
+Sacar esas negativas es gratis y toma dos minutos, pero es escribir en la cuenta, así que la ronda
+solo lo deja encolado. **Quedan 7 días.**
+
+Aparte, tres cosas medidas hoy: la campaña de baños ya pierde **53,6% de sus apariciones por
+presupuesto**; se fueron **21.303 pesos a clics fuera de la Región Metropolitana** (incluidos
+Mendoza y Ecuador, que no pueden contratar nunca); y la campaña **03 Urbano sigue siendo la única
+sin botón de llamar**, justo la más cara por contacto (3.339). Las dos últimas son gratis de
+arreglar.
+
+## 2026-09-03 · 📣 Ronda de Ads — quedó una sola campaña viva, y es la que tiene el botón roto
+
+El martes 2-sep a las 10:41 apagaste "01 Rural" y "03 Urbano". Queda encendida solo
+**"baños químicos"**.
+
+**Lo que hay que mirar dos veces es la 01 Rural:** traía el cliente **más barato de toda la red**,
+1.874 pesos cada uno, 30 contactos en siete días. Cada día apagada son unos 8.000 pesos que no se
+gastan y unos 4 clientes que no entran. Apagar la 03 se explica sola (6.089 por contacto, el
+triple). La decisión es tuya y es plata: la ronda no toca nada, solo deja el número sobre la mesa.
+
+**Lo urgente y gratis:** la campaña que quedó viva arrastra **seis días** con el botón de LLAMAR
+rechazado, y ahora también el **nombre del negocio**, cuyo texto es "Baños Químicos". Sospecha
+barata de probar: Google no acepta como nombre lo que es la descripción de un servicio. El nombre
+real de la ficha es **Destape Rápido**. Cambiar ese texto no cuesta un peso.
+
+Y justo ahora esa campaña está en su mejor momento: el 2-sep hizo su día más grande (24 clics,
+12 contactos) y pierde **84 de cada 100 apariciones por presupuesto**.
+
+
+## 2026-09-01 · 📣 Ronda de Ads — la cuenta entera estuvo 36 horas invisible
+
+**Lo grave:** destaperapido **no apareció en Google en todo el lunes**. Ni un anuncio, ni un
+peso, en las tres campañas a la vez. La última vez que apareció fue el domingo a las 13:00 y
+volvió recién hoy a la 01:00 de la madrugada: **36 horas mudo**. Fuimos descartando: nadie tocó
+nada (el registro de cambios está vacío hace 14 días), las campañas están activas, la cuenta
+también, y las otras tres cuentas de la red sí funcionaron el lunes. Todo apunta a la
+**facturación** — un cobro rechazado o un tope de gasto. Alejandro tiene que entrar a mirar.
+Un día en blanco son unos 26.000 pesos que no se gastaron y **unos 11 clientes que no llamaron**.
+
+**Lo que se corrigió:** ayer dijimos que baños químicos «se derrumbó el domingo». La mitad de
+ese susto era esto mismo. Lo que sí es suyo: del 27 al 29 pasó de 80-90 apariciones diarias a
+16-18 con la cuenta sana. Sigue siendo la campaña que trae al cliente más barato de toda la
+red (**1.882 pesos**) y sigue con el botón de llamar rechazado, cuarto día, con un número que
+nadie reconoce.
+
+**Lo demás:** la campaña rural sigue siendo la joya (28 clientes a 2.123) y la urbana el
+agujero (13 clientes a 4.227, el doble). Apareció una negativa nueva: pagamos 992 pesos por
+«limpia fosas Algarrobo», que es Quinta Región. Y va la ronda **once** preguntando lo mismo:
+¿arriendan duchas y lavamanos, sí o no?
+
+---
+
+## 2026-08-28 · 📣 Ronda de Ads — cambió el rey de la casa, y apareció un hueco raro el jueves
+
+**La buena:** la campaña rural **duplicó sus clientes** (de 23 a 48) subiendo el gasto solo un
+tercio, así que cada cliente bajó de 2.760 a **1.754 pesos**. Es la campaña que mejor rinde de
+toda la red y su anuncio está calificado «excelente» — no es casualidad.
+
+**La menos buena:** baños químicos, que era la estrella, **perdió 35% de sus clientes** (de 57
+a 37) y su cliente subió a 1.501. Ojo con no exagerar: el jueves 27 figura con cero clientes y
+los del último día siempre llegan tarde, así que sin ese día saldría ~1.292. Lo que sí lleva
+siete rondas sin cambiar es que **toda esa campaña es un solo grupo** y su anuncio principal
+está calificado **«pobre»** — la peor nota de la red, en la campaña más rentable.
+
+**Y algo para vigilar:** el jueves 27 la campaña rural **solo apareció tres horas en todo el
+día** (11, 15 y 19 h), contra doce o trece horas los días anteriores. Gastó 5.250 de sus
+14.000 y no trajo a nadie. No fue el presupuesto ni la cuenta suspendida. Puede ser que Google
+aún no haya cerrado el día — por eso no suena la alarma —, pero mañana se vuelve a medir.
+
+---
+
+## 2026-08-24 · 👷 Constructor — esta página ya se reescribió 6 veces; hoy toca dejarla quieta
+
+**Lo que pedía la cola:** reescribir el título del artículo del olor a alcantarilla, porque sale
+en el puesto 5,7 de Google con 8.048 apariciones y casi nadie le hace clic (1,29%).
+
+**Por qué NO se hizo:** ese título se cambió **anteayer**, y Google entrega los datos con tres
+días de atraso — o sea, del título que está hoy en la web todavía no hay ni un día medido. Peor:
+la página lleva **seis reescrituras en tres semanas** (30-jul, 31-jul, 15-ago, dos el 18-ago y
+una el 22-ago), así que el «CTR bajo» de los últimos 28 días es un promedio de **cuatro títulos
+distintos** mezclados. Medidos por separado dan casi lo mismo (1,25% vs 1,40%): la diferencia
+está dentro del ruido. Y lo importante: la posición no se ha movido (5,3-5,9) y las apariciones
+**subieron de 203 a 403 al día**. El título no es lo que falla acá.
+
+**Qué queda:** volver a mirarla a partir del **5 de septiembre**, cuando el título actual lleve
+dos semanas con datos propios. Y se propuso un candado para el motor de tareas: que no vuelva a
+pedir reescribir un título que se cambió hace menos de 14 días — hoy la cola nos pide arreglar
+cada noche el efecto de lo que ella misma provocó.
+
+**Estado:** nada publicado (a propósito). Queda anotado en la tarea `t1` del panel.
+
 ## 2026-08-23 · 👷 Constructor — el precio de los baños químicos ya está en la web, y es el de verdad
 
 **Lo que pasaba:** hace meses que la gente le pregunta a Google cuánto cuesta arrendar un baño
@@ -35,6 +164,26 @@ adoptarlo, tal como manda la skill.
 
 ---
 
+## 2026-08-24 · 📣 Ronda de Ads — los baños químicos siguen siendo la joya, y siguen apretados
+
+La campaña de **baños químicos** volvió a ser lo mejor de todos los clientes: cada persona que
+contacta cuesta **1.063 pesos**, menos de la mitad del promedio (2.186). El problema es que
+está encerrada: **ningún día de la semana logró mostrarse en más de la mitad de las búsquedas**
+por falta de presupuesto (perdió entre 54% y 73% cada día). No proponemos subirlo — es tu plata
+—, pero queda anotado que el freno no es la calidad del anuncio, es el espacio.
+
+**Buena noticia en destapes de Santiago:** segunda semana bajo su objetivo (3.233 contra
+3.500), y cambió el motivo por el que se frena: antes le ganaba la competencia, ahora es el
+tope. El domingo dejó de mostrarse en **8 de cada 10** búsquedas por presupuesto.
+
+Dos cosas que quedaron pendientes de nuestro lado: (1) la negativa que propusimos hace dos
+rondas para dejar de pagarle clics a quien quiere destapar solo (2.796 pesos perdidos en un
+mes) **sigue sin ponerse**; (2) la página de precios de limpieza de fosas sigue trabada porque
+**no tenemos tu tarifario de fosas** — sin ese dato no la escribimos, para no inventar precios.
+
+**Semana (17→23 ago):** 265.805 CLP · 136 contactos entre las tres campañas.
+
+---
 ## 2026-08-20 · 📵 sesión · Tres teléfonos, y el que recibe los destapes es el que nadie mira
 
 Con el dato correcto (el +56 9 6588 9226 sí tiene WhatsApp, cuenta «Alcantarillados Chavez
@@ -1175,3 +1324,80 @@ push→Vercel bajo el permiso «publicar-mejoras-seo» (libre poder con gates, 2
 - Pendiente (de Alejandro, no técnico): decidir si quiere que el tablero refleje los
   cierres (hoy nadie mueve las tarjetas) y saber de la línea humana si esos ~10 contactos
   diarios de destapes/fosas están llegando.
+
+## 2026-09-01 · 🛠️ Sesión — landings del 18 afinadas para conversión (Ads F1/F2/F3, y las mismas fotos para Marketplace)
+- Pedido de Alejandro: «crear o mejorar las páginas que ya tenemos para su conversión, ya que
+  las usaremos para Google Ads» (campaña de Fiestas Patrias; el plan de Marketplace corre aparte
+  y manda al comprador directo al bot de WhatsApp).
+- Diagnóstico previo: las 3 páginas (18 / fondas / peñas) tenían buen copy y calce con los
+  anuncios, pero UNA sola foto genérica, un panel que preguntaba «¿cuántos baños?» cuando la
+  promesa era «te decimos cuántos», formulario con opciones de obra/minería, y dos frases que
+  contradecían al bot: «el precio del traslado es el mismo, conviene el bloque completo» (en la
+  semana del 14-20 el tarifario cobra POR DÍA) y «mantención cada día de fonda» sin decir que
+  se cotiza aparte (30-35 mil por visita).
+- Cambios (detalle en `cambios-seo.md`): calculadora gente+días → unidades → WhatsApp con el
+  kit casi completo (cantidad, días, tipo); galería «Así llega tu baño» (4 fotos + incluido +
+  «pagas al recibir, sin anticipo»); foto contextual en beneficios; FAQ de precio sin cifras;
+  cuenta regresiva en el badge; formulario por caso; og:image propia; verdes de WhatsApp a
+  green-700 por contraste.
+- Decisión que NO tomé: publicar precios «desde». Alejandro decidió sin precios en Marketplace,
+  hay una decisión pendiente de precios únicos en la cola y la semana del 18 se cobra por día,
+  así que un «desde $100.000» sería ambiguo. Si quiere probarlo, el bloque es fácil de sumar.
+- Fotos: Codex generó 12 escenas a partir de la foto real (sin personas; la de fonda con gente
+  se dejó solo para Marketplace). Fuentes en `marketing/fotos-banos/` (sin commitear, 2-3 MB
+  cada una); web en `public/images/banos-quimicos/` con `scripts/convertir-fotos-banos.mjs`.
+- Verificación sin navegador primero (parche con anclajes estrictos, dry-run), después Chrome
+  headless: calculadora probada en las 3 páginas (badge «Faltan 17 días», 100 personas + 2 días
+  → 3 unidades / 2 en colegios, WhatsApp prellenado correcto, cero errores de consola) y
+  `auditar-web.mjs` 102 → 64 fallas/página; las 64 son del pie de página y de las reseñas
+  (compartidos por todo el sitio) + falsos positivos de texto sobre foto → pasada global aparte.
+- Pendientes que vi y no toqué: (1) el formulario manda copia por formsubmit a
+  `rivera.ale98@gmail.com` (¿es el correo correcto? el de Alejandro es ale982); (2) pie de
+  página con enlaces de 18 px en todo el sitio; (3) checklist de Marketplace sigue en manos de
+  Alejandro (extensión apagada, avisos por publicar).
+- **Segunda vuelta (misma noche, tras revisar en Chrome):** Alejandro pidió (1) calculadora
+  «lo más simple posible, menos botones, menos texto» → quedó en UN paso: gente → «≈ N baños»
+  → WhatsApp; (2) las leyendas blancas sobre las fotos no se leían → ahora van en texto oscuro
+  bajo cada foto; (3) un fondo «bonito» para el 18 con Codex pero realista como las fotos que
+  ya tenemos, usando su foto favorita del interior → tres fondos horizontales (patio del 18,
+  ramada, patio de colegio) espejados para que la caseta quede a la derecha, visible; la
+  calculadora bajó a la columna del texto y el hero se compactó para que el botón quede sobre
+  el pliegue en móvil y escritorio. Formulario: copia a contacto@destaperapido.cl (8 páginas),
+  con activación de formsubmit pendiente de un clic en ese buzón. Commits 5074b97 y siguiente.
+- **Ads (misma noche):** con OK de Alejandro, presupuesto de «baños quimicos» 8.000 → 12.000/día;
+  grupo nuevo F4 - Eventos y Fiestas (keywords de eventos movidas del genérico + negativas de
+  enrutamiento) apuntando a la página de eventos; y campaña nueva de **ChileBaños.cl** («CB -
+  Search - 18 y Eventos», 10.000/día, id 24203946884) en la cuenta **Dixdy 5993243094** porque la
+  cuenta propia todavía no existe (captcha + tarjeta pendientes de Alejandro) y él la quería
+  corriendo hoy aunque sin conversiones. Detalle en `cambios-ads.md`.
+- Fotos: se descartó la foto real de la camioneta (`marca-chilebanos/assets/fotos`) porque el
+  baño lleva el sticker y teléfono de otra empresa (Biosan). Las galerías quedaron con 3 de 4
+  fotos de la serie «real» del galpón (interior, frontal, lavamanos detalle, fila).
+- **Keywords con investigación (misma noche):** términos reales + Search Console + DataForSEO.
+  Conclusión: el volumen y las conversiones están en «arriendo baño(s) químico(s)» y en las
+  preguntas de precio; las frases del 18 son nicho estacional. Se creó P1 - Precio y Valor
+  (página de precios), se quitó la negativa «valor» que bloqueaba compradores, +16 kw en F2/F4,
+  +18 kw y 84 negativas base en ChileBaños. Queda para Alejandro decidir si ChileBaños suma el
+  término genérico (rinde, pero puja contra destaperapido). Ver docs/ads/investigacion-keywords-banos-2026-09-01.md.
+
+## 2026-09-02 · 📣 Sesión — ChileBaños ya sirve; grupo genérico + puja por comuna con los datos de los dos bots
+- Verificado por API: ChileBaños con 27 impr / 7 clics en su primera mañana; los 6 anuncios
+  nuevos de destaperapido aprobados. Se agregó a ChileBaños el grupo genérico (decisión de
+  Alejandro) y se ajustó la puja por comuna con los cierres reales de los dos bots (Colina y
+  Chicureo cierran el 43%; Ñuñoa, Renca y Curacaví no cierran). En destaperapido se sumaron 9
+  comunas con evidencia que faltaban en la segmentación. Detalle en `cambios-ads.md`.
+- Pendiente de Alejandro: tarjeta vinculada a la cuenta Dixdy (lo revisa él), captcha + tarjeta
+  de la cuenta ChileBaños propia, activación de formsubmit en contacto@destaperapido.cl.
+- **Validación (tarde):** las dos campañas sirven y el bot recibió 10 y 12 conversaciones nuevas
+  el 1 y 2 de septiembre (contra 2-6 los días previos), varias con el texto prellenado de las
+  landings y del cotizador de chilebaños.cl. Lo del 18/fondas/peñas está RARELY_SERVED (Google no
+  lo muestra por poco volumen) → se puso un anuncio del 18 dentro de los grupos genéricos de las
+  dos campañas. Bug real cazado: la página genérica mandaba el saludo duplicado al WhatsApp (5
+  chats) → corregido. destaperapido pierde 50-75% de apariciones por presupuesto aun con 12.000:
+  subirlo es decisión de plata de Alejandro.
+- **Cuenta propia de ChileBaños (noche):** Alejandro dijo «hazlo todo tú hasta donde puedas»: se
+  completó el asistente de la cuenta 665-488-9247 (sitio, nombre, país/hora/moneda, sin campaña
+  del asistente), él puso la tarjeta y la identidad de anunciante, y la cuenta quedó ENABLED como
+  «ChileBaños.cl». Se creó ahí la campaña definitiva 24204711111 con todo (3 grupos + RSA del
+  18, 87 negativas, zonas, techo 1.000) y se pausó la temporal de Dixdy. Falta colgarla del MCC
+  desde la UI (por API el token no puede). Detalle en cambios-ads.md.
