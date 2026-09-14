@@ -4,6 +4,54 @@ Relato en simple de lo que las rondas y sesiones de la IA hacen por este cliente
 (lo nuevo ARRIBA). Las propuestas accionables viven en la cola del dashboard (🎯 Tareas);
 aquí queda la historia. La escriben ronda-ads, ronda-correo y las sesiones.
 
+## 2026-09-14 · 👷 Constructor · el artículo de baños que Google respondía solo ya invita a entrar
+
+El artículo «cuántos baños químicos por persona» era la bolsa peor aprovechada de toda la red:
+en 28 días apareció **1.059 veces** casi en el puesto 6 y se ganó **un solo clic**. La razón no
+era la página (está bien hecha, enlaza al servicio y tiene los botones de WhatsApp): era que el
+título repetía la pregunta que Google ya contesta ahí mismo con la tabla, así que el cliente leía
+la cifra y no entraba. Ahora el título promete lo que el resultado de Google no puede mostrar:
+la tabla **y cuándo hay que sumar 30%** (las dos reglas que el artículo ya explicaba). El texto
+del artículo no se tocó.
+
+El cambio lo había dejado publicado la pasada de las 01:51 de esta madrugada, pero esa pasada se
+cortó antes de anotarlo: no había registro, no se le había avisado a los buscadores y la tarea
+seguía dando vueltas en la lista. Esta pasada lo comprobó en el sitio en vivo, avisó por IndexNow,
+lo dejó registrado y cerró la tarea. Se mide en 21 días: la meta es pasar de 1 a más de 10 clics.
+
+## 2026-09-14 · 📣 Ronda de Ads · lo que mejor vende es justo lo que está bloqueado
+
+Del 7 al 13: **357.178 pesos, 118 contactos a 3.027 cada uno**. La campaña de baños es la estrella
+(**2.502 por contacto**) y dentro de ella el grupo de eventos trae el contacto **más barato de toda
+la red: 1.806 pesos**. El problema es que la demanda del 18 sigue bloqueada por 11 negativas que
+apuntan a tres grupos muertos, y quedan **4 días**.
+
+La mala noticia de la semana es la campaña urbana: se disparó a **4.592 por contacto** (+21%) y
+sigue siendo la única sin botón de llamar ni de WhatsApp. Copiar esos dos botones es gratis.
+
+Una corrección honesta: el anuncio "flojo" de la campaña de baños ya no está quemando plata, esta
+semana cerró 5 contactos a 3.783 (antes 6.325). Sigue valiendo reescribirlo, pero baja la urgencia.
+
+## 2026-09-12 · 📣 Ronda de Ads · la semana mejor que nunca, y el anuncio más débil justo en la puerta del 18
+
+Del 5 al 11 de septiembre la cuenta gastó **361.073 pesos** y trajo **129,6 contactos, a 2.786
+cada uno**: es el mejor número del mes. Las tres campañas van **bajo su techo mensual**, así que
+lo apretado es la semana del 18, no el mes.
+
+Lo nuevo de hoy: el anuncio que carga la campaña de baños (el grupo que se lleva 122.656 de los
+149.583 pesos y cierra 41 de los 56 contactos) está calificado **POOR por Google**, el único de
+toda la cuenta. A seis días del 18, el anuncio más flojo está en la puerta principal. Reescribirlo
+no cuesta un peso.
+
+Y sigue igual lo del 18: las **11 negativas** que tapan fondas, ramadas, peñas y colegios siguen
+puestas, y los tres grupos que debían recoger esas búsquedas cerraron la semana en **cero**.
+Sexta medición, nada cambió, quedan 6 días.
+
+También apareció que la campaña urbana **no tiene botón de llamar ni de WhatsApp** (las otras dos
+sí), y es la más cara por contacto: 3.637 contra 2.671 y 2.405.
+
+Todo fue lectura: no se tocó ni un peso ni una palabra. Lo accionable quedó en la cola del panel.
+
 ## 2026-09-11 · 👷 Constructor · la página de alcantarillado por fin dice cuánto cuesta
 
 La búsqueda más grande del tema, "destape de alcantarillado", junta **240 vistas en 28 días
